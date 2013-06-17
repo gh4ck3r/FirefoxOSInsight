@@ -1,0 +1,564 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE bindings SYSTEM "chrome://diag/locale/diag-msg-list.dtd">
+
+<bindings xmlns="http://www.mozilla.org/xbl"
+		xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+	<binding id="msg-list">
+		<!-- content, property, method and event descriptions go here -->
+		<resources>
+			<stylesheet src="diag-msg-list.css"/>
+		</resources>
+		<content>
+			<xul:box flex="1" orient="vertical">
+				<xul:toolbar style="-moz-binding: url('#toolbar');" minheight="&toolbarHeight;" maxheight="&toolbarHeight;"/>
+				<xul:splitter collapse="before" resizeafter="farthest" fixed="true">
+					<xul:grippy/>
+				</xul:splitter>
+				<xul:box orient="vertical" flex="1">
+					<xul:tree id="diag-tree"
+							flex="1"
+							editable="true"
+							enableColumnDrag="true"
+							seltype="multiple"
+						>
+						<xul:treecols>
+							<xul:treecol label="Time" fixed="false" hidden="false" width="130"/>
+							<xul:splitter class="tree-splitter"/>
+							<xul:treecol label="" fixed="false" hidden="false" width="16"/>
+							<xul:splitter class="tree-splitter"/>
+							<xul:treecol label="pid" fixed="false" hidden="false" width="70"/>
+							<xul:splitter class="tree-splitter"/>
+							<xul:treecol label="tid" fixed="false" hidden="false" width="70"/>
+							<xul:splitter class="tree-splitter"/>
+							<xul:treecol label="tag" fixed="false" hidden="false" width="150"/>
+							<xul:splitter class="tree-splitter"/>
+							<xul:treecol label="class" fixed="false" hidden="true" width="200"/>
+							<xul:splitter class="tree-splitter"/>
+							<xul:treecol label="line" fixed="false" hidden="true" width="60"/>
+							<xul:splitter class="tree-splitter"/>
+							<xul:treecol label="Message" fixed="false" hidden="false" flex="1"/>
+						</xul:treecols>
+						<xul:treechildren id="diag-content" alternatingbackground="false">
+<!--
+							<xul:treeitem hidden="false">
+								<xul:treerow>
+									<xul:treecell properties="E full-width" label="??-?? ??:??:??.???"/>
+									<xul:treecell properties="E" label="I"/>
+									<xul:treecell properties="E" label="pid"/>
+									<xul:treecell properties="E" label="tid"/>
+									<xul:treecell properties="E" label="tag"/>
+									<xul:treecell properties="E" label="class"/>
+									<xul:treecell properties="E" label="line"/>
+									<xul:treecell properties="E" label="message.. ^^"/>
+								</xul:treerow>
+							</xul:treeitem>
+							<xul:treeitem style="-moz-binding: url('#msg');"/>
+-->
+						</xul:treechildren>
+					</xul:tree>
+				</xul:box>
+			</xul:box>
+		</content>
+		<implementation>
+			<constructor>
+				<![CDATA[
+					ASSERT(this._tree == document.getElementById("diag-tree"), "Getting 'diag-tree' is failed");
+					ASSERT(this.treechildren == document.getElementById("diag-content"), "Getting 'diag-content' is failed");
+					this.toolbar._tree = this._tree;
+					this.toolbar.treechildren = this.treechildren;
+					this.toolbar.msgFilter = this.msgFilter;
+				]]>
+			</constructor>
+			<destructor/>
+			<field name="adb">
+				<![CDATA[
+					Components.classes["@gh4ck3r.com/adb;1"]
+						.getService(Components.interfaces.adbI)
+				]]>
+			</field>
+			<field name="logcat">
+				<![CDATA[
+					Components.classes["@gh4ck3r.com/adb/logcat;1"]
+						.createInstance(Components.interfaces.adbIlogcat);
+				]]>
+			</field>
+			<field name="_tree" readonly="true">
+				<![CDATA[ document.getAnonymousNodes(this)[0].children[2].children[0] ]]>
+			</field>
+			<field name="treechildren" readonly="true">
+				<![CDATA[ this._tree.children[1] ]]>
+			</field>
+			<field name="capacity">10000</field>
+			<field name="toolbar"> <![CDATA[ document.getAnonymousNodes(this)[0].firstChild ]]> </field>
+			<field name="logcatCallback">
+				<![CDATA[
+					({
+						_this : this,
+						msgList : [],
+						converter : Components.classes["@mozilla.org/intl/scriptableunicodeconverter"]
+										.createInstance(Components.interfaces.nsIScriptableUnicodeConverter),
+						logcatMsg : function() {this.msg = [];},
+						init : function() {
+							this.converter.charset = "UTF-8";
+							this.logcatMsg.prototype = {
+								timestamp	: "??-?? ??:??:??.???",
+								type		: "I",
+								pid			: "<unknown>",
+								tid			: "<unknown>",
+								tag			:  "<unknown>",
+								class		: "",
+								line		: "",
+								msg			: ""
+							}
+						},
+						parseStream : function(bulk_msg) {
+							var regExLogcatMsgHdr = /\[\s+(\d\d-\d\d\s+\d\d:\d\d:\d\d\.\d\d\d)\s+(\d+):0x([\da-f]+)\s+(.)\/(.*)\s+\]/;
+							var regExLogcatMsgLoc = /<!>([\S\.]+)\s(\d+)<!>\s/;
+							var msg_array = bulk_msg.split("\r\n");
+
+							var logcatMsgEntry = null;
+							for(var i in msg_array)
+							{
+								var msg = msg_array[i];
+
+								var parsedMsg = regExLogcatMsgHdr.exec(msg);
+								if(parsedMsg){
+									if(logcatMsgEntry) this.msgList.push(logcatMsgEntry);
+									logcatMsgEntry = new this.logcatMsg();
+									logcatMsgEntry.timestamp	= parsedMsg[1];
+									logcatMsgEntry.pid			= parsedMsg[2];
+									logcatMsgEntry.tid			= parseInt(parsedMsg[3], 16);
+									logcatMsgEntry.type			= parsedMsg[4];
+									logcatMsgEntry.tag			= parsedMsg[5].replace(/(^\s*)|(\s*$)/g, "");
+									continue;
+								}
+
+								if(msg){
+									if(!logcatMsgEntry) logcatMsgEntry = new this.logcatMsg();
+									if(!logcatMsgEntry.msg.length && !logcatMsgEntry.class && !logcatMsgEntry.line){
+										var locInfo = regExLogcatMsgLoc.exec(msg);
+										if(locInfo){
+											logcatMsgEntry.class	= locInfo[1];
+											logcatMsgEntry.line		= locInfo[2];
+											msg = msg.slice(locInfo[0].length);
+										}
+									}
+									logcatMsgEntry.msg.push(msg);
+								} else{
+									this.msgList.push(logcatMsgEntry);
+									logcatMsgEntry = null;
+								}
+							}
+						},
+						onMsg : function(inputStream, len){
+							this.parseStream(
+								this.converter.ConvertToUnicode(
+									inputStream.readBytes(len)
+								)
+							);
+
+							for(var msg=this.msgList.shift();msg;msg=this.msgList.shift()){
+								if(!msg.msg.length) msg.msg.push("");
+								this._this.appendMsg(msg);
+							}
+							this.msgList = [];
+						},
+						onError : function(err) {
+							switch(err){
+								case Components.results.NS_OK:
+									break;
+								case Components.results.NS_ERROR_CONNECTION_REFUSED:
+									trace("ADB is not ready.");
+									if(!this._this.adb.isAlive()) {
+										trace("Starting ADB server.");
+										this._this.adb.startServer();
+										this._this.logcatConnect();
+									}
+									break;
+								default:
+									printd("aStatusCode : " + result2str(err));
+									break;
+							}
+						}
+					})
+				]]>
+			</field>
+			<field name="msgFilter">
+				<![CDATA[
+				({
+				 	filter : [],
+
+					isFiltered: function(msgObj){
+						if(!msgObj) return true;
+						for(var i in this.filter) {
+							var filter=this.filter[i];
+
+							if( (!filter.pid || filter.pid == msgObj.pid) &&
+								(!filter.tid || filter.tid == msgObj.tid) &&
+								(!filter.tag || filter.tag == msgObj.tag))
+								return true;
+						}
+						return false;
+					},
+					addFilter: function(filter) {
+						if(!filter.pid && !filter.tid && !filter.tag) return;
+
+						this.treebox.beginUpdateBatch();
+						this.filter.push(filter);
+						this.rowCount = this.filter.length;
+						this.treebox.endUpdateBatch();
+					},
+					delSelectedFilter: function() {
+						var rangeCount = this.selection.getRangeCount();
+						this.treebox.beginUpdateBatch();
+						while(rangeCount){
+							var begin = {};
+							var end = {};
+							this.selection.getRangeAt(--rangeCount, begin, end);
+							begin = begin.value;
+							end = end.value - begin + 1;
+							this.filter.splice(begin, end);
+						}
+						this.rowCount = this.filter.length;
+						this.treebox.endUpdateBatch();
+					},
+					//////////////////////////////////////////////////////////////////
+					// Implementation of nsITreeView.
+					//////////////////////////////////////////////////////////////////
+					rowCount: 0,
+					getCellText : function(row,iColumn){
+						const filter = this.filter;
+						var filterItem = filter[row];
+						return filterItem.hasOwnProperty(iColumn.id)?filterItem[iColumn.id]:undefined;
+					},
+					setCellText: function(row, iColumn, value) {
+						const filter = this.filter;
+						filter[row][iColumn.id]=value;
+					},
+					setTree: function(treebox){
+						this.treebox = treebox;
+						if(treebox) {
+							treebox.beginUpdateBatch();
+							this.rowCount = this.filter.length;
+							treebox.endUpdateBatch();
+						}
+					},
+					isEditable : function(row, col) {return true;},
+					isContainer: function(row){ return false; },
+					isSeparator: function(row){ return false; },
+					isSorted: function(){ return false; },
+					getLevel: function(row){ return 0; },
+					getImageSrc: function(row,col){ return null; },
+					getRowProperties: function(row,props){},
+					getCellProperties: function(row,col,props){},
+					getColumnProperties: function(colid,col,props){},
+				})
+				]]>
+			</field>
+
+			<method name="logcatConnect">
+				<body>
+					<![CDATA[
+						this.logcatCallback.init();
+						this.logcat.start(this.logcatCallback);
+					]]>
+				</body>
+			</method>
+			<method name="logcatDisconnect">
+				<body>
+					<![CDATA[
+						this.logcat.stop();
+					]]>
+				</body>
+			</method>
+
+			<method name="newMsg">
+				<parameter name="msgObj"/>
+				<body>
+					<![CDATA[
+					if(this.msgFilter.isFiltered(msgObj)) return null;
+
+					var treeitem = document.createElement("treeitem");
+					treeitem.setAttribute("hidden", this.toolbar.isHiddenMsg(msgObj.type).toString());
+					var treerow  = document.createElement("treerow");
+
+					var addCell = function(data){
+						var cell = document.createElement("treecell");
+						cell.setAttribute("label", data);
+						cell.setAttribute("properties", msgObj.type);
+						treerow.appendChild(cell);
+					}
+					addCell(msgObj.timestamp);
+					addCell(msgObj.type);
+					addCell(msgObj.pid);
+					addCell(msgObj.tid);
+					addCell(msgObj.tag);
+					addCell(msgObj.class);
+					addCell(msgObj.line);
+					// TODO
+					// 2. Multiline message -- How about using container attribute on "treeitem".
+					addCell(msgObj.msg[0].replace(/	/gi, '    '));
+					treeitem.appendChild(treerow);
+
+					return treeitem;
+					]]>
+				</body>
+			</method>
+			<method name="appendMsg">
+				<parameter name="newMsg"/>
+				<body>
+					<![CDATA[
+						newMsg = this.newMsg(newMsg);
+						if(newMsg) {
+							while(this.toolbar.msgCnt>=this.capacity)
+								this.treechildren.removeChild(this.treechildren.firstChild);
+
+							this.treechildren.appendChild(newMsg);
+
+							if(document.getElementById("id-follow-msg").checkState)
+								this._tree.boxObject.scrollByLines(this.treechildren.children.length);
+							else if(this.toolbar.msgCnt>=this.capacity)
+								this._tree.boxObject.scrollByLines(-1);
+							this.toolbar.syncMsgCount();
+						}
+					]]>
+				</body>
+			</method>
+			<method name="clearMsg">
+				<body>
+					<![CDATA[
+						while(this.treechildren.hasChildNodes())
+							this.treechildren.removeChild(this.treechildren.firstChild);
+						this.toolbar.syncMsgCount();
+					]]>
+				</body>
+			</method>
+			<method name="getStr">
+				<parameter name="idx"/>
+				<body>
+					<![CDATA[
+						var children = this._tree.view.getItemAtIndex(idx).firstChild.children;
+						var retStr="";
+						for(var i=0;i< children.length;++i) {
+							retStr += " " + children.item(i).getAttribute("label");
+						}
+						return retStr.substring(1);
+					]]>
+				</body>
+			</method>
+			<method name="copySelected">
+				<body>
+					<![CDATA[
+						var rangeCount = this._tree.view.selection.getRangeCount();
+						var str="";
+						for (var i = 0; i < rangeCount; i++)
+						{
+							var begin = {};
+							var end = {};
+							this._tree.view.selection.getRangeAt(i, begin, end);
+							for(var c=begin.value;end.value>=c;++c)
+								str += "\n" + this.getStr(c);
+						}
+						// Copy to clipboard
+						Components.classes["@mozilla.org/widget/clipboardhelper;1"]
+							.getService(Components.interfaces.nsIClipboardHelper)
+							.copyString(str.substring(1));
+					]]>
+				</body>
+			</method>
+			<method name="delSelected">
+				<body>
+					<![CDATA[
+						var rangeCount = this._tree.view.selection.getRangeCount();
+						var removeTarget = [];
+						for (var i = 0; i < rangeCount; i++)
+						{
+							var begin = {};
+							var end = {};
+							this._tree.view.selection.getRangeAt(i, begin, end);
+							for(var c=begin.value;end.value>=c;++c){
+								removeTarget.push(this._tree.view.getItemAtIndex(c));
+							}
+						}
+
+						for(var i in removeTarget)
+							removeTarget[i].parentNode.removeChild(removeTarget[i]);
+
+						this.toolbar.syncMsgCount();
+					]]>
+				</body>
+			</method>
+
+			<method name="saveToFile">
+				<body>
+					<![CDATA[
+//						printd("ADB alive : " + this.adb.isAlive());
+						var cnt = this.adb.getDeviceCnt();
+						printd("Device count : " + cnt);
+						for(var i=0;i<cnt;++i) {
+							printd("Device["+i+"] : " + this.adb.getDeviceId(i));
+						}
+//						printd("Connected : " + this.logcat.isConnected());
+/*
+						var treeitem = document.createElement("xul:treeitem");
+						treeitem.setAttribute("style", "-moz-binding: url('#msg');");
+						this.treechildren.appendChild(treeitem);
+						alert("TODO : Implement");
+*/
+					]]>
+				</body>
+			</method>
+		</implementation>
+
+		<handlers>
+			<handler event="keypress" modifiers="control" key="c" action="this.copySelected();"/>
+			<handler event="keypress" keycode="VK_DELETE" action="this.delSelected();"/>
+		</handlers>
+	</binding>
+
+	<binding id="toolbar">
+		<content>
+			<xul:toolbarbutton tooltiptext="&editFilterTxt;" image="&editFilterImg;" oncommand="openFilter()"/>
+			<xul:toolbarseparator/>
+			<xul:toolbarbutton type="checkbox" oncommand="toggleMsg(this);" msgType="V" tooltiptext="&supressMsgVTxt;" image="&supressMsgVImg;"/>
+			<xul:toolbarbutton type="checkbox" oncommand="toggleMsg(this);" msgType="D" tooltiptext="&supressMsgDTxt;" image="&supressMsgDImg;"/>
+			<xul:toolbarbutton type="checkbox" oncommand="toggleMsg(this);" msgType="I" tooltiptext="&supressMsgITxt;" image="&supressMsgIImg;"/>
+			<xul:toolbarbutton type="checkbox" oncommand="toggleMsg(this);" msgType="W" tooltiptext="&supressMsgWTxt;" image="&supressMsgWImg;"/>
+			<xul:toolbarbutton type="checkbox" oncommand="toggleMsg(this);" msgType="E" tooltiptext="&supressMsgETxt;" image="&supressMsgEImg;"/>
+			<xul:toolbarseparator/>
+			<xul:toolbarbutton tooltiptext="&LogcatClearTxt;" image="&LogcatClearImg;" oncommand="clearMsg();"/>
+			<xul:toolbarseparator/>
+			<xul:toolbarbutton tooltiptext="&LogcatSaveTxt;" image="&LogcatSaveImg;" oncommand="saveToFile()"/>
+			<xul:toolbarbutton tooltiptext="&restartFirefoxTxt;" image="&restartFirefoxImg;" oncommand="restartFirefox()"/>
+			<xul:toolbarseparator/>
+			<xul:textbox counter="true" readonly="true" width="70" value="0"/>
+			<xul:toolbarbutton id="id-follow-msg" type="checkbox" tooltiptext="&LogcatFollowTxt;" image="&LogcatFollowImg;" checked="true"/>
+			<xul:toolbarseparator/>
+			<xul:toolbarbutton tooltiptext="&LogcatStopTxt;" image="&LogcatStopImg;" oncommand="logcatDisconnect()"/>
+			<xul:toolbarbutton tooltiptext="&LogcatPlayTxt;" image="&LogcatPlayImg;" oncommand="logcatConnect()"/>
+
+			<xul:spacer flex="1"/>
+			<xul:toolbarbutton tooltiptext="&ConfigurationTxt;" image="&ConfigurationImg;" oncommand="openConfigurationDialog()"/>
+		</content>
+		<implementation>
+			<field name="elemSupressMsg">
+				<![CDATA[
+					({
+						V:document.getAnonymousElementByAttribute(this, "msgType", "V"),
+						D:document.getAnonymousElementByAttribute(this, "msgType", "D"),
+						I:document.getAnonymousElementByAttribute(this, "msgType", "I"),
+						W:document.getAnonymousElementByAttribute(this, "msgType", "W"),
+						E:document.getAnonymousElementByAttribute(this, "msgType", "E"),
+					})
+				]]>
+			</field>
+			<field name="cntElem" readonly="true">
+				<![CDATA[ document.getAnonymousElementByAttribute(this, "counter", "true") ]]>
+			</field>
+			<field name="_tree"/>
+			<field name="treechildren"/>
+			<field name="windows">
+				<![CDATA[({
+					conf:null,
+					filter:null,
+				})]]>
+			</field>
+			<property name="msgCnt">
+				<getter>
+					<![CDATA[
+						return this._tree.view?this._tree.view.rowCount:0;
+					]]>
+				</getter>
+				<setter>
+					<![CDATA[
+						this.cntElem.value = val;
+					]]>
+				</setter>
+			</property>
+			<constructor>
+				<![CDATA[ ]]>
+			</constructor>
+			<destructor>
+				<![CDATA[
+					for(var i in this.windows){
+						var win = this.windows[i];
+						if(win) win.close();
+					}
+				]]>
+			</destructor>
+			<method name="isHiddenMsg">
+				<parameter name="type"/>
+				<body>
+					<![CDATA[
+						ASSERT(this.elemSupressMsg.hasOwnProperty(type));
+						return this.elemSupressMsg[type].checkState?true:false;
+					]]>
+				</body>
+			</method>
+			<method name="toggleMsg">
+				<parameter name="button"/>
+				<body>
+					<![CDATA[
+						var children=this.treechildren.children;
+						var msgType=button.getAttribute("msgType");
+						for(var i=0;i < children.length;++i)
+						{
+							var childNode = children[i];
+							if(childNode.firstChild.children[1].getAttribute("label")==msgType){
+								childNode.hidden = button.checkState?true:false;
+							}
+						}
+						if(this._tree.currentIndex != -1)
+							this._tree.boxObject.ensureRowIsVisible(this._tree.currentIndex);
+						this.syncMsgCount();
+					]]>
+				</body>
+			</method>
+			<method name="syncMsgCount">
+				<body> <![CDATA[ this.msgCnt=this.msgCnt ]]> </body>
+			</method>
+			<method name="openConfigurationDialog">
+				<body>
+					<![CDATA[
+						if(this.windows.conf && !this.windows.conf.closed) {
+							this.windows.conf.focus();
+						} else {
+							this.windows.conf = window.openDialog("chrome://diag/content/conf.xul", "Configuration", "chrome");
+						}
+					]]>
+				</body>
+			</method>
+			<method name="openFilter">
+				<body>
+					<![CDATA[
+						if(this.windows.filter && !this.windows.filter.closed) {
+							this.windows.filter.focus();
+						} else {
+							this.windows.filter = window.openDialog("chrome://diag/content/filter.xul", "Filter", "chrome,dependent=true", this.msgFilter)
+						}
+					]]>
+				</body>
+			</method>
+		</implementation>
+	</binding>
+
+	<binding id="msg">
+		<content>
+			<xul:treerow>
+				<xul:treecell properties="E" label="??-?? ??:??:??.???"/>
+				<xul:treecell properties="E" label="I"/>
+				<xul:treecell properties="E" label="pid"/>
+				<xul:treecell properties="E" label="tid"/>
+				<xul:treecell properties="E" label="tag"/>
+				<xul:treecell properties="E" label="class"/>
+				<xul:treecell properties="E" label="line"/>
+				<xul:treecell properties="E" label="bind message.. ^^"/>
+			</xul:treerow>
+		</content>
+		<implementation>
+			<constructor>
+			</constructor>
+		</implementation>
+	</binding>
+</bindings>

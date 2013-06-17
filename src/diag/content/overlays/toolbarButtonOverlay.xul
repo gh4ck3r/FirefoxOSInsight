@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://diag/skin/toolbarButtonOverlay.css" type="text/css"?>
+
+<overlay id="overlay"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+	<script type="application/javascript" src="chrome://diag/content/overlays/toolbarButtonOverlay.js"/>
+	<toolbarpalette id="BrowserToolbarPalette">
+	  <toolbarbutton id="id-diag-launcher" class="toolbarbutton-1"
+		label="Logcat" tooltiptext="Android Logcat Viewer for Firefox"
+		oncommand="toolBarClicked(event);"/>
+	</toolbarpalette>
+
+</overlay>

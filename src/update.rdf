@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<RDF:RDF xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+
+  <!-- This Description resource includes all the update and compatibility information for
+       a single add-on with the id foobar@developer.mozilla.org. You can list multiple
+       add-ons information in the same RDF file. -->
+  <RDF:Description about="urn:mozilla:extension:firefox-os-insight@gh4ck3r.com">
+    <em:updates>
+      <RDF:Seq>
+        <!-- The resource attribute points to an RDF:Description entry below with
+             a matching about attribute. The actual uri can be whatever you like -->
+        <RDF:li resource="urn:mozilla:extension:firefox-os-insight@gh4ck3r.com:0.0.0.1"/>
+      </RDF:Seq>
+    </em:updates>
+	<em:updateLink>https://lemonbalm.lge.net/FirefoxOSInsight.xpi</em:updateLink>
+  </RDF:Description>
+
+  <!-- This represents the same Description within the li from the previous example -->
+  <RDF:Description about="urn:mozilla:extension:firefox-os-insight@gh4ck3r.com:0.0.0.1">
+    <em:version>0.0.0.1</em:version>
+
+    <!-- Trimmed the rest of the contents here -->
+
+  </RDF:Description>
+
+</RDF:RDF>
+

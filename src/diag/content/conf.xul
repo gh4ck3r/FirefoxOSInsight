@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>   
+
+<!DOCTYPE prefwindow [
+	<!ENTITY prefAdbPath	"extensions.DiagMsgMon.pref.adb.path">
+	<!ENTITY prefAdbHost	"extensions.DiagMsgMon.pref.adb.host">
+	<!ENTITY prefAdbPort	"extensions.DiagMsgMon.pref.adb.port">
+]>
+<prefwindow xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+		id="conf-window">
+	<prefpane id="pref-adb" label="ADB configuration">
+		<preferences>
+			<preference id="pref-adb-path" name="&prefAdbPath;" type="string"/>
+			<preference id="pref-adb-host" name="&prefAdbHost;" type="string"/>
+			<preference id="pref-adb-port" name="&prefAdbPort;" type="int"/>
+		</preferences>
+		<hbox>
+			<label value="ADB Path"/>
+			<textbox id="pref-adb-path-textbox" label="ADB path" preference="pref-adb-path" flex="1"/>
+			<button label="Browse..." oncommand="pickADB()"/>
+		</hbox>
+		<hbox>
+			<label value="Host"/>
+			<textbox id="pref-adb-host-textbox" label="ADB Host" preference="pref-adb-host" flex="1"/>
+			<label value="Port"/>
+			<textbox id="pref-adb-port-textbox" label="ADB Port" preference="pref-adb-port" flex="1"/>
+		</hbox>
+	</prefpane>
+	<script type="application/javascript" src="./conf.js"/>
+</prefwindow>
