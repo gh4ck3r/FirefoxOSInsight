@@ -94,7 +94,10 @@
 			<field name="logcatCallback">
 				<![CDATA[
 					({
-						_this : this,
+						adb : this.adb,
+						appendMsg : this.appendMsg.bind(this),
+						logcatConnect : this.logcatConnect.bind(this),
+
 						msgList : [],
 						converter : Components.classes["@mozilla.org/intl/scriptableunicodeconverter"]
 										.createInstance(Components.interfaces.nsIScriptableUnicodeConverter),
@@ -160,7 +163,7 @@
 
 							for(var msg=this.msgList.shift();msg;msg=this.msgList.shift()){
 								if(!msg.msg.length) msg.msg.push("");
-								this._this.appendMsg(msg);
+								this.appendMsg(msg);
 							}
 							this.msgList = [];
 						},
@@ -170,10 +173,10 @@
 									break;
 								case Components.results.NS_ERROR_CONNECTION_REFUSED:
 									trace("ADB is not ready.");
-									if(!this._this.adb.isAlive()) {
+									if(!this.adb.isAlive()) {
 										trace("Starting ADB server.");
-										this._this.adb.startServer();
-										this._this.logcatConnect();
+										this.adb.startServer();
+										this.logcatConnect();
 									}
 									break;
 								default:
