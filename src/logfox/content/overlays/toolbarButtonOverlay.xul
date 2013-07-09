@@ -6,7 +6,7 @@
 	<script type="application/javascript" src="chrome://logfox/content/overlays/toolbarButtonOverlay.js"/>
 	<toolbarpalette id="BrowserToolbarPalette">
 	  <toolbarbutton id="id-logfox-launcher" class="toolbarbutton-1"
-		label="Logcat" tooltiptext="Android Logcat Viewer for Firefox"
+		label="Logfox" tooltiptext="Firefox OS Log Message Viewer"
 		oncommand="toolBarClicked(event);"/>
 	</toolbarpalette>
 
