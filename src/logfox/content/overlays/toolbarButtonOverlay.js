@@ -1,9 +1,9 @@
 const wm = Components.classes["@mozilla.org/appshell/window-mediator;1"]
 				.getService(Components.interfaces.nsIWindowMediator);
-const chromeURI = "chrome://diag/content/diag.xul";
+const chromeURI = "chrome://logfox/content/logfox.xul";
 
 function toolBarClicked(event) {
-	openUILinkIn("chrome://diag/content/", "tab");
+	openUILinkIn("chrome://logfox/content/", "tab");
 }
 
 function disableChrome() {

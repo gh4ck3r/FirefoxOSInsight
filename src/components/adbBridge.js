@@ -1,7 +1,7 @@
 Components.utils.import("resource://debug/debug.jsm");
 Components.utils.import("resource://gre/modules/XPCOMUtils.jsm");
 Components.utils.import("resource://fileutils/process.jsm");
-Components.utils.import("resource://diag/prefs.jsm");
+Components.utils.import("resource://logfox/prefs.jsm");
 
 const Cc = Components.classes;
 const Ci = Components.interfaces;

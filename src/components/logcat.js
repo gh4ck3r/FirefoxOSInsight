@@ -1,6 +1,6 @@
 Components.utils.import("resource://debug/debug.jsm");
 Components.utils.import("resource://gre/modules/XPCOMUtils.jsm");
-Components.utils.import("resource://diag/prefs.jsm");
+Components.utils.import("resource://logfox/prefs.jsm");
 
 const nsISocketTransportService = Components.classes["@mozilla.org/network/socket-transport-service;1"]
 		.getService(Components.interfaces.nsISocketTransportService);

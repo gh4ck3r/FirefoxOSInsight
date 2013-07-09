@@ -1,7 +1,7 @@
 Components.utils.import("resource://debug/debug.jsm");
 Components.utils.import("resource://gre/modules/XPCOMUtils.jsm");
 Components.utils.import("resource://fileutils/process.jsm");
-Components.utils.import("resource://diag/prefs.jsm");
+Components.utils.import("resource://logfox/prefs.jsm");
 
 const nsILocalFile = Components.interfaces.nsILocalFile;
 const nsISocketTransportService = Components.classes["@mozilla.org/network/socket-transport-service;1"]
@@ -49,7 +49,7 @@ function adb() {
 				execFile(prefs.getComplexValue("path", Components.interfaces.nsILocalFile), args, blocked);
 			} catch(e if e.result===Components.results.NS_ERROR_FILE_UNRECOGNIZED_PATH) {
 				printd("NS_ERROR_FILE_UNRECOGNIZED_PATH : Check ADB Path");
-				window().openDialog("chrome://diag/content/conf.xul", "Configuration", "chrome");
+				window().openDialog("chrome://logfox/content/conf.xul", "Configuration", "chrome");
 			} catch(e) {
 				printd("Unknown Exception Occured....");
 			}

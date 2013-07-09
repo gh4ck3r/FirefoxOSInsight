@@ -10,7 +10,7 @@
 		<em:description>Diagnostic message monitor extension</em:description>
 
 		<em:homepageURL>http://changbin-park.lge.net</em:homepageURL>
-		<em:iconURL>chrome://diag/skin/images/logo.png</em:iconURL>
+		<em:iconURL>chrome://logfox/skin/images/logo.png</em:iconURL>
 
 		<em:developer>Ghacker</em:developer>
 
@@ -22,7 +22,7 @@
 				<em:maxVersion>21.*</em:maxVersion> 
 			</Description>
 		</em:targetApplication>
-		<em:optionsURL>chrome://diag/content/conf.xul</em:optionsURL>
+		<em:optionsURL>chrome://logfox/content/conf.xul</em:optionsURL>
 		<em:updateURL>https://lemonbalm.lge.net/FirefoxOSInsight/update.rdf</em:updateURL>
 
 	</Description>

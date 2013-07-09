@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 
-<!DOCTYPE bindings SYSTEM "chrome://diag/locale/diag-msg-list.dtd">
+<!DOCTYPE bindings SYSTEM "chrome://logfox/locale/logfox-msg-list.dtd">
 
 <bindings xmlns="http://www.mozilla.org/xbl"
 		xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 	<binding id="msg-list">
 		<!-- content, property, method and event descriptions go here -->
 		<resources>
-			<stylesheet src="diag-msg-list.css"/>
+			<stylesheet src="logfox-msg-list.css"/>
 		</resources>
 		<content>
 			<xul:box flex="1" orient="vertical">
@@ -16,7 +16,7 @@
 					<xul:grippy/>
 				</xul:splitter>
 				<xul:box orient="vertical" flex="1">
-					<xul:tree id="diag-tree"
+					<xul:tree id="logfox-tree"
 							flex="1"
 							editable="true"
 							enableColumnDrag="true"
@@ -39,7 +39,7 @@
 							<xul:splitter class="tree-splitter"/>
 							<xul:treecol label="Message" fixed="false" hidden="false" flex="1"/>
 						</xul:treecols>
-						<xul:treechildren id="diag-content" alternatingbackground="false">
+						<xul:treechildren id="logfox-content" alternatingbackground="false">
 <!--
 							<xul:treeitem hidden="false">
 								<xul:treerow>
@@ -63,8 +63,8 @@
 		<implementation>
 			<constructor>
 				<![CDATA[
-					ASSERT(this._tree == document.getElementById("diag-tree"), "Getting 'diag-tree' is failed");
-					ASSERT(this.treechildren == document.getElementById("diag-content"), "Getting 'diag-content' is failed");
+					ASSERT(this._tree == document.getElementById("logfox-tree"), "Getting 'logfox-tree' is failed");
+					ASSERT(this.treechildren == document.getElementById("logfox-content"), "Getting 'logfox-content' is failed");
 					this.toolbar._tree = this._tree;
 					this.toolbar.treechildren = this.treechildren;
 					this.toolbar.msgFilter = this.msgFilter;
@@ -527,7 +527,7 @@
 						if(this.windows.conf && !this.windows.conf.closed) {
 							this.windows.conf.focus();
 						} else {
-							this.windows.conf = window.openDialog("chrome://diag/content/conf.xul", "Configuration", "chrome");
+							this.windows.conf = window.openDialog("chrome://logfox/content/conf.xul", "Configuration", "chrome");
 						}
 					]]>
 				</body>
@@ -538,7 +538,7 @@
 						if(this.windows.filter && !this.windows.filter.closed) {
 							this.windows.filter.focus();
 						} else {
-							this.windows.filter = window.openDialog("chrome://diag/content/filter.xul", "Filter", "chrome,dependent=true", this.msgFilter)
+							this.windows.filter = window.openDialog("chrome://logfox/content/filter.xul", "Filter", "chrome,dependent=true", this.msgFilter)
 						}
 					]]>
 				</body>

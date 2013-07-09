@@ -1,8 +1,8 @@
-content		diag				file:diag/content/
-skin		diag				default diag/skin/default/
-locale		diag				en-US	diag/locale/en-US/
-locale		diag				ko		diag/locale/ko/
-resource	diag				diag/resource/
+content		logfox				file:logfox/content/
+skin		logfox				default logfox/skin/default/
+locale		logfox				en-US	logfox/locale/en-US/
+locale		logfox				ko		logfox/locale/ko/
+resource	logfox				logfox/resource/
 
 # used for ADB component
 interfaces components/adbBridge.xpt
@@ -35,6 +35,6 @@ resource	debug				file:debug/
 resource	fileutils			file:fileutils/
 
 #Firefox
-overlay	chrome://browser/content/browser.xul		 chrome://diag/content/overlays/toolbarButtonOverlay.xul
-style	chrome://global/content/customizeToolbar.xul chrome://diag/skin/toolbarButtonOverlay.css
+overlay	chrome://browser/content/browser.xul		 chrome://logfox/content/overlays/toolbarButtonOverlay.xul
+style	chrome://global/content/customizeToolbar.xul chrome://logfox/skin/toolbarButtonOverlay.css
 

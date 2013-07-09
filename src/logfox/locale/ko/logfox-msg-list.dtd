@@ -1,0 +1,38 @@
+<!ENTITY toolbarHeight		"34">
+
+<!ENTITY createFilterTxt	"필터 생성">
+<!ENTITY createFilterImg	"chrome://logfox/skin/images/LogcatFilterAdd.png">
+<!ENTITY editFilterTxt		"필터 수정">
+<!ENTITY editFilterImg		"chrome://logfox/skin/images/LogcatFilterList.png">
+<!ENTITY deleteFilterTxt	"필터 삭제">
+<!ENTITY deleteFilterImg	"chrome://logfox/skin/images/LogcatFilterDel.png">
+
+<!ENTITY supressMsgVTxt 	"Verbose Message 감추기">
+<!ENTITY supressMsgVImg		"chrome://logfox/skin/images/LogcatFilterVerbose.png">
+<!ENTITY supressMsgDTxt 	"Debug Message 감추기">
+<!ENTITY supressMsgDImg		"chrome://logfox/skin/images/LogcatFilterDebug.png">
+<!ENTITY supressMsgITxt 	"Info Message 감추기">
+<!ENTITY supressMsgIImg		"chrome://logfox/skin/images/LogcatFilterInfo.png">
+<!ENTITY supressMsgWTxt 	"Warn Message 감추기">
+<!ENTITY supressMsgWImg		"chrome://logfox/skin/images/LogcatFilterWarning.png">
+<!ENTITY supressMsgETxt 	"Error Message 감추기">
+<!ENTITY supressMsgEImg		"chrome://logfox/skin/images/LogcatFilterError.png">
+
+<!ENTITY ConfigurationTxt	"설정">
+<!ENTITY ConfigurationImg	"chrome://logfox/skin/images/LogcatConfiguration.png">
+
+<!ENTITY LogcatSaveTxt		"Text로 저장">
+<!ENTITY LogcatSaveImg		"chrome://logfox/skin/images/LogcatMsgSave.png">
+
+<!ENTITY LogcatClearTxt		"Log 지우기">
+<!ENTITY LogcatClearImg		"chrome://logfox/skin/images/LogcatMsgDelete.png">
+
+<!ENTITY LogcatFollowTxt	"새 메시지 추적">
+<!ENTITY LogcatFollowImg	"chrome://logfox/skin/images/LogcatMsgFollow.png">
+
+<!ENTITY LogcatPlayTxt		"연결">
+<!ENTITY LogcatPlayImg		"chrome://logfox/skin/images/LogcatPlay.png">
+
+<!ENTITY LogcatStopTxt		"끊기">
+<!ENTITY LogcatStopImg		"chrome://logfox/skin/images/LogcatStop.png">
+

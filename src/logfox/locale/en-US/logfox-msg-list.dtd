@@ -1,0 +1,40 @@
+<!ENTITY toolbarHeight		"34">
+
+<!ENTITY createFilterTxt	"Create Filter">
+<!ENTITY createFilterImg	"chrome://logfox/skin/images/LogcatFilterAdd.png">
+<!ENTITY editFilterTxt		"Edit Filter">
+<!ENTITY editFilterImg		"chrome://logfox/skin/images/LogcatFilterList.png">
+<!ENTITY deleteFilterTxt	"Delete Filter">
+<!ENTITY deleteFilterImg	"chrome://logfox/skin/images/LogcatFilterDel.png">
+
+<!ENTITY supressMsgVTxt 	"Suppress Verbose Message">
+<!ENTITY supressMsgVImg		"chrome://logfox/skin/images/LogcatFilterVerbose.png">
+<!ENTITY supressMsgDTxt 	"Suppress Debug Message">
+<!ENTITY supressMsgDImg		"chrome://logfox/skin/images/LogcatFilterDebug.png">
+<!ENTITY supressMsgITxt 	"Suppress Info Message">
+<!ENTITY supressMsgIImg		"chrome://logfox/skin/images/LogcatFilterInfo.png">
+<!ENTITY supressMsgWTxt 	"Suppress Warn Message">
+<!ENTITY supressMsgWImg		"chrome://logfox/skin/images/LogcatFilterWarning.png">
+<!ENTITY supressMsgETxt 	"Suppress Error Message">
+<!ENTITY supressMsgEImg		"chrome://logfox/skin/images/LogcatFilterError.png">
+
+<!ENTITY ConfigurationTxt	"Configuration">
+<!ENTITY ConfigurationImg	"chrome://logfox/skin/images/LogcatConfiguration.png">
+
+<!ENTITY LogcatSaveTxt		"Export Selection As Text...">
+<!ENTITY LogcatSaveImg		"chrome://logfox/skin/images/LogcatMsgSave.png">
+
+<!ENTITY LogcatClearTxt		"Clear Log">
+<!ENTITY LogcatClearImg		"chrome://logfox/skin/images/LogcatMsgDelete.png">
+
+<!ENTITY LogcatFollowTxt	"Follow new message">
+<!ENTITY LogcatFollowImg	"chrome://logfox/skin/images/LogcatMsgFollow.png">
+
+<!ENTITY LogcatPlayTxt		"Connect">
+<!ENTITY LogcatPlayImg		"chrome://logfox/skin/images/LogcatPlay.png">
+
+<!ENTITY LogcatStopTxt		"Disconnect">
+<!ENTITY LogcatStopImg		"chrome://logfox/skin/images/LogcatStop.png">
+
+<!ENTITY restartFirefoxTxt	"Restart Firefox">
+<!ENTITY restartFirefoxImg	"chrome://logfox/skin/images/restartFirefox.png">

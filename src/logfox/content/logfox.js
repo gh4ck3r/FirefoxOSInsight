@@ -18,12 +18,12 @@ Components.utils.import("resource://debug/debug.jsm");
 	}
 */
 
-//Components.utils.import("chrome://diag/content/adb.js");
+//Components.utils.import("chrome://logfox/content/adb.js");
 //var loader = Components.classes["@mozilla.org/moz/jssubscript-loader;1"]
 //                       .getService(Components.interfaces.mozIJSSubScriptLoader); 
-//loader.loadSubScript("chrome://diag/content/adb.js");
+//loader.loadSubScript("chrome://logfox/content/adb.js");
 
-var gMsgList = document.getElementsByTagName("diag-msg-list")[0];
+var gMsgList = document.getElementsByTagName("logfox-msg-list")[0];
 var msg_list = [];
 
 function test()
@@ -66,7 +66,7 @@ var addonListener = {
 	onEnabled: function(addon){},
 
 	onInstalled: function(addon){
-		window.openDialog("chrome://diag/content/conf.xul", "Configuration", "chrome");
+		window.openDialog("chrome://logfox/content/conf.xul", "Configuration", "chrome");
 	},
 	onUninstalled: function(addon){
 		printd("onUninstalled");
