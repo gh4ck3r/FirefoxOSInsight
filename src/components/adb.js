@@ -1,14 +1,20 @@
-Components.utils.import("resource://debug/debug.jsm");
-Components.utils.import("resource://gre/modules/XPCOMUtils.jsm");
-Components.utils.import("resource://fileutils/process.jsm");
-Components.utils.import("resource://logfox/prefs.jsm");
+"use strict"
 
-const nsILocalFile = Components.interfaces.nsILocalFile;
-const nsISocketTransportService = Components.classes["@mozilla.org/network/socket-transport-service;1"]
-		.getService(Components.interfaces.nsISocketTransportService);
-const nsITransport = Components.interfaces.nsITransport;
-const nsIScriptableInputStream = Components.interfaces.nsIScriptableInputStream;
-const nsIInputStreamPump = Components.interfaces.nsIInputStreamPump;
+const Cu=Components.utils;
+const Ci=Components.interfaces;
+const Cc=Components.classes;
+
+Cu.import("resource://debug/debug.jsm");
+Cu.import("resource://gre/modules/XPCOMUtils.jsm");
+Cu.import("resource://fileutils/process.jsm");
+Cu.import("resource://logfox/prefs.jsm");
+
+const nsILocalFile = Ci.nsILocalFile;
+const nsISocketTransportService = Cc["@mozilla.org/network/socket-transport-service;1"]
+		.getService(Ci.nsISocketTransportService);
+const nsITransport = Ci.nsITransport;
+const nsIScriptableInputStream = Ci.nsIScriptableInputStream;
+const nsIInputStreamPump = Ci.nsIInputStreamPump;
 
 var adbAlive = false;
 function adb() {
@@ -19,15 +25,15 @@ function adb() {
 (function(){
 	function window()
 	{
-		const nsIWindowMediator = Components.interfaces.nsIWindowMediator;
-		const wm =  Components.classes["@mozilla.org/appshell/window-mediator;1"]
+		const nsIWindowMediator = Ci.nsIWindowMediator;
+		const wm =  Cc["@mozilla.org/appshell/window-mediator;1"]
 				.getService(nsIWindowMediator);
 		return wm.getMostRecentWindow(null);
 	}
 
 	adb.prototype = {
 		classID : Components.ID("{75b3607d-142e-4e34-883a-9cb91a7bcfb7}"),
-		QueryInterface : XPCOMUtils.generateQI([Components.interfaces.adbI]),
+		QueryInterface : XPCOMUtils.generateQI([Ci.adbI]),
 
 		OB_TOPIC : "adb-state",
 		OB_STATE_CONNECTED : "connected",
@@ -45,8 +51,8 @@ function adb() {
 			var args = Array.prototype.slice.call(arguments);
 			args.shift();
 			try {
-				prefs.getComplexValue("path", Components.interfaces.nsILocalFile)
-				execFile(prefs.getComplexValue("path", Components.interfaces.nsILocalFile), args, blocked);
+				prefs.getComplexValue("path", Ci.nsILocalFile)
+				execFile(prefs.getComplexValue("path", Ci.nsILocalFile), args, blocked);
 			} catch(e if e.result===Components.results.NS_ERROR_FILE_UNRECOGNIZED_PATH) {
 				printd("NS_ERROR_FILE_UNRECOGNIZED_PATH : Check ADB Path");
 				window().openDialog("chrome://logfox/content/conf.xul", "Configuration", "chrome");
@@ -64,8 +70,8 @@ function adb() {
 		},
 		getDeviceList : function /*$adb_getDeviceList*/() {
 			this.startServer();
-			var adbBridge = Components.classes["@gh4ck3r.com/adbBridge;1"]
-							.getService(Components.interfaces.adbBridgeI);
+			var adbBridge = Cc["@gh4ck3r.com/adbBridge;1"]
+							.getService(Ci.adbBridgeI);
 			var resp = adbBridge.exec("host:devices");
 			var hosts = [];
 
@@ -91,10 +97,10 @@ const NSGetFactory = XPCOMUtils.generateNSGetFactory([adb]);
 
 (function(){
 	var adbWatcher;
-	var adbWatcherTimer = Components.classes["@mozilla.org/timer;1"]
-			.createInstance(Components.interfaces.nsITimer);
-	const nsIObserverService = Components.classes["@mozilla.org/observer-service;1"]
-			.getService(Components.interfaces.nsIObserverService);
+	var adbWatcherTimer = Cc["@mozilla.org/timer;1"]
+			.createInstance(Ci.nsITimer);
+	const nsIObserverService = Cc["@mozilla.org/observer-service;1"]
+			.getService(Ci.nsIObserverService);
 
 	function broadcastObserver(aStatusCode){
 		nsIObserverService
@@ -103,8 +109,8 @@ const NSGetFactory = XPCOMUtils.generateNSGetFactory([adb]);
 	function checkADB(){
 		adbWatcherTimer.initWithCallback({
 			notify : function(timer){
-				adbWatcher = Components.classes["@gh4ck3r.com/adbBridge;1"]
-									.getService(Components.interfaces.adbBridgeI)
+				adbWatcher = Cc["@gh4ck3r.com/adbBridge;1"]
+									.getService(Ci.adbBridgeI)
 									.openAsync({
 					onStartRequest : function(){},
 					onStopRequest : function(aRequest, outstream, aStatusCode) {
@@ -118,7 +124,7 @@ const NSGetFactory = XPCOMUtils.generateNSGetFactory([adb]);
 				else
 					checkADB();
 			}
-		}, 500, Components.interfaces.nsITimer.TYPE_ONE_SHOT);
+		}, 500, Ci.nsITimer.TYPE_ONE_SHOT);
 	}
 	checkADB();
 	var adbObserver = {
