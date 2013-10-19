@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/js/xpconnect/idl/nsIScriptError.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/js/xpconnect/idl/nsIScriptError.idl
  */
 
 #ifndef __gen_nsIScriptError_h__
@@ -254,7 +254,6 @@ NS_IMETHODIMP nsScriptError::ToString(nsACString & _retval)
 /* End of implementation class template. */
 #endif
 
-#define NS_SCRIPTERROR_CLASSNAME "Script Error"
 #define NS_SCRIPTERROR_CID \
 { 0xe38e53b9, 0x5bb0, 0x456a, { 0xb5, 0x53, 0x57, 0x93, 0x70, 0xcb, 0x15, 0x67 }}
 #define NS_SCRIPTERROR_CONTRACTID "@mozilla.org/scripterror;1"

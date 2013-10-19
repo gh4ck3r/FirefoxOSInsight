@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/image/public/imgIRequest.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/image/public/imgIRequest.idl
  */
 
 #ifndef __gen_imgIRequest_h__
@@ -28,11 +28,11 @@ class nsIPrincipal; /* forward declaration */
 
 
 /* starting interface:    imgIRequest */
-#define IMGIREQUEST_IID_STR "3ea9fc87-2e97-45bf-b373-d1dd253a0b5e"
+#define IMGIREQUEST_IID_STR "9c709b50-bd1a-476d-b313-d64db874f80a"
 
 #define IMGIREQUEST_IID \
-  {0x3ea9fc87, 0x2e97, 0x45bf, \
-    { 0xb3, 0x73, 0xd1, 0xdd, 0x25, 0x3a, 0x0b, 0x5e }}
+  {0x9c709b50, 0xbd1a, 0x476d, \
+    { 0xb3, 0x13, 0xd6, 0x4d, 0xb8, 0x74, 0xf8, 0x0a }}
 
 class NS_NO_VTABLE imgIRequest : public nsIRequest {
  public: 
@@ -48,8 +48,9 @@ class NS_NO_VTABLE imgIRequest : public nsIRequest {
     STATUS_LOAD_PARTIAL = 2,
     STATUS_LOAD_COMPLETE = 4,
     STATUS_ERROR = 8,
-    STATUS_FRAME_COMPLETE = 16,
-    STATUS_DECODE_COMPLETE = 32
+    STATUS_DECODE_STARTED = 16,
+    STATUS_FRAME_COMPLETE = 32,
+    STATUS_DECODE_COMPLETE = 64
   };
 
   /* readonly attribute unsigned long imageStatus; */

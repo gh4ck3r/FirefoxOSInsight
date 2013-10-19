@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/content/events/public/nsIEventListenerService.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/content/events/public/nsIEventListenerService.idl
  */
 
 #ifndef __gen_nsIEventListenerService_h__
@@ -10,6 +10,8 @@
 #include "nsIDOMEventListener.h"
 #endif
 
+#include "jspubtd.h"
+
 /* For IDL files that don't want to include root IDL files. */
 #ifndef NS_NO_VTABLE
 #define NS_NO_VTABLE
@@ -18,11 +20,11 @@ class nsIDOMEventTarget; /* forward declaration */
 
 
 /* starting interface:    nsIEventListenerInfo */
-#define NS_IEVENTLISTENERINFO_IID_STR "cbc2ea6e-4043-4435-ba8f-64cbf6638622"
+#define NS_IEVENTLISTENERINFO_IID_STR "c4776eb7-05bc-49ce-a0ca-6213a346d53a"
 
 #define NS_IEVENTLISTENERINFO_IID \
-  {0xcbc2ea6e, 0x4043, 0x4435, \
-    { 0xba, 0x8f, 0x64, 0xcb, 0xf6, 0x63, 0x86, 0x22 }}
+  {0xc4776eb7, 0x05bc, 0x49ce, \
+    { 0xa0, 0xca, 0x62, 0x13, 0xa3, 0x46, 0xd5, 0x3a }}
 
 class NS_NO_VTABLE nsIEventListenerInfo : public nsISupports {
  public: 
@@ -41,6 +43,9 @@ class NS_NO_VTABLE nsIEventListenerInfo : public nsISupports {
   /* readonly attribute boolean inSystemEventGroup; */
   NS_IMETHOD GetInSystemEventGroup(bool *aInSystemEventGroup) = 0;
 
+  /* [implicit_jscontext] readonly attribute jsval listenerObject; */
+  NS_IMETHOD GetListenerObject(JSContext* cx, JS::Value *aListenerObject) = 0;
+
   /* AString toSource (); */
   NS_IMETHOD ToSource(nsAString & _retval) = 0;
 
@@ -57,6 +62,7 @@ class NS_NO_VTABLE nsIEventListenerInfo : public nsISupports {
   NS_IMETHOD GetCapturing(bool *aCapturing); \
   NS_IMETHOD GetAllowsUntrusted(bool *aAllowsUntrusted); \
   NS_IMETHOD GetInSystemEventGroup(bool *aInSystemEventGroup); \
+  NS_IMETHOD GetListenerObject(JSContext* cx, JS::Value *aListenerObject); \
   NS_IMETHOD ToSource(nsAString & _retval); \
   NS_IMETHOD GetDebugObject(nsISupports * *_retval); 
 
@@ -66,6 +72,7 @@ class NS_NO_VTABLE nsIEventListenerInfo : public nsISupports {
   NS_IMETHOD GetCapturing(bool *aCapturing) { return _to GetCapturing(aCapturing); } \
   NS_IMETHOD GetAllowsUntrusted(bool *aAllowsUntrusted) { return _to GetAllowsUntrusted(aAllowsUntrusted); } \
   NS_IMETHOD GetInSystemEventGroup(bool *aInSystemEventGroup) { return _to GetInSystemEventGroup(aInSystemEventGroup); } \
+  NS_IMETHOD GetListenerObject(JSContext* cx, JS::Value *aListenerObject) { return _to GetListenerObject(cx, aListenerObject); } \
   NS_IMETHOD ToSource(nsAString & _retval) { return _to ToSource(_retval); } \
   NS_IMETHOD GetDebugObject(nsISupports * *_retval) { return _to GetDebugObject(_retval); } 
 
@@ -75,6 +82,7 @@ class NS_NO_VTABLE nsIEventListenerInfo : public nsISupports {
   NS_IMETHOD GetCapturing(bool *aCapturing) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetCapturing(aCapturing); } \
   NS_IMETHOD GetAllowsUntrusted(bool *aAllowsUntrusted) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetAllowsUntrusted(aAllowsUntrusted); } \
   NS_IMETHOD GetInSystemEventGroup(bool *aInSystemEventGroup) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetInSystemEventGroup(aInSystemEventGroup); } \
+  NS_IMETHOD GetListenerObject(JSContext* cx, JS::Value *aListenerObject) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetListenerObject(cx, aListenerObject); } \
   NS_IMETHOD ToSource(nsAString & _retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->ToSource(_retval); } \
   NS_IMETHOD GetDebugObject(nsISupports * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetDebugObject(_retval); } 
 
@@ -130,6 +138,12 @@ NS_IMETHODIMP nsEventListenerInfo::GetAllowsUntrusted(bool *aAllowsUntrusted)
 
 /* readonly attribute boolean inSystemEventGroup; */
 NS_IMETHODIMP nsEventListenerInfo::GetInSystemEventGroup(bool *aInSystemEventGroup)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* [implicit_jscontext] readonly attribute jsval listenerObject; */
+NS_IMETHODIMP nsEventListenerInfo::GetListenerObject(JSContext* cx, JS::Value *aListenerObject)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

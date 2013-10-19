@@ -13,12 +13,17 @@
 
 class nsIDOMWindow;
 class nsIDOMEventTarget;
+class nsIDOMBlob;
 class nsIDOMStorage;
 class nsIVariant;
 class mozIDOMApplication;
+class nsIDOMCSSStyleSheet;
+class nsIDOMElement;
 class nsIDOMMozSmsMessage;
+class nsIDOMMozMmsMessage;
 class nsIURI;
-class nsIDOMBlob;
+class nsIDOMDocument;
+class nsISupports;
 
 namespace mozilla {
 namespace idl {
@@ -72,6 +77,20 @@ public:
   int32_t screenX;
   int32_t screenY;
   bool shiftKey;
+};
+
+class ClipboardEventInit : public EventInit
+{
+public:
+  ClipboardEventInit();
+  ~ClipboardEventInit();
+
+  // If aCx or aVal is null, NS_OK is returned and 
+  // dictionary will use the default values. 
+  nsresult Init(JSContext* aCx, const jsval* aVal);
+
+  nsString data;
+  nsString dataType;
 };
 
 class WheelEventInit : public MouseEventInit
@@ -147,20 +166,6 @@ public:
   bool size;
 };
 
-class XMLHttpRequestParameters
-{
-public:
-  XMLHttpRequestParameters();
-  ~XMLHttpRequestParameters();
-
-  // If aCx or aVal is null, NS_OK is returned and 
-  // dictionary will use the default values. 
-  nsresult Init(JSContext* aCx, const jsval* aVal);
-
-  bool mozAnon;
-  bool mozSystem;
-};
-
 class DeviceStorageEnumerationParameters
 {
 public:
@@ -231,7 +236,7 @@ public:
   // dictionary will use the default values. 
   nsresult Init(JSContext* aCx, const jsval* aVal);
 
-  nsAutoString camera;
+  nsString camera;
 };
 
 class CameraPictureOptions
@@ -245,7 +250,7 @@ public:
   nsresult Init(JSContext* aCx, const jsval* aVal);
 
   int64_t dateTime;
-  nsAutoString fileFormat;
+  nsString fileFormat;
   JS::Value pictureSize;
   JS::Value position;
   int32_t rotation;
@@ -261,7 +266,7 @@ public:
   // dictionary will use the default values. 
   nsresult Init(JSContext* aCx, const jsval* aVal);
 
-  nsAutoString profile;
+  nsString profile;
   int32_t rotation;
 };
 
@@ -280,19 +285,6 @@ public:
   int32_t rotation;
 };
 
-class ArchiveReaderOptions
-{
-public:
-  ArchiveReaderOptions();
-  ~ArchiveReaderOptions();
-
-  // If aCx or aVal is null, NS_OK is returned and 
-  // dictionary will use the default values. 
-  nsresult Init(JSContext* aCx, const jsval* aVal);
-
-  nsAutoString encoding;
-};
-
 class SmsThreadListItem
 {
 public:
@@ -303,10 +295,42 @@ public:
   // dictionary will use the default values. 
   nsresult Init(JSContext* aCx, const jsval* aVal);
 
-  nsAutoString body;
-  nsAutoString senderOrReceiver;
+  nsString body;
+  uint64_t id;
+  nsString senderOrReceiver;
   uint64_t timestamp;
   uint64_t unreadCount;
+};
+
+class MmsAttachment
+{
+public:
+  MmsAttachment();
+  ~MmsAttachment();
+
+  // If aCx or aVal is null, NS_OK is returned and 
+  // dictionary will use the default values. 
+  nsresult Init(JSContext* aCx, const jsval* aVal);
+
+  nsCOMPtr<nsIDOMBlob> content;
+  nsString id;
+  nsString location;
+};
+
+class MmsParameters
+{
+public:
+  MmsParameters();
+  ~MmsParameters();
+
+  // If aCx or aVal is null, NS_OK is returned and 
+  // dictionary will use the default values. 
+  nsresult Init(JSContext* aCx, const jsval* aVal);
+
+  JS::Value attachments;
+  JS::Value receivers;
+  nsString smil;
+  nsString subject;
 };
 
 class ProgressEventInit : public EventInit
@@ -334,11 +358,11 @@ public:
   // dictionary will use the default values. 
   nsresult Init(JSContext* aCx, const jsval* aVal);
 
-  nsAutoString key;
-  nsAutoString newValue;
-  nsAutoString oldValue;
+  nsString key;
+  nsString newValue;
+  nsString oldValue;
   nsCOMPtr<nsIDOMStorage> storageArea;
-  nsAutoString url;
+  nsString url;
 };
 
 class DeviceProximityEventInit : public EventInit
@@ -366,7 +390,7 @@ public:
   // dictionary will use the default values. 
   nsresult Init(JSContext* aCx, const jsval* aVal);
 
-  nsAutoString settingName;
+  nsString settingName;
   nsCOMPtr<nsIVariant> settingValue;
 };
 
@@ -445,8 +469,8 @@ public:
   // dictionary will use the default values. 
   nsresult Init(JSContext* aCx, const jsval* aVal);
 
-  nsAutoString newURL;
-  nsAutoString oldURL;
+  nsString newURL;
+  nsString oldURL;
 };
 
 class CloseEventInit : public EventInit
@@ -460,7 +484,7 @@ public:
   nsresult Init(JSContext* aCx, const jsval* aVal);
 
   uint16_t code;
-  nsAutoString reason;
+  nsString reason;
   bool wasClean;
 };
 
@@ -474,8 +498,8 @@ public:
   // dictionary will use the default values. 
   nsresult Init(JSContext* aCx, const jsval* aVal);
 
-  nsAutoString contactID;
-  nsAutoString reason;
+  nsString contactID;
+  nsString reason;
 };
 
 class DeviceOrientationEventInit : public EventInit
@@ -530,7 +554,48 @@ public:
   // dictionary will use the default values. 
   nsresult Init(JSContext* aCx, const jsval* aVal);
 
-  nsAutoString tokenName;
+  nsString tokenName;
+};
+
+class StyleSheetAddedEventInit : public EventInit
+{
+public:
+  StyleSheetAddedEventInit();
+  ~StyleSheetAddedEventInit();
+
+  // If aCx or aVal is null, NS_OK is returned and 
+  // dictionary will use the default values. 
+  nsresult Init(JSContext* aCx, const jsval* aVal);
+
+  bool documentSheet;
+  nsCOMPtr<nsIDOMCSSStyleSheet> stylesheet;
+};
+
+class StyleSheetRemovedEventInit : public EventInit
+{
+public:
+  StyleSheetRemovedEventInit();
+  ~StyleSheetRemovedEventInit();
+
+  // If aCx or aVal is null, NS_OK is returned and 
+  // dictionary will use the default values. 
+  nsresult Init(JSContext* aCx, const jsval* aVal);
+
+  bool documentSheet;
+  nsCOMPtr<nsIDOMCSSStyleSheet> stylesheet;
+};
+
+class ElementReplaceEventInit : public EventInit
+{
+public:
+  ElementReplaceEventInit();
+  ~ElementReplaceEventInit();
+
+  // If aCx or aVal is null, NS_OK is returned and 
+  // dictionary will use the default values. 
+  nsresult Init(JSContext* aCx, const jsval* aVal);
+
+  nsCOMPtr<nsIDOMElement> upgrade;
 };
 
 class MozSmsEventInit : public EventInit
@@ -546,6 +611,34 @@ public:
   nsCOMPtr<nsIDOMMozSmsMessage> message;
 };
 
+class MozMmsEventInit : public EventInit
+{
+public:
+  MozMmsEventInit();
+  ~MozMmsEventInit();
+
+  // If aCx or aVal is null, NS_OK is returned and 
+  // dictionary will use the default values. 
+  nsresult Init(JSContext* aCx, const jsval* aVal);
+
+  nsCOMPtr<nsIDOMMozMmsMessage> message;
+};
+
+class SpeechSynthesisEventInit : public EventInit
+{
+public:
+  SpeechSynthesisEventInit();
+  ~SpeechSynthesisEventInit();
+
+  // If aCx or aVal is null, NS_OK is returned and 
+  // dictionary will use the default values. 
+  nsresult Init(JSContext* aCx, const jsval* aVal);
+
+  uint32_t charIndex;
+  float elapsedTime;
+  nsString name;
+};
+
 class DeviceStorageChangeEventInit : public EventInit
 {
 public:
@@ -556,8 +649,8 @@ public:
   // dictionary will use the default values. 
   nsresult Init(JSContext* aCx, const jsval* aVal);
 
-  nsAutoString path;
-  nsAutoString reason;
+  nsString path;
+  nsString reason;
 };
 
 class PopupBlockedEventInit : public EventInit
@@ -570,8 +663,8 @@ public:
   // dictionary will use the default values. 
   nsresult Init(JSContext* aCx, const jsval* aVal);
 
-  nsAutoString popupWindowFeatures;
-  nsAutoString popupWindowName;
+  nsString popupWindowFeatures;
+  nsString popupWindowName;
   nsCOMPtr<nsIURI> popupWindowURI;
   nsCOMPtr<nsIDOMWindow> requestingWindow;
 };
@@ -587,6 +680,36 @@ public:
   nsresult Init(JSContext* aCx, const jsval* aVal);
 
   nsCOMPtr<nsIDOMBlob> data;
+};
+
+class SpeechRecognitionEventInit : public EventInit
+{
+public:
+  SpeechRecognitionEventInit();
+  ~SpeechRecognitionEventInit();
+
+  // If aCx or aVal is null, NS_OK is returned and 
+  // dictionary will use the default values. 
+  nsresult Init(JSContext* aCx, const jsval* aVal);
+
+  nsCOMPtr<nsIDOMDocument> emma;
+  nsString interpretation;
+  uint32_t resultIndex;
+  nsCOMPtr<nsISupports> results;
+};
+
+class SpeechRecognitionErrorInit : public EventInit
+{
+public:
+  SpeechRecognitionErrorInit();
+  ~SpeechRecognitionErrorInit();
+
+  // If aCx or aVal is null, NS_OK is returned and 
+  // dictionary will use the default values. 
+  nsresult Init(JSContext* aCx, const jsval* aVal);
+
+  uint32_t error;
+  nsString message;
 };
 
 }

@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/html/nsIDOMHTMLAudioElement.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/html/nsIDOMHTMLAudioElement.idl
  */
 
 #ifndef __gen_nsIDOMHTMLAudioElement_h__
@@ -10,34 +10,22 @@
 #include "nsIDOMHTMLMediaElement.h"
 #endif
 
-#include "jspubtd.h"
-
 /* For IDL files that don't want to include root IDL files. */
 #ifndef NS_NO_VTABLE
 #define NS_NO_VTABLE
 #endif
-#include "jsapi.h"
 
 /* starting interface:    nsIDOMHTMLAudioElement */
-#define NS_IDOMHTMLAUDIOELEMENT_IID_STR "ee5df17c-3928-11e2-8808-10bf48d64bd4"
+#define NS_IDOMHTMLAUDIOELEMENT_IID_STR "2d6580a3-bb24-4f13-8c49-09e332a50049"
 
 #define NS_IDOMHTMLAUDIOELEMENT_IID \
-  {0xee5df17c, 0x3928, 0x11e2, \
-    { 0x88, 0x08, 0x10, 0xbf, 0x48, 0xd6, 0x4b, 0xd4 }}
+  {0x2d6580a3, 0xbb24, 0x4f13, \
+    { 0x8c, 0x49, 0x09, 0xe3, 0x32, 0xa5, 0x00, 0x49 }}
 
 class NS_NO_VTABLE nsIDOMHTMLAudioElement : public nsIDOMHTMLMediaElement {
  public: 
 
   NS_DECLARE_STATIC_IID_ACCESSOR(NS_IDOMHTMLAUDIOELEMENT_IID)
-
-  /* void mozSetup (in uint32_t channels, in uint32_t rate); */
-  NS_IMETHOD MozSetup(uint32_t channels, uint32_t rate) = 0;
-
-  /* [implicit_jscontext] unsigned long mozWriteAudio (in jsval data); */
-  NS_IMETHOD MozWriteAudio(const JS::Value & data, JSContext* cx, uint32_t *_retval) = 0;
-
-  /* unsigned long long mozCurrentSampleOffset (); */
-  NS_IMETHOD MozCurrentSampleOffset(uint64_t *_retval) = 0;
 
 };
 
@@ -45,21 +33,15 @@ class NS_NO_VTABLE nsIDOMHTMLAudioElement : public nsIDOMHTMLMediaElement {
 
 /* Use this macro when declaring classes that implement this interface. */
 #define NS_DECL_NSIDOMHTMLAUDIOELEMENT \
-  NS_IMETHOD MozSetup(uint32_t channels, uint32_t rate); \
-  NS_IMETHOD MozWriteAudio(const JS::Value & data, JSContext* cx, uint32_t *_retval); \
-  NS_IMETHOD MozCurrentSampleOffset(uint64_t *_retval); 
+  /* no methods! */
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object. */
 #define NS_FORWARD_NSIDOMHTMLAUDIOELEMENT(_to) \
-  NS_IMETHOD MozSetup(uint32_t channels, uint32_t rate) { return _to MozSetup(channels, rate); } \
-  NS_IMETHOD MozWriteAudio(const JS::Value & data, JSContext* cx, uint32_t *_retval) { return _to MozWriteAudio(data, cx, _retval); } \
-  NS_IMETHOD MozCurrentSampleOffset(uint64_t *_retval) { return _to MozCurrentSampleOffset(_retval); } 
+  /* no methods! */
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object in a safe way. */
 #define NS_FORWARD_SAFE_NSIDOMHTMLAUDIOELEMENT(_to) \
-  NS_IMETHOD MozSetup(uint32_t channels, uint32_t rate) { return !_to ? NS_ERROR_NULL_POINTER : _to->MozSetup(channels, rate); } \
-  NS_IMETHOD MozWriteAudio(const JS::Value & data, JSContext* cx, uint32_t *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->MozWriteAudio(data, cx, _retval); } \
-  NS_IMETHOD MozCurrentSampleOffset(uint64_t *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->MozCurrentSampleOffset(_retval); } 
+  /* no methods! */
 
 #if 0
 /* Use the code below as a template for the implementation class for this interface. */
@@ -91,24 +73,6 @@ nsDOMHTMLAudioElement::nsDOMHTMLAudioElement()
 nsDOMHTMLAudioElement::~nsDOMHTMLAudioElement()
 {
   /* destructor code */
-}
-
-/* void mozSetup (in uint32_t channels, in uint32_t rate); */
-NS_IMETHODIMP nsDOMHTMLAudioElement::MozSetup(uint32_t channels, uint32_t rate)
-{
-    return NS_ERROR_NOT_IMPLEMENTED;
-}
-
-/* [implicit_jscontext] unsigned long mozWriteAudio (in jsval data); */
-NS_IMETHODIMP nsDOMHTMLAudioElement::MozWriteAudio(const JS::Value & data, JSContext* cx, uint32_t *_retval)
-{
-    return NS_ERROR_NOT_IMPLEMENTED;
-}
-
-/* unsigned long long mozCurrentSampleOffset (); */
-NS_IMETHODIMP nsDOMHTMLAudioElement::MozCurrentSampleOffset(uint64_t *_retval)
-{
-    return NS_ERROR_NOT_IMPLEMENTED;
 }
 
 /* End of implementation class template. */

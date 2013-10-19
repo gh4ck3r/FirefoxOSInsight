@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/netwerk/protocol/http/nsIHttpChannelChild.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/netwerk/protocol/http/nsIHttpChannelChild.idl
  */
 
 #ifndef __gen_nsIHttpChannelChild_h__

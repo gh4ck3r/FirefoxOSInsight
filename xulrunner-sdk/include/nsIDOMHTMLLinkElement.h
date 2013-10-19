@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/html/nsIDOMHTMLLinkElement.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/html/nsIDOMHTMLLinkElement.idl
  */
 
 #ifndef __gen_nsIDOMHTMLLinkElement_h__
@@ -16,20 +16,20 @@
 #endif
 
 /* starting interface:    nsIDOMHTMLLinkElement */
-#define NS_IDOMHTMLLINKELEMENT_IID_STR "5b639ece-7b49-4507-9d38-550beb71955b"
+#define NS_IDOMHTMLLINKELEMENT_IID_STR "ad43cb9b-3253-446d-8ba9-50ee50ff017e"
 
 #define NS_IDOMHTMLLINKELEMENT_IID \
-  {0x5b639ece, 0x7b49, 0x4507, \
-    { 0x9d, 0x38, 0x55, 0x0b, 0xeb, 0x71, 0x95, 0x5b }}
+  {0xad43cb9b, 0x3253, 0x446d, \
+    { 0x8b, 0xa9, 0x50, 0xee, 0x50, 0xff, 0x01, 0x7e }}
 
 class NS_NO_VTABLE nsIDOMHTMLLinkElement : public nsIDOMHTMLElement {
  public: 
 
   NS_DECLARE_STATIC_IID_ACCESSOR(NS_IDOMHTMLLINKELEMENT_IID)
 
-  /* attribute boolean disabled; */
-  NS_IMETHOD GetDisabled(bool *aDisabled) = 0;
-  NS_IMETHOD SetDisabled(bool aDisabled) = 0;
+  /* [binaryname(MozDisabled)] attribute boolean disabled; */
+  NS_IMETHOD GetMozDisabled(bool *aDisabled) = 0;
+  NS_IMETHOD SetMozDisabled(bool aDisabled) = 0;
 
   /* attribute DOMString charset; */
   NS_IMETHOD GetCharset(nsAString & aCharset) = 0;
@@ -73,8 +73,8 @@ class NS_NO_VTABLE nsIDOMHTMLLinkElement : public nsIDOMHTMLElement {
 
 /* Use this macro when declaring classes that implement this interface. */
 #define NS_DECL_NSIDOMHTMLLINKELEMENT \
-  NS_IMETHOD GetDisabled(bool *aDisabled); \
-  NS_IMETHOD SetDisabled(bool aDisabled); \
+  NS_IMETHOD GetMozDisabled(bool *aDisabled); \
+  NS_IMETHOD SetMozDisabled(bool aDisabled); \
   NS_IMETHOD GetCharset(nsAString & aCharset); \
   NS_IMETHOD SetCharset(const nsAString & aCharset); \
   NS_IMETHOD GetHref(nsAString & aHref); \
@@ -96,8 +96,8 @@ class NS_NO_VTABLE nsIDOMHTMLLinkElement : public nsIDOMHTMLElement {
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object. */
 #define NS_FORWARD_NSIDOMHTMLLINKELEMENT(_to) \
-  NS_IMETHOD GetDisabled(bool *aDisabled) { return _to GetDisabled(aDisabled); } \
-  NS_IMETHOD SetDisabled(bool aDisabled) { return _to SetDisabled(aDisabled); } \
+  NS_IMETHOD GetMozDisabled(bool *aDisabled) { return _to GetMozDisabled(aDisabled); } \
+  NS_IMETHOD SetMozDisabled(bool aDisabled) { return _to SetMozDisabled(aDisabled); } \
   NS_IMETHOD GetCharset(nsAString & aCharset) { return _to GetCharset(aCharset); } \
   NS_IMETHOD SetCharset(const nsAString & aCharset) { return _to SetCharset(aCharset); } \
   NS_IMETHOD GetHref(nsAString & aHref) { return _to GetHref(aHref); } \
@@ -119,8 +119,8 @@ class NS_NO_VTABLE nsIDOMHTMLLinkElement : public nsIDOMHTMLElement {
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object in a safe way. */
 #define NS_FORWARD_SAFE_NSIDOMHTMLLINKELEMENT(_to) \
-  NS_IMETHOD GetDisabled(bool *aDisabled) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetDisabled(aDisabled); } \
-  NS_IMETHOD SetDisabled(bool aDisabled) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetDisabled(aDisabled); } \
+  NS_IMETHOD GetMozDisabled(bool *aDisabled) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetMozDisabled(aDisabled); } \
+  NS_IMETHOD SetMozDisabled(bool aDisabled) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetMozDisabled(aDisabled); } \
   NS_IMETHOD GetCharset(nsAString & aCharset) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetCharset(aCharset); } \
   NS_IMETHOD SetCharset(const nsAString & aCharset) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetCharset(aCharset); } \
   NS_IMETHOD GetHref(nsAString & aHref) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetHref(aHref); } \
@@ -172,12 +172,12 @@ nsDOMHTMLLinkElement::~nsDOMHTMLLinkElement()
   /* destructor code */
 }
 
-/* attribute boolean disabled; */
-NS_IMETHODIMP nsDOMHTMLLinkElement::GetDisabled(bool *aDisabled)
+/* [binaryname(MozDisabled)] attribute boolean disabled; */
+NS_IMETHODIMP nsDOMHTMLLinkElement::GetMozDisabled(bool *aDisabled)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
-NS_IMETHODIMP nsDOMHTMLLinkElement::SetDisabled(bool aDisabled)
+NS_IMETHODIMP nsDOMHTMLLinkElement::SetMozDisabled(bool aDisabled)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

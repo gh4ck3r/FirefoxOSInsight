@@ -12,6 +12,7 @@
 #ifndef nsContentList_h___
 #define nsContentList_h___
 
+#include "nsContentListDeclarations.h"
 #include "nsISupports.h"
 #include "nsTArray.h"
 #include "nsStringGlue.h"
@@ -25,21 +26,6 @@
 #include "nsWrapperCache.h"
 #include "nsHashKeys.h"
 #include "mozilla/HashFunctions.h"
-
-// Magic namespace id that means "match all namespaces".  This is
-// negative so it won't collide with actual namespace constants.
-#define kNameSpaceID_Wildcard INT32_MIN
-
-// This is a callback function type that can be used to implement an
-// arbitrary matching algorithm.  aContent is the content that may
-// match the list, while aNamespaceID, aAtom, and aData are whatever
-// was passed to the list's constructor.
-typedef bool (*nsContentListMatchFunc)(nsIContent* aContent,
-                                         int32_t aNamespaceID,
-                                         nsIAtom* aAtom,
-                                         void* aData);
-
-typedef void (*nsContentListDestroyFunc)(void* aData);
 
 namespace mozilla {
 namespace dom {
@@ -105,8 +91,8 @@ public:
 
   virtual int32_t IndexOf(nsIContent *aContent, bool aDoFlush);
 
-  virtual JSObject* WrapObject(JSContext *cx, JSObject *scope,
-                               bool *triedToWrap) = 0;
+  virtual JSObject* WrapObject(JSContext *cx, JS::Handle<JSObject*> scope)
+    MOZ_OVERRIDE = 0;
 
 protected:
   nsTArray< nsCOMPtr<nsIContent> > mElements;
@@ -129,8 +115,8 @@ public:
   {
     return mRoot;
   }
-  virtual JSObject* WrapObject(JSContext *cx, JSObject *scope,
-                               bool *triedToWrap);
+  virtual JSObject* WrapObject(JSContext *cx,
+                               JS::Handle<JSObject*> scope) MOZ_OVERRIDE;
 
 private:
   // This has to be a strong reference, the root might go away before the list.
@@ -261,8 +247,8 @@ public:
 
   // nsWrapperCache
   using nsWrapperCache::GetWrapperPreserveColor;
-  virtual JSObject* WrapObject(JSContext *cx, JSObject *scope,
-                               bool *triedToWrap);
+  virtual JSObject* WrapObject(JSContext *cx,
+                               JS::Handle<JSObject*> scope) MOZ_OVERRIDE;
 
   // nsIDOMHTMLCollection
   NS_DECL_NSIDOMHTMLCOLLECTION
@@ -450,7 +436,7 @@ protected:
  */
 class nsCacheableFuncStringContentList;
 
-class NS_STACK_CLASS nsFuncStringCacheKey {
+class MOZ_STACK_CLASS nsFuncStringCacheKey {
 public:
   nsFuncStringCacheKey(nsINode* aRootNode,
                        nsContentListMatchFunc aFunc,
@@ -473,14 +459,6 @@ private:
   const nsContentListMatchFunc mFunc;
   const nsAString& mString;
 };
-
-/**
- * A function that allocates the matching data for this
- * FuncStringContentList.  Returning aString is perfectly fine; in
- * that case the destructor function should be a no-op.
- */
-typedef void* (*nsFuncStringContentListDataAllocator)(nsINode* aRootNode,
-                                                      const nsString* aString);
 
 // aDestroyFunc is allowed to be null
 // aDataAllocator must always return a non-null pointer
@@ -539,8 +517,8 @@ public:
 #endif
   }
 
-  virtual JSObject* WrapObject(JSContext *cx, JSObject *scope,
-                               bool *triedToWrap);
+  virtual JSObject* WrapObject(JSContext *cx,
+                               JS::Handle<JSObject*> scope) MOZ_OVERRIDE;
 
 #ifdef DEBUG
   static const ContentListType sType;
@@ -564,34 +542,12 @@ public:
 #endif
   }
 
-  virtual JSObject* WrapObject(JSContext *cx, JSObject *scope,
-                               bool *triedToWrap);
+  virtual JSObject* WrapObject(JSContext *cx,
+                               JS::Handle<JSObject*> scope) MOZ_OVERRIDE;
 
 #ifdef DEBUG
   static const ContentListType sType;
 #endif
 };
 
-// If aMatchNameSpaceId is kNameSpaceID_Unknown, this will return a
-// content list which matches ASCIIToLower(aTagname) against HTML
-// elements in HTML documents and aTagname against everything else.
-// For any other value of aMatchNameSpaceId, the list will match
-// aTagname against all elements.
-already_AddRefed<nsContentList>
-NS_GetContentList(nsINode* aRootNode,
-                  int32_t aMatchNameSpaceId,
-                  const nsAString& aTagname);
-
-already_AddRefed<nsContentList>
-NS_GetFuncStringNodeList(nsINode* aRootNode,
-                         nsContentListMatchFunc aFunc,
-                         nsContentListDestroyFunc aDestroyFunc,
-                         nsFuncStringContentListDataAllocator aDataAllocator,
-                         const nsAString& aString);
-already_AddRefed<nsContentList>
-NS_GetFuncStringHTMLCollection(nsINode* aRootNode,
-                               nsContentListMatchFunc aFunc,
-                               nsContentListDestroyFunc aDestroyFunc,
-                               nsFuncStringContentListDataAllocator aDataAllocator,
-                               const nsAString& aString);
 #endif // nsContentList_h___

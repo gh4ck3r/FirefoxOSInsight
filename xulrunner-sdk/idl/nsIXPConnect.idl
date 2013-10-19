@@ -44,6 +44,8 @@ class nsWrapperCache;
 [ref] native nsCCTraversalCallbackRef(nsCycleCollectionTraversalCallback);
 [ptr] native nsAXPCNativeCallContextPtr(nsAXPCNativeCallContext);
 [ptr] native nsWrapperCachePtr(nsWrapperCache);
+      native ZoneSpecifier(uintptr_t);
+[ref] native JSCallArgsRef(const JS::CallArgs);
 
 /***************************************************************************/
 
@@ -289,7 +291,7 @@ interface nsIXPCFunctionThisTranslator : nsISupports
     { 0xbd, 0xd6, 0x0, 0x0, 0x64, 0x65, 0x73, 0x74 } }
 %}
 
-[uuid(3e825850-3a5f-11e2-81c1-0800200c9a66)]
+[uuid(4d292c29-9d18-403b-b98e-2056e550a3b4)]
 interface nsIXPConnect : nsISupports
 {
 %{ C++
@@ -322,7 +324,8 @@ interface nsIXPConnect : nsISupports
                   in JSContextPtr aJSContext,
                   in nsISupports  aCOMObj,
                   in nsIPrincipal aPrincipal,
-                  in uint32_t     aFlags);
+                  in uint32_t     aFlags,
+                  in ZoneSpecifier aZoneSpec);
 
     const uint32_t INIT_JS_STANDARD_CLASSES  = 1 << 0;
     // Free bit here!
@@ -437,10 +440,6 @@ interface nsIXPConnect : nsISupports
     getNativeOfWrapper(in JSContextPtr aJSContext,
                        in JSObjectPtr  aJSObj);
 
-    JSObjectPtr
-    getJSObjectOfWrapper(in JSContextPtr aJSContext,
-                         in JSObjectPtr  aJSObj);
-
     void setSecurityManagerForJSContext(in JSContextPtr aJSContext,
                                         in nsIXPCSecurityManager aManager,
                                         in uint16_t flags);
@@ -466,10 +465,9 @@ interface nsIXPConnect : nsISupports
                              in int32_t        aLineNumber,
                              in nsIStackFrame  aCaller);
 
-    /**
-    * @deprecated do-nothing function.
-    */
-    [deprecated] void syncJSContexts();
+
+    [noscript,notxpcom,nostdcall] JSContextPtr getCurrentJSContext();
+    [noscript,notxpcom,nostdcall] JSContextPtr getSafeJSContext();
 
     readonly attribute nsIStackFrame                CurrentJSStack;
     readonly attribute nsAXPCNativeCallContextPtr   CurrentNativeCallContext;
@@ -555,6 +553,7 @@ interface nsIXPConnect : nsISupports
      * other running scripts.
      *
      * @param source The source of the script to evaluate.
+     * @param filename The filename of the script. May be null.
      * @param cx The context to use when setting up the evaluation of
      *           the script. The actual evaluation will happen on a new
      *           temporary context.
@@ -568,8 +567,9 @@ interface nsIXPConnect : nsISupports
      *         is responsible for rooting the jsval before making a call
      *         to this method.
      */
-    [noscript] jsval evalInSandboxObject(in AString source, in JSContextPtr cx,
-                                         in nsIXPConnectJSObjectHolder sandbox,
+    [noscript] jsval evalInSandboxObject(in AString source, in string filename,
+                                         in JSContextPtr cx,
+                                         in JSObjectPtr sandbox,
                                          in boolean returnStringOnly);
 
     /**

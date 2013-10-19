@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/base/nsIDOMScreen.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/base/nsIDOMScreen.idl
  */
 
 #ifndef __gen_nsIDOMScreen_h__
@@ -18,11 +18,11 @@
 #endif
 
 /* starting interface:    nsIDOMScreen */
-#define NS_IDOMSCREEN_IID_STR "01e8587b-35a9-4a59-8349-c7ee93846fb2"
+#define NS_IDOMSCREEN_IID_STR "310a1d9a-4271-4d85-9e35-9dae6683b2c1"
 
 #define NS_IDOMSCREEN_IID \
-  {0x01e8587b, 0x35a9, 0x4a59, \
-    { 0x83, 0x49, 0xc7, 0xee, 0x93, 0x84, 0x6f, 0xb2 }}
+  {0x310a1d9a, 0x4271, 0x4d85, \
+    { 0x9e, 0x35, 0x9d, 0xae, 0x66, 0x83, 0xb2, 0xc1 }}
 
 class NS_NO_VTABLE nsIDOMScreen : public nsIDOMEventTarget {
  public: 

@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/netwerk/base/public/nsIServerSocket.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/netwerk/base/public/nsIServerSocket.idl
  */
 
 #ifndef __gen_nsIServerSocket_h__
@@ -18,21 +18,31 @@ class nsIServerSocketListener; /* forward declaration */
 
 class nsISocketTransport; /* forward declaration */
 
+typedef uint32_t  nsServerSocketFlag;
+
 
 /* starting interface:    nsIServerSocket */
-#define NS_ISERVERSOCKET_IID_STR "a5b64be0-d563-46bb-ae95-132e46fcd42f"
+#define NS_ISERVERSOCKET_IID_STR "0df6a0e2-a6b1-4d4c-b30d-f2cb093444e3"
 
 #define NS_ISERVERSOCKET_IID \
-  {0xa5b64be0, 0xd563, 0x46bb, \
-    { 0xae, 0x95, 0x13, 0x2e, 0x46, 0xfc, 0xd4, 0x2f }}
+  {0x0df6a0e2, 0xa6b1, 0x4d4c, \
+    { 0xb3, 0x0d, 0xf2, 0xcb, 0x09, 0x34, 0x44, 0xe3 }}
 
 class NS_NO_VTABLE nsIServerSocket : public nsISupports {
  public: 
 
   NS_DECLARE_STATIC_IID_ACCESSOR(NS_ISERVERSOCKET_IID)
 
+  enum {
+    LoopbackOnly = 1U,
+    KeepWhenOffline = 2U
+  };
+
   /* void init (in long aPort, in boolean aLoopbackOnly, in long aBackLog); */
   NS_IMETHOD Init(int32_t aPort, bool aLoopbackOnly, int32_t aBackLog) = 0;
+
+  /* void initSpecialConnection (in long aPort, in nsServerSocketFlag aFlags, in long aBackLog); */
+  NS_IMETHOD InitSpecialConnection(int32_t aPort, nsServerSocketFlag aFlags, int32_t aBackLog) = 0;
 
   /* [noscript] void initWithAddress ([const] in PRNetAddrPtr aAddr, in long aBackLog); */
   NS_IMETHOD InitWithAddress(const union PRNetAddr *aAddr, int32_t aBackLog) = 0;
@@ -56,6 +66,7 @@ class NS_NO_VTABLE nsIServerSocket : public nsISupports {
 /* Use this macro when declaring classes that implement this interface. */
 #define NS_DECL_NSISERVERSOCKET \
   NS_IMETHOD Init(int32_t aPort, bool aLoopbackOnly, int32_t aBackLog); \
+  NS_IMETHOD InitSpecialConnection(int32_t aPort, nsServerSocketFlag aFlags, int32_t aBackLog); \
   NS_IMETHOD InitWithAddress(const union PRNetAddr *aAddr, int32_t aBackLog); \
   NS_IMETHOD Close(void); \
   NS_IMETHOD AsyncListen(nsIServerSocketListener *aListener); \
@@ -65,6 +76,7 @@ class NS_NO_VTABLE nsIServerSocket : public nsISupports {
 /* Use this macro to declare functions that forward the behavior of this interface to another object. */
 #define NS_FORWARD_NSISERVERSOCKET(_to) \
   NS_IMETHOD Init(int32_t aPort, bool aLoopbackOnly, int32_t aBackLog) { return _to Init(aPort, aLoopbackOnly, aBackLog); } \
+  NS_IMETHOD InitSpecialConnection(int32_t aPort, nsServerSocketFlag aFlags, int32_t aBackLog) { return _to InitSpecialConnection(aPort, aFlags, aBackLog); } \
   NS_IMETHOD InitWithAddress(const union PRNetAddr *aAddr, int32_t aBackLog) { return _to InitWithAddress(aAddr, aBackLog); } \
   NS_IMETHOD Close(void) { return _to Close(); } \
   NS_IMETHOD AsyncListen(nsIServerSocketListener *aListener) { return _to AsyncListen(aListener); } \
@@ -74,6 +86,7 @@ class NS_NO_VTABLE nsIServerSocket : public nsISupports {
 /* Use this macro to declare functions that forward the behavior of this interface to another object in a safe way. */
 #define NS_FORWARD_SAFE_NSISERVERSOCKET(_to) \
   NS_IMETHOD Init(int32_t aPort, bool aLoopbackOnly, int32_t aBackLog) { return !_to ? NS_ERROR_NULL_POINTER : _to->Init(aPort, aLoopbackOnly, aBackLog); } \
+  NS_IMETHOD InitSpecialConnection(int32_t aPort, nsServerSocketFlag aFlags, int32_t aBackLog) { return !_to ? NS_ERROR_NULL_POINTER : _to->InitSpecialConnection(aPort, aFlags, aBackLog); } \
   NS_IMETHOD InitWithAddress(const union PRNetAddr *aAddr, int32_t aBackLog) { return !_to ? NS_ERROR_NULL_POINTER : _to->InitWithAddress(aAddr, aBackLog); } \
   NS_IMETHOD Close(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->Close(); } \
   NS_IMETHOD AsyncListen(nsIServerSocketListener *aListener) { return !_to ? NS_ERROR_NULL_POINTER : _to->AsyncListen(aListener); } \
@@ -114,6 +127,12 @@ nsServerSocket::~nsServerSocket()
 
 /* void init (in long aPort, in boolean aLoopbackOnly, in long aBackLog); */
 NS_IMETHODIMP nsServerSocket::Init(int32_t aPort, bool aLoopbackOnly, int32_t aBackLog)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* void initSpecialConnection (in long aPort, in nsServerSocketFlag aFlags, in long aBackLog); */
+NS_IMETHODIMP nsServerSocket::InitSpecialConnection(int32_t aPort, nsServerSocketFlag aFlags, int32_t aBackLog)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

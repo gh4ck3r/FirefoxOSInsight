@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/html/nsIDOMHTMLDataListElement.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/html/nsIDOMHTMLDataListElement.idl
  */
 
 #ifndef __gen_nsIDOMHTMLDataListElement_h__
@@ -18,11 +18,11 @@ class nsIDOMHTMLCollection; /* forward declaration */
 
 
 /* starting interface:    nsIDOMHTMLDataListElement */
-#define NS_IDOMHTMLDATALISTELEMENT_IID_STR "eeb039a1-fd4e-41a3-805a-b367ba235dc2"
+#define NS_IDOMHTMLDATALISTELEMENT_IID_STR "528e6a6b-f957-42e1-8d1b-eeeb2fd0b128"
 
 #define NS_IDOMHTMLDATALISTELEMENT_IID \
-  {0xeeb039a1, 0xfd4e, 0x41a3, \
-    { 0x80, 0x5a, 0xb3, 0x67, 0xba, 0x23, 0x5d, 0xc2 }}
+  {0x528e6a6b, 0xf957, 0x42e1, \
+    { 0x8d, 0x1b, 0xee, 0xeb, 0x2f, 0xd0, 0xb1, 0x28 }}
 
 class NS_NO_VTABLE nsIDOMHTMLDataListElement : public nsIDOMHTMLElement {
  public: 

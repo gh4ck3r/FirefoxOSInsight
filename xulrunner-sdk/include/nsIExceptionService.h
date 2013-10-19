@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/xpcom/base/nsIExceptionService.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/xpcom/base/nsIExceptionService.idl
  */
 
 #ifndef __gen_nsIExceptionService_h__
@@ -285,7 +285,6 @@ NS_IMETHODIMP nsExceptionService::UnregisterExceptionProvider(nsIExceptionProvid
 /* End of implementation class template. */
 #endif
 
-#define NS_EXCEPTIONSERVICE_CLASSNAME "Exception Service"
 // {35A88F54-F267-4414-92A7-191F6454AB52}
 #define NS_EXCEPTIONSERVICE_CID \
 { 0x35a88f54, 0xf267, 0x4414, { 0x92, 0xa7, 0x19, 0x1f, 0x64, 0x54, 0xab, 0x52 } }

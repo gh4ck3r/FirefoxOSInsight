@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/layout/xul/tree/nsITreeView.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/layout/xul/tree/nsITreeView.idl
  */
 
 #ifndef __gen_nsITreeView_h__
@@ -8,10 +8,6 @@
 
 #ifndef __gen_nsITreeBoxObject_h__
 #include "nsITreeBoxObject.h"
-#endif
-
-#ifndef __gen_nsISupportsArray_h__
-#include "nsISupportsArray.h"
 #endif
 
 #ifndef __gen_domstubs_h__
@@ -30,11 +26,11 @@ class nsIDOMDataTransfer; /* forward declaration */
 
 
 /* starting interface:    nsITreeView */
-#define NS_ITREEVIEW_IID_STR "c06dc4d3-63a2-4422-a0a3-5f2eddeca8c1"
+#define NS_ITREEVIEW_IID_STR "091116f0-0bdc-4b32-b9c8-c8d5a37cb088"
 
 #define NS_ITREEVIEW_IID \
-  {0xc06dc4d3, 0x63a2, 0x4422, \
-    { 0xa0, 0xa3, 0x5f, 0x2e, 0xdd, 0xec, 0xa8, 0xc1 }}
+  {0x091116f0, 0x0bdc, 0x4b32, \
+    { 0xb9, 0xc8, 0xc8, 0xd5, 0xa3, 0x7c, 0xb0, 0x88 }}
 
 class NS_NO_VTABLE nsITreeView : public nsISupports {
  public: 
@@ -48,14 +44,14 @@ class NS_NO_VTABLE nsITreeView : public nsISupports {
   NS_IMETHOD GetSelection(nsITreeSelection * *aSelection) = 0;
   NS_IMETHOD SetSelection(nsITreeSelection *aSelection) = 0;
 
-  /* void getRowProperties (in long index, in nsISupportsArray properties); */
-  NS_IMETHOD GetRowProperties(int32_t index, nsISupportsArray *properties) = 0;
+  /* AString getRowProperties (in long index); */
+  NS_IMETHOD GetRowProperties(int32_t index, nsAString & _retval) = 0;
 
-  /* void getCellProperties (in long row, in nsITreeColumn col, in nsISupportsArray properties); */
-  NS_IMETHOD GetCellProperties(int32_t row, nsITreeColumn *col, nsISupportsArray *properties) = 0;
+  /* AString getCellProperties (in long row, in nsITreeColumn col); */
+  NS_IMETHOD GetCellProperties(int32_t row, nsITreeColumn *col, nsAString & _retval) = 0;
 
-  /* void getColumnProperties (in nsITreeColumn col, in nsISupportsArray properties); */
-  NS_IMETHOD GetColumnProperties(nsITreeColumn *col, nsISupportsArray *properties) = 0;
+  /* AString getColumnProperties (in nsITreeColumn col); */
+  NS_IMETHOD GetColumnProperties(nsITreeColumn *col, nsAString & _retval) = 0;
 
   /* boolean isContainer (in long index); */
   NS_IMETHOD IsContainer(int32_t index, bool *_retval) = 0;
@@ -156,9 +152,9 @@ class NS_NO_VTABLE nsITreeView : public nsISupports {
   NS_IMETHOD GetRowCount(int32_t *aRowCount); \
   NS_IMETHOD GetSelection(nsITreeSelection * *aSelection); \
   NS_IMETHOD SetSelection(nsITreeSelection *aSelection); \
-  NS_IMETHOD GetRowProperties(int32_t index, nsISupportsArray *properties); \
-  NS_IMETHOD GetCellProperties(int32_t row, nsITreeColumn *col, nsISupportsArray *properties); \
-  NS_IMETHOD GetColumnProperties(nsITreeColumn *col, nsISupportsArray *properties); \
+  NS_IMETHOD GetRowProperties(int32_t index, nsAString & _retval); \
+  NS_IMETHOD GetCellProperties(int32_t row, nsITreeColumn *col, nsAString & _retval); \
+  NS_IMETHOD GetColumnProperties(nsITreeColumn *col, nsAString & _retval); \
   NS_IMETHOD IsContainer(int32_t index, bool *_retval); \
   NS_IMETHOD IsContainerOpen(int32_t index, bool *_retval); \
   NS_IMETHOD IsContainerEmpty(int32_t index, bool *_retval); \
@@ -191,9 +187,9 @@ class NS_NO_VTABLE nsITreeView : public nsISupports {
   NS_IMETHOD GetRowCount(int32_t *aRowCount) { return _to GetRowCount(aRowCount); } \
   NS_IMETHOD GetSelection(nsITreeSelection * *aSelection) { return _to GetSelection(aSelection); } \
   NS_IMETHOD SetSelection(nsITreeSelection *aSelection) { return _to SetSelection(aSelection); } \
-  NS_IMETHOD GetRowProperties(int32_t index, nsISupportsArray *properties) { return _to GetRowProperties(index, properties); } \
-  NS_IMETHOD GetCellProperties(int32_t row, nsITreeColumn *col, nsISupportsArray *properties) { return _to GetCellProperties(row, col, properties); } \
-  NS_IMETHOD GetColumnProperties(nsITreeColumn *col, nsISupportsArray *properties) { return _to GetColumnProperties(col, properties); } \
+  NS_IMETHOD GetRowProperties(int32_t index, nsAString & _retval) { return _to GetRowProperties(index, _retval); } \
+  NS_IMETHOD GetCellProperties(int32_t row, nsITreeColumn *col, nsAString & _retval) { return _to GetCellProperties(row, col, _retval); } \
+  NS_IMETHOD GetColumnProperties(nsITreeColumn *col, nsAString & _retval) { return _to GetColumnProperties(col, _retval); } \
   NS_IMETHOD IsContainer(int32_t index, bool *_retval) { return _to IsContainer(index, _retval); } \
   NS_IMETHOD IsContainerOpen(int32_t index, bool *_retval) { return _to IsContainerOpen(index, _retval); } \
   NS_IMETHOD IsContainerEmpty(int32_t index, bool *_retval) { return _to IsContainerEmpty(index, _retval); } \
@@ -226,9 +222,9 @@ class NS_NO_VTABLE nsITreeView : public nsISupports {
   NS_IMETHOD GetRowCount(int32_t *aRowCount) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetRowCount(aRowCount); } \
   NS_IMETHOD GetSelection(nsITreeSelection * *aSelection) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetSelection(aSelection); } \
   NS_IMETHOD SetSelection(nsITreeSelection *aSelection) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetSelection(aSelection); } \
-  NS_IMETHOD GetRowProperties(int32_t index, nsISupportsArray *properties) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetRowProperties(index, properties); } \
-  NS_IMETHOD GetCellProperties(int32_t row, nsITreeColumn *col, nsISupportsArray *properties) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetCellProperties(row, col, properties); } \
-  NS_IMETHOD GetColumnProperties(nsITreeColumn *col, nsISupportsArray *properties) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetColumnProperties(col, properties); } \
+  NS_IMETHOD GetRowProperties(int32_t index, nsAString & _retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetRowProperties(index, _retval); } \
+  NS_IMETHOD GetCellProperties(int32_t row, nsITreeColumn *col, nsAString & _retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetCellProperties(row, col, _retval); } \
+  NS_IMETHOD GetColumnProperties(nsITreeColumn *col, nsAString & _retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetColumnProperties(col, _retval); } \
   NS_IMETHOD IsContainer(int32_t index, bool *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->IsContainer(index, _retval); } \
   NS_IMETHOD IsContainerOpen(int32_t index, bool *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->IsContainerOpen(index, _retval); } \
   NS_IMETHOD IsContainerEmpty(int32_t index, bool *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->IsContainerEmpty(index, _retval); } \
@@ -304,20 +300,20 @@ NS_IMETHODIMP nsTreeView::SetSelection(nsITreeSelection *aSelection)
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* void getRowProperties (in long index, in nsISupportsArray properties); */
-NS_IMETHODIMP nsTreeView::GetRowProperties(int32_t index, nsISupportsArray *properties)
+/* AString getRowProperties (in long index); */
+NS_IMETHODIMP nsTreeView::GetRowProperties(int32_t index, nsAString & _retval)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* void getCellProperties (in long row, in nsITreeColumn col, in nsISupportsArray properties); */
-NS_IMETHODIMP nsTreeView::GetCellProperties(int32_t row, nsITreeColumn *col, nsISupportsArray *properties)
+/* AString getCellProperties (in long row, in nsITreeColumn col); */
+NS_IMETHODIMP nsTreeView::GetCellProperties(int32_t row, nsITreeColumn *col, nsAString & _retval)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* void getColumnProperties (in nsITreeColumn col, in nsISupportsArray properties); */
-NS_IMETHODIMP nsTreeView::GetColumnProperties(nsITreeColumn *col, nsISupportsArray *properties)
+/* AString getColumnProperties (in nsITreeColumn col); */
+NS_IMETHODIMP nsTreeView::GetColumnProperties(nsITreeColumn *col, nsAString & _retval)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/media/bridge/IPeerConnection.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/media/bridge/IPeerConnection.idl
  */
 
 #ifndef __gen_IPeerConnection_h__
@@ -104,11 +104,11 @@ NS_IMETHODIMP _MYCLASS_::HasActivePeerConnection(uint32_t innerWindowID, bool *_
 #define IPEERCONNECTION_MANAGER_CONTRACTID "@mozilla.org/dom/peerconnectionmanager;1"
 
 /* starting interface:    IPeerConnectionObserver */
-#define IPEERCONNECTIONOBSERVER_IID_STR "e61821ba-7772-4973-b583-1715e4bbaeed"
+#define IPEERCONNECTIONOBSERVER_IID_STR "85ba28da-53d0-401d-afed-9cad69f727ff"
 
 #define IPEERCONNECTIONOBSERVER_IID \
-  {0xe61821ba, 0x7772, 0x4973, \
-    { 0xb5, 0x83, 0x17, 0x15, 0xe4, 0xbb, 0xae, 0xed }}
+  {0x85ba28da, 0x53d0, 0x401d, \
+    { 0xaf, 0xed, 0x9c, 0xad, 0x69, 0xf7, 0x27, 0xff }}
 
 class NS_NO_VTABLE IPeerConnectionObserver : public nsISupports {
  public: 
@@ -125,32 +125,32 @@ class NS_NO_VTABLE IPeerConnectionObserver : public nsISupports {
   /* void onCreateOfferSuccess (in string offer); */
   NS_IMETHOD OnCreateOfferSuccess(const char * offer) = 0;
 
-  /* void onCreateOfferError (in unsigned long code); */
-  NS_IMETHOD OnCreateOfferError(uint32_t code) = 0;
+  /* void onCreateOfferError (in unsigned long name, in string message); */
+  NS_IMETHOD OnCreateOfferError(uint32_t name, const char * message) = 0;
 
   /* void onCreateAnswerSuccess (in string answer); */
   NS_IMETHOD OnCreateAnswerSuccess(const char * answer) = 0;
 
-  /* void onCreateAnswerError (in unsigned long code); */
-  NS_IMETHOD OnCreateAnswerError(uint32_t code) = 0;
+  /* void onCreateAnswerError (in unsigned long name, in string message); */
+  NS_IMETHOD OnCreateAnswerError(uint32_t name, const char * message) = 0;
 
-  /* void onSetLocalDescriptionSuccess (in unsigned long code); */
-  NS_IMETHOD OnSetLocalDescriptionSuccess(uint32_t code) = 0;
+  /* void onSetLocalDescriptionSuccess (); */
+  NS_IMETHOD OnSetLocalDescriptionSuccess(void) = 0;
 
-  /* void onSetRemoteDescriptionSuccess (in unsigned long code); */
-  NS_IMETHOD OnSetRemoteDescriptionSuccess(uint32_t code) = 0;
+  /* void onSetRemoteDescriptionSuccess (); */
+  NS_IMETHOD OnSetRemoteDescriptionSuccess(void) = 0;
 
-  /* void onSetLocalDescriptionError (in unsigned long code); */
-  NS_IMETHOD OnSetLocalDescriptionError(uint32_t code) = 0;
+  /* void onSetLocalDescriptionError (in unsigned long name, in string message); */
+  NS_IMETHOD OnSetLocalDescriptionError(uint32_t name, const char * message) = 0;
 
-  /* void onSetRemoteDescriptionError (in unsigned long code); */
-  NS_IMETHOD OnSetRemoteDescriptionError(uint32_t code) = 0;
+  /* void onSetRemoteDescriptionError (in unsigned long name, in string message); */
+  NS_IMETHOD OnSetRemoteDescriptionError(uint32_t name, const char * message) = 0;
 
-  /* void onAddIceCandidateSuccess (in unsigned long code); */
-  NS_IMETHOD OnAddIceCandidateSuccess(uint32_t code) = 0;
+  /* void onAddIceCandidateSuccess (); */
+  NS_IMETHOD OnAddIceCandidateSuccess(void) = 0;
 
-  /* void onAddIceCandidateError (in unsigned long code); */
-  NS_IMETHOD OnAddIceCandidateError(uint32_t code) = 0;
+  /* void onAddIceCandidateError (in unsigned long name, in string message); */
+  NS_IMETHOD OnAddIceCandidateError(uint32_t name, const char * message) = 0;
 
   /* void notifyDataChannel (in nsIDOMDataChannel channel); */
   NS_IMETHOD NotifyDataChannel(nsIDOMDataChannel *channel) = 0;
@@ -186,15 +186,15 @@ class NS_NO_VTABLE IPeerConnectionObserver : public nsISupports {
 /* Use this macro when declaring classes that implement this interface. */
 #define NS_DECL_IPEERCONNECTIONOBSERVER \
   NS_IMETHOD OnCreateOfferSuccess(const char * offer); \
-  NS_IMETHOD OnCreateOfferError(uint32_t code); \
+  NS_IMETHOD OnCreateOfferError(uint32_t name, const char * message); \
   NS_IMETHOD OnCreateAnswerSuccess(const char * answer); \
-  NS_IMETHOD OnCreateAnswerError(uint32_t code); \
-  NS_IMETHOD OnSetLocalDescriptionSuccess(uint32_t code); \
-  NS_IMETHOD OnSetRemoteDescriptionSuccess(uint32_t code); \
-  NS_IMETHOD OnSetLocalDescriptionError(uint32_t code); \
-  NS_IMETHOD OnSetRemoteDescriptionError(uint32_t code); \
-  NS_IMETHOD OnAddIceCandidateSuccess(uint32_t code); \
-  NS_IMETHOD OnAddIceCandidateError(uint32_t code); \
+  NS_IMETHOD OnCreateAnswerError(uint32_t name, const char * message); \
+  NS_IMETHOD OnSetLocalDescriptionSuccess(void); \
+  NS_IMETHOD OnSetRemoteDescriptionSuccess(void); \
+  NS_IMETHOD OnSetLocalDescriptionError(uint32_t name, const char * message); \
+  NS_IMETHOD OnSetRemoteDescriptionError(uint32_t name, const char * message); \
+  NS_IMETHOD OnAddIceCandidateSuccess(void); \
+  NS_IMETHOD OnAddIceCandidateError(uint32_t name, const char * message); \
   NS_IMETHOD NotifyDataChannel(nsIDOMDataChannel *channel); \
   NS_IMETHOD NotifyConnection(void); \
   NS_IMETHOD NotifyClosedConnection(void); \
@@ -208,15 +208,15 @@ class NS_NO_VTABLE IPeerConnectionObserver : public nsISupports {
 /* Use this macro to declare functions that forward the behavior of this interface to another object. */
 #define NS_FORWARD_IPEERCONNECTIONOBSERVER(_to) \
   NS_IMETHOD OnCreateOfferSuccess(const char * offer) { return _to OnCreateOfferSuccess(offer); } \
-  NS_IMETHOD OnCreateOfferError(uint32_t code) { return _to OnCreateOfferError(code); } \
+  NS_IMETHOD OnCreateOfferError(uint32_t name, const char * message) { return _to OnCreateOfferError(name, message); } \
   NS_IMETHOD OnCreateAnswerSuccess(const char * answer) { return _to OnCreateAnswerSuccess(answer); } \
-  NS_IMETHOD OnCreateAnswerError(uint32_t code) { return _to OnCreateAnswerError(code); } \
-  NS_IMETHOD OnSetLocalDescriptionSuccess(uint32_t code) { return _to OnSetLocalDescriptionSuccess(code); } \
-  NS_IMETHOD OnSetRemoteDescriptionSuccess(uint32_t code) { return _to OnSetRemoteDescriptionSuccess(code); } \
-  NS_IMETHOD OnSetLocalDescriptionError(uint32_t code) { return _to OnSetLocalDescriptionError(code); } \
-  NS_IMETHOD OnSetRemoteDescriptionError(uint32_t code) { return _to OnSetRemoteDescriptionError(code); } \
-  NS_IMETHOD OnAddIceCandidateSuccess(uint32_t code) { return _to OnAddIceCandidateSuccess(code); } \
-  NS_IMETHOD OnAddIceCandidateError(uint32_t code) { return _to OnAddIceCandidateError(code); } \
+  NS_IMETHOD OnCreateAnswerError(uint32_t name, const char * message) { return _to OnCreateAnswerError(name, message); } \
+  NS_IMETHOD OnSetLocalDescriptionSuccess(void) { return _to OnSetLocalDescriptionSuccess(); } \
+  NS_IMETHOD OnSetRemoteDescriptionSuccess(void) { return _to OnSetRemoteDescriptionSuccess(); } \
+  NS_IMETHOD OnSetLocalDescriptionError(uint32_t name, const char * message) { return _to OnSetLocalDescriptionError(name, message); } \
+  NS_IMETHOD OnSetRemoteDescriptionError(uint32_t name, const char * message) { return _to OnSetRemoteDescriptionError(name, message); } \
+  NS_IMETHOD OnAddIceCandidateSuccess(void) { return _to OnAddIceCandidateSuccess(); } \
+  NS_IMETHOD OnAddIceCandidateError(uint32_t name, const char * message) { return _to OnAddIceCandidateError(name, message); } \
   NS_IMETHOD NotifyDataChannel(nsIDOMDataChannel *channel) { return _to NotifyDataChannel(channel); } \
   NS_IMETHOD NotifyConnection(void) { return _to NotifyConnection(); } \
   NS_IMETHOD NotifyClosedConnection(void) { return _to NotifyClosedConnection(); } \
@@ -230,15 +230,15 @@ class NS_NO_VTABLE IPeerConnectionObserver : public nsISupports {
 /* Use this macro to declare functions that forward the behavior of this interface to another object in a safe way. */
 #define NS_FORWARD_SAFE_IPEERCONNECTIONOBSERVER(_to) \
   NS_IMETHOD OnCreateOfferSuccess(const char * offer) { return !_to ? NS_ERROR_NULL_POINTER : _to->OnCreateOfferSuccess(offer); } \
-  NS_IMETHOD OnCreateOfferError(uint32_t code) { return !_to ? NS_ERROR_NULL_POINTER : _to->OnCreateOfferError(code); } \
+  NS_IMETHOD OnCreateOfferError(uint32_t name, const char * message) { return !_to ? NS_ERROR_NULL_POINTER : _to->OnCreateOfferError(name, message); } \
   NS_IMETHOD OnCreateAnswerSuccess(const char * answer) { return !_to ? NS_ERROR_NULL_POINTER : _to->OnCreateAnswerSuccess(answer); } \
-  NS_IMETHOD OnCreateAnswerError(uint32_t code) { return !_to ? NS_ERROR_NULL_POINTER : _to->OnCreateAnswerError(code); } \
-  NS_IMETHOD OnSetLocalDescriptionSuccess(uint32_t code) { return !_to ? NS_ERROR_NULL_POINTER : _to->OnSetLocalDescriptionSuccess(code); } \
-  NS_IMETHOD OnSetRemoteDescriptionSuccess(uint32_t code) { return !_to ? NS_ERROR_NULL_POINTER : _to->OnSetRemoteDescriptionSuccess(code); } \
-  NS_IMETHOD OnSetLocalDescriptionError(uint32_t code) { return !_to ? NS_ERROR_NULL_POINTER : _to->OnSetLocalDescriptionError(code); } \
-  NS_IMETHOD OnSetRemoteDescriptionError(uint32_t code) { return !_to ? NS_ERROR_NULL_POINTER : _to->OnSetRemoteDescriptionError(code); } \
-  NS_IMETHOD OnAddIceCandidateSuccess(uint32_t code) { return !_to ? NS_ERROR_NULL_POINTER : _to->OnAddIceCandidateSuccess(code); } \
-  NS_IMETHOD OnAddIceCandidateError(uint32_t code) { return !_to ? NS_ERROR_NULL_POINTER : _to->OnAddIceCandidateError(code); } \
+  NS_IMETHOD OnCreateAnswerError(uint32_t name, const char * message) { return !_to ? NS_ERROR_NULL_POINTER : _to->OnCreateAnswerError(name, message); } \
+  NS_IMETHOD OnSetLocalDescriptionSuccess(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->OnSetLocalDescriptionSuccess(); } \
+  NS_IMETHOD OnSetRemoteDescriptionSuccess(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->OnSetRemoteDescriptionSuccess(); } \
+  NS_IMETHOD OnSetLocalDescriptionError(uint32_t name, const char * message) { return !_to ? NS_ERROR_NULL_POINTER : _to->OnSetLocalDescriptionError(name, message); } \
+  NS_IMETHOD OnSetRemoteDescriptionError(uint32_t name, const char * message) { return !_to ? NS_ERROR_NULL_POINTER : _to->OnSetRemoteDescriptionError(name, message); } \
+  NS_IMETHOD OnAddIceCandidateSuccess(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->OnAddIceCandidateSuccess(); } \
+  NS_IMETHOD OnAddIceCandidateError(uint32_t name, const char * message) { return !_to ? NS_ERROR_NULL_POINTER : _to->OnAddIceCandidateError(name, message); } \
   NS_IMETHOD NotifyDataChannel(nsIDOMDataChannel *channel) { return !_to ? NS_ERROR_NULL_POINTER : _to->NotifyDataChannel(channel); } \
   NS_IMETHOD NotifyConnection(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->NotifyConnection(); } \
   NS_IMETHOD NotifyClosedConnection(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->NotifyClosedConnection(); } \
@@ -287,8 +287,8 @@ NS_IMETHODIMP _MYCLASS_::OnCreateOfferSuccess(const char * offer)
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* void onCreateOfferError (in unsigned long code); */
-NS_IMETHODIMP _MYCLASS_::OnCreateOfferError(uint32_t code)
+/* void onCreateOfferError (in unsigned long name, in string message); */
+NS_IMETHODIMP _MYCLASS_::OnCreateOfferError(uint32_t name, const char * message)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
@@ -299,44 +299,44 @@ NS_IMETHODIMP _MYCLASS_::OnCreateAnswerSuccess(const char * answer)
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* void onCreateAnswerError (in unsigned long code); */
-NS_IMETHODIMP _MYCLASS_::OnCreateAnswerError(uint32_t code)
+/* void onCreateAnswerError (in unsigned long name, in string message); */
+NS_IMETHODIMP _MYCLASS_::OnCreateAnswerError(uint32_t name, const char * message)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* void onSetLocalDescriptionSuccess (in unsigned long code); */
-NS_IMETHODIMP _MYCLASS_::OnSetLocalDescriptionSuccess(uint32_t code)
+/* void onSetLocalDescriptionSuccess (); */
+NS_IMETHODIMP _MYCLASS_::OnSetLocalDescriptionSuccess()
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* void onSetRemoteDescriptionSuccess (in unsigned long code); */
-NS_IMETHODIMP _MYCLASS_::OnSetRemoteDescriptionSuccess(uint32_t code)
+/* void onSetRemoteDescriptionSuccess (); */
+NS_IMETHODIMP _MYCLASS_::OnSetRemoteDescriptionSuccess()
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* void onSetLocalDescriptionError (in unsigned long code); */
-NS_IMETHODIMP _MYCLASS_::OnSetLocalDescriptionError(uint32_t code)
+/* void onSetLocalDescriptionError (in unsigned long name, in string message); */
+NS_IMETHODIMP _MYCLASS_::OnSetLocalDescriptionError(uint32_t name, const char * message)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* void onSetRemoteDescriptionError (in unsigned long code); */
-NS_IMETHODIMP _MYCLASS_::OnSetRemoteDescriptionError(uint32_t code)
+/* void onSetRemoteDescriptionError (in unsigned long name, in string message); */
+NS_IMETHODIMP _MYCLASS_::OnSetRemoteDescriptionError(uint32_t name, const char * message)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* void onAddIceCandidateSuccess (in unsigned long code); */
-NS_IMETHODIMP _MYCLASS_::OnAddIceCandidateSuccess(uint32_t code)
+/* void onAddIceCandidateSuccess (); */
+NS_IMETHODIMP _MYCLASS_::OnAddIceCandidateSuccess()
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* void onAddIceCandidateError (in unsigned long code); */
-NS_IMETHODIMP _MYCLASS_::OnAddIceCandidateError(uint32_t code)
+/* void onAddIceCandidateError (in unsigned long name, in string message); */
+NS_IMETHODIMP _MYCLASS_::OnAddIceCandidateError(uint32_t name, const char * message)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
@@ -400,11 +400,11 @@ NS_IMETHODIMP _MYCLASS_::FoundIceCandidate(const char * candidate)
 
 
 /* starting interface:    IPeerConnection */
-#define IPEERCONNECTION_IID_STR "cc8327f5-66f4-42f4-820d-9a9db0474b6e"
+#define IPEERCONNECTION_IID_STR "80b98a4f-c629-4e81-b738-a4608f6a4cd3"
 
 #define IPEERCONNECTION_IID \
-  {0xcc8327f5, 0x66f4, 0x42f4, \
-    { 0x82, 0x0d, 0x9a, 0x9d, 0xb0, 0x47, 0x4b, 0x6e }}
+  {0x80b98a4f, 0xc629, 0x4e81, \
+    { 0xb7, 0x38, 0xa4, 0x60, 0x8f, 0x6a, 0x4c, 0xd3 }}
 
 class NS_NO_VTABLE IPeerConnection : public nsISupports {
  public: 
@@ -423,9 +423,25 @@ class NS_NO_VTABLE IPeerConnection : public nsISupports {
     kIceChecking = 2,
     kIceConnected = 3,
     kIceFailed = 4,
+    kNew = 0,
+    kNegotiating = 1,
+    kActive = 2,
+    kClosing = 3,
+    kClosed = 4,
     kDataChannelReliable = 0U,
     kDataChannelPartialReliableRexmit = 1U,
-    kDataChannelPartialReliableTimed = 2U
+    kDataChannelPartialReliableTimed = 2U,
+    kNoError = 0U,
+    kInvalidConstraintsType = 1U,
+    kInvalidCandidateType = 2U,
+    kInvalidMediastreamTrack = 3U,
+    kInvalidState = 4U,
+    kInvalidSessionDescription = 5U,
+    kIncompatibleSessionDescription = 6U,
+    kIncompatibleConstraints = 7U,
+    kIncompatibleMediaStreamTrack = 8U,
+    kInternalError = 9U,
+    kMaxErrorType = 9U
   };
 
   /* [implicit_jscontext] void initialize (in IPeerConnectionObserver observer, in nsIDOMWindow window, [optional] in jsval iceServers, [optional] in nsIThread thread); */
@@ -461,8 +477,8 @@ class NS_NO_VTABLE IPeerConnection : public nsISupports {
   /* void addIceCandidate (in string candidate, in string mid, in unsigned short level); */
   NS_IMETHOD AddIceCandidate(const char * candidate, const char * mid, uint16_t level) = 0;
 
-  /* void close (in bool isSynchronous); */
-  NS_IMETHOD Close(bool isSynchronous) = 0;
+  /* void close (); */
+  NS_IMETHOD Close(void) = 0;
 
   /* readonly attribute string localDescription; */
   NS_IMETHOD GetLocalDescription(char * *aLocalDescription) = 0;
@@ -479,8 +495,8 @@ class NS_NO_VTABLE IPeerConnection : public nsISupports {
   /* readonly attribute unsigned long sipccState; */
   NS_IMETHOD GetSipccState(uint32_t *aSipccState) = 0;
 
-  /* nsIDOMDataChannel createDataChannel (in ACString label, in unsigned short type, in boolean outOfOrderAllowed, in unsigned short maxTime, in unsigned short maxNum); */
-  NS_IMETHOD CreateDataChannel(const nsACString & label, uint16_t type, bool outOfOrderAllowed, uint16_t maxTime, uint16_t maxNum, nsIDOMDataChannel * *_retval) = 0;
+  /* nsIDOMDataChannel createDataChannel (in ACString label, in ACString protocol, in unsigned short type, in boolean outOfOrderAllowed, in unsigned short maxTime, in unsigned short maxNum, in boolean externalNegotiated, in unsigned short stream); */
+  NS_IMETHOD CreateDataChannel(const nsACString & label, const nsACString & protocol, uint16_t type, bool outOfOrderAllowed, uint16_t maxTime, uint16_t maxNum, bool externalNegotiated, uint16_t stream, nsIDOMDataChannel * *_retval) = 0;
 
   /* void connectDataConnection (in unsigned short localport, in unsigned short remoteport, in unsigned short numstreams); */
   NS_IMETHOD ConnectDataConnection(uint16_t localport, uint16_t remoteport, uint16_t numstreams) = 0;
@@ -502,13 +518,13 @@ class NS_NO_VTABLE IPeerConnection : public nsISupports {
   NS_IMETHOD GetLocalStreams(JSContext* cx, JS::Value *aLocalStreams); \
   NS_IMETHOD GetRemoteStreams(JSContext* cx, JS::Value *aRemoteStreams); \
   NS_IMETHOD AddIceCandidate(const char * candidate, const char * mid, uint16_t level); \
-  NS_IMETHOD Close(bool isSynchronous); \
+  NS_IMETHOD Close(void); \
   NS_IMETHOD GetLocalDescription(char * *aLocalDescription); \
   NS_IMETHOD GetRemoteDescription(char * *aRemoteDescription); \
   NS_IMETHOD GetIceState(uint32_t *aIceState); \
   NS_IMETHOD GetReadyState(uint32_t *aReadyState); \
   NS_IMETHOD GetSipccState(uint32_t *aSipccState); \
-  NS_IMETHOD CreateDataChannel(const nsACString & label, uint16_t type, bool outOfOrderAllowed, uint16_t maxTime, uint16_t maxNum, nsIDOMDataChannel * *_retval); \
+  NS_IMETHOD CreateDataChannel(const nsACString & label, const nsACString & protocol, uint16_t type, bool outOfOrderAllowed, uint16_t maxTime, uint16_t maxNum, bool externalNegotiated, uint16_t stream, nsIDOMDataChannel * *_retval); \
   NS_IMETHOD ConnectDataConnection(uint16_t localport, uint16_t remoteport, uint16_t numstreams); 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object. */
@@ -524,13 +540,13 @@ class NS_NO_VTABLE IPeerConnection : public nsISupports {
   NS_IMETHOD GetLocalStreams(JSContext* cx, JS::Value *aLocalStreams) { return _to GetLocalStreams(cx, aLocalStreams); } \
   NS_IMETHOD GetRemoteStreams(JSContext* cx, JS::Value *aRemoteStreams) { return _to GetRemoteStreams(cx, aRemoteStreams); } \
   NS_IMETHOD AddIceCandidate(const char * candidate, const char * mid, uint16_t level) { return _to AddIceCandidate(candidate, mid, level); } \
-  NS_IMETHOD Close(bool isSynchronous) { return _to Close(isSynchronous); } \
+  NS_IMETHOD Close(void) { return _to Close(); } \
   NS_IMETHOD GetLocalDescription(char * *aLocalDescription) { return _to GetLocalDescription(aLocalDescription); } \
   NS_IMETHOD GetRemoteDescription(char * *aRemoteDescription) { return _to GetRemoteDescription(aRemoteDescription); } \
   NS_IMETHOD GetIceState(uint32_t *aIceState) { return _to GetIceState(aIceState); } \
   NS_IMETHOD GetReadyState(uint32_t *aReadyState) { return _to GetReadyState(aReadyState); } \
   NS_IMETHOD GetSipccState(uint32_t *aSipccState) { return _to GetSipccState(aSipccState); } \
-  NS_IMETHOD CreateDataChannel(const nsACString & label, uint16_t type, bool outOfOrderAllowed, uint16_t maxTime, uint16_t maxNum, nsIDOMDataChannel * *_retval) { return _to CreateDataChannel(label, type, outOfOrderAllowed, maxTime, maxNum, _retval); } \
+  NS_IMETHOD CreateDataChannel(const nsACString & label, const nsACString & protocol, uint16_t type, bool outOfOrderAllowed, uint16_t maxTime, uint16_t maxNum, bool externalNegotiated, uint16_t stream, nsIDOMDataChannel * *_retval) { return _to CreateDataChannel(label, protocol, type, outOfOrderAllowed, maxTime, maxNum, externalNegotiated, stream, _retval); } \
   NS_IMETHOD ConnectDataConnection(uint16_t localport, uint16_t remoteport, uint16_t numstreams) { return _to ConnectDataConnection(localport, remoteport, numstreams); } 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object in a safe way. */
@@ -546,13 +562,13 @@ class NS_NO_VTABLE IPeerConnection : public nsISupports {
   NS_IMETHOD GetLocalStreams(JSContext* cx, JS::Value *aLocalStreams) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetLocalStreams(cx, aLocalStreams); } \
   NS_IMETHOD GetRemoteStreams(JSContext* cx, JS::Value *aRemoteStreams) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetRemoteStreams(cx, aRemoteStreams); } \
   NS_IMETHOD AddIceCandidate(const char * candidate, const char * mid, uint16_t level) { return !_to ? NS_ERROR_NULL_POINTER : _to->AddIceCandidate(candidate, mid, level); } \
-  NS_IMETHOD Close(bool isSynchronous) { return !_to ? NS_ERROR_NULL_POINTER : _to->Close(isSynchronous); } \
+  NS_IMETHOD Close(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->Close(); } \
   NS_IMETHOD GetLocalDescription(char * *aLocalDescription) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetLocalDescription(aLocalDescription); } \
   NS_IMETHOD GetRemoteDescription(char * *aRemoteDescription) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetRemoteDescription(aRemoteDescription); } \
   NS_IMETHOD GetIceState(uint32_t *aIceState) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetIceState(aIceState); } \
   NS_IMETHOD GetReadyState(uint32_t *aReadyState) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetReadyState(aReadyState); } \
   NS_IMETHOD GetSipccState(uint32_t *aSipccState) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetSipccState(aSipccState); } \
-  NS_IMETHOD CreateDataChannel(const nsACString & label, uint16_t type, bool outOfOrderAllowed, uint16_t maxTime, uint16_t maxNum, nsIDOMDataChannel * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->CreateDataChannel(label, type, outOfOrderAllowed, maxTime, maxNum, _retval); } \
+  NS_IMETHOD CreateDataChannel(const nsACString & label, const nsACString & protocol, uint16_t type, bool outOfOrderAllowed, uint16_t maxTime, uint16_t maxNum, bool externalNegotiated, uint16_t stream, nsIDOMDataChannel * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->CreateDataChannel(label, protocol, type, outOfOrderAllowed, maxTime, maxNum, externalNegotiated, stream, _retval); } \
   NS_IMETHOD ConnectDataConnection(uint16_t localport, uint16_t remoteport, uint16_t numstreams) { return !_to ? NS_ERROR_NULL_POINTER : _to->ConnectDataConnection(localport, remoteport, numstreams); } 
 
 #if 0
@@ -653,8 +669,8 @@ NS_IMETHODIMP _MYCLASS_::AddIceCandidate(const char * candidate, const char * mi
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* void close (in bool isSynchronous); */
-NS_IMETHODIMP _MYCLASS_::Close(bool isSynchronous)
+/* void close (); */
+NS_IMETHODIMP _MYCLASS_::Close()
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
@@ -689,8 +705,8 @@ NS_IMETHODIMP _MYCLASS_::GetSipccState(uint32_t *aSipccState)
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* nsIDOMDataChannel createDataChannel (in ACString label, in unsigned short type, in boolean outOfOrderAllowed, in unsigned short maxTime, in unsigned short maxNum); */
-NS_IMETHODIMP _MYCLASS_::CreateDataChannel(const nsACString & label, uint16_t type, bool outOfOrderAllowed, uint16_t maxTime, uint16_t maxNum, nsIDOMDataChannel * *_retval)
+/* nsIDOMDataChannel createDataChannel (in ACString label, in ACString protocol, in unsigned short type, in boolean outOfOrderAllowed, in unsigned short maxTime, in unsigned short maxNum, in boolean externalNegotiated, in unsigned short stream); */
+NS_IMETHODIMP _MYCLASS_::CreateDataChannel(const nsACString & label, const nsACString & protocol, uint16_t type, bool outOfOrderAllowed, uint16_t maxTime, uint16_t maxNum, bool externalNegotiated, uint16_t stream, nsIDOMDataChannel * *_retval)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

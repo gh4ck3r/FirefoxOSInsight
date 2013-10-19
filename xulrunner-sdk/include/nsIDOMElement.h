@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/core/nsIDOMElement.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/core/nsIDOMElement.idl
  */
 
 #ifndef __gen_nsIDOMElement_h__
@@ -16,13 +16,15 @@
 #ifndef NS_NO_VTABLE
 #define NS_NO_VTABLE
 #endif
+class nsIDOMMozNamedAttrMap; /* forward declaration */
+
 
 /* starting interface:    nsIDOMElement */
-#define NS_IDOMELEMENT_IID_STR "8f972a47-1f20-4906-b59d-19310349a2c2"
+#define NS_IDOMELEMENT_IID_STR "43d985da-b7ee-4d1f-a26f-348ccd9506f3"
 
 #define NS_IDOMELEMENT_IID \
-  {0x8f972a47, 0x1f20, 0x4906, \
-    { 0xb5, 0x9d, 0x19, 0x31, 0x03, 0x49, 0xa2, 0xc2 }}
+  {0x43d985da, 0xb7ee, 0x4d1f, \
+    { 0xa2, 0x6f, 0x34, 0x8c, 0xcd, 0x95, 0x06, 0xf3 }}
 
 class NS_NO_VTABLE nsIDOMElement : public nsIDOMNode {
  public: 
@@ -34,6 +36,9 @@ class NS_NO_VTABLE nsIDOMElement : public nsIDOMNode {
 
   /* readonly attribute nsISupports classList; */
   NS_IMETHOD GetClassList(nsISupports * *aClassList) = 0;
+
+  /* readonly attribute nsIDOMMozNamedAttrMap attributes; */
+  NS_IMETHOD GetAttributes(nsIDOMMozNamedAttrMap * *aAttributes) = 0;
 
   /* DOMString getAttribute (in DOMString name); */
   NS_IMETHOD GetAttribute(const nsAString & name, nsAString & _retval) = 0;
@@ -100,6 +105,9 @@ class NS_NO_VTABLE nsIDOMElement : public nsIDOMNode {
 
   /* readonly attribute unsigned long childElementCount; */
   NS_IMETHOD GetChildElementCount(uint32_t *aChildElementCount) = 0;
+
+  /* [binaryname(MozRemove)] void remove (); */
+  NS_IMETHOD MozRemove(void) = 0;
 
   /* [implicit_jscontext] attribute jsval onmouseenter; */
   NS_IMETHOD GetOnmouseenter(JSContext* cx, JS::Value *aOnmouseenter) = 0;
@@ -170,6 +178,7 @@ class NS_NO_VTABLE nsIDOMElement : public nsIDOMNode {
 #define NS_DECL_NSIDOMELEMENT \
   NS_IMETHOD GetTagName(nsAString & aTagName); \
   NS_IMETHOD GetClassList(nsISupports * *aClassList); \
+  NS_IMETHOD GetAttributes(nsIDOMMozNamedAttrMap * *aAttributes); \
   NS_IMETHOD GetAttribute(const nsAString & name, nsAString & _retval); \
   NS_IMETHOD GetAttributeNS(const nsAString & namespaceURI, const nsAString & localName, nsAString & _retval); \
   NS_IMETHOD SetAttribute(const nsAString & name, const nsAString & value); \
@@ -192,6 +201,7 @@ class NS_NO_VTABLE nsIDOMElement : public nsIDOMNode {
   NS_IMETHOD GetPreviousElementSibling(nsIDOMElement * *aPreviousElementSibling); \
   NS_IMETHOD GetNextElementSibling(nsIDOMElement * *aNextElementSibling); \
   NS_IMETHOD GetChildElementCount(uint32_t *aChildElementCount); \
+  NS_IMETHOD MozRemove(void); \
   NS_IMETHOD GetOnmouseenter(JSContext* cx, JS::Value *aOnmouseenter); \
   NS_IMETHOD SetOnmouseenter(JSContext* cx, const JS::Value & aOnmouseenter); \
   NS_IMETHOD GetOnmouseleave(JSContext* cx, JS::Value *aOnmouseleave); \
@@ -220,6 +230,7 @@ class NS_NO_VTABLE nsIDOMElement : public nsIDOMNode {
 #define NS_FORWARD_NSIDOMELEMENT(_to) \
   NS_IMETHOD GetTagName(nsAString & aTagName) { return _to GetTagName(aTagName); } \
   NS_IMETHOD GetClassList(nsISupports * *aClassList) { return _to GetClassList(aClassList); } \
+  NS_IMETHOD GetAttributes(nsIDOMMozNamedAttrMap * *aAttributes) { return _to GetAttributes(aAttributes); } \
   NS_IMETHOD GetAttribute(const nsAString & name, nsAString & _retval) { return _to GetAttribute(name, _retval); } \
   NS_IMETHOD GetAttributeNS(const nsAString & namespaceURI, const nsAString & localName, nsAString & _retval) { return _to GetAttributeNS(namespaceURI, localName, _retval); } \
   NS_IMETHOD SetAttribute(const nsAString & name, const nsAString & value) { return _to SetAttribute(name, value); } \
@@ -242,6 +253,7 @@ class NS_NO_VTABLE nsIDOMElement : public nsIDOMNode {
   NS_IMETHOD GetPreviousElementSibling(nsIDOMElement * *aPreviousElementSibling) { return _to GetPreviousElementSibling(aPreviousElementSibling); } \
   NS_IMETHOD GetNextElementSibling(nsIDOMElement * *aNextElementSibling) { return _to GetNextElementSibling(aNextElementSibling); } \
   NS_IMETHOD GetChildElementCount(uint32_t *aChildElementCount) { return _to GetChildElementCount(aChildElementCount); } \
+  NS_IMETHOD MozRemove(void) { return _to MozRemove(); } \
   NS_IMETHOD GetOnmouseenter(JSContext* cx, JS::Value *aOnmouseenter) { return _to GetOnmouseenter(cx, aOnmouseenter); } \
   NS_IMETHOD SetOnmouseenter(JSContext* cx, const JS::Value & aOnmouseenter) { return _to SetOnmouseenter(cx, aOnmouseenter); } \
   NS_IMETHOD GetOnmouseleave(JSContext* cx, JS::Value *aOnmouseleave) { return _to GetOnmouseleave(cx, aOnmouseleave); } \
@@ -270,6 +282,7 @@ class NS_NO_VTABLE nsIDOMElement : public nsIDOMNode {
 #define NS_FORWARD_SAFE_NSIDOMELEMENT(_to) \
   NS_IMETHOD GetTagName(nsAString & aTagName) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetTagName(aTagName); } \
   NS_IMETHOD GetClassList(nsISupports * *aClassList) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetClassList(aClassList); } \
+  NS_IMETHOD GetAttributes(nsIDOMMozNamedAttrMap * *aAttributes) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetAttributes(aAttributes); } \
   NS_IMETHOD GetAttribute(const nsAString & name, nsAString & _retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetAttribute(name, _retval); } \
   NS_IMETHOD GetAttributeNS(const nsAString & namespaceURI, const nsAString & localName, nsAString & _retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetAttributeNS(namespaceURI, localName, _retval); } \
   NS_IMETHOD SetAttribute(const nsAString & name, const nsAString & value) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetAttribute(name, value); } \
@@ -292,6 +305,7 @@ class NS_NO_VTABLE nsIDOMElement : public nsIDOMNode {
   NS_IMETHOD GetPreviousElementSibling(nsIDOMElement * *aPreviousElementSibling) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetPreviousElementSibling(aPreviousElementSibling); } \
   NS_IMETHOD GetNextElementSibling(nsIDOMElement * *aNextElementSibling) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetNextElementSibling(aNextElementSibling); } \
   NS_IMETHOD GetChildElementCount(uint32_t *aChildElementCount) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetChildElementCount(aChildElementCount); } \
+  NS_IMETHOD MozRemove(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->MozRemove(); } \
   NS_IMETHOD GetOnmouseenter(JSContext* cx, JS::Value *aOnmouseenter) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetOnmouseenter(cx, aOnmouseenter); } \
   NS_IMETHOD SetOnmouseenter(JSContext* cx, const JS::Value & aOnmouseenter) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetOnmouseenter(cx, aOnmouseenter); } \
   NS_IMETHOD GetOnmouseleave(JSContext* cx, JS::Value *aOnmouseleave) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetOnmouseleave(cx, aOnmouseleave); } \
@@ -356,6 +370,12 @@ NS_IMETHODIMP nsDOMElement::GetTagName(nsAString & aTagName)
 
 /* readonly attribute nsISupports classList; */
 NS_IMETHODIMP nsDOMElement::GetClassList(nsISupports * *aClassList)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* readonly attribute nsIDOMMozNamedAttrMap attributes; */
+NS_IMETHODIMP nsDOMElement::GetAttributes(nsIDOMMozNamedAttrMap * *aAttributes)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
@@ -488,6 +508,12 @@ NS_IMETHODIMP nsDOMElement::GetNextElementSibling(nsIDOMElement * *aNextElementS
 
 /* readonly attribute unsigned long childElementCount; */
 NS_IMETHODIMP nsDOMElement::GetChildElementCount(uint32_t *aChildElementCount)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* [binaryname(MozRemove)] void remove (); */
+NS_IMETHODIMP nsDOMElement::MozRemove()
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/xpcom/threads/nsIProcess.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/xpcom/threads/nsIProcess.idl
  */
 
 #ifndef __gen_nsIProcess_h__
@@ -191,6 +191,5 @@ NS_IMETHODIMP nsProcess::GetIsRunning(bool *aIsRunning)
 
 
 #define NS_PROCESS_CONTRACTID "@mozilla.org/process/util;1"
-#define NS_PROCESS_CLASSNAME "Process Specification"
 
 #endif /* __gen_nsIProcess_h__ */

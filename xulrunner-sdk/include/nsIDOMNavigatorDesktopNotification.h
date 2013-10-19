@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/notification/nsIDOMNavigatorDesktopNotification.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/notification/nsIDOMNavigatorDesktopNotification.idl
  */
 
 #ifndef __gen_nsIDOMNavigatorDesktopNotification_h__
@@ -14,8 +14,6 @@
 #ifndef NS_NO_VTABLE
 #define NS_NO_VTABLE
 #endif
-class nsIDOMDesktopNotificationCenter; /* forward declaration */
-
 
 /* starting interface:    nsIDOMNavigatorDesktopNotification */
 #define NS_IDOMNAVIGATORDESKTOPNOTIFICATION_IID_STR "ec2e6e4f-2f65-439c-b6c6-27e89b03b348"
@@ -29,8 +27,8 @@ class NS_NO_VTABLE nsIDOMNavigatorDesktopNotification : public nsISupports {
 
   NS_DECLARE_STATIC_IID_ACCESSOR(NS_IDOMNAVIGATORDESKTOPNOTIFICATION_IID)
 
-  /* readonly attribute nsIDOMDesktopNotificationCenter mozNotification; */
-  NS_IMETHOD GetMozNotification(nsIDOMDesktopNotificationCenter * *aMozNotification) = 0;
+  /* readonly attribute nsISupports mozNotification; */
+  NS_IMETHOD GetMozNotification(nsISupports * *aMozNotification) = 0;
 
 };
 
@@ -38,15 +36,15 @@ class NS_NO_VTABLE nsIDOMNavigatorDesktopNotification : public nsISupports {
 
 /* Use this macro when declaring classes that implement this interface. */
 #define NS_DECL_NSIDOMNAVIGATORDESKTOPNOTIFICATION \
-  NS_IMETHOD GetMozNotification(nsIDOMDesktopNotificationCenter * *aMozNotification); 
+  NS_IMETHOD GetMozNotification(nsISupports * *aMozNotification); 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object. */
 #define NS_FORWARD_NSIDOMNAVIGATORDESKTOPNOTIFICATION(_to) \
-  NS_IMETHOD GetMozNotification(nsIDOMDesktopNotificationCenter * *aMozNotification) { return _to GetMozNotification(aMozNotification); } 
+  NS_IMETHOD GetMozNotification(nsISupports * *aMozNotification) { return _to GetMozNotification(aMozNotification); } 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object in a safe way. */
 #define NS_FORWARD_SAFE_NSIDOMNAVIGATORDESKTOPNOTIFICATION(_to) \
-  NS_IMETHOD GetMozNotification(nsIDOMDesktopNotificationCenter * *aMozNotification) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetMozNotification(aMozNotification); } 
+  NS_IMETHOD GetMozNotification(nsISupports * *aMozNotification) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetMozNotification(aMozNotification); } 
 
 #if 0
 /* Use the code below as a template for the implementation class for this interface. */
@@ -80,8 +78,8 @@ nsDOMNavigatorDesktopNotification::~nsDOMNavigatorDesktopNotification()
   /* destructor code */
 }
 
-/* readonly attribute nsIDOMDesktopNotificationCenter mozNotification; */
-NS_IMETHODIMP nsDOMNavigatorDesktopNotification::GetMozNotification(nsIDOMDesktopNotificationCenter * *aMozNotification)
+/* readonly attribute nsISupports mozNotification; */
+NS_IMETHODIMP nsDOMNavigatorDesktopNotification::GetMozNotification(nsISupports * *aMozNotification)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

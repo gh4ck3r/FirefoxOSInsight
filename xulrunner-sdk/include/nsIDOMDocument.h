@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/core/nsIDOMDocument.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/core/nsIDOMDocument.idl
  */
 
 #ifndef __gen_nsIDOMDocument_h__
@@ -27,11 +27,11 @@ class nsIDOMLocation; /* forward declaration */
 
 
 /* starting interface:    nsIDOMDocument */
-#define NS_IDOMDOCUMENT_IID_STR "9b93f82b-9691-4021-8f45-1bf505db77ba"
+#define NS_IDOMDOCUMENT_IID_STR "75996de6-6b0f-43e5-ae79-c98fa669da9a"
 
 #define NS_IDOMDOCUMENT_IID \
-  {0x9b93f82b, 0x9691, 0x4021, \
-    { 0x8f, 0x45, 0x1b, 0xf5, 0x05, 0xdb, 0x77, 0xba }}
+  {0x75996de6, 0x6b0f, 0x43e5, \
+    { 0xae, 0x79, 0xc9, 0x8f, 0xa6, 0x69, 0xda, 0x9a }}
 
 class NS_NO_VTABLE nsIDOMDocument : public nsIDOMNode {
  public: 

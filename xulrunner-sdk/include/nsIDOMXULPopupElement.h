@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/xul/nsIDOMXULPopupElement.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/xul/nsIDOMXULPopupElement.idl
  */
 
 #ifndef __gen_nsIDOMXULPopupElement_h__
@@ -20,11 +20,11 @@
 #endif
 
 /* starting interface:    nsIDOMXULPopupElement */
-#define NS_IDOMXULPOPUPELEMENT_IID_STR "53e3087d-0d16-4f29-9412-ee9ec3f4ad25"
+#define NS_IDOMXULPOPUPELEMENT_IID_STR "84fcce86-79de-4e22-8b9a-2c014ebde3e5"
 
 #define NS_IDOMXULPOPUPELEMENT_IID \
-  {0x53e3087d, 0x0d16, 0x4f29, \
-    { 0x94, 0x12, 0xee, 0x9e, 0xc3, 0xf4, 0xad, 0x25 }}
+  {0x84fcce86, 0x79de, 0x4e22, \
+    { 0x8b, 0x9a, 0x2c, 0x01, 0x4e, 0xbd, 0xe3, 0xe5 }}
 
 class NS_NO_VTABLE nsIDOMXULPopupElement : public nsIDOMXULElement {
  public: 

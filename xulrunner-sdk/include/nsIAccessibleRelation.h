@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/accessible/public/nsIAccessibleRelation.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/accessible/public/nsIAccessibleRelation.idl
  */
 
 #ifndef __gen_nsIAccessibleRelation_h__
@@ -22,11 +22,11 @@ class nsIAccessible; /* forward declaration */
 
 
 /* starting interface:    nsIAccessibleRelation */
-#define NS_IACCESSIBLERELATION_IID_STR "f42a1589-70ab-4704-877f-4a9162bbe188"
+#define NS_IACCESSIBLERELATION_IID_STR "9f85fc0d-2969-48e6-b822-68140f7e5770"
 
 #define NS_IACCESSIBLERELATION_IID \
-  {0xf42a1589, 0x70ab, 0x4704, \
-    { 0x87, 0x7f, 0x4a, 0x91, 0x62, 0xbb, 0xe1, 0x88 }}
+  {0x9f85fc0d, 0x2969, 0x48e6, \
+    { 0xb8, 0x22, 0x68, 0x14, 0x0f, 0x7e, 0x57, 0x70 }}
 
 class NS_NO_VTABLE nsIAccessibleRelation : public nsISupports {
  public: 
@@ -34,25 +34,23 @@ class NS_NO_VTABLE nsIAccessibleRelation : public nsISupports {
   NS_DECLARE_STATIC_IID_ACCESSOR(NS_IACCESSIBLERELATION_IID)
 
   enum {
-    RELATION_NUL = 0U,
-    RELATION_CONTROLLED_BY = 1U,
-    RELATION_FIRST = 1U,
-    RELATION_CONTROLLER_FOR = 2U,
-    RELATION_LABEL_FOR = 3U,
-    RELATION_LABELLED_BY = 4U,
-    RELATION_MEMBER_OF = 5U,
-    RELATION_NODE_CHILD_OF = 6U,
-    RELATION_FLOWS_TO = 7U,
-    RELATION_FLOWS_FROM = 8U,
-    RELATION_SUBWINDOW_OF = 9U,
-    RELATION_EMBEDS = 10U,
-    RELATION_EMBEDDED_BY = 11U,
-    RELATION_POPUP_FOR = 12U,
-    RELATION_PARENT_WINDOW_OF = 13U,
-    RELATION_DESCRIBED_BY = 14U,
-    RELATION_DESCRIPTION_FOR = 15U,
-    RELATION_LAST = 15U,
-    RELATION_DEFAULT_BUTTON = 16384U
+    RELATION_LABELLED_BY = 0U,
+    RELATION_LABEL_FOR = 1U,
+    RELATION_DESCRIBED_BY = 2U,
+    RELATION_DESCRIPTION_FOR = 3U,
+    RELATION_NODE_CHILD_OF = 4U,
+    RELATION_NODE_PARENT_OF = 5U,
+    RELATION_CONTROLLED_BY = 6U,
+    RELATION_CONTROLLER_FOR = 7U,
+    RELATION_FLOWS_TO = 8U,
+    RELATION_FLOWS_FROM = 9U,
+    RELATION_MEMBER_OF = 10U,
+    RELATION_SUBWINDOW_OF = 11U,
+    RELATION_EMBEDS = 12U,
+    RELATION_EMBEDDED_BY = 13U,
+    RELATION_POPUP_FOR = 14U,
+    RELATION_PARENT_WINDOW_OF = 15U,
+    RELATION_DEFAULT_BUTTON = 16U
   };
 
   /* readonly attribute unsigned long relationType; */

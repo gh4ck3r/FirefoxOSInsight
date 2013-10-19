@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/editor/txmgr/idl/nsITransaction.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/editor/txmgr/idl/nsITransaction.idl
  */
 
 #ifndef __gen_nsITransaction_h__

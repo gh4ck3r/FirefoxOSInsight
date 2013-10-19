@@ -11,6 +11,7 @@
 #include "nsIDOMHTMLAnchorElement.h"
 #include "nsILink.h"
 #include "Link.h"
+#include "base/compiler_specific.h"
 
 namespace mozilla {
 namespace dom {
@@ -26,7 +27,7 @@ public:
 
   HTMLAnchorElement(already_AddRefed<nsINodeInfo> aNodeInfo)
     : nsGenericHTMLElement(aNodeInfo)
-    , Link(this)
+    , ALLOW_THIS_IN_INITIALIZER_LIST(Link(this))
   {
     SetIsDOMBinding();
   }
@@ -89,8 +90,6 @@ public:
   virtual nsresult Clone(nsINodeInfo *aNodeInfo, nsINode **aResult) const;
 
   virtual nsEventStates IntrinsicState() const;
-
-  virtual nsXPCClassInfo* GetClassInfo();
 
   virtual nsIDOMNode* AsDOMNode() { return this; }
 
@@ -203,8 +202,8 @@ public:
 protected:
   virtual void GetItemValueText(nsAString& text);
   virtual void SetItemValueText(const nsAString& text);
-  virtual JSObject* WrapNode(JSContext *aCx, JSObject *aScope,
-                             bool *aTriedToWrap) MOZ_OVERRIDE;
+  virtual JSObject* WrapNode(JSContext *aCx,
+                             JS::Handle<JSObject*> aScope) MOZ_OVERRIDE;
 };
 
 } // namespace dom

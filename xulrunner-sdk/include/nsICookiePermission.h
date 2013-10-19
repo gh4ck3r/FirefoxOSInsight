@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/netwerk/cookie/nsICookiePermission.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/netwerk/cookie/nsICookiePermission.idl
  */
 
 #ifndef __gen_nsICookiePermission_h__
@@ -40,7 +40,8 @@ class NS_NO_VTABLE nsICookiePermission : public nsISupports {
     ACCESS_ALLOW = 1,
     ACCESS_DENY = 2,
     ACCESS_SESSION = 8,
-    ACCESS_ALLOW_FIRST_PARTY_ONLY = 9
+    ACCESS_ALLOW_FIRST_PARTY_ONLY = 9,
+    ACCESS_LIMIT_THIRD_PARTY = 10
   };
 
   /* void setAccess (in nsIURI aURI, in nsCookieAccess aAccess); */

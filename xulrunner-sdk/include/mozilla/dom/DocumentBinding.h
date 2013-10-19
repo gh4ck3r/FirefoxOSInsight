@@ -8,9 +8,7 @@
 #include "mozilla/dom/DOMJSClass.h"
 #include "mozilla/dom/DOMJSProxyHandler.h"
 
-class XPCWrappedNativeScope;
 class nsIDocument;
-
 
 namespace mozilla {
 namespace dom {
@@ -39,18 +37,15 @@ struct PrototypeIDMap<nsIDocument>
 namespace mozilla {
 namespace dom {
 
+
+MOZ_BEGIN_ENUM_CLASS(VisibilityState, uint32_t)
+  Hidden,
+  Visible
+MOZ_END_ENUM_CLASS(VisibilityState)
+
 namespace VisibilityStateValues {
-
-  enum valuelist {
-    Hidden,
-    Visible
-  };
-
-  extern const EnumEntry strings[3];
+extern const EnumEntry strings[3];
 } // namespace VisibilityStateValues
-
-
-typedef VisibilityStateValues::valuelist VisibilityState;
 
 
 namespace DocumentBinding {
@@ -58,9 +53,9 @@ namespace DocumentBinding {
   extern const NativePropertyHooks sNativePropertyHooks;
 
   void
-  CreateInterfaceObjects(JSContext* aCx, JSObject* aGlobal, JSObject** protoAndIfaceArray);
+  CreateInterfaceObjects(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JSObject** protoAndIfaceArray);
 
-  inline JSObject* GetProtoObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetProtoObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface prototype object for this class.  This will create the
@@ -68,21 +63,19 @@ namespace DocumentBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[prototypes::id::Document];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[prototypes::id::Document]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[prototypes::id::Document];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[prototypes::id::Document]);
   }
 
-  inline JSObject* GetConstructorObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetConstructorObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface object for this class.  This will create the object as
@@ -90,32 +83,30 @@ namespace DocumentBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[constructors::id::Document];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[constructors::id::Document]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[constructors::id::Document];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[constructors::id::Document]);
   }
 
   JSObject*
-  DefineDOMInterface(JSContext* aCx, JSObject* aGlobal, bool* aEnabled);
+  DefineDOMInterface(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JS::Handle<jsid> id, bool* aEnabled);
 
   extern DOMJSClass Class;
 
   JSObject*
-  Wrap(JSContext* aCx, JSObject* aScope, nsIDocument* aObject, nsWrapperCache* aCache, bool* aTriedToWrap);
+  Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, nsIDocument* aObject, nsWrapperCache* aCache);
 
   template <class T>
-  inline JSObject* Wrap(JSContext* aCx, JSObject* aScope, T* aObject, bool* aTriedToWrap)
+  inline JSObject* Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, T* aObject)
   {
-    return Wrap(aCx, aScope, aObject, aObject, aTriedToWrap);
+    return Wrap(aCx, aScope, aObject, aObject);
   }
 
 } // namespace DocumentBinding

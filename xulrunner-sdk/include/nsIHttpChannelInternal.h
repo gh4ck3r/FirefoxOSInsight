@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/netwerk/protocol/http/nsIHttpChannelInternal.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/netwerk/protocol/http/nsIHttpChannelInternal.idl
  */
 
 #ifndef __gen_nsIHttpChannelInternal_h__
@@ -101,11 +101,11 @@ NS_IMETHODIMP nsHttpUpgradeListener::OnTransportAvailable(nsISocketTransport *aT
 
 
 /* starting interface:    nsIHttpChannelInternal */
-#define NS_IHTTPCHANNELINTERNAL_IID_STR "74d13d41-85cd-490f-9942-300d0c01c726"
+#define NS_IHTTPCHANNELINTERNAL_IID_STR "2cd7f6a6-63f3-4bd6-a0f5-6e3d6dcff81b"
 
 #define NS_IHTTPCHANNELINTERNAL_IID \
-  {0x74d13d41, 0x85cd, 0x490f, \
-    { 0x99, 0x42, 0x30, 0x0d, 0x0c, 0x01, 0xc7, 0x26 }}
+  {0x2cd7f6a6, 0x63f3, 0x4bd6, \
+    { 0xa0, 0xf5, 0x6e, 0x3d, 0x6d, 0xcf, 0xf8, 0x1b }}
 
 class NS_NO_VTABLE nsIHttpChannelInternal : public nsISupports {
  public: 

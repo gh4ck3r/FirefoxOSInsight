@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/xul/nsIDOMXULCheckboxElement.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/xul/nsIDOMXULCheckboxElement.idl
  */
 
 #ifndef __gen_nsIDOMXULCheckboxElement_h__
@@ -20,11 +20,11 @@
 #endif
 
 /* starting interface:    nsIDOMXULCheckboxElement */
-#define NS_IDOMXULCHECKBOXELEMENT_IID_STR "a275393e-8402-46e1-8229-f1ce5b2e926c"
+#define NS_IDOMXULCHECKBOXELEMENT_IID_STR "745518ad-3163-41f0-b358-c81fb5a587bc"
 
 #define NS_IDOMXULCHECKBOXELEMENT_IID \
-  {0xa275393e, 0x8402, 0x46e1, \
-    { 0x82, 0x29, 0xf1, 0xce, 0x5b, 0x2e, 0x92, 0x6c }}
+  {0x745518ad, 0x3163, 0x41f0, \
+    { 0xb3, 0x58, 0xc8, 0x1f, 0xb5, 0xa5, 0x87, 0xbc }}
 
 class NS_NO_VTABLE nsIDOMXULCheckboxElement : public nsIDOMXULLabeledControlElement {
  public: 

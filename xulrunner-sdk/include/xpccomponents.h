@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/js/xpconnect/idl/xpccomponents.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/js/xpconnect/idl/xpccomponents.idl
  */
 
 #ifndef __gen_xpccomponents_h__
@@ -781,11 +781,11 @@ NS_IMETHODIMP _MYCLASS_::Callback()
 
 
 /* starting interface:    nsIXPCComponents_Utils */
-#define NS_IXPCCOMPONENTS_UTILS_IID_STR "5b62c98f-5ff8-41f9-bcb8-a24d1b4255d4"
+#define NS_IXPCCOMPONENTS_UTILS_IID_STR "623d354d-6eab-4cf6-8c08-2cde5869d439"
 
 #define NS_IXPCCOMPONENTS_UTILS_IID \
-  {0x5b62c98f, 0x5ff8, 0x41f9, \
-    { 0xbc, 0xb8, 0xa2, 0x4d, 0x1b, 0x42, 0x55, 0xd4 }}
+  {0x623d354d, 0x6eab, 0x4cf6, \
+    { 0x8c, 0x08, 0x2c, 0xde, 0x58, 0x69, 0xd4, 0x39 }}
 
 class NS_NO_VTABLE nsIXPCComponents_Utils : public nsISupports {
  public: 
@@ -872,10 +872,6 @@ class NS_NO_VTABLE nsIXPCComponents_Utils : public nsISupports {
   NS_IMETHOD GetWerror(JSContext* cx, bool *aWerror) = 0;
   NS_IMETHOD SetWerror(JSContext* cx, bool aWerror) = 0;
 
-  /* [implicit_jscontext] attribute boolean atline; */
-  NS_IMETHOD GetAtline(JSContext* cx, bool *aAtline) = 0;
-  NS_IMETHOD SetAtline(JSContext* cx, bool aAtline) = 0;
-
   /* [implicit_jscontext] attribute boolean methodjit; */
   NS_IMETHOD GetMethodjit(JSContext* cx, bool *aMethodjit) = 0;
   NS_IMETHOD SetMethodjit(JSContext* cx, bool aMethodjit) = 0;
@@ -900,6 +896,15 @@ class NS_NO_VTABLE nsIXPCComponents_Utils : public nsISupports {
 
   /* bool isXrayWrapper (in jsval obj); */
   NS_IMETHOD IsXrayWrapper(const JS::Value & obj, bool *_retval) = 0;
+
+  /* [implicit_jscontext] jsval waiveXrays (in jsval aVal); */
+  NS_IMETHOD WaiveXrays(const JS::Value & aVal, JSContext* cx, JS::Value *_retval) = 0;
+
+  /* [implicit_jscontext] jsval unwaiveXrays (in jsval aVal); */
+  NS_IMETHOD UnwaiveXrays(const JS::Value & aVal, JSContext* cx, JS::Value *_retval) = 0;
+
+  /* [implicit_jscontext] string getClassName (in jsval aObj, in bool aUnwrap); */
+  NS_IMETHOD GetClassName(const JS::Value & aObj, bool aUnwrap, JSContext* cx, char * *_retval) = 0;
 
   /* nsIClassInfo getDOMClassInfo (in AString aClassName); */
   NS_IMETHOD GetDOMClassInfo(const nsAString & aClassName, nsIClassInfo * *_retval) = 0;
@@ -938,8 +943,6 @@ class NS_NO_VTABLE nsIXPCComponents_Utils : public nsISupports {
   NS_IMETHOD SetStrict(JSContext* cx, bool aStrict); \
   NS_IMETHOD GetWerror(JSContext* cx, bool *aWerror); \
   NS_IMETHOD SetWerror(JSContext* cx, bool aWerror); \
-  NS_IMETHOD GetAtline(JSContext* cx, bool *aAtline); \
-  NS_IMETHOD SetAtline(JSContext* cx, bool aAtline); \
   NS_IMETHOD GetMethodjit(JSContext* cx, bool *aMethodjit); \
   NS_IMETHOD SetMethodjit(JSContext* cx, bool aMethodjit); \
   NS_IMETHOD GetMethodjit_always(JSContext* cx, bool *aMethodjit_always); \
@@ -951,6 +954,9 @@ class NS_NO_VTABLE nsIXPCComponents_Utils : public nsISupports {
   NS_IMETHOD SetGCZeal(int32_t zeal, JSContext* cx); \
   NS_IMETHOD NukeSandbox(const JS::Value & obj, JSContext* cx); \
   NS_IMETHOD IsXrayWrapper(const JS::Value & obj, bool *_retval); \
+  NS_IMETHOD WaiveXrays(const JS::Value & aVal, JSContext* cx, JS::Value *_retval); \
+  NS_IMETHOD UnwaiveXrays(const JS::Value & aVal, JSContext* cx, JS::Value *_retval); \
+  NS_IMETHOD GetClassName(const JS::Value & aObj, bool aUnwrap, JSContext* cx, char * *_retval); \
   NS_IMETHOD GetDOMClassInfo(const nsAString & aClassName, nsIClassInfo * *_retval); 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object. */
@@ -983,8 +989,6 @@ class NS_NO_VTABLE nsIXPCComponents_Utils : public nsISupports {
   NS_IMETHOD SetStrict(JSContext* cx, bool aStrict) { return _to SetStrict(cx, aStrict); } \
   NS_IMETHOD GetWerror(JSContext* cx, bool *aWerror) { return _to GetWerror(cx, aWerror); } \
   NS_IMETHOD SetWerror(JSContext* cx, bool aWerror) { return _to SetWerror(cx, aWerror); } \
-  NS_IMETHOD GetAtline(JSContext* cx, bool *aAtline) { return _to GetAtline(cx, aAtline); } \
-  NS_IMETHOD SetAtline(JSContext* cx, bool aAtline) { return _to SetAtline(cx, aAtline); } \
   NS_IMETHOD GetMethodjit(JSContext* cx, bool *aMethodjit) { return _to GetMethodjit(cx, aMethodjit); } \
   NS_IMETHOD SetMethodjit(JSContext* cx, bool aMethodjit) { return _to SetMethodjit(cx, aMethodjit); } \
   NS_IMETHOD GetMethodjit_always(JSContext* cx, bool *aMethodjit_always) { return _to GetMethodjit_always(cx, aMethodjit_always); } \
@@ -996,6 +1000,9 @@ class NS_NO_VTABLE nsIXPCComponents_Utils : public nsISupports {
   NS_IMETHOD SetGCZeal(int32_t zeal, JSContext* cx) { return _to SetGCZeal(zeal, cx); } \
   NS_IMETHOD NukeSandbox(const JS::Value & obj, JSContext* cx) { return _to NukeSandbox(obj, cx); } \
   NS_IMETHOD IsXrayWrapper(const JS::Value & obj, bool *_retval) { return _to IsXrayWrapper(obj, _retval); } \
+  NS_IMETHOD WaiveXrays(const JS::Value & aVal, JSContext* cx, JS::Value *_retval) { return _to WaiveXrays(aVal, cx, _retval); } \
+  NS_IMETHOD UnwaiveXrays(const JS::Value & aVal, JSContext* cx, JS::Value *_retval) { return _to UnwaiveXrays(aVal, cx, _retval); } \
+  NS_IMETHOD GetClassName(const JS::Value & aObj, bool aUnwrap, JSContext* cx, char * *_retval) { return _to GetClassName(aObj, aUnwrap, cx, _retval); } \
   NS_IMETHOD GetDOMClassInfo(const nsAString & aClassName, nsIClassInfo * *_retval) { return _to GetDOMClassInfo(aClassName, _retval); } 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object in a safe way. */
@@ -1028,8 +1035,6 @@ class NS_NO_VTABLE nsIXPCComponents_Utils : public nsISupports {
   NS_IMETHOD SetStrict(JSContext* cx, bool aStrict) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetStrict(cx, aStrict); } \
   NS_IMETHOD GetWerror(JSContext* cx, bool *aWerror) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetWerror(cx, aWerror); } \
   NS_IMETHOD SetWerror(JSContext* cx, bool aWerror) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetWerror(cx, aWerror); } \
-  NS_IMETHOD GetAtline(JSContext* cx, bool *aAtline) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetAtline(cx, aAtline); } \
-  NS_IMETHOD SetAtline(JSContext* cx, bool aAtline) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetAtline(cx, aAtline); } \
   NS_IMETHOD GetMethodjit(JSContext* cx, bool *aMethodjit) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetMethodjit(cx, aMethodjit); } \
   NS_IMETHOD SetMethodjit(JSContext* cx, bool aMethodjit) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetMethodjit(cx, aMethodjit); } \
   NS_IMETHOD GetMethodjit_always(JSContext* cx, bool *aMethodjit_always) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetMethodjit_always(cx, aMethodjit_always); } \
@@ -1041,6 +1046,9 @@ class NS_NO_VTABLE nsIXPCComponents_Utils : public nsISupports {
   NS_IMETHOD SetGCZeal(int32_t zeal, JSContext* cx) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetGCZeal(zeal, cx); } \
   NS_IMETHOD NukeSandbox(const JS::Value & obj, JSContext* cx) { return !_to ? NS_ERROR_NULL_POINTER : _to->NukeSandbox(obj, cx); } \
   NS_IMETHOD IsXrayWrapper(const JS::Value & obj, bool *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->IsXrayWrapper(obj, _retval); } \
+  NS_IMETHOD WaiveXrays(const JS::Value & aVal, JSContext* cx, JS::Value *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->WaiveXrays(aVal, cx, _retval); } \
+  NS_IMETHOD UnwaiveXrays(const JS::Value & aVal, JSContext* cx, JS::Value *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->UnwaiveXrays(aVal, cx, _retval); } \
+  NS_IMETHOD GetClassName(const JS::Value & aObj, bool aUnwrap, JSContext* cx, char * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetClassName(aObj, aUnwrap, cx, _retval); } \
   NS_IMETHOD GetDOMClassInfo(const nsAString & aClassName, nsIClassInfo * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetDOMClassInfo(aClassName, _retval); } 
 
 #if 0
@@ -1239,16 +1247,6 @@ NS_IMETHODIMP nsXPCComponents_Utils::SetWerror(JSContext* cx, bool aWerror)
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* [implicit_jscontext] attribute boolean atline; */
-NS_IMETHODIMP nsXPCComponents_Utils::GetAtline(JSContext* cx, bool *aAtline)
-{
-    return NS_ERROR_NOT_IMPLEMENTED;
-}
-NS_IMETHODIMP nsXPCComponents_Utils::SetAtline(JSContext* cx, bool aAtline)
-{
-    return NS_ERROR_NOT_IMPLEMENTED;
-}
-
 /* [implicit_jscontext] attribute boolean methodjit; */
 NS_IMETHODIMP nsXPCComponents_Utils::GetMethodjit(JSContext* cx, bool *aMethodjit)
 {
@@ -1303,6 +1301,24 @@ NS_IMETHODIMP nsXPCComponents_Utils::NukeSandbox(const JS::Value & obj, JSContex
 
 /* bool isXrayWrapper (in jsval obj); */
 NS_IMETHODIMP nsXPCComponents_Utils::IsXrayWrapper(const JS::Value & obj, bool *_retval)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* [implicit_jscontext] jsval waiveXrays (in jsval aVal); */
+NS_IMETHODIMP nsXPCComponents_Utils::WaiveXrays(const JS::Value & aVal, JSContext* cx, JS::Value *_retval)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* [implicit_jscontext] jsval unwaiveXrays (in jsval aVal); */
+NS_IMETHODIMP nsXPCComponents_Utils::UnwaiveXrays(const JS::Value & aVal, JSContext* cx, JS::Value *_retval)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* [implicit_jscontext] string getClassName (in jsval aObj, in bool aUnwrap); */
+NS_IMETHODIMP nsXPCComponents_Utils::GetClassName(const JS::Value & aObj, bool aUnwrap, JSContext* cx, char * *_retval)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

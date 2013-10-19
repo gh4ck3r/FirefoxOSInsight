@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/modules/libpref/public/nsIPrefLocalizedString.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/modules/libpref/public/nsIPrefLocalizedString.idl
  */
 
 #ifndef __gen_nsIPrefLocalizedString_h__
@@ -128,6 +128,5 @@ NS_IMETHODIMP nsPrefLocalizedString::SetDataWithLength(uint32_t length, const PR
     { 0x83, 0xe3, 0xd2, 0x5a, 0xb0, 0x19, 0x3c, 0x26 } \
   }
 #define NS_PREFLOCALIZEDSTRING_CONTRACTID "@mozilla.org/pref-localizedstring;1"
-#define NS_PREFLOCALIZEDSTRING_CLASSNAME "Pref LocalizedString"
 
 #endif /* __gen_nsIPrefLocalizedString_h__ */

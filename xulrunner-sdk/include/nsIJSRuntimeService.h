@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/js/xpconnect/idl/nsIJSRuntimeService.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/js/xpconnect/idl/nsIJSRuntimeService.idl
  */
 
 #ifndef __gen_nsIJSRuntimeService_h__
@@ -14,15 +14,15 @@
 #ifndef NS_NO_VTABLE
 #define NS_NO_VTABLE
 #endif
-class nsIXPCScriptable; /* forward declaration */
+class nsIBackstagePass; /* forward declaration */
 
 
 /* starting interface:    nsIJSRuntimeService */
-#define NS_IJSRUNTIMESERVICE_IID_STR "364bcec3-7034-4a4e-bff5-b3f796ca9771"
+#define NS_IJSRUNTIMESERVICE_IID_STR "991c0749-a22e-476b-9428-a373df037455"
 
 #define NS_IJSRUNTIMESERVICE_IID \
-  {0x364bcec3, 0x7034, 0x4a4e, \
-    { 0xbf, 0xf5, 0xb3, 0xf7, 0x96, 0xca, 0x97, 0x71 }}
+  {0x991c0749, 0xa22e, 0x476b, \
+    { 0x94, 0x28, 0xa3, 0x73, 0xdf, 0x03, 0x74, 0x55 }}
 
 class NS_NO_VTABLE nsIJSRuntimeService : public nsISupports {
  public: 
@@ -31,9 +31,6 @@ class NS_NO_VTABLE nsIJSRuntimeService : public nsISupports {
 
   /* readonly attribute JSRuntime runtime; */
   NS_IMETHOD GetRuntime(JSRuntime **aRuntime) = 0;
-
-  /* readonly attribute nsIXPCScriptable backstagePass; */
-  NS_IMETHOD GetBackstagePass(nsIXPCScriptable * *aBackstagePass) = 0;
 
   /* [noscript,notxpcom] void registerGCCallback (in JSGCCallback func); */
   NS_IMETHOD_(void) RegisterGCCallback(JSGCCallback func) = 0;
@@ -48,21 +45,18 @@ class NS_NO_VTABLE nsIJSRuntimeService : public nsISupports {
 /* Use this macro when declaring classes that implement this interface. */
 #define NS_DECL_NSIJSRUNTIMESERVICE \
   NS_IMETHOD GetRuntime(JSRuntime **aRuntime); \
-  NS_IMETHOD GetBackstagePass(nsIXPCScriptable * *aBackstagePass); \
   NS_IMETHOD_(void) RegisterGCCallback(JSGCCallback func); \
   NS_IMETHOD_(void) UnregisterGCCallback(JSGCCallback func); 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object. */
 #define NS_FORWARD_NSIJSRUNTIMESERVICE(_to) \
   NS_IMETHOD GetRuntime(JSRuntime **aRuntime) { return _to GetRuntime(aRuntime); } \
-  NS_IMETHOD GetBackstagePass(nsIXPCScriptable * *aBackstagePass) { return _to GetBackstagePass(aBackstagePass); } \
   NS_IMETHOD_(void) RegisterGCCallback(JSGCCallback func) { return _to RegisterGCCallback(func); } \
   NS_IMETHOD_(void) UnregisterGCCallback(JSGCCallback func) { return _to UnregisterGCCallback(func); } 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object in a safe way. */
 #define NS_FORWARD_SAFE_NSIJSRUNTIMESERVICE(_to) \
   NS_IMETHOD GetRuntime(JSRuntime **aRuntime) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetRuntime(aRuntime); } \
-  NS_IMETHOD GetBackstagePass(nsIXPCScriptable * *aBackstagePass) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetBackstagePass(aBackstagePass); } \
   NS_IMETHOD_(void) RegisterGCCallback(JSGCCallback func); \
   NS_IMETHOD_(void) UnregisterGCCallback(JSGCCallback func); 
 
@@ -100,12 +94,6 @@ nsJSRuntimeService::~nsJSRuntimeService()
 
 /* readonly attribute JSRuntime runtime; */
 NS_IMETHODIMP nsJSRuntimeService::GetRuntime(JSRuntime **aRuntime)
-{
-    return NS_ERROR_NOT_IMPLEMENTED;
-}
-
-/* readonly attribute nsIXPCScriptable backstagePass; */
-NS_IMETHODIMP nsJSRuntimeService::GetBackstagePass(nsIXPCScriptable * *aBackstagePass)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

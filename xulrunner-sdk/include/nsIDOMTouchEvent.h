@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/events/nsIDOMTouchEvent.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/events/nsIDOMTouchEvent.idl
  */
 
 #ifndef __gen_nsIDOMTouchEvent_h__
@@ -69,9 +69,9 @@ class nsIDOMTouch : public nsISupports {
   /* readonly attribute float force; */
   NS_IMETHOD GetForce(float *aForce) = 0;
 
-     nsCOMPtr<nsIDOMEventTarget> mTarget;
-    nsIDOMEventTarget *GetTarget() { return mTarget; }
-    void SetTarget(nsIDOMEventTarget *target) { mTarget = target; }
+     nsCOMPtr<mozilla::dom::EventTarget> mTarget;
+    mozilla::dom::EventTarget *GetTarget() { return mTarget; }
+    void SetTarget(mozilla::dom::EventTarget *target) { mTarget = target; }
     nsIntPoint mRefPoint;
     bool mChanged;
     uint32_t mMessage;

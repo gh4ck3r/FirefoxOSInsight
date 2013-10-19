@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/events/nsIDOMTransitionEvent.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/events/nsIDOMTransitionEvent.idl
  */
 
 #ifndef __gen_nsIDOMTransitionEvent_h__
@@ -16,11 +16,11 @@
 #endif
 
 /* starting interface:    nsIDOMTransitionEvent */
-#define NS_IDOMTRANSITIONEVENT_IID_STR "9013310a-e376-40bc-b141-9b9ae3085daa"
+#define NS_IDOMTRANSITIONEVENT_IID_STR "a37171e0-9f43-41ea-a25c-0b78a3329683"
 
 #define NS_IDOMTRANSITIONEVENT_IID \
-  {0x9013310a, 0xe376, 0x40bc, \
-    { 0xb1, 0x41, 0x9b, 0x9a, 0xe3, 0x08, 0x5d, 0xaa }}
+  {0xa37171e0, 0x9f43, 0x41ea, \
+    { 0xa2, 0x5c, 0x0b, 0x78, 0xa3, 0x32, 0x96, 0x83 }}
 
 class NS_NO_VTABLE nsIDOMTransitionEvent : public nsIDOMEvent {
  public: 
@@ -33,8 +33,8 @@ class NS_NO_VTABLE nsIDOMTransitionEvent : public nsIDOMEvent {
   /* readonly attribute float elapsedTime; */
   NS_IMETHOD GetElapsedTime(float *aElapsedTime) = 0;
 
-  /* void initTransitionEvent (in DOMString typeArg, in boolean canBubbleArg, in boolean cancelableArg, in DOMString propertyNameArg, in float elapsedTimeArg); */
-  NS_IMETHOD InitTransitionEvent(const nsAString & typeArg, bool canBubbleArg, bool cancelableArg, const nsAString & propertyNameArg, float elapsedTimeArg) = 0;
+  /* readonly attribute DOMString pseudoElement; */
+  NS_IMETHOD GetPseudoElement(nsAString & aPseudoElement) = 0;
 
 };
 
@@ -44,19 +44,19 @@ class NS_NO_VTABLE nsIDOMTransitionEvent : public nsIDOMEvent {
 #define NS_DECL_NSIDOMTRANSITIONEVENT \
   NS_IMETHOD GetPropertyName(nsAString & aPropertyName); \
   NS_IMETHOD GetElapsedTime(float *aElapsedTime); \
-  NS_IMETHOD InitTransitionEvent(const nsAString & typeArg, bool canBubbleArg, bool cancelableArg, const nsAString & propertyNameArg, float elapsedTimeArg); 
+  NS_IMETHOD GetPseudoElement(nsAString & aPseudoElement); 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object. */
 #define NS_FORWARD_NSIDOMTRANSITIONEVENT(_to) \
   NS_IMETHOD GetPropertyName(nsAString & aPropertyName) { return _to GetPropertyName(aPropertyName); } \
   NS_IMETHOD GetElapsedTime(float *aElapsedTime) { return _to GetElapsedTime(aElapsedTime); } \
-  NS_IMETHOD InitTransitionEvent(const nsAString & typeArg, bool canBubbleArg, bool cancelableArg, const nsAString & propertyNameArg, float elapsedTimeArg) { return _to InitTransitionEvent(typeArg, canBubbleArg, cancelableArg, propertyNameArg, elapsedTimeArg); } 
+  NS_IMETHOD GetPseudoElement(nsAString & aPseudoElement) { return _to GetPseudoElement(aPseudoElement); } 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object in a safe way. */
 #define NS_FORWARD_SAFE_NSIDOMTRANSITIONEVENT(_to) \
   NS_IMETHOD GetPropertyName(nsAString & aPropertyName) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetPropertyName(aPropertyName); } \
   NS_IMETHOD GetElapsedTime(float *aElapsedTime) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetElapsedTime(aElapsedTime); } \
-  NS_IMETHOD InitTransitionEvent(const nsAString & typeArg, bool canBubbleArg, bool cancelableArg, const nsAString & propertyNameArg, float elapsedTimeArg) { return !_to ? NS_ERROR_NULL_POINTER : _to->InitTransitionEvent(typeArg, canBubbleArg, cancelableArg, propertyNameArg, elapsedTimeArg); } 
+  NS_IMETHOD GetPseudoElement(nsAString & aPseudoElement) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetPseudoElement(aPseudoElement); } 
 
 #if 0
 /* Use the code below as a template for the implementation class for this interface. */
@@ -102,8 +102,8 @@ NS_IMETHODIMP nsDOMTransitionEvent::GetElapsedTime(float *aElapsedTime)
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* void initTransitionEvent (in DOMString typeArg, in boolean canBubbleArg, in boolean cancelableArg, in DOMString propertyNameArg, in float elapsedTimeArg); */
-NS_IMETHODIMP nsDOMTransitionEvent::InitTransitionEvent(const nsAString & typeArg, bool canBubbleArg, bool cancelableArg, const nsAString & propertyNameArg, float elapsedTimeArg)
+/* readonly attribute DOMString pseudoElement; */
+NS_IMETHODIMP nsDOMTransitionEvent::GetPseudoElement(nsAString & aPseudoElement)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

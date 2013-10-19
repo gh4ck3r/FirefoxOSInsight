@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/modules/libpref/public/nsIRelativeFilePref.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/modules/libpref/public/nsIRelativeFilePref.idl
  */
 
 #ifndef __gen_nsIRelativeFilePref_h__
@@ -126,7 +126,6 @@ NS_IMETHODIMP nsRelativeFilePref::SetRelativeToKey(const nsACString & aRelativeT
     { 0x87, 0xe2, 0x00, 0x10, 0xa4, 0xe7, 0x5e, 0xf2 } \
   }
 #define NS_RELATIVEFILEPREF_CONTRACTID "@mozilla.org/pref-relativefile;1"
-#define NS_RELATIVEFILEPREF_CLASSNAME "Relative File Pref"
 #include "nsComponentManagerUtils.h"
 inline nsresult
 NS_NewRelativeFilePref(nsIFile* aFile, const nsACString& relativeToKey, nsIRelativeFilePref** result)

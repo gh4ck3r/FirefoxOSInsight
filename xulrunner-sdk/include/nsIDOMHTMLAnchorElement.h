@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/html/nsIDOMHTMLAnchorElement.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/html/nsIDOMHTMLAnchorElement.idl
  */
 
 #ifndef __gen_nsIDOMHTMLAnchorElement_h__
@@ -16,11 +16,11 @@
 #endif
 
 /* starting interface:    nsIDOMHTMLAnchorElement */
-#define NS_IDOMHTMLANCHORELEMENT_IID_STR "1339c36e-23ad-4047-a04c-1702e27c7c83"
+#define NS_IDOMHTMLANCHORELEMENT_IID_STR "76ec122a-db6d-4b3f-8a24-15faf117f695"
 
 #define NS_IDOMHTMLANCHORELEMENT_IID \
-  {0x1339c36e, 0x23ad, 0x4047, \
-    { 0xa0, 0x4c, 0x17, 0x02, 0xe2, 0x7c, 0x7c, 0x83 }}
+  {0x76ec122a, 0xdb6d, 0x4b3f, \
+    { 0x8a, 0x24, 0x15, 0xfa, 0xf1, 0x17, 0xf6, 0x95 }}
 
 class NS_NO_VTABLE nsIDOMHTMLAnchorElement : public nsIDOMHTMLElement {
  public: 

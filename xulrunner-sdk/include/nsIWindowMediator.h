@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/xpfe/appshell/public/nsIWindowMediator.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/xpfe/appshell/public/nsIWindowMediator.idl
  */
 
 #ifndef __gen_nsIWindowMediator_h__
@@ -19,8 +19,8 @@
 #define NS_NO_VTABLE
 #endif
 #define NS_WINDOWMEDIATOR_CID \
-{ 0x292e17c8, 0xccc1, 0x42e1, \
-  { 0xac, 0x8b, 0xaf, 0x61, 0x7d, 0x54, 0x13, 0xb1 } }
+{ 0x808b2fa3, 0x8a02, 0x49ca, \
+  { 0x91, 0x04, 0x5f, 0x77, 0x29, 0x9e, 0x09, 0x0b } }
 #define NS_WINDOWMEDIATOR_CONTRACTID \
   "@mozilla.org/appshell/window-mediator;1"
 class nsIXULWindow; /* forward declaration */
@@ -33,11 +33,11 @@ class nsIWindowMediatorListener; /* forward declaration */
 
 
 /* starting interface:    nsIWindowMediator */
-#define NS_IWINDOWMEDIATOR_IID_STR "292e17c8-ccc1-42e1-ac8b-af617d5413b1"
+#define NS_IWINDOWMEDIATOR_IID_STR "808b2fa3-8a02-49ca-9104-5f77299e090b"
 
 #define NS_IWINDOWMEDIATOR_IID \
-  {0x292e17c8, 0xccc1, 0x42e1, \
-    { 0xac, 0x8b, 0xaf, 0x61, 0x7d, 0x54, 0x13, 0xb1 }}
+  {0x808b2fa3, 0x8a02, 0x49ca, \
+    { 0x91, 0x04, 0x5f, 0x77, 0x29, 0x9e, 0x09, 0x0b }}
 
 class NS_NO_VTABLE nsIWindowMediator : public nsISupports {
  public: 
@@ -58,6 +58,9 @@ class NS_NO_VTABLE nsIWindowMediator : public nsISupports {
 
   /* nsIDOMWindow getMostRecentWindow (in wstring aWindowType); */
   NS_IMETHOD GetMostRecentWindow(const PRUnichar * aWindowType, nsIDOMWindow * *_retval) = 0;
+
+  /* nsIDOMWindow getOuterWindowWithId (in unsigned long long aOuterWindowID); */
+  NS_IMETHOD GetOuterWindowWithId(uint64_t aOuterWindowID, nsIDOMWindow * *_retval) = 0;
 
   /* [noscript] void registerWindow (in nsIXULWindow aWindow); */
   NS_IMETHOD RegisterWindow(nsIXULWindow *aWindow) = 0;
@@ -106,6 +109,7 @@ class NS_NO_VTABLE nsIWindowMediator : public nsISupports {
   NS_IMETHOD GetZOrderDOMWindowEnumerator(const PRUnichar * aWindowType, bool aFrontToBack, nsISimpleEnumerator * *_retval); \
   NS_IMETHOD GetZOrderXULWindowEnumerator(const PRUnichar * aWindowType, bool aFrontToBack, nsISimpleEnumerator * *_retval); \
   NS_IMETHOD GetMostRecentWindow(const PRUnichar * aWindowType, nsIDOMWindow * *_retval); \
+  NS_IMETHOD GetOuterWindowWithId(uint64_t aOuterWindowID, nsIDOMWindow * *_retval); \
   NS_IMETHOD RegisterWindow(nsIXULWindow *aWindow); \
   NS_IMETHOD UnregisterWindow(nsIXULWindow *aWindow); \
   NS_IMETHOD UpdateWindowTimeStamp(nsIXULWindow *aWindow); \
@@ -124,6 +128,7 @@ class NS_NO_VTABLE nsIWindowMediator : public nsISupports {
   NS_IMETHOD GetZOrderDOMWindowEnumerator(const PRUnichar * aWindowType, bool aFrontToBack, nsISimpleEnumerator * *_retval) { return _to GetZOrderDOMWindowEnumerator(aWindowType, aFrontToBack, _retval); } \
   NS_IMETHOD GetZOrderXULWindowEnumerator(const PRUnichar * aWindowType, bool aFrontToBack, nsISimpleEnumerator * *_retval) { return _to GetZOrderXULWindowEnumerator(aWindowType, aFrontToBack, _retval); } \
   NS_IMETHOD GetMostRecentWindow(const PRUnichar * aWindowType, nsIDOMWindow * *_retval) { return _to GetMostRecentWindow(aWindowType, _retval); } \
+  NS_IMETHOD GetOuterWindowWithId(uint64_t aOuterWindowID, nsIDOMWindow * *_retval) { return _to GetOuterWindowWithId(aOuterWindowID, _retval); } \
   NS_IMETHOD RegisterWindow(nsIXULWindow *aWindow) { return _to RegisterWindow(aWindow); } \
   NS_IMETHOD UnregisterWindow(nsIXULWindow *aWindow) { return _to UnregisterWindow(aWindow); } \
   NS_IMETHOD UpdateWindowTimeStamp(nsIXULWindow *aWindow) { return _to UpdateWindowTimeStamp(aWindow); } \
@@ -142,6 +147,7 @@ class NS_NO_VTABLE nsIWindowMediator : public nsISupports {
   NS_IMETHOD GetZOrderDOMWindowEnumerator(const PRUnichar * aWindowType, bool aFrontToBack, nsISimpleEnumerator * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetZOrderDOMWindowEnumerator(aWindowType, aFrontToBack, _retval); } \
   NS_IMETHOD GetZOrderXULWindowEnumerator(const PRUnichar * aWindowType, bool aFrontToBack, nsISimpleEnumerator * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetZOrderXULWindowEnumerator(aWindowType, aFrontToBack, _retval); } \
   NS_IMETHOD GetMostRecentWindow(const PRUnichar * aWindowType, nsIDOMWindow * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetMostRecentWindow(aWindowType, _retval); } \
+  NS_IMETHOD GetOuterWindowWithId(uint64_t aOuterWindowID, nsIDOMWindow * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetOuterWindowWithId(aOuterWindowID, _retval); } \
   NS_IMETHOD RegisterWindow(nsIXULWindow *aWindow) { return !_to ? NS_ERROR_NULL_POINTER : _to->RegisterWindow(aWindow); } \
   NS_IMETHOD UnregisterWindow(nsIXULWindow *aWindow) { return !_to ? NS_ERROR_NULL_POINTER : _to->UnregisterWindow(aWindow); } \
   NS_IMETHOD UpdateWindowTimeStamp(nsIXULWindow *aWindow) { return !_to ? NS_ERROR_NULL_POINTER : _to->UpdateWindowTimeStamp(aWindow); } \
@@ -211,6 +217,12 @@ NS_IMETHODIMP nsWindowMediator::GetZOrderXULWindowEnumerator(const PRUnichar * a
 
 /* nsIDOMWindow getMostRecentWindow (in wstring aWindowType); */
 NS_IMETHODIMP nsWindowMediator::GetMostRecentWindow(const PRUnichar * aWindowType, nsIDOMWindow * *_retval)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* nsIDOMWindow getOuterWindowWithId (in unsigned long long aOuterWindowID); */
+NS_IMETHODIMP nsWindowMediator::GetOuterWindowWithId(uint64_t aOuterWindowID, nsIDOMWindow * *_retval)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

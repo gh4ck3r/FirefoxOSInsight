@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/rdf/base/idl/nsIRDFDataSource.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/rdf/base/idl/nsIRDFDataSource.idl
  */
 
 #ifndef __gen_nsIRDFDataSource_h__
@@ -34,7 +34,6 @@
 #ifndef NS_NO_VTABLE
 #define NS_NO_VTABLE
 #endif
-#include "nsISupportsArray.h"
 
 /* starting interface:    nsIRDFDataSource */
 #define NS_IRDFDATASOURCE_IID_STR "0f78da58-8321-11d2-8eac-00805f29f370"

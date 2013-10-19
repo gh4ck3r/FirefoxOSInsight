@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/sms/interfaces/nsIDOMSmsManager.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/mobilemessage/interfaces/nsIDOMSmsManager.idl
  */
 
 #ifndef __gen_nsIDOMSmsManager_h__
@@ -16,9 +16,11 @@
 #ifndef NS_NO_VTABLE
 #define NS_NO_VTABLE
 #endif
-class nsIDOMEventListener; /* forward declaration */
+class nsIDOMDOMCursor; /* forward declaration */
 
-class nsIDOMMozSmsRequest; /* forward declaration */
+class nsIDOMDOMRequest; /* forward declaration */
+
+class nsIDOMEventListener; /* forward declaration */
 
 class nsIDOMMozSmsFilter; /* forward declaration */
 
@@ -26,11 +28,11 @@ class nsIDOMMozSmsSegmentInfo; /* forward declaration */
 
 
 /* starting interface:    nsIDOMMozSmsManager */
-#define NS_IDOMMOZSMSMANAGER_IID_STR "2bdb02e7-ec3a-47a9-885c-0ab514566801"
+#define NS_IDOMMOZSMSMANAGER_IID_STR "8ce00d77-71b4-43f6-92a1-2eae7c9581b9"
 
 #define NS_IDOMMOZSMSMANAGER_IID \
-  {0x2bdb02e7, 0xec3a, 0x47a9, \
-    { 0x88, 0x5c, 0x0a, 0xb5, 0x14, 0x56, 0x68, 0x01 }}
+  {0x8ce00d77, 0x71b4, 0x43f6, \
+    { 0x92, 0xa1, 0x2e, 0xae, 0x7c, 0x95, 0x81, 0xb9 }}
 
 class NS_NO_VTABLE nsIDOMMozSmsManager : public nsIDOMEventTarget {
  public: 
@@ -43,20 +45,20 @@ class NS_NO_VTABLE nsIDOMMozSmsManager : public nsIDOMEventTarget {
   /* jsval send (in jsval number, in DOMString message); */
   NS_IMETHOD Send(const JS::Value & number, const nsAString & message, JS::Value *_retval) = 0;
 
-  /* [binaryname(GetMessageMoz)] nsIDOMMozSmsRequest getMessage (in long id); */
-  NS_IMETHOD GetMessageMoz(int32_t id, nsIDOMMozSmsRequest * *_retval) = 0;
+  /* [binaryname(GetMessageMoz)] nsIDOMDOMRequest getMessage (in long id); */
+  NS_IMETHOD GetMessageMoz(int32_t id, nsIDOMDOMRequest * *_retval) = 0;
 
-  /* nsIDOMMozSmsRequest delete (in jsval param); */
-  NS_IMETHOD Delete(const JS::Value & param, nsIDOMMozSmsRequest * *_retval) = 0;
+  /* nsIDOMDOMRequest delete (in jsval param); */
+  NS_IMETHOD Delete(const JS::Value & param, nsIDOMDOMRequest * *_retval) = 0;
 
-  /* nsIDOMMozSmsRequest getMessages (in nsIDOMMozSmsFilter filter, in boolean reverse); */
-  NS_IMETHOD GetMessages(nsIDOMMozSmsFilter *filter, bool reverse, nsIDOMMozSmsRequest * *_retval) = 0;
+  /* nsIDOMDOMCursor getMessages (in nsIDOMMozSmsFilter filter, in boolean reverse); */
+  NS_IMETHOD GetMessages(nsIDOMMozSmsFilter *filter, bool reverse, nsIDOMDOMCursor * *_retval) = 0;
 
-  /* nsIDOMMozSmsRequest markMessageRead (in long id, in boolean aValue); */
-  NS_IMETHOD MarkMessageRead(int32_t id, bool aValue, nsIDOMMozSmsRequest * *_retval) = 0;
+  /* nsIDOMDOMRequest markMessageRead (in long id, in boolean aValue); */
+  NS_IMETHOD MarkMessageRead(int32_t id, bool aValue, nsIDOMDOMRequest * *_retval) = 0;
 
-  /* nsIDOMMozSmsRequest getThreadList (); */
-  NS_IMETHOD GetThreadList(nsIDOMMozSmsRequest * *_retval) = 0;
+  /* nsIDOMDOMCursor getThreads (); */
+  NS_IMETHOD GetThreads(nsIDOMDOMCursor * *_retval) = 0;
 
   /* [implicit_jscontext] attribute jsval onreceived; */
   NS_IMETHOD GetOnreceived(JSContext* cx, JS::Value *aOnreceived) = 0;
@@ -90,11 +92,11 @@ class NS_NO_VTABLE nsIDOMMozSmsManager : public nsIDOMEventTarget {
 #define NS_DECL_NSIDOMMOZSMSMANAGER \
   NS_IMETHOD GetSegmentInfoForText(const nsAString & text, nsIDOMMozSmsSegmentInfo * *_retval); \
   NS_IMETHOD Send(const JS::Value & number, const nsAString & message, JS::Value *_retval); \
-  NS_IMETHOD GetMessageMoz(int32_t id, nsIDOMMozSmsRequest * *_retval); \
-  NS_IMETHOD Delete(const JS::Value & param, nsIDOMMozSmsRequest * *_retval); \
-  NS_IMETHOD GetMessages(nsIDOMMozSmsFilter *filter, bool reverse, nsIDOMMozSmsRequest * *_retval); \
-  NS_IMETHOD MarkMessageRead(int32_t id, bool aValue, nsIDOMMozSmsRequest * *_retval); \
-  NS_IMETHOD GetThreadList(nsIDOMMozSmsRequest * *_retval); \
+  NS_IMETHOD GetMessageMoz(int32_t id, nsIDOMDOMRequest * *_retval); \
+  NS_IMETHOD Delete(const JS::Value & param, nsIDOMDOMRequest * *_retval); \
+  NS_IMETHOD GetMessages(nsIDOMMozSmsFilter *filter, bool reverse, nsIDOMDOMCursor * *_retval); \
+  NS_IMETHOD MarkMessageRead(int32_t id, bool aValue, nsIDOMDOMRequest * *_retval); \
+  NS_IMETHOD GetThreads(nsIDOMDOMCursor * *_retval); \
   NS_IMETHOD GetOnreceived(JSContext* cx, JS::Value *aOnreceived); \
   NS_IMETHOD SetOnreceived(JSContext* cx, const JS::Value & aOnreceived); \
   NS_IMETHOD GetOnsending(JSContext* cx, JS::Value *aOnsending); \
@@ -112,11 +114,11 @@ class NS_NO_VTABLE nsIDOMMozSmsManager : public nsIDOMEventTarget {
 #define NS_FORWARD_NSIDOMMOZSMSMANAGER(_to) \
   NS_IMETHOD GetSegmentInfoForText(const nsAString & text, nsIDOMMozSmsSegmentInfo * *_retval) { return _to GetSegmentInfoForText(text, _retval); } \
   NS_IMETHOD Send(const JS::Value & number, const nsAString & message, JS::Value *_retval) { return _to Send(number, message, _retval); } \
-  NS_IMETHOD GetMessageMoz(int32_t id, nsIDOMMozSmsRequest * *_retval) { return _to GetMessageMoz(id, _retval); } \
-  NS_IMETHOD Delete(const JS::Value & param, nsIDOMMozSmsRequest * *_retval) { return _to Delete(param, _retval); } \
-  NS_IMETHOD GetMessages(nsIDOMMozSmsFilter *filter, bool reverse, nsIDOMMozSmsRequest * *_retval) { return _to GetMessages(filter, reverse, _retval); } \
-  NS_IMETHOD MarkMessageRead(int32_t id, bool aValue, nsIDOMMozSmsRequest * *_retval) { return _to MarkMessageRead(id, aValue, _retval); } \
-  NS_IMETHOD GetThreadList(nsIDOMMozSmsRequest * *_retval) { return _to GetThreadList(_retval); } \
+  NS_IMETHOD GetMessageMoz(int32_t id, nsIDOMDOMRequest * *_retval) { return _to GetMessageMoz(id, _retval); } \
+  NS_IMETHOD Delete(const JS::Value & param, nsIDOMDOMRequest * *_retval) { return _to Delete(param, _retval); } \
+  NS_IMETHOD GetMessages(nsIDOMMozSmsFilter *filter, bool reverse, nsIDOMDOMCursor * *_retval) { return _to GetMessages(filter, reverse, _retval); } \
+  NS_IMETHOD MarkMessageRead(int32_t id, bool aValue, nsIDOMDOMRequest * *_retval) { return _to MarkMessageRead(id, aValue, _retval); } \
+  NS_IMETHOD GetThreads(nsIDOMDOMCursor * *_retval) { return _to GetThreads(_retval); } \
   NS_IMETHOD GetOnreceived(JSContext* cx, JS::Value *aOnreceived) { return _to GetOnreceived(cx, aOnreceived); } \
   NS_IMETHOD SetOnreceived(JSContext* cx, const JS::Value & aOnreceived) { return _to SetOnreceived(cx, aOnreceived); } \
   NS_IMETHOD GetOnsending(JSContext* cx, JS::Value *aOnsending) { return _to GetOnsending(cx, aOnsending); } \
@@ -134,11 +136,11 @@ class NS_NO_VTABLE nsIDOMMozSmsManager : public nsIDOMEventTarget {
 #define NS_FORWARD_SAFE_NSIDOMMOZSMSMANAGER(_to) \
   NS_IMETHOD GetSegmentInfoForText(const nsAString & text, nsIDOMMozSmsSegmentInfo * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetSegmentInfoForText(text, _retval); } \
   NS_IMETHOD Send(const JS::Value & number, const nsAString & message, JS::Value *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->Send(number, message, _retval); } \
-  NS_IMETHOD GetMessageMoz(int32_t id, nsIDOMMozSmsRequest * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetMessageMoz(id, _retval); } \
-  NS_IMETHOD Delete(const JS::Value & param, nsIDOMMozSmsRequest * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->Delete(param, _retval); } \
-  NS_IMETHOD GetMessages(nsIDOMMozSmsFilter *filter, bool reverse, nsIDOMMozSmsRequest * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetMessages(filter, reverse, _retval); } \
-  NS_IMETHOD MarkMessageRead(int32_t id, bool aValue, nsIDOMMozSmsRequest * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->MarkMessageRead(id, aValue, _retval); } \
-  NS_IMETHOD GetThreadList(nsIDOMMozSmsRequest * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetThreadList(_retval); } \
+  NS_IMETHOD GetMessageMoz(int32_t id, nsIDOMDOMRequest * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetMessageMoz(id, _retval); } \
+  NS_IMETHOD Delete(const JS::Value & param, nsIDOMDOMRequest * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->Delete(param, _retval); } \
+  NS_IMETHOD GetMessages(nsIDOMMozSmsFilter *filter, bool reverse, nsIDOMDOMCursor * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetMessages(filter, reverse, _retval); } \
+  NS_IMETHOD MarkMessageRead(int32_t id, bool aValue, nsIDOMDOMRequest * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->MarkMessageRead(id, aValue, _retval); } \
+  NS_IMETHOD GetThreads(nsIDOMDOMCursor * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetThreads(_retval); } \
   NS_IMETHOD GetOnreceived(JSContext* cx, JS::Value *aOnreceived) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetOnreceived(cx, aOnreceived); } \
   NS_IMETHOD SetOnreceived(JSContext* cx, const JS::Value & aOnreceived) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetOnreceived(cx, aOnreceived); } \
   NS_IMETHOD GetOnsending(JSContext* cx, JS::Value *aOnsending) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetOnsending(cx, aOnsending); } \
@@ -196,32 +198,32 @@ NS_IMETHODIMP nsDOMMozSmsManager::Send(const JS::Value & number, const nsAString
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* [binaryname(GetMessageMoz)] nsIDOMMozSmsRequest getMessage (in long id); */
-NS_IMETHODIMP nsDOMMozSmsManager::GetMessageMoz(int32_t id, nsIDOMMozSmsRequest * *_retval)
+/* [binaryname(GetMessageMoz)] nsIDOMDOMRequest getMessage (in long id); */
+NS_IMETHODIMP nsDOMMozSmsManager::GetMessageMoz(int32_t id, nsIDOMDOMRequest * *_retval)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* nsIDOMMozSmsRequest delete (in jsval param); */
-NS_IMETHODIMP nsDOMMozSmsManager::Delete(const JS::Value & param, nsIDOMMozSmsRequest * *_retval)
+/* nsIDOMDOMRequest delete (in jsval param); */
+NS_IMETHODIMP nsDOMMozSmsManager::Delete(const JS::Value & param, nsIDOMDOMRequest * *_retval)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* nsIDOMMozSmsRequest getMessages (in nsIDOMMozSmsFilter filter, in boolean reverse); */
-NS_IMETHODIMP nsDOMMozSmsManager::GetMessages(nsIDOMMozSmsFilter *filter, bool reverse, nsIDOMMozSmsRequest * *_retval)
+/* nsIDOMDOMCursor getMessages (in nsIDOMMozSmsFilter filter, in boolean reverse); */
+NS_IMETHODIMP nsDOMMozSmsManager::GetMessages(nsIDOMMozSmsFilter *filter, bool reverse, nsIDOMDOMCursor * *_retval)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* nsIDOMMozSmsRequest markMessageRead (in long id, in boolean aValue); */
-NS_IMETHODIMP nsDOMMozSmsManager::MarkMessageRead(int32_t id, bool aValue, nsIDOMMozSmsRequest * *_retval)
+/* nsIDOMDOMRequest markMessageRead (in long id, in boolean aValue); */
+NS_IMETHODIMP nsDOMMozSmsManager::MarkMessageRead(int32_t id, bool aValue, nsIDOMDOMRequest * *_retval)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* nsIDOMMozSmsRequest getThreadList (); */
-NS_IMETHODIMP nsDOMMozSmsManager::GetThreadList(nsIDOMMozSmsRequest * *_retval)
+/* nsIDOMDOMCursor getThreads (); */
+NS_IMETHODIMP nsDOMMozSmsManager::GetThreads(nsIDOMDOMCursor * *_retval)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/xpcom/base/nsIConsoleMessage.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/xpcom/base/nsIConsoleMessage.idl
  */
 
 #ifndef __gen_nsIConsoleMessage_h__
@@ -89,6 +89,5 @@ NS_IMETHODIMP nsConsoleMessage::GetMessageMoz(PRUnichar * *aMessage)
 
 #define NS_CONSOLEMESSAGE_CID \
 { 0x56c9d666, 0x1dd2, 0x11b2, { 0xb4, 0x3c, 0xa8, 0x4b, 0xf3, 0xb3, 0xec, 0xbb }}
-#define NS_CONSOLEMESSAGE_CONTRACTID "@mozilla.org/consolemessage;1"
 
 #endif /* __gen_nsIConsoleMessage_h__ */

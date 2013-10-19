@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/activities/interfaces/nsIActivityProxy.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/activities/interfaces/nsIActivityProxy.idl
  */
 
 #ifndef __gen_nsIActivityProxy_h__
@@ -14,27 +14,25 @@
 #ifndef NS_NO_VTABLE
 #define NS_NO_VTABLE
 #endif
-class nsIDOMMozActivity; /* forward declaration */
-
 class nsIDOMMozActivityOptions; /* forward declaration */
 
 class nsIDOMWindow; /* forward declaration */
 
 
 /* starting interface:    nsIActivityProxy */
-#define NS_IACTIVITYPROXY_IID_STR "3f9e0695-f466-4111-a8fa-ed5c0751c42b"
+#define NS_IACTIVITYPROXY_IID_STR "c7a258f7-26a6-46c6-a887-a6c936034f98"
 
 #define NS_IACTIVITYPROXY_IID \
-  {0x3f9e0695, 0xf466, 0x4111, \
-    { 0xa8, 0xfa, 0xed, 0x5c, 0x07, 0x51, 0xc4, 0x2b }}
+  {0xc7a258f7, 0x26a6, 0x46c6, \
+    { 0xa8, 0x87, 0xa6, 0xc9, 0x36, 0x03, 0x4f, 0x98 }}
 
 class NS_NO_VTABLE nsIActivityProxy : public nsISupports {
  public: 
 
   NS_DECLARE_STATIC_IID_ACCESSOR(NS_IACTIVITYPROXY_IID)
 
-  /* void startActivity (in nsIDOMMozActivity activity, in nsIDOMMozActivityOptions options, in nsIDOMWindow window); */
-  NS_IMETHOD StartActivity(nsIDOMMozActivity *activity, nsIDOMMozActivityOptions *options, nsIDOMWindow *window) = 0;
+  /* void startActivity (in nsISupports activity, in nsIDOMMozActivityOptions options, in nsIDOMWindow window); */
+  NS_IMETHOD StartActivity(nsISupports *activity, nsIDOMMozActivityOptions *options, nsIDOMWindow *window) = 0;
 
   /* void cleanup (); */
   NS_IMETHOD Cleanup(void) = 0;
@@ -45,17 +43,17 @@ class NS_NO_VTABLE nsIActivityProxy : public nsISupports {
 
 /* Use this macro when declaring classes that implement this interface. */
 #define NS_DECL_NSIACTIVITYPROXY \
-  NS_IMETHOD StartActivity(nsIDOMMozActivity *activity, nsIDOMMozActivityOptions *options, nsIDOMWindow *window); \
+  NS_IMETHOD StartActivity(nsISupports *activity, nsIDOMMozActivityOptions *options, nsIDOMWindow *window); \
   NS_IMETHOD Cleanup(void); 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object. */
 #define NS_FORWARD_NSIACTIVITYPROXY(_to) \
-  NS_IMETHOD StartActivity(nsIDOMMozActivity *activity, nsIDOMMozActivityOptions *options, nsIDOMWindow *window) { return _to StartActivity(activity, options, window); } \
+  NS_IMETHOD StartActivity(nsISupports *activity, nsIDOMMozActivityOptions *options, nsIDOMWindow *window) { return _to StartActivity(activity, options, window); } \
   NS_IMETHOD Cleanup(void) { return _to Cleanup(); } 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object in a safe way. */
 #define NS_FORWARD_SAFE_NSIACTIVITYPROXY(_to) \
-  NS_IMETHOD StartActivity(nsIDOMMozActivity *activity, nsIDOMMozActivityOptions *options, nsIDOMWindow *window) { return !_to ? NS_ERROR_NULL_POINTER : _to->StartActivity(activity, options, window); } \
+  NS_IMETHOD StartActivity(nsISupports *activity, nsIDOMMozActivityOptions *options, nsIDOMWindow *window) { return !_to ? NS_ERROR_NULL_POINTER : _to->StartActivity(activity, options, window); } \
   NS_IMETHOD Cleanup(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->Cleanup(); } 
 
 #if 0
@@ -90,8 +88,8 @@ nsActivityProxy::~nsActivityProxy()
   /* destructor code */
 }
 
-/* void startActivity (in nsIDOMMozActivity activity, in nsIDOMMozActivityOptions options, in nsIDOMWindow window); */
-NS_IMETHODIMP nsActivityProxy::StartActivity(nsIDOMMozActivity *activity, nsIDOMMozActivityOptions *options, nsIDOMWindow *window)
+/* void startActivity (in nsISupports activity, in nsIDOMMozActivityOptions options, in nsIDOMWindow window); */
+NS_IMETHODIMP nsActivityProxy::StartActivity(nsISupports *activity, nsIDOMMozActivityOptions *options, nsIDOMWindow *window)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

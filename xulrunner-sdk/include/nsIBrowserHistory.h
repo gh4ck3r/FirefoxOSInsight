@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/toolkit/components/places/nsIBrowserHistory.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/toolkit/components/places/nsIBrowserHistory.idl
  */
 
 #ifndef __gen_nsIBrowserHistory_h__
@@ -20,13 +20,13 @@
 #endif
 
 /* starting interface:    nsIBrowserHistory */
-#define NS_IBROWSERHISTORY_IID_STR "d176f8e8-383f-4109-812d-cce015e2d804"
+#define NS_IBROWSERHISTORY_IID_STR "20d31479-38de-49f4-9300-566d6e834c66"
 
 #define NS_IBROWSERHISTORY_IID \
-  {0xd176f8e8, 0x383f, 0x4109, \
-    { 0x81, 0x2d, 0xcc, 0xe0, 0x15, 0xe2, 0xd8, 0x04 }}
+  {0x20d31479, 0x38de, 0x49f4, \
+    { 0x93, 0x00, 0x56, 0x6d, 0x6e, 0x83, 0x4c, 0x66 }}
 
-class NS_NO_VTABLE nsIBrowserHistory : public nsIGlobalHistory2 {
+class NS_NO_VTABLE nsIBrowserHistory : public nsISupports {
  public: 
 
   NS_DECLARE_STATIC_IID_ACCESSOR(NS_IBROWSERHISTORY_IID)
@@ -49,12 +49,6 @@ class NS_NO_VTABLE nsIBrowserHistory : public nsIGlobalHistory2 {
   /* void removeAllPages (); */
   NS_IMETHOD RemoveAllPages(void) = 0;
 
-  /* void markPageAsTyped (in nsIURI aURI); */
-  NS_IMETHOD MarkPageAsTyped(nsIURI *aURI) = 0;
-
-  /* void markPageAsFollowedLink (in nsIURI aURI); */
-  NS_IMETHOD MarkPageAsFollowedLink(nsIURI *aURI) = 0;
-
 };
 
   NS_DEFINE_STATIC_IID_ACCESSOR(nsIBrowserHistory, NS_IBROWSERHISTORY_IID)
@@ -66,9 +60,7 @@ class NS_NO_VTABLE nsIBrowserHistory : public nsIGlobalHistory2 {
   NS_IMETHOD RemovePagesFromHost(const nsACString & aHost, bool aEntireDomain); \
   NS_IMETHOD RemovePagesByTimeframe(PRTime aBeginTime, PRTime aEndTime); \
   NS_IMETHOD RemoveVisitsByTimeframe(PRTime aBeginTime, PRTime aEndTime); \
-  NS_IMETHOD RemoveAllPages(void); \
-  NS_IMETHOD MarkPageAsTyped(nsIURI *aURI); \
-  NS_IMETHOD MarkPageAsFollowedLink(nsIURI *aURI); 
+  NS_IMETHOD RemoveAllPages(void); 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object. */
 #define NS_FORWARD_NSIBROWSERHISTORY(_to) \
@@ -77,9 +69,7 @@ class NS_NO_VTABLE nsIBrowserHistory : public nsIGlobalHistory2 {
   NS_IMETHOD RemovePagesFromHost(const nsACString & aHost, bool aEntireDomain) { return _to RemovePagesFromHost(aHost, aEntireDomain); } \
   NS_IMETHOD RemovePagesByTimeframe(PRTime aBeginTime, PRTime aEndTime) { return _to RemovePagesByTimeframe(aBeginTime, aEndTime); } \
   NS_IMETHOD RemoveVisitsByTimeframe(PRTime aBeginTime, PRTime aEndTime) { return _to RemoveVisitsByTimeframe(aBeginTime, aEndTime); } \
-  NS_IMETHOD RemoveAllPages(void) { return _to RemoveAllPages(); } \
-  NS_IMETHOD MarkPageAsTyped(nsIURI *aURI) { return _to MarkPageAsTyped(aURI); } \
-  NS_IMETHOD MarkPageAsFollowedLink(nsIURI *aURI) { return _to MarkPageAsFollowedLink(aURI); } 
+  NS_IMETHOD RemoveAllPages(void) { return _to RemoveAllPages(); } 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object in a safe way. */
 #define NS_FORWARD_SAFE_NSIBROWSERHISTORY(_to) \
@@ -88,9 +78,7 @@ class NS_NO_VTABLE nsIBrowserHistory : public nsIGlobalHistory2 {
   NS_IMETHOD RemovePagesFromHost(const nsACString & aHost, bool aEntireDomain) { return !_to ? NS_ERROR_NULL_POINTER : _to->RemovePagesFromHost(aHost, aEntireDomain); } \
   NS_IMETHOD RemovePagesByTimeframe(PRTime aBeginTime, PRTime aEndTime) { return !_to ? NS_ERROR_NULL_POINTER : _to->RemovePagesByTimeframe(aBeginTime, aEndTime); } \
   NS_IMETHOD RemoveVisitsByTimeframe(PRTime aBeginTime, PRTime aEndTime) { return !_to ? NS_ERROR_NULL_POINTER : _to->RemoveVisitsByTimeframe(aBeginTime, aEndTime); } \
-  NS_IMETHOD RemoveAllPages(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->RemoveAllPages(); } \
-  NS_IMETHOD MarkPageAsTyped(nsIURI *aURI) { return !_to ? NS_ERROR_NULL_POINTER : _to->MarkPageAsTyped(aURI); } \
-  NS_IMETHOD MarkPageAsFollowedLink(nsIURI *aURI) { return !_to ? NS_ERROR_NULL_POINTER : _to->MarkPageAsFollowedLink(aURI); } 
+  NS_IMETHOD RemoveAllPages(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->RemoveAllPages(); } 
 
 #if 0
 /* Use the code below as a template for the implementation class for this interface. */
@@ -156,18 +144,6 @@ NS_IMETHODIMP nsBrowserHistory::RemoveVisitsByTimeframe(PRTime aBeginTime, PRTim
 
 /* void removeAllPages (); */
 NS_IMETHODIMP nsBrowserHistory::RemoveAllPages()
-{
-    return NS_ERROR_NOT_IMPLEMENTED;
-}
-
-/* void markPageAsTyped (in nsIURI aURI); */
-NS_IMETHODIMP nsBrowserHistory::MarkPageAsTyped(nsIURI *aURI)
-{
-    return NS_ERROR_NOT_IMPLEMENTED;
-}
-
-/* void markPageAsFollowedLink (in nsIURI aURI); */
-NS_IMETHODIMP nsBrowserHistory::MarkPageAsFollowedLink(nsIURI *aURI)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

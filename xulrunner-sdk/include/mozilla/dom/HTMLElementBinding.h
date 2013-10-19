@@ -8,7 +8,6 @@
 #include "mozilla/dom/DOMJSClass.h"
 #include "mozilla/dom/DOMJSProxyHandler.h"
 
-class XPCWrappedNativeScope;
 class nsGenericHTMLElement;
 
 namespace mozilla {
@@ -18,7 +17,6 @@ class HTMLUnknownElement;
 
 } // namespace dom
 } // namespace mozilla
-
 
 namespace mozilla {
 namespace dom {
@@ -69,9 +67,9 @@ namespace HTMLElementBinding {
   extern const NativePropertyHooks sNativePropertyHooks;
 
   void
-  CreateInterfaceObjects(JSContext* aCx, JSObject* aGlobal, JSObject** protoAndIfaceArray);
+  CreateInterfaceObjects(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JSObject** protoAndIfaceArray);
 
-  inline JSObject* GetProtoObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetProtoObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface prototype object for this class.  This will create the
@@ -79,21 +77,19 @@ namespace HTMLElementBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[prototypes::id::HTMLElement];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[prototypes::id::HTMLElement]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[prototypes::id::HTMLElement];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[prototypes::id::HTMLElement]);
   }
 
-  inline JSObject* GetConstructorObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetConstructorObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface object for this class.  This will create the object as
@@ -101,35 +97,30 @@ namespace HTMLElementBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[constructors::id::HTMLElement];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[constructors::id::HTMLElement]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[constructors::id::HTMLElement];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[constructors::id::HTMLElement]);
   }
 
   JSObject*
-  DefineDOMInterface(JSContext* aCx, JSObject* aGlobal, bool* aEnabled);
-
-  bool
-  PrefEnabled();
+  DefineDOMInterface(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JS::Handle<jsid> id, bool* aEnabled);
 
   extern DOMJSClass Class;
 
   JSObject*
-  Wrap(JSContext* aCx, JSObject* aScope, nsGenericHTMLElement* aObject, nsWrapperCache* aCache, bool* aTriedToWrap);
+  Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, nsGenericHTMLElement* aObject, nsWrapperCache* aCache);
 
   template <class T>
-  inline JSObject* Wrap(JSContext* aCx, JSObject* aScope, T* aObject, bool* aTriedToWrap)
+  inline JSObject* Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, T* aObject)
   {
-    return Wrap(aCx, aScope, aObject, aObject, aTriedToWrap);
+    return Wrap(aCx, aScope, aObject, aObject);
   }
 
 } // namespace HTMLElementBinding
@@ -141,9 +132,9 @@ namespace HTMLUnknownElementBinding {
   extern const NativePropertyHooks sNativePropertyHooks;
 
   void
-  CreateInterfaceObjects(JSContext* aCx, JSObject* aGlobal, JSObject** protoAndIfaceArray);
+  CreateInterfaceObjects(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JSObject** protoAndIfaceArray);
 
-  inline JSObject* GetProtoObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetProtoObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface prototype object for this class.  This will create the
@@ -151,21 +142,19 @@ namespace HTMLUnknownElementBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[prototypes::id::HTMLUnknownElement];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[prototypes::id::HTMLUnknownElement]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[prototypes::id::HTMLUnknownElement];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[prototypes::id::HTMLUnknownElement]);
   }
 
-  inline JSObject* GetConstructorObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetConstructorObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface object for this class.  This will create the object as
@@ -173,32 +162,30 @@ namespace HTMLUnknownElementBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[constructors::id::HTMLUnknownElement];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[constructors::id::HTMLUnknownElement]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[constructors::id::HTMLUnknownElement];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[constructors::id::HTMLUnknownElement]);
   }
 
   JSObject*
-  DefineDOMInterface(JSContext* aCx, JSObject* aGlobal, bool* aEnabled);
+  DefineDOMInterface(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JS::Handle<jsid> id, bool* aEnabled);
 
   extern DOMJSClass Class;
 
   JSObject*
-  Wrap(JSContext* aCx, JSObject* aScope, mozilla::dom::HTMLUnknownElement* aObject, nsWrapperCache* aCache, bool* aTriedToWrap);
+  Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, mozilla::dom::HTMLUnknownElement* aObject, nsWrapperCache* aCache);
 
   template <class T>
-  inline JSObject* Wrap(JSContext* aCx, JSObject* aScope, T* aObject, bool* aTriedToWrap)
+  inline JSObject* Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, T* aObject)
   {
-    return Wrap(aCx, aScope, aObject, aObject, aTriedToWrap);
+    return Wrap(aCx, aScope, aObject, aObject);
   }
 
 } // namespace HTMLUnknownElementBinding

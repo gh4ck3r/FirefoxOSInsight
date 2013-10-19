@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/core/nsIDOMDocumentType.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/core/nsIDOMDocumentType.idl
  */
 
 #ifndef __gen_nsIDOMDocumentType_h__
@@ -16,11 +16,11 @@
 #endif
 
 /* starting interface:    nsIDOMDocumentType */
-#define NS_IDOMDOCUMENTTYPE_IID_STR "ac5fd4c5-6c5d-4dfc-878c-7d661aa676de"
+#define NS_IDOMDOCUMENTTYPE_IID_STR "aa7d28b2-7122-422d-8fcf-634771fb9ac1"
 
 #define NS_IDOMDOCUMENTTYPE_IID \
-  {0xac5fd4c5, 0x6c5d, 0x4dfc, \
-    { 0x87, 0x8c, 0x7d, 0x66, 0x1a, 0xa6, 0x76, 0xde }}
+  {0xaa7d28b2, 0x7122, 0x422d, \
+    { 0x8f, 0xcf, 0x63, 0x47, 0x71, 0xfb, 0x9a, 0xc1 }}
 
 class NS_NO_VTABLE nsIDOMDocumentType : public nsIDOMNode {
  public: 
@@ -39,6 +39,9 @@ class NS_NO_VTABLE nsIDOMDocumentType : public nsIDOMNode {
   /* readonly attribute DOMString internalSubset; */
   NS_IMETHOD GetInternalSubset(nsAString & aInternalSubset) = 0;
 
+  /* [binaryname(MozRemove)] void remove (); */
+  NS_IMETHOD MozRemove(void) = 0;
+
 };
 
   NS_DEFINE_STATIC_IID_ACCESSOR(nsIDOMDocumentType, NS_IDOMDOCUMENTTYPE_IID)
@@ -48,21 +51,24 @@ class NS_NO_VTABLE nsIDOMDocumentType : public nsIDOMNode {
   NS_IMETHOD GetName(nsAString & aName); \
   NS_IMETHOD GetPublicId(nsAString & aPublicId); \
   NS_IMETHOD GetSystemId(nsAString & aSystemId); \
-  NS_IMETHOD GetInternalSubset(nsAString & aInternalSubset); 
+  NS_IMETHOD GetInternalSubset(nsAString & aInternalSubset); \
+  NS_IMETHOD MozRemove(void); 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object. */
 #define NS_FORWARD_NSIDOMDOCUMENTTYPE(_to) \
   NS_IMETHOD GetName(nsAString & aName) { return _to GetName(aName); } \
   NS_IMETHOD GetPublicId(nsAString & aPublicId) { return _to GetPublicId(aPublicId); } \
   NS_IMETHOD GetSystemId(nsAString & aSystemId) { return _to GetSystemId(aSystemId); } \
-  NS_IMETHOD GetInternalSubset(nsAString & aInternalSubset) { return _to GetInternalSubset(aInternalSubset); } 
+  NS_IMETHOD GetInternalSubset(nsAString & aInternalSubset) { return _to GetInternalSubset(aInternalSubset); } \
+  NS_IMETHOD MozRemove(void) { return _to MozRemove(); } 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object in a safe way. */
 #define NS_FORWARD_SAFE_NSIDOMDOCUMENTTYPE(_to) \
   NS_IMETHOD GetName(nsAString & aName) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetName(aName); } \
   NS_IMETHOD GetPublicId(nsAString & aPublicId) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetPublicId(aPublicId); } \
   NS_IMETHOD GetSystemId(nsAString & aSystemId) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetSystemId(aSystemId); } \
-  NS_IMETHOD GetInternalSubset(nsAString & aInternalSubset) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetInternalSubset(aInternalSubset); } 
+  NS_IMETHOD GetInternalSubset(nsAString & aInternalSubset) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetInternalSubset(aInternalSubset); } \
+  NS_IMETHOD MozRemove(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->MozRemove(); } 
 
 #if 0
 /* Use the code below as a template for the implementation class for this interface. */
@@ -116,6 +122,12 @@ NS_IMETHODIMP nsDOMDocumentType::GetSystemId(nsAString & aSystemId)
 
 /* readonly attribute DOMString internalSubset; */
 NS_IMETHODIMP nsDOMDocumentType::GetInternalSubset(nsAString & aInternalSubset)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* [binaryname(MozRemove)] void remove (); */
+NS_IMETHODIMP nsDOMDocumentType::MozRemove()
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

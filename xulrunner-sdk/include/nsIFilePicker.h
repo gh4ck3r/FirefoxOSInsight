@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/widget/nsIFilePicker.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/widget/nsIFilePicker.idl
  */
 
 #ifndef __gen_nsIFilePicker_h__
@@ -17,6 +17,8 @@
 class nsIFile; /* forward declaration */
 
 class nsIURI; /* forward declaration */
+
+class nsIDOMFile; /* forward declaration */
 
 class nsIDOMWindow; /* forward declaration */
 
@@ -97,11 +99,11 @@ NS_IMETHODIMP nsFilePickerShownCallback::Done(int16_t aResult)
 
 
 /* starting interface:    nsIFilePicker */
-#define NS_IFILEPICKER_IID_STR "60e2dfb6-3fc7-4a2c-8137-16bef44536fc"
+#define NS_IFILEPICKER_IID_STR "a6a24df3-d20a-4b6a-96d4-4736b10a51b7"
 
 #define NS_IFILEPICKER_IID \
-  {0x60e2dfb6, 0x3fc7, 0x4a2c, \
-    { 0x81, 0x37, 0x16, 0xbe, 0xf4, 0x45, 0x36, 0xfc }}
+  {0xa6a24df3, 0xd20a, 0x4b6a, \
+    { 0x96, 0xd4, 0x47, 0x36, 0xb1, 0x0a, 0x51, 0xb7 }}
 
 class NS_NO_VTABLE nsIFilePicker : public nsISupports {
  public: 
@@ -162,6 +164,12 @@ class NS_NO_VTABLE nsIFilePicker : public nsISupports {
   /* readonly attribute nsISimpleEnumerator files; */
   NS_IMETHOD GetFiles(nsISimpleEnumerator * *aFiles) = 0;
 
+  /* readonly attribute nsIDOMFile domfile; */
+  NS_IMETHOD GetDomfile(nsIDOMFile * *aDomfile) = 0;
+
+  /* readonly attribute nsISimpleEnumerator domfiles; */
+  NS_IMETHOD GetDomfiles(nsISimpleEnumerator * *aDomfiles) = 0;
+
   /* attribute boolean addToRecentDocs; */
   NS_IMETHOD GetAddToRecentDocs(bool *aAddToRecentDocs) = 0;
   NS_IMETHOD SetAddToRecentDocs(bool aAddToRecentDocs) = 0;
@@ -192,6 +200,8 @@ class NS_NO_VTABLE nsIFilePicker : public nsISupports {
   NS_IMETHOD GetFile(nsIFile * *aFile); \
   NS_IMETHOD GetFileURL(nsIURI * *aFileURL); \
   NS_IMETHOD GetFiles(nsISimpleEnumerator * *aFiles); \
+  NS_IMETHOD GetDomfile(nsIDOMFile * *aDomfile); \
+  NS_IMETHOD GetDomfiles(nsISimpleEnumerator * *aDomfiles); \
   NS_IMETHOD GetAddToRecentDocs(bool *aAddToRecentDocs); \
   NS_IMETHOD SetAddToRecentDocs(bool aAddToRecentDocs); \
   NS_IMETHOD Show(int16_t *_retval); \
@@ -213,6 +223,8 @@ class NS_NO_VTABLE nsIFilePicker : public nsISupports {
   NS_IMETHOD GetFile(nsIFile * *aFile) { return _to GetFile(aFile); } \
   NS_IMETHOD GetFileURL(nsIURI * *aFileURL) { return _to GetFileURL(aFileURL); } \
   NS_IMETHOD GetFiles(nsISimpleEnumerator * *aFiles) { return _to GetFiles(aFiles); } \
+  NS_IMETHOD GetDomfile(nsIDOMFile * *aDomfile) { return _to GetDomfile(aDomfile); } \
+  NS_IMETHOD GetDomfiles(nsISimpleEnumerator * *aDomfiles) { return _to GetDomfiles(aDomfiles); } \
   NS_IMETHOD GetAddToRecentDocs(bool *aAddToRecentDocs) { return _to GetAddToRecentDocs(aAddToRecentDocs); } \
   NS_IMETHOD SetAddToRecentDocs(bool aAddToRecentDocs) { return _to SetAddToRecentDocs(aAddToRecentDocs); } \
   NS_IMETHOD Show(int16_t *_retval) { return _to Show(_retval); } \
@@ -234,6 +246,8 @@ class NS_NO_VTABLE nsIFilePicker : public nsISupports {
   NS_IMETHOD GetFile(nsIFile * *aFile) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetFile(aFile); } \
   NS_IMETHOD GetFileURL(nsIURI * *aFileURL) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetFileURL(aFileURL); } \
   NS_IMETHOD GetFiles(nsISimpleEnumerator * *aFiles) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetFiles(aFiles); } \
+  NS_IMETHOD GetDomfile(nsIDOMFile * *aDomfile) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetDomfile(aDomfile); } \
+  NS_IMETHOD GetDomfiles(nsISimpleEnumerator * *aDomfiles) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetDomfiles(aDomfiles); } \
   NS_IMETHOD GetAddToRecentDocs(bool *aAddToRecentDocs) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetAddToRecentDocs(aAddToRecentDocs); } \
   NS_IMETHOD SetAddToRecentDocs(bool aAddToRecentDocs) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetAddToRecentDocs(aAddToRecentDocs); } \
   NS_IMETHOD Show(int16_t *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->Show(_retval); } \
@@ -343,6 +357,18 @@ NS_IMETHODIMP nsFilePicker::GetFileURL(nsIURI * *aFileURL)
 
 /* readonly attribute nsISimpleEnumerator files; */
 NS_IMETHODIMP nsFilePicker::GetFiles(nsISimpleEnumerator * *aFiles)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* readonly attribute nsIDOMFile domfile; */
+NS_IMETHODIMP nsFilePicker::GetDomfile(nsIDOMFile * *aDomfile)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* readonly attribute nsISimpleEnumerator domfiles; */
+NS_IMETHODIMP nsFilePicker::GetDomfiles(nsISimpleEnumerator * *aDomfiles)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

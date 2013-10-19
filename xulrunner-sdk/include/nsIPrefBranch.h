@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/modules/libpref/public/nsIPrefBranch.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/modules/libpref/public/nsIPrefBranch.idl
  */
 
 #ifndef __gen_nsIPrefBranch_h__
@@ -338,7 +338,6 @@ NS_IMETHODIMP nsPrefBranch::RemoveObserver(const char * aDomain, nsIObserver *aO
 
 
 #define NS_PREFBRANCH_CONTRACTID "@mozilla.org/preferencesbranch;1"
-#define NS_PREFBRANCH_CLASSNAME "Preferences Branch"
 /**
  * Notification sent when a preference changes.
  */

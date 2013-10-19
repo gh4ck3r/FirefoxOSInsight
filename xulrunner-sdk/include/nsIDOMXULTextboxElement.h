@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/xul/nsIDOMXULTextboxElement.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/xul/nsIDOMXULTextboxElement.idl
  */
 
 #ifndef __gen_nsIDOMXULTextboxElement_h__
@@ -18,11 +18,11 @@ class nsIDOMHTMLInputElement; /* forward declaration */
 
 
 /* starting interface:    nsIDOMXULTextBoxElement */
-#define NS_IDOMXULTEXTBOXELEMENT_IID_STR "1cdd14ac-6707-43d8-86de-791d21cdafed"
+#define NS_IDOMXULTEXTBOXELEMENT_IID_STR "7edd8215-5155-4845-a02f-dc2c08645cb9"
 
 #define NS_IDOMXULTEXTBOXELEMENT_IID \
-  {0x1cdd14ac, 0x6707, 0x43d8, \
-    { 0x86, 0xde, 0x79, 0x1d, 0x21, 0xcd, 0xaf, 0xed }}
+  {0x7edd8215, 0x5155, 0x4845, \
+    { 0xa0, 0x2f, 0xdc, 0x2c, 0x08, 0x64, 0x5c, 0xb9 }}
 
 class NS_NO_VTABLE nsIDOMXULTextBoxElement : public nsIDOMXULControlElement {
  public: 

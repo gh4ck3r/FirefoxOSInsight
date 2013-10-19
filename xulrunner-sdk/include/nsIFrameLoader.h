@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/content/base/public/nsIFrameLoader.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/content/base/public/nsIFrameLoader.idl
  */
 
 #ifndef __gen_nsIFrameLoader_h__
@@ -10,10 +10,15 @@
 #include "nsISupports.h"
 #endif
 
+#include "mozilla/Assertions.h"
+#include "mozilla/DebugOnly.h"
+
 /* For IDL files that don't want to include root IDL files. */
 #ifndef NS_NO_VTABLE
 #define NS_NO_VTABLE
 #endif
+class nsFrameLoader; /* forward declaration */
+
 class nsIDocShell; /* forward declaration */
 
 class nsIURI; /* forward declaration */
@@ -27,6 +32,8 @@ class nsIMessageSender; /* forward declaration */
 class nsIVariant; /* forward declaration */
 
 class nsIDOMElement; /* forward declaration */
+
+class nsITabParent; /* forward declaration */
 
 typedef uint64_t  nsContentViewId;
 
@@ -298,11 +305,11 @@ NS_IMETHODIMP nsContentViewManager::GetRootContentView(nsIContentView * *aRootCo
 
 
 /* starting interface:    nsIFrameLoader */
-#define NS_IFRAMELOADER_IID_STR "a4db652e-e3b0-4345-8107-cf6a30486759"
+#define NS_IFRAMELOADER_IID_STR "e4333e51-f2fa-4fdd-becd-75d000703355"
 
 #define NS_IFRAMELOADER_IID \
-  {0xa4db652e, 0xe3b0, 0x4345, \
-    { 0x81, 0x07, 0xcf, 0x6a, 0x30, 0x48, 0x67, 0x59 }}
+  {0xe4333e51, 0xf2fa, 0x4fdd, \
+    { 0xbe, 0xcd, 0x75, 0xd0, 0x00, 0x70, 0x33, 0x55 }}
 
 class NS_NO_VTABLE nsIFrameLoader : public nsISupports {
  public: 
@@ -311,6 +318,9 @@ class NS_NO_VTABLE nsIFrameLoader : public nsISupports {
 
   /* readonly attribute nsIDocShell docShell; */
   NS_IMETHOD GetDocShell(nsIDocShell * *aDocShell) = 0;
+
+  /* readonly attribute nsITabParent tabParent; */
+  NS_IMETHOD GetTabParent(nsITabParent * *aTabParent) = 0;
 
   /* void loadFrame (); */
   NS_IMETHOD LoadFrame(void) = 0;
@@ -378,6 +388,17 @@ class NS_NO_VTABLE nsIFrameLoader : public nsISupports {
   /* readonly attribute nsIDOMElement ownerElement; */
   NS_IMETHOD GetOwnerElement(nsIDOMElement * *aOwnerElement) = 0;
 
+  /* [infallible] attribute boolean visible; */
+  NS_IMETHOD GetVisible(bool *aVisible) = 0;
+  inline bool GetVisible()
+  {
+    bool result;
+    mozilla::DebugOnly<nsresult> rv = GetVisible(&result);
+    MOZ_ASSERT(NS_SUCCEEDED(rv));
+    return result;
+  }
+  NS_IMETHOD SetVisible(bool aVisible) = 0;
+
 };
 
   NS_DEFINE_STATIC_IID_ACCESSOR(nsIFrameLoader, NS_IFRAMELOADER_IID)
@@ -385,6 +406,7 @@ class NS_NO_VTABLE nsIFrameLoader : public nsISupports {
 /* Use this macro when declaring classes that implement this interface. */
 #define NS_DECL_NSIFRAMELOADER \
   NS_IMETHOD GetDocShell(nsIDocShell * *aDocShell); \
+  NS_IMETHOD GetTabParent(nsITabParent * *aTabParent); \
   NS_IMETHOD LoadFrame(void); \
   NS_IMETHOD LoadURI(nsIURI *aURI); \
   NS_IMETHOD Destroy(void); \
@@ -406,11 +428,14 @@ class NS_NO_VTABLE nsIFrameLoader : public nsISupports {
   NS_IMETHOD SetClipSubdocument(bool aClipSubdocument); \
   NS_IMETHOD GetClampScrollPosition(bool *aClampScrollPosition); \
   NS_IMETHOD SetClampScrollPosition(bool aClampScrollPosition); \
-  NS_IMETHOD GetOwnerElement(nsIDOMElement * *aOwnerElement); 
+  NS_IMETHOD GetOwnerElement(nsIDOMElement * *aOwnerElement); \
+  NS_IMETHOD GetVisible(bool *aVisible); \
+  NS_IMETHOD SetVisible(bool aVisible); 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object. */
 #define NS_FORWARD_NSIFRAMELOADER(_to) \
   NS_IMETHOD GetDocShell(nsIDocShell * *aDocShell) { return _to GetDocShell(aDocShell); } \
+  NS_IMETHOD GetTabParent(nsITabParent * *aTabParent) { return _to GetTabParent(aTabParent); } \
   NS_IMETHOD LoadFrame(void) { return _to LoadFrame(); } \
   NS_IMETHOD LoadURI(nsIURI *aURI) { return _to LoadURI(aURI); } \
   NS_IMETHOD Destroy(void) { return _to Destroy(); } \
@@ -432,11 +457,14 @@ class NS_NO_VTABLE nsIFrameLoader : public nsISupports {
   NS_IMETHOD SetClipSubdocument(bool aClipSubdocument) { return _to SetClipSubdocument(aClipSubdocument); } \
   NS_IMETHOD GetClampScrollPosition(bool *aClampScrollPosition) { return _to GetClampScrollPosition(aClampScrollPosition); } \
   NS_IMETHOD SetClampScrollPosition(bool aClampScrollPosition) { return _to SetClampScrollPosition(aClampScrollPosition); } \
-  NS_IMETHOD GetOwnerElement(nsIDOMElement * *aOwnerElement) { return _to GetOwnerElement(aOwnerElement); } 
+  NS_IMETHOD GetOwnerElement(nsIDOMElement * *aOwnerElement) { return _to GetOwnerElement(aOwnerElement); } \
+  NS_IMETHOD GetVisible(bool *aVisible) { return _to GetVisible(aVisible); } \
+  NS_IMETHOD SetVisible(bool aVisible) { return _to SetVisible(aVisible); } 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object in a safe way. */
 #define NS_FORWARD_SAFE_NSIFRAMELOADER(_to) \
   NS_IMETHOD GetDocShell(nsIDocShell * *aDocShell) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetDocShell(aDocShell); } \
+  NS_IMETHOD GetTabParent(nsITabParent * *aTabParent) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetTabParent(aTabParent); } \
   NS_IMETHOD LoadFrame(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->LoadFrame(); } \
   NS_IMETHOD LoadURI(nsIURI *aURI) { return !_to ? NS_ERROR_NULL_POINTER : _to->LoadURI(aURI); } \
   NS_IMETHOD Destroy(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->Destroy(); } \
@@ -458,7 +486,9 @@ class NS_NO_VTABLE nsIFrameLoader : public nsISupports {
   NS_IMETHOD SetClipSubdocument(bool aClipSubdocument) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetClipSubdocument(aClipSubdocument); } \
   NS_IMETHOD GetClampScrollPosition(bool *aClampScrollPosition) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetClampScrollPosition(aClampScrollPosition); } \
   NS_IMETHOD SetClampScrollPosition(bool aClampScrollPosition) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetClampScrollPosition(aClampScrollPosition); } \
-  NS_IMETHOD GetOwnerElement(nsIDOMElement * *aOwnerElement) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetOwnerElement(aOwnerElement); } 
+  NS_IMETHOD GetOwnerElement(nsIDOMElement * *aOwnerElement) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetOwnerElement(aOwnerElement); } \
+  NS_IMETHOD GetVisible(bool *aVisible) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetVisible(aVisible); } \
+  NS_IMETHOD SetVisible(bool aVisible) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetVisible(aVisible); } 
 
 #if 0
 /* Use the code below as a template for the implementation class for this interface. */
@@ -494,6 +524,12 @@ nsFrameLoader::~nsFrameLoader()
 
 /* readonly attribute nsIDocShell docShell; */
 NS_IMETHODIMP nsFrameLoader::GetDocShell(nsIDocShell * *aDocShell)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* readonly attribute nsITabParent tabParent; */
+NS_IMETHODIMP nsFrameLoader::GetTabParent(nsITabParent * *aTabParent)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
@@ -620,9 +656,20 @@ NS_IMETHODIMP nsFrameLoader::GetOwnerElement(nsIDOMElement * *aOwnerElement)
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
+/* [infallible] attribute boolean visible; */
+NS_IMETHODIMP nsFrameLoader::GetVisible(bool *aVisible)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+NS_IMETHODIMP nsFrameLoader::SetVisible(bool aVisible)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
 /* End of implementation class template. */
 #endif
 
+class nsFrameLoader;
 
 /* starting interface:    nsIFrameLoaderOwner */
 #define NS_IFRAMELOADEROWNER_IID_STR "5879040e-83e9-40e3-b2bb-5ddf43b76e47"

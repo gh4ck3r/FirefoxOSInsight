@@ -8,7 +8,6 @@
 #include "mozilla/dom/DOMJSClass.h"
 #include "mozilla/dom/DOMJSProxyHandler.h"
 
-class XPCWrappedNativeScope;
 namespace mozilla {
 namespace dom {
 
@@ -16,7 +15,6 @@ class SVGComponentTransferFunctionElement;
 
 } // namespace dom
 } // namespace mozilla
-
 
 namespace mozilla {
 namespace dom {
@@ -50,9 +48,9 @@ namespace SVGComponentTransferFunctionElementBinding {
   extern const NativePropertyHooks sNativePropertyHooks;
 
   void
-  CreateInterfaceObjects(JSContext* aCx, JSObject* aGlobal, JSObject** protoAndIfaceArray);
+  CreateInterfaceObjects(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JSObject** protoAndIfaceArray);
 
-  inline JSObject* GetProtoObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetProtoObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface prototype object for this class.  This will create the
@@ -60,21 +58,19 @@ namespace SVGComponentTransferFunctionElementBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[prototypes::id::SVGComponentTransferFunctionElement];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[prototypes::id::SVGComponentTransferFunctionElement]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[prototypes::id::SVGComponentTransferFunctionElement];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[prototypes::id::SVGComponentTransferFunctionElement]);
   }
 
-  inline JSObject* GetConstructorObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetConstructorObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface object for this class.  This will create the object as
@@ -82,22 +78,20 @@ namespace SVGComponentTransferFunctionElementBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[constructors::id::SVGComponentTransferFunctionElement];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[constructors::id::SVGComponentTransferFunctionElement]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[constructors::id::SVGComponentTransferFunctionElement];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[constructors::id::SVGComponentTransferFunctionElement]);
   }
 
   JSObject*
-  DefineDOMInterface(JSContext* aCx, JSObject* aGlobal, bool* aEnabled);
+  DefineDOMInterface(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JS::Handle<jsid> id, bool* aEnabled);
 
 } // namespace SVGComponentTransferFunctionElementBinding
 

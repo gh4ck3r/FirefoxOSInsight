@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/caps/idl/nsIPrincipal.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/caps/idl/nsIPrincipal.idl
  */
 
 #ifndef __gen_nsIPrincipal_h__
@@ -33,7 +33,7 @@ class nsIContentSecurityPolicy; /* forward declaration */
   {0xdbda8bb0, 0x3023, 0x4aec, \
     { 0xad, 0x98, 0x8e, 0x99, 0x31, 0xa2, 0x9d, 0x70 }}
 
-class NS_NO_VTABLE nsIPrincipal : public nsISerializable {
+class nsIPrincipal : public nsISerializable {
  public: 
 
   NS_DECLARE_STATIC_IID_ACCESSOR(NS_IPRINCIPAL_IID)
@@ -44,7 +44,15 @@ class NS_NO_VTABLE nsIPrincipal : public nsISerializable {
   /* boolean equalsIgnoringDomain (in nsIPrincipal other); */
   NS_IMETHOD EqualsIgnoringDomain(nsIPrincipal *other, bool *_retval) = 0;
 
-  /* [noscript] readonly attribute unsigned long hashValue; */
+     inline bool Equals(nsIPrincipal* aOther) {
+      bool equal = false;
+      return NS_SUCCEEDED(Equals(aOther, &equal)) && equal;
+    }
+    inline bool EqualsIgnoringDomain(nsIPrincipal* aOther) {
+      bool equal = false;
+      return NS_SUCCEEDED(EqualsIgnoringDomain(aOther, &equal)) && equal;
+    }
+      /* [noscript] readonly attribute unsigned long hashValue; */
   NS_IMETHOD GetHashValue(uint32_t *aHashValue) = 0;
 
   /* [noscript] attribute voidPtr securityPolicy; */
@@ -67,7 +75,15 @@ class NS_NO_VTABLE nsIPrincipal : public nsISerializable {
   /* boolean subsumesIgnoringDomain (in nsIPrincipal other); */
   NS_IMETHOD SubsumesIgnoringDomain(nsIPrincipal *other, bool *_retval) = 0;
 
-  /* void checkMayLoad (in nsIURI uri, in boolean report, in boolean allowIfInheritsPrincipal); */
+     inline bool Subsumes(nsIPrincipal* aOther) {
+      bool subsumes = false;
+      return NS_SUCCEEDED(Subsumes(aOther, &subsumes)) && subsumes;
+    }
+    inline bool SubsumesIgnoringDomain(nsIPrincipal* aOther) {
+      bool subsumes = false;
+      return NS_SUCCEEDED(SubsumesIgnoringDomain(aOther, &subsumes)) && subsumes;
+    }
+      /* void checkMayLoad (in nsIURI uri, in boolean report, in boolean allowIfInheritsPrincipal); */
   NS_IMETHOD CheckMayLoad(nsIURI *uri, bool report, bool allowIfInheritsPrincipal) = 0;
 
   /* [noscript] attribute nsIContentSecurityPolicy csp; */

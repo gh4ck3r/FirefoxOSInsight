@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/toolkit/components/passwordmgr/nsILoginManager.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/toolkit/components/passwordmgr/nsILoginManager.idl
  */
 
 #ifndef __gen_nsILoginManager_h__
@@ -28,11 +28,11 @@ class nsIPropertyBag; /* forward declaration */
 
 
 /* starting interface:    nsILoginManager */
-#define NS_ILOGINMANAGER_IID_STR "1f02142f-7e3f-4d02-b3e0-495c5f83ad7d"
+#define NS_ILOGINMANAGER_IID_STR "338c8597-1e32-4682-b5c7-cf8142c0bd1d"
 
 #define NS_ILOGINMANAGER_IID \
-  {0x1f02142f, 0x7e3f, 0x4d02, \
-    { 0xb3, 0xe0, 0x49, 0x5c, 0x5f, 0x83, 0xad, 0x7d }}
+  {0x338c8597, 0x1e32, 0x4682, \
+    { 0xb5, 0xc7, 0xcf, 0x81, 0x42, 0xc0, 0xbd, 0x1d }}
 
 class NS_NO_VTABLE nsILoginManager : public nsISupports {
  public: 
@@ -81,6 +81,9 @@ class NS_NO_VTABLE nsILoginManager : public nsISupports {
   /* readonly attribute boolean uiBusy; */
   NS_IMETHOD GetUiBusy(bool *aUiBusy) = 0;
 
+  /* readonly attribute boolean isLoggedIn; */
+  NS_IMETHOD GetIsLoggedIn(bool *aIsLoggedIn) = 0;
+
 };
 
   NS_DEFINE_STATIC_IID_ACCESSOR(nsILoginManager, NS_ILOGINMANAGER_IID)
@@ -100,7 +103,8 @@ class NS_NO_VTABLE nsILoginManager : public nsISupports {
   NS_IMETHOD AutoCompleteSearch(const nsAString & aSearchString, nsIAutoCompleteResult *aPreviousResult, nsIDOMHTMLInputElement *aElement, nsIAutoCompleteResult * *_retval); \
   NS_IMETHOD FillForm(nsIDOMHTMLFormElement *aForm, bool *_retval); \
   NS_IMETHOD SearchLogins(uint32_t *count, nsIPropertyBag *matchData, nsILoginInfo * **logins); \
-  NS_IMETHOD GetUiBusy(bool *aUiBusy); 
+  NS_IMETHOD GetUiBusy(bool *aUiBusy); \
+  NS_IMETHOD GetIsLoggedIn(bool *aIsLoggedIn); 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object. */
 #define NS_FORWARD_NSILOGINMANAGER(_to) \
@@ -117,7 +121,8 @@ class NS_NO_VTABLE nsILoginManager : public nsISupports {
   NS_IMETHOD AutoCompleteSearch(const nsAString & aSearchString, nsIAutoCompleteResult *aPreviousResult, nsIDOMHTMLInputElement *aElement, nsIAutoCompleteResult * *_retval) { return _to AutoCompleteSearch(aSearchString, aPreviousResult, aElement, _retval); } \
   NS_IMETHOD FillForm(nsIDOMHTMLFormElement *aForm, bool *_retval) { return _to FillForm(aForm, _retval); } \
   NS_IMETHOD SearchLogins(uint32_t *count, nsIPropertyBag *matchData, nsILoginInfo * **logins) { return _to SearchLogins(count, matchData, logins); } \
-  NS_IMETHOD GetUiBusy(bool *aUiBusy) { return _to GetUiBusy(aUiBusy); } 
+  NS_IMETHOD GetUiBusy(bool *aUiBusy) { return _to GetUiBusy(aUiBusy); } \
+  NS_IMETHOD GetIsLoggedIn(bool *aIsLoggedIn) { return _to GetIsLoggedIn(aIsLoggedIn); } 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object in a safe way. */
 #define NS_FORWARD_SAFE_NSILOGINMANAGER(_to) \
@@ -134,7 +139,8 @@ class NS_NO_VTABLE nsILoginManager : public nsISupports {
   NS_IMETHOD AutoCompleteSearch(const nsAString & aSearchString, nsIAutoCompleteResult *aPreviousResult, nsIDOMHTMLInputElement *aElement, nsIAutoCompleteResult * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->AutoCompleteSearch(aSearchString, aPreviousResult, aElement, _retval); } \
   NS_IMETHOD FillForm(nsIDOMHTMLFormElement *aForm, bool *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->FillForm(aForm, _retval); } \
   NS_IMETHOD SearchLogins(uint32_t *count, nsIPropertyBag *matchData, nsILoginInfo * **logins) { return !_to ? NS_ERROR_NULL_POINTER : _to->SearchLogins(count, matchData, logins); } \
-  NS_IMETHOD GetUiBusy(bool *aUiBusy) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetUiBusy(aUiBusy); } 
+  NS_IMETHOD GetUiBusy(bool *aUiBusy) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetUiBusy(aUiBusy); } \
+  NS_IMETHOD GetIsLoggedIn(bool *aIsLoggedIn) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetIsLoggedIn(aIsLoggedIn); } 
 
 #if 0
 /* Use the code below as a template for the implementation class for this interface. */
@@ -248,6 +254,12 @@ NS_IMETHODIMP nsLoginManager::SearchLogins(uint32_t *count, nsIPropertyBag *matc
 
 /* readonly attribute boolean uiBusy; */
 NS_IMETHODIMP nsLoginManager::GetUiBusy(bool *aUiBusy)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* readonly attribute boolean isLoggedIn; */
+NS_IMETHODIMP nsLoginManager::GetIsLoggedIn(bool *aIsLoggedIn)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

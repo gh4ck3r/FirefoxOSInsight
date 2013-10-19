@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/html/nsIDOMHTMLParagraphElement.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/html/nsIDOMHTMLParagraphElement.idl
  */
 
 #ifndef __gen_nsIDOMHTMLParagraphElement_h__
@@ -16,11 +16,11 @@
 #endif
 
 /* starting interface:    nsIDOMHTMLParagraphElement */
-#define NS_IDOMHTMLPARAGRAPHELEMENT_IID_STR "32840748-f8a8-414c-b0de-dd947e5b0bd0"
+#define NS_IDOMHTMLPARAGRAPHELEMENT_IID_STR "9be22a4b-4edc-4c37-9403-c9350671b86f"
 
 #define NS_IDOMHTMLPARAGRAPHELEMENT_IID \
-  {0x32840748, 0xf8a8, 0x414c, \
-    { 0xb0, 0xde, 0xdd, 0x94, 0x7e, 0x5b, 0x0b, 0xd0 }}
+  {0x9be22a4b, 0x4edc, 0x4c37, \
+    { 0x94, 0x03, 0xc9, 0x35, 0x06, 0x71, 0xb8, 0x6f }}
 
 class NS_NO_VTABLE nsIDOMHTMLParagraphElement : public nsIDOMHTMLElement {
  public: 

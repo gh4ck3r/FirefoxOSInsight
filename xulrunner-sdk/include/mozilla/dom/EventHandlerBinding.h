@@ -10,21 +10,19 @@
 #include "mozilla/dom/DOMJSClass.h"
 #include "mozilla/dom/DOMJSProxyHandler.h"
 
-class XPCWrappedNativeScope;
-class nsIDOMEvent;
-
-class nsIDOMEvent;
-
 class JSObject;
+class nsDOMEvent;
 
 namespace mozilla {
 namespace dom {
 
+class BeforeUnloadEventHandlerNonNull;
+class EventHandlerNonNull;
 class EventOrString;
+class OnErrorEventHandlerNonNull;
 
 } // namespace dom
 } // namespace mozilla
-
 
 namespace mozilla {
 namespace dom {
@@ -32,8 +30,8 @@ namespace dom {
 class EventHandlerNonNull : public CallbackFunction
 {
 public:
-  inline EventHandlerNonNull(JSContext* cx, JSObject* aOwner, JSObject* aCallback, bool* aInited)
-    : CallbackFunction(cx, aOwner, aCallback, aInited)
+  explicit inline EventHandlerNonNull(JSObject* aCallback)
+    : CallbackFunction(aCallback)
   {
   }
 
@@ -44,14 +42,15 @@ public:
 
   template <typename T>
   inline JS::Value
-  Call(const T& thisObj, nsIDOMEvent* event, ErrorResult& aRv)
+  Call(const T& thisObj, nsDOMEvent& event, ErrorResult& aRv, ExceptionHandling aExceptionHandling = eReportExceptions)
   {
-    CallSetup s(mCallback);
+    CallSetup s(CallbackPreserveColor(), aRv, aExceptionHandling);
     if (!s.GetContext()) {
       aRv.Throw(NS_ERROR_UNEXPECTED);
       return JS::UndefinedValue();
     }
-    JSObject* thisObjJS = WrapCallThisObject(s.GetContext(), mCallback, thisObj);
+    JS::Rooted<JSObject*> thisObjJS(s.GetContext(),
+      WrapCallThisObject(s.GetContext(), CallbackPreserveColor(), thisObj));
     if (!thisObjJS) {
       aRv.Throw(NS_ERROR_FAILURE);
       return JS::UndefinedValue();
@@ -60,26 +59,26 @@ public:
   }
 
   inline JS::Value
-  Call(nsIDOMEvent* event, ErrorResult& aRv)
+  Call(nsDOMEvent& event, ErrorResult& aRv, ExceptionHandling aExceptionHandling = eReportExceptions)
   {
-    CallSetup s(mCallback);
+    CallSetup s(CallbackPreserveColor(), aRv, aExceptionHandling);
     if (!s.GetContext()) {
       aRv.Throw(NS_ERROR_UNEXPECTED);
       return JS::UndefinedValue();
     }
-    return Call(s.GetContext(), nullptr, event, aRv);
+    return Call(s.GetContext(), JS::NullPtr(), event, aRv);
   }
 
 private:
-  JS::Value Call(JSContext* cx, JSObject* aThisObj, nsIDOMEvent* event, ErrorResult& aRv);
+  JS::Value Call(JSContext* cx, JS::Handle<JSObject*> aThisObj, nsDOMEvent& event, ErrorResult& aRv);
 };
 
 
 class BeforeUnloadEventHandlerNonNull : public CallbackFunction
 {
 public:
-  inline BeforeUnloadEventHandlerNonNull(JSContext* cx, JSObject* aOwner, JSObject* aCallback, bool* aInited)
-    : CallbackFunction(cx, aOwner, aCallback, aInited)
+  explicit inline BeforeUnloadEventHandlerNonNull(JSObject* aCallback)
+    : CallbackFunction(aCallback)
   {
   }
 
@@ -90,14 +89,15 @@ public:
 
   template <typename T>
   inline void
-  Call(const T& thisObj, nsIDOMEvent* event, nsString& retval, ErrorResult& aRv)
+  Call(const T& thisObj, nsDOMEvent& event, nsString& retval, ErrorResult& aRv, ExceptionHandling aExceptionHandling = eReportExceptions)
   {
-    CallSetup s(mCallback);
+    CallSetup s(CallbackPreserveColor(), aRv, aExceptionHandling);
     if (!s.GetContext()) {
       aRv.Throw(NS_ERROR_UNEXPECTED);
       return;
     }
-    JSObject* thisObjJS = WrapCallThisObject(s.GetContext(), mCallback, thisObj);
+    JS::Rooted<JSObject*> thisObjJS(s.GetContext(),
+      WrapCallThisObject(s.GetContext(), CallbackPreserveColor(), thisObj));
     if (!thisObjJS) {
       aRv.Throw(NS_ERROR_FAILURE);
       return;
@@ -106,26 +106,26 @@ public:
   }
 
   inline void
-  Call(nsIDOMEvent* event, nsString& retval, ErrorResult& aRv)
+  Call(nsDOMEvent& event, nsString& retval, ErrorResult& aRv, ExceptionHandling aExceptionHandling = eReportExceptions)
   {
-    CallSetup s(mCallback);
+    CallSetup s(CallbackPreserveColor(), aRv, aExceptionHandling);
     if (!s.GetContext()) {
       aRv.Throw(NS_ERROR_UNEXPECTED);
       return;
     }
-    return Call(s.GetContext(), nullptr, event, retval, aRv);
+    return Call(s.GetContext(), JS::NullPtr(), event, retval, aRv);
   }
 
 private:
-  void Call(JSContext* cx, JSObject* aThisObj, nsIDOMEvent* event, nsString& retval, ErrorResult& aRv);
+  void Call(JSContext* cx, JS::Handle<JSObject*> aThisObj, nsDOMEvent& event, nsString& retval, ErrorResult& aRv);
 };
 
 
 class OnErrorEventHandlerNonNull : public CallbackFunction
 {
 public:
-  inline OnErrorEventHandlerNonNull(JSContext* cx, JSObject* aOwner, JSObject* aCallback, bool* aInited)
-    : CallbackFunction(cx, aOwner, aCallback, aInited)
+  explicit inline OnErrorEventHandlerNonNull(JSObject* aCallback)
+    : CallbackFunction(aCallback)
   {
   }
 
@@ -136,14 +136,15 @@ public:
 
   template <typename T>
   inline bool
-  Call(const T& thisObj, const EventOrString& event, const Optional< nsAString >& source, const Optional< uint32_t >& lineno, const Optional< uint32_t >& column, ErrorResult& aRv)
+  Call(const T& thisObj, const EventOrString& event, const Optional<nsAString >& source, const Optional<uint32_t >& lineno, const Optional<uint32_t >& column, ErrorResult& aRv, ExceptionHandling aExceptionHandling = eReportExceptions)
   {
-    CallSetup s(mCallback);
+    CallSetup s(CallbackPreserveColor(), aRv, aExceptionHandling);
     if (!s.GetContext()) {
       aRv.Throw(NS_ERROR_UNEXPECTED);
       return bool(0);
     }
-    JSObject* thisObjJS = WrapCallThisObject(s.GetContext(), mCallback, thisObj);
+    JS::Rooted<JSObject*> thisObjJS(s.GetContext(),
+      WrapCallThisObject(s.GetContext(), CallbackPreserveColor(), thisObj));
     if (!thisObjJS) {
       aRv.Throw(NS_ERROR_FAILURE);
       return bool(0);
@@ -152,18 +153,18 @@ public:
   }
 
   inline bool
-  Call(const EventOrString& event, const Optional< nsAString >& source, const Optional< uint32_t >& lineno, const Optional< uint32_t >& column, ErrorResult& aRv)
+  Call(const EventOrString& event, const Optional<nsAString >& source, const Optional<uint32_t >& lineno, const Optional<uint32_t >& column, ErrorResult& aRv, ExceptionHandling aExceptionHandling = eReportExceptions)
   {
-    CallSetup s(mCallback);
+    CallSetup s(CallbackPreserveColor(), aRv, aExceptionHandling);
     if (!s.GetContext()) {
       aRv.Throw(NS_ERROR_UNEXPECTED);
       return bool(0);
     }
-    return Call(s.GetContext(), nullptr, event, source, lineno, column, aRv);
+    return Call(s.GetContext(), JS::NullPtr(), event, source, lineno, column, aRv);
   }
 
 private:
-  bool Call(JSContext* cx, JSObject* aThisObj, const EventOrString& event, const Optional< nsAString >& source, const Optional< uint32_t >& lineno, const Optional< uint32_t >& column, ErrorResult& aRv);
+  bool Call(JSContext* cx, JS::Handle<JSObject*> aThisObj, const EventOrString& event, const Optional<nsAString >& source, const Optional<uint32_t >& lineno, const Optional<uint32_t >& column, ErrorResult& aRv);
 };
 
 

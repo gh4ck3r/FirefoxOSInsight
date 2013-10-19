@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/html/nsIDOMHTMLTextAreaElement.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/html/nsIDOMHTMLTextAreaElement.idl
  */
 
 #ifndef __gen_nsIDOMHTMLTextAreaElement_h__
@@ -20,11 +20,11 @@ class nsIDOMValidityState; /* forward declaration */
 
 
 /* starting interface:    nsIDOMHTMLTextAreaElement */
-#define NS_IDOMHTMLTEXTAREAELEMENT_IID_STR "2a395065-2d92-48c1-ac00-643de9ca681b"
+#define NS_IDOMHTMLTEXTAREAELEMENT_IID_STR "b7e1b86f-c98e-4658-81ce-ac29962f854a"
 
 #define NS_IDOMHTMLTEXTAREAELEMENT_IID \
-  {0x2a395065, 0x2d92, 0x48c1, \
-    { 0xac, 0x00, 0x64, 0x3d, 0xe9, 0xca, 0x68, 0x1b }}
+  {0xb7e1b86f, 0xc98e, 0x4658, \
+    { 0x81, 0xce, 0xac, 0x29, 0x96, 0x2f, 0x85, 0x4a }}
 
 class NS_NO_VTABLE nsIDOMHTMLTextAreaElement : public nsIDOMHTMLElement {
  public: 

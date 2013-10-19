@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/core/nsIDOMCDATASection.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/core/nsIDOMCDATASection.idl
  */
 
 #ifndef __gen_nsIDOMCDATASection_h__
@@ -16,11 +16,11 @@
 #endif
 
 /* starting interface:    nsIDOMCDATASection */
-#define NS_IDOMCDATASECTION_IID_STR "92cfb4d4-7456-44fa-9c76-c70fdee78e2f"
+#define NS_IDOMCDATASECTION_IID_STR "0f401429-30b3-46de-b1bf-d7d5fa7563f9"
 
 #define NS_IDOMCDATASECTION_IID \
-  {0x92cfb4d4, 0x7456, 0x44fa, \
-    { 0x9c, 0x76, 0xc7, 0x0f, 0xde, 0xe7, 0x8e, 0x2f }}
+  {0x0f401429, 0x30b3, 0x46de, \
+    { 0xb1, 0xbf, 0xd7, 0xd5, 0xfa, 0x75, 0x63, 0xf9 }}
 
 class NS_NO_VTABLE nsIDOMCDATASection : public nsIDOMText {
  public: 

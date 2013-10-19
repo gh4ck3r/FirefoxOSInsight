@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/apps/mozIApplication.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/apps/mozIApplication.idl
  */
 
 #ifndef __gen_mozIApplication_h__
@@ -16,11 +16,11 @@
 #endif
 
 /* starting interface:    mozIApplication */
-#define MOZIAPPLICATION_IID_STR "cfa75628-4d31-481f-b51e-fe0ce18fa98f"
+#define MOZIAPPLICATION_IID_STR "05c57885-27cf-47fc-8da7-eeec9eb853a7"
 
 #define MOZIAPPLICATION_IID \
-  {0xcfa75628, 0x4d31, 0x481f, \
-    { 0xb5, 0x1e, 0xfe, 0x0c, 0xe1, 0x8f, 0xa9, 0x8f }}
+  {0x05c57885, 0x27cf, 0x47fc, \
+    { 0x8d, 0xa7, 0xee, 0xec, 0x9e, 0xb8, 0x53, 0xa7 }}
 
 class NS_NO_VTABLE mozIApplication : public mozIDOMApplication {
  public: 
@@ -48,6 +48,12 @@ class NS_NO_VTABLE mozIApplication : public mozIDOMApplication {
   /* readonly attribute DOMString csp; */
   NS_IMETHOD GetCsp(nsAString & aCsp) = 0;
 
+  /* readonly attribute DOMString storeID; */
+  NS_IMETHOD GetStoreID(nsAString & aStoreID) = 0;
+
+  /* readonly attribute unsigned long storeVersion; */
+  NS_IMETHOD GetStoreVersion(uint32_t *aStoreVersion) = 0;
+
 };
 
   NS_DEFINE_STATIC_IID_ACCESSOR(mozIApplication, MOZIAPPLICATION_IID)
@@ -60,7 +66,9 @@ class NS_NO_VTABLE mozIApplication : public mozIDOMApplication {
   NS_IMETHOD GetLocalId(uint32_t *aLocalId); \
   NS_IMETHOD GetBasePath(nsAString & aBasePath); \
   NS_IMETHOD GetName(nsAString & aName); \
-  NS_IMETHOD GetCsp(nsAString & aCsp); 
+  NS_IMETHOD GetCsp(nsAString & aCsp); \
+  NS_IMETHOD GetStoreID(nsAString & aStoreID); \
+  NS_IMETHOD GetStoreVersion(uint32_t *aStoreVersion); 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object. */
 #define NS_FORWARD_MOZIAPPLICATION(_to) \
@@ -70,7 +78,9 @@ class NS_NO_VTABLE mozIApplication : public mozIDOMApplication {
   NS_IMETHOD GetLocalId(uint32_t *aLocalId) { return _to GetLocalId(aLocalId); } \
   NS_IMETHOD GetBasePath(nsAString & aBasePath) { return _to GetBasePath(aBasePath); } \
   NS_IMETHOD GetName(nsAString & aName) { return _to GetName(aName); } \
-  NS_IMETHOD GetCsp(nsAString & aCsp) { return _to GetCsp(aCsp); } 
+  NS_IMETHOD GetCsp(nsAString & aCsp) { return _to GetCsp(aCsp); } \
+  NS_IMETHOD GetStoreID(nsAString & aStoreID) { return _to GetStoreID(aStoreID); } \
+  NS_IMETHOD GetStoreVersion(uint32_t *aStoreVersion) { return _to GetStoreVersion(aStoreVersion); } 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object in a safe way. */
 #define NS_FORWARD_SAFE_MOZIAPPLICATION(_to) \
@@ -80,7 +90,9 @@ class NS_NO_VTABLE mozIApplication : public mozIDOMApplication {
   NS_IMETHOD GetLocalId(uint32_t *aLocalId) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetLocalId(aLocalId); } \
   NS_IMETHOD GetBasePath(nsAString & aBasePath) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetBasePath(aBasePath); } \
   NS_IMETHOD GetName(nsAString & aName) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetName(aName); } \
-  NS_IMETHOD GetCsp(nsAString & aCsp) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetCsp(aCsp); } 
+  NS_IMETHOD GetCsp(nsAString & aCsp) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetCsp(aCsp); } \
+  NS_IMETHOD GetStoreID(nsAString & aStoreID) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetStoreID(aStoreID); } \
+  NS_IMETHOD GetStoreVersion(uint32_t *aStoreVersion) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetStoreVersion(aStoreVersion); } 
 
 #if 0
 /* Use the code below as a template for the implementation class for this interface. */
@@ -152,6 +164,18 @@ NS_IMETHODIMP _MYCLASS_::GetName(nsAString & aName)
 
 /* readonly attribute DOMString csp; */
 NS_IMETHODIMP _MYCLASS_::GetCsp(nsAString & aCsp)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* readonly attribute DOMString storeID; */
+NS_IMETHODIMP _MYCLASS_::GetStoreID(nsAString & aStoreID)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* readonly attribute unsigned long storeVersion; */
+NS_IMETHODIMP _MYCLASS_::GetStoreVersion(uint32_t *aStoreVersion)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

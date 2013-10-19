@@ -508,7 +508,7 @@ public:
   /**
    * A style attribute mapping function for the most common attributes, to be
    * called by subclasses' attribute mapping functions.  Currently handles
-   * dir and lang, could handle others.
+   * dir, lang and hidden, could handle others.
    *
    * @param aAttributes the list of attributes to map
    * @param aData the returned rule data [INOUT]
@@ -516,13 +516,14 @@ public:
    */
   static void MapCommonAttributesInto(const nsMappedAttributes* aAttributes, 
                                       nsRuleData* aRuleData);
-
   /**
-   * This method is used by embed elements because they should ignore the hidden
-   * attribute for the moment.
-   * TODO: This should be removed when bug 614825 will be fixed.
+   * Same as MapCommonAttributesInto except that it does not handle hidden.
+   *
+   * @param aAttributes the list of attributes to map
+   * @param aData the returned rule data [INOUT]
+   * @see GetAttributeMappingFunction
    */
-  static void MapCommonAttributesExceptHiddenInto(const nsMappedAttributes* aAttributes,
+  static void MapCommonAttributesIntoExceptHidden(const nsMappedAttributes* aAttributes,
                                                   nsRuleData* aRuleData);
 
   static const MappedAttributeEntry sCommonAttributeMap[];
@@ -723,7 +724,34 @@ public:
 
   virtual bool IsLabelable() const;
 
-  static bool PrefEnabled();
+  static bool TouchEventsEnabled(JSContext* /* unused */, JSObject* /* unused */);
+
+  static inline bool
+  CanHaveName(nsIAtom* aTag)
+  {
+    return aTag == nsGkAtoms::img ||
+           aTag == nsGkAtoms::form ||
+           aTag == nsGkAtoms::applet ||
+           aTag == nsGkAtoms::embed ||
+           aTag == nsGkAtoms::object;
+  }
+  static inline bool
+  ShouldExposeNameAsHTMLDocumentProperty(Element* aElement)
+  {
+    return aElement->IsHTML() && CanHaveName(aElement->Tag());
+  }
+  static inline bool
+  ShouldExposeIdAsHTMLDocumentProperty(Element* aElement)
+  {
+    if (!aElement->IsHTML()) {
+      return false;
+    }
+    nsIAtom* tag = aElement->Tag();
+    return tag == nsGkAtoms::img ||
+           tag == nsGkAtoms::applet ||
+           tag == nsGkAtoms::embed ||
+           tag == nsGkAtoms::object;
+  }
 
 protected:
   /**
@@ -820,13 +848,6 @@ protected:
 
     SetHTMLAttr(aName, value, aError);
   }
-  void SetHTMLUnsignedIntAttr(nsIAtom* aName, uint32_t aValue, mozilla::ErrorResult& aError)
-  {
-    nsAutoString value;
-    value.AppendInt(aValue);
-
-    SetHTMLAttr(aName, value, aError);
-  }
 
   /**
    * Helper method for NS_IMPL_STRING_ATTR macro.
@@ -868,10 +889,8 @@ protected:
    *
    * @param aAttr    name of attribute.
    * @param aDefault default-value to return if attribute isn't set.
-   * @param aResult  result value [out]
    */
-  NS_HIDDEN_(nsresult) GetUnsignedIntAttr(nsIAtom* aAttr, uint32_t aDefault,
-                                          uint32_t* aValue);
+  uint32_t GetUnsignedIntAttr(nsIAtom* aAttr, uint32_t aDefault) const;
 
   /**
    * Helper method for NS_IMPL_UINT_ATTR macro.
@@ -881,7 +900,14 @@ protected:
    * @param aAttr    name of attribute.
    * @param aValue   Integer value of attribute.
    */
-  NS_HIDDEN_(nsresult) SetUnsignedIntAttr(nsIAtom* aAttr, uint32_t aValue);
+  void SetUnsignedIntAttr(nsIAtom* aName, uint32_t aValue,
+                          mozilla::ErrorResult& aError)
+  {
+    nsAutoString value;
+    value.AppendInt(aValue);
+
+    SetHTMLAttr(aName, value, aError);
+  }
 
   /**
    * Sets value of attribute to specified double. Only works for attributes
@@ -1256,12 +1282,15 @@ protected:
   NS_IMETHODIMP                                                           \
   _class::Get##_method(uint32_t* aValue)                                  \
   {                                                                       \
-    return GetUnsignedIntAttr(nsGkAtoms::_atom, _default, aValue);        \
+    *aValue = GetUnsignedIntAttr(nsGkAtoms::_atom, _default);             \
+    return NS_OK;                                                         \
   }                                                                       \
   NS_IMETHODIMP                                                           \
   _class::Set##_method(uint32_t aValue)                                   \
   {                                                                       \
-    return SetUnsignedIntAttr(nsGkAtoms::_atom, aValue);                  \
+    mozilla::ErrorResult rv;                                              \
+    SetUnsignedIntAttr(nsGkAtoms::_atom, aValue, rv);                     \
+    return rv.ErrorCode();                                                \
   }
 
 /**
@@ -1277,7 +1306,8 @@ protected:
   NS_IMETHODIMP                                                           \
   _class::Get##_method(uint32_t* aValue)                                  \
   {                                                                       \
-    return GetUnsignedIntAttr(nsGkAtoms::_atom, _default, aValue);        \
+    *aValue = GetUnsignedIntAttr(nsGkAtoms::_atom, _default);             \
+    return NS_OK;                                                         \
   }                                                                       \
   NS_IMETHODIMP                                                           \
   _class::Set##_method(uint32_t aValue)                                   \
@@ -1285,7 +1315,9 @@ protected:
     if (aValue == 0) {                                                    \
       return NS_ERROR_DOM_INDEX_SIZE_ERR;                                 \
     }                                                                     \
-    return SetUnsignedIntAttr(nsGkAtoms::_atom, aValue);                  \
+    mozilla::ErrorResult rv;                                              \
+    SetUnsignedIntAttr(nsGkAtoms::_atom, aValue, rv);                     \
+    return rv.ErrorCode();                                                \
   }
 
 /**
@@ -1903,14 +1935,13 @@ NS_DECLARE_NS_NEW_HTML_ELEMENT(SharedObject)
 
 NS_DECLARE_NS_NEW_HTML_ELEMENT(Anchor)
 NS_DECLARE_NS_NEW_HTML_ELEMENT(Area)
-#if defined(MOZ_MEDIA)
 NS_DECLARE_NS_NEW_HTML_ELEMENT(Audio)
-#endif
 NS_DECLARE_NS_NEW_HTML_ELEMENT(BR)
 NS_DECLARE_NS_NEW_HTML_ELEMENT(Body)
 NS_DECLARE_NS_NEW_HTML_ELEMENT(Button)
 NS_DECLARE_NS_NEW_HTML_ELEMENT(Canvas)
 NS_DECLARE_NS_NEW_HTML_ELEMENT(Mod)
+NS_DECLARE_NS_NEW_HTML_ELEMENT(Data)
 NS_DECLARE_NS_NEW_HTML_ELEMENT(DataList)
 NS_DECLARE_NS_NEW_HTML_ELEMENT(Div)
 NS_DECLARE_NS_NEW_HTML_ELEMENT(FieldSet)
@@ -1943,9 +1974,7 @@ NS_DECLARE_NS_NEW_HTML_ELEMENT(Pre)
 NS_DECLARE_NS_NEW_HTML_ELEMENT(Progress)
 NS_DECLARE_NS_NEW_HTML_ELEMENT(Script)
 NS_DECLARE_NS_NEW_HTML_ELEMENT(Select)
-#if defined(MOZ_MEDIA)
 NS_DECLARE_NS_NEW_HTML_ELEMENT(Source)
-#endif
 NS_DECLARE_NS_NEW_HTML_ELEMENT(Span)
 NS_DECLARE_NS_NEW_HTML_ELEMENT(Style)
 NS_DECLARE_NS_NEW_HTML_ELEMENT(TableCaption)
@@ -1955,14 +1984,14 @@ NS_DECLARE_NS_NEW_HTML_ELEMENT(Table)
 NS_DECLARE_NS_NEW_HTML_ELEMENT(TableRow)
 NS_DECLARE_NS_NEW_HTML_ELEMENT(TableSection)
 NS_DECLARE_NS_NEW_HTML_ELEMENT(Tbody)
+NS_DECLARE_NS_NEW_HTML_ELEMENT(Template)
 NS_DECLARE_NS_NEW_HTML_ELEMENT(TextArea)
 NS_DECLARE_NS_NEW_HTML_ELEMENT(Tfoot)
 NS_DECLARE_NS_NEW_HTML_ELEMENT(Thead)
+NS_DECLARE_NS_NEW_HTML_ELEMENT(Time)
 NS_DECLARE_NS_NEW_HTML_ELEMENT(Title)
 NS_DECLARE_NS_NEW_HTML_ELEMENT(Unknown)
-#if defined(MOZ_MEDIA)
 NS_DECLARE_NS_NEW_HTML_ELEMENT(Video)
-#endif
 
 inline nsISupports*
 ToSupports(nsGenericHTMLElement* aHTMLElement)

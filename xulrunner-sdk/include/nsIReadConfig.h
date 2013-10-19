@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/extensions/pref/autoconfig/public/nsIReadConfig.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/extensions/pref/autoconfig/public/nsIReadConfig.idl
  */
 
 #ifndef __gen_nsIReadConfig_h__
@@ -24,7 +24,6 @@
  
 #define NS_READCONFIG_CONTRACTID \
   "@mozilla.org/readconfig;1" 
-#define NS_READCONFIG_CLASSNAME "ReadConfig Module"
 
 /* starting interface:    nsIReadConfig */
 #define NS_IREADCONFIG_IID_STR "ba5bc4c6-1dd1-11b2-bb89-b844c6ec0339"

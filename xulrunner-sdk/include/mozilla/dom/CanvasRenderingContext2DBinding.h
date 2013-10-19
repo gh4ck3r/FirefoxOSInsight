@@ -8,19 +8,38 @@
 #include "mozilla/dom/DOMJSClass.h"
 #include "mozilla/dom/DOMJSProxyHandler.h"
 
-class XPCWrappedNativeScope;
 namespace mozilla {
 namespace dom {
 
+class CanvasGradient;
+class CanvasPattern;
 class CanvasRenderingContext2D;
+class TextMetrics;
 
 } // namespace dom
 } // namespace mozilla
 
-
 namespace mozilla {
 namespace dom {
 
+template <>
+struct PrototypeTraits<prototypes::id::CanvasGradient>
+{
+  enum
+  {
+    Depth = 0
+  };
+  typedef mozilla::dom::CanvasGradient NativeType;
+};
+template <>
+struct PrototypeTraits<prototypes::id::CanvasPattern>
+{
+  enum
+  {
+    Depth = 0
+  };
+  typedef mozilla::dom::CanvasPattern NativeType;
+};
 template <>
 struct PrototypeTraits<prototypes::id::CanvasRenderingContext2D>
 {
@@ -31,11 +50,44 @@ struct PrototypeTraits<prototypes::id::CanvasRenderingContext2D>
   typedef mozilla::dom::CanvasRenderingContext2D NativeType;
 };
 template <>
+struct PrototypeTraits<prototypes::id::TextMetrics>
+{
+  enum
+  {
+    Depth = 0
+  };
+  typedef mozilla::dom::TextMetrics NativeType;
+};
+template <>
+struct PrototypeIDMap<mozilla::dom::CanvasGradient>
+{
+  enum
+  {
+    PrototypeID = prototypes::id::CanvasGradient
+  };
+};
+template <>
+struct PrototypeIDMap<mozilla::dom::CanvasPattern>
+{
+  enum
+  {
+    PrototypeID = prototypes::id::CanvasPattern
+  };
+};
+template <>
 struct PrototypeIDMap<mozilla::dom::CanvasRenderingContext2D>
 {
   enum
   {
     PrototypeID = prototypes::id::CanvasRenderingContext2D
+  };
+};
+template <>
+struct PrototypeIDMap<mozilla::dom::TextMetrics>
+{
+  enum
+  {
+    PrototypeID = prototypes::id::TextMetrics
   };
 };
 } // namespace dom
@@ -45,28 +97,25 @@ struct PrototypeIDMap<mozilla::dom::CanvasRenderingContext2D>
 namespace mozilla {
 namespace dom {
 
+
+MOZ_BEGIN_ENUM_CLASS(CanvasWindingRule, uint32_t)
+  Nonzero,
+  Evenodd
+MOZ_END_ENUM_CLASS(CanvasWindingRule)
+
 namespace CanvasWindingRuleValues {
-
-  enum valuelist {
-    Nonzero,
-    Evenodd
-  };
-
-  extern const EnumEntry strings[3];
+extern const EnumEntry strings[3];
 } // namespace CanvasWindingRuleValues
 
 
-typedef CanvasWindingRuleValues::valuelist CanvasWindingRule;
-
-
-namespace CanvasRenderingContext2DBinding {
+namespace CanvasGradientBinding {
 
   extern const NativePropertyHooks sNativePropertyHooks;
 
   void
-  CreateInterfaceObjects(JSContext* aCx, JSObject* aGlobal, JSObject** protoAndIfaceArray);
+  CreateInterfaceObjects(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JSObject** protoAndIfaceArray);
 
-  inline JSObject* GetProtoObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetProtoObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface prototype object for this class.  This will create the
@@ -74,21 +123,19 @@ namespace CanvasRenderingContext2DBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[prototypes::id::CanvasRenderingContext2D];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[prototypes::id::CanvasGradient]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[prototypes::id::CanvasRenderingContext2D];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[prototypes::id::CanvasGradient]);
   }
 
-  inline JSObject* GetConstructorObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetConstructorObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface object for this class.  This will create the object as
@@ -96,35 +143,222 @@ namespace CanvasRenderingContext2DBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[constructors::id::CanvasRenderingContext2D];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[constructors::id::CanvasGradient]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[constructors::id::CanvasRenderingContext2D];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[constructors::id::CanvasGradient]);
   }
 
   JSObject*
-  DefineDOMInterface(JSContext* aCx, JSObject* aGlobal, bool* aEnabled);
+  DefineDOMInterface(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JS::Handle<jsid> id, bool* aEnabled);
 
   extern DOMJSClass Class;
 
   JSObject*
-  Wrap(JSContext* aCx, JSObject* aScope, mozilla::dom::CanvasRenderingContext2D* aObject, nsWrapperCache* aCache, bool* aTriedToWrap);
+  Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, mozilla::dom::CanvasGradient* aObject, nsWrapperCache* aCache);
 
   template <class T>
-  inline JSObject* Wrap(JSContext* aCx, JSObject* aScope, T* aObject, bool* aTriedToWrap)
+  inline JSObject* Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, T* aObject)
   {
-    return Wrap(aCx, aScope, aObject, aObject, aTriedToWrap);
+    return Wrap(aCx, aScope, aObject, aObject);
+  }
+
+} // namespace CanvasGradientBinding
+
+
+
+namespace CanvasPatternBinding {
+
+  extern const NativePropertyHooks sNativePropertyHooks;
+
+  void
+  CreateInterfaceObjects(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JSObject** protoAndIfaceArray);
+
+  inline JS::Handle<JSObject*> GetProtoObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
+  {
+
+    /* Get the interface prototype object for this class.  This will create the
+       object as needed. */
+
+    /* Make sure our global is sane.  Hopefully we can remove this sometime */
+    if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
+      return JS::NullPtr();
+    }
+    /* Check to see whether the interface objects are already installed */
+    JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
+    if (!protoAndIfaceArray[prototypes::id::CanvasPattern]) {
+      CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
+    }
+
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[prototypes::id::CanvasPattern]);
+  }
+
+  inline JS::Handle<JSObject*> GetConstructorObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
+  {
+
+    /* Get the interface object for this class.  This will create the object as
+       needed. */
+
+    /* Make sure our global is sane.  Hopefully we can remove this sometime */
+    if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
+      return JS::NullPtr();
+    }
+    /* Check to see whether the interface objects are already installed */
+    JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
+    if (!protoAndIfaceArray[constructors::id::CanvasPattern]) {
+      CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
+    }
+
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[constructors::id::CanvasPattern]);
+  }
+
+  JSObject*
+  DefineDOMInterface(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JS::Handle<jsid> id, bool* aEnabled);
+
+  extern DOMJSClass Class;
+
+  JSObject*
+  Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, mozilla::dom::CanvasPattern* aObject, nsWrapperCache* aCache);
+
+  template <class T>
+  inline JSObject* Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, T* aObject)
+  {
+    return Wrap(aCx, aScope, aObject, aObject);
+  }
+
+} // namespace CanvasPatternBinding
+
+
+
+namespace CanvasRenderingContext2DBinding {
+
+  extern const NativePropertyHooks sNativePropertyHooks;
+
+  void
+  CreateInterfaceObjects(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JSObject** protoAndIfaceArray);
+
+  inline JS::Handle<JSObject*> GetProtoObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
+  {
+
+    /* Get the interface prototype object for this class.  This will create the
+       object as needed. */
+
+    /* Make sure our global is sane.  Hopefully we can remove this sometime */
+    if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
+      return JS::NullPtr();
+    }
+    /* Check to see whether the interface objects are already installed */
+    JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
+    if (!protoAndIfaceArray[prototypes::id::CanvasRenderingContext2D]) {
+      CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
+    }
+
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[prototypes::id::CanvasRenderingContext2D]);
+  }
+
+  inline JS::Handle<JSObject*> GetConstructorObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
+  {
+
+    /* Get the interface object for this class.  This will create the object as
+       needed. */
+
+    /* Make sure our global is sane.  Hopefully we can remove this sometime */
+    if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
+      return JS::NullPtr();
+    }
+    /* Check to see whether the interface objects are already installed */
+    JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
+    if (!protoAndIfaceArray[constructors::id::CanvasRenderingContext2D]) {
+      CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
+    }
+
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[constructors::id::CanvasRenderingContext2D]);
+  }
+
+  JSObject*
+  DefineDOMInterface(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JS::Handle<jsid> id, bool* aEnabled);
+
+  extern DOMJSClass Class;
+
+  JSObject*
+  Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, mozilla::dom::CanvasRenderingContext2D* aObject, nsWrapperCache* aCache);
+
+  template <class T>
+  inline JSObject* Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, T* aObject)
+  {
+    return Wrap(aCx, aScope, aObject, aObject);
   }
 
 } // namespace CanvasRenderingContext2DBinding
+
+
+
+namespace TextMetricsBinding {
+
+  extern const NativePropertyHooks sNativePropertyHooks;
+
+  void
+  CreateInterfaceObjects(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JSObject** protoAndIfaceArray);
+
+  inline JS::Handle<JSObject*> GetProtoObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
+  {
+
+    /* Get the interface prototype object for this class.  This will create the
+       object as needed. */
+
+    /* Make sure our global is sane.  Hopefully we can remove this sometime */
+    if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
+      return JS::NullPtr();
+    }
+    /* Check to see whether the interface objects are already installed */
+    JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
+    if (!protoAndIfaceArray[prototypes::id::TextMetrics]) {
+      CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
+    }
+
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[prototypes::id::TextMetrics]);
+  }
+
+  inline JS::Handle<JSObject*> GetConstructorObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
+  {
+
+    /* Get the interface object for this class.  This will create the object as
+       needed. */
+
+    /* Make sure our global is sane.  Hopefully we can remove this sometime */
+    if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
+      return JS::NullPtr();
+    }
+    /* Check to see whether the interface objects are already installed */
+    JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
+    if (!protoAndIfaceArray[constructors::id::TextMetrics]) {
+      CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
+    }
+
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[constructors::id::TextMetrics]);
+  }
+
+  JSObject*
+  DefineDOMInterface(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JS::Handle<jsid> id, bool* aEnabled);
+
+  extern DOMJSClass Class;
+
+  JSObject*
+  Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, mozilla::dom::TextMetrics* aObject, bool* aTookOwnership);
+
+} // namespace TextMetricsBinding
 
 
 

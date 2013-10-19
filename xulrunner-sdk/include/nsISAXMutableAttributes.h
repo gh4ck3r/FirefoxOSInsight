@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/parser/xml/public/nsISAXMutableAttributes.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/parser/xml/public/nsISAXMutableAttributes.idl
  */
 
 #ifndef __gen_nsISAXMutableAttributes_h__

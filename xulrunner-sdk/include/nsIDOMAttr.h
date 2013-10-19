@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/core/nsIDOMAttr.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/core/nsIDOMAttr.idl
  */
 
 #ifndef __gen_nsIDOMAttr_h__
@@ -16,11 +16,11 @@
 #endif
 
 /* starting interface:    nsIDOMAttr */
-#define NS_IDOMATTR_IID_STR "03da4bc9-1b9a-41dc-a1a4-32414d48d704"
+#define NS_IDOMATTR_IID_STR "a974a4d3-2ff1-445b-8b8e-0aada5d4eedc"
 
 #define NS_IDOMATTR_IID \
-  {0x03da4bc9, 0x1b9a, 0x41dc, \
-    { 0xa1, 0xa4, 0x32, 0x41, 0x4d, 0x48, 0xd7, 0x04 }}
+  {0xa974a4d3, 0x2ff1, 0x445b, \
+    { 0x8b, 0x8e, 0x0a, 0xad, 0xa5, 0xd4, 0xee, 0xdc }}
 
 class NS_NO_VTABLE nsIDOMAttr : public nsIDOMNode {
  public: 

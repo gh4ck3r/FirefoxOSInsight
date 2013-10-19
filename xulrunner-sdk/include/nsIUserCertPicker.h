@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/security/manager/ssl/public/nsIUserCertPicker.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/security/manager/ssl/public/nsIUserCertPicker.idl
  */
 
 #ifndef __gen_nsIUserCertPicker_h__
@@ -92,6 +92,5 @@ NS_IMETHODIMP nsUserCertPicker::PickByUsage(nsIInterfaceRequestor *ctx, const PR
 #endif
 
 #define NS_CERT_PICKER_CONTRACTID "@mozilla.org/user_cert_picker;1"
-#define NS_CERT_PICKER_CLASSNAME "Cert Picker Object"
 
 #endif /* __gen_nsIUserCertPicker_h__ */

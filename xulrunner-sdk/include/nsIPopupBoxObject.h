@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/layout/xul/base/public/nsIPopupBoxObject.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/layout/xul/base/public/nsIPopupBoxObject.idl
  */
 
 #ifndef __gen_nsIPopupBoxObject_h__
@@ -24,11 +24,11 @@ class nsIDOMClientRect; /* forward declaration */
 
 
 /* starting interface:    nsIPopupBoxObject */
-#define NS_IPOPUPBOXOBJECT_IID_STR "accea57b-c3d8-4b6e-9101-90f04ee9dea0"
+#define NS_IPOPUPBOXOBJECT_IID_STR "df60ba02-005b-4f61-ab1c-5632d0779db4"
 
 #define NS_IPOPUPBOXOBJECT_IID \
-  {0xaccea57b, 0xc3d8, 0x4b6e, \
-    { 0x91, 0x01, 0x90, 0xf0, 0x4e, 0xe9, 0xde, 0xa0 }}
+  {0xdf60ba02, 0x005b, 0x4f61, \
+    { 0xab, 0x1c, 0x56, 0x32, 0xd0, 0x77, 0x9d, 0xb4 }}
 
 class NS_NO_VTABLE nsIPopupBoxObject : public nsISupports {
  public: 
@@ -87,6 +87,9 @@ class NS_NO_VTABLE nsIPopupBoxObject : public nsISupports {
   /* void moveToAnchor (in nsIDOMElement anchorElement, in AString position, in long x, in long y, in boolean attributesOverride); */
   NS_IMETHOD MoveToAnchor(nsIDOMElement *anchorElement, const nsAString & position, int32_t x, int32_t y, bool attributesOverride) = 0;
 
+  /* readonly attribute AString alignmentPosition; */
+  NS_IMETHOD GetAlignmentPosition(nsAString & aAlignmentPosition) = 0;
+
 };
 
   NS_DEFINE_STATIC_IID_ACCESSOR(nsIPopupBoxObject, NS_IPOPUPBOXOBJECT_IID)
@@ -108,7 +111,8 @@ class NS_NO_VTABLE nsIPopupBoxObject : public nsISupports {
   NS_IMETHOD GetTriggerNode(nsIDOMNode * *aTriggerNode); \
   NS_IMETHOD GetAnchorNode(nsIDOMElement * *aAnchorNode); \
   NS_IMETHOD GetOuterScreenRect(nsIDOMClientRect * *_retval); \
-  NS_IMETHOD MoveToAnchor(nsIDOMElement *anchorElement, const nsAString & position, int32_t x, int32_t y, bool attributesOverride); 
+  NS_IMETHOD MoveToAnchor(nsIDOMElement *anchorElement, const nsAString & position, int32_t x, int32_t y, bool attributesOverride); \
+  NS_IMETHOD GetAlignmentPosition(nsAString & aAlignmentPosition); 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object. */
 #define NS_FORWARD_NSIPOPUPBOXOBJECT(_to) \
@@ -127,7 +131,8 @@ class NS_NO_VTABLE nsIPopupBoxObject : public nsISupports {
   NS_IMETHOD GetTriggerNode(nsIDOMNode * *aTriggerNode) { return _to GetTriggerNode(aTriggerNode); } \
   NS_IMETHOD GetAnchorNode(nsIDOMElement * *aAnchorNode) { return _to GetAnchorNode(aAnchorNode); } \
   NS_IMETHOD GetOuterScreenRect(nsIDOMClientRect * *_retval) { return _to GetOuterScreenRect(_retval); } \
-  NS_IMETHOD MoveToAnchor(nsIDOMElement *anchorElement, const nsAString & position, int32_t x, int32_t y, bool attributesOverride) { return _to MoveToAnchor(anchorElement, position, x, y, attributesOverride); } 
+  NS_IMETHOD MoveToAnchor(nsIDOMElement *anchorElement, const nsAString & position, int32_t x, int32_t y, bool attributesOverride) { return _to MoveToAnchor(anchorElement, position, x, y, attributesOverride); } \
+  NS_IMETHOD GetAlignmentPosition(nsAString & aAlignmentPosition) { return _to GetAlignmentPosition(aAlignmentPosition); } 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object in a safe way. */
 #define NS_FORWARD_SAFE_NSIPOPUPBOXOBJECT(_to) \
@@ -146,7 +151,8 @@ class NS_NO_VTABLE nsIPopupBoxObject : public nsISupports {
   NS_IMETHOD GetTriggerNode(nsIDOMNode * *aTriggerNode) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetTriggerNode(aTriggerNode); } \
   NS_IMETHOD GetAnchorNode(nsIDOMElement * *aAnchorNode) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetAnchorNode(aAnchorNode); } \
   NS_IMETHOD GetOuterScreenRect(nsIDOMClientRect * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetOuterScreenRect(_retval); } \
-  NS_IMETHOD MoveToAnchor(nsIDOMElement *anchorElement, const nsAString & position, int32_t x, int32_t y, bool attributesOverride) { return !_to ? NS_ERROR_NULL_POINTER : _to->MoveToAnchor(anchorElement, position, x, y, attributesOverride); } 
+  NS_IMETHOD MoveToAnchor(nsIDOMElement *anchorElement, const nsAString & position, int32_t x, int32_t y, bool attributesOverride) { return !_to ? NS_ERROR_NULL_POINTER : _to->MoveToAnchor(anchorElement, position, x, y, attributesOverride); } \
+  NS_IMETHOD GetAlignmentPosition(nsAString & aAlignmentPosition) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetAlignmentPosition(aAlignmentPosition); } 
 
 #if 0
 /* Use the code below as a template for the implementation class for this interface. */
@@ -270,6 +276,12 @@ NS_IMETHODIMP nsPopupBoxObject::GetOuterScreenRect(nsIDOMClientRect * *_retval)
 
 /* void moveToAnchor (in nsIDOMElement anchorElement, in AString position, in long x, in long y, in boolean attributesOverride); */
 NS_IMETHODIMP nsPopupBoxObject::MoveToAnchor(nsIDOMElement *anchorElement, const nsAString & position, int32_t x, int32_t y, bool attributesOverride)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* readonly attribute AString alignmentPosition; */
+NS_IMETHODIMP nsPopupBoxObject::GetAlignmentPosition(nsAString & aAlignmentPosition)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

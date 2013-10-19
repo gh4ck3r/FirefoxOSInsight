@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/devicestorage/nsIDOMDeviceStorage.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/devicestorage/nsIDOMDeviceStorage.idl
  */
 
 #ifndef __gen_nsIDOMDeviceStorage_h__
@@ -24,7 +24,7 @@ class nsIDOMBlob; /* forward declaration */
 
 class nsIDOMDOMRequest; /* forward declaration */
 
-class nsIDOMDeviceStorageCursor; /* forward declaration */
+class nsIDOMDOMCursor; /* forward declaration */
 
 class nsIDOMDeviceStorageChangeEvent; /* forward declaration */
 
@@ -34,11 +34,11 @@ class nsIFile; /* forward declaration */
 
 
 /* starting interface:    nsIDOMDeviceStorage */
-#define NS_IDOMDEVICESTORAGE_IID_STR "c611b701-ddfc-456d-893a-3b3fcb30d9fd"
+#define NS_IDOMDEVICESTORAGE_IID_STR "3d336180-b130-4b54-b205-ce74e36e733f"
 
 #define NS_IDOMDEVICESTORAGE_IID \
-  {0xc611b701, 0xddfc, 0x456d, \
-    { 0x89, 0x3a, 0x3b, 0x3f, 0xcb, 0x30, 0xd9, 0xfd }}
+  {0x3d336180, 0xb130, 0x4b54, \
+    { 0xb2, 0x05, 0xce, 0x74, 0xe3, 0x6e, 0x73, 0x3f }}
 
 class NS_NO_VTABLE nsIDOMDeviceStorage : public nsIDOMEventTarget {
  public: 
@@ -64,11 +64,11 @@ class NS_NO_VTABLE nsIDOMDeviceStorage : public nsIDOMEventTarget {
   /* [implicit_jscontext] nsIDOMDOMRequest delete (in jsval aName); */
   NS_IMETHOD Delete(const JS::Value & aName, JSContext* cx, nsIDOMDOMRequest * *_retval) = 0;
 
-  /* [implicit_jscontext,optional_argc] nsIDOMDeviceStorageCursor enumerate ([optional] in jsval aName, [optional] in jsval options); */
-  NS_IMETHOD Enumerate(const JS::Value & aName, const JS::Value & options, JSContext* cx, uint8_t _argc, nsIDOMDeviceStorageCursor * *_retval) = 0;
+  /* [implicit_jscontext,optional_argc] nsIDOMDOMCursor enumerate ([optional] in jsval aName, [optional] in jsval options); */
+  NS_IMETHOD Enumerate(const JS::Value & aName, const JS::Value & options, JSContext* cx, uint8_t _argc, nsIDOMDOMCursor * *_retval) = 0;
 
-  /* [implicit_jscontext,optional_argc] nsIDOMDeviceStorageCursor enumerateEditable ([optional] in jsval aName, [optional] in jsval options); */
-  NS_IMETHOD EnumerateEditable(const JS::Value & aName, const JS::Value & options, JSContext* cx, uint8_t _argc, nsIDOMDeviceStorageCursor * *_retval) = 0;
+  /* [implicit_jscontext,optional_argc] nsIDOMDOMCursor enumerateEditable ([optional] in jsval aName, [optional] in jsval options); */
+  NS_IMETHOD EnumerateEditable(const JS::Value & aName, const JS::Value & options, JSContext* cx, uint8_t _argc, nsIDOMDOMCursor * *_retval) = 0;
 
   /* nsIDOMDOMRequest freeSpace (); */
   NS_IMETHOD FreeSpace(nsIDOMDOMRequest * *_retval) = 0;
@@ -78,6 +78,9 @@ class NS_NO_VTABLE nsIDOMDeviceStorage : public nsIDOMEventTarget {
 
   /* nsIDOMDOMRequest available (); */
   NS_IMETHOD Available(nsIDOMDOMRequest * *_retval) = 0;
+
+  /* readonly attribute DOMString storageName; */
+  NS_IMETHOD GetStorageName(nsAString & aStorageName) = 0;
 
   /* [noscript] readonly attribute nsIFile rootDirectory; */
   NS_IMETHOD GetRootDirectory(nsIFile * *aRootDirectory) = 0;
@@ -95,11 +98,12 @@ class NS_NO_VTABLE nsIDOMDeviceStorage : public nsIDOMEventTarget {
   NS_IMETHOD Get(const JS::Value & aName, JSContext* cx, nsIDOMDOMRequest * *_retval); \
   NS_IMETHOD GetEditable(const JS::Value & aName, JSContext* cx, nsIDOMDOMRequest * *_retval); \
   NS_IMETHOD Delete(const JS::Value & aName, JSContext* cx, nsIDOMDOMRequest * *_retval); \
-  NS_IMETHOD Enumerate(const JS::Value & aName, const JS::Value & options, JSContext* cx, uint8_t _argc, nsIDOMDeviceStorageCursor * *_retval); \
-  NS_IMETHOD EnumerateEditable(const JS::Value & aName, const JS::Value & options, JSContext* cx, uint8_t _argc, nsIDOMDeviceStorageCursor * *_retval); \
+  NS_IMETHOD Enumerate(const JS::Value & aName, const JS::Value & options, JSContext* cx, uint8_t _argc, nsIDOMDOMCursor * *_retval); \
+  NS_IMETHOD EnumerateEditable(const JS::Value & aName, const JS::Value & options, JSContext* cx, uint8_t _argc, nsIDOMDOMCursor * *_retval); \
   NS_IMETHOD FreeSpace(nsIDOMDOMRequest * *_retval); \
   NS_IMETHOD UsedSpace(nsIDOMDOMRequest * *_retval); \
   NS_IMETHOD Available(nsIDOMDOMRequest * *_retval); \
+  NS_IMETHOD GetStorageName(nsAString & aStorageName); \
   NS_IMETHOD GetRootDirectory(nsIFile * *aRootDirectory); 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object. */
@@ -111,11 +115,12 @@ class NS_NO_VTABLE nsIDOMDeviceStorage : public nsIDOMEventTarget {
   NS_IMETHOD Get(const JS::Value & aName, JSContext* cx, nsIDOMDOMRequest * *_retval) { return _to Get(aName, cx, _retval); } \
   NS_IMETHOD GetEditable(const JS::Value & aName, JSContext* cx, nsIDOMDOMRequest * *_retval) { return _to GetEditable(aName, cx, _retval); } \
   NS_IMETHOD Delete(const JS::Value & aName, JSContext* cx, nsIDOMDOMRequest * *_retval) { return _to Delete(aName, cx, _retval); } \
-  NS_IMETHOD Enumerate(const JS::Value & aName, const JS::Value & options, JSContext* cx, uint8_t _argc, nsIDOMDeviceStorageCursor * *_retval) { return _to Enumerate(aName, options, cx, _argc, _retval); } \
-  NS_IMETHOD EnumerateEditable(const JS::Value & aName, const JS::Value & options, JSContext* cx, uint8_t _argc, nsIDOMDeviceStorageCursor * *_retval) { return _to EnumerateEditable(aName, options, cx, _argc, _retval); } \
+  NS_IMETHOD Enumerate(const JS::Value & aName, const JS::Value & options, JSContext* cx, uint8_t _argc, nsIDOMDOMCursor * *_retval) { return _to Enumerate(aName, options, cx, _argc, _retval); } \
+  NS_IMETHOD EnumerateEditable(const JS::Value & aName, const JS::Value & options, JSContext* cx, uint8_t _argc, nsIDOMDOMCursor * *_retval) { return _to EnumerateEditable(aName, options, cx, _argc, _retval); } \
   NS_IMETHOD FreeSpace(nsIDOMDOMRequest * *_retval) { return _to FreeSpace(_retval); } \
   NS_IMETHOD UsedSpace(nsIDOMDOMRequest * *_retval) { return _to UsedSpace(_retval); } \
   NS_IMETHOD Available(nsIDOMDOMRequest * *_retval) { return _to Available(_retval); } \
+  NS_IMETHOD GetStorageName(nsAString & aStorageName) { return _to GetStorageName(aStorageName); } \
   NS_IMETHOD GetRootDirectory(nsIFile * *aRootDirectory) { return _to GetRootDirectory(aRootDirectory); } 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object in a safe way. */
@@ -127,11 +132,12 @@ class NS_NO_VTABLE nsIDOMDeviceStorage : public nsIDOMEventTarget {
   NS_IMETHOD Get(const JS::Value & aName, JSContext* cx, nsIDOMDOMRequest * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->Get(aName, cx, _retval); } \
   NS_IMETHOD GetEditable(const JS::Value & aName, JSContext* cx, nsIDOMDOMRequest * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetEditable(aName, cx, _retval); } \
   NS_IMETHOD Delete(const JS::Value & aName, JSContext* cx, nsIDOMDOMRequest * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->Delete(aName, cx, _retval); } \
-  NS_IMETHOD Enumerate(const JS::Value & aName, const JS::Value & options, JSContext* cx, uint8_t _argc, nsIDOMDeviceStorageCursor * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->Enumerate(aName, options, cx, _argc, _retval); } \
-  NS_IMETHOD EnumerateEditable(const JS::Value & aName, const JS::Value & options, JSContext* cx, uint8_t _argc, nsIDOMDeviceStorageCursor * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->EnumerateEditable(aName, options, cx, _argc, _retval); } \
+  NS_IMETHOD Enumerate(const JS::Value & aName, const JS::Value & options, JSContext* cx, uint8_t _argc, nsIDOMDOMCursor * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->Enumerate(aName, options, cx, _argc, _retval); } \
+  NS_IMETHOD EnumerateEditable(const JS::Value & aName, const JS::Value & options, JSContext* cx, uint8_t _argc, nsIDOMDOMCursor * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->EnumerateEditable(aName, options, cx, _argc, _retval); } \
   NS_IMETHOD FreeSpace(nsIDOMDOMRequest * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->FreeSpace(_retval); } \
   NS_IMETHOD UsedSpace(nsIDOMDOMRequest * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->UsedSpace(_retval); } \
   NS_IMETHOD Available(nsIDOMDOMRequest * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->Available(_retval); } \
+  NS_IMETHOD GetStorageName(nsAString & aStorageName) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetStorageName(aStorageName); } \
   NS_IMETHOD GetRootDirectory(nsIFile * *aRootDirectory) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetRootDirectory(aRootDirectory); } 
 
 #if 0
@@ -206,14 +212,14 @@ NS_IMETHODIMP nsDOMDeviceStorage::Delete(const JS::Value & aName, JSContext* cx,
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* [implicit_jscontext,optional_argc] nsIDOMDeviceStorageCursor enumerate ([optional] in jsval aName, [optional] in jsval options); */
-NS_IMETHODIMP nsDOMDeviceStorage::Enumerate(const JS::Value & aName, const JS::Value & options, JSContext* cx, uint8_t _argc, nsIDOMDeviceStorageCursor * *_retval)
+/* [implicit_jscontext,optional_argc] nsIDOMDOMCursor enumerate ([optional] in jsval aName, [optional] in jsval options); */
+NS_IMETHODIMP nsDOMDeviceStorage::Enumerate(const JS::Value & aName, const JS::Value & options, JSContext* cx, uint8_t _argc, nsIDOMDOMCursor * *_retval)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* [implicit_jscontext,optional_argc] nsIDOMDeviceStorageCursor enumerateEditable ([optional] in jsval aName, [optional] in jsval options); */
-NS_IMETHODIMP nsDOMDeviceStorage::EnumerateEditable(const JS::Value & aName, const JS::Value & options, JSContext* cx, uint8_t _argc, nsIDOMDeviceStorageCursor * *_retval)
+/* [implicit_jscontext,optional_argc] nsIDOMDOMCursor enumerateEditable ([optional] in jsval aName, [optional] in jsval options); */
+NS_IMETHODIMP nsDOMDeviceStorage::EnumerateEditable(const JS::Value & aName, const JS::Value & options, JSContext* cx, uint8_t _argc, nsIDOMDOMCursor * *_retval)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
@@ -232,6 +238,12 @@ NS_IMETHODIMP nsDOMDeviceStorage::UsedSpace(nsIDOMDOMRequest * *_retval)
 
 /* nsIDOMDOMRequest available (); */
 NS_IMETHODIMP nsDOMDeviceStorage::Available(nsIDOMDOMRequest * *_retval)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* readonly attribute DOMString storageName; */
+NS_IMETHODIMP nsDOMDeviceStorage::GetStorageName(nsAString & aStorageName)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

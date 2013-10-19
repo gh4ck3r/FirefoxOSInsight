@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/svg/nsIDOMSVGElement.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/svg/nsIDOMSVGElement.idl
  */
 
 #ifndef __gen_nsIDOMSVGElement_h__
@@ -22,11 +22,11 @@ class nsIDOMCSSValue; /* forward declaration */
 
 
 /* starting interface:    nsIDOMSVGElement */
-#define NS_IDOMSVGELEMENT_IID_STR "7ccf8faf-29b4-4113-bb23-bc187bac27cf"
+#define NS_IDOMSVGELEMENT_IID_STR "12488d4f-1ee5-40bf-9c5d-3a285d4170ab"
 
 #define NS_IDOMSVGELEMENT_IID \
-  {0x7ccf8faf, 0x29b4, 0x4113, \
-    { 0xbb, 0x23, 0xbc, 0x18, 0x7b, 0xac, 0x27, 0xcf }}
+  {0x12488d4f, 0x1ee5, 0x40bf, \
+    { 0x9c, 0x5d, 0x3a, 0x28, 0x5d, 0x41, 0x70, 0xab }}
 
 class NS_NO_VTABLE nsIDOMSVGElement : public nsIDOMElement {
  public: 

@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/toolkit/components/alerts/nsIAlertsService.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/toolkit/components/alerts/nsIAlertsService.idl
  */
 
 #ifndef __gen_nsIAlertsService_h__
@@ -20,19 +20,22 @@
 #endif
 
 /* starting interface:    nsIAlertsService */
-#define NS_IALERTSSERVICE_IID_STR "e177399e-2e31-4019-aed3-cba63ce9fa99"
+#define NS_IALERTSSERVICE_IID_STR "160e87e1-d57d-456b-b6ea-17826f6ea7a8"
 
 #define NS_IALERTSSERVICE_IID \
-  {0xe177399e, 0x2e31, 0x4019, \
-    { 0xae, 0xd3, 0xcb, 0xa6, 0x3c, 0xe9, 0xfa, 0x99 }}
+  {0x160e87e1, 0xd57d, 0x456b, \
+    { 0xb6, 0xea, 0x17, 0x82, 0x6f, 0x6e, 0xa7, 0xa8 }}
 
 class NS_NO_VTABLE nsIAlertsService : public nsISupports {
  public: 
 
   NS_DECLARE_STATIC_IID_ACCESSOR(NS_IALERTSSERVICE_IID)
 
-  /* void showAlertNotification (in AString imageUrl, in AString title, in AString text, [optional] in boolean textClickable, [optional] in AString cookie, [optional] in nsIObserver alertListener, [optional] in AString name); */
-  NS_IMETHOD ShowAlertNotification(const nsAString & imageUrl, const nsAString & title, const nsAString & text, bool textClickable, const nsAString & cookie, nsIObserver *alertListener, const nsAString & name) = 0;
+  /* void showAlertNotification (in AString imageUrl, in AString title, in AString text, [optional] in boolean textClickable, [optional] in AString cookie, [optional] in nsIObserver alertListener, [optional] in AString name, [optional] in AString dir, [optional] in AString lang); */
+  NS_IMETHOD ShowAlertNotification(const nsAString & imageUrl, const nsAString & title, const nsAString & text, bool textClickable, const nsAString & cookie, nsIObserver *alertListener, const nsAString & name, const nsAString & dir, const nsAString & lang) = 0;
+
+  /* void closeAlert ([optional] in AString name); */
+  NS_IMETHOD CloseAlert(const nsAString & name) = 0;
 
 };
 
@@ -40,15 +43,18 @@ class NS_NO_VTABLE nsIAlertsService : public nsISupports {
 
 /* Use this macro when declaring classes that implement this interface. */
 #define NS_DECL_NSIALERTSSERVICE \
-  NS_IMETHOD ShowAlertNotification(const nsAString & imageUrl, const nsAString & title, const nsAString & text, bool textClickable, const nsAString & cookie, nsIObserver *alertListener, const nsAString & name); 
+  NS_IMETHOD ShowAlertNotification(const nsAString & imageUrl, const nsAString & title, const nsAString & text, bool textClickable, const nsAString & cookie, nsIObserver *alertListener, const nsAString & name, const nsAString & dir, const nsAString & lang); \
+  NS_IMETHOD CloseAlert(const nsAString & name); 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object. */
 #define NS_FORWARD_NSIALERTSSERVICE(_to) \
-  NS_IMETHOD ShowAlertNotification(const nsAString & imageUrl, const nsAString & title, const nsAString & text, bool textClickable, const nsAString & cookie, nsIObserver *alertListener, const nsAString & name) { return _to ShowAlertNotification(imageUrl, title, text, textClickable, cookie, alertListener, name); } 
+  NS_IMETHOD ShowAlertNotification(const nsAString & imageUrl, const nsAString & title, const nsAString & text, bool textClickable, const nsAString & cookie, nsIObserver *alertListener, const nsAString & name, const nsAString & dir, const nsAString & lang) { return _to ShowAlertNotification(imageUrl, title, text, textClickable, cookie, alertListener, name, dir, lang); } \
+  NS_IMETHOD CloseAlert(const nsAString & name) { return _to CloseAlert(name); } 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object in a safe way. */
 #define NS_FORWARD_SAFE_NSIALERTSSERVICE(_to) \
-  NS_IMETHOD ShowAlertNotification(const nsAString & imageUrl, const nsAString & title, const nsAString & text, bool textClickable, const nsAString & cookie, nsIObserver *alertListener, const nsAString & name) { return !_to ? NS_ERROR_NULL_POINTER : _to->ShowAlertNotification(imageUrl, title, text, textClickable, cookie, alertListener, name); } 
+  NS_IMETHOD ShowAlertNotification(const nsAString & imageUrl, const nsAString & title, const nsAString & text, bool textClickable, const nsAString & cookie, nsIObserver *alertListener, const nsAString & name, const nsAString & dir, const nsAString & lang) { return !_to ? NS_ERROR_NULL_POINTER : _to->ShowAlertNotification(imageUrl, title, text, textClickable, cookie, alertListener, name, dir, lang); } \
+  NS_IMETHOD CloseAlert(const nsAString & name) { return !_to ? NS_ERROR_NULL_POINTER : _to->CloseAlert(name); } 
 
 #if 0
 /* Use the code below as a template for the implementation class for this interface. */
@@ -82,8 +88,14 @@ nsAlertsService::~nsAlertsService()
   /* destructor code */
 }
 
-/* void showAlertNotification (in AString imageUrl, in AString title, in AString text, [optional] in boolean textClickable, [optional] in AString cookie, [optional] in nsIObserver alertListener, [optional] in AString name); */
-NS_IMETHODIMP nsAlertsService::ShowAlertNotification(const nsAString & imageUrl, const nsAString & title, const nsAString & text, bool textClickable, const nsAString & cookie, nsIObserver *alertListener, const nsAString & name)
+/* void showAlertNotification (in AString imageUrl, in AString title, in AString text, [optional] in boolean textClickable, [optional] in AString cookie, [optional] in nsIObserver alertListener, [optional] in AString name, [optional] in AString dir, [optional] in AString lang); */
+NS_IMETHODIMP nsAlertsService::ShowAlertNotification(const nsAString & imageUrl, const nsAString & title, const nsAString & text, bool textClickable, const nsAString & cookie, nsIObserver *alertListener, const nsAString & name, const nsAString & dir, const nsAString & lang)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* void closeAlert ([optional] in AString name); */
+NS_IMETHODIMP nsAlertsService::CloseAlert(const nsAString & name)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

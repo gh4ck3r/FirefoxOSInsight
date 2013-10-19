@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/xpcom/ds/nsIAtom.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/xpcom/ds/nsIAtom.idl
  */
 
 #ifndef __gen_nsIAtom_h__
@@ -183,29 +183,29 @@ NS_IMETHODIMP_(bool) nsAtom::IsStaticAtom()
  */
 /**
  * Find an atom that matches the given UTF-8 string.
- * The string is assumed to be zero terminated.
+ * The string is assumed to be zero terminated.  Never returns null.
  */
-extern nsIAtom* NS_NewAtom(const char* aUTF8String);
+extern already_AddRefed<nsIAtom> NS_NewAtom(const char* aUTF8String);
 inline already_AddRefed<nsIAtom> do_GetAtom(const char* aUTF8String)
     { return NS_NewAtom(aUTF8String); }
  
 /**
- * Find an atom that matches the given UTF-8 string.
+ * Find an atom that matches the given UTF-8 string.  Never returns null.
  */
-extern nsIAtom* NS_NewAtom(const nsACString& aUTF8String);
+extern already_AddRefed<nsIAtom> NS_NewAtom(const nsACString& aUTF8String);
 inline already_AddRefed<nsIAtom> do_GetAtom(const nsACString& aUTF8String)
     { return NS_NewAtom(aUTF8String); }
 /**
  * Find an atom that matches the given UTF-16 string.
- * The string is assumed to be zero terminated.
+ * The string is assumed to be zero terminated.  Never returns null.
  */
-extern nsIAtom* NS_NewAtom(const PRUnichar* aUTF16String);
+extern already_AddRefed<nsIAtom> NS_NewAtom(const PRUnichar* aUTF16String);
 inline already_AddRefed<nsIAtom> do_GetAtom(const PRUnichar* aUTF16String)
     { return NS_NewAtom(aUTF16String); }
 /**
- * Find an atom that matches the given UTF-16 string.
+ * Find an atom that matches the given UTF-16 string.  Never returns null.
  */
-extern nsIAtom* NS_NewAtom(const nsAString& aUTF16String);
+extern already_AddRefed<nsIAtom> NS_NewAtom(const nsAString& aUTF16String);
 extern nsIAtom* NS_NewPermanentAtom(const nsAString& aUTF16String);
 inline already_AddRefed<nsIAtom> do_GetAtom(const nsAString& aUTF16String)
     { return NS_NewAtom(aUTF16String); }

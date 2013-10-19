@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/uriloader/exthandler/nsIExternalSharingAppService.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/uriloader/exthandler/nsIExternalSharingAppService.idl
  */
 
 #ifndef __gen_nsIExternalSharingAppService_h__
@@ -15,7 +15,6 @@
 #define NS_NO_VTABLE
 #endif
 #define NS_EXTERNALSHARINGAPPSERVICE_CONTRACTID    "@mozilla.org/uriloader/external-sharing-app-service;1"
-#define NS_IEXTERNALSHARINGAPPSERVICE_CLASSNAME "Mozilla Sharing App Service"
 
 /* starting interface:    nsISharingHandlerApp */
 #define NS_ISHARINGHANDLERAPP_IID_STR "7111f769-53ec-41fd-b314-613661d5b6ba"

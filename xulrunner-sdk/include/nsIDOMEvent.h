@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/events/nsIDOMEvent.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/events/nsIDOMEvent.idl
  */
 
 #ifndef __gen_nsIDOMEvent_h__
@@ -20,6 +20,7 @@ class nsIDOMEventTarget; /* forward declaration */
 #undef ERROR
 #endif
 class nsEvent;
+class nsDOMEvent;
 class nsCommandEvent;
 class nsPresContext;
 class nsInvalidateRequestList;
@@ -30,14 +31,17 @@ namespace mozilla {
 namespace widget {
 class WheelEvent;
 } // namespace widget
+namespace dom {
+class EventTarget;
+} // namespace dom
 } // namespace mozilla
 
 /* starting interface:    nsIDOMEvent */
-#define NS_IDOMEVENT_IID_STR "c939eab8-1345-4344-875b-e0f2d8d89171"
+#define NS_IDOMEVENT_IID_STR "547ec16c-e41d-4df7-9fb6-ad6041f0687a"
 
 #define NS_IDOMEVENT_IID \
-  {0xc939eab8, 0x1345, 0x4344, \
-    { 0x87, 0x5b, 0xe0, 0xf2, 0xd8, 0xd8, 0x91, 0x71 }}
+  {0x547ec16c, 0xe41d, 0x4df7, \
+    { 0x9f, 0xb6, 0xad, 0x60, 0x41, 0xf0, 0x68, 0x7a }}
 
 class NS_NO_VTABLE nsIDOMEvent : public nsISupports {
  public: 
@@ -164,6 +168,12 @@ class NS_NO_VTABLE nsIDOMEvent : public nsISupports {
   /* [notxpcom] boolean Deserialize (in ConstIPCMessagePtr aMsg, out voidPtr aIter); */
   NS_IMETHOD_(bool) Deserialize(const IPC::Message *aMsg, void **aIter) = 0;
 
+  /* [noscript,notxpcom] void SetOwner (in EventTargetPtr aOwner); */
+  NS_IMETHOD_(void) SetOwner(mozilla::dom::EventTarget *aOwner) = 0;
+
+  /* [notxpcom] nsDOMEventPtr InternalDOMEvent (); */
+  NS_IMETHOD_(nsDOMEvent *) InternalDOMEvent(void) = 0;
+
 };
 
   NS_DEFINE_STATIC_IID_ACCESSOR(nsIDOMEvent, NS_IDOMEVENT_IID)
@@ -194,7 +204,9 @@ class NS_NO_VTABLE nsIDOMEvent : public nsISupports {
   NS_IMETHOD_(nsEvent *) GetInternalNSEvent(void); \
   NS_IMETHOD_(void) SetTrusted(bool aTrusted); \
   NS_IMETHOD_(void) Serialize(IPC::Message *aMsg, bool aSerializeInterfaceType); \
-  NS_IMETHOD_(bool) Deserialize(const IPC::Message *aMsg, void **aIter); 
+  NS_IMETHOD_(bool) Deserialize(const IPC::Message *aMsg, void **aIter); \
+  NS_IMETHOD_(void) SetOwner(mozilla::dom::EventTarget *aOwner); \
+  NS_IMETHOD_(nsDOMEvent *) InternalDOMEvent(void); 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object. */
 #define NS_FORWARD_NSIDOMEVENT(_to) \
@@ -222,7 +234,9 @@ class NS_NO_VTABLE nsIDOMEvent : public nsISupports {
   NS_IMETHOD_(nsEvent *) GetInternalNSEvent(void) { return _to GetInternalNSEvent(); } \
   NS_IMETHOD_(void) SetTrusted(bool aTrusted) { return _to SetTrusted(aTrusted); } \
   NS_IMETHOD_(void) Serialize(IPC::Message *aMsg, bool aSerializeInterfaceType) { return _to Serialize(aMsg, aSerializeInterfaceType); } \
-  NS_IMETHOD_(bool) Deserialize(const IPC::Message *aMsg, void **aIter) { return _to Deserialize(aMsg, aIter); } 
+  NS_IMETHOD_(bool) Deserialize(const IPC::Message *aMsg, void **aIter) { return _to Deserialize(aMsg, aIter); } \
+  NS_IMETHOD_(void) SetOwner(mozilla::dom::EventTarget *aOwner) { return _to SetOwner(aOwner); } \
+  NS_IMETHOD_(nsDOMEvent *) InternalDOMEvent(void) { return _to InternalDOMEvent(); } 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object in a safe way. */
 #define NS_FORWARD_SAFE_NSIDOMEVENT(_to) \
@@ -250,7 +264,9 @@ class NS_NO_VTABLE nsIDOMEvent : public nsISupports {
   NS_IMETHOD_(nsEvent *) GetInternalNSEvent(void); \
   NS_IMETHOD_(void) SetTrusted(bool aTrusted); \
   NS_IMETHOD_(void) Serialize(IPC::Message *aMsg, bool aSerializeInterfaceType); \
-  NS_IMETHOD_(bool) Deserialize(const IPC::Message *aMsg, void **aIter); 
+  NS_IMETHOD_(bool) Deserialize(const IPC::Message *aMsg, void **aIter); \
+  NS_IMETHOD_(void) SetOwner(mozilla::dom::EventTarget *aOwner); \
+  NS_IMETHOD_(nsDOMEvent *) InternalDOMEvent(void); 
 
 #if 0
 /* Use the code below as a template for the implementation class for this interface. */
@@ -434,75 +450,178 @@ NS_IMETHODIMP_(bool) nsDOMEvent::Deserialize(const IPC::Message *aMsg, void **aI
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
+/* [noscript,notxpcom] void SetOwner (in EventTargetPtr aOwner); */
+NS_IMETHODIMP_(void) nsDOMEvent::SetOwner(mozilla::dom::EventTarget *aOwner)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* [notxpcom] nsDOMEventPtr InternalDOMEvent (); */
+NS_IMETHODIMP_(nsDOMEvent *) nsDOMEvent::InternalDOMEvent()
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
 /* End of implementation class template. */
 #endif
 
+
 nsresult
-NS_NewDOMEvent(nsIDOMEvent** aInstancePtrResult, nsPresContext* aPresContext, nsEvent *aEvent);
+NS_NewDOMEvent(nsIDOMEvent** aInstancePtrResult,
+               mozilla::dom::EventTarget* aOwner,
+               nsPresContext* aPresContext,
+               nsEvent *aEvent);
 nsresult
-NS_NewDOMDataContainerEvent(nsIDOMEvent** aInstancePtrResult, nsPresContext* aPresContext, nsEvent *aEvent);
+NS_NewDOMDataContainerEvent(nsIDOMEvent** aInstancePtrResult,
+                            mozilla::dom::EventTarget* aOwner,
+                            nsPresContext* aPresContext,
+                            nsEvent* aEvent);
 nsresult
-NS_NewDOMUIEvent(nsIDOMEvent** aInstancePtrResult, nsPresContext* aPresContext, class nsGUIEvent *aEvent);
+NS_NewDOMUIEvent(nsIDOMEvent** aInstancePtrResult,
+                 mozilla::dom::EventTarget* aOwner,
+                 nsPresContext* aPresContext,
+                 class nsGUIEvent* aEvent);
 nsresult
-NS_NewDOMMouseEvent(nsIDOMEvent** aInstancePtrResult, nsPresContext* aPresContext, class nsInputEvent *aEvent);
+NS_NewDOMMouseEvent(nsIDOMEvent** aInstancePtrResult,
+                    mozilla::dom::EventTarget* aOwner,
+                    nsPresContext* aPresContext,
+                    class nsInputEvent* aEvent);
 nsresult
-NS_NewDOMMouseScrollEvent(nsIDOMEvent** aInstancePtrResult, nsPresContext* aPresContext, class nsInputEvent *aEvent);
+NS_NewDOMMouseScrollEvent(nsIDOMEvent** aInstancePtrResult,
+                          mozilla::dom::EventTarget* aOwner,
+                          nsPresContext* aPresContext,
+                          class nsInputEvent* aEvent);
 nsresult
-NS_NewDOMWheelEvent(nsIDOMEvent** aInstancePtrResult, nsPresContext* aPresContext, mozilla::widget::WheelEvent *aEvent);
+NS_NewDOMWheelEvent(nsIDOMEvent** aInstancePtrResult,
+                    mozilla::dom::EventTarget* aOwner,
+                    nsPresContext* aPresContext,
+                    mozilla::widget::WheelEvent* aEvent);
 nsresult
-NS_NewDOMDragEvent(nsIDOMEvent** aInstancePtrResult, nsPresContext* aPresContext, class nsDragEvent *aEvent);
+NS_NewDOMDragEvent(nsIDOMEvent** aInstancePtrResult,
+                   mozilla::dom::EventTarget* aOwner,
+                   nsPresContext* aPresContext,
+                   class nsDragEvent* aEvent);
 nsresult
-NS_NewDOMKeyboardEvent(nsIDOMEvent** aInstancePtrResult, nsPresContext* aPresContext, class nsKeyEvent *aEvent);
+NS_NewDOMClipboardEvent(nsIDOMEvent** aInstancePtrResult,
+                        mozilla::dom::EventTarget* aOwner,
+                        nsPresContext* aPresContext,
+                        class nsClipboardEvent *aEvent);
 nsresult
-NS_NewDOMCompositionEvent(nsIDOMEvent** aInstancePtrResult, nsPresContext* aPresContext, class nsCompositionEvent *aEvent);
+NS_NewDOMKeyboardEvent(nsIDOMEvent** aInstancePtrResult,
+                       mozilla::dom::EventTarget* aOwner,
+                       nsPresContext* aPresContext,
+                       class nsKeyEvent* aEvent);
 nsresult
-NS_NewDOMMutationEvent(nsIDOMEvent** aResult, nsPresContext* aPresContext, class nsMutationEvent* aEvent);
+NS_NewDOMCompositionEvent(nsIDOMEvent** aInstancePtrResult,
+                          mozilla::dom::EventTarget* aOwner,
+                          nsPresContext* aPresContext,
+                          class nsCompositionEvent* aEvent);
 nsresult
-NS_NewDOMDeviceMotionEvent(nsIDOMEvent** aResult, nsPresContext* aPresContext, nsEvent* aEvent);
+NS_NewDOMMutationEvent(nsIDOMEvent** aResult,
+                       mozilla::dom::EventTarget* aOwner,
+                       nsPresContext* aPresContext,
+                       class nsMutationEvent* aEvent);
 nsresult
-NS_NewDOMTextEvent(nsIDOMEvent** aResult, nsPresContext* aPresContext, class nsTextEvent* aEvent);
+NS_NewDOMDeviceMotionEvent(nsIDOMEvent** aResult,
+                           mozilla::dom::EventTarget* aOwner,
+                           nsPresContext* aPresContext,
+                           nsEvent* aEvent);
 nsresult
-NS_NewDOMBeforeUnloadEvent(nsIDOMEvent** aResult, nsPresContext* aPresContext, nsEvent* aEvent);
+NS_NewDOMTextEvent(nsIDOMEvent** aResult,
+                   mozilla::dom::EventTarget* aOwner,
+                   nsPresContext* aPresContext,
+                   class nsTextEvent* aEvent);
 nsresult
-NS_NewDOMSVGEvent(nsIDOMEvent** aResult, nsPresContext* aPresContext, class nsEvent* aEvent);
+NS_NewDOMBeforeUnloadEvent(nsIDOMEvent** aResult,
+                           mozilla::dom::EventTarget* aOwner,
+                           nsPresContext* aPresContext,
+                           nsEvent* aEvent);
 nsresult
-NS_NewDOMSVGZoomEvent(nsIDOMEvent** aResult, nsPresContext* aPresContext, class nsGUIEvent* aEvent);
+NS_NewDOMSVGEvent(nsIDOMEvent** aResult,
+                  mozilla::dom::EventTarget* aOwner,
+                  nsPresContext* aPresContext,
+                  class nsEvent* aEvent);
 nsresult
-NS_NewDOMTimeEvent(nsIDOMEvent** aResult, nsPresContext* aPresContext, class nsEvent* aEvent);
+NS_NewDOMSVGZoomEvent(nsIDOMEvent** aResult,
+                      mozilla::dom::EventTarget* aOwner,
+                      nsPresContext* aPresContext,
+                      class nsGUIEvent* aEvent);
 nsresult
-NS_NewDOMXULCommandEvent(nsIDOMEvent** aResult, nsPresContext* aPresContext, class nsInputEvent* aEvent);
+NS_NewDOMTimeEvent(nsIDOMEvent** aResult,
+                   mozilla::dom::EventTarget* aOwner,
+                   nsPresContext* aPresContext,
+                   class nsEvent* aEvent);
 nsresult
-NS_NewDOMCommandEvent(nsIDOMEvent** aInstancePtrResult, nsPresContext* aPresContext, nsCommandEvent* aEvent);
+NS_NewDOMXULCommandEvent(nsIDOMEvent** aResult,
+                         mozilla::dom::EventTarget* aOwner,
+                         nsPresContext* aPresContext,
+                         class nsInputEvent* aEvent);
 nsresult
-NS_NewDOMMessageEvent(nsIDOMEvent** aInstancePtrResult, nsPresContext* aPresContext, class nsEvent* aEvent);
+NS_NewDOMCommandEvent(nsIDOMEvent** aInstancePtrResult,
+                      mozilla::dom::EventTarget* aOwner,
+                      nsPresContext* aPresContext,
+                      nsCommandEvent* aEvent);
 nsresult
-NS_NewDOMProgressEvent(nsIDOMEvent** aInstancePtrResult, nsPresContext* aPresContext, class nsEvent* aEvent);
+NS_NewDOMMessageEvent(nsIDOMEvent** aInstancePtrResult,
+                      mozilla::dom::EventTarget* aOwner,
+                      nsPresContext* aPresContext,
+                      class nsEvent* aEvent);
+nsresult
+NS_NewDOMProgressEvent(nsIDOMEvent** aInstancePtrResult,
+                       mozilla::dom::EventTarget* aOwner,
+                       nsPresContext* aPresContext,
+                       class nsEvent* aEvent);
 // This empties aInvalidateRequests.
 nsresult
-NS_NewDOMNotifyPaintEvent(nsIDOMEvent** aResult, nsPresContext* aPresContext,
+NS_NewDOMNotifyPaintEvent(nsIDOMEvent** aResult,
+                          mozilla::dom::EventTarget* aOwner,
+                          nsPresContext* aPresContext,
                           nsEvent* aEvent,
                           uint32_t aEventType = 0,
                           nsInvalidateRequestList* aInvalidateRequests = nullptr);
 nsresult
-NS_NewDOMAudioAvailableEvent(nsIDOMEvent** aResult, nsPresContext* aPresContext,
+NS_NewDOMAudioAvailableEvent(nsIDOMEvent** aResult,
+                             mozilla::dom::EventTarget* aOwner,
+                             nsPresContext* aPresContext,
                              nsEvent* aEvent,
                              uint32_t aEventType = 0,
                              float* aFrameBuffer = nullptr,
                              uint32_t aFrameBufferLength = 0,
                              float aTime = 0);
 nsresult
-NS_NewDOMSimpleGestureEvent(nsIDOMEvent** aInstancePtrResult, nsPresContext* aPresContext, class nsSimpleGestureEvent* aEvent);
+NS_NewDOMSimpleGestureEvent(nsIDOMEvent** aInstancePtrResult,
+                            mozilla::dom::EventTarget* aOwner,
+                            nsPresContext* aPresContext,
+                            class nsSimpleGestureEvent* aEvent);
 nsresult
-NS_NewDOMScrollAreaEvent(nsIDOMEvent** aInstancePtrResult, nsPresContext* aPresContext, class nsScrollAreaEvent* aEvent);
+NS_NewDOMScrollAreaEvent(nsIDOMEvent** aInstancePtrResult,
+                         mozilla::dom::EventTarget* aOwner,
+                         nsPresContext* aPresContext,
+                         class nsScrollAreaEvent* aEvent);
 nsresult
-NS_NewDOMTransitionEvent(nsIDOMEvent** aInstancePtrResult, nsPresContext* aPresContext, class nsTransitionEvent* aEvent);
+NS_NewDOMTransitionEvent(nsIDOMEvent** aInstancePtrResult,
+                         mozilla::dom::EventTarget* aOwner,
+                         nsPresContext* aPresContext,
+                         class nsTransitionEvent* aEvent);
 nsresult
-NS_NewDOMAnimationEvent(nsIDOMEvent** aInstancePtrResult, nsPresContext* aPresContext, class nsAnimationEvent* aEvent);
+NS_NewDOMAnimationEvent(nsIDOMEvent** aInstancePtrResult,
+                        mozilla::dom::EventTarget* aOwner,
+                        nsPresContext* aPresContext,
+                        class nsAnimationEvent* aEvent);
 nsresult
-NS_NewDOMTouchEvent(nsIDOMEvent** aInstancePtrResult, nsPresContext* aPresContext, class nsTouchEvent *aEvent);
+NS_NewDOMTouchEvent(nsIDOMEvent** aInstancePtrResult,
+                    mozilla::dom::EventTarget* aOwner,
+                    nsPresContext* aPresContext,
+                    class nsTouchEvent* aEvent);
 nsresult
-NS_NewDOMMozSettingsEvent(nsIDOMEvent** aInstancePtrResult, nsPresContext* aPresContext, nsEvent* aEvent);
+NS_NewDOMMozSettingsEvent(nsIDOMEvent** aInstancePtrResult,
+                          mozilla::dom::EventTarget* aOwner,
+                          nsPresContext* aPresContext,
+                          nsEvent* aEvent);
 nsresult
-NS_NewDOMMozApplicationEvent(nsIDOMEvent** aInstancePtrResult, nsPresContext* aPresContext, nsEvent* aEvent);
+NS_NewDOMMozApplicationEvent(nsIDOMEvent** aInstancePtrResult,
+                             mozilla::dom::EventTarget* aOwner,
+                             nsPresContext* aPresContext,
+                             nsEvent* aEvent);
 
 #endif /* __gen_nsIDOMEvent_h__ */

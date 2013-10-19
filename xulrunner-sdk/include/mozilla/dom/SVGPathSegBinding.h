@@ -8,127 +8,30 @@
 #include "mozilla/dom/DOMJSClass.h"
 #include "mozilla/dom/DOMJSProxyHandler.h"
 
-class XPCWrappedNativeScope;
 namespace mozilla {
 
 class DOMSVGPathSeg;
-
-} // namespace mozilla
-
-namespace mozilla {
-
 class DOMSVGPathSegArcAbs;
-
-} // namespace mozilla
-
-namespace mozilla {
-
 class DOMSVGPathSegArcRel;
-
-} // namespace mozilla
-
-namespace mozilla {
-
 class DOMSVGPathSegClosePath;
-
-} // namespace mozilla
-
-namespace mozilla {
-
 class DOMSVGPathSegCurvetoCubicAbs;
-
-} // namespace mozilla
-
-namespace mozilla {
-
 class DOMSVGPathSegCurvetoCubicRel;
-
-} // namespace mozilla
-
-namespace mozilla {
-
 class DOMSVGPathSegCurvetoCubicSmoothAbs;
-
-} // namespace mozilla
-
-namespace mozilla {
-
 class DOMSVGPathSegCurvetoCubicSmoothRel;
-
-} // namespace mozilla
-
-namespace mozilla {
-
 class DOMSVGPathSegCurvetoQuadraticAbs;
-
-} // namespace mozilla
-
-namespace mozilla {
-
 class DOMSVGPathSegCurvetoQuadraticRel;
-
-} // namespace mozilla
-
-namespace mozilla {
-
 class DOMSVGPathSegCurvetoQuadraticSmoothAbs;
-
-} // namespace mozilla
-
-namespace mozilla {
-
 class DOMSVGPathSegCurvetoQuadraticSmoothRel;
-
-} // namespace mozilla
-
-namespace mozilla {
-
 class DOMSVGPathSegLinetoAbs;
-
-} // namespace mozilla
-
-namespace mozilla {
-
 class DOMSVGPathSegLinetoHorizontalAbs;
-
-} // namespace mozilla
-
-namespace mozilla {
-
 class DOMSVGPathSegLinetoHorizontalRel;
-
-} // namespace mozilla
-
-namespace mozilla {
-
 class DOMSVGPathSegLinetoRel;
-
-} // namespace mozilla
-
-namespace mozilla {
-
 class DOMSVGPathSegLinetoVerticalAbs;
-
-} // namespace mozilla
-
-namespace mozilla {
-
 class DOMSVGPathSegLinetoVerticalRel;
-
-} // namespace mozilla
-
-namespace mozilla {
-
 class DOMSVGPathSegMovetoAbs;
-
-} // namespace mozilla
-
-namespace mozilla {
-
 class DOMSVGPathSegMovetoRel;
 
 } // namespace mozilla
-
 
 namespace mozilla {
 namespace dom {
@@ -485,9 +388,9 @@ namespace SVGPathSegBinding {
   extern const NativePropertyHooks sNativePropertyHooks;
 
   void
-  CreateInterfaceObjects(JSContext* aCx, JSObject* aGlobal, JSObject** protoAndIfaceArray);
+  CreateInterfaceObjects(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JSObject** protoAndIfaceArray);
 
-  inline JSObject* GetProtoObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetProtoObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface prototype object for this class.  This will create the
@@ -495,21 +398,19 @@ namespace SVGPathSegBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[prototypes::id::SVGPathSeg];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[prototypes::id::SVGPathSeg]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[prototypes::id::SVGPathSeg];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[prototypes::id::SVGPathSeg]);
   }
 
-  inline JSObject* GetConstructorObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetConstructorObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface object for this class.  This will create the object as
@@ -517,22 +418,20 @@ namespace SVGPathSegBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[constructors::id::SVGPathSeg];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[constructors::id::SVGPathSeg]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[constructors::id::SVGPathSeg];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[constructors::id::SVGPathSeg]);
   }
 
   JSObject*
-  DefineDOMInterface(JSContext* aCx, JSObject* aGlobal, bool* aEnabled);
+  DefineDOMInterface(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JS::Handle<jsid> id, bool* aEnabled);
 
 } // namespace SVGPathSegBinding
 
@@ -543,9 +442,9 @@ namespace SVGPathSegArcAbsBinding {
   extern const NativePropertyHooks sNativePropertyHooks;
 
   void
-  CreateInterfaceObjects(JSContext* aCx, JSObject* aGlobal, JSObject** protoAndIfaceArray);
+  CreateInterfaceObjects(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JSObject** protoAndIfaceArray);
 
-  inline JSObject* GetProtoObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetProtoObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface prototype object for this class.  This will create the
@@ -553,21 +452,19 @@ namespace SVGPathSegArcAbsBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[prototypes::id::SVGPathSegArcAbs];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[prototypes::id::SVGPathSegArcAbs]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[prototypes::id::SVGPathSegArcAbs];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[prototypes::id::SVGPathSegArcAbs]);
   }
 
-  inline JSObject* GetConstructorObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetConstructorObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface object for this class.  This will create the object as
@@ -575,32 +472,30 @@ namespace SVGPathSegArcAbsBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[constructors::id::SVGPathSegArcAbs];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[constructors::id::SVGPathSegArcAbs]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[constructors::id::SVGPathSegArcAbs];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[constructors::id::SVGPathSegArcAbs]);
   }
 
   JSObject*
-  DefineDOMInterface(JSContext* aCx, JSObject* aGlobal, bool* aEnabled);
+  DefineDOMInterface(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JS::Handle<jsid> id, bool* aEnabled);
 
   extern DOMJSClass Class;
 
   JSObject*
-  Wrap(JSContext* aCx, JSObject* aScope, mozilla::DOMSVGPathSegArcAbs* aObject, nsWrapperCache* aCache, bool* aTriedToWrap);
+  Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, mozilla::DOMSVGPathSegArcAbs* aObject, nsWrapperCache* aCache);
 
   template <class T>
-  inline JSObject* Wrap(JSContext* aCx, JSObject* aScope, T* aObject, bool* aTriedToWrap)
+  inline JSObject* Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, T* aObject)
   {
-    return Wrap(aCx, aScope, aObject, aObject, aTriedToWrap);
+    return Wrap(aCx, aScope, aObject, aObject);
   }
 
 } // namespace SVGPathSegArcAbsBinding
@@ -612,9 +507,9 @@ namespace SVGPathSegArcRelBinding {
   extern const NativePropertyHooks sNativePropertyHooks;
 
   void
-  CreateInterfaceObjects(JSContext* aCx, JSObject* aGlobal, JSObject** protoAndIfaceArray);
+  CreateInterfaceObjects(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JSObject** protoAndIfaceArray);
 
-  inline JSObject* GetProtoObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetProtoObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface prototype object for this class.  This will create the
@@ -622,21 +517,19 @@ namespace SVGPathSegArcRelBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[prototypes::id::SVGPathSegArcRel];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[prototypes::id::SVGPathSegArcRel]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[prototypes::id::SVGPathSegArcRel];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[prototypes::id::SVGPathSegArcRel]);
   }
 
-  inline JSObject* GetConstructorObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetConstructorObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface object for this class.  This will create the object as
@@ -644,32 +537,30 @@ namespace SVGPathSegArcRelBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[constructors::id::SVGPathSegArcRel];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[constructors::id::SVGPathSegArcRel]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[constructors::id::SVGPathSegArcRel];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[constructors::id::SVGPathSegArcRel]);
   }
 
   JSObject*
-  DefineDOMInterface(JSContext* aCx, JSObject* aGlobal, bool* aEnabled);
+  DefineDOMInterface(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JS::Handle<jsid> id, bool* aEnabled);
 
   extern DOMJSClass Class;
 
   JSObject*
-  Wrap(JSContext* aCx, JSObject* aScope, mozilla::DOMSVGPathSegArcRel* aObject, nsWrapperCache* aCache, bool* aTriedToWrap);
+  Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, mozilla::DOMSVGPathSegArcRel* aObject, nsWrapperCache* aCache);
 
   template <class T>
-  inline JSObject* Wrap(JSContext* aCx, JSObject* aScope, T* aObject, bool* aTriedToWrap)
+  inline JSObject* Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, T* aObject)
   {
-    return Wrap(aCx, aScope, aObject, aObject, aTriedToWrap);
+    return Wrap(aCx, aScope, aObject, aObject);
   }
 
 } // namespace SVGPathSegArcRelBinding
@@ -681,9 +572,9 @@ namespace SVGPathSegClosePathBinding {
   extern const NativePropertyHooks sNativePropertyHooks;
 
   void
-  CreateInterfaceObjects(JSContext* aCx, JSObject* aGlobal, JSObject** protoAndIfaceArray);
+  CreateInterfaceObjects(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JSObject** protoAndIfaceArray);
 
-  inline JSObject* GetProtoObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetProtoObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface prototype object for this class.  This will create the
@@ -691,21 +582,19 @@ namespace SVGPathSegClosePathBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[prototypes::id::SVGPathSegClosePath];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[prototypes::id::SVGPathSegClosePath]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[prototypes::id::SVGPathSegClosePath];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[prototypes::id::SVGPathSegClosePath]);
   }
 
-  inline JSObject* GetConstructorObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetConstructorObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface object for this class.  This will create the object as
@@ -713,32 +602,30 @@ namespace SVGPathSegClosePathBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[constructors::id::SVGPathSegClosePath];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[constructors::id::SVGPathSegClosePath]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[constructors::id::SVGPathSegClosePath];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[constructors::id::SVGPathSegClosePath]);
   }
 
   JSObject*
-  DefineDOMInterface(JSContext* aCx, JSObject* aGlobal, bool* aEnabled);
+  DefineDOMInterface(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JS::Handle<jsid> id, bool* aEnabled);
 
   extern DOMJSClass Class;
 
   JSObject*
-  Wrap(JSContext* aCx, JSObject* aScope, mozilla::DOMSVGPathSegClosePath* aObject, nsWrapperCache* aCache, bool* aTriedToWrap);
+  Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, mozilla::DOMSVGPathSegClosePath* aObject, nsWrapperCache* aCache);
 
   template <class T>
-  inline JSObject* Wrap(JSContext* aCx, JSObject* aScope, T* aObject, bool* aTriedToWrap)
+  inline JSObject* Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, T* aObject)
   {
-    return Wrap(aCx, aScope, aObject, aObject, aTriedToWrap);
+    return Wrap(aCx, aScope, aObject, aObject);
   }
 
 } // namespace SVGPathSegClosePathBinding
@@ -750,9 +637,9 @@ namespace SVGPathSegCurvetoCubicAbsBinding {
   extern const NativePropertyHooks sNativePropertyHooks;
 
   void
-  CreateInterfaceObjects(JSContext* aCx, JSObject* aGlobal, JSObject** protoAndIfaceArray);
+  CreateInterfaceObjects(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JSObject** protoAndIfaceArray);
 
-  inline JSObject* GetProtoObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetProtoObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface prototype object for this class.  This will create the
@@ -760,21 +647,19 @@ namespace SVGPathSegCurvetoCubicAbsBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[prototypes::id::SVGPathSegCurvetoCubicAbs];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[prototypes::id::SVGPathSegCurvetoCubicAbs]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[prototypes::id::SVGPathSegCurvetoCubicAbs];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[prototypes::id::SVGPathSegCurvetoCubicAbs]);
   }
 
-  inline JSObject* GetConstructorObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetConstructorObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface object for this class.  This will create the object as
@@ -782,32 +667,30 @@ namespace SVGPathSegCurvetoCubicAbsBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[constructors::id::SVGPathSegCurvetoCubicAbs];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[constructors::id::SVGPathSegCurvetoCubicAbs]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[constructors::id::SVGPathSegCurvetoCubicAbs];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[constructors::id::SVGPathSegCurvetoCubicAbs]);
   }
 
   JSObject*
-  DefineDOMInterface(JSContext* aCx, JSObject* aGlobal, bool* aEnabled);
+  DefineDOMInterface(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JS::Handle<jsid> id, bool* aEnabled);
 
   extern DOMJSClass Class;
 
   JSObject*
-  Wrap(JSContext* aCx, JSObject* aScope, mozilla::DOMSVGPathSegCurvetoCubicAbs* aObject, nsWrapperCache* aCache, bool* aTriedToWrap);
+  Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, mozilla::DOMSVGPathSegCurvetoCubicAbs* aObject, nsWrapperCache* aCache);
 
   template <class T>
-  inline JSObject* Wrap(JSContext* aCx, JSObject* aScope, T* aObject, bool* aTriedToWrap)
+  inline JSObject* Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, T* aObject)
   {
-    return Wrap(aCx, aScope, aObject, aObject, aTriedToWrap);
+    return Wrap(aCx, aScope, aObject, aObject);
   }
 
 } // namespace SVGPathSegCurvetoCubicAbsBinding
@@ -819,9 +702,9 @@ namespace SVGPathSegCurvetoCubicRelBinding {
   extern const NativePropertyHooks sNativePropertyHooks;
 
   void
-  CreateInterfaceObjects(JSContext* aCx, JSObject* aGlobal, JSObject** protoAndIfaceArray);
+  CreateInterfaceObjects(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JSObject** protoAndIfaceArray);
 
-  inline JSObject* GetProtoObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetProtoObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface prototype object for this class.  This will create the
@@ -829,21 +712,19 @@ namespace SVGPathSegCurvetoCubicRelBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[prototypes::id::SVGPathSegCurvetoCubicRel];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[prototypes::id::SVGPathSegCurvetoCubicRel]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[prototypes::id::SVGPathSegCurvetoCubicRel];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[prototypes::id::SVGPathSegCurvetoCubicRel]);
   }
 
-  inline JSObject* GetConstructorObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetConstructorObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface object for this class.  This will create the object as
@@ -851,32 +732,30 @@ namespace SVGPathSegCurvetoCubicRelBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[constructors::id::SVGPathSegCurvetoCubicRel];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[constructors::id::SVGPathSegCurvetoCubicRel]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[constructors::id::SVGPathSegCurvetoCubicRel];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[constructors::id::SVGPathSegCurvetoCubicRel]);
   }
 
   JSObject*
-  DefineDOMInterface(JSContext* aCx, JSObject* aGlobal, bool* aEnabled);
+  DefineDOMInterface(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JS::Handle<jsid> id, bool* aEnabled);
 
   extern DOMJSClass Class;
 
   JSObject*
-  Wrap(JSContext* aCx, JSObject* aScope, mozilla::DOMSVGPathSegCurvetoCubicRel* aObject, nsWrapperCache* aCache, bool* aTriedToWrap);
+  Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, mozilla::DOMSVGPathSegCurvetoCubicRel* aObject, nsWrapperCache* aCache);
 
   template <class T>
-  inline JSObject* Wrap(JSContext* aCx, JSObject* aScope, T* aObject, bool* aTriedToWrap)
+  inline JSObject* Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, T* aObject)
   {
-    return Wrap(aCx, aScope, aObject, aObject, aTriedToWrap);
+    return Wrap(aCx, aScope, aObject, aObject);
   }
 
 } // namespace SVGPathSegCurvetoCubicRelBinding
@@ -888,9 +767,9 @@ namespace SVGPathSegCurvetoCubicSmoothAbsBinding {
   extern const NativePropertyHooks sNativePropertyHooks;
 
   void
-  CreateInterfaceObjects(JSContext* aCx, JSObject* aGlobal, JSObject** protoAndIfaceArray);
+  CreateInterfaceObjects(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JSObject** protoAndIfaceArray);
 
-  inline JSObject* GetProtoObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetProtoObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface prototype object for this class.  This will create the
@@ -898,21 +777,19 @@ namespace SVGPathSegCurvetoCubicSmoothAbsBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[prototypes::id::SVGPathSegCurvetoCubicSmoothAbs];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[prototypes::id::SVGPathSegCurvetoCubicSmoothAbs]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[prototypes::id::SVGPathSegCurvetoCubicSmoothAbs];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[prototypes::id::SVGPathSegCurvetoCubicSmoothAbs]);
   }
 
-  inline JSObject* GetConstructorObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetConstructorObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface object for this class.  This will create the object as
@@ -920,32 +797,30 @@ namespace SVGPathSegCurvetoCubicSmoothAbsBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[constructors::id::SVGPathSegCurvetoCubicSmoothAbs];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[constructors::id::SVGPathSegCurvetoCubicSmoothAbs]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[constructors::id::SVGPathSegCurvetoCubicSmoothAbs];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[constructors::id::SVGPathSegCurvetoCubicSmoothAbs]);
   }
 
   JSObject*
-  DefineDOMInterface(JSContext* aCx, JSObject* aGlobal, bool* aEnabled);
+  DefineDOMInterface(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JS::Handle<jsid> id, bool* aEnabled);
 
   extern DOMJSClass Class;
 
   JSObject*
-  Wrap(JSContext* aCx, JSObject* aScope, mozilla::DOMSVGPathSegCurvetoCubicSmoothAbs* aObject, nsWrapperCache* aCache, bool* aTriedToWrap);
+  Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, mozilla::DOMSVGPathSegCurvetoCubicSmoothAbs* aObject, nsWrapperCache* aCache);
 
   template <class T>
-  inline JSObject* Wrap(JSContext* aCx, JSObject* aScope, T* aObject, bool* aTriedToWrap)
+  inline JSObject* Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, T* aObject)
   {
-    return Wrap(aCx, aScope, aObject, aObject, aTriedToWrap);
+    return Wrap(aCx, aScope, aObject, aObject);
   }
 
 } // namespace SVGPathSegCurvetoCubicSmoothAbsBinding
@@ -957,9 +832,9 @@ namespace SVGPathSegCurvetoCubicSmoothRelBinding {
   extern const NativePropertyHooks sNativePropertyHooks;
 
   void
-  CreateInterfaceObjects(JSContext* aCx, JSObject* aGlobal, JSObject** protoAndIfaceArray);
+  CreateInterfaceObjects(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JSObject** protoAndIfaceArray);
 
-  inline JSObject* GetProtoObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetProtoObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface prototype object for this class.  This will create the
@@ -967,21 +842,19 @@ namespace SVGPathSegCurvetoCubicSmoothRelBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[prototypes::id::SVGPathSegCurvetoCubicSmoothRel];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[prototypes::id::SVGPathSegCurvetoCubicSmoothRel]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[prototypes::id::SVGPathSegCurvetoCubicSmoothRel];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[prototypes::id::SVGPathSegCurvetoCubicSmoothRel]);
   }
 
-  inline JSObject* GetConstructorObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetConstructorObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface object for this class.  This will create the object as
@@ -989,32 +862,30 @@ namespace SVGPathSegCurvetoCubicSmoothRelBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[constructors::id::SVGPathSegCurvetoCubicSmoothRel];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[constructors::id::SVGPathSegCurvetoCubicSmoothRel]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[constructors::id::SVGPathSegCurvetoCubicSmoothRel];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[constructors::id::SVGPathSegCurvetoCubicSmoothRel]);
   }
 
   JSObject*
-  DefineDOMInterface(JSContext* aCx, JSObject* aGlobal, bool* aEnabled);
+  DefineDOMInterface(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JS::Handle<jsid> id, bool* aEnabled);
 
   extern DOMJSClass Class;
 
   JSObject*
-  Wrap(JSContext* aCx, JSObject* aScope, mozilla::DOMSVGPathSegCurvetoCubicSmoothRel* aObject, nsWrapperCache* aCache, bool* aTriedToWrap);
+  Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, mozilla::DOMSVGPathSegCurvetoCubicSmoothRel* aObject, nsWrapperCache* aCache);
 
   template <class T>
-  inline JSObject* Wrap(JSContext* aCx, JSObject* aScope, T* aObject, bool* aTriedToWrap)
+  inline JSObject* Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, T* aObject)
   {
-    return Wrap(aCx, aScope, aObject, aObject, aTriedToWrap);
+    return Wrap(aCx, aScope, aObject, aObject);
   }
 
 } // namespace SVGPathSegCurvetoCubicSmoothRelBinding
@@ -1026,9 +897,9 @@ namespace SVGPathSegCurvetoQuadraticAbsBinding {
   extern const NativePropertyHooks sNativePropertyHooks;
 
   void
-  CreateInterfaceObjects(JSContext* aCx, JSObject* aGlobal, JSObject** protoAndIfaceArray);
+  CreateInterfaceObjects(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JSObject** protoAndIfaceArray);
 
-  inline JSObject* GetProtoObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetProtoObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface prototype object for this class.  This will create the
@@ -1036,21 +907,19 @@ namespace SVGPathSegCurvetoQuadraticAbsBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[prototypes::id::SVGPathSegCurvetoQuadraticAbs];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[prototypes::id::SVGPathSegCurvetoQuadraticAbs]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[prototypes::id::SVGPathSegCurvetoQuadraticAbs];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[prototypes::id::SVGPathSegCurvetoQuadraticAbs]);
   }
 
-  inline JSObject* GetConstructorObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetConstructorObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface object for this class.  This will create the object as
@@ -1058,32 +927,30 @@ namespace SVGPathSegCurvetoQuadraticAbsBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[constructors::id::SVGPathSegCurvetoQuadraticAbs];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[constructors::id::SVGPathSegCurvetoQuadraticAbs]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[constructors::id::SVGPathSegCurvetoQuadraticAbs];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[constructors::id::SVGPathSegCurvetoQuadraticAbs]);
   }
 
   JSObject*
-  DefineDOMInterface(JSContext* aCx, JSObject* aGlobal, bool* aEnabled);
+  DefineDOMInterface(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JS::Handle<jsid> id, bool* aEnabled);
 
   extern DOMJSClass Class;
 
   JSObject*
-  Wrap(JSContext* aCx, JSObject* aScope, mozilla::DOMSVGPathSegCurvetoQuadraticAbs* aObject, nsWrapperCache* aCache, bool* aTriedToWrap);
+  Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, mozilla::DOMSVGPathSegCurvetoQuadraticAbs* aObject, nsWrapperCache* aCache);
 
   template <class T>
-  inline JSObject* Wrap(JSContext* aCx, JSObject* aScope, T* aObject, bool* aTriedToWrap)
+  inline JSObject* Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, T* aObject)
   {
-    return Wrap(aCx, aScope, aObject, aObject, aTriedToWrap);
+    return Wrap(aCx, aScope, aObject, aObject);
   }
 
 } // namespace SVGPathSegCurvetoQuadraticAbsBinding
@@ -1095,9 +962,9 @@ namespace SVGPathSegCurvetoQuadraticRelBinding {
   extern const NativePropertyHooks sNativePropertyHooks;
 
   void
-  CreateInterfaceObjects(JSContext* aCx, JSObject* aGlobal, JSObject** protoAndIfaceArray);
+  CreateInterfaceObjects(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JSObject** protoAndIfaceArray);
 
-  inline JSObject* GetProtoObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetProtoObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface prototype object for this class.  This will create the
@@ -1105,21 +972,19 @@ namespace SVGPathSegCurvetoQuadraticRelBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[prototypes::id::SVGPathSegCurvetoQuadraticRel];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[prototypes::id::SVGPathSegCurvetoQuadraticRel]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[prototypes::id::SVGPathSegCurvetoQuadraticRel];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[prototypes::id::SVGPathSegCurvetoQuadraticRel]);
   }
 
-  inline JSObject* GetConstructorObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetConstructorObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface object for this class.  This will create the object as
@@ -1127,32 +992,30 @@ namespace SVGPathSegCurvetoQuadraticRelBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[constructors::id::SVGPathSegCurvetoQuadraticRel];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[constructors::id::SVGPathSegCurvetoQuadraticRel]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[constructors::id::SVGPathSegCurvetoQuadraticRel];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[constructors::id::SVGPathSegCurvetoQuadraticRel]);
   }
 
   JSObject*
-  DefineDOMInterface(JSContext* aCx, JSObject* aGlobal, bool* aEnabled);
+  DefineDOMInterface(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JS::Handle<jsid> id, bool* aEnabled);
 
   extern DOMJSClass Class;
 
   JSObject*
-  Wrap(JSContext* aCx, JSObject* aScope, mozilla::DOMSVGPathSegCurvetoQuadraticRel* aObject, nsWrapperCache* aCache, bool* aTriedToWrap);
+  Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, mozilla::DOMSVGPathSegCurvetoQuadraticRel* aObject, nsWrapperCache* aCache);
 
   template <class T>
-  inline JSObject* Wrap(JSContext* aCx, JSObject* aScope, T* aObject, bool* aTriedToWrap)
+  inline JSObject* Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, T* aObject)
   {
-    return Wrap(aCx, aScope, aObject, aObject, aTriedToWrap);
+    return Wrap(aCx, aScope, aObject, aObject);
   }
 
 } // namespace SVGPathSegCurvetoQuadraticRelBinding
@@ -1164,9 +1027,9 @@ namespace SVGPathSegCurvetoQuadraticSmoothAbsBinding {
   extern const NativePropertyHooks sNativePropertyHooks;
 
   void
-  CreateInterfaceObjects(JSContext* aCx, JSObject* aGlobal, JSObject** protoAndIfaceArray);
+  CreateInterfaceObjects(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JSObject** protoAndIfaceArray);
 
-  inline JSObject* GetProtoObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetProtoObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface prototype object for this class.  This will create the
@@ -1174,21 +1037,19 @@ namespace SVGPathSegCurvetoQuadraticSmoothAbsBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[prototypes::id::SVGPathSegCurvetoQuadraticSmoothAbs];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[prototypes::id::SVGPathSegCurvetoQuadraticSmoothAbs]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[prototypes::id::SVGPathSegCurvetoQuadraticSmoothAbs];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[prototypes::id::SVGPathSegCurvetoQuadraticSmoothAbs]);
   }
 
-  inline JSObject* GetConstructorObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetConstructorObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface object for this class.  This will create the object as
@@ -1196,32 +1057,30 @@ namespace SVGPathSegCurvetoQuadraticSmoothAbsBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[constructors::id::SVGPathSegCurvetoQuadraticSmoothAbs];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[constructors::id::SVGPathSegCurvetoQuadraticSmoothAbs]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[constructors::id::SVGPathSegCurvetoQuadraticSmoothAbs];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[constructors::id::SVGPathSegCurvetoQuadraticSmoothAbs]);
   }
 
   JSObject*
-  DefineDOMInterface(JSContext* aCx, JSObject* aGlobal, bool* aEnabled);
+  DefineDOMInterface(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JS::Handle<jsid> id, bool* aEnabled);
 
   extern DOMJSClass Class;
 
   JSObject*
-  Wrap(JSContext* aCx, JSObject* aScope, mozilla::DOMSVGPathSegCurvetoQuadraticSmoothAbs* aObject, nsWrapperCache* aCache, bool* aTriedToWrap);
+  Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, mozilla::DOMSVGPathSegCurvetoQuadraticSmoothAbs* aObject, nsWrapperCache* aCache);
 
   template <class T>
-  inline JSObject* Wrap(JSContext* aCx, JSObject* aScope, T* aObject, bool* aTriedToWrap)
+  inline JSObject* Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, T* aObject)
   {
-    return Wrap(aCx, aScope, aObject, aObject, aTriedToWrap);
+    return Wrap(aCx, aScope, aObject, aObject);
   }
 
 } // namespace SVGPathSegCurvetoQuadraticSmoothAbsBinding
@@ -1233,9 +1092,9 @@ namespace SVGPathSegCurvetoQuadraticSmoothRelBinding {
   extern const NativePropertyHooks sNativePropertyHooks;
 
   void
-  CreateInterfaceObjects(JSContext* aCx, JSObject* aGlobal, JSObject** protoAndIfaceArray);
+  CreateInterfaceObjects(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JSObject** protoAndIfaceArray);
 
-  inline JSObject* GetProtoObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetProtoObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface prototype object for this class.  This will create the
@@ -1243,21 +1102,19 @@ namespace SVGPathSegCurvetoQuadraticSmoothRelBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[prototypes::id::SVGPathSegCurvetoQuadraticSmoothRel];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[prototypes::id::SVGPathSegCurvetoQuadraticSmoothRel]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[prototypes::id::SVGPathSegCurvetoQuadraticSmoothRel];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[prototypes::id::SVGPathSegCurvetoQuadraticSmoothRel]);
   }
 
-  inline JSObject* GetConstructorObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetConstructorObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface object for this class.  This will create the object as
@@ -1265,32 +1122,30 @@ namespace SVGPathSegCurvetoQuadraticSmoothRelBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[constructors::id::SVGPathSegCurvetoQuadraticSmoothRel];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[constructors::id::SVGPathSegCurvetoQuadraticSmoothRel]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[constructors::id::SVGPathSegCurvetoQuadraticSmoothRel];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[constructors::id::SVGPathSegCurvetoQuadraticSmoothRel]);
   }
 
   JSObject*
-  DefineDOMInterface(JSContext* aCx, JSObject* aGlobal, bool* aEnabled);
+  DefineDOMInterface(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JS::Handle<jsid> id, bool* aEnabled);
 
   extern DOMJSClass Class;
 
   JSObject*
-  Wrap(JSContext* aCx, JSObject* aScope, mozilla::DOMSVGPathSegCurvetoQuadraticSmoothRel* aObject, nsWrapperCache* aCache, bool* aTriedToWrap);
+  Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, mozilla::DOMSVGPathSegCurvetoQuadraticSmoothRel* aObject, nsWrapperCache* aCache);
 
   template <class T>
-  inline JSObject* Wrap(JSContext* aCx, JSObject* aScope, T* aObject, bool* aTriedToWrap)
+  inline JSObject* Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, T* aObject)
   {
-    return Wrap(aCx, aScope, aObject, aObject, aTriedToWrap);
+    return Wrap(aCx, aScope, aObject, aObject);
   }
 
 } // namespace SVGPathSegCurvetoQuadraticSmoothRelBinding
@@ -1302,9 +1157,9 @@ namespace SVGPathSegLinetoAbsBinding {
   extern const NativePropertyHooks sNativePropertyHooks;
 
   void
-  CreateInterfaceObjects(JSContext* aCx, JSObject* aGlobal, JSObject** protoAndIfaceArray);
+  CreateInterfaceObjects(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JSObject** protoAndIfaceArray);
 
-  inline JSObject* GetProtoObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetProtoObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface prototype object for this class.  This will create the
@@ -1312,21 +1167,19 @@ namespace SVGPathSegLinetoAbsBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[prototypes::id::SVGPathSegLinetoAbs];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[prototypes::id::SVGPathSegLinetoAbs]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[prototypes::id::SVGPathSegLinetoAbs];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[prototypes::id::SVGPathSegLinetoAbs]);
   }
 
-  inline JSObject* GetConstructorObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetConstructorObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface object for this class.  This will create the object as
@@ -1334,32 +1187,30 @@ namespace SVGPathSegLinetoAbsBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[constructors::id::SVGPathSegLinetoAbs];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[constructors::id::SVGPathSegLinetoAbs]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[constructors::id::SVGPathSegLinetoAbs];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[constructors::id::SVGPathSegLinetoAbs]);
   }
 
   JSObject*
-  DefineDOMInterface(JSContext* aCx, JSObject* aGlobal, bool* aEnabled);
+  DefineDOMInterface(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JS::Handle<jsid> id, bool* aEnabled);
 
   extern DOMJSClass Class;
 
   JSObject*
-  Wrap(JSContext* aCx, JSObject* aScope, mozilla::DOMSVGPathSegLinetoAbs* aObject, nsWrapperCache* aCache, bool* aTriedToWrap);
+  Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, mozilla::DOMSVGPathSegLinetoAbs* aObject, nsWrapperCache* aCache);
 
   template <class T>
-  inline JSObject* Wrap(JSContext* aCx, JSObject* aScope, T* aObject, bool* aTriedToWrap)
+  inline JSObject* Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, T* aObject)
   {
-    return Wrap(aCx, aScope, aObject, aObject, aTriedToWrap);
+    return Wrap(aCx, aScope, aObject, aObject);
   }
 
 } // namespace SVGPathSegLinetoAbsBinding
@@ -1371,9 +1222,9 @@ namespace SVGPathSegLinetoHorizontalAbsBinding {
   extern const NativePropertyHooks sNativePropertyHooks;
 
   void
-  CreateInterfaceObjects(JSContext* aCx, JSObject* aGlobal, JSObject** protoAndIfaceArray);
+  CreateInterfaceObjects(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JSObject** protoAndIfaceArray);
 
-  inline JSObject* GetProtoObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetProtoObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface prototype object for this class.  This will create the
@@ -1381,21 +1232,19 @@ namespace SVGPathSegLinetoHorizontalAbsBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[prototypes::id::SVGPathSegLinetoHorizontalAbs];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[prototypes::id::SVGPathSegLinetoHorizontalAbs]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[prototypes::id::SVGPathSegLinetoHorizontalAbs];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[prototypes::id::SVGPathSegLinetoHorizontalAbs]);
   }
 
-  inline JSObject* GetConstructorObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetConstructorObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface object for this class.  This will create the object as
@@ -1403,32 +1252,30 @@ namespace SVGPathSegLinetoHorizontalAbsBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[constructors::id::SVGPathSegLinetoHorizontalAbs];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[constructors::id::SVGPathSegLinetoHorizontalAbs]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[constructors::id::SVGPathSegLinetoHorizontalAbs];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[constructors::id::SVGPathSegLinetoHorizontalAbs]);
   }
 
   JSObject*
-  DefineDOMInterface(JSContext* aCx, JSObject* aGlobal, bool* aEnabled);
+  DefineDOMInterface(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JS::Handle<jsid> id, bool* aEnabled);
 
   extern DOMJSClass Class;
 
   JSObject*
-  Wrap(JSContext* aCx, JSObject* aScope, mozilla::DOMSVGPathSegLinetoHorizontalAbs* aObject, nsWrapperCache* aCache, bool* aTriedToWrap);
+  Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, mozilla::DOMSVGPathSegLinetoHorizontalAbs* aObject, nsWrapperCache* aCache);
 
   template <class T>
-  inline JSObject* Wrap(JSContext* aCx, JSObject* aScope, T* aObject, bool* aTriedToWrap)
+  inline JSObject* Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, T* aObject)
   {
-    return Wrap(aCx, aScope, aObject, aObject, aTriedToWrap);
+    return Wrap(aCx, aScope, aObject, aObject);
   }
 
 } // namespace SVGPathSegLinetoHorizontalAbsBinding
@@ -1440,9 +1287,9 @@ namespace SVGPathSegLinetoHorizontalRelBinding {
   extern const NativePropertyHooks sNativePropertyHooks;
 
   void
-  CreateInterfaceObjects(JSContext* aCx, JSObject* aGlobal, JSObject** protoAndIfaceArray);
+  CreateInterfaceObjects(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JSObject** protoAndIfaceArray);
 
-  inline JSObject* GetProtoObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetProtoObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface prototype object for this class.  This will create the
@@ -1450,21 +1297,19 @@ namespace SVGPathSegLinetoHorizontalRelBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[prototypes::id::SVGPathSegLinetoHorizontalRel];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[prototypes::id::SVGPathSegLinetoHorizontalRel]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[prototypes::id::SVGPathSegLinetoHorizontalRel];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[prototypes::id::SVGPathSegLinetoHorizontalRel]);
   }
 
-  inline JSObject* GetConstructorObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetConstructorObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface object for this class.  This will create the object as
@@ -1472,32 +1317,30 @@ namespace SVGPathSegLinetoHorizontalRelBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[constructors::id::SVGPathSegLinetoHorizontalRel];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[constructors::id::SVGPathSegLinetoHorizontalRel]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[constructors::id::SVGPathSegLinetoHorizontalRel];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[constructors::id::SVGPathSegLinetoHorizontalRel]);
   }
 
   JSObject*
-  DefineDOMInterface(JSContext* aCx, JSObject* aGlobal, bool* aEnabled);
+  DefineDOMInterface(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JS::Handle<jsid> id, bool* aEnabled);
 
   extern DOMJSClass Class;
 
   JSObject*
-  Wrap(JSContext* aCx, JSObject* aScope, mozilla::DOMSVGPathSegLinetoHorizontalRel* aObject, nsWrapperCache* aCache, bool* aTriedToWrap);
+  Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, mozilla::DOMSVGPathSegLinetoHorizontalRel* aObject, nsWrapperCache* aCache);
 
   template <class T>
-  inline JSObject* Wrap(JSContext* aCx, JSObject* aScope, T* aObject, bool* aTriedToWrap)
+  inline JSObject* Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, T* aObject)
   {
-    return Wrap(aCx, aScope, aObject, aObject, aTriedToWrap);
+    return Wrap(aCx, aScope, aObject, aObject);
   }
 
 } // namespace SVGPathSegLinetoHorizontalRelBinding
@@ -1509,9 +1352,9 @@ namespace SVGPathSegLinetoRelBinding {
   extern const NativePropertyHooks sNativePropertyHooks;
 
   void
-  CreateInterfaceObjects(JSContext* aCx, JSObject* aGlobal, JSObject** protoAndIfaceArray);
+  CreateInterfaceObjects(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JSObject** protoAndIfaceArray);
 
-  inline JSObject* GetProtoObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetProtoObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface prototype object for this class.  This will create the
@@ -1519,21 +1362,19 @@ namespace SVGPathSegLinetoRelBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[prototypes::id::SVGPathSegLinetoRel];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[prototypes::id::SVGPathSegLinetoRel]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[prototypes::id::SVGPathSegLinetoRel];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[prototypes::id::SVGPathSegLinetoRel]);
   }
 
-  inline JSObject* GetConstructorObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetConstructorObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface object for this class.  This will create the object as
@@ -1541,32 +1382,30 @@ namespace SVGPathSegLinetoRelBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[constructors::id::SVGPathSegLinetoRel];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[constructors::id::SVGPathSegLinetoRel]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[constructors::id::SVGPathSegLinetoRel];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[constructors::id::SVGPathSegLinetoRel]);
   }
 
   JSObject*
-  DefineDOMInterface(JSContext* aCx, JSObject* aGlobal, bool* aEnabled);
+  DefineDOMInterface(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JS::Handle<jsid> id, bool* aEnabled);
 
   extern DOMJSClass Class;
 
   JSObject*
-  Wrap(JSContext* aCx, JSObject* aScope, mozilla::DOMSVGPathSegLinetoRel* aObject, nsWrapperCache* aCache, bool* aTriedToWrap);
+  Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, mozilla::DOMSVGPathSegLinetoRel* aObject, nsWrapperCache* aCache);
 
   template <class T>
-  inline JSObject* Wrap(JSContext* aCx, JSObject* aScope, T* aObject, bool* aTriedToWrap)
+  inline JSObject* Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, T* aObject)
   {
-    return Wrap(aCx, aScope, aObject, aObject, aTriedToWrap);
+    return Wrap(aCx, aScope, aObject, aObject);
   }
 
 } // namespace SVGPathSegLinetoRelBinding
@@ -1578,9 +1417,9 @@ namespace SVGPathSegLinetoVerticalAbsBinding {
   extern const NativePropertyHooks sNativePropertyHooks;
 
   void
-  CreateInterfaceObjects(JSContext* aCx, JSObject* aGlobal, JSObject** protoAndIfaceArray);
+  CreateInterfaceObjects(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JSObject** protoAndIfaceArray);
 
-  inline JSObject* GetProtoObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetProtoObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface prototype object for this class.  This will create the
@@ -1588,21 +1427,19 @@ namespace SVGPathSegLinetoVerticalAbsBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[prototypes::id::SVGPathSegLinetoVerticalAbs];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[prototypes::id::SVGPathSegLinetoVerticalAbs]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[prototypes::id::SVGPathSegLinetoVerticalAbs];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[prototypes::id::SVGPathSegLinetoVerticalAbs]);
   }
 
-  inline JSObject* GetConstructorObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetConstructorObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface object for this class.  This will create the object as
@@ -1610,32 +1447,30 @@ namespace SVGPathSegLinetoVerticalAbsBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[constructors::id::SVGPathSegLinetoVerticalAbs];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[constructors::id::SVGPathSegLinetoVerticalAbs]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[constructors::id::SVGPathSegLinetoVerticalAbs];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[constructors::id::SVGPathSegLinetoVerticalAbs]);
   }
 
   JSObject*
-  DefineDOMInterface(JSContext* aCx, JSObject* aGlobal, bool* aEnabled);
+  DefineDOMInterface(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JS::Handle<jsid> id, bool* aEnabled);
 
   extern DOMJSClass Class;
 
   JSObject*
-  Wrap(JSContext* aCx, JSObject* aScope, mozilla::DOMSVGPathSegLinetoVerticalAbs* aObject, nsWrapperCache* aCache, bool* aTriedToWrap);
+  Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, mozilla::DOMSVGPathSegLinetoVerticalAbs* aObject, nsWrapperCache* aCache);
 
   template <class T>
-  inline JSObject* Wrap(JSContext* aCx, JSObject* aScope, T* aObject, bool* aTriedToWrap)
+  inline JSObject* Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, T* aObject)
   {
-    return Wrap(aCx, aScope, aObject, aObject, aTriedToWrap);
+    return Wrap(aCx, aScope, aObject, aObject);
   }
 
 } // namespace SVGPathSegLinetoVerticalAbsBinding
@@ -1647,9 +1482,9 @@ namespace SVGPathSegLinetoVerticalRelBinding {
   extern const NativePropertyHooks sNativePropertyHooks;
 
   void
-  CreateInterfaceObjects(JSContext* aCx, JSObject* aGlobal, JSObject** protoAndIfaceArray);
+  CreateInterfaceObjects(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JSObject** protoAndIfaceArray);
 
-  inline JSObject* GetProtoObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetProtoObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface prototype object for this class.  This will create the
@@ -1657,21 +1492,19 @@ namespace SVGPathSegLinetoVerticalRelBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[prototypes::id::SVGPathSegLinetoVerticalRel];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[prototypes::id::SVGPathSegLinetoVerticalRel]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[prototypes::id::SVGPathSegLinetoVerticalRel];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[prototypes::id::SVGPathSegLinetoVerticalRel]);
   }
 
-  inline JSObject* GetConstructorObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetConstructorObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface object for this class.  This will create the object as
@@ -1679,32 +1512,30 @@ namespace SVGPathSegLinetoVerticalRelBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[constructors::id::SVGPathSegLinetoVerticalRel];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[constructors::id::SVGPathSegLinetoVerticalRel]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[constructors::id::SVGPathSegLinetoVerticalRel];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[constructors::id::SVGPathSegLinetoVerticalRel]);
   }
 
   JSObject*
-  DefineDOMInterface(JSContext* aCx, JSObject* aGlobal, bool* aEnabled);
+  DefineDOMInterface(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JS::Handle<jsid> id, bool* aEnabled);
 
   extern DOMJSClass Class;
 
   JSObject*
-  Wrap(JSContext* aCx, JSObject* aScope, mozilla::DOMSVGPathSegLinetoVerticalRel* aObject, nsWrapperCache* aCache, bool* aTriedToWrap);
+  Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, mozilla::DOMSVGPathSegLinetoVerticalRel* aObject, nsWrapperCache* aCache);
 
   template <class T>
-  inline JSObject* Wrap(JSContext* aCx, JSObject* aScope, T* aObject, bool* aTriedToWrap)
+  inline JSObject* Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, T* aObject)
   {
-    return Wrap(aCx, aScope, aObject, aObject, aTriedToWrap);
+    return Wrap(aCx, aScope, aObject, aObject);
   }
 
 } // namespace SVGPathSegLinetoVerticalRelBinding
@@ -1716,9 +1547,9 @@ namespace SVGPathSegMovetoAbsBinding {
   extern const NativePropertyHooks sNativePropertyHooks;
 
   void
-  CreateInterfaceObjects(JSContext* aCx, JSObject* aGlobal, JSObject** protoAndIfaceArray);
+  CreateInterfaceObjects(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JSObject** protoAndIfaceArray);
 
-  inline JSObject* GetProtoObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetProtoObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface prototype object for this class.  This will create the
@@ -1726,21 +1557,19 @@ namespace SVGPathSegMovetoAbsBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[prototypes::id::SVGPathSegMovetoAbs];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[prototypes::id::SVGPathSegMovetoAbs]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[prototypes::id::SVGPathSegMovetoAbs];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[prototypes::id::SVGPathSegMovetoAbs]);
   }
 
-  inline JSObject* GetConstructorObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetConstructorObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface object for this class.  This will create the object as
@@ -1748,32 +1577,30 @@ namespace SVGPathSegMovetoAbsBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[constructors::id::SVGPathSegMovetoAbs];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[constructors::id::SVGPathSegMovetoAbs]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[constructors::id::SVGPathSegMovetoAbs];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[constructors::id::SVGPathSegMovetoAbs]);
   }
 
   JSObject*
-  DefineDOMInterface(JSContext* aCx, JSObject* aGlobal, bool* aEnabled);
+  DefineDOMInterface(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JS::Handle<jsid> id, bool* aEnabled);
 
   extern DOMJSClass Class;
 
   JSObject*
-  Wrap(JSContext* aCx, JSObject* aScope, mozilla::DOMSVGPathSegMovetoAbs* aObject, nsWrapperCache* aCache, bool* aTriedToWrap);
+  Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, mozilla::DOMSVGPathSegMovetoAbs* aObject, nsWrapperCache* aCache);
 
   template <class T>
-  inline JSObject* Wrap(JSContext* aCx, JSObject* aScope, T* aObject, bool* aTriedToWrap)
+  inline JSObject* Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, T* aObject)
   {
-    return Wrap(aCx, aScope, aObject, aObject, aTriedToWrap);
+    return Wrap(aCx, aScope, aObject, aObject);
   }
 
 } // namespace SVGPathSegMovetoAbsBinding
@@ -1785,9 +1612,9 @@ namespace SVGPathSegMovetoRelBinding {
   extern const NativePropertyHooks sNativePropertyHooks;
 
   void
-  CreateInterfaceObjects(JSContext* aCx, JSObject* aGlobal, JSObject** protoAndIfaceArray);
+  CreateInterfaceObjects(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JSObject** protoAndIfaceArray);
 
-  inline JSObject* GetProtoObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetProtoObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface prototype object for this class.  This will create the
@@ -1795,21 +1622,19 @@ namespace SVGPathSegMovetoRelBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[prototypes::id::SVGPathSegMovetoRel];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[prototypes::id::SVGPathSegMovetoRel]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[prototypes::id::SVGPathSegMovetoRel];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[prototypes::id::SVGPathSegMovetoRel]);
   }
 
-  inline JSObject* GetConstructorObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetConstructorObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface object for this class.  This will create the object as
@@ -1817,32 +1642,30 @@ namespace SVGPathSegMovetoRelBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[constructors::id::SVGPathSegMovetoRel];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[constructors::id::SVGPathSegMovetoRel]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[constructors::id::SVGPathSegMovetoRel];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[constructors::id::SVGPathSegMovetoRel]);
   }
 
   JSObject*
-  DefineDOMInterface(JSContext* aCx, JSObject* aGlobal, bool* aEnabled);
+  DefineDOMInterface(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JS::Handle<jsid> id, bool* aEnabled);
 
   extern DOMJSClass Class;
 
   JSObject*
-  Wrap(JSContext* aCx, JSObject* aScope, mozilla::DOMSVGPathSegMovetoRel* aObject, nsWrapperCache* aCache, bool* aTriedToWrap);
+  Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, mozilla::DOMSVGPathSegMovetoRel* aObject, nsWrapperCache* aCache);
 
   template <class T>
-  inline JSObject* Wrap(JSContext* aCx, JSObject* aScope, T* aObject, bool* aTriedToWrap)
+  inline JSObject* Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, T* aObject)
   {
-    return Wrap(aCx, aScope, aObject, aObject, aTriedToWrap);
+    return Wrap(aCx, aScope, aObject, aObject);
   }
 
 } // namespace SVGPathSegMovetoRelBinding

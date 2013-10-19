@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/xpcom/ds/nsIPersistentProperties2.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/xpcom/ds/nsIPersistentProperties2.idl
  */
 
 #ifndef __gen_nsIPersistentProperties2_h__
@@ -265,6 +265,5 @@ NS_IMETHODIMP nsPersistentProperties::SetStringProperty(const nsACString & key, 
 { 0x2245e573, 0x9464, 0x11d2, \
   { 0x9b, 0x8b, 0x0, 0x80, 0x5f, 0x8a, 0x16, 0xd9 } }
 #define NS_PERSISTENTPROPERTIES_CONTRACTID "@mozilla.org/persistent-properties;1"
-#define NS_PERSISTENTPROPERTIES_CLASSNAME "Persistent Properties"
 
 #endif /* __gen_nsIPersistentProperties2_h__ */

@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/html/nsIDOMHTMLProgressElement.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/html/nsIDOMHTMLProgressElement.idl
  */
 
 #ifndef __gen_nsIDOMHTMLProgressElement_h__
@@ -16,11 +16,11 @@
 #endif
 
 /* starting interface:    nsIDOMHTMLProgressElement */
-#define NS_IDOMHTMLPROGRESSELEMENT_IID_STR "275851c9-c3e2-4427-a770-3d2aaad6c546"
+#define NS_IDOMHTMLPROGRESSELEMENT_IID_STR "4b4bec16-c65f-4a08-97d1-dff624efdca4"
 
 #define NS_IDOMHTMLPROGRESSELEMENT_IID \
-  {0x275851c9, 0xc3e2, 0x4427, \
-    { 0xa7, 0x70, 0x3d, 0x2a, 0xaa, 0xd6, 0xc5, 0x46 }}
+  {0x4b4bec16, 0xc65f, 0x4a08, \
+    { 0x97, 0xd1, 0xdf, 0xf6, 0x24, 0xef, 0xdc, 0xa4 }}
 
 class NS_NO_VTABLE nsIDOMHTMLProgressElement : public nsIDOMHTMLElement {
  public: 

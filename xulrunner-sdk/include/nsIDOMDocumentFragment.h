@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/core/nsIDOMDocumentFragment.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/core/nsIDOMDocumentFragment.idl
  */
 
 #ifndef __gen_nsIDOMDocumentFragment_h__
@@ -16,11 +16,11 @@
 #endif
 
 /* starting interface:    nsIDOMDocumentFragment */
-#define NS_IDOMDOCUMENTFRAGMENT_IID_STR "4a15eb0c-d5bc-4902-9d50-21b12cab47e7"
+#define NS_IDOMDOCUMENTFRAGMENT_IID_STR "33127aed-9d6a-4b0d-95aa-0529f51bcb9c"
 
 #define NS_IDOMDOCUMENTFRAGMENT_IID \
-  {0x4a15eb0c, 0xd5bc, 0x4902, \
-    { 0x9d, 0x50, 0x21, 0xb1, 0x2c, 0xab, 0x47, 0xe7 }}
+  {0x33127aed, 0x9d6a, 0x4b0d, \
+    { 0x95, 0xaa, 0x05, 0x29, 0xf5, 0x1b, 0xcb, 0x9c }}
 
 class NS_NO_VTABLE nsIDOMDocumentFragment : public nsIDOMNode {
  public: 

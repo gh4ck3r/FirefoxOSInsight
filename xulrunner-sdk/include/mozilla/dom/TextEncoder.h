@@ -43,10 +43,10 @@ public:
   ~TextEncoder()
   {}
 
-  virtual JSObject*
-  WrapObject(JSContext* aCx, JSObject* aScope, bool* aTriedToWrap) MOZ_OVERRIDE
+  virtual JSObject* WrapObject(JSContext* aCx,
+                               JS::Handle<JSObject*> aScope) MOZ_OVERRIDE
   {
-    return TextEncoderBinding::Wrap(aCx, aScope, this, aTriedToWrap);
+    return TextEncoderBinding::Wrap(aCx, aScope, this);
   }
 
   nsISupports*

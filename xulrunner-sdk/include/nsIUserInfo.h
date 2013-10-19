@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/toolkit/components/startup/public/nsIUserInfo.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/toolkit/components/startup/public/nsIUserInfo.idl
  */
 
 #ifndef __gen_nsIUserInfo_h__

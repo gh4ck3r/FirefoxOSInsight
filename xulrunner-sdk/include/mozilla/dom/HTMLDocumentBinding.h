@@ -8,9 +8,7 @@
 #include "mozilla/dom/DOMJSClass.h"
 #include "mozilla/dom/DOMJSProxyHandler.h"
 
-class XPCWrappedNativeScope;
 class nsHTMLDocument;
-
 
 namespace mozilla {
 namespace dom {
@@ -44,9 +42,9 @@ namespace HTMLDocumentBinding {
   extern const NativePropertyHooks sNativePropertyHooks;
 
   void
-  CreateInterfaceObjects(JSContext* aCx, JSObject* aGlobal, JSObject** protoAndIfaceArray);
+  CreateInterfaceObjects(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JSObject** protoAndIfaceArray);
 
-  inline JSObject* GetProtoObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetProtoObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface prototype object for this class.  This will create the
@@ -54,21 +52,19 @@ namespace HTMLDocumentBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[prototypes::id::HTMLDocument];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[prototypes::id::HTMLDocument]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[prototypes::id::HTMLDocument];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[prototypes::id::HTMLDocument]);
   }
 
-  inline JSObject* GetConstructorObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetConstructorObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface object for this class.  This will create the object as
@@ -76,32 +72,80 @@ namespace HTMLDocumentBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[constructors::id::HTMLDocument];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[constructors::id::HTMLDocument]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[constructors::id::HTMLDocument];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[constructors::id::HTMLDocument]);
   }
 
-  JSObject*
-  DefineDOMInterface(JSContext* aCx, JSObject* aGlobal, bool* aEnabled);
+  bool
+  ResolveOwnProperty(JSContext* cx, JS::Handle<JSObject*> wrapper, JS::Handle<JSObject*> obj, JS::Handle<jsid> id, JSPropertyDescriptor* desc, unsigned flags);
 
-  extern DOMJSClass Class;
+  bool
+  EnumerateOwnProperties(JSContext* cx, JS::Handle<JSObject*> wrapper, JS::Handle<JSObject*> obj, JS::AutoIdVector& props);
 
   JSObject*
-  Wrap(JSContext* aCx, JSObject* aScope, nsHTMLDocument* aObject, nsWrapperCache* aCache, bool* aTriedToWrap);
+  DefineDOMInterface(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JS::Handle<jsid> id, bool* aEnabled);
+
+  extern const DOMClass Class;
+
+  class DOMProxyHandler : public mozilla::dom::DOMProxyHandler
+  {
+    inline DOMProxyHandler();
+
+  public:
+    bool
+    getOwnPropertyDescriptor(JSContext* cx, JS::Handle<JSObject*> proxy, JS::Handle<jsid> id, JSPropertyDescriptor* desc, unsigned flags);
+
+    virtual bool
+    defineProperty(JSContext* cx, JS::Handle<JSObject*> proxy, JS::Handle<jsid> id, JSPropertyDescriptor* desc, bool* defined) MOZ_OVERRIDE;
+
+    using mozilla::dom::DOMProxyHandler::defineProperty;
+
+    bool
+    getOwnPropertyNames(JSContext* cx, JS::Handle<JSObject*> proxy, JS::AutoIdVector& props);
+
+    bool
+    hasOwn(JSContext* cx, JS::Handle<JSObject*> proxy, JS::Handle<jsid> id, bool* bp);
+
+    bool
+    get(JSContext* cx, JS::Handle<JSObject*> proxy, JS::Handle<JSObject*> receiver, JS::Handle<jsid> id, JS::MutableHandle<JS::Value> vp);
+
+    virtual const char*
+    className(JSContext* cx, JS::Handle<JSObject*> proxy) MOZ_OVERRIDE;
+
+    bool
+    finalizeInBackground(JS::Value priv);
+
+    void
+    finalize(JSFreeOp* fop, JSObject* proxy);
+
+    bool
+    getElementIfPresent(JSContext* cx, JS::Handle<JSObject*> proxy, JS::Handle<JSObject*> receiver, uint32_t index, JS::MutableHandle<JS::Value> vp, bool* present);
+
+    static DOMProxyHandler*
+    getInstance();
+
+    bool
+    delete_(JSContext* cx, JS::Handle<JSObject*> proxy, JS::Handle<jsid> id, bool* bp);
+  };
+
+  bool
+  Is(JSObject* obj);
+
+  JSObject*
+  Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, nsHTMLDocument* aObject, nsWrapperCache* aCache);
 
   template <class T>
-  inline JSObject* Wrap(JSContext* aCx, JSObject* aScope, T* aObject, bool* aTriedToWrap)
+  inline JSObject* Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, T* aObject)
   {
-    return Wrap(aCx, aScope, aObject, aObject, aTriedToWrap);
+    return Wrap(aCx, aScope, aObject, aObject);
   }
 
 } // namespace HTMLDocumentBinding

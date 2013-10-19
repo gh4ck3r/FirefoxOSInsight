@@ -10,11 +10,15 @@
 #include "mozilla/dom/DOMJSClass.h"
 #include "mozilla/dom/DOMJSProxyHandler.h"
 
-class XPCWrappedNativeScope;
-class nsIDOMNodeFilter;
-
 class nsINode;
 
+namespace mozilla {
+namespace dom {
+
+class NodeFilter;
+
+} // namespace dom
+} // namespace mozilla
 
 namespace mozilla {
 namespace dom {
@@ -24,9 +28,9 @@ namespace NodeFilterBinding {
   extern const NativePropertyHooks sNativePropertyHooks;
 
   void
-  CreateInterfaceObjects(JSContext* aCx, JSObject* aGlobal, JSObject** protoAndIfaceArray);
+  CreateInterfaceObjects(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JSObject** protoAndIfaceArray);
 
-  inline JSObject* GetConstructorObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetConstructorObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface object for this class.  This will create the object as
@@ -34,22 +38,20 @@ namespace NodeFilterBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[constructors::id::NodeFilter];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[constructors::id::NodeFilter]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[constructors::id::NodeFilter];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[constructors::id::NodeFilter]);
   }
 
   JSObject*
-  DefineDOMInterface(JSContext* aCx, JSObject* aGlobal, bool* aEnabled);
+  DefineDOMInterface(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JS::Handle<jsid> id, bool* aEnabled);
 
 } // namespace NodeFilterBinding
 
@@ -58,21 +60,22 @@ namespace NodeFilterBinding {
 class NodeFilter : public CallbackInterface
 {
 public:
-  inline NodeFilter(JSContext* cx, JSObject* aOwner, JSObject* aCallback, bool* aInited)
-    : CallbackInterface(cx, aOwner, aCallback, aInited)
+  explicit inline NodeFilter(JSObject* aCallback)
+    : CallbackInterface(aCallback)
   {
   }
 
   template <typename T>
   inline uint16_t
-  AcceptNode(const T& thisObj, nsINode& node, ErrorResult& aRv)
+  AcceptNode(const T& thisObj, nsINode& node, ErrorResult& aRv, ExceptionHandling aExceptionHandling = eReportExceptions)
   {
-    CallSetup s(mCallback);
+    CallSetup s(CallbackPreserveColor(), aRv, aExceptionHandling);
     if (!s.GetContext()) {
       aRv.Throw(NS_ERROR_UNEXPECTED);
       return uint16_t(0);
     }
-    JSObject* thisObjJS = WrapCallThisObject(s.GetContext(), mCallback, thisObj);
+    JS::Rooted<JSObject*> thisObjJS(s.GetContext(),
+      WrapCallThisObject(s.GetContext(), CallbackPreserveColor(), thisObj));
     if (!thisObjJS) {
       aRv.Throw(NS_ERROR_FAILURE);
       return uint16_t(0);
@@ -81,18 +84,18 @@ public:
   }
 
   inline uint16_t
-  AcceptNode(nsINode& node, ErrorResult& aRv)
+  AcceptNode(nsINode& node, ErrorResult& aRv, ExceptionHandling aExceptionHandling = eReportExceptions)
   {
-    CallSetup s(mCallback);
+    CallSetup s(CallbackPreserveColor(), aRv, aExceptionHandling);
     if (!s.GetContext()) {
       aRv.Throw(NS_ERROR_UNEXPECTED);
       return uint16_t(0);
     }
-    return AcceptNode(s.GetContext(), nullptr, node, aRv);
+    return AcceptNode(s.GetContext(), JS::NullPtr(), node, aRv);
   }
 
 private:
-  uint16_t AcceptNode(JSContext* cx, JSObject* aThisObj, nsINode& node, ErrorResult& aRv);
+  uint16_t AcceptNode(JSContext* cx, JS::Handle<JSObject*> aThisObj, nsINode& node, ErrorResult& aRv);
 };
 
 

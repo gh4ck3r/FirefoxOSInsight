@@ -23,12 +23,16 @@ public:
   NS_DECL_ISUPPORTS_INHERITED
   NS_DECL_CYCLE_COLLECTION_CLASS_INHERITED(GainNode, AudioNode)
 
-  virtual JSObject* WrapObject(JSContext* aCx, JSObject* aScope);
+  virtual JSObject* WrapObject(JSContext* aCx,
+                               JS::Handle<JSObject*> aScope) MOZ_OVERRIDE;
 
   AudioParam* Gain() const
   {
     return mGain;
   }
+
+private:
+  static void SendGainToStream(AudioNode* aNode);
 
 private:
   nsRefPtr<AudioParam> mGain;

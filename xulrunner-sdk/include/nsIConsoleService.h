@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/xpcom/base/nsIConsoleService.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/xpcom/base/nsIConsoleService.idl
  */
 
 #ifndef __gen_nsIConsoleService_h__
@@ -155,7 +155,6 @@ NS_IMETHODIMP nsConsoleService::Reset()
 /* End of implementation class template. */
 #endif
 
-#define NS_CONSOLESERVICE_CLASSNAME "Console Service"
 #define NS_CONSOLESERVICE_CID \
 { 0x7e3ff85c, 0x1dd2, 0x11b2, { 0x8d, 0x4b, 0xeb, 0x45, 0x2c, 0xb0, 0xff, 0x40 }}
 #define NS_CONSOLESERVICE_CONTRACTID "@mozilla.org/consoleservice;1"

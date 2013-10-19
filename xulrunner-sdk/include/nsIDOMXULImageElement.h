@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/xul/nsIDOMXULImageElement.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/xul/nsIDOMXULImageElement.idl
  */
 
 #ifndef __gen_nsIDOMXULImageElement_h__
@@ -20,11 +20,11 @@
 #endif
 
 /* starting interface:    nsIDOMXULImageElement */
-#define NS_IDOMXULIMAGEELEMENT_IID_STR "a21944ea-fb11-4b37-80ed-38c8d12d0649"
+#define NS_IDOMXULIMAGEELEMENT_IID_STR "d6f60061-263a-4e57-8986-6b0036ea488b"
 
 #define NS_IDOMXULIMAGEELEMENT_IID \
-  {0xa21944ea, 0xfb11, 0x4b37, \
-    { 0x80, 0xed, 0x38, 0xc8, 0xd1, 0x2d, 0x06, 0x49 }}
+  {0xd6f60061, 0x263a, 0x4e57, \
+    { 0x89, 0x86, 0x6b, 0x00, 0x36, 0xea, 0x48, 0x8b }}
 
 class NS_NO_VTABLE nsIDOMXULImageElement : public nsIDOMXULElement {
  public: 

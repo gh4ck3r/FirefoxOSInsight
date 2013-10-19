@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/html/nsIDOMHTMLOutputElement.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/html/nsIDOMHTMLOutputElement.idl
  */
 
 #ifndef __gen_nsIDOMHTMLOutputElement_h__
@@ -18,11 +18,11 @@ class nsIDOMValidityState; /* forward declaration */
 
 
 /* starting interface:    nsIDOMHTMLOutputElement */
-#define NS_IDOMHTMLOUTPUTELEMENT_IID_STR "01542000-cd00-4e8a-841c-9baad6ba0368"
+#define NS_IDOMHTMLOUTPUTELEMENT_IID_STR "c4bff576-90b5-44b0-8278-bf4e3010b09a"
 
 #define NS_IDOMHTMLOUTPUTELEMENT_IID \
-  {0x01542000, 0xcd00, 0x4e8a, \
-    { 0x84, 0x1c, 0x9b, 0xaa, 0xd6, 0xba, 0x03, 0x68 }}
+  {0xc4bff576, 0x90b5, 0x44b0, \
+    { 0x82, 0x78, 0xbf, 0x4e, 0x30, 0x10, 0xb0, 0x9a }}
 
 class NS_NO_VTABLE nsIDOMHTMLOutputElement : public nsIDOMHTMLElement {
  public: 

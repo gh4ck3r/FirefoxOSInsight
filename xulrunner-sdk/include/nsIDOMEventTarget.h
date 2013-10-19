@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/events/nsIDOMEventTarget.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/events/nsIDOMEventTarget.idl
  */
 
 #ifndef __gen_nsIDOMEventTarget_h__
@@ -17,6 +17,11 @@
 #include "nsEvent.h"
 #include "mozilla/dom/Nullable.h"
 using mozilla::dom::Nullable;
+namespace mozilla {
+namespace dom {
+class EventTarget;
+} // namespace dom
+} // namespace mozilla
 class nsPresContext;
 class nsEventChainPreVisitor;
 class nsEventChainPostVisitor;
@@ -30,11 +35,11 @@ class nsIDOMEvent; /* forward declaration */
 
 
 /* starting interface:    nsIDOMEventTarget */
-#define NS_IDOMEVENTTARGET_IID_STR "8e375931-298d-4d0a-9cb4-5668f0cdc5a8"
+#define NS_IDOMEVENTTARGET_IID_STR "31e92e56-4d23-4a4a-9cfe-a6d12cf434bc"
 
 #define NS_IDOMEVENTTARGET_IID \
-  {0x8e375931, 0x298d, 0x4d0a, \
-    { 0x9c, 0xb4, 0x56, 0x68, 0xf0, 0xcd, 0xc5, 0xa8 }}
+  {0x31e92e56, 0x4d23, 0x4a4a, \
+    { 0x9c, 0xfe, 0xa6, 0xd1, 0x2c, 0xf4, 0x34, 0xbc }}
 
 class nsIDOMEventTarget : public nsISupports {
  public: 
@@ -87,11 +92,11 @@ class nsIDOMEventTarget : public nsISupports {
   /* boolean dispatchEvent (in nsIDOMEvent evt) raises (DOMException); */
   NS_IMETHOD DispatchEvent(nsIDOMEvent *evt, bool *_retval) = 0;
 
-  /* [nostdcall,notxpcom] nsIDOMEventTarget GetTargetForDOMEvent (); */
-  virtual nsIDOMEventTarget * GetTargetForDOMEvent(void) = 0;
+  /* [nostdcall,notxpcom] EventTargetPtr GetTargetForDOMEvent (); */
+  virtual mozilla::dom::EventTarget * GetTargetForDOMEvent(void) = 0;
 
-  /* [nostdcall,notxpcom] nsIDOMEventTarget GetTargetForEventTargetChain (); */
-  virtual nsIDOMEventTarget * GetTargetForEventTargetChain(void) = 0;
+  /* [nostdcall,notxpcom] EventTargetPtr GetTargetForEventTargetChain (); */
+  virtual mozilla::dom::EventTarget * GetTargetForEventTargetChain(void) = 0;
 
   /* [noscript,nostdcall] void PreHandleEvent (in nsEventChainPreVisitorRef aVisitor); */
   virtual nsresult PreHandleEvent(nsEventChainPreVisitor & aVisitor) = 0;
@@ -125,8 +130,8 @@ class nsIDOMEventTarget : public nsISupports {
   NS_IMETHOD RemoveEventListener(const nsAString & type, nsIDOMEventListener *listener, bool useCapture); \
   NS_IMETHOD RemoveSystemEventListener(const nsAString & type, nsIDOMEventListener *listener, bool aUseCapture); \
   NS_IMETHOD DispatchEvent(nsIDOMEvent *evt, bool *_retval); \
-  virtual nsIDOMEventTarget * GetTargetForDOMEvent(void); \
-  virtual nsIDOMEventTarget * GetTargetForEventTargetChain(void); \
+  virtual mozilla::dom::EventTarget * GetTargetForDOMEvent(void); \
+  virtual mozilla::dom::EventTarget * GetTargetForEventTargetChain(void); \
   virtual nsresult PreHandleEvent(nsEventChainPreVisitor & aVisitor); \
   virtual nsresult WillHandleEvent(nsEventChainPostVisitor & aVisitor); \
   virtual nsresult PostHandleEvent(nsEventChainPostVisitor & aVisitor); \
@@ -142,8 +147,8 @@ class nsIDOMEventTarget : public nsISupports {
   NS_IMETHOD RemoveEventListener(const nsAString & type, nsIDOMEventListener *listener, bool useCapture) { return _to RemoveEventListener(type, listener, useCapture); } \
   NS_IMETHOD RemoveSystemEventListener(const nsAString & type, nsIDOMEventListener *listener, bool aUseCapture) { return _to RemoveSystemEventListener(type, listener, aUseCapture); } \
   NS_IMETHOD DispatchEvent(nsIDOMEvent *evt, bool *_retval) { return _to DispatchEvent(evt, _retval); } \
-  virtual nsIDOMEventTarget * GetTargetForDOMEvent(void) { return _to GetTargetForDOMEvent(); } \
-  virtual nsIDOMEventTarget * GetTargetForEventTargetChain(void) { return _to GetTargetForEventTargetChain(); } \
+  virtual mozilla::dom::EventTarget * GetTargetForDOMEvent(void) { return _to GetTargetForDOMEvent(); } \
+  virtual mozilla::dom::EventTarget * GetTargetForEventTargetChain(void) { return _to GetTargetForEventTargetChain(); } \
   virtual nsresult PreHandleEvent(nsEventChainPreVisitor & aVisitor) { return _to PreHandleEvent(aVisitor); } \
   virtual nsresult WillHandleEvent(nsEventChainPostVisitor & aVisitor) { return _to WillHandleEvent(aVisitor); } \
   virtual nsresult PostHandleEvent(nsEventChainPostVisitor & aVisitor) { return _to PostHandleEvent(aVisitor); } \
@@ -159,8 +164,8 @@ class nsIDOMEventTarget : public nsISupports {
   NS_IMETHOD RemoveEventListener(const nsAString & type, nsIDOMEventListener *listener, bool useCapture) { return !_to ? NS_ERROR_NULL_POINTER : _to->RemoveEventListener(type, listener, useCapture); } \
   NS_IMETHOD RemoveSystemEventListener(const nsAString & type, nsIDOMEventListener *listener, bool aUseCapture) { return !_to ? NS_ERROR_NULL_POINTER : _to->RemoveSystemEventListener(type, listener, aUseCapture); } \
   NS_IMETHOD DispatchEvent(nsIDOMEvent *evt, bool *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->DispatchEvent(evt, _retval); } \
-  virtual nsIDOMEventTarget * GetTargetForDOMEvent(void); \
-  virtual nsIDOMEventTarget * GetTargetForEventTargetChain(void); \
+  virtual mozilla::dom::EventTarget * GetTargetForDOMEvent(void); \
+  virtual mozilla::dom::EventTarget * GetTargetForEventTargetChain(void); \
   virtual nsresult PreHandleEvent(nsEventChainPreVisitor & aVisitor) { return !_to ? NS_ERROR_NULL_POINTER : _to->PreHandleEvent(aVisitor); } \
   virtual nsresult WillHandleEvent(nsEventChainPostVisitor & aVisitor) { return !_to ? NS_ERROR_NULL_POINTER : _to->WillHandleEvent(aVisitor); } \
   virtual nsresult PostHandleEvent(nsEventChainPostVisitor & aVisitor) { return !_to ? NS_ERROR_NULL_POINTER : _to->PostHandleEvent(aVisitor); } \
@@ -231,14 +236,14 @@ NS_IMETHODIMP nsDOMEventTarget::DispatchEvent(nsIDOMEvent *evt, bool *_retval)
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* [nostdcall,notxpcom] nsIDOMEventTarget GetTargetForDOMEvent (); */
-nsIDOMEventTarget * nsDOMEventTarget::GetTargetForDOMEvent()
+/* [nostdcall,notxpcom] EventTargetPtr GetTargetForDOMEvent (); */
+mozilla::dom::EventTarget * nsDOMEventTarget::GetTargetForDOMEvent()
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* [nostdcall,notxpcom] nsIDOMEventTarget GetTargetForEventTargetChain (); */
-nsIDOMEventTarget * nsDOMEventTarget::GetTargetForEventTargetChain()
+/* [nostdcall,notxpcom] EventTargetPtr GetTargetForEventTargetChain (); */
+mozilla::dom::EventTarget * nsDOMEventTarget::GetTargetForEventTargetChain()
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
@@ -290,8 +295,8 @@ JSContext * nsDOMEventTarget::GetJSContextForEventHandlers()
 
 
 #define NS_IMPL_DOMTARGET_DEFAULTS(_class) \
-nsIDOMEventTarget* _class::GetTargetForDOMEvent() { return this; } \
-nsIDOMEventTarget* _class::GetTargetForEventTargetChain() { return this; } \
+mozilla::dom::EventTarget* _class::GetTargetForDOMEvent() { return this; } \
+mozilla::dom::EventTarget* _class::GetTargetForEventTargetChain() { return this; } \
 nsresult _class::WillHandleEvent(nsEventChainPostVisitor& aVisitor) { return NS_OK; } \
 JSContext* _class::GetJSContextForEventHandlers() { return nullptr; }
 #define NS_IMPL_REMOVE_SYSTEM_EVENT_LISTENER(aClass) \

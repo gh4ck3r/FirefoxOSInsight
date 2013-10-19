@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/html/nsIDOMHTMLQuoteElement.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/html/nsIDOMHTMLQuoteElement.idl
  */
 
 #ifndef __gen_nsIDOMHTMLQuoteElement_h__
@@ -16,11 +16,11 @@
 #endif
 
 /* starting interface:    nsIDOMHTMLQuoteElement */
-#define NS_IDOMHTMLQUOTEELEMENT_IID_STR "38409533-9a85-4542-b734-bb2012966480"
+#define NS_IDOMHTMLQUOTEELEMENT_IID_STR "18a3b3c4-447d-4df6-9681-e8953e2da6a8"
 
 #define NS_IDOMHTMLQUOTEELEMENT_IID \
-  {0x38409533, 0x9a85, 0x4542, \
-    { 0xb7, 0x34, 0xbb, 0x20, 0x12, 0x96, 0x64, 0x80 }}
+  {0x18a3b3c4, 0x447d, 0x4df6, \
+    { 0x96, 0x81, 0xe8, 0x95, 0x3e, 0x2d, 0xa6, 0xa8 }}
 
 class NS_NO_VTABLE nsIDOMHTMLQuoteElement : public nsIDOMHTMLElement {
  public: 

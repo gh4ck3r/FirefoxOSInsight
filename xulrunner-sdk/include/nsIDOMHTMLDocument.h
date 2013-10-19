@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/html/nsIDOMHTMLDocument.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/html/nsIDOMHTMLDocument.idl
  */
 
 #ifndef __gen_nsIDOMHTMLDocument_h__
@@ -20,11 +20,11 @@ class nsISelection; /* forward declaration */
 
 
 /* starting interface:    nsIDOMHTMLDocument */
-#define NS_IDOMHTMLDOCUMENT_IID_STR "3f8666a9-76f0-4733-ae11-4aea8753062d"
+#define NS_IDOMHTMLDOCUMENT_IID_STR "fd76e045-8d97-4a97-ad75-eac5ae2f3ea4"
 
 #define NS_IDOMHTMLDOCUMENT_IID \
-  {0x3f8666a9, 0x76f0, 0x4733, \
-    { 0xae, 0x11, 0x4a, 0xea, 0x87, 0x53, 0x06, 0x2d }}
+  {0xfd76e045, 0x8d97, 0x4a97, \
+    { 0xad, 0x75, 0xea, 0xc5, 0xae, 0x2f, 0x3e, 0xa4 }}
 
 class NS_NO_VTABLE nsIDOMHTMLDocument : public nsIDOMDocument {
  public: 

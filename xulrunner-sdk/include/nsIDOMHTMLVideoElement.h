@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/html/nsIDOMHTMLVideoElement.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/html/nsIDOMHTMLVideoElement.idl
  */
 
 #ifndef __gen_nsIDOMHTMLVideoElement_h__
@@ -16,11 +16,11 @@
 #endif
 
 /* starting interface:    nsIDOMHTMLVideoElement */
-#define NS_IDOMHTMLVIDEOELEMENT_IID_STR "fe914e4a-3928-11e2-bea2-10bf48d64bd4"
+#define NS_IDOMHTMLVIDEOELEMENT_IID_STR "df152de2-9829-444a-b92b-83985b0978bd"
 
 #define NS_IDOMHTMLVIDEOELEMENT_IID \
-  {0xfe914e4a, 0x3928, 0x11e2, \
-    { 0xbe, 0xa2, 0x10, 0xbf, 0x48, 0xd6, 0x4b, 0xd4 }}
+  {0xdf152de2, 0x9829, 0x444a, \
+    { 0xb9, 0x2b, 0x83, 0x98, 0x5b, 0x09, 0x78, 0xbd }}
 
 class NS_NO_VTABLE nsIDOMHTMLVideoElement : public nsIDOMHTMLMediaElement {
  public: 

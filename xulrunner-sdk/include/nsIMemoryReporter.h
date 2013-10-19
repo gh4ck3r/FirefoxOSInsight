@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/xpcom/base/nsIMemoryReporter.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/xpcom/base/nsIMemoryReporter.idl
  */
 
 #ifndef __gen_nsIMemoryReporter_h__
@@ -244,11 +244,11 @@ NS_IMETHODIMP nsMemoryMultiReporterCallback::Callback(const nsACString & process
 
 
 /* starting interface:    nsIMemoryMultiReporter */
-#define NS_IMEMORYMULTIREPORTER_IID_STR "61d498d5-b460-4398-a8ea-7f75208534b4"
+#define NS_IMEMORYMULTIREPORTER_IID_STR "24d61ead-237b-4969-a6bd-73fd8fed1d99"
 
 #define NS_IMEMORYMULTIREPORTER_IID \
-  {0x61d498d5, 0xb460, 0x4398, \
-    { 0xa8, 0xea, 0x7f, 0x75, 0x20, 0x85, 0x34, 0xb4 }}
+  {0x24d61ead, 0x237b, 0x4969, \
+    { 0xa6, 0xbd, 0x73, 0xfd, 0x8f, 0xed, 0x1d, 0x99 }}
 
 class NS_NO_VTABLE nsIMemoryMultiReporter : public nsISupports {
  public: 
@@ -261,9 +261,6 @@ class NS_NO_VTABLE nsIMemoryMultiReporter : public nsISupports {
   /* void collectReports (in nsIMemoryMultiReporterCallback callback, in nsISupports closure); */
   NS_IMETHOD CollectReports(nsIMemoryMultiReporterCallback *callback, nsISupports *closure) = 0;
 
-  /* readonly attribute int64_t explicitNonHeap; */
-  NS_IMETHOD GetExplicitNonHeap(int64_t *aExplicitNonHeap) = 0;
-
 };
 
   NS_DEFINE_STATIC_IID_ACCESSOR(nsIMemoryMultiReporter, NS_IMEMORYMULTIREPORTER_IID)
@@ -271,20 +268,17 @@ class NS_NO_VTABLE nsIMemoryMultiReporter : public nsISupports {
 /* Use this macro when declaring classes that implement this interface. */
 #define NS_DECL_NSIMEMORYMULTIREPORTER \
   NS_IMETHOD GetName(nsACString & aName); \
-  NS_IMETHOD CollectReports(nsIMemoryMultiReporterCallback *callback, nsISupports *closure); \
-  NS_IMETHOD GetExplicitNonHeap(int64_t *aExplicitNonHeap); 
+  NS_IMETHOD CollectReports(nsIMemoryMultiReporterCallback *callback, nsISupports *closure); 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object. */
 #define NS_FORWARD_NSIMEMORYMULTIREPORTER(_to) \
   NS_IMETHOD GetName(nsACString & aName) { return _to GetName(aName); } \
-  NS_IMETHOD CollectReports(nsIMemoryMultiReporterCallback *callback, nsISupports *closure) { return _to CollectReports(callback, closure); } \
-  NS_IMETHOD GetExplicitNonHeap(int64_t *aExplicitNonHeap) { return _to GetExplicitNonHeap(aExplicitNonHeap); } 
+  NS_IMETHOD CollectReports(nsIMemoryMultiReporterCallback *callback, nsISupports *closure) { return _to CollectReports(callback, closure); } 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object in a safe way. */
 #define NS_FORWARD_SAFE_NSIMEMORYMULTIREPORTER(_to) \
   NS_IMETHOD GetName(nsACString & aName) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetName(aName); } \
-  NS_IMETHOD CollectReports(nsIMemoryMultiReporterCallback *callback, nsISupports *closure) { return !_to ? NS_ERROR_NULL_POINTER : _to->CollectReports(callback, closure); } \
-  NS_IMETHOD GetExplicitNonHeap(int64_t *aExplicitNonHeap) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetExplicitNonHeap(aExplicitNonHeap); } 
+  NS_IMETHOD CollectReports(nsIMemoryMultiReporterCallback *callback, nsISupports *closure) { return !_to ? NS_ERROR_NULL_POINTER : _to->CollectReports(callback, closure); } 
 
 #if 0
 /* Use the code below as a template for the implementation class for this interface. */
@@ -330,22 +324,16 @@ NS_IMETHODIMP nsMemoryMultiReporter::CollectReports(nsIMemoryMultiReporterCallba
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* readonly attribute int64_t explicitNonHeap; */
-NS_IMETHODIMP nsMemoryMultiReporter::GetExplicitNonHeap(int64_t *aExplicitNonHeap)
-{
-    return NS_ERROR_NOT_IMPLEMENTED;
-}
-
 /* End of implementation class template. */
 #endif
 
 
 /* starting interface:    nsIMemoryReporterManager */
-#define NS_IMEMORYREPORTERMANAGER_IID_STR "0baaa958-3112-4952-b557-2a0c57eabb8f"
+#define NS_IMEMORYREPORTERMANAGER_IID_STR "70b0e608-8dbf-4dc7-b88f-f1c745c1b48c"
 
 #define NS_IMEMORYREPORTERMANAGER_IID \
-  {0x0baaa958, 0x3112, 0x4952, \
-    { 0xb5, 0x57, 0x2a, 0x0c, 0x57, 0xea, 0xbb, 0x8f }}
+  {0x70b0e608, 0x8dbf, 0x4dc7, \
+    { 0xb8, 0x8f, 0xf1, 0xc7, 0x45, 0xc1, 0xb4, 0x8c }}
 
 class NS_NO_VTABLE nsIMemoryReporterManager : public nsISupports {
  public: 
@@ -369,6 +357,18 @@ class NS_NO_VTABLE nsIMemoryReporterManager : public nsISupports {
 
   /* void unregisterMultiReporter (in nsIMemoryMultiReporter reporter); */
   NS_IMETHOD UnregisterMultiReporter(nsIMemoryMultiReporter *reporter) = 0;
+
+  /* void blockRegistration (); */
+  NS_IMETHOD BlockRegistration(void) = 0;
+
+  /* void unblockRegistration (); */
+  NS_IMETHOD UnblockRegistration(void) = 0;
+
+  /* void registerReporterEvenIfBlocked (in nsIMemoryReporter aReporter); */
+  NS_IMETHOD RegisterReporterEvenIfBlocked(nsIMemoryReporter *aReporter) = 0;
+
+  /* void registerMultiReporterEvenIfBlocked (in nsIMemoryMultiReporter aReporter); */
+  NS_IMETHOD RegisterMultiReporterEvenIfBlocked(nsIMemoryMultiReporter *aReporter) = 0;
 
   /* void init (); */
   NS_IMETHOD Init(void) = 0;
@@ -404,6 +404,10 @@ class NS_NO_VTABLE nsIMemoryReporterManager : public nsISupports {
   NS_IMETHOD RegisterMultiReporter(nsIMemoryMultiReporter *reporter); \
   NS_IMETHOD UnregisterReporter(nsIMemoryReporter *reporter); \
   NS_IMETHOD UnregisterMultiReporter(nsIMemoryMultiReporter *reporter); \
+  NS_IMETHOD BlockRegistration(void); \
+  NS_IMETHOD UnblockRegistration(void); \
+  NS_IMETHOD RegisterReporterEvenIfBlocked(nsIMemoryReporter *aReporter); \
+  NS_IMETHOD RegisterMultiReporterEvenIfBlocked(nsIMemoryMultiReporter *aReporter); \
   NS_IMETHOD Init(void); \
   NS_IMETHOD GetResident(int64_t *aResident); \
   NS_IMETHOD GetExplicit(int64_t *aExplicit); \
@@ -418,6 +422,10 @@ class NS_NO_VTABLE nsIMemoryReporterManager : public nsISupports {
   NS_IMETHOD RegisterMultiReporter(nsIMemoryMultiReporter *reporter) { return _to RegisterMultiReporter(reporter); } \
   NS_IMETHOD UnregisterReporter(nsIMemoryReporter *reporter) { return _to UnregisterReporter(reporter); } \
   NS_IMETHOD UnregisterMultiReporter(nsIMemoryMultiReporter *reporter) { return _to UnregisterMultiReporter(reporter); } \
+  NS_IMETHOD BlockRegistration(void) { return _to BlockRegistration(); } \
+  NS_IMETHOD UnblockRegistration(void) { return _to UnblockRegistration(); } \
+  NS_IMETHOD RegisterReporterEvenIfBlocked(nsIMemoryReporter *aReporter) { return _to RegisterReporterEvenIfBlocked(aReporter); } \
+  NS_IMETHOD RegisterMultiReporterEvenIfBlocked(nsIMemoryMultiReporter *aReporter) { return _to RegisterMultiReporterEvenIfBlocked(aReporter); } \
   NS_IMETHOD Init(void) { return _to Init(); } \
   NS_IMETHOD GetResident(int64_t *aResident) { return _to GetResident(aResident); } \
   NS_IMETHOD GetExplicit(int64_t *aExplicit) { return _to GetExplicit(aExplicit); } \
@@ -432,6 +440,10 @@ class NS_NO_VTABLE nsIMemoryReporterManager : public nsISupports {
   NS_IMETHOD RegisterMultiReporter(nsIMemoryMultiReporter *reporter) { return !_to ? NS_ERROR_NULL_POINTER : _to->RegisterMultiReporter(reporter); } \
   NS_IMETHOD UnregisterReporter(nsIMemoryReporter *reporter) { return !_to ? NS_ERROR_NULL_POINTER : _to->UnregisterReporter(reporter); } \
   NS_IMETHOD UnregisterMultiReporter(nsIMemoryMultiReporter *reporter) { return !_to ? NS_ERROR_NULL_POINTER : _to->UnregisterMultiReporter(reporter); } \
+  NS_IMETHOD BlockRegistration(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->BlockRegistration(); } \
+  NS_IMETHOD UnblockRegistration(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->UnblockRegistration(); } \
+  NS_IMETHOD RegisterReporterEvenIfBlocked(nsIMemoryReporter *aReporter) { return !_to ? NS_ERROR_NULL_POINTER : _to->RegisterReporterEvenIfBlocked(aReporter); } \
+  NS_IMETHOD RegisterMultiReporterEvenIfBlocked(nsIMemoryMultiReporter *aReporter) { return !_to ? NS_ERROR_NULL_POINTER : _to->RegisterMultiReporterEvenIfBlocked(aReporter); } \
   NS_IMETHOD Init(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->Init(); } \
   NS_IMETHOD GetResident(int64_t *aResident) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetResident(aResident); } \
   NS_IMETHOD GetExplicit(int64_t *aExplicit) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetExplicit(aExplicit); } \
@@ -502,6 +514,30 @@ NS_IMETHODIMP nsMemoryReporterManager::UnregisterReporter(nsIMemoryReporter *rep
 
 /* void unregisterMultiReporter (in nsIMemoryMultiReporter reporter); */
 NS_IMETHODIMP nsMemoryReporterManager::UnregisterMultiReporter(nsIMemoryMultiReporter *reporter)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* void blockRegistration (); */
+NS_IMETHODIMP nsMemoryReporterManager::BlockRegistration()
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* void unblockRegistration (); */
+NS_IMETHODIMP nsMemoryReporterManager::UnblockRegistration()
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* void registerReporterEvenIfBlocked (in nsIMemoryReporter aReporter); */
+NS_IMETHODIMP nsMemoryReporterManager::RegisterReporterEvenIfBlocked(nsIMemoryReporter *aReporter)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* void registerMultiReporterEvenIfBlocked (in nsIMemoryMultiReporter aReporter); */
+NS_IMETHODIMP nsMemoryReporterManager::RegisterMultiReporterEvenIfBlocked(nsIMemoryMultiReporter *aReporter)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
@@ -583,10 +619,10 @@ NS_IMETHODIMP nsMemoryReporterManager::MinimizeMemoryUsage(nsIRunnable *callback
 // Note that the memory reporters are held in an nsCOMArray, which means
 // that individual reporters should be referenced with |nsIMemoryReporter *|
 // instead of nsCOMPtr<nsIMemoryReporter>.
-nsresult NS_RegisterMemoryReporter(nsIMemoryReporter *reporter);
-nsresult NS_RegisterMemoryMultiReporter(nsIMemoryMultiReporter *reporter);
-nsresult NS_UnregisterMemoryReporter(nsIMemoryReporter *reporter);
-nsresult NS_UnregisterMemoryMultiReporter(nsIMemoryMultiReporter *reporter);
+XPCOM_API(nsresult) NS_RegisterMemoryReporter(nsIMemoryReporter *reporter);
+XPCOM_API(nsresult) NS_RegisterMemoryMultiReporter(nsIMemoryMultiReporter *reporter);
+XPCOM_API(nsresult) NS_UnregisterMemoryReporter(nsIMemoryReporter *reporter);
+XPCOM_API(nsresult) NS_UnregisterMemoryMultiReporter(nsIMemoryMultiReporter *reporter);
 #if defined(MOZ_DMD)
 namespace mozilla {
 namespace dmd {

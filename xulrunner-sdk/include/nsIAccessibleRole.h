@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/accessible/public/nsIAccessibleRole.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/accessible/public/nsIAccessibleRole.idl
  */
 
 #ifndef __gen_nsIAccessibleRole_h__
@@ -156,7 +156,8 @@ class NS_NO_VTABLE nsIAccessibleRole : public nsISupports {
     ROLE_CHECK_RICH_OPTION = 125U,
     ROLE_DEFINITION_LIST = 126U,
     ROLE_TERM = 127U,
-    ROLE_DEFINITION = 128U
+    ROLE_DEFINITION = 128U,
+    ROLE_KEY = 129U
   };
 
 };

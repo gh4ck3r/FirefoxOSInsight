@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/docshell/base/nsIDocShell.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/docshell/base/nsIDocShell.idl
  */
 
 #ifndef __gen_nsIDocShell_h__
@@ -66,11 +66,11 @@ class nsIPrivacyTransitionObserver; /* forward declaration */
 
 
 /* starting interface:    nsIDocShell */
-#define NS_IDOCSHELL_IID_STR "e8f6f3e5-8cee-4be3-8d56-5ed617305bf8"
+#define NS_IDOCSHELL_IID_STR "2b192c9c-dea4-4696-a445-1bef7bc0db6d"
 
 #define NS_IDOCSHELL_IID \
-  {0xe8f6f3e5, 0x8cee, 0x4be3, \
-    { 0x8d, 0x56, 0x5e, 0xd6, 0x17, 0x30, 0x5b, 0xf8 }}
+  {0x2b192c9c, 0xdea4, 0x4696, \
+    { 0xa4, 0x45, 0x1b, 0xef, 0x7b, 0xc0, 0xdb, 0x6d }}
 
 class NS_NO_VTABLE nsIDocShell : public nsIDocShellTreeItem {
  public: 
@@ -261,12 +261,6 @@ class NS_NO_VTABLE nsIDocShell : public nsIDocShellTreeItem {
   /* void addSessionStorage (in nsIPrincipal principal, in nsIDOMStorage storage); */
   NS_IMETHOD AddSessionStorage(nsIPrincipal *principal, nsIDOMStorage *storage) = 0;
 
-  /* void cloneSessionStoragesTo (in nsIDocShell docShell); */
-  NS_IMETHOD CloneSessionStoragesTo(nsIDocShell *docShell) = 0;
-
-  /* void clearSessionStorages (); */
-  NS_IMETHOD ClearSessionStorages(void) = 0;
-
   /* readonly attribute nsIChannel currentDocumentChannel; */
   NS_IMETHOD GetCurrentDocumentChannel(nsIChannel * *aCurrentDocumentChannel) = 0;
 
@@ -349,6 +343,9 @@ class NS_NO_VTABLE nsIDocShell : public nsIDocShellTreeItem {
   /* attribute string charset; */
   NS_IMETHOD GetCharset(char * *aCharset) = 0;
   NS_IMETHOD SetCharset(const char * aCharset) = 0;
+
+  /* void gatherCharsetMenuTelemetry (); */
+  NS_IMETHOD GatherCharsetMenuTelemetry(void) = 0;
 
   /* attribute nsIAtom forcedCharset; */
   NS_IMETHOD GetForcedCharset(nsIAtom * *aForcedCharset) = 0;
@@ -566,8 +563,6 @@ class NS_NO_VTABLE nsIDocShell : public nsIDocShellTreeItem {
   NS_IMETHOD HistoryPurged(int32_t numEntries); \
   NS_IMETHOD GetSessionStorageForPrincipal(nsIPrincipal *principal, const nsAString & documentURI, bool create, nsIDOMStorage * *_retval); \
   NS_IMETHOD AddSessionStorage(nsIPrincipal *principal, nsIDOMStorage *storage); \
-  NS_IMETHOD CloneSessionStoragesTo(nsIDocShell *docShell); \
-  NS_IMETHOD ClearSessionStorages(void); \
   NS_IMETHOD GetCurrentDocumentChannel(nsIChannel * *aCurrentDocumentChannel); \
   NS_IMETHOD SetChildOffset(uint32_t offset); \
   NS_IMETHOD GetIsInUnload(bool *aIsInUnload); \
@@ -589,6 +584,7 @@ class NS_NO_VTABLE nsIDocShell : public nsIDocShellTreeItem {
   NS_IMETHOD CreateAboutBlankContentViewer(nsIPrincipal *aPrincipal); \
   NS_IMETHOD GetCharset(char * *aCharset); \
   NS_IMETHOD SetCharset(const char * aCharset); \
+  NS_IMETHOD GatherCharsetMenuTelemetry(void); \
   NS_IMETHOD GetForcedCharset(nsIAtom * *aForcedCharset); \
   NS_IMETHOD SetForcedCharset(nsIAtom *aForcedCharset); \
   NS_IMETHOD GetParentCharset(nsIAtom * *aParentCharset); \
@@ -687,8 +683,6 @@ class NS_NO_VTABLE nsIDocShell : public nsIDocShellTreeItem {
   NS_IMETHOD HistoryPurged(int32_t numEntries) { return _to HistoryPurged(numEntries); } \
   NS_IMETHOD GetSessionStorageForPrincipal(nsIPrincipal *principal, const nsAString & documentURI, bool create, nsIDOMStorage * *_retval) { return _to GetSessionStorageForPrincipal(principal, documentURI, create, _retval); } \
   NS_IMETHOD AddSessionStorage(nsIPrincipal *principal, nsIDOMStorage *storage) { return _to AddSessionStorage(principal, storage); } \
-  NS_IMETHOD CloneSessionStoragesTo(nsIDocShell *docShell) { return _to CloneSessionStoragesTo(docShell); } \
-  NS_IMETHOD ClearSessionStorages(void) { return _to ClearSessionStorages(); } \
   NS_IMETHOD GetCurrentDocumentChannel(nsIChannel * *aCurrentDocumentChannel) { return _to GetCurrentDocumentChannel(aCurrentDocumentChannel); } \
   NS_IMETHOD SetChildOffset(uint32_t offset) { return _to SetChildOffset(offset); } \
   NS_IMETHOD GetIsInUnload(bool *aIsInUnload) { return _to GetIsInUnload(aIsInUnload); } \
@@ -710,6 +704,7 @@ class NS_NO_VTABLE nsIDocShell : public nsIDocShellTreeItem {
   NS_IMETHOD CreateAboutBlankContentViewer(nsIPrincipal *aPrincipal) { return _to CreateAboutBlankContentViewer(aPrincipal); } \
   NS_IMETHOD GetCharset(char * *aCharset) { return _to GetCharset(aCharset); } \
   NS_IMETHOD SetCharset(const char * aCharset) { return _to SetCharset(aCharset); } \
+  NS_IMETHOD GatherCharsetMenuTelemetry(void) { return _to GatherCharsetMenuTelemetry(); } \
   NS_IMETHOD GetForcedCharset(nsIAtom * *aForcedCharset) { return _to GetForcedCharset(aForcedCharset); } \
   NS_IMETHOD SetForcedCharset(nsIAtom *aForcedCharset) { return _to SetForcedCharset(aForcedCharset); } \
   NS_IMETHOD GetParentCharset(nsIAtom * *aParentCharset) { return _to GetParentCharset(aParentCharset); } \
@@ -808,8 +803,6 @@ class NS_NO_VTABLE nsIDocShell : public nsIDocShellTreeItem {
   NS_IMETHOD HistoryPurged(int32_t numEntries) { return !_to ? NS_ERROR_NULL_POINTER : _to->HistoryPurged(numEntries); } \
   NS_IMETHOD GetSessionStorageForPrincipal(nsIPrincipal *principal, const nsAString & documentURI, bool create, nsIDOMStorage * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetSessionStorageForPrincipal(principal, documentURI, create, _retval); } \
   NS_IMETHOD AddSessionStorage(nsIPrincipal *principal, nsIDOMStorage *storage) { return !_to ? NS_ERROR_NULL_POINTER : _to->AddSessionStorage(principal, storage); } \
-  NS_IMETHOD CloneSessionStoragesTo(nsIDocShell *docShell) { return !_to ? NS_ERROR_NULL_POINTER : _to->CloneSessionStoragesTo(docShell); } \
-  NS_IMETHOD ClearSessionStorages(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->ClearSessionStorages(); } \
   NS_IMETHOD GetCurrentDocumentChannel(nsIChannel * *aCurrentDocumentChannel) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetCurrentDocumentChannel(aCurrentDocumentChannel); } \
   NS_IMETHOD SetChildOffset(uint32_t offset) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetChildOffset(offset); } \
   NS_IMETHOD GetIsInUnload(bool *aIsInUnload) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetIsInUnload(aIsInUnload); } \
@@ -831,6 +824,7 @@ class NS_NO_VTABLE nsIDocShell : public nsIDocShellTreeItem {
   NS_IMETHOD CreateAboutBlankContentViewer(nsIPrincipal *aPrincipal) { return !_to ? NS_ERROR_NULL_POINTER : _to->CreateAboutBlankContentViewer(aPrincipal); } \
   NS_IMETHOD GetCharset(char * *aCharset) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetCharset(aCharset); } \
   NS_IMETHOD SetCharset(const char * aCharset) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetCharset(aCharset); } \
+  NS_IMETHOD GatherCharsetMenuTelemetry(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->GatherCharsetMenuTelemetry(); } \
   NS_IMETHOD GetForcedCharset(nsIAtom * *aForcedCharset) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetForcedCharset(aForcedCharset); } \
   NS_IMETHOD SetForcedCharset(nsIAtom *aForcedCharset) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetForcedCharset(aForcedCharset); } \
   NS_IMETHOD GetParentCharset(nsIAtom * *aParentCharset) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetParentCharset(aParentCharset); } \
@@ -1235,18 +1229,6 @@ NS_IMETHODIMP nsDocShell::AddSessionStorage(nsIPrincipal *principal, nsIDOMStora
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* void cloneSessionStoragesTo (in nsIDocShell docShell); */
-NS_IMETHODIMP nsDocShell::CloneSessionStoragesTo(nsIDocShell *docShell)
-{
-    return NS_ERROR_NOT_IMPLEMENTED;
-}
-
-/* void clearSessionStorages (); */
-NS_IMETHODIMP nsDocShell::ClearSessionStorages()
-{
-    return NS_ERROR_NOT_IMPLEMENTED;
-}
-
 /* readonly attribute nsIChannel currentDocumentChannel; */
 NS_IMETHODIMP nsDocShell::GetCurrentDocumentChannel(nsIChannel * *aCurrentDocumentChannel)
 {
@@ -1361,6 +1343,12 @@ NS_IMETHODIMP nsDocShell::GetCharset(char * *aCharset)
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 NS_IMETHODIMP nsDocShell::SetCharset(const char * aCharset)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* void gatherCharsetMenuTelemetry (); */
+NS_IMETHODIMP nsDocShell::GatherCharsetMenuTelemetry()
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

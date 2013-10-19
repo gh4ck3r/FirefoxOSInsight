@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/sms/interfaces/nsIDOMMozSmsMessage.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/mobilemessage/interfaces/nsIDOMMozSmsMessage.idl
  */
 
 #ifndef __gen_nsIDOMMozSmsMessage_h__
@@ -18,19 +18,25 @@
 #endif
 
 /* starting interface:    nsIDOMMozSmsMessage */
-#define NS_IDOMMOZSMSMESSAGE_IID_STR "59fc5ea8-33fe-40ba-890b-b9abaeb5ac26"
+#define NS_IDOMMOZSMSMESSAGE_IID_STR "b755a401-d5cb-4d35-a93e-47c89d2e15ca"
 
 #define NS_IDOMMOZSMSMESSAGE_IID \
-  {0x59fc5ea8, 0x33fe, 0x40ba, \
-    { 0x89, 0x0b, 0xb9, 0xab, 0xae, 0xb5, 0xac, 0x26 }}
+  {0xb755a401, 0xd5cb, 0x4d35, \
+    { 0xa9, 0x3e, 0x47, 0xc8, 0x9d, 0x2e, 0x15, 0xca }}
 
 class NS_NO_VTABLE nsIDOMMozSmsMessage : public nsISupports {
  public: 
 
   NS_DECLARE_STATIC_IID_ACCESSOR(NS_IDOMMOZSMSMESSAGE_IID)
 
+  /* readonly attribute DOMString type; */
+  NS_IMETHOD GetType(nsAString & aType) = 0;
+
   /* readonly attribute long id; */
   NS_IMETHOD GetId(int32_t *aId) = 0;
+
+  /* readonly attribute unsigned long long threadId; */
+  NS_IMETHOD GetThreadId(uint64_t *aThreadId) = 0;
 
   /* readonly attribute DOMString delivery; */
   NS_IMETHOD GetDelivery(nsAString & aDelivery) = 0;
@@ -62,7 +68,9 @@ class NS_NO_VTABLE nsIDOMMozSmsMessage : public nsISupports {
 
 /* Use this macro when declaring classes that implement this interface. */
 #define NS_DECL_NSIDOMMOZSMSMESSAGE \
+  NS_IMETHOD GetType(nsAString & aType); \
   NS_IMETHOD GetId(int32_t *aId); \
+  NS_IMETHOD GetThreadId(uint64_t *aThreadId); \
   NS_IMETHOD GetDelivery(nsAString & aDelivery); \
   NS_IMETHOD GetDeliveryStatus(nsAString & aDeliveryStatus); \
   NS_IMETHOD GetSender(nsAString & aSender); \
@@ -74,7 +82,9 @@ class NS_NO_VTABLE nsIDOMMozSmsMessage : public nsISupports {
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object. */
 #define NS_FORWARD_NSIDOMMOZSMSMESSAGE(_to) \
+  NS_IMETHOD GetType(nsAString & aType) { return _to GetType(aType); } \
   NS_IMETHOD GetId(int32_t *aId) { return _to GetId(aId); } \
+  NS_IMETHOD GetThreadId(uint64_t *aThreadId) { return _to GetThreadId(aThreadId); } \
   NS_IMETHOD GetDelivery(nsAString & aDelivery) { return _to GetDelivery(aDelivery); } \
   NS_IMETHOD GetDeliveryStatus(nsAString & aDeliveryStatus) { return _to GetDeliveryStatus(aDeliveryStatus); } \
   NS_IMETHOD GetSender(nsAString & aSender) { return _to GetSender(aSender); } \
@@ -86,7 +96,9 @@ class NS_NO_VTABLE nsIDOMMozSmsMessage : public nsISupports {
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object in a safe way. */
 #define NS_FORWARD_SAFE_NSIDOMMOZSMSMESSAGE(_to) \
+  NS_IMETHOD GetType(nsAString & aType) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetType(aType); } \
   NS_IMETHOD GetId(int32_t *aId) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetId(aId); } \
+  NS_IMETHOD GetThreadId(uint64_t *aThreadId) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetThreadId(aThreadId); } \
   NS_IMETHOD GetDelivery(nsAString & aDelivery) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetDelivery(aDelivery); } \
   NS_IMETHOD GetDeliveryStatus(nsAString & aDeliveryStatus) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetDeliveryStatus(aDeliveryStatus); } \
   NS_IMETHOD GetSender(nsAString & aSender) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetSender(aSender); } \
@@ -128,8 +140,20 @@ nsDOMMozSmsMessage::~nsDOMMozSmsMessage()
   /* destructor code */
 }
 
+/* readonly attribute DOMString type; */
+NS_IMETHODIMP nsDOMMozSmsMessage::GetType(nsAString & aType)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
 /* readonly attribute long id; */
 NS_IMETHODIMP nsDOMMozSmsMessage::GetId(int32_t *aId)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* readonly attribute unsigned long long threadId; */
+NS_IMETHODIMP nsDOMMozSmsMessage::GetThreadId(uint64_t *aThreadId)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/base/nsIDOMWindow.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/base/nsIDOMWindow.idl
  */
 
 #ifndef __gen_nsIDOMWindow_h__
@@ -38,11 +38,11 @@ class nsIVariant; /* forward declaration */
 
 
 /* starting interface:    nsIDOMWindow */
-#define NS_IDOMWINDOW_IID_STR "39cb59d4-fba9-48a9-b70b-570a7ec2ebfa"
+#define NS_IDOMWINDOW_IID_STR "b4cf7214-5385-4f72-aa83-f8d1ff17252b"
 
 #define NS_IDOMWINDOW_IID \
-  {0x39cb59d4, 0xfba9, 0x48a9, \
-    { 0xb7, 0x0b, 0x57, 0x0a, 0x7e, 0xc2, 0xeb, 0xfa }}
+  {0xb4cf7214, 0x5385, 0x4f72, \
+    { 0xaa, 0x83, 0xf8, 0xd1, 0xff, 0x17, 0x25, 0x2b }}
 
 class nsIDOMWindow : public nsISupports {
  public: 
@@ -145,10 +145,10 @@ class nsIDOMWindow : public nsISupports {
   /* readonly attribute nsIDOMOfflineResourceList applicationCache; */
   NS_IMETHOD GetApplicationCache(nsIDOMOfflineResourceList * *aApplicationCache) = 0;
 
-  /* void alert (in DOMString text); */
+  /* void alert ([optional, Null (Stringify)] in DOMString text); */
   NS_IMETHOD Alert(const nsAString & text) = 0;
 
-  /* boolean confirm (in DOMString text); */
+  /* boolean confirm ([optional] in DOMString text); */
   NS_IMETHOD Confirm(const nsAString & text, bool *_retval) = 0;
 
   /* DOMString prompt ([optional] in DOMString aMessage, [optional] in DOMString aInitial); */
@@ -272,10 +272,6 @@ class nsIDOMWindow : public nsISupports {
   /* readonly attribute nsIControllers controllers; */
   NS_IMETHOD GetControllers(nsIControllers * *aControllers) = 0;
 
-  /* attribute DOMString defaultStatus; */
-  NS_IMETHOD GetDefaultStatus(nsAString & aDefaultStatus) = 0;
-  NS_IMETHOD SetDefaultStatus(const nsAString & aDefaultStatus) = 0;
-
   /* readonly attribute float mozInnerScreenX; */
   NS_IMETHOD GetMozInnerScreenX(float *aMozInnerScreenX) = 0;
 
@@ -333,6 +329,9 @@ class nsIDOMWindow : public nsISupports {
 
   /* long mozRequestAnimationFrame ([optional] in nsIFrameRequestCallback aCallback); */
   NS_IMETHOD MozRequestAnimationFrame(nsIFrameRequestCallback *aCallback, int32_t *_retval) = 0;
+
+  /* [implicit_jscontext] long requestAnimationFrame (in jsval aCallback); */
+  NS_IMETHOD RequestAnimationFrame(const JS::Value & aCallback, JSContext* cx, int32_t *_retval) = 0;
 
   /* void mozCancelAnimationFrame (in long aHandle); */
   NS_IMETHOD MozCancelAnimationFrame(int32_t aHandle) = 0;
@@ -502,8 +501,6 @@ class nsIDOMWindow : public nsISupports {
   NS_IMETHOD GetCrypto(nsIDOMCrypto * *aCrypto); \
   NS_IMETHOD GetPkcs11(nsIDOMPkcs11 * *aPkcs11); \
   NS_IMETHOD GetControllers(nsIControllers * *aControllers); \
-  NS_IMETHOD GetDefaultStatus(nsAString & aDefaultStatus); \
-  NS_IMETHOD SetDefaultStatus(const nsAString & aDefaultStatus); \
   NS_IMETHOD GetMozInnerScreenX(float *aMozInnerScreenX); \
   NS_IMETHOD GetMozInnerScreenY(float *aMozInnerScreenY); \
   NS_IMETHOD GetDevicePixelRatio(float *aDevicePixelRatio); \
@@ -524,6 +521,7 @@ class nsIDOMWindow : public nsISupports {
   NS_IMETHOD Find(const nsAString & str, bool caseSensitive, bool backwards, bool wrapAround, bool wholeWord, bool searchInFrames, bool showDialog, bool *_retval); \
   NS_IMETHOD GetMozPaintCount(uint64_t *aMozPaintCount); \
   NS_IMETHOD MozRequestAnimationFrame(nsIFrameRequestCallback *aCallback, int32_t *_retval); \
+  NS_IMETHOD RequestAnimationFrame(const JS::Value & aCallback, JSContext* cx, int32_t *_retval); \
   NS_IMETHOD MozCancelAnimationFrame(int32_t aHandle); \
   NS_IMETHOD MozCancelRequestAnimationFrame(int32_t aHandle); \
   NS_IMETHOD GetMozAnimationStartTime(int64_t *aMozAnimationStartTime); \
@@ -645,8 +643,6 @@ class nsIDOMWindow : public nsISupports {
   NS_IMETHOD GetCrypto(nsIDOMCrypto * *aCrypto) { return _to GetCrypto(aCrypto); } \
   NS_IMETHOD GetPkcs11(nsIDOMPkcs11 * *aPkcs11) { return _to GetPkcs11(aPkcs11); } \
   NS_IMETHOD GetControllers(nsIControllers * *aControllers) { return _to GetControllers(aControllers); } \
-  NS_IMETHOD GetDefaultStatus(nsAString & aDefaultStatus) { return _to GetDefaultStatus(aDefaultStatus); } \
-  NS_IMETHOD SetDefaultStatus(const nsAString & aDefaultStatus) { return _to SetDefaultStatus(aDefaultStatus); } \
   NS_IMETHOD GetMozInnerScreenX(float *aMozInnerScreenX) { return _to GetMozInnerScreenX(aMozInnerScreenX); } \
   NS_IMETHOD GetMozInnerScreenY(float *aMozInnerScreenY) { return _to GetMozInnerScreenY(aMozInnerScreenY); } \
   NS_IMETHOD GetDevicePixelRatio(float *aDevicePixelRatio) { return _to GetDevicePixelRatio(aDevicePixelRatio); } \
@@ -667,6 +663,7 @@ class nsIDOMWindow : public nsISupports {
   NS_IMETHOD Find(const nsAString & str, bool caseSensitive, bool backwards, bool wrapAround, bool wholeWord, bool searchInFrames, bool showDialog, bool *_retval) { return _to Find(str, caseSensitive, backwards, wrapAround, wholeWord, searchInFrames, showDialog, _retval); } \
   NS_IMETHOD GetMozPaintCount(uint64_t *aMozPaintCount) { return _to GetMozPaintCount(aMozPaintCount); } \
   NS_IMETHOD MozRequestAnimationFrame(nsIFrameRequestCallback *aCallback, int32_t *_retval) { return _to MozRequestAnimationFrame(aCallback, _retval); } \
+  NS_IMETHOD RequestAnimationFrame(const JS::Value & aCallback, JSContext* cx, int32_t *_retval) { return _to RequestAnimationFrame(aCallback, cx, _retval); } \
   NS_IMETHOD MozCancelAnimationFrame(int32_t aHandle) { return _to MozCancelAnimationFrame(aHandle); } \
   NS_IMETHOD MozCancelRequestAnimationFrame(int32_t aHandle) { return _to MozCancelRequestAnimationFrame(aHandle); } \
   NS_IMETHOD GetMozAnimationStartTime(int64_t *aMozAnimationStartTime) { return _to GetMozAnimationStartTime(aMozAnimationStartTime); } \
@@ -788,8 +785,6 @@ class nsIDOMWindow : public nsISupports {
   NS_IMETHOD GetCrypto(nsIDOMCrypto * *aCrypto) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetCrypto(aCrypto); } \
   NS_IMETHOD GetPkcs11(nsIDOMPkcs11 * *aPkcs11) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetPkcs11(aPkcs11); } \
   NS_IMETHOD GetControllers(nsIControllers * *aControllers) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetControllers(aControllers); } \
-  NS_IMETHOD GetDefaultStatus(nsAString & aDefaultStatus) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetDefaultStatus(aDefaultStatus); } \
-  NS_IMETHOD SetDefaultStatus(const nsAString & aDefaultStatus) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetDefaultStatus(aDefaultStatus); } \
   NS_IMETHOD GetMozInnerScreenX(float *aMozInnerScreenX) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetMozInnerScreenX(aMozInnerScreenX); } \
   NS_IMETHOD GetMozInnerScreenY(float *aMozInnerScreenY) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetMozInnerScreenY(aMozInnerScreenY); } \
   NS_IMETHOD GetDevicePixelRatio(float *aDevicePixelRatio) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetDevicePixelRatio(aDevicePixelRatio); } \
@@ -810,6 +805,7 @@ class nsIDOMWindow : public nsISupports {
   NS_IMETHOD Find(const nsAString & str, bool caseSensitive, bool backwards, bool wrapAround, bool wholeWord, bool searchInFrames, bool showDialog, bool *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->Find(str, caseSensitive, backwards, wrapAround, wholeWord, searchInFrames, showDialog, _retval); } \
   NS_IMETHOD GetMozPaintCount(uint64_t *aMozPaintCount) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetMozPaintCount(aMozPaintCount); } \
   NS_IMETHOD MozRequestAnimationFrame(nsIFrameRequestCallback *aCallback, int32_t *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->MozRequestAnimationFrame(aCallback, _retval); } \
+  NS_IMETHOD RequestAnimationFrame(const JS::Value & aCallback, JSContext* cx, int32_t *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->RequestAnimationFrame(aCallback, cx, _retval); } \
   NS_IMETHOD MozCancelAnimationFrame(int32_t aHandle) { return !_to ? NS_ERROR_NULL_POINTER : _to->MozCancelAnimationFrame(aHandle); } \
   NS_IMETHOD MozCancelRequestAnimationFrame(int32_t aHandle) { return !_to ? NS_ERROR_NULL_POINTER : _to->MozCancelRequestAnimationFrame(aHandle); } \
   NS_IMETHOD GetMozAnimationStartTime(int64_t *aMozAnimationStartTime) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetMozAnimationStartTime(aMozAnimationStartTime); } \
@@ -1058,13 +1054,13 @@ NS_IMETHODIMP nsDOMWindow::GetApplicationCache(nsIDOMOfflineResourceList * *aApp
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* void alert (in DOMString text); */
+/* void alert ([optional, Null (Stringify)] in DOMString text); */
 NS_IMETHODIMP nsDOMWindow::Alert(const nsAString & text)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* boolean confirm (in DOMString text); */
+/* boolean confirm ([optional] in DOMString text); */
 NS_IMETHODIMP nsDOMWindow::Confirm(const nsAString & text, bool *_retval)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
@@ -1326,16 +1322,6 @@ NS_IMETHODIMP nsDOMWindow::GetControllers(nsIControllers * *aControllers)
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* attribute DOMString defaultStatus; */
-NS_IMETHODIMP nsDOMWindow::GetDefaultStatus(nsAString & aDefaultStatus)
-{
-    return NS_ERROR_NOT_IMPLEMENTED;
-}
-NS_IMETHODIMP nsDOMWindow::SetDefaultStatus(const nsAString & aDefaultStatus)
-{
-    return NS_ERROR_NOT_IMPLEMENTED;
-}
-
 /* readonly attribute float mozInnerScreenX; */
 NS_IMETHODIMP nsDOMWindow::GetMozInnerScreenX(float *aMozInnerScreenX)
 {
@@ -1450,6 +1436,12 @@ NS_IMETHODIMP nsDOMWindow::GetMozPaintCount(uint64_t *aMozPaintCount)
 
 /* long mozRequestAnimationFrame ([optional] in nsIFrameRequestCallback aCallback); */
 NS_IMETHODIMP nsDOMWindow::MozRequestAnimationFrame(nsIFrameRequestCallback *aCallback, int32_t *_retval)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* [implicit_jscontext] long requestAnimationFrame (in jsval aCallback); */
+NS_IMETHODIMP nsDOMWindow::RequestAnimationFrame(const JS::Value & aCallback, JSContext* cx, int32_t *_retval)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
@@ -1740,11 +1732,11 @@ NS_IMETHODIMP nsDOMWindowPerformance::GetPerformance(nsISupports * *aPerformance
 
 
 /* starting interface:    nsIDOMWindowInternal */
-#define NS_IDOMWINDOWINTERNAL_IID_STR "a5cd0946-bac1-4606-9aaa-9e68dd0a3279"
+#define NS_IDOMWINDOWINTERNAL_IID_STR "36aeaa8e-3126-49de-9581-276dd7117826"
 
 #define NS_IDOMWINDOWINTERNAL_IID \
-  {0xa5cd0946, 0xbac1, 0x4606, \
-    { 0x9a, 0xaa, 0x9e, 0x68, 0xdd, 0x0a, 0x32, 0x79 }}
+  {0x36aeaa8e, 0x3126, 0x49de, \
+    { 0x95, 0x81, 0x27, 0x6d, 0xd7, 0x11, 0x78, 0x26 }}
 
 class NS_NO_VTABLE nsIDOMWindowInternal : public nsIDOMWindow {
  public: 
@@ -1797,6 +1789,79 @@ nsDOMWindowInternal::nsDOMWindowInternal()
 nsDOMWindowInternal::~nsDOMWindowInternal()
 {
   /* destructor code */
+}
+
+/* End of implementation class template. */
+#endif
+
+
+/* starting interface:    nsIWindowCancelAnimationFrame */
+#define NS_IWINDOWCANCELANIMATIONFRAME_IID_STR "660ae025-7eec-4308-b5ce-79cf67ee7e00"
+
+#define NS_IWINDOWCANCELANIMATIONFRAME_IID \
+  {0x660ae025, 0x7eec, 0x4308, \
+    { 0xb5, 0xce, 0x79, 0xcf, 0x67, 0xee, 0x7e, 0x00 }}
+
+class NS_NO_VTABLE nsIWindowCancelAnimationFrame : public nsISupports {
+ public: 
+
+  NS_DECLARE_STATIC_IID_ACCESSOR(NS_IWINDOWCANCELANIMATIONFRAME_IID)
+
+  /* void cancelAnimationFrame (in long aHandle); */
+  NS_IMETHOD CancelAnimationFrame(int32_t aHandle) = 0;
+
+};
+
+  NS_DEFINE_STATIC_IID_ACCESSOR(nsIWindowCancelAnimationFrame, NS_IWINDOWCANCELANIMATIONFRAME_IID)
+
+/* Use this macro when declaring classes that implement this interface. */
+#define NS_DECL_NSIWINDOWCANCELANIMATIONFRAME \
+  NS_IMETHOD CancelAnimationFrame(int32_t aHandle); 
+
+/* Use this macro to declare functions that forward the behavior of this interface to another object. */
+#define NS_FORWARD_NSIWINDOWCANCELANIMATIONFRAME(_to) \
+  NS_IMETHOD CancelAnimationFrame(int32_t aHandle) { return _to CancelAnimationFrame(aHandle); } 
+
+/* Use this macro to declare functions that forward the behavior of this interface to another object in a safe way. */
+#define NS_FORWARD_SAFE_NSIWINDOWCANCELANIMATIONFRAME(_to) \
+  NS_IMETHOD CancelAnimationFrame(int32_t aHandle) { return !_to ? NS_ERROR_NULL_POINTER : _to->CancelAnimationFrame(aHandle); } 
+
+#if 0
+/* Use the code below as a template for the implementation class for this interface. */
+
+/* Header file */
+class nsWindowCancelAnimationFrame : public nsIWindowCancelAnimationFrame
+{
+public:
+  NS_DECL_ISUPPORTS
+  NS_DECL_NSIWINDOWCANCELANIMATIONFRAME
+
+  nsWindowCancelAnimationFrame();
+
+private:
+  ~nsWindowCancelAnimationFrame();
+
+protected:
+  /* additional members */
+};
+
+/* Implementation file */
+NS_IMPL_ISUPPORTS1(nsWindowCancelAnimationFrame, nsIWindowCancelAnimationFrame)
+
+nsWindowCancelAnimationFrame::nsWindowCancelAnimationFrame()
+{
+  /* member initializers and constructor code */
+}
+
+nsWindowCancelAnimationFrame::~nsWindowCancelAnimationFrame()
+{
+  /* destructor code */
+}
+
+/* void cancelAnimationFrame (in long aHandle); */
+NS_IMETHODIMP nsWindowCancelAnimationFrame::CancelAnimationFrame(int32_t aHandle)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
 }
 
 /* End of implementation class template. */

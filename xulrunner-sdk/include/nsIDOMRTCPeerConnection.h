@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/media/nsIDOMRTCPeerConnection.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/media/nsIDOMRTCPeerConnection.idl
  */
 
 #ifndef __gen_nsIDOMRTCPeerConnection_h__
@@ -392,11 +392,11 @@ NS_IMETHODIMP nsDOMRTCIceCandidate::SetSdpMLineIndex(uint16_t aSdpMLineIndex)
 
 
 /* starting interface:    nsIDOMRTCPeerConnection */
-#define NS_IDOMRTCPEERCONNECTION_IID_STR "f888648c-5e6b-4af9-91ad-a911e53d7a39"
+#define NS_IDOMRTCPEERCONNECTION_IID_STR "474074ab-11f9-4933-a200-8ea1a5f84e4c"
 
 #define NS_IDOMRTCPEERCONNECTION_IID \
-  {0xf888648c, 0x5e6b, 0x4af9, \
-    { 0x91, 0xad, 0xa9, 0x11, 0xe5, 0x3d, 0x7a, 0x39 }}
+  {0x474074ab, 0x11f9, 0x4933, \
+    { 0xa2, 0x00, 0x8e, 0xa1, 0xa5, 0xf8, 0x4e, 0x4c }}
 
 class NS_NO_VTABLE nsIDOMRTCPeerConnection : public nsISupports {
  public: 
@@ -409,17 +409,17 @@ class NS_NO_VTABLE nsIDOMRTCPeerConnection : public nsISupports {
   /* void createAnswer (in RTCPeerConnectionCallback successCallback, [optional] in RTCPeerConnectionCallback failureCallback, [optional] in jsval constraints, [optional] in bool createProvisionalAnswer); */
   NS_IMETHOD CreateAnswer(RTCPeerConnectionCallback *successCallback, RTCPeerConnectionCallback *failureCallback, const JS::Value & constraints, bool createProvisionalAnswer) = 0;
 
-  /* void setLocalDescription (in nsIDOMRTCSessionDescription desc, [optional] in RTCPeerConnectionCallback successCallback, [optional] in RTCPeerConnectionCallback failureCallback); */
-  NS_IMETHOD SetLocalDescription(nsIDOMRTCSessionDescription *desc, RTCPeerConnectionCallback *successCallback, RTCPeerConnectionCallback *failureCallback) = 0;
+  /* void setLocalDescription (in nsIDOMRTCSessionDescription desc, [optional] in RTCPeerConnectionCallbackVoid successCallback, [optional] in RTCPeerConnectionCallback failureCallback); */
+  NS_IMETHOD SetLocalDescription(nsIDOMRTCSessionDescription *desc, RTCPeerConnectionCallbackVoid *successCallback, RTCPeerConnectionCallback *failureCallback) = 0;
 
-  /* void setRemoteDescription (in nsIDOMRTCSessionDescription desc, [optional] in RTCPeerConnectionCallback successCallback, [optional] in RTCPeerConnectionCallback failureCallback); */
-  NS_IMETHOD SetRemoteDescription(nsIDOMRTCSessionDescription *desc, RTCPeerConnectionCallback *successCallback, RTCPeerConnectionCallback *failureCallback) = 0;
+  /* void setRemoteDescription (in nsIDOMRTCSessionDescription desc, [optional] in RTCPeerConnectionCallbackVoid successCallback, [optional] in RTCPeerConnectionCallback failureCallback); */
+  NS_IMETHOD SetRemoteDescription(nsIDOMRTCSessionDescription *desc, RTCPeerConnectionCallbackVoid *successCallback, RTCPeerConnectionCallback *failureCallback) = 0;
 
   /* void updateIce ([optional] in jsval configuration, [optional] in jsval constraints, [optional] in bool restart); */
   NS_IMETHOD UpdateIce(const JS::Value & configuration, const JS::Value & constraints, bool restart) = 0;
 
-  /* void addIceCandidate (in nsIDOMRTCIceCandidate candidate, [optional] in RTCPeerConnectionCallback successCallback, [optional] in RTCPeerConnectionCallback failureCallback); */
-  NS_IMETHOD AddIceCandidate(nsIDOMRTCIceCandidate *candidate, RTCPeerConnectionCallback *successCallback, RTCPeerConnectionCallback *failureCallback) = 0;
+  /* void addIceCandidate (in nsIDOMRTCIceCandidate candidate, [optional] in RTCPeerConnectionCallbackVoid successCallback, [optional] in RTCPeerConnectionCallback failureCallback); */
+  NS_IMETHOD AddIceCandidate(nsIDOMRTCIceCandidate *candidate, RTCPeerConnectionCallbackVoid *successCallback, RTCPeerConnectionCallback *failureCallback) = 0;
 
   /* void addStream (in nsIDOMMediaStream stream, [optional] in jsval constraints); */
   NS_IMETHOD AddStream(nsIDOMMediaStream *stream, const JS::Value & constraints) = 0;
@@ -505,10 +505,10 @@ class NS_NO_VTABLE nsIDOMRTCPeerConnection : public nsISupports {
 #define NS_DECL_NSIDOMRTCPEERCONNECTION \
   NS_IMETHOD CreateOffer(RTCPeerConnectionCallback *successCallback, RTCPeerConnectionCallback *failureCallback, const JS::Value & constraints); \
   NS_IMETHOD CreateAnswer(RTCPeerConnectionCallback *successCallback, RTCPeerConnectionCallback *failureCallback, const JS::Value & constraints, bool createProvisionalAnswer); \
-  NS_IMETHOD SetLocalDescription(nsIDOMRTCSessionDescription *desc, RTCPeerConnectionCallback *successCallback, RTCPeerConnectionCallback *failureCallback); \
-  NS_IMETHOD SetRemoteDescription(nsIDOMRTCSessionDescription *desc, RTCPeerConnectionCallback *successCallback, RTCPeerConnectionCallback *failureCallback); \
+  NS_IMETHOD SetLocalDescription(nsIDOMRTCSessionDescription *desc, RTCPeerConnectionCallbackVoid *successCallback, RTCPeerConnectionCallback *failureCallback); \
+  NS_IMETHOD SetRemoteDescription(nsIDOMRTCSessionDescription *desc, RTCPeerConnectionCallbackVoid *successCallback, RTCPeerConnectionCallback *failureCallback); \
   NS_IMETHOD UpdateIce(const JS::Value & configuration, const JS::Value & constraints, bool restart); \
-  NS_IMETHOD AddIceCandidate(nsIDOMRTCIceCandidate *candidate, RTCPeerConnectionCallback *successCallback, RTCPeerConnectionCallback *failureCallback); \
+  NS_IMETHOD AddIceCandidate(nsIDOMRTCIceCandidate *candidate, RTCPeerConnectionCallbackVoid *successCallback, RTCPeerConnectionCallback *failureCallback); \
   NS_IMETHOD AddStream(nsIDOMMediaStream *stream, const JS::Value & constraints); \
   NS_IMETHOD RemoveStream(nsIDOMMediaStream *stream); \
   NS_IMETHOD Close(void); \
@@ -546,10 +546,10 @@ class NS_NO_VTABLE nsIDOMRTCPeerConnection : public nsISupports {
 #define NS_FORWARD_NSIDOMRTCPEERCONNECTION(_to) \
   NS_IMETHOD CreateOffer(RTCPeerConnectionCallback *successCallback, RTCPeerConnectionCallback *failureCallback, const JS::Value & constraints) { return _to CreateOffer(successCallback, failureCallback, constraints); } \
   NS_IMETHOD CreateAnswer(RTCPeerConnectionCallback *successCallback, RTCPeerConnectionCallback *failureCallback, const JS::Value & constraints, bool createProvisionalAnswer) { return _to CreateAnswer(successCallback, failureCallback, constraints, createProvisionalAnswer); } \
-  NS_IMETHOD SetLocalDescription(nsIDOMRTCSessionDescription *desc, RTCPeerConnectionCallback *successCallback, RTCPeerConnectionCallback *failureCallback) { return _to SetLocalDescription(desc, successCallback, failureCallback); } \
-  NS_IMETHOD SetRemoteDescription(nsIDOMRTCSessionDescription *desc, RTCPeerConnectionCallback *successCallback, RTCPeerConnectionCallback *failureCallback) { return _to SetRemoteDescription(desc, successCallback, failureCallback); } \
+  NS_IMETHOD SetLocalDescription(nsIDOMRTCSessionDescription *desc, RTCPeerConnectionCallbackVoid *successCallback, RTCPeerConnectionCallback *failureCallback) { return _to SetLocalDescription(desc, successCallback, failureCallback); } \
+  NS_IMETHOD SetRemoteDescription(nsIDOMRTCSessionDescription *desc, RTCPeerConnectionCallbackVoid *successCallback, RTCPeerConnectionCallback *failureCallback) { return _to SetRemoteDescription(desc, successCallback, failureCallback); } \
   NS_IMETHOD UpdateIce(const JS::Value & configuration, const JS::Value & constraints, bool restart) { return _to UpdateIce(configuration, constraints, restart); } \
-  NS_IMETHOD AddIceCandidate(nsIDOMRTCIceCandidate *candidate, RTCPeerConnectionCallback *successCallback, RTCPeerConnectionCallback *failureCallback) { return _to AddIceCandidate(candidate, successCallback, failureCallback); } \
+  NS_IMETHOD AddIceCandidate(nsIDOMRTCIceCandidate *candidate, RTCPeerConnectionCallbackVoid *successCallback, RTCPeerConnectionCallback *failureCallback) { return _to AddIceCandidate(candidate, successCallback, failureCallback); } \
   NS_IMETHOD AddStream(nsIDOMMediaStream *stream, const JS::Value & constraints) { return _to AddStream(stream, constraints); } \
   NS_IMETHOD RemoveStream(nsIDOMMediaStream *stream) { return _to RemoveStream(stream); } \
   NS_IMETHOD Close(void) { return _to Close(); } \
@@ -587,10 +587,10 @@ class NS_NO_VTABLE nsIDOMRTCPeerConnection : public nsISupports {
 #define NS_FORWARD_SAFE_NSIDOMRTCPEERCONNECTION(_to) \
   NS_IMETHOD CreateOffer(RTCPeerConnectionCallback *successCallback, RTCPeerConnectionCallback *failureCallback, const JS::Value & constraints) { return !_to ? NS_ERROR_NULL_POINTER : _to->CreateOffer(successCallback, failureCallback, constraints); } \
   NS_IMETHOD CreateAnswer(RTCPeerConnectionCallback *successCallback, RTCPeerConnectionCallback *failureCallback, const JS::Value & constraints, bool createProvisionalAnswer) { return !_to ? NS_ERROR_NULL_POINTER : _to->CreateAnswer(successCallback, failureCallback, constraints, createProvisionalAnswer); } \
-  NS_IMETHOD SetLocalDescription(nsIDOMRTCSessionDescription *desc, RTCPeerConnectionCallback *successCallback, RTCPeerConnectionCallback *failureCallback) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetLocalDescription(desc, successCallback, failureCallback); } \
-  NS_IMETHOD SetRemoteDescription(nsIDOMRTCSessionDescription *desc, RTCPeerConnectionCallback *successCallback, RTCPeerConnectionCallback *failureCallback) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetRemoteDescription(desc, successCallback, failureCallback); } \
+  NS_IMETHOD SetLocalDescription(nsIDOMRTCSessionDescription *desc, RTCPeerConnectionCallbackVoid *successCallback, RTCPeerConnectionCallback *failureCallback) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetLocalDescription(desc, successCallback, failureCallback); } \
+  NS_IMETHOD SetRemoteDescription(nsIDOMRTCSessionDescription *desc, RTCPeerConnectionCallbackVoid *successCallback, RTCPeerConnectionCallback *failureCallback) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetRemoteDescription(desc, successCallback, failureCallback); } \
   NS_IMETHOD UpdateIce(const JS::Value & configuration, const JS::Value & constraints, bool restart) { return !_to ? NS_ERROR_NULL_POINTER : _to->UpdateIce(configuration, constraints, restart); } \
-  NS_IMETHOD AddIceCandidate(nsIDOMRTCIceCandidate *candidate, RTCPeerConnectionCallback *successCallback, RTCPeerConnectionCallback *failureCallback) { return !_to ? NS_ERROR_NULL_POINTER : _to->AddIceCandidate(candidate, successCallback, failureCallback); } \
+  NS_IMETHOD AddIceCandidate(nsIDOMRTCIceCandidate *candidate, RTCPeerConnectionCallbackVoid *successCallback, RTCPeerConnectionCallback *failureCallback) { return !_to ? NS_ERROR_NULL_POINTER : _to->AddIceCandidate(candidate, successCallback, failureCallback); } \
   NS_IMETHOD AddStream(nsIDOMMediaStream *stream, const JS::Value & constraints) { return !_to ? NS_ERROR_NULL_POINTER : _to->AddStream(stream, constraints); } \
   NS_IMETHOD RemoveStream(nsIDOMMediaStream *stream) { return !_to ? NS_ERROR_NULL_POINTER : _to->RemoveStream(stream); } \
   NS_IMETHOD Close(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->Close(); } \
@@ -668,14 +668,14 @@ NS_IMETHODIMP nsDOMRTCPeerConnection::CreateAnswer(RTCPeerConnectionCallback *su
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* void setLocalDescription (in nsIDOMRTCSessionDescription desc, [optional] in RTCPeerConnectionCallback successCallback, [optional] in RTCPeerConnectionCallback failureCallback); */
-NS_IMETHODIMP nsDOMRTCPeerConnection::SetLocalDescription(nsIDOMRTCSessionDescription *desc, RTCPeerConnectionCallback *successCallback, RTCPeerConnectionCallback *failureCallback)
+/* void setLocalDescription (in nsIDOMRTCSessionDescription desc, [optional] in RTCPeerConnectionCallbackVoid successCallback, [optional] in RTCPeerConnectionCallback failureCallback); */
+NS_IMETHODIMP nsDOMRTCPeerConnection::SetLocalDescription(nsIDOMRTCSessionDescription *desc, RTCPeerConnectionCallbackVoid *successCallback, RTCPeerConnectionCallback *failureCallback)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* void setRemoteDescription (in nsIDOMRTCSessionDescription desc, [optional] in RTCPeerConnectionCallback successCallback, [optional] in RTCPeerConnectionCallback failureCallback); */
-NS_IMETHODIMP nsDOMRTCPeerConnection::SetRemoteDescription(nsIDOMRTCSessionDescription *desc, RTCPeerConnectionCallback *successCallback, RTCPeerConnectionCallback *failureCallback)
+/* void setRemoteDescription (in nsIDOMRTCSessionDescription desc, [optional] in RTCPeerConnectionCallbackVoid successCallback, [optional] in RTCPeerConnectionCallback failureCallback); */
+NS_IMETHODIMP nsDOMRTCPeerConnection::SetRemoteDescription(nsIDOMRTCSessionDescription *desc, RTCPeerConnectionCallbackVoid *successCallback, RTCPeerConnectionCallback *failureCallback)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
@@ -686,8 +686,8 @@ NS_IMETHODIMP nsDOMRTCPeerConnection::UpdateIce(const JS::Value & configuration,
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* void addIceCandidate (in nsIDOMRTCIceCandidate candidate, [optional] in RTCPeerConnectionCallback successCallback, [optional] in RTCPeerConnectionCallback failureCallback); */
-NS_IMETHODIMP nsDOMRTCPeerConnection::AddIceCandidate(nsIDOMRTCIceCandidate *candidate, RTCPeerConnectionCallback *successCallback, RTCPeerConnectionCallback *failureCallback)
+/* void addIceCandidate (in nsIDOMRTCIceCandidate candidate, [optional] in RTCPeerConnectionCallbackVoid successCallback, [optional] in RTCPeerConnectionCallback failureCallback); */
+NS_IMETHODIMP nsDOMRTCPeerConnection::AddIceCandidate(nsIDOMRTCIceCandidate *candidate, RTCPeerConnectionCallbackVoid *successCallback, RTCPeerConnectionCallback *failureCallback)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

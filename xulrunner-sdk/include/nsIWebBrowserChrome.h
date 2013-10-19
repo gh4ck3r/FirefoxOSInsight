@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/embedding/browser/webBrowser/nsIWebBrowserChrome.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/embedding/browser/webBrowser/nsIWebBrowserChrome.idl
  */
 
 #ifndef __gen_nsIWebBrowserChrome_h__
@@ -33,7 +33,6 @@ class NS_NO_VTABLE nsIWebBrowserChrome : public nsISupports {
 
   enum {
     STATUS_SCRIPT = 1U,
-    STATUS_SCRIPT_DEFAULT = 2U,
     STATUS_LINK = 3U
   };
 
@@ -63,6 +62,7 @@ class NS_NO_VTABLE nsIWebBrowserChrome : public nsISupports {
     CHROME_WINDOW_POPUP = 32768U,
     CHROME_PRIVATE_WINDOW = 65536U,
     CHROME_NON_PRIVATE_WINDOW = 131072U,
+    CHROME_PRIVATE_LIFETIME = 262144U,
     CHROME_MAC_SUPPRESS_ANIMATION = 16777216U,
     CHROME_WINDOW_RAISED = 33554432U,
     CHROME_WINDOW_LOWERED = 67108864U,

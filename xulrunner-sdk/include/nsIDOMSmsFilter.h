@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/sms/interfaces/nsIDOMSmsFilter.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/mobilemessage/interfaces/nsIDOMSmsFilter.idl
  */
 
 #ifndef __gen_nsIDOMSmsFilter_h__
@@ -18,11 +18,11 @@
 #endif
 
 /* starting interface:    nsIDOMMozSmsFilter */
-#define NS_IDOMMOZSMSFILTER_IID_STR "ce055c33-553d-4b0e-9bd8-91d93a057c90"
+#define NS_IDOMMOZSMSFILTER_IID_STR "17890b60-0367-45c6-9729-62e5bf349b2b"
 
 #define NS_IDOMMOZSMSFILTER_IID \
-  {0xce055c33, 0x553d, 0x4b0e, \
-    { 0x9b, 0xd8, 0x91, 0xd9, 0x3a, 0x05, 0x7c, 0x90 }}
+  {0x17890b60, 0x0367, 0x45c6, \
+    { 0x97, 0x29, 0x62, 0xe5, 0xbf, 0x34, 0x9b, 0x2b }}
 
 class NS_NO_VTABLE nsIDOMMozSmsFilter : public nsISupports {
  public: 
@@ -49,6 +49,10 @@ class NS_NO_VTABLE nsIDOMMozSmsFilter : public nsISupports {
   NS_IMETHOD GetRead(JSContext* cx, JS::Value *aRead) = 0;
   NS_IMETHOD SetRead(JSContext* cx, const JS::Value & aRead) = 0;
 
+  /* [implicit_jscontext] attribute jsval threadId; */
+  NS_IMETHOD GetThreadId(JSContext* cx, JS::Value *aThreadId) = 0;
+  NS_IMETHOD SetThreadId(JSContext* cx, const JS::Value & aThreadId) = 0;
+
 };
 
   NS_DEFINE_STATIC_IID_ACCESSOR(nsIDOMMozSmsFilter, NS_IDOMMOZSMSFILTER_IID)
@@ -64,7 +68,9 @@ class NS_NO_VTABLE nsIDOMMozSmsFilter : public nsISupports {
   NS_IMETHOD GetDelivery(nsAString & aDelivery); \
   NS_IMETHOD SetDelivery(const nsAString & aDelivery); \
   NS_IMETHOD GetRead(JSContext* cx, JS::Value *aRead); \
-  NS_IMETHOD SetRead(JSContext* cx, const JS::Value & aRead); 
+  NS_IMETHOD SetRead(JSContext* cx, const JS::Value & aRead); \
+  NS_IMETHOD GetThreadId(JSContext* cx, JS::Value *aThreadId); \
+  NS_IMETHOD SetThreadId(JSContext* cx, const JS::Value & aThreadId); 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object. */
 #define NS_FORWARD_NSIDOMMOZSMSFILTER(_to) \
@@ -77,7 +83,9 @@ class NS_NO_VTABLE nsIDOMMozSmsFilter : public nsISupports {
   NS_IMETHOD GetDelivery(nsAString & aDelivery) { return _to GetDelivery(aDelivery); } \
   NS_IMETHOD SetDelivery(const nsAString & aDelivery) { return _to SetDelivery(aDelivery); } \
   NS_IMETHOD GetRead(JSContext* cx, JS::Value *aRead) { return _to GetRead(cx, aRead); } \
-  NS_IMETHOD SetRead(JSContext* cx, const JS::Value & aRead) { return _to SetRead(cx, aRead); } 
+  NS_IMETHOD SetRead(JSContext* cx, const JS::Value & aRead) { return _to SetRead(cx, aRead); } \
+  NS_IMETHOD GetThreadId(JSContext* cx, JS::Value *aThreadId) { return _to GetThreadId(cx, aThreadId); } \
+  NS_IMETHOD SetThreadId(JSContext* cx, const JS::Value & aThreadId) { return _to SetThreadId(cx, aThreadId); } 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object in a safe way. */
 #define NS_FORWARD_SAFE_NSIDOMMOZSMSFILTER(_to) \
@@ -90,7 +98,9 @@ class NS_NO_VTABLE nsIDOMMozSmsFilter : public nsISupports {
   NS_IMETHOD GetDelivery(nsAString & aDelivery) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetDelivery(aDelivery); } \
   NS_IMETHOD SetDelivery(const nsAString & aDelivery) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetDelivery(aDelivery); } \
   NS_IMETHOD GetRead(JSContext* cx, JS::Value *aRead) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetRead(cx, aRead); } \
-  NS_IMETHOD SetRead(JSContext* cx, const JS::Value & aRead) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetRead(cx, aRead); } 
+  NS_IMETHOD SetRead(JSContext* cx, const JS::Value & aRead) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetRead(cx, aRead); } \
+  NS_IMETHOD GetThreadId(JSContext* cx, JS::Value *aThreadId) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetThreadId(cx, aThreadId); } \
+  NS_IMETHOD SetThreadId(JSContext* cx, const JS::Value & aThreadId) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetThreadId(cx, aThreadId); } 
 
 #if 0
 /* Use the code below as a template for the implementation class for this interface. */
@@ -170,6 +180,16 @@ NS_IMETHODIMP nsDOMMozSmsFilter::GetRead(JSContext* cx, JS::Value *aRead)
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 NS_IMETHODIMP nsDOMMozSmsFilter::SetRead(JSContext* cx, const JS::Value & aRead)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* [implicit_jscontext] attribute jsval threadId; */
+NS_IMETHODIMP nsDOMMozSmsFilter::GetThreadId(JSContext* cx, JS::Value *aThreadId)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+NS_IMETHODIMP nsDOMMozSmsFilter::SetThreadId(JSContext* cx, const JS::Value & aThreadId)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

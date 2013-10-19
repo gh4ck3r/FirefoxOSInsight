@@ -20,9 +20,12 @@ interface nsIURI;
 
 /**
  * This interface represents a content node that loads objects.
+ *
+ * Please make sure to update the MozObjectLoadingContent WebIDL
+ * interface to mirror this interface when changing it.
  */
 
-[scriptable, uuid(5804ab94-4fa1-4720-8f3e-655b769ea2df)]
+[scriptable, uuid(24a35de3-40e4-498e-9c1b-2fd0a2d4cae5)]
 interface nsIObjectLoadingContent : nsISupports
 {
   /**
@@ -98,8 +101,6 @@ interface nsIObjectLoadingContent : nsISupports
    */
   [noscript] void hasNewFrame(in nsIObjectFrame aFrame);
 
-  [noscript] void disconnectFrame();
-
   /**
    * If this object is in going to be printed, this method
    * returns the nsIObjectFrame object which should be used when
@@ -149,22 +150,18 @@ interface nsIObjectLoadingContent : nsISupports
   [noscript] void initializeFromChannel(in nsIRequest request);
 
   /**
-   * Requests the plugin instance for scripting, attempting to spawn it if
-   * appropriate.
-   *
-   * The first time content js tries to access a pre-empted plugin
-   * (click-to-play or play preview), an event is dispatched.
-   */
-  [noscript] nsNPAPIPluginInstancePtr
-    scriptRequestPluginInstance(in bool callerIsContentJS);
-
-  /**
    * The URL of the data/src loaded in the object. This may be null (i.e.
    * an <embed> with no src).
    */
   readonly attribute nsIURI srcURI;
 
   readonly attribute unsigned long pluginFallbackType;
+
+  /**
+   * If this object currently owns a running plugin, regardless of whether or
+   * not one is pending spawn/despawn.
+   */
+  readonly attribute bool hasRunningPlugin;
 
   /**
    * This method will disable the play-preview plugin state.

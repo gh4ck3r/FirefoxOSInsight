@@ -37,21 +37,12 @@
 #ifndef mozilla_dom_SVGMatrix_h
 #define mozilla_dom_SVGMatrix_h
 
-#include "DOMSVGTransform.h"
+#include "mozilla/dom/SVGTransform.h"
 #include "gfxMatrix.h"
 #include "nsAutoPtr.h"
 #include "nsCycleCollectionParticipant.h"
 #include "nsWrapperCache.h"
 #include "mozilla/Attributes.h"
-
-// We make DOMSVGMatrix a pseudo-interface to allow us to QI to it in order
-// to check that the objects that scripts pass in are our *native* matrix
-// objects.
-//
-// {633419E5-7E88-4C3E-8A9A-856F635E90A3}
-#define MOZILLA_DOMSVGMATRIX_IID \
-  { 0x633419E5, 0x7E88, 0x4C3E, \
-    { 0x8A, 0x9A, 0x85, 0x6F, 0x63, 0x5E, 0x90, 0xA3 } }
 
 namespace mozilla {
 namespace dom {
@@ -59,23 +50,21 @@ namespace dom {
 /**
  * DOM wrapper for an SVG matrix.
  */
-class SVGMatrix MOZ_FINAL : public nsISupports,
-                            public nsWrapperCache
+class SVGMatrix MOZ_FINAL : public nsWrapperCache
 {
 public:
-  NS_DECLARE_STATIC_IID_ACCESSOR(MOZILLA_DOMSVGMATRIX_IID)
-  NS_DECL_CYCLE_COLLECTING_ISUPPORTS
-  NS_DECL_CYCLE_COLLECTION_SCRIPT_HOLDER_CLASS(SVGMatrix)
+  NS_INLINE_DECL_CYCLE_COLLECTING_NATIVE_REFCOUNTING(SVGMatrix)
+  NS_DECL_CYCLE_COLLECTION_SCRIPT_HOLDER_NATIVE_CLASS(SVGMatrix)
 
   /**
-   * Ctor for SVGMatrix objects that belong to a DOMSVGTransform.
+   * Ctor for SVGMatrix objects that belong to a SVGTransform.
    */
-  SVGMatrix(DOMSVGTransform& aTransform) : mTransform(&aTransform) {
+  SVGMatrix(SVGTransform& aTransform) : mTransform(&aTransform) {
     SetIsDOMBinding();
   }
 
   /**
-   * Ctors for SVGMatrix objects created independently of a DOMSVGTransform.
+   * Ctors for SVGMatrix objects created independently of a SVGTransform.
    */
   // Default ctor for gfxMatrix will produce identity mx
   SVGMatrix() {
@@ -91,8 +80,9 @@ public:
   }
 
   // WebIDL
-  DOMSVGTransform* GetParentObject() const;
-  virtual JSObject* WrapObject(JSContext* aCx, JSObject* aScope, bool* aTriedToWrap);
+  SVGTransform* GetParentObject() const;
+  virtual JSObject* WrapObject(JSContext* aCx,
+                               JS::Handle<JSObject*> aScope) MOZ_OVERRIDE;
 
   float A() const { return static_cast<float>(Matrix().xx); }
   void SetA(float aA, ErrorResult& rv);
@@ -134,14 +124,12 @@ private:
     return mTransform ? mTransform->IsAnimVal() : false;
   }
 
-  nsRefPtr<DOMSVGTransform> mTransform;
+  nsRefPtr<SVGTransform> mTransform;
 
   // Typically we operate on the matrix data accessed via mTransform but for
   // matrices that exist independently of an SVGTransform we use mMatrix below.
   gfxMatrix mMatrix;
 };
-
-NS_DEFINE_STATIC_IID_ACCESSOR(SVGMatrix, MOZILLA_DOMSVGMATRIX_IID)
 
 } // namespace dom
 } // namespace mozilla

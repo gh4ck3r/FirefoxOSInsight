@@ -15,10 +15,17 @@ MOZ_GENERATED_EVENT(DeviceOrientationEvent)
 MOZ_GENERATED_EVENT(DeviceLightEvent)
 MOZ_GENERATED_EVENT(MozApplicationEvent)
 MOZ_GENERATED_EVENT(SmartCardEvent)
+MOZ_GENERATED_EVENT(StyleSheetAddedEvent)
+MOZ_GENERATED_EVENT(StyleSheetRemovedEvent)
+MOZ_GENERATED_EVENT(ElementReplaceEvent)
 MOZ_GENERATED_EVENT(MozSmsEvent)
+MOZ_GENERATED_EVENT(MozMmsEvent)
+MOZ_GENERATED_EVENT(SpeechSynthesisEvent)
 MOZ_GENERATED_EVENT(DeviceStorageChangeEvent)
 MOZ_GENERATED_EVENT(PopupBlockedEvent)
 MOZ_GENERATED_EVENT(BlobEvent)
+MOZ_GENERATED_EVENT(SpeechRecognitionEvent)
+MOZ_GENERATED_EVENT(SpeechRecognitionError)
 #undef MOZ_GENERATED_EVENT
 
 #elif defined MOZ_GENERATED_EVENTS_INCLUDES
@@ -38,10 +45,17 @@ MOZ_GENERATED_EVENT(BlobEvent)
 #include "nsIDOMDeviceLightEvent.h"
 #include "nsIDOMMozApplicationEvent.h"
 #include "nsIDOMSmartCardEvent.h"
+#include "nsIDOMStyleSheetAddedEvent.h"
+#include "nsIDOMStyleSheetRemovedEvent.h"
+#include "nsIDOMElementReplaceEvent.h"
 #include "nsIDOMMozSmsEvent.h"
+#include "nsIDOMMozMmsEvent.h"
+#include "nsIDOMSpeechSynthesisEvent.h"
 #include "nsIDOMDeviceStorageChangeEvent.h"
 #include "nsIDOMPopupBlockedEvent.h"
 #include "nsIDOMBlobEvent.h"
+#include "nsIDOMSpeechRecognitionEvent.h"
+#include "nsIDOMSpeechRecognitionError.h"
 #else
 #ifndef _gen_mozilla_idl_generated_events_h_
 #define _gen_mozilla_idl_generated_events_h_
@@ -51,47 +65,66 @@ MOZ_GENERATED_EVENT(BlobEvent)
 class nsEvent;
 class nsIDOMEvent;
 class nsPresContext;
+namespace mozilla {
+namespace dom {
+class EventTarget;
+}
+}
 
 nsresult
-NS_NewDOMProgressEvent(nsIDOMEvent** aInstance, nsPresContext* aPresContext, nsEvent* aEvent);
+NS_NewDOMProgressEvent(nsIDOMEvent** aInstance, mozilla::dom::EventTarget* aOwner, nsPresContext* aPresContext, nsEvent* aEvent);
 nsresult
-NS_NewDOMStorageEvent(nsIDOMEvent** aInstance, nsPresContext* aPresContext, nsEvent* aEvent);
+NS_NewDOMStorageEvent(nsIDOMEvent** aInstance, mozilla::dom::EventTarget* aOwner, nsPresContext* aPresContext, nsEvent* aEvent);
 nsresult
-NS_NewDOMDeviceProximityEvent(nsIDOMEvent** aInstance, nsPresContext* aPresContext, nsEvent* aEvent);
+NS_NewDOMDeviceProximityEvent(nsIDOMEvent** aInstance, mozilla::dom::EventTarget* aOwner, nsPresContext* aPresContext, nsEvent* aEvent);
 nsresult
-NS_NewDOMMozSettingsEvent(nsIDOMEvent** aInstance, nsPresContext* aPresContext, nsEvent* aEvent);
+NS_NewDOMMozSettingsEvent(nsIDOMEvent** aInstance, mozilla::dom::EventTarget* aOwner, nsPresContext* aPresContext, nsEvent* aEvent);
 nsresult
-NS_NewDOMUserProximityEvent(nsIDOMEvent** aInstance, nsPresContext* aPresContext, nsEvent* aEvent);
+NS_NewDOMUserProximityEvent(nsIDOMEvent** aInstance, mozilla::dom::EventTarget* aOwner, nsPresContext* aPresContext, nsEvent* aEvent);
 nsresult
-NS_NewDOMCustomEvent(nsIDOMEvent** aInstance, nsPresContext* aPresContext, nsEvent* aEvent);
+NS_NewDOMCustomEvent(nsIDOMEvent** aInstance, mozilla::dom::EventTarget* aOwner, nsPresContext* aPresContext, nsEvent* aEvent);
 nsresult
-NS_NewDOMPageTransitionEvent(nsIDOMEvent** aInstance, nsPresContext* aPresContext, nsEvent* aEvent);
+NS_NewDOMPageTransitionEvent(nsIDOMEvent** aInstance, mozilla::dom::EventTarget* aOwner, nsPresContext* aPresContext, nsEvent* aEvent);
 nsresult
-NS_NewDOMDOMTransactionEvent(nsIDOMEvent** aInstance, nsPresContext* aPresContext, nsEvent* aEvent);
+NS_NewDOMDOMTransactionEvent(nsIDOMEvent** aInstance, mozilla::dom::EventTarget* aOwner, nsPresContext* aPresContext, nsEvent* aEvent);
 nsresult
-NS_NewDOMPopStateEvent(nsIDOMEvent** aInstance, nsPresContext* aPresContext, nsEvent* aEvent);
+NS_NewDOMPopStateEvent(nsIDOMEvent** aInstance, mozilla::dom::EventTarget* aOwner, nsPresContext* aPresContext, nsEvent* aEvent);
 nsresult
-NS_NewDOMHashChangeEvent(nsIDOMEvent** aInstance, nsPresContext* aPresContext, nsEvent* aEvent);
+NS_NewDOMHashChangeEvent(nsIDOMEvent** aInstance, mozilla::dom::EventTarget* aOwner, nsPresContext* aPresContext, nsEvent* aEvent);
 nsresult
-NS_NewDOMCloseEvent(nsIDOMEvent** aInstance, nsPresContext* aPresContext, nsEvent* aEvent);
+NS_NewDOMCloseEvent(nsIDOMEvent** aInstance, mozilla::dom::EventTarget* aOwner, nsPresContext* aPresContext, nsEvent* aEvent);
 nsresult
-NS_NewDOMMozContactChangeEvent(nsIDOMEvent** aInstance, nsPresContext* aPresContext, nsEvent* aEvent);
+NS_NewDOMMozContactChangeEvent(nsIDOMEvent** aInstance, mozilla::dom::EventTarget* aOwner, nsPresContext* aPresContext, nsEvent* aEvent);
 nsresult
-NS_NewDOMDeviceOrientationEvent(nsIDOMEvent** aInstance, nsPresContext* aPresContext, nsEvent* aEvent);
+NS_NewDOMDeviceOrientationEvent(nsIDOMEvent** aInstance, mozilla::dom::EventTarget* aOwner, nsPresContext* aPresContext, nsEvent* aEvent);
 nsresult
-NS_NewDOMDeviceLightEvent(nsIDOMEvent** aInstance, nsPresContext* aPresContext, nsEvent* aEvent);
+NS_NewDOMDeviceLightEvent(nsIDOMEvent** aInstance, mozilla::dom::EventTarget* aOwner, nsPresContext* aPresContext, nsEvent* aEvent);
 nsresult
-NS_NewDOMMozApplicationEvent(nsIDOMEvent** aInstance, nsPresContext* aPresContext, nsEvent* aEvent);
+NS_NewDOMMozApplicationEvent(nsIDOMEvent** aInstance, mozilla::dom::EventTarget* aOwner, nsPresContext* aPresContext, nsEvent* aEvent);
 nsresult
-NS_NewDOMSmartCardEvent(nsIDOMEvent** aInstance, nsPresContext* aPresContext, nsEvent* aEvent);
+NS_NewDOMSmartCardEvent(nsIDOMEvent** aInstance, mozilla::dom::EventTarget* aOwner, nsPresContext* aPresContext, nsEvent* aEvent);
 nsresult
-NS_NewDOMMozSmsEvent(nsIDOMEvent** aInstance, nsPresContext* aPresContext, nsEvent* aEvent);
+NS_NewDOMStyleSheetAddedEvent(nsIDOMEvent** aInstance, mozilla::dom::EventTarget* aOwner, nsPresContext* aPresContext, nsEvent* aEvent);
 nsresult
-NS_NewDOMDeviceStorageChangeEvent(nsIDOMEvent** aInstance, nsPresContext* aPresContext, nsEvent* aEvent);
+NS_NewDOMStyleSheetRemovedEvent(nsIDOMEvent** aInstance, mozilla::dom::EventTarget* aOwner, nsPresContext* aPresContext, nsEvent* aEvent);
 nsresult
-NS_NewDOMPopupBlockedEvent(nsIDOMEvent** aInstance, nsPresContext* aPresContext, nsEvent* aEvent);
+NS_NewDOMElementReplaceEvent(nsIDOMEvent** aInstance, mozilla::dom::EventTarget* aOwner, nsPresContext* aPresContext, nsEvent* aEvent);
 nsresult
-NS_NewDOMBlobEvent(nsIDOMEvent** aInstance, nsPresContext* aPresContext, nsEvent* aEvent);
+NS_NewDOMMozSmsEvent(nsIDOMEvent** aInstance, mozilla::dom::EventTarget* aOwner, nsPresContext* aPresContext, nsEvent* aEvent);
+nsresult
+NS_NewDOMMozMmsEvent(nsIDOMEvent** aInstance, mozilla::dom::EventTarget* aOwner, nsPresContext* aPresContext, nsEvent* aEvent);
+nsresult
+NS_NewDOMSpeechSynthesisEvent(nsIDOMEvent** aInstance, mozilla::dom::EventTarget* aOwner, nsPresContext* aPresContext, nsEvent* aEvent);
+nsresult
+NS_NewDOMDeviceStorageChangeEvent(nsIDOMEvent** aInstance, mozilla::dom::EventTarget* aOwner, nsPresContext* aPresContext, nsEvent* aEvent);
+nsresult
+NS_NewDOMPopupBlockedEvent(nsIDOMEvent** aInstance, mozilla::dom::EventTarget* aOwner, nsPresContext* aPresContext, nsEvent* aEvent);
+nsresult
+NS_NewDOMBlobEvent(nsIDOMEvent** aInstance, mozilla::dom::EventTarget* aOwner, nsPresContext* aPresContext, nsEvent* aEvent);
+nsresult
+NS_NewDOMSpeechRecognitionEvent(nsIDOMEvent** aInstance, mozilla::dom::EventTarget* aOwner, nsPresContext* aPresContext, nsEvent* aEvent);
+nsresult
+NS_NewDOMSpeechRecognitionError(nsIDOMEvent** aInstance, mozilla::dom::EventTarget* aOwner, nsPresContext* aPresContext, nsEvent* aEvent);
 
 #endif
 #endif

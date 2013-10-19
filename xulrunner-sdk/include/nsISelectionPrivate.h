@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/content/base/public/nsISelectionPrivate.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/content/base/public/nsISelectionPrivate.idl
  */
 
 #ifndef __gen_nsISelectionPrivate_h__
@@ -32,7 +32,6 @@ class nsIContent; /* forward declaration */
 
 class nsINode; /* forward declaration */
 
-class nsFrameSelection;
 struct nsTextRangeStyle;
 struct nsPoint;
 struct ScrollAxis;
@@ -40,11 +39,11 @@ struct ScrollAxis;
 #include "nsIFrame.h"
 
 /* starting interface:    nsISelectionPrivate */
-#define NS_ISELECTIONPRIVATE_IID_STR "a6d2cedd-afbc-4d25-bffb-e725b9881e30"
+#define NS_ISELECTIONPRIVATE_IID_STR "3ede44eb-2df8-41de-ab79-6f3dbd10090b"
 
 #define NS_ISELECTIONPRIVATE_IID \
-  {0xa6d2cedd, 0xafbc, 0x4d25, \
-    { 0xbf, 0xfb, 0xe7, 0x25, 0xb9, 0x88, 0x1e, 0x30 }}
+  {0x3ede44eb, 0x2df8, 0x41de, \
+    { 0xab, 0x79, 0x6f, 0x3d, 0xbd, 0x10, 0x09, 0x0b }}
 
 class NS_NO_VTABLE nsISelectionPrivate : public nsISelection {
  public: 
@@ -94,9 +93,6 @@ class NS_NO_VTABLE nsISelectionPrivate : public nsISelection {
   /* [noscript] void getCachedFrameOffset (in nsIFrame aFrame, in int32_t inOffset, in nsPointRef aPoint); */
   NS_IMETHOD GetCachedFrameOffset(nsIFrame *aFrame, int32_t inOffset, nsPoint & aPoint) = 0;
 
-  /* [noscript] nsFrameSelection getFrameSelection (); */
-  NS_IMETHOD GetFrameSelection(nsFrameSelection **_retval) = 0;
-
   /* [noscript] void setAncestorLimiter (in nsIContent aContent); */
   NS_IMETHOD SetAncestorLimiter(nsIContent *aContent) = 0;
 
@@ -141,7 +137,6 @@ class NS_NO_VTABLE nsISelectionPrivate : public nsISelection {
   NS_IMETHOD GetCanCacheFrameOffset(bool *aCanCacheFrameOffset); \
   NS_IMETHOD SetCanCacheFrameOffset(bool aCanCacheFrameOffset); \
   NS_IMETHOD GetCachedFrameOffset(nsIFrame *aFrame, int32_t inOffset, nsPoint & aPoint); \
-  NS_IMETHOD GetFrameSelection(nsFrameSelection **_retval); \
   NS_IMETHOD SetAncestorLimiter(nsIContent *aContent); \
   NS_IMETHOD SetTextRangeStyle(nsIDOMRange *range, const nsTextRangeStyle & textRangeStyle); \
   NS_IMETHOD_(nsDirection) GetSelectionDirection(void); \
@@ -165,7 +160,6 @@ class NS_NO_VTABLE nsISelectionPrivate : public nsISelection {
   NS_IMETHOD GetCanCacheFrameOffset(bool *aCanCacheFrameOffset) { return _to GetCanCacheFrameOffset(aCanCacheFrameOffset); } \
   NS_IMETHOD SetCanCacheFrameOffset(bool aCanCacheFrameOffset) { return _to SetCanCacheFrameOffset(aCanCacheFrameOffset); } \
   NS_IMETHOD GetCachedFrameOffset(nsIFrame *aFrame, int32_t inOffset, nsPoint & aPoint) { return _to GetCachedFrameOffset(aFrame, inOffset, aPoint); } \
-  NS_IMETHOD GetFrameSelection(nsFrameSelection **_retval) { return _to GetFrameSelection(_retval); } \
   NS_IMETHOD SetAncestorLimiter(nsIContent *aContent) { return _to SetAncestorLimiter(aContent); } \
   NS_IMETHOD SetTextRangeStyle(nsIDOMRange *range, const nsTextRangeStyle & textRangeStyle) { return _to SetTextRangeStyle(range, textRangeStyle); } \
   NS_IMETHOD_(nsDirection) GetSelectionDirection(void) { return _to GetSelectionDirection(); } \
@@ -189,7 +183,6 @@ class NS_NO_VTABLE nsISelectionPrivate : public nsISelection {
   NS_IMETHOD GetCanCacheFrameOffset(bool *aCanCacheFrameOffset) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetCanCacheFrameOffset(aCanCacheFrameOffset); } \
   NS_IMETHOD SetCanCacheFrameOffset(bool aCanCacheFrameOffset) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetCanCacheFrameOffset(aCanCacheFrameOffset); } \
   NS_IMETHOD GetCachedFrameOffset(nsIFrame *aFrame, int32_t inOffset, nsPoint & aPoint) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetCachedFrameOffset(aFrame, inOffset, aPoint); } \
-  NS_IMETHOD GetFrameSelection(nsFrameSelection **_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetFrameSelection(_retval); } \
   NS_IMETHOD SetAncestorLimiter(nsIContent *aContent) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetAncestorLimiter(aContent); } \
   NS_IMETHOD SetTextRangeStyle(nsIDOMRange *range, const nsTextRangeStyle & textRangeStyle) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetTextRangeStyle(range, textRangeStyle); } \
   NS_IMETHOD_(nsDirection) GetSelectionDirection(void); \
@@ -290,12 +283,6 @@ NS_IMETHODIMP nsSelectionPrivate::SetCanCacheFrameOffset(bool aCanCacheFrameOffs
 
 /* [noscript] void getCachedFrameOffset (in nsIFrame aFrame, in int32_t inOffset, in nsPointRef aPoint); */
 NS_IMETHODIMP nsSelectionPrivate::GetCachedFrameOffset(nsIFrame *aFrame, int32_t inOffset, nsPoint & aPoint)
-{
-    return NS_ERROR_NOT_IMPLEMENTED;
-}
-
-/* [noscript] nsFrameSelection getFrameSelection (); */
-NS_IMETHODIMP nsSelectionPrivate::GetFrameSelection(nsFrameSelection **_retval)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

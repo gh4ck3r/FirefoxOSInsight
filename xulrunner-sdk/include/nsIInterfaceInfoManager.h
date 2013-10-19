@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/xpcom/reflect/xptinfo/public/nsIInterfaceInfoManager.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/xpcom/reflect/xptinfo/public/nsIInterfaceInfoManager.idl
  */
 
 #ifndef __gen_nsIInterfaceInfoManager_h__
@@ -171,117 +171,6 @@ NS_IMETHODIMP nsInterfaceInfoManager::EnumerateInterfacesWhoseNamesStartWith(con
 /* End of implementation class template. */
 #endif
 
-
-/* starting interface:    nsIInterfaceInfoSuperManager */
-#define NS_IINTERFACEINFOSUPERMANAGER_IID_STR "0ee22850-bc6a-11d5-9134-0010a4e73d9a"
-
-#define NS_IINTERFACEINFOSUPERMANAGER_IID \
-  {0x0ee22850, 0xbc6a, 0x11d5, \
-    { 0x91, 0x34, 0x00, 0x10, 0xa4, 0xe7, 0x3d, 0x9a }}
-
-class NS_NO_VTABLE nsIInterfaceInfoSuperManager : public nsIInterfaceInfoManager {
- public: 
-
-  NS_DECLARE_STATIC_IID_ACCESSOR(NS_IINTERFACEINFOSUPERMANAGER_IID)
-
-  /* void addAdditionalManager (in nsIInterfaceInfoManager manager); */
-  NS_IMETHOD AddAdditionalManager(nsIInterfaceInfoManager *manager) = 0;
-
-  /* void removeAdditionalManager (in nsIInterfaceInfoManager manager); */
-  NS_IMETHOD RemoveAdditionalManager(nsIInterfaceInfoManager *manager) = 0;
-
-  /* boolean hasAdditionalManagers (); */
-  NS_IMETHOD HasAdditionalManagers(bool *_retval) = 0;
-
-  /* nsISimpleEnumerator enumerateAdditionalManagers (); */
-  NS_IMETHOD EnumerateAdditionalManagers(nsISimpleEnumerator * *_retval) = 0;
-
-};
-
-  NS_DEFINE_STATIC_IID_ACCESSOR(nsIInterfaceInfoSuperManager, NS_IINTERFACEINFOSUPERMANAGER_IID)
-
-/* Use this macro when declaring classes that implement this interface. */
-#define NS_DECL_NSIINTERFACEINFOSUPERMANAGER \
-  NS_IMETHOD AddAdditionalManager(nsIInterfaceInfoManager *manager); \
-  NS_IMETHOD RemoveAdditionalManager(nsIInterfaceInfoManager *manager); \
-  NS_IMETHOD HasAdditionalManagers(bool *_retval); \
-  NS_IMETHOD EnumerateAdditionalManagers(nsISimpleEnumerator * *_retval); 
-
-/* Use this macro to declare functions that forward the behavior of this interface to another object. */
-#define NS_FORWARD_NSIINTERFACEINFOSUPERMANAGER(_to) \
-  NS_IMETHOD AddAdditionalManager(nsIInterfaceInfoManager *manager) { return _to AddAdditionalManager(manager); } \
-  NS_IMETHOD RemoveAdditionalManager(nsIInterfaceInfoManager *manager) { return _to RemoveAdditionalManager(manager); } \
-  NS_IMETHOD HasAdditionalManagers(bool *_retval) { return _to HasAdditionalManagers(_retval); } \
-  NS_IMETHOD EnumerateAdditionalManagers(nsISimpleEnumerator * *_retval) { return _to EnumerateAdditionalManagers(_retval); } 
-
-/* Use this macro to declare functions that forward the behavior of this interface to another object in a safe way. */
-#define NS_FORWARD_SAFE_NSIINTERFACEINFOSUPERMANAGER(_to) \
-  NS_IMETHOD AddAdditionalManager(nsIInterfaceInfoManager *manager) { return !_to ? NS_ERROR_NULL_POINTER : _to->AddAdditionalManager(manager); } \
-  NS_IMETHOD RemoveAdditionalManager(nsIInterfaceInfoManager *manager) { return !_to ? NS_ERROR_NULL_POINTER : _to->RemoveAdditionalManager(manager); } \
-  NS_IMETHOD HasAdditionalManagers(bool *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->HasAdditionalManagers(_retval); } \
-  NS_IMETHOD EnumerateAdditionalManagers(nsISimpleEnumerator * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->EnumerateAdditionalManagers(_retval); } 
-
-#if 0
-/* Use the code below as a template for the implementation class for this interface. */
-
-/* Header file */
-class nsInterfaceInfoSuperManager : public nsIInterfaceInfoSuperManager
-{
-public:
-  NS_DECL_ISUPPORTS
-  NS_DECL_NSIINTERFACEINFOSUPERMANAGER
-
-  nsInterfaceInfoSuperManager();
-
-private:
-  ~nsInterfaceInfoSuperManager();
-
-protected:
-  /* additional members */
-};
-
-/* Implementation file */
-NS_IMPL_ISUPPORTS1(nsInterfaceInfoSuperManager, nsIInterfaceInfoSuperManager)
-
-nsInterfaceInfoSuperManager::nsInterfaceInfoSuperManager()
-{
-  /* member initializers and constructor code */
-}
-
-nsInterfaceInfoSuperManager::~nsInterfaceInfoSuperManager()
-{
-  /* destructor code */
-}
-
-/* void addAdditionalManager (in nsIInterfaceInfoManager manager); */
-NS_IMETHODIMP nsInterfaceInfoSuperManager::AddAdditionalManager(nsIInterfaceInfoManager *manager)
-{
-    return NS_ERROR_NOT_IMPLEMENTED;
-}
-
-/* void removeAdditionalManager (in nsIInterfaceInfoManager manager); */
-NS_IMETHODIMP nsInterfaceInfoSuperManager::RemoveAdditionalManager(nsIInterfaceInfoManager *manager)
-{
-    return NS_ERROR_NOT_IMPLEMENTED;
-}
-
-/* boolean hasAdditionalManagers (); */
-NS_IMETHODIMP nsInterfaceInfoSuperManager::HasAdditionalManagers(bool *_retval)
-{
-    return NS_ERROR_NOT_IMPLEMENTED;
-}
-
-/* nsISimpleEnumerator enumerateAdditionalManagers (); */
-NS_IMETHODIMP nsInterfaceInfoSuperManager::EnumerateAdditionalManagers(nsISimpleEnumerator * *_retval)
-{
-    return NS_ERROR_NOT_IMPLEMENTED;
-}
-
-/* End of implementation class template. */
-#endif
-
-#define NS_INTERFACEINFOMANAGER_SERVICE_CLASSNAME  \
-   "Interface Information Manager Service"
 #define NS_INTERFACEINFOMANAGER_SERVICE_CID            \
  { /* 13bef784-f8e0-4f96-85c1-09f9ef4f9a19 */          \
   0x13bef784, 0xf8e0, 0x4f96,                          \

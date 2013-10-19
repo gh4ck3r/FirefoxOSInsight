@@ -1,10 +1,13 @@
 #ifndef mozilla_dom_UnionConversions_h__
 #define mozilla_dom_UnionConversions_h__
 
+#include "EventBinding.h"
+#include "HTMLCanvasElementBinding.h"
 #include "HTMLElementBinding.h"
 #include "HTMLImageElementBinding.h"
 #include "HTMLOptGroupElementBinding.h"
 #include "HTMLOptionElementBinding.h"
+#include "HTMLVideoElementBinding.h"
 #include "XPCWrapper.h"
 #include "mozilla/dom/UnionTypes.h"
 #include "nsDOMQS.h"
@@ -15,38 +18,49 @@ namespace dom {
 
 class EventOrStringArgument {
 public:
+  // Argument needs to be a const ref because that's all Maybe<> allows
   EventOrStringArgument(const EventOrString& aUnion) : mUnion(const_cast<EventOrString&>(aUnion))
   {
   }
 
-  bool TrySetToEvent(JSContext* cx, JSObject* scopeObj, const JS::Value& value, JS::Value* pvalue, bool& tryNext)
+  bool TrySetToEvent(JSContext* cx, JS::Handle<JS::Value> value, JS::Value* pvalue, bool& tryNext)
   {
     tryNext = false;
-    jsval tmpVal = value;
-    nsIDOMEvent* tmp;
-    if (NS_FAILED(xpc_qsUnwrapArg<nsIDOMEvent>(cx, value, &tmp, static_cast<nsIDOMEvent**>(getter_AddRefs(mEventHolder)), &tmpVal))) {
-      if (mUnion.mType != mUnion.eUninitialized) {
-        mUnion.DestroyEvent();
-      }tryNext = true;
-      return true;
+    {
+      nsresult rv = UnwrapObject<prototypes::id::Event, nsDOMEvent>(cx, &value.toObject(), SetAsEvent());
+      if (NS_FAILED(rv)) {
+        nsDOMEvent *objPtr;
+        xpc_qsSelfRef objRef;
+        JS::Rooted<JS::Value> val(cx, JS::ObjectValue(*&value.toObject()));
+        nsresult rv = xpc_qsUnwrapArg<nsDOMEvent>(cx, val, &objPtr, &objRef.ptr, val.address());
+        if (NS_FAILED(rv)) {
+            if (mUnion.mType != mUnion.eUninitialized) {
+              mUnion.DestroyEvent();
+            }tryNext = true;
+            return true;
+        }
+        // We should be castable!
+        MOZ_ASSERT(!objRef.ptr);
+        // We should have an object, too!
+        MOZ_ASSERT(objPtr);
+        SetAsEvent() = objPtr;
+      }
     }
-    MOZ_ASSERT(tmp);
-    SetAsEvent() = tmp;
     return true;
   }
 
-  bool TrySetToString(JSContext* cx, JSObject* scopeObj, const JS::Value& value, JS::Value* pvalue, bool& tryNext)
+  bool TrySetToString(JSContext* cx, JS::Handle<JS::Value> value, JS::Value* pvalue, bool& tryNext)
   {
     tryNext = false;
     if (!ConvertJSValueToString(cx, value, pvalue, eStringify, eStringify, mStringHolder)) {
       return false;
     }
-    const_cast<NonNull<nsAString>&>(SetAsString()) = &mStringHolder;
+    SetAsString() = &mStringHolder;
     return true;
   }
 
 private:
-  nsIDOMEvent*& SetAsEvent()
+  NonNull<nsDOMEvent>& SetAsEvent()
   {
     mUnion.mType = mUnion.eEvent;
     return mUnion.mValue.mEvent.SetValue();
@@ -57,7 +71,6 @@ private:
     return mUnion.mValue.mString.SetValue();
   }
 
-  nsRefPtr<nsIDOMEvent> mEventHolder;
   FakeDependentString mStringHolder;
 
   EventOrString& mUnion;
@@ -66,11 +79,12 @@ private:
 
 class HTMLElementOrLongArgument {
 public:
+  // Argument needs to be a const ref because that's all Maybe<> allows
   HTMLElementOrLongArgument(const HTMLElementOrLong& aUnion) : mUnion(const_cast<HTMLElementOrLong&>(aUnion))
   {
   }
 
-  bool TrySetToHTMLElement(JSContext* cx, JSObject* scopeObj, const JS::Value& value, JS::Value* pvalue, bool& tryNext)
+  bool TrySetToHTMLElement(JSContext* cx, JS::Handle<JS::Value> value, JS::Value* pvalue, bool& tryNext)
   {
     tryNext = false;
     {
@@ -78,8 +92,8 @@ public:
       if (NS_FAILED(rv)) {
         nsGenericHTMLElement *objPtr;
         xpc_qsSelfRef objRef;
-        JS::Value val = JS::ObjectValue(*&value.toObject());
-        nsresult rv = xpc_qsUnwrapArg<nsGenericHTMLElement>(cx, val, &objPtr, &objRef.ptr, &val);
+        JS::Rooted<JS::Value> val(cx, JS::ObjectValue(*&value.toObject()));
+        nsresult rv = xpc_qsUnwrapArg<nsGenericHTMLElement>(cx, val, &objPtr, &objRef.ptr, val.address());
         if (NS_FAILED(rv)) {
             if (mUnion.mType != mUnion.eUninitialized) {
               mUnion.DestroyHTMLElement();
@@ -96,7 +110,7 @@ public:
     return true;
   }
 
-  bool TrySetToLong(JSContext* cx, JSObject* scopeObj, const JS::Value& value, JS::Value* pvalue, bool& tryNext)
+  bool TrySetToLong(JSContext* cx, JS::Handle<JS::Value> value, JS::Value* pvalue, bool& tryNext)
   {
     tryNext = false;
     if (!ValueToPrimitive<int32_t, eDefault>(cx, value, &SetAsLong())) {
@@ -123,11 +137,12 @@ private:
 
 class HTMLImageElementOrHTMLCanvasElementOrHTMLVideoElementArgument {
 public:
+  // Argument needs to be a const ref because that's all Maybe<> allows
   HTMLImageElementOrHTMLCanvasElementOrHTMLVideoElementArgument(const HTMLImageElementOrHTMLCanvasElementOrHTMLVideoElement& aUnion) : mUnion(const_cast<HTMLImageElementOrHTMLCanvasElementOrHTMLVideoElement&>(aUnion))
   {
   }
 
-  bool TrySetToHTMLImageElement(JSContext* cx, JSObject* scopeObj, const JS::Value& value, JS::Value* pvalue, bool& tryNext)
+  bool TrySetToHTMLImageElement(JSContext* cx, JS::Handle<JS::Value> value, JS::Value* pvalue, bool& tryNext)
   {
     tryNext = false;
     {
@@ -142,35 +157,33 @@ public:
     return true;
   }
 
-  bool TrySetToHTMLCanvasElement(JSContext* cx, JSObject* scopeObj, const JS::Value& value, JS::Value* pvalue, bool& tryNext)
+  bool TrySetToHTMLCanvasElement(JSContext* cx, JS::Handle<JS::Value> value, JS::Value* pvalue, bool& tryNext)
   {
     tryNext = false;
-    jsval tmpVal = value;
-    mozilla::dom::HTMLCanvasElement* tmp;
-    if (NS_FAILED(xpc_qsUnwrapArg<mozilla::dom::HTMLCanvasElement>(cx, value, &tmp, static_cast<mozilla::dom::HTMLCanvasElement**>(getter_AddRefs(mHTMLCanvasElementHolder)), &tmpVal))) {
-      if (mUnion.mType != mUnion.eUninitialized) {
-        mUnion.DestroyHTMLCanvasElement();
-      }tryNext = true;
-      return true;
+    {
+      nsresult rv = UnwrapObject<prototypes::id::HTMLCanvasElement, mozilla::dom::HTMLCanvasElement>(cx, &value.toObject(), SetAsHTMLCanvasElement());
+      if (NS_FAILED(rv)) {
+        if (mUnion.mType != mUnion.eUninitialized) {
+          mUnion.DestroyHTMLCanvasElement();
+        }tryNext = true;
+        return true;
+      }
     }
-    MOZ_ASSERT(tmp);
-    SetAsHTMLCanvasElement() = tmp;
     return true;
   }
 
-  bool TrySetToHTMLVideoElement(JSContext* cx, JSObject* scopeObj, const JS::Value& value, JS::Value* pvalue, bool& tryNext)
+  bool TrySetToHTMLVideoElement(JSContext* cx, JS::Handle<JS::Value> value, JS::Value* pvalue, bool& tryNext)
   {
     tryNext = false;
-    jsval tmpVal = value;
-    nsHTMLVideoElement* tmp;
-    if (NS_FAILED(xpc_qsUnwrapArg<nsHTMLVideoElement>(cx, value, &tmp, static_cast<nsHTMLVideoElement**>(getter_AddRefs(mHTMLVideoElementHolder)), &tmpVal))) {
-      if (mUnion.mType != mUnion.eUninitialized) {
-        mUnion.DestroyHTMLVideoElement();
-      }tryNext = true;
-      return true;
+    {
+      nsresult rv = UnwrapObject<prototypes::id::HTMLVideoElement, mozilla::dom::HTMLVideoElement>(cx, &value.toObject(), SetAsHTMLVideoElement());
+      if (NS_FAILED(rv)) {
+        if (mUnion.mType != mUnion.eUninitialized) {
+          mUnion.DestroyHTMLVideoElement();
+        }tryNext = true;
+        return true;
+      }
     }
-    MOZ_ASSERT(tmp);
-    SetAsHTMLVideoElement() = tmp;
     return true;
   }
 
@@ -180,19 +193,16 @@ private:
     mUnion.mType = mUnion.eHTMLImageElement;
     return mUnion.mValue.mHTMLImageElement.SetValue();
   }
-  mozilla::dom::HTMLCanvasElement*& SetAsHTMLCanvasElement()
+  NonNull<mozilla::dom::HTMLCanvasElement>& SetAsHTMLCanvasElement()
   {
     mUnion.mType = mUnion.eHTMLCanvasElement;
     return mUnion.mValue.mHTMLCanvasElement.SetValue();
   }
-  nsHTMLVideoElement*& SetAsHTMLVideoElement()
+  NonNull<mozilla::dom::HTMLVideoElement>& SetAsHTMLVideoElement()
   {
     mUnion.mType = mUnion.eHTMLVideoElement;
     return mUnion.mValue.mHTMLVideoElement.SetValue();
   }
-
-  nsRefPtr<mozilla::dom::HTMLCanvasElement> mHTMLCanvasElementHolder;
-  nsRefPtr<nsHTMLVideoElement> mHTMLVideoElementHolder;
 
   HTMLImageElementOrHTMLCanvasElementOrHTMLVideoElement& mUnion;
 };
@@ -200,11 +210,12 @@ private:
 
 class HTMLOptionElementOrHTMLOptGroupElementArgument {
 public:
+  // Argument needs to be a const ref because that's all Maybe<> allows
   HTMLOptionElementOrHTMLOptGroupElementArgument(const HTMLOptionElementOrHTMLOptGroupElement& aUnion) : mUnion(const_cast<HTMLOptionElementOrHTMLOptGroupElement&>(aUnion))
   {
   }
 
-  bool TrySetToHTMLOptionElement(JSContext* cx, JSObject* scopeObj, const JS::Value& value, JS::Value* pvalue, bool& tryNext)
+  bool TrySetToHTMLOptionElement(JSContext* cx, JS::Handle<JS::Value> value, JS::Value* pvalue, bool& tryNext)
   {
     tryNext = false;
     {
@@ -219,7 +230,7 @@ public:
     return true;
   }
 
-  bool TrySetToHTMLOptGroupElement(JSContext* cx, JSObject* scopeObj, const JS::Value& value, JS::Value* pvalue, bool& tryNext)
+  bool TrySetToHTMLOptGroupElement(JSContext* cx, JS::Handle<JS::Value> value, JS::Value* pvalue, bool& tryNext)
   {
     tryNext = false;
     {

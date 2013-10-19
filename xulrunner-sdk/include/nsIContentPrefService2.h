@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/base/nsIContentPrefService2.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/base/nsIContentPrefService2.idl
  */
 
 #ifndef __gen_nsIContentPrefService2_h__
@@ -26,11 +26,11 @@ class nsIContentPref; /* forward declaration */
 
 
 /* starting interface:    nsIContentPrefService2 */
-#define NS_ICONTENTPREFSERVICE2_IID_STR "51e1d34a-5e9d-4b77-b14c-0f8346e264ca"
+#define NS_ICONTENTPREFSERVICE2_IID_STR "133608c7-f812-41ca-bc1c-62a4eb95e52a"
 
 #define NS_ICONTENTPREFSERVICE2_IID \
-  {0x51e1d34a, 0x5e9d, 0x4b77, \
-    { 0xb1, 0x4c, 0x0f, 0x83, 0x46, 0xe2, 0x64, 0xca }}
+  {0x133608c7, 0xf812, 0x41ca, \
+    { 0xbc, 0x1c, 0x62, 0xa4, 0xeb, 0x95, 0xe5, 0x2a }}
 
 class NS_NO_VTABLE nsIContentPrefService2 : public nsISupports {
  public: 
@@ -91,6 +91,9 @@ class NS_NO_VTABLE nsIContentPrefService2 : public nsISupports {
   /* void removeObserverForName (in AString name, in nsIContentPrefObserver observer); */
   NS_IMETHOD RemoveObserverForName(const nsAString & name, nsIContentPrefObserver *observer) = 0;
 
+  /* AString extractDomain (in AString str); */
+  NS_IMETHOD ExtractDomain(const nsAString & str, nsAString & _retval) = 0;
+
 };
 
   NS_DEFINE_STATIC_IID_ACCESSOR(nsIContentPrefService2, NS_ICONTENTPREFSERVICE2_IID)
@@ -114,7 +117,8 @@ class NS_NO_VTABLE nsIContentPrefService2 : public nsISupports {
   NS_IMETHOD RemoveAllDomains(nsILoadContext *context, nsIContentPrefCallback2 *callback); \
   NS_IMETHOD RemoveAllGlobals(nsILoadContext *context, nsIContentPrefCallback2 *callback); \
   NS_IMETHOD AddObserverForName(const nsAString & name, nsIContentPrefObserver *observer); \
-  NS_IMETHOD RemoveObserverForName(const nsAString & name, nsIContentPrefObserver *observer); 
+  NS_IMETHOD RemoveObserverForName(const nsAString & name, nsIContentPrefObserver *observer); \
+  NS_IMETHOD ExtractDomain(const nsAString & str, nsAString & _retval); 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object. */
 #define NS_FORWARD_NSICONTENTPREFSERVICE2(_to) \
@@ -135,7 +139,8 @@ class NS_NO_VTABLE nsIContentPrefService2 : public nsISupports {
   NS_IMETHOD RemoveAllDomains(nsILoadContext *context, nsIContentPrefCallback2 *callback) { return _to RemoveAllDomains(context, callback); } \
   NS_IMETHOD RemoveAllGlobals(nsILoadContext *context, nsIContentPrefCallback2 *callback) { return _to RemoveAllGlobals(context, callback); } \
   NS_IMETHOD AddObserverForName(const nsAString & name, nsIContentPrefObserver *observer) { return _to AddObserverForName(name, observer); } \
-  NS_IMETHOD RemoveObserverForName(const nsAString & name, nsIContentPrefObserver *observer) { return _to RemoveObserverForName(name, observer); } 
+  NS_IMETHOD RemoveObserverForName(const nsAString & name, nsIContentPrefObserver *observer) { return _to RemoveObserverForName(name, observer); } \
+  NS_IMETHOD ExtractDomain(const nsAString & str, nsAString & _retval) { return _to ExtractDomain(str, _retval); } 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object in a safe way. */
 #define NS_FORWARD_SAFE_NSICONTENTPREFSERVICE2(_to) \
@@ -156,7 +161,8 @@ class NS_NO_VTABLE nsIContentPrefService2 : public nsISupports {
   NS_IMETHOD RemoveAllDomains(nsILoadContext *context, nsIContentPrefCallback2 *callback) { return !_to ? NS_ERROR_NULL_POINTER : _to->RemoveAllDomains(context, callback); } \
   NS_IMETHOD RemoveAllGlobals(nsILoadContext *context, nsIContentPrefCallback2 *callback) { return !_to ? NS_ERROR_NULL_POINTER : _to->RemoveAllGlobals(context, callback); } \
   NS_IMETHOD AddObserverForName(const nsAString & name, nsIContentPrefObserver *observer) { return !_to ? NS_ERROR_NULL_POINTER : _to->AddObserverForName(name, observer); } \
-  NS_IMETHOD RemoveObserverForName(const nsAString & name, nsIContentPrefObserver *observer) { return !_to ? NS_ERROR_NULL_POINTER : _to->RemoveObserverForName(name, observer); } 
+  NS_IMETHOD RemoveObserverForName(const nsAString & name, nsIContentPrefObserver *observer) { return !_to ? NS_ERROR_NULL_POINTER : _to->RemoveObserverForName(name, observer); } \
+  NS_IMETHOD ExtractDomain(const nsAString & str, nsAString & _retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->ExtractDomain(str, _retval); } 
 
 #if 0
 /* Use the code below as a template for the implementation class for this interface. */
@@ -294,6 +300,12 @@ NS_IMETHODIMP nsContentPrefService2::AddObserverForName(const nsAString & name, 
 
 /* void removeObserverForName (in AString name, in nsIContentPrefObserver observer); */
 NS_IMETHODIMP nsContentPrefService2::RemoveObserverForName(const nsAString & name, nsIContentPrefObserver *observer)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* AString extractDomain (in AString str); */
+NS_IMETHODIMP nsContentPrefService2::ExtractDomain(const nsAString & str, nsAString & _retval)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

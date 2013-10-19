@@ -8,25 +8,19 @@
 #include "mozilla/dom/DOMJSClass.h"
 #include "mozilla/dom/DOMJSProxyHandler.h"
 
-class XPCWrappedNativeScope;
 namespace mozilla {
 namespace dom {
 
 class TextEncoder;
 
-} // namespace dom
-} // namespace mozilla
-
-namespace mozilla {
-namespace dom {
 namespace workers {
 
 class TextEncoder;
 
 } // namespace workers
+
 } // namespace dom
 } // namespace mozilla
-
 
 namespace mozilla {
 namespace dom {
@@ -72,11 +66,11 @@ struct PrototypeIDMap<mozilla::dom::workers::TextEncoder>
 namespace mozilla {
 namespace dom {
 
-struct TextEncodeOptionsWorkers {
+struct TextEncodeOptionsWorkers : public DictionaryBase {
   TextEncodeOptionsWorkers() {}
-  bool Init(JSContext* cx, JSObject* scopeObj, const JS::Value& val);
-  bool ToObject(JSContext* cx, JSObject* parentObject, JS::Value *vp);
-
+  bool Init(JSContext* cx, JS::Handle<JS::Value> val);
+  bool ToObject(JSContext* cx, JS::Handle<JSObject*> parentObject, JS::Value *vp) const;
+  void TraceDictionary(JSTracer* trc);
 
   bool mStream;
 private:
@@ -87,24 +81,16 @@ private:
 struct TextEncodeOptionsWorkersInitializer : public TextEncodeOptionsWorkers {
   TextEncodeOptionsWorkersInitializer() {
     // Safe to pass a null context if we pass a null value
-    Init(nullptr, nullptr, JS::NullValue());
+    Init(nullptr, JS::NullHandleValue);
   }
 };
 
 struct TextEncodeOptions : public MainThreadDictionaryBase {
   TextEncodeOptions() {}
-  bool Init(JSContext* cx, JSObject* scopeObj, const JS::Value& val);
-  bool ToObject(JSContext* cx, JSObject* parentObject, JS::Value *vp);
-
-  bool Init(const nsAString& aJSON)
-  {
-    mozilla::Maybe<JSAutoRequest> ar;
-    mozilla::Maybe<JSAutoCompartment> ac;
-    jsval json = JSVAL_VOID;
-    JSContext* cx = ParseJSON(aJSON, ar, ac, json);
-    NS_ENSURE_TRUE(cx, false);
-    return Init(cx, nullptr, json);
-  }
+  bool Init(JSContext* cx, JS::Handle<JS::Value> val);
+  bool Init(const nsAString& aJSON);
+  bool ToObject(JSContext* cx, JS::Handle<JSObject*> parentObject, JS::Value *vp) const;
+  void TraceDictionary(JSTracer* trc);
 
   bool mStream;
 private:
@@ -117,7 +103,7 @@ private:
 struct TextEncodeOptionsInitializer : public TextEncodeOptions {
   TextEncodeOptionsInitializer() {
     // Safe to pass a null context if we pass a null value
-    Init(nullptr, nullptr, JS::NullValue());
+    Init(nullptr, JS::NullHandleValue);
   }
 };
 
@@ -126,9 +112,9 @@ namespace TextEncoderBinding {
   extern const NativePropertyHooks sNativePropertyHooks;
 
   void
-  CreateInterfaceObjects(JSContext* aCx, JSObject* aGlobal, JSObject** protoAndIfaceArray);
+  CreateInterfaceObjects(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JSObject** protoAndIfaceArray);
 
-  inline JSObject* GetProtoObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetProtoObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface prototype object for this class.  This will create the
@@ -136,21 +122,19 @@ namespace TextEncoderBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[prototypes::id::TextEncoder];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[prototypes::id::TextEncoder]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[prototypes::id::TextEncoder];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[prototypes::id::TextEncoder]);
   }
 
-  inline JSObject* GetConstructorObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetConstructorObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface object for this class.  This will create the object as
@@ -158,32 +142,30 @@ namespace TextEncoderBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[constructors::id::TextEncoder];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[constructors::id::TextEncoder]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[constructors::id::TextEncoder];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[constructors::id::TextEncoder]);
   }
 
   JSObject*
-  DefineDOMInterface(JSContext* aCx, JSObject* aGlobal, bool* aEnabled);
+  DefineDOMInterface(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JS::Handle<jsid> id, bool* aEnabled);
 
   extern DOMJSClass Class;
 
   JSObject*
-  Wrap(JSContext* aCx, JSObject* aScope, mozilla::dom::TextEncoder* aObject, nsWrapperCache* aCache, bool* aTriedToWrap);
+  Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, mozilla::dom::TextEncoder* aObject, nsWrapperCache* aCache);
 
   template <class T>
-  inline JSObject* Wrap(JSContext* aCx, JSObject* aScope, T* aObject, bool* aTriedToWrap)
+  inline JSObject* Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, T* aObject)
   {
-    return Wrap(aCx, aScope, aObject, aObject, aTriedToWrap);
+    return Wrap(aCx, aScope, aObject, aObject);
   }
 
 } // namespace TextEncoderBinding
@@ -193,9 +175,9 @@ namespace TextEncoderBinding {
 namespace TextEncoderBinding_workers {
 
   void
-  CreateInterfaceObjects(JSContext* aCx, JSObject* aGlobal, JSObject** protoAndIfaceArray);
+  CreateInterfaceObjects(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JSObject** protoAndIfaceArray);
 
-  inline JSObject* GetProtoObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetProtoObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface prototype object for this class.  This will create the
@@ -203,21 +185,19 @@ namespace TextEncoderBinding_workers {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[prototypes::id::TextEncoder_workers];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[prototypes::id::TextEncoder_workers]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[prototypes::id::TextEncoder_workers];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[prototypes::id::TextEncoder_workers]);
   }
 
-  inline JSObject* GetConstructorObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetConstructorObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface object for this class.  This will create the object as
@@ -225,29 +205,27 @@ namespace TextEncoderBinding_workers {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[constructors::id::TextEncoder_workers];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[constructors::id::TextEncoder_workers]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[constructors::id::TextEncoder_workers];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[constructors::id::TextEncoder_workers]);
   }
 
   extern DOMJSClass Class;
 
   JSObject*
-  Wrap(JSContext* aCx, JSObject* aScope, mozilla::dom::workers::TextEncoder* aObject, nsWrapperCache* aCache, bool* aTriedToWrap);
+  Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, mozilla::dom::workers::TextEncoder* aObject, nsWrapperCache* aCache);
 
   template <class T>
-  inline JSObject* Wrap(JSContext* aCx, JSObject* aScope, T* aObject, bool* aTriedToWrap)
+  inline JSObject* Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, T* aObject)
   {
-    return Wrap(aCx, aScope, aObject, aObject, aTriedToWrap);
+    return Wrap(aCx, aScope, aObject, aObject);
   }
 
 } // namespace TextEncoderBinding_workers

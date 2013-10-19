@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/geolocation/nsIDOMGeoGeolocation.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/geolocation/nsIDOMGeoGeolocation.idl
  */
 
 #ifndef __gen_nsIDOMGeoGeolocation_h__
@@ -10,38 +10,33 @@
 #include "domstubs.h"
 #endif
 
-#include "jspubtd.h"
-
 /* For IDL files that don't want to include root IDL files. */
 #ifndef NS_NO_VTABLE
 #define NS_NO_VTABLE
 #endif
-class nsIDOMGeoPosition; /* forward declaration */
-
-class nsIDOMGeoPositionOptions; /* forward declaration */
-
 class nsIDOMGeoPositionCallback; /* forward declaration */
 
 class nsIDOMGeoPositionErrorCallback; /* forward declaration */
 
+#include "DictionaryHelpers.h"
 
 /* starting interface:    nsIDOMGeoGeolocation */
-#define NS_IDOMGEOGEOLOCATION_IID_STR "b9a301f7-285b-4be9-b739-fb869019c77a"
+#define NS_IDOMGEOGEOLOCATION_IID_STR "1bc7d103-c7ae-4467-881c-21a8dfa17938"
 
 #define NS_IDOMGEOGEOLOCATION_IID \
-  {0xb9a301f7, 0x285b, 0x4be9, \
-    { 0xb7, 0x39, 0xfb, 0x86, 0x90, 0x19, 0xc7, 0x7a }}
+  {0x1bc7d103, 0xc7ae, 0x4467, \
+    { 0x88, 0x1c, 0x21, 0xa8, 0xdf, 0xa1, 0x79, 0x38 }}
 
 class NS_NO_VTABLE nsIDOMGeoGeolocation : public nsISupports {
  public: 
 
   NS_DECLARE_STATIC_IID_ACCESSOR(NS_IDOMGEOGEOLOCATION_IID)
 
-  /* [implicit_jscontext] void getCurrentPosition (in nsIDOMGeoPositionCallback successCallback, [optional] in nsIDOMGeoPositionErrorCallback errorCallback, [optional] in jsval options); */
-  NS_IMETHOD GetCurrentPosition(nsIDOMGeoPositionCallback *successCallback, nsIDOMGeoPositionErrorCallback *errorCallback, const JS::Value & options, JSContext* cx) = 0;
+  /* int32_t watchPosition (in nsIDOMGeoPositionCallback callback, in nsIDOMGeoPositionErrorCallback errorCallback, in NamespacedGeoPositionOptions options); */
+  NS_IMETHOD WatchPosition(nsIDOMGeoPositionCallback *callback, nsIDOMGeoPositionErrorCallback *errorCallback, mozilla::idl::GeoPositionOptions *options, int32_t *_retval) = 0;
 
-  /* [implicit_jscontext] long watchPosition (in nsIDOMGeoPositionCallback successCallback, [optional] in nsIDOMGeoPositionErrorCallback errorCallback, [optional] in jsval options); */
-  NS_IMETHOD WatchPosition(nsIDOMGeoPositionCallback *successCallback, nsIDOMGeoPositionErrorCallback *errorCallback, const JS::Value & options, JSContext* cx, int32_t *_retval) = 0;
+  /* void getCurrentPosition (in nsIDOMGeoPositionCallback callback, in nsIDOMGeoPositionErrorCallback errorCallback, in NamespacedGeoPositionOptions options); */
+  NS_IMETHOD GetCurrentPosition(nsIDOMGeoPositionCallback *callback, nsIDOMGeoPositionErrorCallback *errorCallback, mozilla::idl::GeoPositionOptions *options) = 0;
 
   /* void clearWatch (in long watchId); */
   NS_IMETHOD ClearWatch(int32_t watchId) = 0;
@@ -52,20 +47,20 @@ class NS_NO_VTABLE nsIDOMGeoGeolocation : public nsISupports {
 
 /* Use this macro when declaring classes that implement this interface. */
 #define NS_DECL_NSIDOMGEOGEOLOCATION \
-  NS_IMETHOD GetCurrentPosition(nsIDOMGeoPositionCallback *successCallback, nsIDOMGeoPositionErrorCallback *errorCallback, const JS::Value & options, JSContext* cx); \
-  NS_IMETHOD WatchPosition(nsIDOMGeoPositionCallback *successCallback, nsIDOMGeoPositionErrorCallback *errorCallback, const JS::Value & options, JSContext* cx, int32_t *_retval); \
+  NS_IMETHOD WatchPosition(nsIDOMGeoPositionCallback *callback, nsIDOMGeoPositionErrorCallback *errorCallback, mozilla::idl::GeoPositionOptions *options, int32_t *_retval); \
+  NS_IMETHOD GetCurrentPosition(nsIDOMGeoPositionCallback *callback, nsIDOMGeoPositionErrorCallback *errorCallback, mozilla::idl::GeoPositionOptions *options); \
   NS_IMETHOD ClearWatch(int32_t watchId); 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object. */
 #define NS_FORWARD_NSIDOMGEOGEOLOCATION(_to) \
-  NS_IMETHOD GetCurrentPosition(nsIDOMGeoPositionCallback *successCallback, nsIDOMGeoPositionErrorCallback *errorCallback, const JS::Value & options, JSContext* cx) { return _to GetCurrentPosition(successCallback, errorCallback, options, cx); } \
-  NS_IMETHOD WatchPosition(nsIDOMGeoPositionCallback *successCallback, nsIDOMGeoPositionErrorCallback *errorCallback, const JS::Value & options, JSContext* cx, int32_t *_retval) { return _to WatchPosition(successCallback, errorCallback, options, cx, _retval); } \
+  NS_IMETHOD WatchPosition(nsIDOMGeoPositionCallback *callback, nsIDOMGeoPositionErrorCallback *errorCallback, mozilla::idl::GeoPositionOptions *options, int32_t *_retval) { return _to WatchPosition(callback, errorCallback, options, _retval); } \
+  NS_IMETHOD GetCurrentPosition(nsIDOMGeoPositionCallback *callback, nsIDOMGeoPositionErrorCallback *errorCallback, mozilla::idl::GeoPositionOptions *options) { return _to GetCurrentPosition(callback, errorCallback, options); } \
   NS_IMETHOD ClearWatch(int32_t watchId) { return _to ClearWatch(watchId); } 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object in a safe way. */
 #define NS_FORWARD_SAFE_NSIDOMGEOGEOLOCATION(_to) \
-  NS_IMETHOD GetCurrentPosition(nsIDOMGeoPositionCallback *successCallback, nsIDOMGeoPositionErrorCallback *errorCallback, const JS::Value & options, JSContext* cx) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetCurrentPosition(successCallback, errorCallback, options, cx); } \
-  NS_IMETHOD WatchPosition(nsIDOMGeoPositionCallback *successCallback, nsIDOMGeoPositionErrorCallback *errorCallback, const JS::Value & options, JSContext* cx, int32_t *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->WatchPosition(successCallback, errorCallback, options, cx, _retval); } \
+  NS_IMETHOD WatchPosition(nsIDOMGeoPositionCallback *callback, nsIDOMGeoPositionErrorCallback *errorCallback, mozilla::idl::GeoPositionOptions *options, int32_t *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->WatchPosition(callback, errorCallback, options, _retval); } \
+  NS_IMETHOD GetCurrentPosition(nsIDOMGeoPositionCallback *callback, nsIDOMGeoPositionErrorCallback *errorCallback, mozilla::idl::GeoPositionOptions *options) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetCurrentPosition(callback, errorCallback, options); } \
   NS_IMETHOD ClearWatch(int32_t watchId) { return !_to ? NS_ERROR_NULL_POINTER : _to->ClearWatch(watchId); } 
 
 #if 0
@@ -100,14 +95,14 @@ nsDOMGeoGeolocation::~nsDOMGeoGeolocation()
   /* destructor code */
 }
 
-/* [implicit_jscontext] void getCurrentPosition (in nsIDOMGeoPositionCallback successCallback, [optional] in nsIDOMGeoPositionErrorCallback errorCallback, [optional] in jsval options); */
-NS_IMETHODIMP nsDOMGeoGeolocation::GetCurrentPosition(nsIDOMGeoPositionCallback *successCallback, nsIDOMGeoPositionErrorCallback *errorCallback, const JS::Value & options, JSContext* cx)
+/* int32_t watchPosition (in nsIDOMGeoPositionCallback callback, in nsIDOMGeoPositionErrorCallback errorCallback, in NamespacedGeoPositionOptions options); */
+NS_IMETHODIMP nsDOMGeoGeolocation::WatchPosition(nsIDOMGeoPositionCallback *callback, nsIDOMGeoPositionErrorCallback *errorCallback, mozilla::idl::GeoPositionOptions *options, int32_t *_retval)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* [implicit_jscontext] long watchPosition (in nsIDOMGeoPositionCallback successCallback, [optional] in nsIDOMGeoPositionErrorCallback errorCallback, [optional] in jsval options); */
-NS_IMETHODIMP nsDOMGeoGeolocation::WatchPosition(nsIDOMGeoPositionCallback *successCallback, nsIDOMGeoPositionErrorCallback *errorCallback, const JS::Value & options, JSContext* cx, int32_t *_retval)
+/* void getCurrentPosition (in nsIDOMGeoPositionCallback callback, in nsIDOMGeoPositionErrorCallback errorCallback, in NamespacedGeoPositionOptions options); */
+NS_IMETHODIMP nsDOMGeoGeolocation::GetCurrentPosition(nsIDOMGeoPositionCallback *callback, nsIDOMGeoPositionErrorCallback *errorCallback, mozilla::idl::GeoPositionOptions *options)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

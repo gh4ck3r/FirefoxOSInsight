@@ -9,11 +9,11 @@ class HTMLCanvasElement;
 class HTMLImageElement;
 class HTMLOptGroupElement;
 class HTMLOptionElement;
+class HTMLVideoElement;
 } // namespace dom
 } // namespace mozilla
+class nsDOMEvent;
 class nsGenericHTMLElement;
-class nsHTMLVideoElement;
-class nsIDOMEvent;
 
 namespace mozilla {
 namespace dom {
@@ -41,15 +41,10 @@ public:
   {
     return mType == eEvent;
   }
-  nsIDOMEvent* GetAsEvent() const
+  nsDOMEvent& GetAsEvent() const
   {
     MOZ_ASSERT(IsEvent(), "Wrong type!");
-    return const_cast<nsIDOMEvent*&>(mValue.mEvent.Value());
-  }
-  nsIDOMEvent*& SetAsEvent()
-  {
-    mType = eEvent;
-    return mValue.mEvent.SetValue();
+    return const_cast<NonNull<nsDOMEvent>&>(mValue.mEvent.Value());
   }
 
   bool IsString() const
@@ -61,13 +56,20 @@ public:
     MOZ_ASSERT(IsString(), "Wrong type!");
     return const_cast<NonNull<nsAString>&>(mValue.mString.Value());
   }
-  NonNull<nsAString>& SetAsString()
+
+ NonNull<nsDOMEvent>& SetAsEvent()
+  {
+    mType = eEvent;
+    return mValue.mEvent.SetValue();
+  }
+
+ NonNull<nsAString>& SetAsString()
   {
     mType = eString;
     return mValue.mString.SetValue();
   }
 
-  bool ToJSVal(JSContext* cx, JSObject* scopeObj, JS::Value* vp) const;
+  bool ToJSVal(JSContext* cx, JS::Handle<JSObject*> scopeObj, JS::Value* vp) const;
 
 private:
   friend class EventOrStringArgument;
@@ -91,7 +93,7 @@ private:
     eString
   };
   union Value {
-    UnionMember<nsIDOMEvent* > mEvent;
+    UnionMember<NonNull<nsDOMEvent> > mEvent;
     UnionMember<NonNull<nsAString> > mString;
   };
 
@@ -129,11 +131,6 @@ public:
     MOZ_ASSERT(IsHTMLElement(), "Wrong type!");
     return const_cast<NonNull<nsGenericHTMLElement>&>(mValue.mHTMLElement.Value());
   }
-  NonNull<nsGenericHTMLElement>& SetAsHTMLElement()
-  {
-    mType = eHTMLElement;
-    return mValue.mHTMLElement.SetValue();
-  }
 
   bool IsLong() const
   {
@@ -144,13 +141,20 @@ public:
     MOZ_ASSERT(IsLong(), "Wrong type!");
     return const_cast<int32_t&>(mValue.mLong.Value());
   }
-  int32_t& SetAsLong()
+
+ NonNull<nsGenericHTMLElement>& SetAsHTMLElement()
+  {
+    mType = eHTMLElement;
+    return mValue.mHTMLElement.SetValue();
+  }
+
+ int32_t& SetAsLong()
   {
     mType = eLong;
     return mValue.mLong.SetValue();
   }
 
-  bool ToJSVal(JSContext* cx, JSObject* scopeObj, JS::Value* vp) const;
+  bool ToJSVal(JSContext* cx, JS::Handle<JSObject*> scopeObj, JS::Value* vp) const;
 
 private:
   friend class HTMLElementOrLongArgument;
@@ -215,43 +219,46 @@ public:
     MOZ_ASSERT(IsHTMLImageElement(), "Wrong type!");
     return const_cast<NonNull<mozilla::dom::HTMLImageElement>&>(mValue.mHTMLImageElement.Value());
   }
-  NonNull<mozilla::dom::HTMLImageElement>& SetAsHTMLImageElement()
-  {
-    mType = eHTMLImageElement;
-    return mValue.mHTMLImageElement.SetValue();
-  }
 
   bool IsHTMLCanvasElement() const
   {
     return mType == eHTMLCanvasElement;
   }
-  mozilla::dom::HTMLCanvasElement* GetAsHTMLCanvasElement() const
+  mozilla::dom::HTMLCanvasElement& GetAsHTMLCanvasElement() const
   {
     MOZ_ASSERT(IsHTMLCanvasElement(), "Wrong type!");
-    return const_cast<mozilla::dom::HTMLCanvasElement*&>(mValue.mHTMLCanvasElement.Value());
-  }
-  mozilla::dom::HTMLCanvasElement*& SetAsHTMLCanvasElement()
-  {
-    mType = eHTMLCanvasElement;
-    return mValue.mHTMLCanvasElement.SetValue();
+    return const_cast<NonNull<mozilla::dom::HTMLCanvasElement>&>(mValue.mHTMLCanvasElement.Value());
   }
 
   bool IsHTMLVideoElement() const
   {
     return mType == eHTMLVideoElement;
   }
-  nsHTMLVideoElement* GetAsHTMLVideoElement() const
+  mozilla::dom::HTMLVideoElement& GetAsHTMLVideoElement() const
   {
     MOZ_ASSERT(IsHTMLVideoElement(), "Wrong type!");
-    return const_cast<nsHTMLVideoElement*&>(mValue.mHTMLVideoElement.Value());
+    return const_cast<NonNull<mozilla::dom::HTMLVideoElement>&>(mValue.mHTMLVideoElement.Value());
   }
-  nsHTMLVideoElement*& SetAsHTMLVideoElement()
+
+ NonNull<mozilla::dom::HTMLImageElement>& SetAsHTMLImageElement()
+  {
+    mType = eHTMLImageElement;
+    return mValue.mHTMLImageElement.SetValue();
+  }
+
+ NonNull<mozilla::dom::HTMLCanvasElement>& SetAsHTMLCanvasElement()
+  {
+    mType = eHTMLCanvasElement;
+    return mValue.mHTMLCanvasElement.SetValue();
+  }
+
+ NonNull<mozilla::dom::HTMLVideoElement>& SetAsHTMLVideoElement()
   {
     mType = eHTMLVideoElement;
     return mValue.mHTMLVideoElement.SetValue();
   }
 
-  bool ToJSVal(JSContext* cx, JSObject* scopeObj, JS::Value* vp) const;
+  bool ToJSVal(JSContext* cx, JS::Handle<JSObject*> scopeObj, JS::Value* vp) const;
 
 private:
   friend class HTMLImageElementOrHTMLCanvasElementOrHTMLVideoElementArgument;
@@ -283,8 +290,8 @@ private:
   };
   union Value {
     UnionMember<NonNull<mozilla::dom::HTMLImageElement> > mHTMLImageElement;
-    UnionMember<mozilla::dom::HTMLCanvasElement* > mHTMLCanvasElement;
-    UnionMember<nsHTMLVideoElement* > mHTMLVideoElement;
+    UnionMember<NonNull<mozilla::dom::HTMLCanvasElement> > mHTMLCanvasElement;
+    UnionMember<NonNull<mozilla::dom::HTMLVideoElement> > mHTMLVideoElement;
   };
 
   Type mType;
@@ -321,11 +328,6 @@ public:
     MOZ_ASSERT(IsHTMLOptionElement(), "Wrong type!");
     return const_cast<NonNull<mozilla::dom::HTMLOptionElement>&>(mValue.mHTMLOptionElement.Value());
   }
-  NonNull<mozilla::dom::HTMLOptionElement>& SetAsHTMLOptionElement()
-  {
-    mType = eHTMLOptionElement;
-    return mValue.mHTMLOptionElement.SetValue();
-  }
 
   bool IsHTMLOptGroupElement() const
   {
@@ -336,13 +338,20 @@ public:
     MOZ_ASSERT(IsHTMLOptGroupElement(), "Wrong type!");
     return const_cast<NonNull<mozilla::dom::HTMLOptGroupElement>&>(mValue.mHTMLOptGroupElement.Value());
   }
-  NonNull<mozilla::dom::HTMLOptGroupElement>& SetAsHTMLOptGroupElement()
+
+ NonNull<mozilla::dom::HTMLOptionElement>& SetAsHTMLOptionElement()
+  {
+    mType = eHTMLOptionElement;
+    return mValue.mHTMLOptionElement.SetValue();
+  }
+
+ NonNull<mozilla::dom::HTMLOptGroupElement>& SetAsHTMLOptGroupElement()
   {
     mType = eHTMLOptGroupElement;
     return mValue.mHTMLOptGroupElement.SetValue();
   }
 
-  bool ToJSVal(JSContext* cx, JSObject* scopeObj, JS::Value* vp) const;
+  bool ToJSVal(JSContext* cx, JS::Handle<JSObject*> scopeObj, JS::Value* vp) const;
 
 private:
   friend class HTMLOptionElementOrHTMLOptGroupElementArgument;

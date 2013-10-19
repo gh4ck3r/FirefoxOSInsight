@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/html/nsIDOMHTMLLegendElement.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/html/nsIDOMHTMLLegendElement.idl
  */
 
 #ifndef __gen_nsIDOMHTMLLegendElement_h__
@@ -16,11 +16,11 @@
 #endif
 
 /* starting interface:    nsIDOMHTMLLegendElement */
-#define NS_IDOMHTMLLEGENDELEMENT_IID_STR "457a1606-1fda-4c2b-869e-050c58d9c32e"
+#define NS_IDOMHTMLLEGENDELEMENT_IID_STR "2e4567be-3d91-4df8-bdf9-f3bd96a6cd06"
 
 #define NS_IDOMHTMLLEGENDELEMENT_IID \
-  {0x457a1606, 0x1fda, 0x4c2b, \
-    { 0x86, 0x9e, 0x05, 0x0c, 0x58, 0xd9, 0xc3, 0x2e }}
+  {0x2e4567be, 0x3d91, 0x4df8, \
+    { 0xbd, 0xf9, 0xf3, 0xbd, 0x96, 0xa6, 0xcd, 0x06 }}
 
 class NS_NO_VTABLE nsIDOMHTMLLegendElement : public nsIDOMHTMLElement {
  public: 

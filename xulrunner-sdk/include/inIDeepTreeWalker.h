@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/layout/inspector/public/inIDeepTreeWalker.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/layout/inspector/public/inIDeepTreeWalker.idl
  */
 
 #ifndef __gen_inIDeepTreeWalker_h__

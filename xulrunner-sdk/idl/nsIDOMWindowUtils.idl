@@ -41,7 +41,7 @@ interface nsIDOMClientRect;
 interface nsIURI;
 interface nsIDOMEventTarget;
 
-[scriptable, uuid(16b3bdcc-75d4-11e2-8a20-aaff78957a39)]
+[scriptable, uuid(04429978-3417-411b-882b-81cd5cec5ecd)]
 interface nsIDOMWindowUtils : nsISupports {
 
   /**
@@ -539,7 +539,8 @@ interface nsIDOMWindowUtils : nsISupports {
                     [optional] in long aExtraForgetSkippableCalls);
 
   /** Synthesize a simple gesture event for a window. The event types
-   *  supported are: MozSwipeGesture, MozMagnifyGestureStart,
+   *  supported are: MozSwipeGestureStart, MozSwipeGestureUpdate,
+   *  MozSwipeGestureEnd, MozSwipeGesture, MozMagnifyGestureStart,
    *  MozMagnifyGestureUpdate, MozMagnifyGesture, MozRotateGestureStart,
    *  MozRotateGestureUpdate, MozRotateGesture, MozPressTapGesture,
    *  MozTapGesture, and MozEdgeUIGesture.
@@ -652,7 +653,7 @@ interface nsIDOMWindowUtils : nsISupports {
    *
    * @param aFlushLayout flushes layout if true. Otherwise, no flush occurs.
    */
-  long getScrollbarWidth(in boolean aFlushLayout);
+  void getScrollbarSize(in boolean aFlushLayout, out long aWidth, out long aHeight);
 
   /**
    * Returns the bounds of the window's currently loaded document. This will
@@ -1062,6 +1063,13 @@ interface nsIDOMWindowUtils : nsISupports {
    * error if there is no widget associated with this window.
    */
   readonly attribute AString layerManagerType;
+  
+  /**
+   * True if the layer manager for the widget associated with this window is
+   * forwarding layers to a remote compositor, false otherwise. Throws an
+   * error if there is no widget associated with this window.
+   */
+  readonly attribute boolean layerManagerRemote;
 
   /**
    * Record (and return) frame-intervals and paint-times for frames which were presented
@@ -1103,6 +1111,7 @@ interface nsIDOMWindowUtils : nsISupports {
 
   /**
    * Return the outer window with the given ID, if any.  Can return null.
+   * @deprecated Use nsIWindowMediator.getOuterWindowWithId.  See bug 865664.
    */
   nsIDOMWindow getOuterWindowWithId(in unsigned long long aOuterWindowID);
 
@@ -1136,6 +1145,12 @@ interface nsIDOMWindowUtils : nsISupports {
    * Undoes the effects of advanceTimeAndRefresh.
    */
   void restoreNormalRefresh();
+
+  /**
+   * Reports whether the current state is test-controlled refreshes
+   * (see advanceTimeAndRefresh and restoreNormalRefresh above).
+   */
+  readonly attribute bool isTestControllingRefreshes;
 
   /**
    * Method for testing nsStyleAnimation::ComputeDistance.
@@ -1289,6 +1304,19 @@ interface nsIDOMWindowUtils : nsISupports {
   void setScrollPositionClampingScrollPortSize(in float aWidth, in float aHeight);
 
   /**
+   * Set margins for the layout of fixed position elements in the content
+   * document. These are used on mobile, where the viewable area can be
+   * temporarily obscured by the browser chrome. In this situation, we're ok
+   * with scrollable page content being obscured, but fixed position content
+   * cannot be revealed without removing the obscuring chrome, so we use these
+   * margins so that it can remain visible.
+   *
+   * The caller of this method must have chrome privileges.
+   */
+  void setContentDocumentFixedPositionMargins(in float aTop, in float aRight,
+                                              in float aBottom, in float aLeft);
+
+  /**
    * Prevent this window (and any child windows) from displaying any further
    * dialogs (e.g. window.alert()).
    */
@@ -1336,4 +1364,9 @@ interface nsIDOMWindowUtils : nsISupports {
     * attribute or -moz-user-input: none/disabled.
     */
    boolean isNodeDisabledForEvents(in nsIDOMNode aNode);
+
+   /**
+    * Setting paintFlashing to true will flash newly painted area.
+    */
+   attribute boolean paintFlashing;
 };

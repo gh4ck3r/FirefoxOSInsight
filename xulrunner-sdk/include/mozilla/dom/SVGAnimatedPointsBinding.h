@@ -8,8 +8,6 @@
 #include "mozilla/dom/DOMJSClass.h"
 #include "mozilla/dom/DOMJSProxyHandler.h"
 
-class XPCWrappedNativeScope;
-
 namespace mozilla {
 namespace dom {
 

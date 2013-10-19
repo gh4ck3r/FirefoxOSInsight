@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/html/nsIDOMHTMLCanvasElement.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/html/nsIDOMHTMLCanvasElement.idl
  */
 
 #ifndef __gen_nsIDOMHTMLCanvasElement_h__
@@ -259,11 +259,11 @@ NS_IMETHODIMP nsFileCallback::Receive(nsIDOMBlob *file)
 
 
 /* starting interface:    nsIDOMHTMLCanvasElement */
-#define NS_IDOMHTMLCANVASELEMENT_IID_STR "a7062fca-41c6-4520-b777-3bb30fd77273"
+#define NS_IDOMHTMLCANVASELEMENT_IID_STR "11feba7e-73d5-49fc-a368-c3ef16ef4fc1"
 
 #define NS_IDOMHTMLCANVASELEMENT_IID \
-  {0xa7062fca, 0x41c6, 0x4520, \
-    { 0xb7, 0x77, 0x3b, 0xb3, 0x0f, 0xd7, 0x72, 0x73 }}
+  {0x11feba7e, 0x73d5, 0x49fc, \
+    { 0xa3, 0x68, 0xc3, 0xef, 0x16, 0xef, 0x4f, 0xc1 }}
 
 class NS_NO_VTABLE nsIDOMHTMLCanvasElement : public nsIDOMHTMLElement {
  public: 
@@ -282,17 +282,17 @@ class NS_NO_VTABLE nsIDOMHTMLCanvasElement : public nsIDOMHTMLElement {
   NS_IMETHOD GetMozOpaque(bool *aMozOpaque) = 0;
   NS_IMETHOD SetMozOpaque(bool aMozOpaque) = 0;
 
-  /* nsISupports getContext (in DOMString contextId, [optional] in jsval contextOptions); */
-  NS_IMETHOD GetContext(const nsAString & contextId, const JS::Value & contextOptions, nsISupports * *_retval) = 0;
+  /* [implicit_jscontext] nsISupports getContext (in DOMString contextId, [optional] in jsval contextOptions); */
+  NS_IMETHOD GetContext(const nsAString & contextId, const JS::Value & contextOptions, JSContext* cx, nsISupports * *_retval) = 0;
 
-  /* [optional_argc] DOMString toDataURL ([optional] in DOMString type, [optional] in nsIVariant params); */
-  NS_IMETHOD ToDataURL(const nsAString & type, nsIVariant *params, uint8_t _argc, nsAString & _retval) = 0;
+  /* [implicit_jscontext] DOMString toDataURL ([optional] in DOMString type, [optional] in jsval params); */
+  NS_IMETHOD ToDataURL(const nsAString & type, const JS::Value & params, JSContext* cx, nsAString & _retval) = 0;
 
-  /* [optional_argc] nsIDOMFile mozGetAsFile (in DOMString name, [optional] in DOMString type); */
-  NS_IMETHOD MozGetAsFile(const nsAString & name, const nsAString & type, uint8_t _argc, nsIDOMFile * *_retval) = 0;
+  /* nsIDOMFile mozGetAsFile (in DOMString name, [optional] in DOMString type); */
+  NS_IMETHOD MozGetAsFile(const nsAString & name, const nsAString & type, nsIDOMFile * *_retval) = 0;
 
-  /* [optional_argc] void toBlob (in nsIFileCallback callback, [optional] in DOMString type, [optional] in nsIVariant params); */
-  NS_IMETHOD ToBlob(nsIFileCallback *callback, const nsAString & type, nsIVariant *params, uint8_t _argc) = 0;
+  /* void toBlob (in nsIFileCallback callback, [optional] in DOMString type); */
+  NS_IMETHOD ToBlob(nsIFileCallback *callback, const nsAString & type) = 0;
 
   /* nsISupports MozGetIPCContext (in DOMString contextId); */
   NS_IMETHOD MozGetIPCContext(const nsAString & contextId, nsISupports * *_retval) = 0;
@@ -316,10 +316,10 @@ class NS_NO_VTABLE nsIDOMHTMLCanvasElement : public nsIDOMHTMLElement {
   NS_IMETHOD SetHeight(uint32_t aHeight); \
   NS_IMETHOD GetMozOpaque(bool *aMozOpaque); \
   NS_IMETHOD SetMozOpaque(bool aMozOpaque); \
-  NS_IMETHOD GetContext(const nsAString & contextId, const JS::Value & contextOptions, nsISupports * *_retval); \
-  NS_IMETHOD ToDataURL(const nsAString & type, nsIVariant *params, uint8_t _argc, nsAString & _retval); \
-  NS_IMETHOD MozGetAsFile(const nsAString & name, const nsAString & type, uint8_t _argc, nsIDOMFile * *_retval); \
-  NS_IMETHOD ToBlob(nsIFileCallback *callback, const nsAString & type, nsIVariant *params, uint8_t _argc); \
+  NS_IMETHOD GetContext(const nsAString & contextId, const JS::Value & contextOptions, JSContext* cx, nsISupports * *_retval); \
+  NS_IMETHOD ToDataURL(const nsAString & type, const JS::Value & params, JSContext* cx, nsAString & _retval); \
+  NS_IMETHOD MozGetAsFile(const nsAString & name, const nsAString & type, nsIDOMFile * *_retval); \
+  NS_IMETHOD ToBlob(nsIFileCallback *callback, const nsAString & type); \
   NS_IMETHOD MozGetIPCContext(const nsAString & contextId, nsISupports * *_retval); \
   NS_IMETHOD MozFetchAsStream(nsIInputStreamCallback *callback, const nsAString & type); \
   NS_IMETHOD GetMozPrintCallback(nsIPrintCallback * *aMozPrintCallback); \
@@ -333,10 +333,10 @@ class NS_NO_VTABLE nsIDOMHTMLCanvasElement : public nsIDOMHTMLElement {
   NS_IMETHOD SetHeight(uint32_t aHeight) { return _to SetHeight(aHeight); } \
   NS_IMETHOD GetMozOpaque(bool *aMozOpaque) { return _to GetMozOpaque(aMozOpaque); } \
   NS_IMETHOD SetMozOpaque(bool aMozOpaque) { return _to SetMozOpaque(aMozOpaque); } \
-  NS_IMETHOD GetContext(const nsAString & contextId, const JS::Value & contextOptions, nsISupports * *_retval) { return _to GetContext(contextId, contextOptions, _retval); } \
-  NS_IMETHOD ToDataURL(const nsAString & type, nsIVariant *params, uint8_t _argc, nsAString & _retval) { return _to ToDataURL(type, params, _argc, _retval); } \
-  NS_IMETHOD MozGetAsFile(const nsAString & name, const nsAString & type, uint8_t _argc, nsIDOMFile * *_retval) { return _to MozGetAsFile(name, type, _argc, _retval); } \
-  NS_IMETHOD ToBlob(nsIFileCallback *callback, const nsAString & type, nsIVariant *params, uint8_t _argc) { return _to ToBlob(callback, type, params, _argc); } \
+  NS_IMETHOD GetContext(const nsAString & contextId, const JS::Value & contextOptions, JSContext* cx, nsISupports * *_retval) { return _to GetContext(contextId, contextOptions, cx, _retval); } \
+  NS_IMETHOD ToDataURL(const nsAString & type, const JS::Value & params, JSContext* cx, nsAString & _retval) { return _to ToDataURL(type, params, cx, _retval); } \
+  NS_IMETHOD MozGetAsFile(const nsAString & name, const nsAString & type, nsIDOMFile * *_retval) { return _to MozGetAsFile(name, type, _retval); } \
+  NS_IMETHOD ToBlob(nsIFileCallback *callback, const nsAString & type) { return _to ToBlob(callback, type); } \
   NS_IMETHOD MozGetIPCContext(const nsAString & contextId, nsISupports * *_retval) { return _to MozGetIPCContext(contextId, _retval); } \
   NS_IMETHOD MozFetchAsStream(nsIInputStreamCallback *callback, const nsAString & type) { return _to MozFetchAsStream(callback, type); } \
   NS_IMETHOD GetMozPrintCallback(nsIPrintCallback * *aMozPrintCallback) { return _to GetMozPrintCallback(aMozPrintCallback); } \
@@ -350,10 +350,10 @@ class NS_NO_VTABLE nsIDOMHTMLCanvasElement : public nsIDOMHTMLElement {
   NS_IMETHOD SetHeight(uint32_t aHeight) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetHeight(aHeight); } \
   NS_IMETHOD GetMozOpaque(bool *aMozOpaque) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetMozOpaque(aMozOpaque); } \
   NS_IMETHOD SetMozOpaque(bool aMozOpaque) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetMozOpaque(aMozOpaque); } \
-  NS_IMETHOD GetContext(const nsAString & contextId, const JS::Value & contextOptions, nsISupports * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetContext(contextId, contextOptions, _retval); } \
-  NS_IMETHOD ToDataURL(const nsAString & type, nsIVariant *params, uint8_t _argc, nsAString & _retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->ToDataURL(type, params, _argc, _retval); } \
-  NS_IMETHOD MozGetAsFile(const nsAString & name, const nsAString & type, uint8_t _argc, nsIDOMFile * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->MozGetAsFile(name, type, _argc, _retval); } \
-  NS_IMETHOD ToBlob(nsIFileCallback *callback, const nsAString & type, nsIVariant *params, uint8_t _argc) { return !_to ? NS_ERROR_NULL_POINTER : _to->ToBlob(callback, type, params, _argc); } \
+  NS_IMETHOD GetContext(const nsAString & contextId, const JS::Value & contextOptions, JSContext* cx, nsISupports * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetContext(contextId, contextOptions, cx, _retval); } \
+  NS_IMETHOD ToDataURL(const nsAString & type, const JS::Value & params, JSContext* cx, nsAString & _retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->ToDataURL(type, params, cx, _retval); } \
+  NS_IMETHOD MozGetAsFile(const nsAString & name, const nsAString & type, nsIDOMFile * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->MozGetAsFile(name, type, _retval); } \
+  NS_IMETHOD ToBlob(nsIFileCallback *callback, const nsAString & type) { return !_to ? NS_ERROR_NULL_POINTER : _to->ToBlob(callback, type); } \
   NS_IMETHOD MozGetIPCContext(const nsAString & contextId, nsISupports * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->MozGetIPCContext(contextId, _retval); } \
   NS_IMETHOD MozFetchAsStream(nsIInputStreamCallback *callback, const nsAString & type) { return !_to ? NS_ERROR_NULL_POINTER : _to->MozFetchAsStream(callback, type); } \
   NS_IMETHOD GetMozPrintCallback(nsIPrintCallback * *aMozPrintCallback) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetMozPrintCallback(aMozPrintCallback); } \
@@ -421,26 +421,26 @@ NS_IMETHODIMP nsDOMHTMLCanvasElement::SetMozOpaque(bool aMozOpaque)
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* nsISupports getContext (in DOMString contextId, [optional] in jsval contextOptions); */
-NS_IMETHODIMP nsDOMHTMLCanvasElement::GetContext(const nsAString & contextId, const JS::Value & contextOptions, nsISupports * *_retval)
+/* [implicit_jscontext] nsISupports getContext (in DOMString contextId, [optional] in jsval contextOptions); */
+NS_IMETHODIMP nsDOMHTMLCanvasElement::GetContext(const nsAString & contextId, const JS::Value & contextOptions, JSContext* cx, nsISupports * *_retval)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* [optional_argc] DOMString toDataURL ([optional] in DOMString type, [optional] in nsIVariant params); */
-NS_IMETHODIMP nsDOMHTMLCanvasElement::ToDataURL(const nsAString & type, nsIVariant *params, uint8_t _argc, nsAString & _retval)
+/* [implicit_jscontext] DOMString toDataURL ([optional] in DOMString type, [optional] in jsval params); */
+NS_IMETHODIMP nsDOMHTMLCanvasElement::ToDataURL(const nsAString & type, const JS::Value & params, JSContext* cx, nsAString & _retval)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* [optional_argc] nsIDOMFile mozGetAsFile (in DOMString name, [optional] in DOMString type); */
-NS_IMETHODIMP nsDOMHTMLCanvasElement::MozGetAsFile(const nsAString & name, const nsAString & type, uint8_t _argc, nsIDOMFile * *_retval)
+/* nsIDOMFile mozGetAsFile (in DOMString name, [optional] in DOMString type); */
+NS_IMETHODIMP nsDOMHTMLCanvasElement::MozGetAsFile(const nsAString & name, const nsAString & type, nsIDOMFile * *_retval)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* [optional_argc] void toBlob (in nsIFileCallback callback, [optional] in DOMString type, [optional] in nsIVariant params); */
-NS_IMETHODIMP nsDOMHTMLCanvasElement::ToBlob(nsIFileCallback *callback, const nsAString & type, nsIVariant *params, uint8_t _argc)
+/* void toBlob (in nsIFileCallback callback, [optional] in DOMString type); */
+NS_IMETHODIMP nsDOMHTMLCanvasElement::ToBlob(nsIFileCallback *callback, const nsAString & type)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

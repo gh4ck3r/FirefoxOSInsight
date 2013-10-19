@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/base/nsIDOMDOMRequest.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/base/nsIDOMDOMRequest.idl
  */
 
 #ifndef __gen_nsIDOMDOMRequest_h__
@@ -26,11 +26,11 @@ class nsICursorContinueCallback; /* forward declaration */
 
 
 /* starting interface:    nsIDOMDOMRequest */
-#define NS_IDOMDOMREQUEST_IID_STR "d88998b7-ee30-4ae5-bbed-58f5711929de"
+#define NS_IDOMDOMREQUEST_IID_STR "e18fdde5-35b0-46df-8522-f88adf7698f3"
 
 #define NS_IDOMDOMREQUEST_IID \
-  {0xd88998b7, 0xee30, 0x4ae5, \
-    { 0xbb, 0xed, 0x58, 0xf5, 0x71, 0x19, 0x29, 0xde }}
+  {0xe18fdde5, 0x35b0, 0x46df, \
+    { 0x85, 0x22, 0xf8, 0x8a, 0xdf, 0x76, 0x98, 0xf3 }}
 
 class NS_NO_VTABLE nsIDOMDOMRequest : public nsIDOMEventTarget {
  public: 

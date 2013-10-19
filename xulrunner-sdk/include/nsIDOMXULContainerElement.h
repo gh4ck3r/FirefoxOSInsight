@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/xul/nsIDOMXULContainerElement.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/xul/nsIDOMXULContainerElement.idl
  */
 
 #ifndef __gen_nsIDOMXULContainerElement_h__
@@ -18,11 +18,11 @@ class nsIDOMXULContainerElement; /* forward declaration */
 
 
 /* starting interface:    nsIDOMXULContainerItemElement */
-#define NS_IDOMXULCONTAINERITEMELEMENT_IID_STR "6b94fbab-5171-432c-8e7a-6183c535e344"
+#define NS_IDOMXULCONTAINERITEMELEMENT_IID_STR "6f59f65f-afc9-4076-a80f-7b25d5a42fe4"
 
 #define NS_IDOMXULCONTAINERITEMELEMENT_IID \
-  {0x6b94fbab, 0x5171, 0x432c, \
-    { 0x8e, 0x7a, 0x61, 0x83, 0xc5, 0x35, 0xe3, 0x44 }}
+  {0x6f59f65f, 0xafc9, 0x4076, \
+    { 0xa8, 0x0f, 0x7b, 0x25, 0xd5, 0xa4, 0x2f, 0xe4 }}
 
 class NS_NO_VTABLE nsIDOMXULContainerItemElement : public nsIDOMXULElement {
  public: 
@@ -91,11 +91,11 @@ NS_IMETHODIMP nsDOMXULContainerItemElement::GetParentContainer(nsIDOMXULContaine
 
 
 /* starting interface:    nsIDOMXULContainerElement */
-#define NS_IDOMXULCONTAINERELEMENT_IID_STR "40211f96-98a5-4de5-be0c-8cbf4ca4d615"
+#define NS_IDOMXULCONTAINERELEMENT_IID_STR "b2bc96b8-31fc-42f4-937a-bd27291af40b"
 
 #define NS_IDOMXULCONTAINERELEMENT_IID \
-  {0x40211f96, 0x98a5, 0x4de5, \
-    { 0xbe, 0x0c, 0x8c, 0xbf, 0x4c, 0xa4, 0xd6, 0x15 }}
+  {0xb2bc96b8, 0x31fc, 0x42f4, \
+    { 0x93, 0x7a, 0xbd, 0x27, 0x29, 0x1a, 0xf4, 0x0b }}
 
 class NS_NO_VTABLE nsIDOMXULContainerElement : public nsIDOMXULContainerItemElement {
  public: 

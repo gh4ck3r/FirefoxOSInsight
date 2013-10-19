@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/extensions/pref/autoconfig/public/nsIAutoConfig.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/extensions/pref/autoconfig/public/nsIAutoConfig.idl
  */
 
 #ifndef __gen_nsIAutoConfig_h__
@@ -24,7 +24,6 @@
  
 #define NS_AUTOCONFIG_CONTRACTID \
   "@mozilla.org/autoconfiguration;1" 
-#define NS_AUTOCONFIG_CLASSNAME "AutoConfig Module"
 
 /* starting interface:    nsIAutoConfig */
 #define NS_IAUTOCONFIG_IID_STR "80db54ae-13f2-11d5-be44-00108335a220"

@@ -8,28 +8,19 @@
 #include "mozilla/dom/DOMJSClass.h"
 #include "mozilla/dom/DOMJSProxyHandler.h"
 
-class XPCWrappedNativeScope;
-
 namespace mozilla {
 namespace dom {
 
 struct RTCIceServer : public MainThreadDictionaryBase {
   RTCIceServer() {}
-  bool Init(JSContext* cx, JSObject* scopeObj, const JS::Value& val);
-  bool ToObject(JSContext* cx, JSObject* parentObject, JS::Value *vp);
-
-  bool Init(const nsAString& aJSON)
-  {
-    mozilla::Maybe<JSAutoRequest> ar;
-    mozilla::Maybe<JSAutoCompartment> ac;
-    jsval json = JSVAL_VOID;
-    JSContext* cx = ParseJSON(aJSON, ar, ac, json);
-    NS_ENSURE_TRUE(cx, false);
-    return Init(cx, nullptr, json);
-  }
+  bool Init(JSContext* cx, JS::Handle<JS::Value> val);
+  bool Init(const nsAString& aJSON);
+  bool ToObject(JSContext* cx, JS::Handle<JSObject*> parentObject, JS::Value *vp) const;
+  void TraceDictionary(JSTracer* trc);
 
   nsString mCredential;
-  Optional< nsString > mUrl;
+  Optional<nsString > mUrl;
+  nsString mUsername;
 private:
   // Disallow copy-construction
   RTCIceServer(const RTCIceServer&) MOZ_DELETE;
@@ -37,30 +28,23 @@ private:
   static bool initedIds;
   static jsid credential_id;
   static jsid url_id;
+  static jsid username_id;
 };
 struct RTCIceServerInitializer : public RTCIceServer {
   RTCIceServerInitializer() {
     // Safe to pass a null context if we pass a null value
-    Init(nullptr, nullptr, JS::NullValue());
+    Init(nullptr, JS::NullHandleValue);
   }
 };
 
 struct RTCConfiguration : public MainThreadDictionaryBase {
   RTCConfiguration() {}
-  bool Init(JSContext* cx, JSObject* scopeObj, const JS::Value& val);
-  bool ToObject(JSContext* cx, JSObject* parentObject, JS::Value *vp);
+  bool Init(JSContext* cx, JS::Handle<JS::Value> val);
+  bool Init(const nsAString& aJSON);
+  bool ToObject(JSContext* cx, JS::Handle<JSObject*> parentObject, JS::Value *vp) const;
+  void TraceDictionary(JSTracer* trc);
 
-  bool Init(const nsAString& aJSON)
-  {
-    mozilla::Maybe<JSAutoRequest> ar;
-    mozilla::Maybe<JSAutoCompartment> ac;
-    jsval json = JSVAL_VOID;
-    JSContext* cx = ParseJSON(aJSON, ar, ac, json);
-    NS_ENSURE_TRUE(cx, false);
-    return Init(cx, nullptr, json);
-  }
-
-  Optional< Sequence< RTCIceServer > > mIceServers;
+  Optional<Sequence<RTCIceServer > > mIceServers;
 private:
   // Disallow copy-construction
   RTCConfiguration(const RTCConfiguration&) MOZ_DELETE;
@@ -71,7 +55,7 @@ private:
 struct RTCConfigurationInitializer : public RTCConfiguration {
   RTCConfigurationInitializer() {
     // Safe to pass a null context if we pass a null value
-    Init(nullptr, nullptr, JS::NullValue());
+    Init(nullptr, JS::NullHandleValue);
   }
 };
 

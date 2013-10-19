@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/layout/inspector/public/inIDOMUtils.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/layout/inspector/public/inIDOMUtils.idl
  */
 
 #ifndef __gen_inIDOMUtils_h__
@@ -9,6 +9,8 @@
 #ifndef __gen_nsISupports_h__
 #include "nsISupports.h"
 #endif
+
+#include "jspubtd.h"
 
 /* For IDL files that don't want to include root IDL files. */
 #ifndef NS_NO_VTABLE
@@ -38,11 +40,11 @@ class nsIDOMCSSStyleSheet; /* forward declaration */
 
 
 /* starting interface:    inIDOMUtils */
-#define INIDOMUTILS_IID_STR "dd8a9dfd-336f-4cce-8ec1-0365ede9a3a8"
+#define INIDOMUTILS_IID_STR "c10e5142-e936-45d7-ad5b-21a32ce739a3"
 
 #define INIDOMUTILS_IID \
-  {0xdd8a9dfd, 0x336f, 0x4cce, \
-    { 0x8e, 0xc1, 0x03, 0x65, 0xed, 0xe9, 0xa3, 0xa8 }}
+  {0xc10e5142, 0xe936, 0x45d7, \
+    { 0xad, 0x5b, 0x21, 0xa3, 0x2c, 0xe7, 0x39, 0xa3 }}
 
 class NS_NO_VTABLE inIDOMUtils : public nsISupports {
  public: 
@@ -54,6 +56,9 @@ class NS_NO_VTABLE inIDOMUtils : public nsISupports {
 
   /* unsigned long getRuleLine (in nsIDOMCSSStyleRule aRule); */
   NS_IMETHOD GetRuleLine(nsIDOMCSSStyleRule *aRule, uint32_t *_retval) = 0;
+
+  /* unsigned long getRuleColumn (in nsIDOMCSSStyleRule aRule); */
+  NS_IMETHOD GetRuleColumn(nsIDOMCSSStyleRule *aRule, uint32_t *_retval) = 0;
 
   /* unsigned long getSelectorCount (in nsIDOMCSSStyleRule aRule); */
   NS_IMETHOD GetSelectorCount(nsIDOMCSSStyleRule *aRule, uint32_t *_retval) = 0;
@@ -69,6 +74,20 @@ class NS_NO_VTABLE inIDOMUtils : public nsISupports {
 
   /* bool isInheritedProperty (in AString aPropertyName); */
   NS_IMETHOD IsInheritedProperty(const nsAString & aPropertyName, bool *_retval) = 0;
+
+  enum {
+    EXCLUDE_SHORTHANDS = 1U,
+    INCLUDE_ALIASES = 2U
+  };
+
+  /* void getCSSPropertyNames ([optional] in unsigned long aFlags, [optional] out unsigned long aCount, [array, size_is (aCount), retval] out wstring aProps); */
+  NS_IMETHOD GetCSSPropertyNames(uint32_t aFlags, uint32_t *aCount, PRUnichar * **aProps) = 0;
+
+  /* [implicit_jscontext] jsval colorNameToRGB (in DOMString aColorName); */
+  NS_IMETHOD ColorNameToRGB(const nsAString & aColorName, JSContext* cx, JS::Value *_retval) = 0;
+
+  /* AString rgbToColorName (in octet aR, in octet aG, in octet aB); */
+  NS_IMETHOD RgbToColorName(uint8_t aR, uint8_t aG, uint8_t aB, nsAString & _retval) = 0;
 
   /* boolean isIgnorableWhitespace (in nsIDOMCharacterData aDataNode); */
   NS_IMETHOD IsIgnorableWhitespace(nsIDOMCharacterData *aDataNode, bool *_retval) = 0;
@@ -114,11 +133,15 @@ class NS_NO_VTABLE inIDOMUtils : public nsISupports {
 #define NS_DECL_INIDOMUTILS \
   NS_IMETHOD GetCSSStyleRules(nsIDOMElement *aElement, const nsAString & aPseudo, nsISupportsArray * *_retval); \
   NS_IMETHOD GetRuleLine(nsIDOMCSSStyleRule *aRule, uint32_t *_retval); \
+  NS_IMETHOD GetRuleColumn(nsIDOMCSSStyleRule *aRule, uint32_t *_retval); \
   NS_IMETHOD GetSelectorCount(nsIDOMCSSStyleRule *aRule, uint32_t *_retval); \
   NS_IMETHOD GetSelectorText(nsIDOMCSSStyleRule *aRule, uint32_t aSelectorIndex, nsAString & _retval); \
   NS_IMETHOD GetSpecificity(nsIDOMCSSStyleRule *aRule, uint32_t aSelectorIndex, uint64_t *_retval); \
   NS_IMETHOD SelectorMatchesElement(nsIDOMElement *aElement, nsIDOMCSSStyleRule *aRule, uint32_t aSelectorIndex, bool *_retval); \
   NS_IMETHOD IsInheritedProperty(const nsAString & aPropertyName, bool *_retval); \
+  NS_IMETHOD GetCSSPropertyNames(uint32_t aFlags, uint32_t *aCount, PRUnichar * **aProps); \
+  NS_IMETHOD ColorNameToRGB(const nsAString & aColorName, JSContext* cx, JS::Value *_retval); \
+  NS_IMETHOD RgbToColorName(uint8_t aR, uint8_t aG, uint8_t aB, nsAString & _retval); \
   NS_IMETHOD IsIgnorableWhitespace(nsIDOMCharacterData *aDataNode, bool *_retval); \
   NS_IMETHOD GetParentForNode(nsIDOMNode *aNode, bool aShowingAnonymousContent, nsIDOMNode * *_retval); \
   NS_IMETHOD GetChildrenForNode(nsIDOMNode *aNode, bool aShowingAnonymousContent, nsIDOMNodeList * *_retval); \
@@ -136,11 +159,15 @@ class NS_NO_VTABLE inIDOMUtils : public nsISupports {
 #define NS_FORWARD_INIDOMUTILS(_to) \
   NS_IMETHOD GetCSSStyleRules(nsIDOMElement *aElement, const nsAString & aPseudo, nsISupportsArray * *_retval) { return _to GetCSSStyleRules(aElement, aPseudo, _retval); } \
   NS_IMETHOD GetRuleLine(nsIDOMCSSStyleRule *aRule, uint32_t *_retval) { return _to GetRuleLine(aRule, _retval); } \
+  NS_IMETHOD GetRuleColumn(nsIDOMCSSStyleRule *aRule, uint32_t *_retval) { return _to GetRuleColumn(aRule, _retval); } \
   NS_IMETHOD GetSelectorCount(nsIDOMCSSStyleRule *aRule, uint32_t *_retval) { return _to GetSelectorCount(aRule, _retval); } \
   NS_IMETHOD GetSelectorText(nsIDOMCSSStyleRule *aRule, uint32_t aSelectorIndex, nsAString & _retval) { return _to GetSelectorText(aRule, aSelectorIndex, _retval); } \
   NS_IMETHOD GetSpecificity(nsIDOMCSSStyleRule *aRule, uint32_t aSelectorIndex, uint64_t *_retval) { return _to GetSpecificity(aRule, aSelectorIndex, _retval); } \
   NS_IMETHOD SelectorMatchesElement(nsIDOMElement *aElement, nsIDOMCSSStyleRule *aRule, uint32_t aSelectorIndex, bool *_retval) { return _to SelectorMatchesElement(aElement, aRule, aSelectorIndex, _retval); } \
   NS_IMETHOD IsInheritedProperty(const nsAString & aPropertyName, bool *_retval) { return _to IsInheritedProperty(aPropertyName, _retval); } \
+  NS_IMETHOD GetCSSPropertyNames(uint32_t aFlags, uint32_t *aCount, PRUnichar * **aProps) { return _to GetCSSPropertyNames(aFlags, aCount, aProps); } \
+  NS_IMETHOD ColorNameToRGB(const nsAString & aColorName, JSContext* cx, JS::Value *_retval) { return _to ColorNameToRGB(aColorName, cx, _retval); } \
+  NS_IMETHOD RgbToColorName(uint8_t aR, uint8_t aG, uint8_t aB, nsAString & _retval) { return _to RgbToColorName(aR, aG, aB, _retval); } \
   NS_IMETHOD IsIgnorableWhitespace(nsIDOMCharacterData *aDataNode, bool *_retval) { return _to IsIgnorableWhitespace(aDataNode, _retval); } \
   NS_IMETHOD GetParentForNode(nsIDOMNode *aNode, bool aShowingAnonymousContent, nsIDOMNode * *_retval) { return _to GetParentForNode(aNode, aShowingAnonymousContent, _retval); } \
   NS_IMETHOD GetChildrenForNode(nsIDOMNode *aNode, bool aShowingAnonymousContent, nsIDOMNodeList * *_retval) { return _to GetChildrenForNode(aNode, aShowingAnonymousContent, _retval); } \
@@ -158,11 +185,15 @@ class NS_NO_VTABLE inIDOMUtils : public nsISupports {
 #define NS_FORWARD_SAFE_INIDOMUTILS(_to) \
   NS_IMETHOD GetCSSStyleRules(nsIDOMElement *aElement, const nsAString & aPseudo, nsISupportsArray * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetCSSStyleRules(aElement, aPseudo, _retval); } \
   NS_IMETHOD GetRuleLine(nsIDOMCSSStyleRule *aRule, uint32_t *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetRuleLine(aRule, _retval); } \
+  NS_IMETHOD GetRuleColumn(nsIDOMCSSStyleRule *aRule, uint32_t *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetRuleColumn(aRule, _retval); } \
   NS_IMETHOD GetSelectorCount(nsIDOMCSSStyleRule *aRule, uint32_t *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetSelectorCount(aRule, _retval); } \
   NS_IMETHOD GetSelectorText(nsIDOMCSSStyleRule *aRule, uint32_t aSelectorIndex, nsAString & _retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetSelectorText(aRule, aSelectorIndex, _retval); } \
   NS_IMETHOD GetSpecificity(nsIDOMCSSStyleRule *aRule, uint32_t aSelectorIndex, uint64_t *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetSpecificity(aRule, aSelectorIndex, _retval); } \
   NS_IMETHOD SelectorMatchesElement(nsIDOMElement *aElement, nsIDOMCSSStyleRule *aRule, uint32_t aSelectorIndex, bool *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->SelectorMatchesElement(aElement, aRule, aSelectorIndex, _retval); } \
   NS_IMETHOD IsInheritedProperty(const nsAString & aPropertyName, bool *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->IsInheritedProperty(aPropertyName, _retval); } \
+  NS_IMETHOD GetCSSPropertyNames(uint32_t aFlags, uint32_t *aCount, PRUnichar * **aProps) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetCSSPropertyNames(aFlags, aCount, aProps); } \
+  NS_IMETHOD ColorNameToRGB(const nsAString & aColorName, JSContext* cx, JS::Value *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->ColorNameToRGB(aColorName, cx, _retval); } \
+  NS_IMETHOD RgbToColorName(uint8_t aR, uint8_t aG, uint8_t aB, nsAString & _retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->RgbToColorName(aR, aG, aB, _retval); } \
   NS_IMETHOD IsIgnorableWhitespace(nsIDOMCharacterData *aDataNode, bool *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->IsIgnorableWhitespace(aDataNode, _retval); } \
   NS_IMETHOD GetParentForNode(nsIDOMNode *aNode, bool aShowingAnonymousContent, nsIDOMNode * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetParentForNode(aNode, aShowingAnonymousContent, _retval); } \
   NS_IMETHOD GetChildrenForNode(nsIDOMNode *aNode, bool aShowingAnonymousContent, nsIDOMNodeList * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetChildrenForNode(aNode, aShowingAnonymousContent, _retval); } \
@@ -220,6 +251,12 @@ NS_IMETHODIMP inDOMUtils::GetRuleLine(nsIDOMCSSStyleRule *aRule, uint32_t *_retv
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
+/* unsigned long getRuleColumn (in nsIDOMCSSStyleRule aRule); */
+NS_IMETHODIMP inDOMUtils::GetRuleColumn(nsIDOMCSSStyleRule *aRule, uint32_t *_retval)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
 /* unsigned long getSelectorCount (in nsIDOMCSSStyleRule aRule); */
 NS_IMETHODIMP inDOMUtils::GetSelectorCount(nsIDOMCSSStyleRule *aRule, uint32_t *_retval)
 {
@@ -246,6 +283,24 @@ NS_IMETHODIMP inDOMUtils::SelectorMatchesElement(nsIDOMElement *aElement, nsIDOM
 
 /* bool isInheritedProperty (in AString aPropertyName); */
 NS_IMETHODIMP inDOMUtils::IsInheritedProperty(const nsAString & aPropertyName, bool *_retval)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* void getCSSPropertyNames ([optional] in unsigned long aFlags, [optional] out unsigned long aCount, [array, size_is (aCount), retval] out wstring aProps); */
+NS_IMETHODIMP inDOMUtils::GetCSSPropertyNames(uint32_t aFlags, uint32_t *aCount, PRUnichar * **aProps)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* [implicit_jscontext] jsval colorNameToRGB (in DOMString aColorName); */
+NS_IMETHODIMP inDOMUtils::ColorNameToRGB(const nsAString & aColorName, JSContext* cx, JS::Value *_retval)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* AString rgbToColorName (in octet aR, in octet aG, in octet aB); */
+NS_IMETHODIMP inDOMUtils::RgbToColorName(uint8_t aR, uint8_t aG, uint8_t aB, nsAString & _retval)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

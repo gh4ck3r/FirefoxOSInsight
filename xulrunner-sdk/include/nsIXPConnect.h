@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/js/xpconnect/idl/nsIXPConnect.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/js/xpconnect/idl/nsIXPConnect.idl
  */
 
 #ifndef __gen_nsIXPConnect_h__
@@ -599,11 +599,11 @@ NS_IMETHODIMP nsXPCFunctionThisTranslator::TranslateThis(nsISupports *aInitialTh
     { 0xbd, 0xd6, 0x0, 0x0, 0x64, 0x65, 0x73, 0x74 } }
 
 /* starting interface:    nsIXPConnect */
-#define NS_IXPCONNECT_IID_STR "3e825850-3a5f-11e2-81c1-0800200c9a66"
+#define NS_IXPCONNECT_IID_STR "4d292c29-9d18-403b-b98e-2056e550a3b4"
 
 #define NS_IXPCONNECT_IID \
-  {0x3e825850, 0x3a5f, 0x11e2, \
-    { 0x81, 0xc1, 0x08, 0x00, 0x20, 0x0c, 0x9a, 0x66 }}
+  {0x4d292c29, 0x9d18, 0x403b, \
+    { 0xb9, 0x8e, 0x20, 0x56, 0xe5, 0x50, 0xa3, 0xb4 }}
 
 class nsIXPConnect : public nsISupports {
  public: 
@@ -614,8 +614,8 @@ class nsIXPConnect : public nsISupports {
   /* void initClasses (in JSContextPtr aJSContext, in JSObjectPtr aGlobalJSObj); */
   NS_IMETHOD InitClasses(JSContext *aJSContext, JSObject *aGlobalJSObj) = 0;
 
-  /* nsIXPConnectJSObjectHolder initClassesWithNewWrappedGlobal (in JSContextPtr aJSContext, in nsISupports aCOMObj, in nsIPrincipal aPrincipal, in uint32_t aFlags); */
-  NS_IMETHOD InitClassesWithNewWrappedGlobal(JSContext *aJSContext, nsISupports *aCOMObj, nsIPrincipal *aPrincipal, uint32_t aFlags, nsIXPConnectJSObjectHolder * *_retval) = 0;
+  /* nsIXPConnectJSObjectHolder initClassesWithNewWrappedGlobal (in JSContextPtr aJSContext, in nsISupports aCOMObj, in nsIPrincipal aPrincipal, in uint32_t aFlags, in ZoneSpecifier aZoneSpec); */
+  NS_IMETHOD InitClassesWithNewWrappedGlobal(JSContext *aJSContext, nsISupports *aCOMObj, nsIPrincipal *aPrincipal, uint32_t aFlags, uintptr_t aZoneSpec, nsIXPConnectJSObjectHolder * *_retval) = 0;
 
   enum {
     INIT_JS_STANDARD_CLASSES = 1U,
@@ -640,9 +640,6 @@ class nsIXPConnect : public nsISupports {
   /* [noscript,notxpcom] nsISupports getNativeOfWrapper (in JSContextPtr aJSContext, in JSObjectPtr aJSObj); */
   NS_IMETHOD_(nsISupports *) GetNativeOfWrapper(JSContext *aJSContext, JSObject *aJSObj) = 0;
 
-  /* JSObjectPtr getJSObjectOfWrapper (in JSContextPtr aJSContext, in JSObjectPtr aJSObj); */
-  NS_IMETHOD GetJSObjectOfWrapper(JSContext *aJSContext, JSObject *aJSObj, JSObject **_retval) = 0;
-
   /* void setSecurityManagerForJSContext (in JSContextPtr aJSContext, in nsIXPCSecurityManager aManager, in uint16_t flags); */
   NS_IMETHOD SetSecurityManagerForJSContext(JSContext *aJSContext, nsIXPCSecurityManager *aManager, uint16_t flags) = 0;
 
@@ -658,8 +655,11 @@ class nsIXPConnect : public nsISupports {
   /* nsIStackFrame createStackFrameLocation (in uint32_t aLanguage, in string aFilename, in string aFunctionName, in int32_t aLineNumber, in nsIStackFrame aCaller); */
   NS_IMETHOD CreateStackFrameLocation(uint32_t aLanguage, const char * aFilename, const char * aFunctionName, int32_t aLineNumber, nsIStackFrame *aCaller, nsIStackFrame * *_retval) = 0;
 
-  /* [deprecated] void syncJSContexts (); */
-  NS_IMETHOD SyncJSContexts(void) = 0;
+  /* [noscript,nostdcall,notxpcom] JSContextPtr getCurrentJSContext (); */
+  virtual JSContext * GetCurrentJSContext(void) = 0;
+
+  /* [noscript,nostdcall,notxpcom] JSContextPtr getSafeJSContext (); */
+  virtual JSContext * GetSafeJSContext(void) = 0;
 
   /* readonly attribute nsIStackFrame CurrentJSStack; */
   NS_IMETHOD GetCurrentJSStack(nsIStackFrame * *aCurrentJSStack) = 0;
@@ -712,8 +712,8 @@ class nsIXPConnect : public nsISupports {
   /* [noscript] nsIXPConnectJSObjectHolder createSandbox (in JSContextPtr cx, in nsIPrincipal principal); */
   NS_IMETHOD CreateSandbox(JSContext *cx, nsIPrincipal *principal, nsIXPConnectJSObjectHolder * *_retval) = 0;
 
-  /* [noscript] jsval evalInSandboxObject (in AString source, in JSContextPtr cx, in nsIXPConnectJSObjectHolder sandbox, in boolean returnStringOnly); */
-  NS_IMETHOD EvalInSandboxObject(const nsAString & source, JSContext *cx, nsIXPConnectJSObjectHolder *sandbox, bool returnStringOnly, JS::Value *_retval) = 0;
+  /* [noscript] jsval evalInSandboxObject (in AString source, in string filename, in JSContextPtr cx, in JSObjectPtr sandbox, in boolean returnStringOnly); */
+  NS_IMETHOD EvalInSandboxObject(const nsAString & source, const char * filename, JSContext *cx, JSObject *sandbox, bool returnStringOnly, JS::Value *_retval) = 0;
 
   /* [noscript,notxpcom] void addJSHolder (in voidPtr aHolder, in nsScriptObjectTracerPtr aTracer); */
   NS_IMETHOD_(void) AddJSHolder(void *aHolder, nsScriptObjectTracer *aTracer) = 0;
@@ -775,20 +775,20 @@ class nsIXPConnect : public nsISupports {
 /* Use this macro when declaring classes that implement this interface. */
 #define NS_DECL_NSIXPCONNECT \
   NS_IMETHOD InitClasses(JSContext *aJSContext, JSObject *aGlobalJSObj); \
-  NS_IMETHOD InitClassesWithNewWrappedGlobal(JSContext *aJSContext, nsISupports *aCOMObj, nsIPrincipal *aPrincipal, uint32_t aFlags, nsIXPConnectJSObjectHolder * *_retval); \
+  NS_IMETHOD InitClassesWithNewWrappedGlobal(JSContext *aJSContext, nsISupports *aCOMObj, nsIPrincipal *aPrincipal, uint32_t aFlags, uintptr_t aZoneSpec, nsIXPConnectJSObjectHolder * *_retval); \
   NS_IMETHOD WrapNative(JSContext *aJSContext, JSObject *aScope, nsISupports *aCOMObj, const nsIID & aIID, nsIXPConnectJSObjectHolder * *_retval); \
   NS_IMETHOD WrapNativeToJSVal(JSContext *aJSContext, JSObject *aScope, nsISupports *aCOMObj, nsWrapperCache *aCache, const nsIID *aIID, bool aAllowWrapper, JS::Value *aVal, nsIXPConnectJSObjectHolder * *aHolder); \
   NS_IMETHOD WrapJS(JSContext *aJSContext, JSObject *aJSObj, const nsIID & aIID, void **result); \
   NS_IMETHOD JSValToVariant(JSContext *cx, jsval *aJSVal, nsIVariant * *_retval); \
   NS_IMETHOD GetWrappedNativeOfJSObject(JSContext *aJSContext, JSObject *aJSObj, nsIXPConnectWrappedNative * *_retval); \
   NS_IMETHOD_(nsISupports *) GetNativeOfWrapper(JSContext *aJSContext, JSObject *aJSObj); \
-  NS_IMETHOD GetJSObjectOfWrapper(JSContext *aJSContext, JSObject *aJSObj, JSObject **_retval); \
   NS_IMETHOD SetSecurityManagerForJSContext(JSContext *aJSContext, nsIXPCSecurityManager *aManager, uint16_t flags); \
   NS_IMETHOD GetSecurityManagerForJSContext(JSContext *aJSContext, nsIXPCSecurityManager * *aManager, uint16_t *flags); \
   NS_IMETHOD SetDefaultSecurityManager(nsIXPCSecurityManager *aManager, uint16_t flags); \
   NS_IMETHOD GetDefaultSecurityManager(nsIXPCSecurityManager * *aManager, uint16_t *flags); \
   NS_IMETHOD CreateStackFrameLocation(uint32_t aLanguage, const char * aFilename, const char * aFunctionName, int32_t aLineNumber, nsIStackFrame *aCaller, nsIStackFrame * *_retval); \
-  NS_IMETHOD SyncJSContexts(void); \
+  virtual JSContext * GetCurrentJSContext(void); \
+  virtual JSContext * GetSafeJSContext(void); \
   NS_IMETHOD GetCurrentJSStack(nsIStackFrame * *aCurrentJSStack); \
   NS_IMETHOD GetCurrentNativeCallContext(nsAXPCNativeCallContext **aCurrentNativeCallContext); \
   NS_IMETHOD DebugDump(int16_t depth); \
@@ -806,7 +806,7 @@ class nsIXPConnect : public nsISupports {
   NS_IMETHOD VariantToJS(JSContext *ctx, JSObject *scope, nsIVariant *value, JS::Value *_retval); \
   NS_IMETHOD JSToVariant(JSContext *ctx, const JS::Value & value, nsIVariant * *_retval); \
   NS_IMETHOD CreateSandbox(JSContext *cx, nsIPrincipal *principal, nsIXPConnectJSObjectHolder * *_retval); \
-  NS_IMETHOD EvalInSandboxObject(const nsAString & source, JSContext *cx, nsIXPConnectJSObjectHolder *sandbox, bool returnStringOnly, JS::Value *_retval); \
+  NS_IMETHOD EvalInSandboxObject(const nsAString & source, const char * filename, JSContext *cx, JSObject *sandbox, bool returnStringOnly, JS::Value *_retval); \
   NS_IMETHOD_(void) AddJSHolder(void *aHolder, nsScriptObjectTracer *aTracer); \
   NS_IMETHOD_(void) RemoveJSHolder(void *aHolder); \
   NS_IMETHOD_(bool) TestJSHolder(void *aHolder); \
@@ -825,20 +825,20 @@ class nsIXPConnect : public nsISupports {
 /* Use this macro to declare functions that forward the behavior of this interface to another object. */
 #define NS_FORWARD_NSIXPCONNECT(_to) \
   NS_IMETHOD InitClasses(JSContext *aJSContext, JSObject *aGlobalJSObj) { return _to InitClasses(aJSContext, aGlobalJSObj); } \
-  NS_IMETHOD InitClassesWithNewWrappedGlobal(JSContext *aJSContext, nsISupports *aCOMObj, nsIPrincipal *aPrincipal, uint32_t aFlags, nsIXPConnectJSObjectHolder * *_retval) { return _to InitClassesWithNewWrappedGlobal(aJSContext, aCOMObj, aPrincipal, aFlags, _retval); } \
+  NS_IMETHOD InitClassesWithNewWrappedGlobal(JSContext *aJSContext, nsISupports *aCOMObj, nsIPrincipal *aPrincipal, uint32_t aFlags, uintptr_t aZoneSpec, nsIXPConnectJSObjectHolder * *_retval) { return _to InitClassesWithNewWrappedGlobal(aJSContext, aCOMObj, aPrincipal, aFlags, aZoneSpec, _retval); } \
   NS_IMETHOD WrapNative(JSContext *aJSContext, JSObject *aScope, nsISupports *aCOMObj, const nsIID & aIID, nsIXPConnectJSObjectHolder * *_retval) { return _to WrapNative(aJSContext, aScope, aCOMObj, aIID, _retval); } \
   NS_IMETHOD WrapNativeToJSVal(JSContext *aJSContext, JSObject *aScope, nsISupports *aCOMObj, nsWrapperCache *aCache, const nsIID *aIID, bool aAllowWrapper, JS::Value *aVal, nsIXPConnectJSObjectHolder * *aHolder) { return _to WrapNativeToJSVal(aJSContext, aScope, aCOMObj, aCache, aIID, aAllowWrapper, aVal, aHolder); } \
   NS_IMETHOD WrapJS(JSContext *aJSContext, JSObject *aJSObj, const nsIID & aIID, void **result) { return _to WrapJS(aJSContext, aJSObj, aIID, result); } \
   NS_IMETHOD JSValToVariant(JSContext *cx, jsval *aJSVal, nsIVariant * *_retval) { return _to JSValToVariant(cx, aJSVal, _retval); } \
   NS_IMETHOD GetWrappedNativeOfJSObject(JSContext *aJSContext, JSObject *aJSObj, nsIXPConnectWrappedNative * *_retval) { return _to GetWrappedNativeOfJSObject(aJSContext, aJSObj, _retval); } \
   NS_IMETHOD_(nsISupports *) GetNativeOfWrapper(JSContext *aJSContext, JSObject *aJSObj) { return _to GetNativeOfWrapper(aJSContext, aJSObj); } \
-  NS_IMETHOD GetJSObjectOfWrapper(JSContext *aJSContext, JSObject *aJSObj, JSObject **_retval) { return _to GetJSObjectOfWrapper(aJSContext, aJSObj, _retval); } \
   NS_IMETHOD SetSecurityManagerForJSContext(JSContext *aJSContext, nsIXPCSecurityManager *aManager, uint16_t flags) { return _to SetSecurityManagerForJSContext(aJSContext, aManager, flags); } \
   NS_IMETHOD GetSecurityManagerForJSContext(JSContext *aJSContext, nsIXPCSecurityManager * *aManager, uint16_t *flags) { return _to GetSecurityManagerForJSContext(aJSContext, aManager, flags); } \
   NS_IMETHOD SetDefaultSecurityManager(nsIXPCSecurityManager *aManager, uint16_t flags) { return _to SetDefaultSecurityManager(aManager, flags); } \
   NS_IMETHOD GetDefaultSecurityManager(nsIXPCSecurityManager * *aManager, uint16_t *flags) { return _to GetDefaultSecurityManager(aManager, flags); } \
   NS_IMETHOD CreateStackFrameLocation(uint32_t aLanguage, const char * aFilename, const char * aFunctionName, int32_t aLineNumber, nsIStackFrame *aCaller, nsIStackFrame * *_retval) { return _to CreateStackFrameLocation(aLanguage, aFilename, aFunctionName, aLineNumber, aCaller, _retval); } \
-  NS_IMETHOD SyncJSContexts(void) { return _to SyncJSContexts(); } \
+  virtual JSContext * GetCurrentJSContext(void) { return _to GetCurrentJSContext(); } \
+  virtual JSContext * GetSafeJSContext(void) { return _to GetSafeJSContext(); } \
   NS_IMETHOD GetCurrentJSStack(nsIStackFrame * *aCurrentJSStack) { return _to GetCurrentJSStack(aCurrentJSStack); } \
   NS_IMETHOD GetCurrentNativeCallContext(nsAXPCNativeCallContext **aCurrentNativeCallContext) { return _to GetCurrentNativeCallContext(aCurrentNativeCallContext); } \
   NS_IMETHOD DebugDump(int16_t depth) { return _to DebugDump(depth); } \
@@ -856,7 +856,7 @@ class nsIXPConnect : public nsISupports {
   NS_IMETHOD VariantToJS(JSContext *ctx, JSObject *scope, nsIVariant *value, JS::Value *_retval) { return _to VariantToJS(ctx, scope, value, _retval); } \
   NS_IMETHOD JSToVariant(JSContext *ctx, const JS::Value & value, nsIVariant * *_retval) { return _to JSToVariant(ctx, value, _retval); } \
   NS_IMETHOD CreateSandbox(JSContext *cx, nsIPrincipal *principal, nsIXPConnectJSObjectHolder * *_retval) { return _to CreateSandbox(cx, principal, _retval); } \
-  NS_IMETHOD EvalInSandboxObject(const nsAString & source, JSContext *cx, nsIXPConnectJSObjectHolder *sandbox, bool returnStringOnly, JS::Value *_retval) { return _to EvalInSandboxObject(source, cx, sandbox, returnStringOnly, _retval); } \
+  NS_IMETHOD EvalInSandboxObject(const nsAString & source, const char * filename, JSContext *cx, JSObject *sandbox, bool returnStringOnly, JS::Value *_retval) { return _to EvalInSandboxObject(source, filename, cx, sandbox, returnStringOnly, _retval); } \
   NS_IMETHOD_(void) AddJSHolder(void *aHolder, nsScriptObjectTracer *aTracer) { return _to AddJSHolder(aHolder, aTracer); } \
   NS_IMETHOD_(void) RemoveJSHolder(void *aHolder) { return _to RemoveJSHolder(aHolder); } \
   NS_IMETHOD_(bool) TestJSHolder(void *aHolder) { return _to TestJSHolder(aHolder); } \
@@ -875,20 +875,20 @@ class nsIXPConnect : public nsISupports {
 /* Use this macro to declare functions that forward the behavior of this interface to another object in a safe way. */
 #define NS_FORWARD_SAFE_NSIXPCONNECT(_to) \
   NS_IMETHOD InitClasses(JSContext *aJSContext, JSObject *aGlobalJSObj) { return !_to ? NS_ERROR_NULL_POINTER : _to->InitClasses(aJSContext, aGlobalJSObj); } \
-  NS_IMETHOD InitClassesWithNewWrappedGlobal(JSContext *aJSContext, nsISupports *aCOMObj, nsIPrincipal *aPrincipal, uint32_t aFlags, nsIXPConnectJSObjectHolder * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->InitClassesWithNewWrappedGlobal(aJSContext, aCOMObj, aPrincipal, aFlags, _retval); } \
+  NS_IMETHOD InitClassesWithNewWrappedGlobal(JSContext *aJSContext, nsISupports *aCOMObj, nsIPrincipal *aPrincipal, uint32_t aFlags, uintptr_t aZoneSpec, nsIXPConnectJSObjectHolder * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->InitClassesWithNewWrappedGlobal(aJSContext, aCOMObj, aPrincipal, aFlags, aZoneSpec, _retval); } \
   NS_IMETHOD WrapNative(JSContext *aJSContext, JSObject *aScope, nsISupports *aCOMObj, const nsIID & aIID, nsIXPConnectJSObjectHolder * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->WrapNative(aJSContext, aScope, aCOMObj, aIID, _retval); } \
   NS_IMETHOD WrapNativeToJSVal(JSContext *aJSContext, JSObject *aScope, nsISupports *aCOMObj, nsWrapperCache *aCache, const nsIID *aIID, bool aAllowWrapper, JS::Value *aVal, nsIXPConnectJSObjectHolder * *aHolder) { return !_to ? NS_ERROR_NULL_POINTER : _to->WrapNativeToJSVal(aJSContext, aScope, aCOMObj, aCache, aIID, aAllowWrapper, aVal, aHolder); } \
   NS_IMETHOD WrapJS(JSContext *aJSContext, JSObject *aJSObj, const nsIID & aIID, void **result) { return !_to ? NS_ERROR_NULL_POINTER : _to->WrapJS(aJSContext, aJSObj, aIID, result); } \
   NS_IMETHOD JSValToVariant(JSContext *cx, jsval *aJSVal, nsIVariant * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->JSValToVariant(cx, aJSVal, _retval); } \
   NS_IMETHOD GetWrappedNativeOfJSObject(JSContext *aJSContext, JSObject *aJSObj, nsIXPConnectWrappedNative * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetWrappedNativeOfJSObject(aJSContext, aJSObj, _retval); } \
   NS_IMETHOD_(nsISupports *) GetNativeOfWrapper(JSContext *aJSContext, JSObject *aJSObj); \
-  NS_IMETHOD GetJSObjectOfWrapper(JSContext *aJSContext, JSObject *aJSObj, JSObject **_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetJSObjectOfWrapper(aJSContext, aJSObj, _retval); } \
   NS_IMETHOD SetSecurityManagerForJSContext(JSContext *aJSContext, nsIXPCSecurityManager *aManager, uint16_t flags) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetSecurityManagerForJSContext(aJSContext, aManager, flags); } \
   NS_IMETHOD GetSecurityManagerForJSContext(JSContext *aJSContext, nsIXPCSecurityManager * *aManager, uint16_t *flags) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetSecurityManagerForJSContext(aJSContext, aManager, flags); } \
   NS_IMETHOD SetDefaultSecurityManager(nsIXPCSecurityManager *aManager, uint16_t flags) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetDefaultSecurityManager(aManager, flags); } \
   NS_IMETHOD GetDefaultSecurityManager(nsIXPCSecurityManager * *aManager, uint16_t *flags) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetDefaultSecurityManager(aManager, flags); } \
   NS_IMETHOD CreateStackFrameLocation(uint32_t aLanguage, const char * aFilename, const char * aFunctionName, int32_t aLineNumber, nsIStackFrame *aCaller, nsIStackFrame * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->CreateStackFrameLocation(aLanguage, aFilename, aFunctionName, aLineNumber, aCaller, _retval); } \
-  NS_IMETHOD SyncJSContexts(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->SyncJSContexts(); } \
+  virtual JSContext * GetCurrentJSContext(void); \
+  virtual JSContext * GetSafeJSContext(void); \
   NS_IMETHOD GetCurrentJSStack(nsIStackFrame * *aCurrentJSStack) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetCurrentJSStack(aCurrentJSStack); } \
   NS_IMETHOD GetCurrentNativeCallContext(nsAXPCNativeCallContext **aCurrentNativeCallContext) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetCurrentNativeCallContext(aCurrentNativeCallContext); } \
   NS_IMETHOD DebugDump(int16_t depth) { return !_to ? NS_ERROR_NULL_POINTER : _to->DebugDump(depth); } \
@@ -906,7 +906,7 @@ class nsIXPConnect : public nsISupports {
   NS_IMETHOD VariantToJS(JSContext *ctx, JSObject *scope, nsIVariant *value, JS::Value *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->VariantToJS(ctx, scope, value, _retval); } \
   NS_IMETHOD JSToVariant(JSContext *ctx, const JS::Value & value, nsIVariant * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->JSToVariant(ctx, value, _retval); } \
   NS_IMETHOD CreateSandbox(JSContext *cx, nsIPrincipal *principal, nsIXPConnectJSObjectHolder * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->CreateSandbox(cx, principal, _retval); } \
-  NS_IMETHOD EvalInSandboxObject(const nsAString & source, JSContext *cx, nsIXPConnectJSObjectHolder *sandbox, bool returnStringOnly, JS::Value *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->EvalInSandboxObject(source, cx, sandbox, returnStringOnly, _retval); } \
+  NS_IMETHOD EvalInSandboxObject(const nsAString & source, const char * filename, JSContext *cx, JSObject *sandbox, bool returnStringOnly, JS::Value *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->EvalInSandboxObject(source, filename, cx, sandbox, returnStringOnly, _retval); } \
   NS_IMETHOD_(void) AddJSHolder(void *aHolder, nsScriptObjectTracer *aTracer); \
   NS_IMETHOD_(void) RemoveJSHolder(void *aHolder); \
   NS_IMETHOD_(bool) TestJSHolder(void *aHolder); \
@@ -960,8 +960,8 @@ NS_IMETHODIMP nsXPConnect::InitClasses(JSContext *aJSContext, JSObject *aGlobalJ
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* nsIXPConnectJSObjectHolder initClassesWithNewWrappedGlobal (in JSContextPtr aJSContext, in nsISupports aCOMObj, in nsIPrincipal aPrincipal, in uint32_t aFlags); */
-NS_IMETHODIMP nsXPConnect::InitClassesWithNewWrappedGlobal(JSContext *aJSContext, nsISupports *aCOMObj, nsIPrincipal *aPrincipal, uint32_t aFlags, nsIXPConnectJSObjectHolder * *_retval)
+/* nsIXPConnectJSObjectHolder initClassesWithNewWrappedGlobal (in JSContextPtr aJSContext, in nsISupports aCOMObj, in nsIPrincipal aPrincipal, in uint32_t aFlags, in ZoneSpecifier aZoneSpec); */
+NS_IMETHODIMP nsXPConnect::InitClassesWithNewWrappedGlobal(JSContext *aJSContext, nsISupports *aCOMObj, nsIPrincipal *aPrincipal, uint32_t aFlags, uintptr_t aZoneSpec, nsIXPConnectJSObjectHolder * *_retval)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
@@ -1002,12 +1002,6 @@ NS_IMETHODIMP_(nsISupports *) nsXPConnect::GetNativeOfWrapper(JSContext *aJSCont
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* JSObjectPtr getJSObjectOfWrapper (in JSContextPtr aJSContext, in JSObjectPtr aJSObj); */
-NS_IMETHODIMP nsXPConnect::GetJSObjectOfWrapper(JSContext *aJSContext, JSObject *aJSObj, JSObject **_retval)
-{
-    return NS_ERROR_NOT_IMPLEMENTED;
-}
-
 /* void setSecurityManagerForJSContext (in JSContextPtr aJSContext, in nsIXPCSecurityManager aManager, in uint16_t flags); */
 NS_IMETHODIMP nsXPConnect::SetSecurityManagerForJSContext(JSContext *aJSContext, nsIXPCSecurityManager *aManager, uint16_t flags)
 {
@@ -1038,8 +1032,14 @@ NS_IMETHODIMP nsXPConnect::CreateStackFrameLocation(uint32_t aLanguage, const ch
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* [deprecated] void syncJSContexts (); */
-NS_IMETHODIMP nsXPConnect::SyncJSContexts()
+/* [noscript,nostdcall,notxpcom] JSContextPtr getCurrentJSContext (); */
+JSContext * nsXPConnect::GetCurrentJSContext()
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* [noscript,nostdcall,notxpcom] JSContextPtr getSafeJSContext (); */
+JSContext * nsXPConnect::GetSafeJSContext()
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
@@ -1146,8 +1146,8 @@ NS_IMETHODIMP nsXPConnect::CreateSandbox(JSContext *cx, nsIPrincipal *principal,
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* [noscript] jsval evalInSandboxObject (in AString source, in JSContextPtr cx, in nsIXPConnectJSObjectHolder sandbox, in boolean returnStringOnly); */
-NS_IMETHODIMP nsXPConnect::EvalInSandboxObject(const nsAString & source, JSContext *cx, nsIXPConnectJSObjectHolder *sandbox, bool returnStringOnly, JS::Value *_retval)
+/* [noscript] jsval evalInSandboxObject (in AString source, in string filename, in JSContextPtr cx, in JSObjectPtr sandbox, in boolean returnStringOnly); */
+NS_IMETHODIMP nsXPConnect::EvalInSandboxObject(const nsAString & source, const char * filename, JSContext *cx, JSObject *sandbox, bool returnStringOnly, JS::Value *_retval)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

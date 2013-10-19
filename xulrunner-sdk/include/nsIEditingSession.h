@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/editor/composer/public/nsIEditingSession.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/editor/composer/public/nsIEditingSession.idl
  */
 
 #ifndef __gen_nsIEditingSession_h__

@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/docshell/base/nsIDocShellTreeItem.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/docshell/base/nsIDocShellTreeItem.idl
  */
 
 #ifndef __gen_nsIDocShellTreeItem_h__
@@ -18,20 +18,20 @@ class nsIDocShellTreeOwner; /* forward declaration */
 
 
 /* starting interface:    nsIDocShellTreeItem */
-#define NS_IDOCSHELLTREEITEM_IID_STR "09b54ec1-d98a-49a9-bc95-3219e8b55089"
+#define NS_IDOCSHELLTREEITEM_IID_STR "e35bbb39-985b-4d62-81da-73c330222e5f"
 
 #define NS_IDOCSHELLTREEITEM_IID \
-  {0x09b54ec1, 0xd98a, 0x49a9, \
-    { 0xbc, 0x95, 0x32, 0x19, 0xe8, 0xb5, 0x50, 0x89 }}
+  {0xe35bbb39, 0x985b, 0x4d62, \
+    { 0x81, 0xda, 0x73, 0xc3, 0x30, 0x22, 0x2e, 0x5f }}
 
 class NS_NO_VTABLE nsIDocShellTreeItem : public nsIDocShellTreeNode {
  public: 
 
   NS_DECLARE_STATIC_IID_ACCESSOR(NS_IDOCSHELLTREEITEM_IID)
 
-  /* attribute wstring name; */
-  NS_IMETHOD GetName(PRUnichar * *aName) = 0;
-  NS_IMETHOD SetName(const PRUnichar * aName) = 0;
+  /* attribute AString name; */
+  NS_IMETHOD GetName(nsAString & aName) = 0;
+  NS_IMETHOD SetName(const nsAString & aName) = 0;
 
   /* boolean nameEquals (in wstring name); */
   NS_IMETHOD NameEquals(const PRUnichar * name, bool *_retval) = 0;
@@ -75,8 +75,8 @@ class NS_NO_VTABLE nsIDocShellTreeItem : public nsIDocShellTreeNode {
 
 /* Use this macro when declaring classes that implement this interface. */
 #define NS_DECL_NSIDOCSHELLTREEITEM \
-  NS_IMETHOD GetName(PRUnichar * *aName); \
-  NS_IMETHOD SetName(const PRUnichar * aName); \
+  NS_IMETHOD GetName(nsAString & aName); \
+  NS_IMETHOD SetName(const nsAString & aName); \
   NS_IMETHOD NameEquals(const PRUnichar * name, bool *_retval); \
   NS_IMETHOD GetItemType(int32_t *aItemType); \
   NS_IMETHOD SetItemType(int32_t aItemType); \
@@ -90,8 +90,8 @@ class NS_NO_VTABLE nsIDocShellTreeItem : public nsIDocShellTreeNode {
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object. */
 #define NS_FORWARD_NSIDOCSHELLTREEITEM(_to) \
-  NS_IMETHOD GetName(PRUnichar * *aName) { return _to GetName(aName); } \
-  NS_IMETHOD SetName(const PRUnichar * aName) { return _to SetName(aName); } \
+  NS_IMETHOD GetName(nsAString & aName) { return _to GetName(aName); } \
+  NS_IMETHOD SetName(const nsAString & aName) { return _to SetName(aName); } \
   NS_IMETHOD NameEquals(const PRUnichar * name, bool *_retval) { return _to NameEquals(name, _retval); } \
   NS_IMETHOD GetItemType(int32_t *aItemType) { return _to GetItemType(aItemType); } \
   NS_IMETHOD SetItemType(int32_t aItemType) { return _to SetItemType(aItemType); } \
@@ -105,8 +105,8 @@ class NS_NO_VTABLE nsIDocShellTreeItem : public nsIDocShellTreeNode {
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object in a safe way. */
 #define NS_FORWARD_SAFE_NSIDOCSHELLTREEITEM(_to) \
-  NS_IMETHOD GetName(PRUnichar * *aName) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetName(aName); } \
-  NS_IMETHOD SetName(const PRUnichar * aName) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetName(aName); } \
+  NS_IMETHOD GetName(nsAString & aName) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetName(aName); } \
+  NS_IMETHOD SetName(const nsAString & aName) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetName(aName); } \
   NS_IMETHOD NameEquals(const PRUnichar * name, bool *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->NameEquals(name, _retval); } \
   NS_IMETHOD GetItemType(int32_t *aItemType) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetItemType(aItemType); } \
   NS_IMETHOD SetItemType(int32_t aItemType) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetItemType(aItemType); } \
@@ -150,12 +150,12 @@ nsDocShellTreeItem::~nsDocShellTreeItem()
   /* destructor code */
 }
 
-/* attribute wstring name; */
-NS_IMETHODIMP nsDocShellTreeItem::GetName(PRUnichar * *aName)
+/* attribute AString name; */
+NS_IMETHODIMP nsDocShellTreeItem::GetName(nsAString & aName)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
-NS_IMETHODIMP nsDocShellTreeItem::SetName(const PRUnichar * aName)
+NS_IMETHODIMP nsDocShellTreeItem::SetName(const nsAString & aName)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

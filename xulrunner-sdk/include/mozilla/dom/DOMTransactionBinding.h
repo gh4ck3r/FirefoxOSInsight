@@ -11,39 +11,14 @@
 #include "mozilla/dom/DOMJSClass.h"
 #include "mozilla/dom/DOMJSProxyHandler.h"
 
-class XPCWrappedNativeScope;
 namespace mozilla {
 namespace dom {
 
+class DOMTransaction;
 class DOMTransactionCallback;
 
 } // namespace dom
 } // namespace mozilla
-
-namespace mozilla {
-namespace dom {
-
-class DOMTransactionCallback;
-
-} // namespace dom
-} // namespace mozilla
-
-namespace mozilla {
-namespace dom {
-
-class DOMTransactionCallback;
-
-} // namespace dom
-} // namespace mozilla
-
-namespace mozilla {
-namespace dom {
-
-class DOMTransactionCallback;
-
-} // namespace dom
-} // namespace mozilla
-
 
 namespace mozilla {
 namespace dom {
@@ -51,8 +26,8 @@ namespace dom {
 class DOMTransactionCallback : public CallbackFunction
 {
 public:
-  inline DOMTransactionCallback(JSContext* cx, JSObject* aOwner, JSObject* aCallback, bool* aInited)
-    : CallbackFunction(cx, aOwner, aCallback, aInited)
+  explicit inline DOMTransactionCallback(JSObject* aCallback)
+    : CallbackFunction(aCallback)
   {
   }
 
@@ -63,14 +38,15 @@ public:
 
   template <typename T>
   inline void
-  Call(const T& thisObj, ErrorResult& aRv)
+  Call(const T& thisObj, ErrorResult& aRv, ExceptionHandling aExceptionHandling = eReportExceptions)
   {
-    CallSetup s(mCallback);
+    CallSetup s(CallbackPreserveColor(), aRv, aExceptionHandling);
     if (!s.GetContext()) {
       aRv.Throw(NS_ERROR_UNEXPECTED);
       return;
     }
-    JSObject* thisObjJS = WrapCallThisObject(s.GetContext(), mCallback, thisObj);
+    JS::Rooted<JSObject*> thisObjJS(s.GetContext(),
+      WrapCallThisObject(s.GetContext(), CallbackPreserveColor(), thisObj));
     if (!thisObjJS) {
       aRv.Throw(NS_ERROR_FAILURE);
       return;
@@ -79,38 +55,38 @@ public:
   }
 
   inline void
-  Call(ErrorResult& aRv)
+  Call(ErrorResult& aRv, ExceptionHandling aExceptionHandling = eReportExceptions)
   {
-    CallSetup s(mCallback);
+    CallSetup s(CallbackPreserveColor(), aRv, aExceptionHandling);
     if (!s.GetContext()) {
       aRv.Throw(NS_ERROR_UNEXPECTED);
       return;
     }
-    return Call(s.GetContext(), nullptr, aRv);
+    return Call(s.GetContext(), JS::NullPtr(), aRv);
   }
 
 private:
-  void Call(JSContext* cx, JSObject* aThisObj, ErrorResult& aRv);
+  void Call(JSContext* cx, JS::Handle<JSObject*> aThisObj, ErrorResult& aRv);
 };
 
 
 class DOMTransaction : public CallbackInterface
 {
 public:
-  inline DOMTransaction(JSContext* cx, JSObject* aOwner, JSObject* aCallback, bool* aInited)
-    : CallbackInterface(cx, aOwner, aCallback, aInited)
+  explicit inline DOMTransaction(JSObject* aCallback)
+    : CallbackInterface(aCallback)
   {
   }
 
-  void GetLabel(nsString& retval, ErrorResult& aRv);
+  void GetLabel(nsString& retval, ErrorResult& aRv, ExceptionHandling aExceptionHandling = eReportExceptions);
 
-  already_AddRefed<DOMTransactionCallback> GetExecuteAutomatic(ErrorResult& aRv);
+  already_AddRefed<DOMTransactionCallback> GetExecuteAutomatic(ErrorResult& aRv, ExceptionHandling aExceptionHandling = eReportExceptions);
 
-  already_AddRefed<DOMTransactionCallback> GetExecute(ErrorResult& aRv);
+  already_AddRefed<DOMTransactionCallback> GetExecute(ErrorResult& aRv, ExceptionHandling aExceptionHandling = eReportExceptions);
 
-  already_AddRefed<DOMTransactionCallback> GetUndo(ErrorResult& aRv);
+  already_AddRefed<DOMTransactionCallback> GetUndo(ErrorResult& aRv, ExceptionHandling aExceptionHandling = eReportExceptions);
 
-  already_AddRefed<DOMTransactionCallback> GetRedo(ErrorResult& aRv);
+  already_AddRefed<DOMTransactionCallback> GetRedo(ErrorResult& aRv, ExceptionHandling aExceptionHandling = eReportExceptions);
 };
 
 

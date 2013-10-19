@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/apps/nsIAppsService.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/apps/nsIAppsService.idl
  */
 
 #ifndef __gen_nsIAppsService_h__
@@ -24,11 +24,11 @@ class mozIApplication; /* forward declaration */
 #define APPS_SERVICE_CONTRACTID "@mozilla.org/AppsService;1"
 
 /* starting interface:    nsIAppsService */
-#define NS_IAPPSSERVICE_IID_STR "4ac27836-4d79-4d35-b105-d6fb7f4f8e41"
+#define NS_IAPPSSERVICE_IID_STR "1113c6e3-28a2-4315-be10-8b3230eecc0f"
 
 #define NS_IAPPSSERVICE_IID \
-  {0x4ac27836, 0x4d79, 0x4d35, \
-    { 0xb1, 0x05, 0xd6, 0xfb, 0x7f, 0x4f, 0x8e, 0x41 }}
+  {0x1113c6e3, 0x28a2, 0x4315, \
+    { 0xbe, 0x10, 0x8b, 0x32, 0x30, 0xee, 0xcc, 0x0f }}
 
 class NS_NO_VTABLE nsIAppsService : public nsISupports {
  public: 
@@ -62,6 +62,9 @@ class NS_NO_VTABLE nsIAppsService : public nsISupports {
   /* jsval getAppInfo (in DOMString appId); */
   NS_IMETHOD GetAppInfo(const nsAString & appId, JS::Value *_retval) = 0;
 
+  /* DOMString getAppLocalIdByStoreId (in DOMString storeID); */
+  NS_IMETHOD GetAppLocalIdByStoreId(const nsAString & storeID, nsAString & _retval) = 0;
+
 };
 
   NS_DEFINE_STATIC_IID_ACCESSOR(nsIAppsService, NS_IAPPSSERVICE_IID)
@@ -76,7 +79,8 @@ class NS_NO_VTABLE nsIAppsService : public nsISupports {
   NS_IMETHOD GetCSPByLocalId(uint32_t localId, nsAString & _retval); \
   NS_IMETHOD GetCoreAppsBasePath(nsAString & _retval); \
   NS_IMETHOD GetWebAppsBasePath(nsAString & _retval); \
-  NS_IMETHOD GetAppInfo(const nsAString & appId, JS::Value *_retval); 
+  NS_IMETHOD GetAppInfo(const nsAString & appId, JS::Value *_retval); \
+  NS_IMETHOD GetAppLocalIdByStoreId(const nsAString & storeID, nsAString & _retval); 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object. */
 #define NS_FORWARD_NSIAPPSSERVICE(_to) \
@@ -88,7 +92,8 @@ class NS_NO_VTABLE nsIAppsService : public nsISupports {
   NS_IMETHOD GetCSPByLocalId(uint32_t localId, nsAString & _retval) { return _to GetCSPByLocalId(localId, _retval); } \
   NS_IMETHOD GetCoreAppsBasePath(nsAString & _retval) { return _to GetCoreAppsBasePath(_retval); } \
   NS_IMETHOD GetWebAppsBasePath(nsAString & _retval) { return _to GetWebAppsBasePath(_retval); } \
-  NS_IMETHOD GetAppInfo(const nsAString & appId, JS::Value *_retval) { return _to GetAppInfo(appId, _retval); } 
+  NS_IMETHOD GetAppInfo(const nsAString & appId, JS::Value *_retval) { return _to GetAppInfo(appId, _retval); } \
+  NS_IMETHOD GetAppLocalIdByStoreId(const nsAString & storeID, nsAString & _retval) { return _to GetAppLocalIdByStoreId(storeID, _retval); } 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object in a safe way. */
 #define NS_FORWARD_SAFE_NSIAPPSSERVICE(_to) \
@@ -100,7 +105,8 @@ class NS_NO_VTABLE nsIAppsService : public nsISupports {
   NS_IMETHOD GetCSPByLocalId(uint32_t localId, nsAString & _retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetCSPByLocalId(localId, _retval); } \
   NS_IMETHOD GetCoreAppsBasePath(nsAString & _retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetCoreAppsBasePath(_retval); } \
   NS_IMETHOD GetWebAppsBasePath(nsAString & _retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetWebAppsBasePath(_retval); } \
-  NS_IMETHOD GetAppInfo(const nsAString & appId, JS::Value *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetAppInfo(appId, _retval); } 
+  NS_IMETHOD GetAppInfo(const nsAString & appId, JS::Value *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetAppInfo(appId, _retval); } \
+  NS_IMETHOD GetAppLocalIdByStoreId(const nsAString & storeID, nsAString & _retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetAppLocalIdByStoreId(storeID, _retval); } 
 
 #if 0
 /* Use the code below as a template for the implementation class for this interface. */
@@ -184,6 +190,12 @@ NS_IMETHODIMP nsAppsService::GetWebAppsBasePath(nsAString & _retval)
 
 /* jsval getAppInfo (in DOMString appId); */
 NS_IMETHODIMP nsAppsService::GetAppInfo(const nsAString & appId, JS::Value *_retval)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* DOMString getAppLocalIdByStoreId (in DOMString storeID); */
+NS_IMETHODIMP nsAppsService::GetAppLocalIdByStoreId(const nsAString & storeID, nsAString & _retval)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/xul/nsIDOMXULControlElement.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/xul/nsIDOMXULControlElement.idl
  */
 
 #ifndef __gen_nsIDOMXULControlElement_h__
@@ -22,11 +22,11 @@ class nsIControllers; /* forward declaration */
 
 
 /* starting interface:    nsIDOMXULControlElement */
-#define NS_IDOMXULCONTROLELEMENT_IID_STR "6e4adf19-92d9-4866-8f09-9c71fd4af430"
+#define NS_IDOMXULCONTROLELEMENT_IID_STR "e184acec-1890-4c17-9402-6481d9309a61"
 
 #define NS_IDOMXULCONTROLELEMENT_IID \
-  {0x6e4adf19, 0x92d9, 0x4866, \
-    { 0x8f, 0x09, 0x9c, 0x71, 0xfd, 0x4a, 0xf4, 0x30 }}
+  {0xe184acec, 0x1890, 0x4c17, \
+    { 0x94, 0x02, 0x64, 0x81, 0xd9, 0x30, 0x9a, 0x61 }}
 
 class NS_NO_VTABLE nsIDOMXULControlElement : public nsIDOMXULElement {
  public: 

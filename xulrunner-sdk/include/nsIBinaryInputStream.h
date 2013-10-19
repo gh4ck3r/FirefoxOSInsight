@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/xpcom/io/nsIBinaryInputStream.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/xpcom/io/nsIBinaryInputStream.idl
  */
 
 #ifndef __gen_nsIBinaryInputStream_h__
@@ -14,17 +14,19 @@
 #include "nsrootidl.h"
 #endif
 
+#include "jspubtd.h"
+
 /* For IDL files that don't want to include root IDL files. */
 #ifndef NS_NO_VTABLE
 #define NS_NO_VTABLE
 #endif
 
 /* starting interface:    nsIBinaryInputStream */
-#define NS_IBINARYINPUTSTREAM_IID_STR "7b456cb0-8772-11d3-90cf-0040056a906e"
+#define NS_IBINARYINPUTSTREAM_IID_STR "42084755-fedc-4310-831c-4f43e7b42e20"
 
 #define NS_IBINARYINPUTSTREAM_IID \
-  {0x7b456cb0, 0x8772, 0x11d3, \
-    { 0x90, 0xcf, 0x00, 0x40, 0x05, 0x6a, 0x90, 0x6e }}
+  {0x42084755, 0xfedc, 0x4310, \
+    { 0x83, 0x1c, 0x4f, 0x43, 0xe7, 0xb4, 0x2e, 0x20 }}
 
 class NS_NO_VTABLE nsIBinaryInputStream : public nsIInputStream {
  public: 
@@ -67,6 +69,9 @@ class NS_NO_VTABLE nsIBinaryInputStream : public nsIInputStream {
   /* void readByteArray (in uint32_t aLength, [array, size_is (aLength), retval] out uint8_t aBytes); */
   NS_IMETHOD ReadByteArray(uint32_t aLength, uint8_t **aBytes) = 0;
 
+  /* [implicit_jscontext] void readArrayBuffer (in uint32_t aLength, in jsval aArrayBuffer); */
+  NS_IMETHOD ReadArrayBuffer(uint32_t aLength, const JS::Value & aArrayBuffer, JSContext* cx) = 0;
+
 };
 
   NS_DEFINE_STATIC_IID_ACCESSOR(nsIBinaryInputStream, NS_IBINARYINPUTSTREAM_IID)
@@ -84,7 +89,8 @@ class NS_NO_VTABLE nsIBinaryInputStream : public nsIInputStream {
   NS_IMETHOD ReadCString(nsACString & _retval); \
   NS_IMETHOD ReadString(nsAString & _retval); \
   NS_IMETHOD ReadBytes(uint32_t aLength, char * *aString); \
-  NS_IMETHOD ReadByteArray(uint32_t aLength, uint8_t **aBytes); 
+  NS_IMETHOD ReadByteArray(uint32_t aLength, uint8_t **aBytes); \
+  NS_IMETHOD ReadArrayBuffer(uint32_t aLength, const JS::Value & aArrayBuffer, JSContext* cx); 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object. */
 #define NS_FORWARD_NSIBINARYINPUTSTREAM(_to) \
@@ -99,7 +105,8 @@ class NS_NO_VTABLE nsIBinaryInputStream : public nsIInputStream {
   NS_IMETHOD ReadCString(nsACString & _retval) { return _to ReadCString(_retval); } \
   NS_IMETHOD ReadString(nsAString & _retval) { return _to ReadString(_retval); } \
   NS_IMETHOD ReadBytes(uint32_t aLength, char * *aString) { return _to ReadBytes(aLength, aString); } \
-  NS_IMETHOD ReadByteArray(uint32_t aLength, uint8_t **aBytes) { return _to ReadByteArray(aLength, aBytes); } 
+  NS_IMETHOD ReadByteArray(uint32_t aLength, uint8_t **aBytes) { return _to ReadByteArray(aLength, aBytes); } \
+  NS_IMETHOD ReadArrayBuffer(uint32_t aLength, const JS::Value & aArrayBuffer, JSContext* cx) { return _to ReadArrayBuffer(aLength, aArrayBuffer, cx); } 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object in a safe way. */
 #define NS_FORWARD_SAFE_NSIBINARYINPUTSTREAM(_to) \
@@ -114,7 +121,8 @@ class NS_NO_VTABLE nsIBinaryInputStream : public nsIInputStream {
   NS_IMETHOD ReadCString(nsACString & _retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->ReadCString(_retval); } \
   NS_IMETHOD ReadString(nsAString & _retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->ReadString(_retval); } \
   NS_IMETHOD ReadBytes(uint32_t aLength, char * *aString) { return !_to ? NS_ERROR_NULL_POINTER : _to->ReadBytes(aLength, aString); } \
-  NS_IMETHOD ReadByteArray(uint32_t aLength, uint8_t **aBytes) { return !_to ? NS_ERROR_NULL_POINTER : _to->ReadByteArray(aLength, aBytes); } 
+  NS_IMETHOD ReadByteArray(uint32_t aLength, uint8_t **aBytes) { return !_to ? NS_ERROR_NULL_POINTER : _to->ReadByteArray(aLength, aBytes); } \
+  NS_IMETHOD ReadArrayBuffer(uint32_t aLength, const JS::Value & aArrayBuffer, JSContext* cx) { return !_to ? NS_ERROR_NULL_POINTER : _to->ReadArrayBuffer(aLength, aArrayBuffer, cx); } 
 
 #if 0
 /* Use the code below as a template for the implementation class for this interface. */
@@ -216,6 +224,12 @@ NS_IMETHODIMP nsBinaryInputStream::ReadBytes(uint32_t aLength, char * *aString)
 
 /* void readByteArray (in uint32_t aLength, [array, size_is (aLength), retval] out uint8_t aBytes); */
 NS_IMETHODIMP nsBinaryInputStream::ReadByteArray(uint32_t aLength, uint8_t **aBytes)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* [implicit_jscontext] void readArrayBuffer (in uint32_t aLength, in jsval aArrayBuffer); */
+NS_IMETHODIMP nsBinaryInputStream::ReadArrayBuffer(uint32_t aLength, const JS::Value & aArrayBuffer, JSContext* cx)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

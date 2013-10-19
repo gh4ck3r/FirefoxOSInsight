@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/docshell/shistory/public/nsISHEntry.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/docshell/shistory/public/nsISHEntry.idl
  */
 
 #ifndef __gen_nsISHEntry_h__

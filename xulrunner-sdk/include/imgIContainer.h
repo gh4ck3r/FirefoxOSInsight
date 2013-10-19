@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/image/public/imgIContainer.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/image/public/imgIContainer.idl
  */
 
 #ifndef __gen_imgIContainer_h__
@@ -32,14 +32,15 @@ class ImageContainer;
 class nsIFrame;
 namespace mozilla {
 class TimeStamp;
+class SVGImageContext;
 }
 
 /* starting interface:    imgIContainer */
-#define IMGICONTAINER_IID_STR "c7e8eed7-2be9-40b0-be7c-b682097f5b28"
+#define IMGICONTAINER_IID_STR "e385f907-9a59-419b-8e15-e2a96d8ce044"
 
 #define IMGICONTAINER_IID \
-  {0xc7e8eed7, 0x2be9, 0x40b0, \
-    { 0xbe, 0x7c, 0xb6, 0x82, 0x09, 0x7f, 0x5b, 0x28 }}
+  {0xe385f907, 0x9a59, 0x419b, \
+    { 0x8e, 0x15, 0xe2, 0xa9, 0x6d, 0x8c, 0xe0, 0x44 }}
 
 class NS_NO_VTABLE imgIContainer : public nsISupports {
  public: 
@@ -51,6 +52,12 @@ class NS_NO_VTABLE imgIContainer : public nsISupports {
 
   /* readonly attribute int32_t height; */
   NS_IMETHOD GetHeight(int32_t *aHeight) = 0;
+
+  /* [noscript] readonly attribute nsSize intrinsicSize; */
+  NS_IMETHOD GetIntrinsicSize(nsSize *aIntrinsicSize) = 0;
+
+  /* [noscript] readonly attribute nsSize intrinsicRatio; */
+  NS_IMETHOD GetIntrinsicRatio(nsSize *aIntrinsicRatio) = 0;
 
   enum {
     TYPE_RASTER = 0U,
@@ -72,6 +79,7 @@ class NS_NO_VTABLE imgIContainer : public nsISupports {
     FLAG_DECODE_NO_PREMULTIPLY_ALPHA = 2,
     FLAG_DECODE_NO_COLORSPACE_CONVERSION = 4,
     FLAG_CLAMP = 8,
+    FLAG_HIGH_QUALITY_SCALING = 16,
     FRAME_FIRST = 0U,
     FRAME_CURRENT = 1U,
     FRAME_MAX_VALUE = 1U
@@ -86,17 +94,8 @@ class NS_NO_VTABLE imgIContainer : public nsISupports {
   /* [noscript] ImageContainer getImageContainer (in LayerManager aManager); */
   NS_IMETHOD GetImageContainer(mozilla::layers::LayerManager *aManager, mozilla::layers::ImageContainer **_retval) = 0;
 
-  /* [noscript] gfxImageSurface copyFrame (in uint32_t aWhichFrame, in uint32_t aFlags); */
-  NS_IMETHOD CopyFrame(uint32_t aWhichFrame, uint32_t aFlags, gfxImageSurface **_retval) = 0;
-
-  /* [noscript] imgIContainer extractFrame (in uint32_t aWhichFrame, [const] in nsIntRect aRect, in uint32_t aFlags); */
-  NS_IMETHOD ExtractFrame(uint32_t aWhichFrame, const nsIntRect & aRect, uint32_t aFlags, imgIContainer * *_retval) = 0;
-
-  /* [noscript] void draw (in gfxContext aContext, in gfxGraphicsFilter aFilter, [const] in gfxMatrix aUserSpaceToImageSpace, [const] in gfxRect aFill, [const] in nsIntRect aSubimage, [const] in nsIntSize aViewportSize, in uint32_t aFlags); */
-  NS_IMETHOD Draw(gfxContext *aContext, gfxPattern::GraphicsFilter aFilter, const gfxMatrix & aUserSpaceToImageSpace, const gfxRect & aFill, const nsIntRect & aSubimage, const nsIntSize & aViewportSize, uint32_t aFlags) = 0;
-
-  /* [notxpcom] nsIFrame GetRootLayoutFrame (); */
-  NS_IMETHOD_(nsIFrame *) GetRootLayoutFrame(void) = 0;
+  /* [noscript] void draw (in gfxContext aContext, in gfxGraphicsFilter aFilter, [const] in gfxMatrix aUserSpaceToImageSpace, [const] in gfxRect aFill, [const] in nsIntRect aSubimage, [const] in nsIntSize aViewportSize, [const] in SVGImageContext aSVGContext, in uint32_t aWhichFrame, in uint32_t aFlags); */
+  NS_IMETHOD Draw(gfxContext *aContext, gfxPattern::GraphicsFilter aFilter, const gfxMatrix & aUserSpaceToImageSpace, const gfxRect & aFill, const nsIntRect & aSubimage, const nsIntSize & aViewportSize, const mozilla::SVGImageContext *aSVGContext, uint32_t aWhichFrame, uint32_t aFlags) = 0;
 
   /* void requestDecode (); */
   NS_IMETHOD RequestDecode(void) = 0;
@@ -129,6 +128,9 @@ class NS_NO_VTABLE imgIContainer : public nsISupports {
   /* void resetAnimation (); */
   NS_IMETHOD ResetAnimation(void) = 0;
 
+  /* [notxpcom] float getFrameIndex (in uint32_t aWhichFrame); */
+  NS_IMETHOD_(float) GetFrameIndex(uint32_t aWhichFrame) = 0;
+
 };
 
   NS_DEFINE_STATIC_IID_ACCESSOR(imgIContainer, IMGICONTAINER_IID)
@@ -137,16 +139,15 @@ class NS_NO_VTABLE imgIContainer : public nsISupports {
 #define NS_DECL_IMGICONTAINER \
   NS_IMETHOD GetWidth(int32_t *aWidth); \
   NS_IMETHOD GetHeight(int32_t *aHeight); \
+  NS_IMETHOD GetIntrinsicSize(nsSize *aIntrinsicSize); \
+  NS_IMETHOD GetIntrinsicRatio(nsSize *aIntrinsicRatio); \
   NS_IMETHOD GetType(uint16_t *aType); \
   NS_IMETHOD_(uint16_t) GetType(void); \
   NS_IMETHOD GetAnimated(bool *aAnimated); \
   NS_IMETHOD GetFrame(uint32_t aWhichFrame, uint32_t aFlags, gfxASurface **_retval); \
   NS_IMETHOD_(bool) FrameIsOpaque(uint32_t aWhichFrame); \
   NS_IMETHOD GetImageContainer(mozilla::layers::LayerManager *aManager, mozilla::layers::ImageContainer **_retval); \
-  NS_IMETHOD CopyFrame(uint32_t aWhichFrame, uint32_t aFlags, gfxImageSurface **_retval); \
-  NS_IMETHOD ExtractFrame(uint32_t aWhichFrame, const nsIntRect & aRect, uint32_t aFlags, imgIContainer * *_retval); \
-  NS_IMETHOD Draw(gfxContext *aContext, gfxPattern::GraphicsFilter aFilter, const gfxMatrix & aUserSpaceToImageSpace, const gfxRect & aFill, const nsIntRect & aSubimage, const nsIntSize & aViewportSize, uint32_t aFlags); \
-  NS_IMETHOD_(nsIFrame *) GetRootLayoutFrame(void); \
+  NS_IMETHOD Draw(gfxContext *aContext, gfxPattern::GraphicsFilter aFilter, const gfxMatrix & aUserSpaceToImageSpace, const gfxRect & aFill, const nsIntRect & aSubimage, const nsIntSize & aViewportSize, const mozilla::SVGImageContext *aSVGContext, uint32_t aWhichFrame, uint32_t aFlags); \
   NS_IMETHOD RequestDecode(void); \
   NS_IMETHOD StartDecoding(void); \
   NS_IMETHOD LockImage(void); \
@@ -155,22 +156,22 @@ class NS_NO_VTABLE imgIContainer : public nsISupports {
   NS_IMETHOD_(void) RequestRefresh(const mozilla::TimeStamp & aTime); \
   NS_IMETHOD GetAnimationMode(uint16_t *aAnimationMode); \
   NS_IMETHOD SetAnimationMode(uint16_t aAnimationMode); \
-  NS_IMETHOD ResetAnimation(void); 
+  NS_IMETHOD ResetAnimation(void); \
+  NS_IMETHOD_(float) GetFrameIndex(uint32_t aWhichFrame); 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object. */
 #define NS_FORWARD_IMGICONTAINER(_to) \
   NS_IMETHOD GetWidth(int32_t *aWidth) { return _to GetWidth(aWidth); } \
   NS_IMETHOD GetHeight(int32_t *aHeight) { return _to GetHeight(aHeight); } \
+  NS_IMETHOD GetIntrinsicSize(nsSize *aIntrinsicSize) { return _to GetIntrinsicSize(aIntrinsicSize); } \
+  NS_IMETHOD GetIntrinsicRatio(nsSize *aIntrinsicRatio) { return _to GetIntrinsicRatio(aIntrinsicRatio); } \
   NS_IMETHOD GetType(uint16_t *aType) { return _to GetType(aType); } \
   NS_IMETHOD_(uint16_t) GetType(void) { return _to GetType(); } \
   NS_IMETHOD GetAnimated(bool *aAnimated) { return _to GetAnimated(aAnimated); } \
   NS_IMETHOD GetFrame(uint32_t aWhichFrame, uint32_t aFlags, gfxASurface **_retval) { return _to GetFrame(aWhichFrame, aFlags, _retval); } \
   NS_IMETHOD_(bool) FrameIsOpaque(uint32_t aWhichFrame) { return _to FrameIsOpaque(aWhichFrame); } \
   NS_IMETHOD GetImageContainer(mozilla::layers::LayerManager *aManager, mozilla::layers::ImageContainer **_retval) { return _to GetImageContainer(aManager, _retval); } \
-  NS_IMETHOD CopyFrame(uint32_t aWhichFrame, uint32_t aFlags, gfxImageSurface **_retval) { return _to CopyFrame(aWhichFrame, aFlags, _retval); } \
-  NS_IMETHOD ExtractFrame(uint32_t aWhichFrame, const nsIntRect & aRect, uint32_t aFlags, imgIContainer * *_retval) { return _to ExtractFrame(aWhichFrame, aRect, aFlags, _retval); } \
-  NS_IMETHOD Draw(gfxContext *aContext, gfxPattern::GraphicsFilter aFilter, const gfxMatrix & aUserSpaceToImageSpace, const gfxRect & aFill, const nsIntRect & aSubimage, const nsIntSize & aViewportSize, uint32_t aFlags) { return _to Draw(aContext, aFilter, aUserSpaceToImageSpace, aFill, aSubimage, aViewportSize, aFlags); } \
-  NS_IMETHOD_(nsIFrame *) GetRootLayoutFrame(void) { return _to GetRootLayoutFrame(); } \
+  NS_IMETHOD Draw(gfxContext *aContext, gfxPattern::GraphicsFilter aFilter, const gfxMatrix & aUserSpaceToImageSpace, const gfxRect & aFill, const nsIntRect & aSubimage, const nsIntSize & aViewportSize, const mozilla::SVGImageContext *aSVGContext, uint32_t aWhichFrame, uint32_t aFlags) { return _to Draw(aContext, aFilter, aUserSpaceToImageSpace, aFill, aSubimage, aViewportSize, aSVGContext, aWhichFrame, aFlags); } \
   NS_IMETHOD RequestDecode(void) { return _to RequestDecode(); } \
   NS_IMETHOD StartDecoding(void) { return _to StartDecoding(); } \
   NS_IMETHOD LockImage(void) { return _to LockImage(); } \
@@ -179,22 +180,22 @@ class NS_NO_VTABLE imgIContainer : public nsISupports {
   NS_IMETHOD_(void) RequestRefresh(const mozilla::TimeStamp & aTime) { return _to RequestRefresh(aTime); } \
   NS_IMETHOD GetAnimationMode(uint16_t *aAnimationMode) { return _to GetAnimationMode(aAnimationMode); } \
   NS_IMETHOD SetAnimationMode(uint16_t aAnimationMode) { return _to SetAnimationMode(aAnimationMode); } \
-  NS_IMETHOD ResetAnimation(void) { return _to ResetAnimation(); } 
+  NS_IMETHOD ResetAnimation(void) { return _to ResetAnimation(); } \
+  NS_IMETHOD_(float) GetFrameIndex(uint32_t aWhichFrame) { return _to GetFrameIndex(aWhichFrame); } 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object in a safe way. */
 #define NS_FORWARD_SAFE_IMGICONTAINER(_to) \
   NS_IMETHOD GetWidth(int32_t *aWidth) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetWidth(aWidth); } \
   NS_IMETHOD GetHeight(int32_t *aHeight) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetHeight(aHeight); } \
+  NS_IMETHOD GetIntrinsicSize(nsSize *aIntrinsicSize) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetIntrinsicSize(aIntrinsicSize); } \
+  NS_IMETHOD GetIntrinsicRatio(nsSize *aIntrinsicRatio) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetIntrinsicRatio(aIntrinsicRatio); } \
   NS_IMETHOD GetType(uint16_t *aType) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetType(aType); } \
   NS_IMETHOD_(uint16_t) GetType(void); \
   NS_IMETHOD GetAnimated(bool *aAnimated) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetAnimated(aAnimated); } \
   NS_IMETHOD GetFrame(uint32_t aWhichFrame, uint32_t aFlags, gfxASurface **_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetFrame(aWhichFrame, aFlags, _retval); } \
   NS_IMETHOD_(bool) FrameIsOpaque(uint32_t aWhichFrame); \
   NS_IMETHOD GetImageContainer(mozilla::layers::LayerManager *aManager, mozilla::layers::ImageContainer **_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetImageContainer(aManager, _retval); } \
-  NS_IMETHOD CopyFrame(uint32_t aWhichFrame, uint32_t aFlags, gfxImageSurface **_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->CopyFrame(aWhichFrame, aFlags, _retval); } \
-  NS_IMETHOD ExtractFrame(uint32_t aWhichFrame, const nsIntRect & aRect, uint32_t aFlags, imgIContainer * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->ExtractFrame(aWhichFrame, aRect, aFlags, _retval); } \
-  NS_IMETHOD Draw(gfxContext *aContext, gfxPattern::GraphicsFilter aFilter, const gfxMatrix & aUserSpaceToImageSpace, const gfxRect & aFill, const nsIntRect & aSubimage, const nsIntSize & aViewportSize, uint32_t aFlags) { return !_to ? NS_ERROR_NULL_POINTER : _to->Draw(aContext, aFilter, aUserSpaceToImageSpace, aFill, aSubimage, aViewportSize, aFlags); } \
-  NS_IMETHOD_(nsIFrame *) GetRootLayoutFrame(void); \
+  NS_IMETHOD Draw(gfxContext *aContext, gfxPattern::GraphicsFilter aFilter, const gfxMatrix & aUserSpaceToImageSpace, const gfxRect & aFill, const nsIntRect & aSubimage, const nsIntSize & aViewportSize, const mozilla::SVGImageContext *aSVGContext, uint32_t aWhichFrame, uint32_t aFlags) { return !_to ? NS_ERROR_NULL_POINTER : _to->Draw(aContext, aFilter, aUserSpaceToImageSpace, aFill, aSubimage, aViewportSize, aSVGContext, aWhichFrame, aFlags); } \
   NS_IMETHOD RequestDecode(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->RequestDecode(); } \
   NS_IMETHOD StartDecoding(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->StartDecoding(); } \
   NS_IMETHOD LockImage(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->LockImage(); } \
@@ -203,7 +204,8 @@ class NS_NO_VTABLE imgIContainer : public nsISupports {
   NS_IMETHOD_(void) RequestRefresh(const mozilla::TimeStamp & aTime); \
   NS_IMETHOD GetAnimationMode(uint16_t *aAnimationMode) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetAnimationMode(aAnimationMode); } \
   NS_IMETHOD SetAnimationMode(uint16_t aAnimationMode) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetAnimationMode(aAnimationMode); } \
-  NS_IMETHOD ResetAnimation(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->ResetAnimation(); } 
+  NS_IMETHOD ResetAnimation(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->ResetAnimation(); } \
+  NS_IMETHOD_(float) GetFrameIndex(uint32_t aWhichFrame); 
 
 #if 0
 /* Use the code below as a template for the implementation class for this interface. */
@@ -249,6 +251,18 @@ NS_IMETHODIMP _MYCLASS_::GetHeight(int32_t *aHeight)
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
+/* [noscript] readonly attribute nsSize intrinsicSize; */
+NS_IMETHODIMP _MYCLASS_::GetIntrinsicSize(nsSize *aIntrinsicSize)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* [noscript] readonly attribute nsSize intrinsicRatio; */
+NS_IMETHODIMP _MYCLASS_::GetIntrinsicRatio(nsSize *aIntrinsicRatio)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
 /* readonly attribute unsigned short type; */
 NS_IMETHODIMP _MYCLASS_::GetType(uint16_t *aType)
 {
@@ -285,26 +299,8 @@ NS_IMETHODIMP _MYCLASS_::GetImageContainer(mozilla::layers::LayerManager *aManag
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* [noscript] gfxImageSurface copyFrame (in uint32_t aWhichFrame, in uint32_t aFlags); */
-NS_IMETHODIMP _MYCLASS_::CopyFrame(uint32_t aWhichFrame, uint32_t aFlags, gfxImageSurface **_retval)
-{
-    return NS_ERROR_NOT_IMPLEMENTED;
-}
-
-/* [noscript] imgIContainer extractFrame (in uint32_t aWhichFrame, [const] in nsIntRect aRect, in uint32_t aFlags); */
-NS_IMETHODIMP _MYCLASS_::ExtractFrame(uint32_t aWhichFrame, const nsIntRect & aRect, uint32_t aFlags, imgIContainer * *_retval)
-{
-    return NS_ERROR_NOT_IMPLEMENTED;
-}
-
-/* [noscript] void draw (in gfxContext aContext, in gfxGraphicsFilter aFilter, [const] in gfxMatrix aUserSpaceToImageSpace, [const] in gfxRect aFill, [const] in nsIntRect aSubimage, [const] in nsIntSize aViewportSize, in uint32_t aFlags); */
-NS_IMETHODIMP _MYCLASS_::Draw(gfxContext *aContext, gfxPattern::GraphicsFilter aFilter, const gfxMatrix & aUserSpaceToImageSpace, const gfxRect & aFill, const nsIntRect & aSubimage, const nsIntSize & aViewportSize, uint32_t aFlags)
-{
-    return NS_ERROR_NOT_IMPLEMENTED;
-}
-
-/* [notxpcom] nsIFrame GetRootLayoutFrame (); */
-NS_IMETHODIMP_(nsIFrame *) _MYCLASS_::GetRootLayoutFrame()
+/* [noscript] void draw (in gfxContext aContext, in gfxGraphicsFilter aFilter, [const] in gfxMatrix aUserSpaceToImageSpace, [const] in gfxRect aFill, [const] in nsIntRect aSubimage, [const] in nsIntSize aViewportSize, [const] in SVGImageContext aSVGContext, in uint32_t aWhichFrame, in uint32_t aFlags); */
+NS_IMETHODIMP _MYCLASS_::Draw(gfxContext *aContext, gfxPattern::GraphicsFilter aFilter, const gfxMatrix & aUserSpaceToImageSpace, const gfxRect & aFill, const nsIntRect & aSubimage, const nsIntSize & aViewportSize, const mozilla::SVGImageContext *aSVGContext, uint32_t aWhichFrame, uint32_t aFlags)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
@@ -357,6 +353,12 @@ NS_IMETHODIMP _MYCLASS_::SetAnimationMode(uint16_t aAnimationMode)
 
 /* void resetAnimation (); */
 NS_IMETHODIMP _MYCLASS_::ResetAnimation()
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* [notxpcom] float getFrameIndex (in uint32_t aWhichFrame); */
+NS_IMETHODIMP_(float) _MYCLASS_::GetFrameIndex(uint32_t aWhichFrame)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

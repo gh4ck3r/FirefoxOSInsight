@@ -76,7 +76,10 @@ enum SwitchState {
 
 typedef Observer<SwitchEvent> SwitchObserver;
 
+// Note that we rely on the order of this enum's entries.  Higher priorities
+// should have larger int values.
 enum ProcessPriority {
+  PROCESS_PRIORITY_UNKNOWN = -1,
   PROCESS_PRIORITY_BACKGROUND,
   PROCESS_PRIORITY_BACKGROUND_HOMESCREEN,
   PROCESS_PRIORITY_BACKGROUND_PERCEIVABLE,
@@ -89,13 +92,24 @@ enum ProcessPriority {
   NUM_PROCESS_PRIORITY
 };
 
-// Convert a ProcessPriority enum value to a string.  The strings returned by
-// this function are statically allocated; do not attempt to free one!
+enum ProcessCPUPriority {
+  PROCESS_CPU_PRIORITY_LOW,
+  PROCESS_CPU_PRIORITY_NORMAL,
+  NUM_PROCESS_CPU_PRIORITY
+};
+
+// Convert a ProcessPriority enum value (with an optional ProcessCPUPriority)
+// to a string.  The strings returned by this function are statically
+// allocated; do not attempt to free one!
 //
 // If you pass an unknown process priority (or NUM_PROCESS_PRIORITY), we
 // fatally assert in debug builds and otherwise return "???".
 const char*
 ProcessPriorityToString(ProcessPriority aPriority);
+
+const char*
+ProcessPriorityToString(ProcessPriority aPriority,
+                        ProcessCPUPriority aCPUPriority);
 
 /**
  * Used by ModifyWakeLock
@@ -261,7 +275,7 @@ struct ParamTraits<mozilla::hal::SwitchDevice>:
 template <>
 struct ParamTraits<mozilla::hal::ProcessPriority>:
   public EnumSerializer<mozilla::hal::ProcessPriority,
-                        mozilla::hal::PROCESS_PRIORITY_BACKGROUND,
+                        mozilla::hal::PROCESS_PRIORITY_UNKNOWN,
                         mozilla::hal::NUM_PROCESS_PRIORITY> {
 };
 

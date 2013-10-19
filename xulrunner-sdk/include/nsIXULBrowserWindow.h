@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/xpfe/appshell/public/nsIXULBrowserWindow.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/xpfe/appshell/public/nsIXULBrowserWindow.idl
  */
 
 #ifndef __gen_nsIXULBrowserWindow_h__
@@ -28,11 +28,11 @@ class nsIDOMElement; /* forward declaration */
 
 
 /* starting interface:    nsIXULBrowserWindow */
-#define NS_IXULBROWSERWINDOW_IID_STR "67a601df-f091-4894-a2e2-2e6cfebb35ea"
+#define NS_IXULBROWSERWINDOW_IID_STR "7c91b4bd-f855-4872-b3fa-a2076d28eb03"
 
 #define NS_IXULBROWSERWINDOW_IID \
-  {0x67a601df, 0xf091, 0x4894, \
-    { 0xa2, 0xe2, 0x2e, 0x6c, 0xfe, 0xbb, 0x35, 0xea }}
+  {0x7c91b4bd, 0xf855, 0x4872, \
+    { 0xb3, 0xfa, 0xa2, 0x07, 0x6d, 0x28, 0xeb, 0x03 }}
 
 class NS_NO_VTABLE nsIXULBrowserWindow : public nsISupports {
  public: 
@@ -41,9 +41,6 @@ class NS_NO_VTABLE nsIXULBrowserWindow : public nsISupports {
 
   /* void setJSStatus (in AString status); */
   NS_IMETHOD SetJSStatus(const nsAString & status) = 0;
-
-  /* void setJSDefaultStatus (in AString status); */
-  NS_IMETHOD SetJSDefaultStatus(const nsAString & status) = 0;
 
   /* void setOverLink (in AString link, in nsIDOMElement element); */
   NS_IMETHOD SetOverLink(const nsAString & link, nsIDOMElement *element) = 0;
@@ -58,21 +55,18 @@ class NS_NO_VTABLE nsIXULBrowserWindow : public nsISupports {
 /* Use this macro when declaring classes that implement this interface. */
 #define NS_DECL_NSIXULBROWSERWINDOW \
   NS_IMETHOD SetJSStatus(const nsAString & status); \
-  NS_IMETHOD SetJSDefaultStatus(const nsAString & status); \
   NS_IMETHOD SetOverLink(const nsAString & link, nsIDOMElement *element); \
   NS_IMETHOD OnBeforeLinkTraversal(const nsAString & originalTarget, nsIURI *linkURI, nsIDOMNode *linkNode, bool isAppTab, nsAString & _retval); 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object. */
 #define NS_FORWARD_NSIXULBROWSERWINDOW(_to) \
   NS_IMETHOD SetJSStatus(const nsAString & status) { return _to SetJSStatus(status); } \
-  NS_IMETHOD SetJSDefaultStatus(const nsAString & status) { return _to SetJSDefaultStatus(status); } \
   NS_IMETHOD SetOverLink(const nsAString & link, nsIDOMElement *element) { return _to SetOverLink(link, element); } \
   NS_IMETHOD OnBeforeLinkTraversal(const nsAString & originalTarget, nsIURI *linkURI, nsIDOMNode *linkNode, bool isAppTab, nsAString & _retval) { return _to OnBeforeLinkTraversal(originalTarget, linkURI, linkNode, isAppTab, _retval); } 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object in a safe way. */
 #define NS_FORWARD_SAFE_NSIXULBROWSERWINDOW(_to) \
   NS_IMETHOD SetJSStatus(const nsAString & status) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetJSStatus(status); } \
-  NS_IMETHOD SetJSDefaultStatus(const nsAString & status) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetJSDefaultStatus(status); } \
   NS_IMETHOD SetOverLink(const nsAString & link, nsIDOMElement *element) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetOverLink(link, element); } \
   NS_IMETHOD OnBeforeLinkTraversal(const nsAString & originalTarget, nsIURI *linkURI, nsIDOMNode *linkNode, bool isAppTab, nsAString & _retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->OnBeforeLinkTraversal(originalTarget, linkURI, linkNode, isAppTab, _retval); } 
 
@@ -110,12 +104,6 @@ nsXULBrowserWindow::~nsXULBrowserWindow()
 
 /* void setJSStatus (in AString status); */
 NS_IMETHODIMP nsXULBrowserWindow::SetJSStatus(const nsAString & status)
-{
-    return NS_ERROR_NOT_IMPLEMENTED;
-}
-
-/* void setJSDefaultStatus (in AString status); */
-NS_IMETHODIMP nsXULBrowserWindow::SetJSDefaultStatus(const nsAString & status)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

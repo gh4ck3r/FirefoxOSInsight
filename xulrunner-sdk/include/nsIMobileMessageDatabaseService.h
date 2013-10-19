@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/mobilemessage/interfaces/nsIMobileMessageDatabaseService.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/mobilemessage/interfaces/nsIMobileMessageDatabaseService.idl
  */
 
 #ifndef __gen_nsIMobileMessageDatabaseService_h__
@@ -18,43 +18,41 @@
 { 0x0d84b9c2, 0x8f76, 0x4ba4,    \
 { 0xa5, 0xcd, 0xdb, 0xfb, 0x01, 0xdf, 0xda, 0x99 } }
 #define MOBILE_MESSAGE_DATABASE_SERVICE_CONTRACTID "@mozilla.org/mobilemessage/mobilemessagedatabaseservice;1"
+class nsICursorContinueCallback; /* forward declaration */
+
 class nsIDOMMozSmsFilter; /* forward declaration */
 
-class nsISmsRequest; /* forward declaration */
+class nsIMobileMessageCallback; /* forward declaration */
+
+class nsIMobileMessageCursorCallback; /* forward declaration */
 
 
 /* starting interface:    nsIMobileMessageDatabaseService */
-#define NS_IMOBILEMESSAGEDATABASESERVICE_IID_STR "ce9232ca-6a08-11e2-b971-c795004622e7"
+#define NS_IMOBILEMESSAGEDATABASESERVICE_IID_STR "ea6f49ae-3a4c-47eb-a489-15578e634100"
 
 #define NS_IMOBILEMESSAGEDATABASESERVICE_IID \
-  {0xce9232ca, 0x6a08, 0x11e2, \
-    { 0xb9, 0x71, 0xc7, 0x95, 0x00, 0x46, 0x22, 0xe7 }}
+  {0xea6f49ae, 0x3a4c, 0x47eb, \
+    { 0xa4, 0x89, 0x15, 0x57, 0x8e, 0x63, 0x41, 0x00 }}
 
 class NS_NO_VTABLE nsIMobileMessageDatabaseService : public nsISupports {
  public: 
 
   NS_DECLARE_STATIC_IID_ACCESSOR(NS_IMOBILEMESSAGEDATABASESERVICE_IID)
 
-  /* [binaryname(GetMessageMoz)] void getMessage (in long messageId, in nsISmsRequest request); */
-  NS_IMETHOD GetMessageMoz(int32_t messageId, nsISmsRequest *request) = 0;
+  /* [binaryname(GetMessageMoz)] void getMessage (in long messageId, in nsIMobileMessageCallback request); */
+  NS_IMETHOD GetMessageMoz(int32_t messageId, nsIMobileMessageCallback *request) = 0;
 
-  /* void deleteMessage (in long messageId, in nsISmsRequest request); */
-  NS_IMETHOD DeleteMessage(int32_t messageId, nsISmsRequest *request) = 0;
+  /* void deleteMessage ([array, size_is (count)] in long messageIds, in uint32_t count, in nsIMobileMessageCallback request); */
+  NS_IMETHOD DeleteMessage(int32_t *messageIds, uint32_t count, nsIMobileMessageCallback *request) = 0;
 
-  /* void createMessageList (in nsIDOMMozSmsFilter filter, in boolean reverse, in nsISmsRequest request); */
-  NS_IMETHOD CreateMessageList(nsIDOMMozSmsFilter *filter, bool reverse, nsISmsRequest *request) = 0;
+  /* nsICursorContinueCallback createMessageCursor (in nsIDOMMozSmsFilter filter, in boolean reverse, in nsIMobileMessageCursorCallback callback); */
+  NS_IMETHOD CreateMessageCursor(nsIDOMMozSmsFilter *filter, bool reverse, nsIMobileMessageCursorCallback *callback, nsICursorContinueCallback * *_retval) = 0;
 
-  /* void getNextMessageInList (in long listId, in nsISmsRequest request); */
-  NS_IMETHOD GetNextMessageInList(int32_t listId, nsISmsRequest *request) = 0;
+  /* void markMessageRead (in long messageId, in boolean value, in nsIMobileMessageCallback request); */
+  NS_IMETHOD MarkMessageRead(int32_t messageId, bool value, nsIMobileMessageCallback *request) = 0;
 
-  /* void clearMessageList (in long listId); */
-  NS_IMETHOD ClearMessageList(int32_t listId) = 0;
-
-  /* void markMessageRead (in long messageId, in boolean value, in nsISmsRequest request); */
-  NS_IMETHOD MarkMessageRead(int32_t messageId, bool value, nsISmsRequest *request) = 0;
-
-  /* void getThreadList (in nsISmsRequest request); */
-  NS_IMETHOD GetThreadList(nsISmsRequest *request) = 0;
+  /* nsICursorContinueCallback createThreadCursor (in nsIMobileMessageCursorCallback callback); */
+  NS_IMETHOD CreateThreadCursor(nsIMobileMessageCursorCallback *callback, nsICursorContinueCallback * *_retval) = 0;
 
 };
 
@@ -62,33 +60,27 @@ class NS_NO_VTABLE nsIMobileMessageDatabaseService : public nsISupports {
 
 /* Use this macro when declaring classes that implement this interface. */
 #define NS_DECL_NSIMOBILEMESSAGEDATABASESERVICE \
-  NS_IMETHOD GetMessageMoz(int32_t messageId, nsISmsRequest *request); \
-  NS_IMETHOD DeleteMessage(int32_t messageId, nsISmsRequest *request); \
-  NS_IMETHOD CreateMessageList(nsIDOMMozSmsFilter *filter, bool reverse, nsISmsRequest *request); \
-  NS_IMETHOD GetNextMessageInList(int32_t listId, nsISmsRequest *request); \
-  NS_IMETHOD ClearMessageList(int32_t listId); \
-  NS_IMETHOD MarkMessageRead(int32_t messageId, bool value, nsISmsRequest *request); \
-  NS_IMETHOD GetThreadList(nsISmsRequest *request); 
+  NS_IMETHOD GetMessageMoz(int32_t messageId, nsIMobileMessageCallback *request); \
+  NS_IMETHOD DeleteMessage(int32_t *messageIds, uint32_t count, nsIMobileMessageCallback *request); \
+  NS_IMETHOD CreateMessageCursor(nsIDOMMozSmsFilter *filter, bool reverse, nsIMobileMessageCursorCallback *callback, nsICursorContinueCallback * *_retval); \
+  NS_IMETHOD MarkMessageRead(int32_t messageId, bool value, nsIMobileMessageCallback *request); \
+  NS_IMETHOD CreateThreadCursor(nsIMobileMessageCursorCallback *callback, nsICursorContinueCallback * *_retval); 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object. */
 #define NS_FORWARD_NSIMOBILEMESSAGEDATABASESERVICE(_to) \
-  NS_IMETHOD GetMessageMoz(int32_t messageId, nsISmsRequest *request) { return _to GetMessageMoz(messageId, request); } \
-  NS_IMETHOD DeleteMessage(int32_t messageId, nsISmsRequest *request) { return _to DeleteMessage(messageId, request); } \
-  NS_IMETHOD CreateMessageList(nsIDOMMozSmsFilter *filter, bool reverse, nsISmsRequest *request) { return _to CreateMessageList(filter, reverse, request); } \
-  NS_IMETHOD GetNextMessageInList(int32_t listId, nsISmsRequest *request) { return _to GetNextMessageInList(listId, request); } \
-  NS_IMETHOD ClearMessageList(int32_t listId) { return _to ClearMessageList(listId); } \
-  NS_IMETHOD MarkMessageRead(int32_t messageId, bool value, nsISmsRequest *request) { return _to MarkMessageRead(messageId, value, request); } \
-  NS_IMETHOD GetThreadList(nsISmsRequest *request) { return _to GetThreadList(request); } 
+  NS_IMETHOD GetMessageMoz(int32_t messageId, nsIMobileMessageCallback *request) { return _to GetMessageMoz(messageId, request); } \
+  NS_IMETHOD DeleteMessage(int32_t *messageIds, uint32_t count, nsIMobileMessageCallback *request) { return _to DeleteMessage(messageIds, count, request); } \
+  NS_IMETHOD CreateMessageCursor(nsIDOMMozSmsFilter *filter, bool reverse, nsIMobileMessageCursorCallback *callback, nsICursorContinueCallback * *_retval) { return _to CreateMessageCursor(filter, reverse, callback, _retval); } \
+  NS_IMETHOD MarkMessageRead(int32_t messageId, bool value, nsIMobileMessageCallback *request) { return _to MarkMessageRead(messageId, value, request); } \
+  NS_IMETHOD CreateThreadCursor(nsIMobileMessageCursorCallback *callback, nsICursorContinueCallback * *_retval) { return _to CreateThreadCursor(callback, _retval); } 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object in a safe way. */
 #define NS_FORWARD_SAFE_NSIMOBILEMESSAGEDATABASESERVICE(_to) \
-  NS_IMETHOD GetMessageMoz(int32_t messageId, nsISmsRequest *request) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetMessageMoz(messageId, request); } \
-  NS_IMETHOD DeleteMessage(int32_t messageId, nsISmsRequest *request) { return !_to ? NS_ERROR_NULL_POINTER : _to->DeleteMessage(messageId, request); } \
-  NS_IMETHOD CreateMessageList(nsIDOMMozSmsFilter *filter, bool reverse, nsISmsRequest *request) { return !_to ? NS_ERROR_NULL_POINTER : _to->CreateMessageList(filter, reverse, request); } \
-  NS_IMETHOD GetNextMessageInList(int32_t listId, nsISmsRequest *request) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetNextMessageInList(listId, request); } \
-  NS_IMETHOD ClearMessageList(int32_t listId) { return !_to ? NS_ERROR_NULL_POINTER : _to->ClearMessageList(listId); } \
-  NS_IMETHOD MarkMessageRead(int32_t messageId, bool value, nsISmsRequest *request) { return !_to ? NS_ERROR_NULL_POINTER : _to->MarkMessageRead(messageId, value, request); } \
-  NS_IMETHOD GetThreadList(nsISmsRequest *request) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetThreadList(request); } 
+  NS_IMETHOD GetMessageMoz(int32_t messageId, nsIMobileMessageCallback *request) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetMessageMoz(messageId, request); } \
+  NS_IMETHOD DeleteMessage(int32_t *messageIds, uint32_t count, nsIMobileMessageCallback *request) { return !_to ? NS_ERROR_NULL_POINTER : _to->DeleteMessage(messageIds, count, request); } \
+  NS_IMETHOD CreateMessageCursor(nsIDOMMozSmsFilter *filter, bool reverse, nsIMobileMessageCursorCallback *callback, nsICursorContinueCallback * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->CreateMessageCursor(filter, reverse, callback, _retval); } \
+  NS_IMETHOD MarkMessageRead(int32_t messageId, bool value, nsIMobileMessageCallback *request) { return !_to ? NS_ERROR_NULL_POINTER : _to->MarkMessageRead(messageId, value, request); } \
+  NS_IMETHOD CreateThreadCursor(nsIMobileMessageCursorCallback *callback, nsICursorContinueCallback * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->CreateThreadCursor(callback, _retval); } 
 
 #if 0
 /* Use the code below as a template for the implementation class for this interface. */
@@ -122,44 +114,32 @@ nsMobileMessageDatabaseService::~nsMobileMessageDatabaseService()
   /* destructor code */
 }
 
-/* [binaryname(GetMessageMoz)] void getMessage (in long messageId, in nsISmsRequest request); */
-NS_IMETHODIMP nsMobileMessageDatabaseService::GetMessageMoz(int32_t messageId, nsISmsRequest *request)
+/* [binaryname(GetMessageMoz)] void getMessage (in long messageId, in nsIMobileMessageCallback request); */
+NS_IMETHODIMP nsMobileMessageDatabaseService::GetMessageMoz(int32_t messageId, nsIMobileMessageCallback *request)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* void deleteMessage (in long messageId, in nsISmsRequest request); */
-NS_IMETHODIMP nsMobileMessageDatabaseService::DeleteMessage(int32_t messageId, nsISmsRequest *request)
+/* void deleteMessage ([array, size_is (count)] in long messageIds, in uint32_t count, in nsIMobileMessageCallback request); */
+NS_IMETHODIMP nsMobileMessageDatabaseService::DeleteMessage(int32_t *messageIds, uint32_t count, nsIMobileMessageCallback *request)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* void createMessageList (in nsIDOMMozSmsFilter filter, in boolean reverse, in nsISmsRequest request); */
-NS_IMETHODIMP nsMobileMessageDatabaseService::CreateMessageList(nsIDOMMozSmsFilter *filter, bool reverse, nsISmsRequest *request)
+/* nsICursorContinueCallback createMessageCursor (in nsIDOMMozSmsFilter filter, in boolean reverse, in nsIMobileMessageCursorCallback callback); */
+NS_IMETHODIMP nsMobileMessageDatabaseService::CreateMessageCursor(nsIDOMMozSmsFilter *filter, bool reverse, nsIMobileMessageCursorCallback *callback, nsICursorContinueCallback * *_retval)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* void getNextMessageInList (in long listId, in nsISmsRequest request); */
-NS_IMETHODIMP nsMobileMessageDatabaseService::GetNextMessageInList(int32_t listId, nsISmsRequest *request)
+/* void markMessageRead (in long messageId, in boolean value, in nsIMobileMessageCallback request); */
+NS_IMETHODIMP nsMobileMessageDatabaseService::MarkMessageRead(int32_t messageId, bool value, nsIMobileMessageCallback *request)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* void clearMessageList (in long listId); */
-NS_IMETHODIMP nsMobileMessageDatabaseService::ClearMessageList(int32_t listId)
-{
-    return NS_ERROR_NOT_IMPLEMENTED;
-}
-
-/* void markMessageRead (in long messageId, in boolean value, in nsISmsRequest request); */
-NS_IMETHODIMP nsMobileMessageDatabaseService::MarkMessageRead(int32_t messageId, bool value, nsISmsRequest *request)
-{
-    return NS_ERROR_NOT_IMPLEMENTED;
-}
-
-/* void getThreadList (in nsISmsRequest request); */
-NS_IMETHODIMP nsMobileMessageDatabaseService::GetThreadList(nsISmsRequest *request)
+/* nsICursorContinueCallback createThreadCursor (in nsIMobileMessageCursorCallback callback); */
+NS_IMETHODIMP nsMobileMessageDatabaseService::CreateThreadCursor(nsIMobileMessageCursorCallback *callback, nsICursorContinueCallback * *_retval)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

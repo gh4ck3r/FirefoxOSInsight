@@ -93,72 +93,23 @@
   /* 3: NS_ERROR_MODULE_GFX */
   /* ======================================================================= */
 #define MODULE NS_ERROR_MODULE_GFX
-  /* error codes for printer device contexts */
-  /* Unix: print command (lp/lpr) not found */
-#define NS_ERROR_GFX_PRINTER_CMD_NOT_FOUND                ((nsresult)(FAILURE(2)))
-  /* Unix: print command returned an error */
-#define NS_ERROR_GFX_PRINTER_CMD_FAILURE                  ((nsresult)(FAILURE(3)))
   /* no printer available (e.g. cannot find _any_ printer) */
-#define NS_ERROR_GFX_PRINTER_NO_PRINTER_AVAILABLE         ((nsresult)(FAILURE(4)))
+#define NS_ERROR_GFX_PRINTER_NO_PRINTER_AVAILABLE         ((nsresult)(FAILURE(1)))
   /* _specified_ (by name) printer not found */
-#define NS_ERROR_GFX_PRINTER_NAME_NOT_FOUND               ((nsresult)(FAILURE(5)))
-  /* access to printer denied */
-#define NS_ERROR_GFX_PRINTER_ACCESS_DENIED                ((nsresult)(FAILURE(6)))
-  /* invalid printer attribute (for example: unsupported paper size etc.) */
-#define NS_ERROR_GFX_PRINTER_INVALID_ATTRIBUTE            ((nsresult)(FAILURE(7)))
-  /* printer not "ready" (offline ?) */
-#define NS_ERROR_GFX_PRINTER_PRINTER_NOT_READY            ((nsresult)(FAILURE(9)))
-  /* printer out of paper */
-#define NS_ERROR_GFX_PRINTER_OUT_OF_PAPER                 ((nsresult)(FAILURE(10)))
-  /* generic printer I/O error */
-#define NS_ERROR_GFX_PRINTER_PRINTER_IO_ERROR             ((nsresult)(FAILURE(11)))
+#define NS_ERROR_GFX_PRINTER_NAME_NOT_FOUND               ((nsresult)(FAILURE(2)))
   /* print-to-file: could not open output file */
-#define NS_ERROR_GFX_PRINTER_COULD_NOT_OPEN_FILE          ((nsresult)(FAILURE(12)))
-  /* print-to-file: I/O error while printing to file */
-#define NS_ERROR_GFX_PRINTER_FILE_IO_ERROR                ((nsresult)(FAILURE(13)))
-  /* print preview: needs at least one printer */
-#define NS_ERROR_GFX_PRINTER_PRINTPREVIEW                 ((nsresult)(FAILURE(14)))
+#define NS_ERROR_GFX_PRINTER_COULD_NOT_OPEN_FILE          ((nsresult)(FAILURE(3)))
   /* print: starting document */
-#define NS_ERROR_GFX_PRINTER_STARTDOC                     ((nsresult)(FAILURE(15)))
+#define NS_ERROR_GFX_PRINTER_STARTDOC                     ((nsresult)(FAILURE(4)))
   /* print: ending document */
-#define NS_ERROR_GFX_PRINTER_ENDDOC                       ((nsresult)(FAILURE(16)))
+#define NS_ERROR_GFX_PRINTER_ENDDOC                       ((nsresult)(FAILURE(5)))
   /* print: starting page */
-#define NS_ERROR_GFX_PRINTER_STARTPAGE                    ((nsresult)(FAILURE(17)))
-  /* print: ending page */
-#define NS_ERROR_GFX_PRINTER_ENDPAGE                      ((nsresult)(FAILURE(18)))
-  /* print: print while in print preview */
-#define NS_ERROR_GFX_PRINTER_PRINT_WHILE_PREVIEW          ((nsresult)(FAILURE(19)))
-  /* requested page size not supported by printer */
-#define NS_ERROR_GFX_PRINTER_PAPER_SIZE_NOT_SUPPORTED     ((nsresult)(FAILURE(20)))
-  /* requested page orientation not supported */
-#define NS_ERROR_GFX_PRINTER_ORIENTATION_NOT_SUPPORTED    ((nsresult)(FAILURE(21)))
-  /* requested colorspace not supported (like printing "color" on a
-     "grayscale"-only printer) */
-#define NS_ERROR_GFX_PRINTER_COLORSPACE_NOT_SUPPORTED     ((nsresult)(FAILURE(22)))
-  /* too many copies requested */
-#define NS_ERROR_GFX_PRINTER_TOO_MANY_COPIES              ((nsresult)(FAILURE(23)))
-  /* driver configuration error */
-#define NS_ERROR_GFX_PRINTER_DRIVER_CONFIGURATION_ERROR   ((nsresult)(FAILURE(24)))
-  /* The document is still being loaded, can't Print Preview */
-#define NS_ERROR_GFX_PRINTER_DOC_IS_BUSY_PP               ((nsresult)(FAILURE(25)))
-  /* The document was asked to be destroyed while we were preparing printing */
-#define NS_ERROR_GFX_PRINTER_DOC_WAS_DESTORYED            ((nsresult)(FAILURE(26)))
-  /* Cannot Print or Print Preview XUL Documents */
-#define NS_ERROR_GFX_PRINTER_NO_XUL                       ((nsresult)(FAILURE(27)))
-  /* The toolkit no longer supports the Print Dialog (for embedders) */
-#define NS_ERROR_GFX_NO_PRINTDIALOG_IN_TOOLKIT            ((nsresult)(FAILURE(28)))
-  /* The was wasn't any Print Prompt service registered (this shouldn't happen) */
-#define NS_ERROR_GFX_NO_PRINTROMPTSERVICE                 ((nsresult)(FAILURE(29)))
-  /* requested plex mode not supported by printer */
-#define NS_ERROR_GFX_PRINTER_PLEX_NOT_SUPPORTED           ((nsresult)(FAILURE(30)))
+#define NS_ERROR_GFX_PRINTER_STARTPAGE                    ((nsresult)(FAILURE(6)))
   /* The document is still being loaded */
-#define NS_ERROR_GFX_PRINTER_DOC_IS_BUSY                  ((nsresult)(FAILURE(31)))
-  /* Printing is not implemented */
-#define NS_ERROR_GFX_PRINTING_NOT_IMPLEMENTED             ((nsresult)(FAILURE(32)))
-  /* Cannot load the matching print module */
-#define NS_ERROR_GFX_COULD_NOT_LOAD_PRINT_MODULE          ((nsresult)(FAILURE(33)))
-  /* requested resolution/quality mode not supported by printer */
-#define NS_ERROR_GFX_PRINTER_RESOLUTION_NOT_SUPPORTED     ((nsresult)(FAILURE(34)))
+#define NS_ERROR_GFX_PRINTER_DOC_IS_BUSY                  ((nsresult)(FAILURE(7)))
+  /* Cannot Print or Print Preview XUL Documents (bug 136185 / bug 240490) */
+#define NS_ERROR_GFX_PRINTER_NO_XUL                       ((nsresult)(FAILURE(8)))
+
   /* Font cmap is strangely structured - avoid this font! */
 #define NS_ERROR_GFX_CMAP_MALFORMED                       ((nsresult)(FAILURE(51)))
 #undef MODULE
@@ -501,7 +452,7 @@
   /* ======================================================================= */
 #define MODULE NS_ERROR_MODULE_DOM
   /* XXX If you add a new DOM error code, also add an error string to
-   * dom/src/base/domerr.msg */
+   * dom/base/domerr.msg */
 
   /* Standard DOM error codes: http://dvcs.w3.org/hg/domcore/raw-file/tip/Overview.html */
 #define NS_ERROR_DOM_INDEX_SIZE_ERR                ((nsresult)(FAILURE(1)))
@@ -548,6 +499,13 @@
 #define NS_ERROR_DOM_BAD_URI                       ((nsresult)(FAILURE(1012)))
 #define NS_ERROR_DOM_RETVAL_UNDEFINED              ((nsresult)(FAILURE(1013)))
 #define NS_ERROR_DOM_QUOTA_REACHED                 ((nsresult)(FAILURE(1014)))
+#define NS_ERROR_DOM_JS_EXCEPTION                  ((nsresult)(FAILURE(1015)))
+
+  /* May be used to indicate when e.g. setting a property value didn't
+   * actually change the value, like for obj.foo = "bar"; obj.foo = "bar";
+   * the second assignment throws NS_SUCCESS_DOM_NO_OPERATION.
+   */
+#define NS_SUCCESS_DOM_NO_OPERATION                ((nsresult)(SUCCESS(1)))
 #undef MODULE
 
 
@@ -740,7 +698,7 @@
 #define NS_CONTENT_BLOCKED                  ((nsresult)(SUCCESS(8)))
 #define NS_CONTENT_BLOCKED_SHOW_ALT         ((nsresult)(SUCCESS(9)))
 #define NS_PROPTABLE_PROP_OVERWRITTEN       ((nsresult)(SUCCESS(11)))
-  /* Error codes for FindBroadcaster in nsXULDocument.cpp */
+  /* Error codes for FindBroadcaster in XULDocument.cpp */
 #define NS_FINDBROADCASTER_NOT_FOUND        ((nsresult)(SUCCESS(12)))
 #define NS_FINDBROADCASTER_FOUND            ((nsresult)(SUCCESS(13)))
 #define NS_FINDBROADCASTER_AWAIT_OVERLAYS   ((nsresult)(SUCCESS(14)))

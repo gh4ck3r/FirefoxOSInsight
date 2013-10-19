@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/toolkit/components/telemetry/nsITelemetry.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/toolkit/components/telemetry/nsITelemetry.idl
  */
 
 #ifndef __gen_nsITelemetry_h__
@@ -128,6 +128,9 @@ class NS_NO_VTABLE nsITelemetry : public nsISupports {
   /* [implicit_jscontext] readonly attribute jsval debugSlowSQL; */
   NS_IMETHOD GetDebugSlowSQL(JSContext* cx, JS::Value *aDebugSlowSQL) = 0;
 
+  /* readonly attribute uint32_t maximalNumberOfConcurrentThreads; */
+  NS_IMETHOD GetMaximalNumberOfConcurrentThreads(uint32_t *aMaximalNumberOfConcurrentThreads) = 0;
+
   /* [implicit_jscontext] readonly attribute jsval chromeHangs; */
   NS_IMETHOD GetChromeHangs(JSContext* cx, JS::Value *aChromeHangs) = 0;
 
@@ -179,6 +182,7 @@ class NS_NO_VTABLE nsITelemetry : public nsISupports {
   NS_IMETHOD GetFailedProfileLockCount(uint32_t *aFailedProfileLockCount); \
   NS_IMETHOD GetSlowSQL(JSContext* cx, JS::Value *aSlowSQL); \
   NS_IMETHOD GetDebugSlowSQL(JSContext* cx, JS::Value *aDebugSlowSQL); \
+  NS_IMETHOD GetMaximalNumberOfConcurrentThreads(uint32_t *aMaximalNumberOfConcurrentThreads); \
   NS_IMETHOD GetChromeHangs(JSContext* cx, JS::Value *aChromeHangs); \
   NS_IMETHOD GetLateWrites(JSContext* cx, JS::Value *aLateWrites); \
   NS_IMETHOD GetRegisteredHistograms(JSContext* cx, JS::Value *aRegisteredHistograms); \
@@ -201,6 +205,7 @@ class NS_NO_VTABLE nsITelemetry : public nsISupports {
   NS_IMETHOD GetFailedProfileLockCount(uint32_t *aFailedProfileLockCount) { return _to GetFailedProfileLockCount(aFailedProfileLockCount); } \
   NS_IMETHOD GetSlowSQL(JSContext* cx, JS::Value *aSlowSQL) { return _to GetSlowSQL(cx, aSlowSQL); } \
   NS_IMETHOD GetDebugSlowSQL(JSContext* cx, JS::Value *aDebugSlowSQL) { return _to GetDebugSlowSQL(cx, aDebugSlowSQL); } \
+  NS_IMETHOD GetMaximalNumberOfConcurrentThreads(uint32_t *aMaximalNumberOfConcurrentThreads) { return _to GetMaximalNumberOfConcurrentThreads(aMaximalNumberOfConcurrentThreads); } \
   NS_IMETHOD GetChromeHangs(JSContext* cx, JS::Value *aChromeHangs) { return _to GetChromeHangs(cx, aChromeHangs); } \
   NS_IMETHOD GetLateWrites(JSContext* cx, JS::Value *aLateWrites) { return _to GetLateWrites(cx, aLateWrites); } \
   NS_IMETHOD GetRegisteredHistograms(JSContext* cx, JS::Value *aRegisteredHistograms) { return _to GetRegisteredHistograms(cx, aRegisteredHistograms); } \
@@ -223,6 +228,7 @@ class NS_NO_VTABLE nsITelemetry : public nsISupports {
   NS_IMETHOD GetFailedProfileLockCount(uint32_t *aFailedProfileLockCount) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetFailedProfileLockCount(aFailedProfileLockCount); } \
   NS_IMETHOD GetSlowSQL(JSContext* cx, JS::Value *aSlowSQL) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetSlowSQL(cx, aSlowSQL); } \
   NS_IMETHOD GetDebugSlowSQL(JSContext* cx, JS::Value *aDebugSlowSQL) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetDebugSlowSQL(cx, aDebugSlowSQL); } \
+  NS_IMETHOD GetMaximalNumberOfConcurrentThreads(uint32_t *aMaximalNumberOfConcurrentThreads) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetMaximalNumberOfConcurrentThreads(aMaximalNumberOfConcurrentThreads); } \
   NS_IMETHOD GetChromeHangs(JSContext* cx, JS::Value *aChromeHangs) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetChromeHangs(cx, aChromeHangs); } \
   NS_IMETHOD GetLateWrites(JSContext* cx, JS::Value *aLateWrites) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetLateWrites(cx, aLateWrites); } \
   NS_IMETHOD GetRegisteredHistograms(JSContext* cx, JS::Value *aRegisteredHistograms) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetRegisteredHistograms(cx, aRegisteredHistograms); } \
@@ -296,6 +302,12 @@ NS_IMETHODIMP nsTelemetry::GetSlowSQL(JSContext* cx, JS::Value *aSlowSQL)
 
 /* [implicit_jscontext] readonly attribute jsval debugSlowSQL; */
 NS_IMETHODIMP nsTelemetry::GetDebugSlowSQL(JSContext* cx, JS::Value *aDebugSlowSQL)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* readonly attribute uint32_t maximalNumberOfConcurrentThreads; */
+NS_IMETHODIMP nsTelemetry::GetMaximalNumberOfConcurrentThreads(uint32_t *aMaximalNumberOfConcurrentThreads)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

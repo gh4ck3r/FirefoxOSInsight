@@ -14,6 +14,7 @@
 #include "nsCoord.h"
 #include "nsPresContext.h"
 #include "mozilla/gfx/Point.h"
+#include "nsIScrollbarOwner.h"
 
 #define NS_DEFAULT_VERTICAL_SCROLL_DISTANCE   3
 #define NS_DEFAULT_HORIZONTAL_SCROLL_DISTANCE 5
@@ -27,7 +28,7 @@ class nsIFrame;
  * APIs for examining scroll state, observing changes to scroll state,
  * and triggering scrolling.
  */
-class nsIScrollableFrame : public nsQueryFrame {
+class nsIScrollableFrame : public nsIScrollbarOwner {
 public:
   typedef mozilla::gfx::Point Point;
 
@@ -80,7 +81,11 @@ public:
    */
   virtual nsMargin GetDesiredScrollbarSizes(nsPresContext* aPresContext,
                                             nsRenderingContext* aRC) = 0;
-
+  /**
+   * Return the width for non-disappearing scrollbars.
+   */
+  virtual nscoord GetNondisappearingScrollbarWidth(nsPresContext* aPresContext,
+                                                   nsRenderingContext* aRC) = 0;
   /**
    * Get the area of the scrollport relative to the origin of this frame's
    * border-box.
@@ -203,14 +208,6 @@ public:
   virtual void RemoveScrollPositionListener(nsIScrollPositionListener* aListener) = 0;
 
   /**
-   * Obtain the XUL box for the horizontal or vertical scrollbar, or null
-   * if there is no such box. Avoid using this, but may be useful for
-   * setting up a scrollbar mediator if you want to redirect scrollbar
-   * input.
-   */
-  virtual nsIFrame* GetScrollbarBox(bool aVertical) = 0;
-
-  /**
    * Internal method used by scrollbars to notify their scrolling
    * container of changes.
    */
@@ -233,6 +230,16 @@ public:
    * completely redrawn.
    */
   virtual void ResetScrollPositionForLayerPixelAlignment() = 0;
+  /**
+   * Was the current presentation state for this frame restored from history?
+   */
+  virtual bool DidHistoryRestore() = 0;
+  /**
+   * Clear the flag so that DidHistoryRestore() returns false until the next
+   * RestoreState call.
+   * @see nsIStatefulFrame::RestoreState
+   */
+  virtual void ClearDidHistoryRestore() = 0;
 };
 
 #endif

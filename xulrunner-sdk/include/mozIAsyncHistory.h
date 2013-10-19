@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/toolkit/components/places/mozIAsyncHistory.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/toolkit/components/places/mozIAsyncHistory.idl
  */
 
 #ifndef __gen_mozIAsyncHistory_h__
@@ -23,11 +23,11 @@ class nsIVariant; /* forward declaration */
 #include "jsapi.h"
 
 /* starting interface:    mozIVisitInfo */
-#define MOZIVISITINFO_IID_STR "1a3b1260-4bdb-45d0-a306-dc377dd9baa4"
+#define MOZIVISITINFO_IID_STR "41e4ccc9-f0c8-4cd7-9753-7a38514b8488"
 
 #define MOZIVISITINFO_IID \
-  {0x1a3b1260, 0x4bdb, 0x45d0, \
-    { 0xa3, 0x06, 0xdc, 0x37, 0x7d, 0xd9, 0xba, 0xa4 }}
+  {0x41e4ccc9, 0xf0c8, 0x4cd7, \
+    { 0x97, 0x53, 0x7a, 0x38, 0x51, 0x4b, 0x84, 0x88 }}
 
 class NS_NO_VTABLE mozIVisitInfo : public nsISupports {
  public: 
@@ -46,9 +46,6 @@ class NS_NO_VTABLE mozIVisitInfo : public nsISupports {
   /* readonly attribute nsIURI referrerURI; */
   NS_IMETHOD GetReferrerURI(nsIURI * *aReferrerURI) = 0;
 
-  /* readonly attribute long long sessionId; */
-  NS_IMETHOD GetSessionId(int64_t *aSessionId) = 0;
-
 };
 
   NS_DEFINE_STATIC_IID_ACCESSOR(mozIVisitInfo, MOZIVISITINFO_IID)
@@ -58,24 +55,21 @@ class NS_NO_VTABLE mozIVisitInfo : public nsISupports {
   NS_IMETHOD GetVisitId(int64_t *aVisitId); \
   NS_IMETHOD GetVisitDate(PRTime *aVisitDate); \
   NS_IMETHOD GetTransitionType(uint32_t *aTransitionType); \
-  NS_IMETHOD GetReferrerURI(nsIURI * *aReferrerURI); \
-  NS_IMETHOD GetSessionId(int64_t *aSessionId); 
+  NS_IMETHOD GetReferrerURI(nsIURI * *aReferrerURI); 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object. */
 #define NS_FORWARD_MOZIVISITINFO(_to) \
   NS_IMETHOD GetVisitId(int64_t *aVisitId) { return _to GetVisitId(aVisitId); } \
   NS_IMETHOD GetVisitDate(PRTime *aVisitDate) { return _to GetVisitDate(aVisitDate); } \
   NS_IMETHOD GetTransitionType(uint32_t *aTransitionType) { return _to GetTransitionType(aTransitionType); } \
-  NS_IMETHOD GetReferrerURI(nsIURI * *aReferrerURI) { return _to GetReferrerURI(aReferrerURI); } \
-  NS_IMETHOD GetSessionId(int64_t *aSessionId) { return _to GetSessionId(aSessionId); } 
+  NS_IMETHOD GetReferrerURI(nsIURI * *aReferrerURI) { return _to GetReferrerURI(aReferrerURI); } 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object in a safe way. */
 #define NS_FORWARD_SAFE_MOZIVISITINFO(_to) \
   NS_IMETHOD GetVisitId(int64_t *aVisitId) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetVisitId(aVisitId); } \
   NS_IMETHOD GetVisitDate(PRTime *aVisitDate) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetVisitDate(aVisitDate); } \
   NS_IMETHOD GetTransitionType(uint32_t *aTransitionType) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetTransitionType(aTransitionType); } \
-  NS_IMETHOD GetReferrerURI(nsIURI * *aReferrerURI) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetReferrerURI(aReferrerURI); } \
-  NS_IMETHOD GetSessionId(int64_t *aSessionId) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetSessionId(aSessionId); } 
+  NS_IMETHOD GetReferrerURI(nsIURI * *aReferrerURI) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetReferrerURI(aReferrerURI); } 
 
 #if 0
 /* Use the code below as a template for the implementation class for this interface. */
@@ -129,12 +123,6 @@ NS_IMETHODIMP _MYCLASS_::GetTransitionType(uint32_t *aTransitionType)
 
 /* readonly attribute nsIURI referrerURI; */
 NS_IMETHODIMP _MYCLASS_::GetReferrerURI(nsIURI * *aReferrerURI)
-{
-    return NS_ERROR_NOT_IMPLEMENTED;
-}
-
-/* readonly attribute long long sessionId; */
-NS_IMETHODIMP _MYCLASS_::GetSessionId(int64_t *aSessionId)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

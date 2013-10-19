@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/html/nsIDOMHTMLFrameSetElement.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/html/nsIDOMHTMLFrameSetElement.idl
  */
 
 #ifndef __gen_nsIDOMHTMLFrameSetElement_h__
@@ -19,11 +19,11 @@
 #include "jspubtd.h"
 
 /* starting interface:    nsIDOMHTMLFrameSetElement */
-#define NS_IDOMHTMLFRAMESETELEMENT_IID_STR "b4d06ff4-877a-4fa3-9efb-a75d2c843520"
+#define NS_IDOMHTMLFRAMESETELEMENT_IID_STR "2531cc4f-c918-4e6d-9021-7d89216c1ebe"
 
 #define NS_IDOMHTMLFRAMESETELEMENT_IID \
-  {0xb4d06ff4, 0x877a, 0x4fa3, \
-    { 0x9e, 0xfb, 0xa7, 0x5d, 0x2c, 0x84, 0x35, 0x20 }}
+  {0x2531cc4f, 0xc918, 0x4e6d, \
+    { 0x90, 0x21, 0x7d, 0x89, 0x21, 0x6c, 0x1e, 0xbe }}
 
 class NS_NO_VTABLE nsIDOMHTMLFrameSetElement : public nsIDOMHTMLElement {
  public: 

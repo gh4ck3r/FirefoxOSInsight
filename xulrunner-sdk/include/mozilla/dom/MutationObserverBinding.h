@@ -10,15 +10,16 @@
 #include "mozilla/dom/DOMJSClass.h"
 #include "mozilla/dom/DOMJSProxyHandler.h"
 
-class XPCWrappedNativeScope;
 class nsDOMMutationObserver;
-
 class nsDOMMutationRecord;
 
-class nsDOMMutationRecord;
+namespace mozilla {
+namespace dom {
 
-class nsDOMMutationObserver;
+class MutationCallback;
 
+} // namespace dom
+} // namespace mozilla
 
 namespace mozilla {
 namespace dom {
@@ -66,20 +67,12 @@ namespace dom {
 
 struct MutationObserverInit : public MainThreadDictionaryBase {
   MutationObserverInit() {}
-  bool Init(JSContext* cx, JSObject* scopeObj, const JS::Value& val);
-  bool ToObject(JSContext* cx, JSObject* parentObject, JS::Value *vp);
+  bool Init(JSContext* cx, JS::Handle<JS::Value> val);
+  bool Init(const nsAString& aJSON);
+  bool ToObject(JSContext* cx, JS::Handle<JSObject*> parentObject, JS::Value *vp) const;
+  void TraceDictionary(JSTracer* trc);
 
-  bool Init(const nsAString& aJSON)
-  {
-    mozilla::Maybe<JSAutoRequest> ar;
-    mozilla::Maybe<JSAutoCompartment> ac;
-    jsval json = JSVAL_VOID;
-    JSContext* cx = ParseJSON(aJSON, ar, ac, json);
-    NS_ENSURE_TRUE(cx, false);
-    return Init(cx, nullptr, json);
-  }
-
-  Optional< Sequence< nsString > > mAttributeFilter;
+  Optional<Sequence<nsString > > mAttributeFilter;
   bool mAttributeOldValue;
   bool mAttributes;
   bool mCharacterData;
@@ -102,15 +95,15 @@ private:
 struct MutationObserverInitInitializer : public MutationObserverInit {
   MutationObserverInitInitializer() {
     // Safe to pass a null context if we pass a null value
-    Init(nullptr, nullptr, JS::NullValue());
+    Init(nullptr, JS::NullHandleValue);
   }
 };
 
 class MutationCallback : public CallbackFunction
 {
 public:
-  inline MutationCallback(JSContext* cx, JSObject* aOwner, JSObject* aCallback, bool* aInited)
-    : CallbackFunction(cx, aOwner, aCallback, aInited)
+  explicit inline MutationCallback(JSObject* aCallback)
+    : CallbackFunction(aCallback)
   {
   }
 
@@ -121,14 +114,15 @@ public:
 
   template <typename T>
   inline void
-  Call(const T& thisObj, const Sequence< OwningNonNull<nsDOMMutationRecord> >& mutations, nsDOMMutationObserver& observer, ErrorResult& aRv)
+  Call(const T& thisObj, const Sequence<OwningNonNull<nsDOMMutationRecord> >& mutations, nsDOMMutationObserver& observer, ErrorResult& aRv, ExceptionHandling aExceptionHandling = eReportExceptions)
   {
-    CallSetup s(mCallback);
+    CallSetup s(CallbackPreserveColor(), aRv, aExceptionHandling);
     if (!s.GetContext()) {
       aRv.Throw(NS_ERROR_UNEXPECTED);
       return;
     }
-    JSObject* thisObjJS = WrapCallThisObject(s.GetContext(), mCallback, thisObj);
+    JS::Rooted<JSObject*> thisObjJS(s.GetContext(),
+      WrapCallThisObject(s.GetContext(), CallbackPreserveColor(), thisObj));
     if (!thisObjJS) {
       aRv.Throw(NS_ERROR_FAILURE);
       return;
@@ -137,18 +131,18 @@ public:
   }
 
   inline void
-  Call(const Sequence< OwningNonNull<nsDOMMutationRecord> >& mutations, nsDOMMutationObserver& observer, ErrorResult& aRv)
+  Call(const Sequence<OwningNonNull<nsDOMMutationRecord> >& mutations, nsDOMMutationObserver& observer, ErrorResult& aRv, ExceptionHandling aExceptionHandling = eReportExceptions)
   {
-    CallSetup s(mCallback);
+    CallSetup s(CallbackPreserveColor(), aRv, aExceptionHandling);
     if (!s.GetContext()) {
       aRv.Throw(NS_ERROR_UNEXPECTED);
       return;
     }
-    return Call(s.GetContext(), nullptr, mutations, observer, aRv);
+    return Call(s.GetContext(), JS::NullPtr(), mutations, observer, aRv);
   }
 
 private:
-  void Call(JSContext* cx, JSObject* aThisObj, const Sequence< OwningNonNull<nsDOMMutationRecord> >& mutations, nsDOMMutationObserver& observer, ErrorResult& aRv);
+  void Call(JSContext* cx, JS::Handle<JSObject*> aThisObj, const Sequence<OwningNonNull<nsDOMMutationRecord> >& mutations, nsDOMMutationObserver& observer, ErrorResult& aRv);
 };
 
 
@@ -157,9 +151,9 @@ namespace MutationObserverBinding {
   extern const NativePropertyHooks sNativePropertyHooks;
 
   void
-  CreateInterfaceObjects(JSContext* aCx, JSObject* aGlobal, JSObject** protoAndIfaceArray);
+  CreateInterfaceObjects(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JSObject** protoAndIfaceArray);
 
-  inline JSObject* GetProtoObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetProtoObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface prototype object for this class.  This will create the
@@ -167,21 +161,19 @@ namespace MutationObserverBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[prototypes::id::MutationObserver];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[prototypes::id::MutationObserver]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[prototypes::id::MutationObserver];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[prototypes::id::MutationObserver]);
   }
 
-  inline JSObject* GetConstructorObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetConstructorObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface object for this class.  This will create the object as
@@ -189,32 +181,30 @@ namespace MutationObserverBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[constructors::id::MutationObserver];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[constructors::id::MutationObserver]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[constructors::id::MutationObserver];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[constructors::id::MutationObserver]);
   }
 
   JSObject*
-  DefineDOMInterface(JSContext* aCx, JSObject* aGlobal, bool* aEnabled);
+  DefineDOMInterface(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JS::Handle<jsid> id, bool* aEnabled);
 
   extern DOMJSClass Class;
 
   JSObject*
-  Wrap(JSContext* aCx, JSObject* aScope, nsDOMMutationObserver* aObject, nsWrapperCache* aCache, bool* aTriedToWrap);
+  Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, nsDOMMutationObserver* aObject, nsWrapperCache* aCache);
 
   template <class T>
-  inline JSObject* Wrap(JSContext* aCx, JSObject* aScope, T* aObject, bool* aTriedToWrap)
+  inline JSObject* Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, T* aObject)
   {
-    return Wrap(aCx, aScope, aObject, aObject, aTriedToWrap);
+    return Wrap(aCx, aScope, aObject, aObject);
   }
 
 } // namespace MutationObserverBinding
@@ -226,9 +216,9 @@ namespace MutationRecordBinding {
   extern const NativePropertyHooks sNativePropertyHooks;
 
   void
-  CreateInterfaceObjects(JSContext* aCx, JSObject* aGlobal, JSObject** protoAndIfaceArray);
+  CreateInterfaceObjects(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JSObject** protoAndIfaceArray);
 
-  inline JSObject* GetProtoObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetProtoObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface prototype object for this class.  This will create the
@@ -236,21 +226,19 @@ namespace MutationRecordBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[prototypes::id::MutationRecord];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[prototypes::id::MutationRecord]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[prototypes::id::MutationRecord];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[prototypes::id::MutationRecord]);
   }
 
-  inline JSObject* GetConstructorObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetConstructorObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface object for this class.  This will create the object as
@@ -258,32 +246,30 @@ namespace MutationRecordBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[constructors::id::MutationRecord];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[constructors::id::MutationRecord]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[constructors::id::MutationRecord];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[constructors::id::MutationRecord]);
   }
 
   JSObject*
-  DefineDOMInterface(JSContext* aCx, JSObject* aGlobal, bool* aEnabled);
+  DefineDOMInterface(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JS::Handle<jsid> id, bool* aEnabled);
 
   extern DOMJSClass Class;
 
   JSObject*
-  Wrap(JSContext* aCx, JSObject* aScope, nsDOMMutationRecord* aObject, nsWrapperCache* aCache, bool* aTriedToWrap);
+  Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, nsDOMMutationRecord* aObject, nsWrapperCache* aCache);
 
   template <class T>
-  inline JSObject* Wrap(JSContext* aCx, JSObject* aScope, T* aObject, bool* aTriedToWrap)
+  inline JSObject* Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, T* aObject)
   {
-    return Wrap(aCx, aScope, aObject, aObject, aTriedToWrap);
+    return Wrap(aCx, aScope, aObject, aObject);
   }
 
 } // namespace MutationRecordBinding

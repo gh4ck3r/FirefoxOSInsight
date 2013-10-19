@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/html/nsIDOMHTMLDivElement.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/html/nsIDOMHTMLDivElement.idl
  */
 
 #ifndef __gen_nsIDOMHTMLDivElement_h__
@@ -16,11 +16,11 @@
 #endif
 
 /* starting interface:    nsIDOMHTMLDivElement */
-#define NS_IDOMHTMLDIVELEMENT_IID_STR "a9651dae-dbd8-4cbe-b42b-a20124c2fe6d"
+#define NS_IDOMHTMLDIVELEMENT_IID_STR "f18a1930-0701-443b-9420-a937b61964d9"
 
 #define NS_IDOMHTMLDIVELEMENT_IID \
-  {0xa9651dae, 0xdbd8, 0x4cbe, \
-    { 0xb4, 0x2b, 0xa2, 0x01, 0x24, 0xc2, 0xfe, 0x6d }}
+  {0xf18a1930, 0x0701, 0x443b, \
+    { 0x94, 0x20, 0xa9, 0x37, 0xb6, 0x19, 0x64, 0xd9 }}
 
 class NS_NO_VTABLE nsIDOMHTMLDivElement : public nsIDOMHTMLElement {
  public: 

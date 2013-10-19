@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/events/nsIDOMKeyEvent.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/events/nsIDOMKeyEvent.idl
  */
 
 #ifndef __gen_nsIDOMKeyEvent_h__
@@ -16,11 +16,11 @@
 #endif
 
 /* starting interface:    nsIDOMKeyEvent */
-#define NS_IDOMKEYEVENT_IID_STR "ffbe684c-ca90-4b58-aa8c-9727f997f86d"
+#define NS_IDOMKEYEVENT_IID_STR "91a3d7f2-223b-4e09-a566-634e7ee0a31d"
 
 #define NS_IDOMKEYEVENT_IID \
-  {0xffbe684c, 0xca90, 0x4b58, \
-    { 0xaa, 0x8c, 0x97, 0x27, 0xf9, 0x97, 0xf8, 0x6d }}
+  {0x91a3d7f2, 0x223b, 0x4e09, \
+    { 0xa5, 0x66, 0x63, 0x4e, 0x7e, 0xe0, 0xa3, 0x1d }}
 
 class NS_NO_VTABLE nsIDOMKeyEvent : public nsIDOMUIEvent {
  public: 
@@ -252,6 +252,9 @@ class NS_NO_VTABLE nsIDOMKeyEvent : public nsIDOMUIEvent {
   /* readonly attribute unsigned long location; */
   NS_IMETHOD GetLocation(uint32_t *aLocation) = 0;
 
+  /* readonly attribute DOMString key; */
+  NS_IMETHOD GetKey(nsAString & aKey) = 0;
+
 };
 
   NS_DEFINE_STATIC_IID_ACCESSOR(nsIDOMKeyEvent, NS_IDOMKEYEVENT_IID)
@@ -266,7 +269,8 @@ class NS_NO_VTABLE nsIDOMKeyEvent : public nsIDOMUIEvent {
   NS_IMETHOD GetMetaKey(bool *aMetaKey); \
   NS_IMETHOD InitKeyEvent(const nsAString & typeArg, bool canBubbleArg, bool cancelableArg, nsIDOMWindow *viewArg, bool ctrlKeyArg, bool altKeyArg, bool shiftKeyArg, bool metaKeyArg, uint32_t keyCodeArg, uint32_t charCodeArg); \
   NS_IMETHOD GetModifierState(const nsAString & keyArg, bool *_retval); \
-  NS_IMETHOD GetLocation(uint32_t *aLocation); 
+  NS_IMETHOD GetLocation(uint32_t *aLocation); \
+  NS_IMETHOD GetKey(nsAString & aKey); 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object. */
 #define NS_FORWARD_NSIDOMKEYEVENT(_to) \
@@ -278,7 +282,8 @@ class NS_NO_VTABLE nsIDOMKeyEvent : public nsIDOMUIEvent {
   NS_IMETHOD GetMetaKey(bool *aMetaKey) { return _to GetMetaKey(aMetaKey); } \
   NS_IMETHOD InitKeyEvent(const nsAString & typeArg, bool canBubbleArg, bool cancelableArg, nsIDOMWindow *viewArg, bool ctrlKeyArg, bool altKeyArg, bool shiftKeyArg, bool metaKeyArg, uint32_t keyCodeArg, uint32_t charCodeArg) { return _to InitKeyEvent(typeArg, canBubbleArg, cancelableArg, viewArg, ctrlKeyArg, altKeyArg, shiftKeyArg, metaKeyArg, keyCodeArg, charCodeArg); } \
   NS_IMETHOD GetModifierState(const nsAString & keyArg, bool *_retval) { return _to GetModifierState(keyArg, _retval); } \
-  NS_IMETHOD GetLocation(uint32_t *aLocation) { return _to GetLocation(aLocation); } 
+  NS_IMETHOD GetLocation(uint32_t *aLocation) { return _to GetLocation(aLocation); } \
+  NS_IMETHOD GetKey(nsAString & aKey) { return _to GetKey(aKey); } 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object in a safe way. */
 #define NS_FORWARD_SAFE_NSIDOMKEYEVENT(_to) \
@@ -290,7 +295,8 @@ class NS_NO_VTABLE nsIDOMKeyEvent : public nsIDOMUIEvent {
   NS_IMETHOD GetMetaKey(bool *aMetaKey) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetMetaKey(aMetaKey); } \
   NS_IMETHOD InitKeyEvent(const nsAString & typeArg, bool canBubbleArg, bool cancelableArg, nsIDOMWindow *viewArg, bool ctrlKeyArg, bool altKeyArg, bool shiftKeyArg, bool metaKeyArg, uint32_t keyCodeArg, uint32_t charCodeArg) { return !_to ? NS_ERROR_NULL_POINTER : _to->InitKeyEvent(typeArg, canBubbleArg, cancelableArg, viewArg, ctrlKeyArg, altKeyArg, shiftKeyArg, metaKeyArg, keyCodeArg, charCodeArg); } \
   NS_IMETHOD GetModifierState(const nsAString & keyArg, bool *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetModifierState(keyArg, _retval); } \
-  NS_IMETHOD GetLocation(uint32_t *aLocation) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetLocation(aLocation); } 
+  NS_IMETHOD GetLocation(uint32_t *aLocation) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetLocation(aLocation); } \
+  NS_IMETHOD GetKey(nsAString & aKey) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetKey(aKey); } 
 
 #if 0
 /* Use the code below as a template for the implementation class for this interface. */
@@ -374,6 +380,12 @@ NS_IMETHODIMP nsDOMKeyEvent::GetModifierState(const nsAString & keyArg, bool *_r
 
 /* readonly attribute unsigned long location; */
 NS_IMETHODIMP nsDOMKeyEvent::GetLocation(uint32_t *aLocation)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* readonly attribute DOMString key; */
+NS_IMETHODIMP nsDOMKeyEvent::GetKey(nsAString & aKey)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

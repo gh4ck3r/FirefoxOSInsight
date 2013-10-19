@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/xul/nsIDOMXULTreeElement.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/xul/nsIDOMXULTreeElement.idl
  */
 
 #ifndef __gen_nsIDOMXULTreeElement_h__
@@ -26,11 +26,11 @@ class nsIDOMXULTextBoxElement; /* forward declaration */
 
 
 /* starting interface:    nsIDOMXULTreeElement */
-#define NS_IDOMXULTREEELEMENT_IID_STR "cba7143b-73fc-4974-b93d-7e3f6b18d645"
+#define NS_IDOMXULTREEELEMENT_IID_STR "660b5fd1-fa8f-4c9f-901e-cf10ca69b5fd"
 
 #define NS_IDOMXULTREEELEMENT_IID \
-  {0xcba7143b, 0x73fc, 0x4974, \
-    { 0xb9, 0x3d, 0x7e, 0x3f, 0x6b, 0x18, 0xd6, 0x45 }}
+  {0x660b5fd1, 0xfa8f, 0x4c9f, \
+    { 0x90, 0x1e, 0xcf, 0x10, 0xca, 0x69, 0xb5, 0xfd }}
 
 class NS_NO_VTABLE nsIDOMXULTreeElement : public nsIDOMXULElement {
  public: 

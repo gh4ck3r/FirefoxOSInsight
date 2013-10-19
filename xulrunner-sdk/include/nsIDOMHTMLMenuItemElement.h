@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/html/nsIDOMHTMLMenuItemElement.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/html/nsIDOMHTMLMenuItemElement.idl
  */
 
 #ifndef __gen_nsIDOMHTMLMenuItemElement_h__
@@ -16,11 +16,11 @@
 #endif
 
 /* starting interface:    nsIDOMHTMLMenuItemElement */
-#define NS_IDOMHTMLMENUITEMELEMENT_IID_STR "685e02ff-8148-4414-a0d6-319e817f3b56"
+#define NS_IDOMHTMLMENUITEMELEMENT_IID_STR "7f449325-b250-478a-bd2c-d0986256763e"
 
 #define NS_IDOMHTMLMENUITEMELEMENT_IID \
-  {0x685e02ff, 0x8148, 0x4414, \
-    { 0xa0, 0xd6, 0x31, 0x9e, 0x81, 0x7f, 0x3b, 0x56 }}
+  {0x7f449325, 0xb250, 0x478a, \
+    { 0xbd, 0x2c, 0xd0, 0x98, 0x62, 0x56, 0x76, 0x3e }}
 
 class NS_NO_VTABLE nsIDOMHTMLMenuItemElement : public nsIDOMHTMLCommandElement {
  public: 

@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/xul/nsIDOMXULMenuListElement.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/xul/nsIDOMXULMenuListElement.idl
  */
 
 #ifndef __gen_nsIDOMXULMenuListElement_h__
@@ -18,11 +18,11 @@ class nsIDOMXULTextBoxElement; /* forward declaration */
 
 
 /* starting interface:    nsIDOMXULMenuListElement */
-#define NS_IDOMXULMENULISTELEMENT_IID_STR "510561f2-7772-4de3-934e-f4619509398b"
+#define NS_IDOMXULMENULISTELEMENT_IID_STR "36c16a17-c0e9-4b35-951b-81a147314ef1"
 
 #define NS_IDOMXULMENULISTELEMENT_IID \
-  {0x510561f2, 0x7772, 0x4de3, \
-    { 0x93, 0x4e, 0xf4, 0x61, 0x95, 0x09, 0x39, 0x8b }}
+  {0x36c16a17, 0xc0e9, 0x4b35, \
+    { 0x95, 0x1b, 0x81, 0xa1, 0x47, 0x31, 0x4e, 0xf1 }}
 
 class NS_NO_VTABLE nsIDOMXULMenuListElement : public nsIDOMXULSelectControlElement {
  public: 

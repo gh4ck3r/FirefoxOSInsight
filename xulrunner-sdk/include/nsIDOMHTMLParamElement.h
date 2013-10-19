@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/html/nsIDOMHTMLParamElement.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/html/nsIDOMHTMLParamElement.idl
  */
 
 #ifndef __gen_nsIDOMHTMLParamElement_h__
@@ -16,11 +16,11 @@
 #endif
 
 /* starting interface:    nsIDOMHTMLParamElement */
-#define NS_IDOMHTMLPARAMELEMENT_IID_STR "1fbec0f8-c7cf-4dc8-84be-247985a65e07"
+#define NS_IDOMHTMLPARAMELEMENT_IID_STR "f85e1b05-6dc4-442d-bea8-7cf551f9bc9f"
 
 #define NS_IDOMHTMLPARAMELEMENT_IID \
-  {0x1fbec0f8, 0xc7cf, 0x4dc8, \
-    { 0x84, 0xbe, 0x24, 0x79, 0x85, 0xa6, 0x5e, 0x07 }}
+  {0xf85e1b05, 0x6dc4, 0x442d, \
+    { 0xbe, 0xa8, 0x7c, 0xf5, 0x51, 0xf9, 0xbc, 0x9f }}
 
 class NS_NO_VTABLE nsIDOMHTMLParamElement : public nsIDOMHTMLElement {
  public: 

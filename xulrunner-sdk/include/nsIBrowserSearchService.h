@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/netwerk/base/public/nsIBrowserSearchService.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/netwerk/base/public/nsIBrowserSearchService.idl
  */
 
 #ifndef __gen_nsIBrowserSearchService_h__
@@ -37,6 +37,9 @@ class NS_NO_VTABLE nsISearchSubmission : public nsISupports {
   /* readonly attribute nsIURI uri; */
   NS_IMETHOD GetUri(nsIURI * *aUri) = 0;
 
+  /* readonly attribute AString postDataString; */
+  NS_IMETHOD GetPostDataString(nsAString & aPostDataString) = 0;
+
 };
 
   NS_DEFINE_STATIC_IID_ACCESSOR(nsISearchSubmission, NS_ISEARCHSUBMISSION_IID)
@@ -44,17 +47,20 @@ class NS_NO_VTABLE nsISearchSubmission : public nsISupports {
 /* Use this macro when declaring classes that implement this interface. */
 #define NS_DECL_NSISEARCHSUBMISSION \
   NS_IMETHOD GetPostData(nsIInputStream * *aPostData); \
-  NS_IMETHOD GetUri(nsIURI * *aUri); 
+  NS_IMETHOD GetUri(nsIURI * *aUri); \
+  NS_IMETHOD GetPostDataString(nsAString & aPostDataString); 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object. */
 #define NS_FORWARD_NSISEARCHSUBMISSION(_to) \
   NS_IMETHOD GetPostData(nsIInputStream * *aPostData) { return _to GetPostData(aPostData); } \
-  NS_IMETHOD GetUri(nsIURI * *aUri) { return _to GetUri(aUri); } 
+  NS_IMETHOD GetUri(nsIURI * *aUri) { return _to GetUri(aUri); } \
+  NS_IMETHOD GetPostDataString(nsAString & aPostDataString) { return _to GetPostDataString(aPostDataString); } 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object in a safe way. */
 #define NS_FORWARD_SAFE_NSISEARCHSUBMISSION(_to) \
   NS_IMETHOD GetPostData(nsIInputStream * *aPostData) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetPostData(aPostData); } \
-  NS_IMETHOD GetUri(nsIURI * *aUri) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetUri(aUri); } 
+  NS_IMETHOD GetUri(nsIURI * *aUri) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetUri(aUri); } \
+  NS_IMETHOD GetPostDataString(nsAString & aPostDataString) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetPostDataString(aPostDataString); } 
 
 #if 0
 /* Use the code below as a template for the implementation class for this interface. */
@@ -96,6 +102,12 @@ NS_IMETHODIMP nsSearchSubmission::GetPostData(nsIInputStream * *aPostData)
 
 /* readonly attribute nsIURI uri; */
 NS_IMETHODIMP nsSearchSubmission::GetUri(nsIURI * *aUri)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* readonly attribute AString postDataString; */
+NS_IMETHODIMP nsSearchSubmission::GetPostDataString(nsAString & aPostDataString)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
@@ -395,11 +407,11 @@ NS_IMETHODIMP nsBrowserSearchInitObserver::OnInitComplete(nsresult aStatus)
 
 
 /* starting interface:    nsIBrowserSearchService */
-#define NS_IBROWSERSEARCHSERVICE_IID_STR "a676eb70-6987-4429-a668-3e253b6f7c7c"
+#define NS_IBROWSERSEARCHSERVICE_IID_STR "89beea9f-61a8-45d3-818d-b259f00195fe"
 
 #define NS_IBROWSERSEARCHSERVICE_IID \
-  {0xa676eb70, 0x6987, 0x4429, \
-    { 0xa6, 0x68, 0x3e, 0x25, 0x3b, 0x6f, 0x7c, 0x7c }}
+  {0x89beea9f, 0x61a8, 0x45d3, \
+    { 0x81, 0x8d, 0xb2, 0x59, 0xf0, 0x01, 0x95, 0xfe }}
 
 class NS_NO_VTABLE nsIBrowserSearchService : public nsISupports {
  public: 
@@ -442,15 +454,13 @@ class NS_NO_VTABLE nsIBrowserSearchService : public nsISupports {
   /* void removeEngine (in nsISearchEngine engine); */
   NS_IMETHOD RemoveEngine(nsISearchEngine *engine) = 0;
 
-  /* readonly attribute nsISearchEngine defaultEngine; */
+  /* attribute nsISearchEngine defaultEngine; */
   NS_IMETHOD GetDefaultEngine(nsISearchEngine * *aDefaultEngine) = 0;
+  NS_IMETHOD SetDefaultEngine(nsISearchEngine *aDefaultEngine) = 0;
 
   /* attribute nsISearchEngine currentEngine; */
   NS_IMETHOD GetCurrentEngine(nsISearchEngine * *aCurrentEngine) = 0;
   NS_IMETHOD SetCurrentEngine(nsISearchEngine *aCurrentEngine) = 0;
-
-  /* readonly attribute nsISearchEngine originalDefaultEngine; */
-  NS_IMETHOD GetOriginalDefaultEngine(nsISearchEngine * *aOriginalDefaultEngine) = 0;
 
 };
 
@@ -471,9 +481,9 @@ class NS_NO_VTABLE nsIBrowserSearchService : public nsISupports {
   NS_IMETHOD MoveEngine(nsISearchEngine *engine, int32_t newIndex); \
   NS_IMETHOD RemoveEngine(nsISearchEngine *engine); \
   NS_IMETHOD GetDefaultEngine(nsISearchEngine * *aDefaultEngine); \
+  NS_IMETHOD SetDefaultEngine(nsISearchEngine *aDefaultEngine); \
   NS_IMETHOD GetCurrentEngine(nsISearchEngine * *aCurrentEngine); \
-  NS_IMETHOD SetCurrentEngine(nsISearchEngine *aCurrentEngine); \
-  NS_IMETHOD GetOriginalDefaultEngine(nsISearchEngine * *aOriginalDefaultEngine); 
+  NS_IMETHOD SetCurrentEngine(nsISearchEngine *aCurrentEngine); 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object. */
 #define NS_FORWARD_NSIBROWSERSEARCHSERVICE(_to) \
@@ -490,9 +500,9 @@ class NS_NO_VTABLE nsIBrowserSearchService : public nsISupports {
   NS_IMETHOD MoveEngine(nsISearchEngine *engine, int32_t newIndex) { return _to MoveEngine(engine, newIndex); } \
   NS_IMETHOD RemoveEngine(nsISearchEngine *engine) { return _to RemoveEngine(engine); } \
   NS_IMETHOD GetDefaultEngine(nsISearchEngine * *aDefaultEngine) { return _to GetDefaultEngine(aDefaultEngine); } \
+  NS_IMETHOD SetDefaultEngine(nsISearchEngine *aDefaultEngine) { return _to SetDefaultEngine(aDefaultEngine); } \
   NS_IMETHOD GetCurrentEngine(nsISearchEngine * *aCurrentEngine) { return _to GetCurrentEngine(aCurrentEngine); } \
-  NS_IMETHOD SetCurrentEngine(nsISearchEngine *aCurrentEngine) { return _to SetCurrentEngine(aCurrentEngine); } \
-  NS_IMETHOD GetOriginalDefaultEngine(nsISearchEngine * *aOriginalDefaultEngine) { return _to GetOriginalDefaultEngine(aOriginalDefaultEngine); } 
+  NS_IMETHOD SetCurrentEngine(nsISearchEngine *aCurrentEngine) { return _to SetCurrentEngine(aCurrentEngine); } 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object in a safe way. */
 #define NS_FORWARD_SAFE_NSIBROWSERSEARCHSERVICE(_to) \
@@ -509,9 +519,9 @@ class NS_NO_VTABLE nsIBrowserSearchService : public nsISupports {
   NS_IMETHOD MoveEngine(nsISearchEngine *engine, int32_t newIndex) { return !_to ? NS_ERROR_NULL_POINTER : _to->MoveEngine(engine, newIndex); } \
   NS_IMETHOD RemoveEngine(nsISearchEngine *engine) { return !_to ? NS_ERROR_NULL_POINTER : _to->RemoveEngine(engine); } \
   NS_IMETHOD GetDefaultEngine(nsISearchEngine * *aDefaultEngine) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetDefaultEngine(aDefaultEngine); } \
+  NS_IMETHOD SetDefaultEngine(nsISearchEngine *aDefaultEngine) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetDefaultEngine(aDefaultEngine); } \
   NS_IMETHOD GetCurrentEngine(nsISearchEngine * *aCurrentEngine) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetCurrentEngine(aCurrentEngine); } \
-  NS_IMETHOD SetCurrentEngine(nsISearchEngine *aCurrentEngine) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetCurrentEngine(aCurrentEngine); } \
-  NS_IMETHOD GetOriginalDefaultEngine(nsISearchEngine * *aOriginalDefaultEngine) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetOriginalDefaultEngine(aOriginalDefaultEngine); } 
+  NS_IMETHOD SetCurrentEngine(nsISearchEngine *aCurrentEngine) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetCurrentEngine(aCurrentEngine); } 
 
 #if 0
 /* Use the code below as a template for the implementation class for this interface. */
@@ -617,8 +627,12 @@ NS_IMETHODIMP nsBrowserSearchService::RemoveEngine(nsISearchEngine *engine)
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* readonly attribute nsISearchEngine defaultEngine; */
+/* attribute nsISearchEngine defaultEngine; */
 NS_IMETHODIMP nsBrowserSearchService::GetDefaultEngine(nsISearchEngine * *aDefaultEngine)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+NS_IMETHODIMP nsBrowserSearchService::SetDefaultEngine(nsISearchEngine *aDefaultEngine)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
@@ -629,12 +643,6 @@ NS_IMETHODIMP nsBrowserSearchService::GetCurrentEngine(nsISearchEngine * *aCurre
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 NS_IMETHODIMP nsBrowserSearchService::SetCurrentEngine(nsISearchEngine *aCurrentEngine)
-{
-    return NS_ERROR_NOT_IMPLEMENTED;
-}
-
-/* readonly attribute nsISearchEngine originalDefaultEngine; */
-NS_IMETHODIMP nsBrowserSearchService::GetOriginalDefaultEngine(nsISearchEngine * *aOriginalDefaultEngine)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
@@ -672,5 +680,9 @@ NS_IMETHODIMP nsBrowserSearchService::GetOriginalDefaultEngine(nsISearchEngine *
  * Sent when the "current" engine is changed.
  */
 #define SEARCH_ENGINE_CURRENT      "engine-current";
+/**
+ * Sent when the "default" engine is changed.
+ */
+#define SEARCH_ENGINE_DEFAULT      "engine-default";
 
 #endif /* __gen_nsIBrowserSearchService_h__ */

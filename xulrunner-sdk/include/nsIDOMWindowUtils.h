@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/base/nsIDOMWindowUtils.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/base/nsIDOMWindowUtils.idl
  */
 
 #ifndef __gen_nsIDOMWindowUtils_h__
@@ -55,11 +55,11 @@ class nsIDOMEventTarget; /* forward declaration */
 
 
 /* starting interface:    nsIDOMWindowUtils */
-#define NS_IDOMWINDOWUTILS_IID_STR "16b3bdcc-75d4-11e2-8a20-aaff78957a39"
+#define NS_IDOMWINDOWUTILS_IID_STR "04429978-3417-411b-882b-81cd5cec5ecd"
 
 #define NS_IDOMWINDOWUTILS_IID \
-  {0x16b3bdcc, 0x75d4, 0x11e2, \
-    { 0x8a, 0x20, 0xaa, 0xff, 0x78, 0x95, 0x7a, 0x39 }}
+  {0x04429978, 0x3417, 0x411b, \
+    { 0x88, 0x2b, 0x81, 0xcd, 0x5c, 0xec, 0x5e, 0xcd }}
 
 class NS_NO_VTABLE nsIDOMWindowUtils : public nsISupports {
  public: 
@@ -211,8 +211,8 @@ class NS_NO_VTABLE nsIDOMWindowUtils : public nsISupports {
   /* void getScrollXY (in boolean aFlushLayout, out long aScrollX, out long aScrollY); */
   NS_IMETHOD GetScrollXY(bool aFlushLayout, int32_t *aScrollX, int32_t *aScrollY) = 0;
 
-  /* long getScrollbarWidth (in boolean aFlushLayout); */
-  NS_IMETHOD GetScrollbarWidth(bool aFlushLayout, int32_t *_retval) = 0;
+  /* void getScrollbarSize (in boolean aFlushLayout, out long aWidth, out long aHeight); */
+  NS_IMETHOD GetScrollbarSize(bool aFlushLayout, int32_t *aWidth, int32_t *aHeight) = 0;
 
   /* nsIDOMClientRect getRootBounds (); */
   NS_IMETHOD GetRootBounds(nsIDOMClientRect * *_retval) = 0;
@@ -335,6 +335,9 @@ class NS_NO_VTABLE nsIDOMWindowUtils : public nsISupports {
   /* readonly attribute AString layerManagerType; */
   NS_IMETHOD GetLayerManagerType(nsAString & aLayerManagerType) = 0;
 
+  /* readonly attribute boolean layerManagerRemote; */
+  NS_IMETHOD GetLayerManagerRemote(bool *aLayerManagerRemote) = 0;
+
   /* void startFrameTimeRecording ([retval] out unsigned long startIndex); */
   NS_IMETHOD StartFrameTimeRecording(uint32_t *startIndex) = 0;
 
@@ -358,6 +361,9 @@ class NS_NO_VTABLE nsIDOMWindowUtils : public nsISupports {
 
   /* void restoreNormalRefresh (); */
   NS_IMETHOD RestoreNormalRefresh(void) = 0;
+
+  /* readonly attribute bool isTestControllingRefreshes; */
+  NS_IMETHOD GetIsTestControllingRefreshes(bool *aIsTestControllingRefreshes) = 0;
 
   /* double computeAnimationDistance (in nsIDOMElement element, in AString property, in AString value1, in AString value2); */
   NS_IMETHOD ComputeAnimationDistance(nsIDOMElement *element, const nsAString & property, const nsAString & value1, const nsAString & value2, double *_retval) = 0;
@@ -422,6 +428,9 @@ class NS_NO_VTABLE nsIDOMWindowUtils : public nsISupports {
   /* void setScrollPositionClampingScrollPortSize (in float aWidth, in float aHeight); */
   NS_IMETHOD SetScrollPositionClampingScrollPortSize(float aWidth, float aHeight) = 0;
 
+  /* void setContentDocumentFixedPositionMargins (in float aTop, in float aRight, in float aBottom, in float aLeft); */
+  NS_IMETHOD SetContentDocumentFixedPositionMargins(float aTop, float aRight, float aBottom, float aLeft) = 0;
+
   /* void preventFurtherDialogs (); */
   NS_IMETHOD PreventFurtherDialogs(void) = 0;
 
@@ -445,6 +454,10 @@ class NS_NO_VTABLE nsIDOMWindowUtils : public nsISupports {
 
   /* boolean isNodeDisabledForEvents (in nsIDOMNode aNode); */
   NS_IMETHOD IsNodeDisabledForEvents(nsIDOMNode *aNode, bool *_retval) = 0;
+
+  /* attribute boolean paintFlashing; */
+  NS_IMETHOD GetPaintFlashing(bool *aPaintFlashing) = 0;
+  NS_IMETHOD SetPaintFlashing(bool aPaintFlashing) = 0;
 
 };
 
@@ -488,7 +501,7 @@ class NS_NO_VTABLE nsIDOMWindowUtils : public nsISupports {
   NS_IMETHOD ClearMozAfterPaintEvents(void); \
   NS_IMETHOD DisableNonTestMouseEvents(bool aDisable); \
   NS_IMETHOD GetScrollXY(bool aFlushLayout, int32_t *aScrollX, int32_t *aScrollY); \
-  NS_IMETHOD GetScrollbarWidth(bool aFlushLayout, int32_t *_retval); \
+  NS_IMETHOD GetScrollbarSize(bool aFlushLayout, int32_t *aWidth, int32_t *aHeight); \
   NS_IMETHOD GetRootBounds(nsIDOMClientRect * *_retval); \
   NS_IMETHOD GetIMEIsOpen(bool *aIMEIsOpen); \
   NS_IMETHOD GetIMEStatus(uint32_t *aIMEStatus); \
@@ -518,6 +531,7 @@ class NS_NO_VTABLE nsIDOMWindowUtils : public nsISupports {
   NS_IMETHOD SuspendTimeouts(void); \
   NS_IMETHOD ResumeTimeouts(void); \
   NS_IMETHOD GetLayerManagerType(nsAString & aLayerManagerType); \
+  NS_IMETHOD GetLayerManagerRemote(bool *aLayerManagerRemote); \
   NS_IMETHOD StartFrameTimeRecording(uint32_t *startIndex); \
   NS_IMETHOD StopFrameTimeRecording(uint32_t startIndex, float **paintTimes, uint32_t *frameCount, float **frameIntervals); \
   NS_IMETHOD BeginTabSwitch(void); \
@@ -526,6 +540,7 @@ class NS_NO_VTABLE nsIDOMWindowUtils : public nsISupports {
   NS_IMETHOD RenderDocument(const nsRect & aRect, uint32_t aFlags, nscolor aBackgroundColor, gfxContext *aThebesContext); \
   NS_IMETHOD AdvanceTimeAndRefresh(int64_t aMilliseconds); \
   NS_IMETHOD RestoreNormalRefresh(void); \
+  NS_IMETHOD GetIsTestControllingRefreshes(bool *aIsTestControllingRefreshes); \
   NS_IMETHOD ComputeAnimationDistance(nsIDOMElement *element, const nsAString & property, const nsAString & value1, const nsAString & value2, double *_retval); \
   NS_IMETHOD WrapDOMFile(nsIFile *aFile, nsIDOMFile * *_retval); \
   NS_IMETHOD GetFocusedInputType(char * *aFocusedInputType); \
@@ -547,12 +562,15 @@ class NS_NO_VTABLE nsIDOMWindowUtils : public nsISupports {
   NS_IMETHOD GetPaintingSuppressed(bool *aPaintingSuppressed); \
   NS_IMETHOD GetPlugins(JSContext* cx, JS::Value *aPlugins); \
   NS_IMETHOD SetScrollPositionClampingScrollPortSize(float aWidth, float aHeight); \
+  NS_IMETHOD SetContentDocumentFixedPositionMargins(float aTop, float aRight, float aBottom, float aLeft); \
   NS_IMETHOD PreventFurtherDialogs(void); \
   NS_IMETHOD LoadSheet(nsIURI *sheetURI, uint32_t type); \
   NS_IMETHOD RemoveSheet(nsIURI *sheetURI, uint32_t type); \
   NS_IMETHOD GetIsHandlingUserInput(bool *aIsHandlingUserInput); \
   NS_IMETHOD AllowScriptsToClose(void); \
-  NS_IMETHOD IsNodeDisabledForEvents(nsIDOMNode *aNode, bool *_retval); 
+  NS_IMETHOD IsNodeDisabledForEvents(nsIDOMNode *aNode, bool *_retval); \
+  NS_IMETHOD GetPaintFlashing(bool *aPaintFlashing); \
+  NS_IMETHOD SetPaintFlashing(bool aPaintFlashing); 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object. */
 #define NS_FORWARD_NSIDOMWINDOWUTILS(_to) \
@@ -592,7 +610,7 @@ class NS_NO_VTABLE nsIDOMWindowUtils : public nsISupports {
   NS_IMETHOD ClearMozAfterPaintEvents(void) { return _to ClearMozAfterPaintEvents(); } \
   NS_IMETHOD DisableNonTestMouseEvents(bool aDisable) { return _to DisableNonTestMouseEvents(aDisable); } \
   NS_IMETHOD GetScrollXY(bool aFlushLayout, int32_t *aScrollX, int32_t *aScrollY) { return _to GetScrollXY(aFlushLayout, aScrollX, aScrollY); } \
-  NS_IMETHOD GetScrollbarWidth(bool aFlushLayout, int32_t *_retval) { return _to GetScrollbarWidth(aFlushLayout, _retval); } \
+  NS_IMETHOD GetScrollbarSize(bool aFlushLayout, int32_t *aWidth, int32_t *aHeight) { return _to GetScrollbarSize(aFlushLayout, aWidth, aHeight); } \
   NS_IMETHOD GetRootBounds(nsIDOMClientRect * *_retval) { return _to GetRootBounds(_retval); } \
   NS_IMETHOD GetIMEIsOpen(bool *aIMEIsOpen) { return _to GetIMEIsOpen(aIMEIsOpen); } \
   NS_IMETHOD GetIMEStatus(uint32_t *aIMEStatus) { return _to GetIMEStatus(aIMEStatus); } \
@@ -622,6 +640,7 @@ class NS_NO_VTABLE nsIDOMWindowUtils : public nsISupports {
   NS_IMETHOD SuspendTimeouts(void) { return _to SuspendTimeouts(); } \
   NS_IMETHOD ResumeTimeouts(void) { return _to ResumeTimeouts(); } \
   NS_IMETHOD GetLayerManagerType(nsAString & aLayerManagerType) { return _to GetLayerManagerType(aLayerManagerType); } \
+  NS_IMETHOD GetLayerManagerRemote(bool *aLayerManagerRemote) { return _to GetLayerManagerRemote(aLayerManagerRemote); } \
   NS_IMETHOD StartFrameTimeRecording(uint32_t *startIndex) { return _to StartFrameTimeRecording(startIndex); } \
   NS_IMETHOD StopFrameTimeRecording(uint32_t startIndex, float **paintTimes, uint32_t *frameCount, float **frameIntervals) { return _to StopFrameTimeRecording(startIndex, paintTimes, frameCount, frameIntervals); } \
   NS_IMETHOD BeginTabSwitch(void) { return _to BeginTabSwitch(); } \
@@ -630,6 +649,7 @@ class NS_NO_VTABLE nsIDOMWindowUtils : public nsISupports {
   NS_IMETHOD RenderDocument(const nsRect & aRect, uint32_t aFlags, nscolor aBackgroundColor, gfxContext *aThebesContext) { return _to RenderDocument(aRect, aFlags, aBackgroundColor, aThebesContext); } \
   NS_IMETHOD AdvanceTimeAndRefresh(int64_t aMilliseconds) { return _to AdvanceTimeAndRefresh(aMilliseconds); } \
   NS_IMETHOD RestoreNormalRefresh(void) { return _to RestoreNormalRefresh(); } \
+  NS_IMETHOD GetIsTestControllingRefreshes(bool *aIsTestControllingRefreshes) { return _to GetIsTestControllingRefreshes(aIsTestControllingRefreshes); } \
   NS_IMETHOD ComputeAnimationDistance(nsIDOMElement *element, const nsAString & property, const nsAString & value1, const nsAString & value2, double *_retval) { return _to ComputeAnimationDistance(element, property, value1, value2, _retval); } \
   NS_IMETHOD WrapDOMFile(nsIFile *aFile, nsIDOMFile * *_retval) { return _to WrapDOMFile(aFile, _retval); } \
   NS_IMETHOD GetFocusedInputType(char * *aFocusedInputType) { return _to GetFocusedInputType(aFocusedInputType); } \
@@ -651,12 +671,15 @@ class NS_NO_VTABLE nsIDOMWindowUtils : public nsISupports {
   NS_IMETHOD GetPaintingSuppressed(bool *aPaintingSuppressed) { return _to GetPaintingSuppressed(aPaintingSuppressed); } \
   NS_IMETHOD GetPlugins(JSContext* cx, JS::Value *aPlugins) { return _to GetPlugins(cx, aPlugins); } \
   NS_IMETHOD SetScrollPositionClampingScrollPortSize(float aWidth, float aHeight) { return _to SetScrollPositionClampingScrollPortSize(aWidth, aHeight); } \
+  NS_IMETHOD SetContentDocumentFixedPositionMargins(float aTop, float aRight, float aBottom, float aLeft) { return _to SetContentDocumentFixedPositionMargins(aTop, aRight, aBottom, aLeft); } \
   NS_IMETHOD PreventFurtherDialogs(void) { return _to PreventFurtherDialogs(); } \
   NS_IMETHOD LoadSheet(nsIURI *sheetURI, uint32_t type) { return _to LoadSheet(sheetURI, type); } \
   NS_IMETHOD RemoveSheet(nsIURI *sheetURI, uint32_t type) { return _to RemoveSheet(sheetURI, type); } \
   NS_IMETHOD GetIsHandlingUserInput(bool *aIsHandlingUserInput) { return _to GetIsHandlingUserInput(aIsHandlingUserInput); } \
   NS_IMETHOD AllowScriptsToClose(void) { return _to AllowScriptsToClose(); } \
-  NS_IMETHOD IsNodeDisabledForEvents(nsIDOMNode *aNode, bool *_retval) { return _to IsNodeDisabledForEvents(aNode, _retval); } 
+  NS_IMETHOD IsNodeDisabledForEvents(nsIDOMNode *aNode, bool *_retval) { return _to IsNodeDisabledForEvents(aNode, _retval); } \
+  NS_IMETHOD GetPaintFlashing(bool *aPaintFlashing) { return _to GetPaintFlashing(aPaintFlashing); } \
+  NS_IMETHOD SetPaintFlashing(bool aPaintFlashing) { return _to SetPaintFlashing(aPaintFlashing); } 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object in a safe way. */
 #define NS_FORWARD_SAFE_NSIDOMWINDOWUTILS(_to) \
@@ -696,7 +719,7 @@ class NS_NO_VTABLE nsIDOMWindowUtils : public nsISupports {
   NS_IMETHOD ClearMozAfterPaintEvents(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->ClearMozAfterPaintEvents(); } \
   NS_IMETHOD DisableNonTestMouseEvents(bool aDisable) { return !_to ? NS_ERROR_NULL_POINTER : _to->DisableNonTestMouseEvents(aDisable); } \
   NS_IMETHOD GetScrollXY(bool aFlushLayout, int32_t *aScrollX, int32_t *aScrollY) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetScrollXY(aFlushLayout, aScrollX, aScrollY); } \
-  NS_IMETHOD GetScrollbarWidth(bool aFlushLayout, int32_t *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetScrollbarWidth(aFlushLayout, _retval); } \
+  NS_IMETHOD GetScrollbarSize(bool aFlushLayout, int32_t *aWidth, int32_t *aHeight) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetScrollbarSize(aFlushLayout, aWidth, aHeight); } \
   NS_IMETHOD GetRootBounds(nsIDOMClientRect * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetRootBounds(_retval); } \
   NS_IMETHOD GetIMEIsOpen(bool *aIMEIsOpen) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetIMEIsOpen(aIMEIsOpen); } \
   NS_IMETHOD GetIMEStatus(uint32_t *aIMEStatus) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetIMEStatus(aIMEStatus); } \
@@ -726,6 +749,7 @@ class NS_NO_VTABLE nsIDOMWindowUtils : public nsISupports {
   NS_IMETHOD SuspendTimeouts(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->SuspendTimeouts(); } \
   NS_IMETHOD ResumeTimeouts(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->ResumeTimeouts(); } \
   NS_IMETHOD GetLayerManagerType(nsAString & aLayerManagerType) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetLayerManagerType(aLayerManagerType); } \
+  NS_IMETHOD GetLayerManagerRemote(bool *aLayerManagerRemote) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetLayerManagerRemote(aLayerManagerRemote); } \
   NS_IMETHOD StartFrameTimeRecording(uint32_t *startIndex) { return !_to ? NS_ERROR_NULL_POINTER : _to->StartFrameTimeRecording(startIndex); } \
   NS_IMETHOD StopFrameTimeRecording(uint32_t startIndex, float **paintTimes, uint32_t *frameCount, float **frameIntervals) { return !_to ? NS_ERROR_NULL_POINTER : _to->StopFrameTimeRecording(startIndex, paintTimes, frameCount, frameIntervals); } \
   NS_IMETHOD BeginTabSwitch(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->BeginTabSwitch(); } \
@@ -734,6 +758,7 @@ class NS_NO_VTABLE nsIDOMWindowUtils : public nsISupports {
   NS_IMETHOD RenderDocument(const nsRect & aRect, uint32_t aFlags, nscolor aBackgroundColor, gfxContext *aThebesContext) { return !_to ? NS_ERROR_NULL_POINTER : _to->RenderDocument(aRect, aFlags, aBackgroundColor, aThebesContext); } \
   NS_IMETHOD AdvanceTimeAndRefresh(int64_t aMilliseconds) { return !_to ? NS_ERROR_NULL_POINTER : _to->AdvanceTimeAndRefresh(aMilliseconds); } \
   NS_IMETHOD RestoreNormalRefresh(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->RestoreNormalRefresh(); } \
+  NS_IMETHOD GetIsTestControllingRefreshes(bool *aIsTestControllingRefreshes) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetIsTestControllingRefreshes(aIsTestControllingRefreshes); } \
   NS_IMETHOD ComputeAnimationDistance(nsIDOMElement *element, const nsAString & property, const nsAString & value1, const nsAString & value2, double *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->ComputeAnimationDistance(element, property, value1, value2, _retval); } \
   NS_IMETHOD WrapDOMFile(nsIFile *aFile, nsIDOMFile * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->WrapDOMFile(aFile, _retval); } \
   NS_IMETHOD GetFocusedInputType(char * *aFocusedInputType) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetFocusedInputType(aFocusedInputType); } \
@@ -755,12 +780,15 @@ class NS_NO_VTABLE nsIDOMWindowUtils : public nsISupports {
   NS_IMETHOD GetPaintingSuppressed(bool *aPaintingSuppressed) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetPaintingSuppressed(aPaintingSuppressed); } \
   NS_IMETHOD GetPlugins(JSContext* cx, JS::Value *aPlugins) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetPlugins(cx, aPlugins); } \
   NS_IMETHOD SetScrollPositionClampingScrollPortSize(float aWidth, float aHeight) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetScrollPositionClampingScrollPortSize(aWidth, aHeight); } \
+  NS_IMETHOD SetContentDocumentFixedPositionMargins(float aTop, float aRight, float aBottom, float aLeft) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetContentDocumentFixedPositionMargins(aTop, aRight, aBottom, aLeft); } \
   NS_IMETHOD PreventFurtherDialogs(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->PreventFurtherDialogs(); } \
   NS_IMETHOD LoadSheet(nsIURI *sheetURI, uint32_t type) { return !_to ? NS_ERROR_NULL_POINTER : _to->LoadSheet(sheetURI, type); } \
   NS_IMETHOD RemoveSheet(nsIURI *sheetURI, uint32_t type) { return !_to ? NS_ERROR_NULL_POINTER : _to->RemoveSheet(sheetURI, type); } \
   NS_IMETHOD GetIsHandlingUserInput(bool *aIsHandlingUserInput) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetIsHandlingUserInput(aIsHandlingUserInput); } \
   NS_IMETHOD AllowScriptsToClose(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->AllowScriptsToClose(); } \
-  NS_IMETHOD IsNodeDisabledForEvents(nsIDOMNode *aNode, bool *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->IsNodeDisabledForEvents(aNode, _retval); } 
+  NS_IMETHOD IsNodeDisabledForEvents(nsIDOMNode *aNode, bool *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->IsNodeDisabledForEvents(aNode, _retval); } \
+  NS_IMETHOD GetPaintFlashing(bool *aPaintFlashing) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetPaintFlashing(aPaintFlashing); } \
+  NS_IMETHOD SetPaintFlashing(bool aPaintFlashing) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetPaintFlashing(aPaintFlashing); } 
 
 #if 0
 /* Use the code below as a template for the implementation class for this interface. */
@@ -1006,8 +1034,8 @@ NS_IMETHODIMP nsDOMWindowUtils::GetScrollXY(bool aFlushLayout, int32_t *aScrollX
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* long getScrollbarWidth (in boolean aFlushLayout); */
-NS_IMETHODIMP nsDOMWindowUtils::GetScrollbarWidth(bool aFlushLayout, int32_t *_retval)
+/* void getScrollbarSize (in boolean aFlushLayout, out long aWidth, out long aHeight); */
+NS_IMETHODIMP nsDOMWindowUtils::GetScrollbarSize(bool aFlushLayout, int32_t *aWidth, int32_t *aHeight)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
@@ -1186,6 +1214,12 @@ NS_IMETHODIMP nsDOMWindowUtils::GetLayerManagerType(nsAString & aLayerManagerTyp
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
+/* readonly attribute boolean layerManagerRemote; */
+NS_IMETHODIMP nsDOMWindowUtils::GetLayerManagerRemote(bool *aLayerManagerRemote)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
 /* void startFrameTimeRecording ([retval] out unsigned long startIndex); */
 NS_IMETHODIMP nsDOMWindowUtils::StartFrameTimeRecording(uint32_t *startIndex)
 {
@@ -1230,6 +1264,12 @@ NS_IMETHODIMP nsDOMWindowUtils::AdvanceTimeAndRefresh(int64_t aMilliseconds)
 
 /* void restoreNormalRefresh (); */
 NS_IMETHODIMP nsDOMWindowUtils::RestoreNormalRefresh()
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* readonly attribute bool isTestControllingRefreshes; */
+NS_IMETHODIMP nsDOMWindowUtils::GetIsTestControllingRefreshes(bool *aIsTestControllingRefreshes)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
@@ -1360,6 +1400,12 @@ NS_IMETHODIMP nsDOMWindowUtils::SetScrollPositionClampingScrollPortSize(float aW
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
+/* void setContentDocumentFixedPositionMargins (in float aTop, in float aRight, in float aBottom, in float aLeft); */
+NS_IMETHODIMP nsDOMWindowUtils::SetContentDocumentFixedPositionMargins(float aTop, float aRight, float aBottom, float aLeft)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
 /* void preventFurtherDialogs (); */
 NS_IMETHODIMP nsDOMWindowUtils::PreventFurtherDialogs()
 {
@@ -1392,6 +1438,16 @@ NS_IMETHODIMP nsDOMWindowUtils::AllowScriptsToClose()
 
 /* boolean isNodeDisabledForEvents (in nsIDOMNode aNode); */
 NS_IMETHODIMP nsDOMWindowUtils::IsNodeDisabledForEvents(nsIDOMNode *aNode, bool *_retval)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* attribute boolean paintFlashing; */
+NS_IMETHODIMP nsDOMWindowUtils::GetPaintFlashing(bool *aPaintFlashing)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+NS_IMETHODIMP nsDOMWindowUtils::SetPaintFlashing(bool aPaintFlashing)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

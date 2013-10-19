@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/html/nsIDOMHTMLInputElement.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/html/nsIDOMHTMLInputElement.idl
  */
 
 #ifndef __gen_nsIDOMHTMLInputElement_h__
@@ -9,8 +9,6 @@
 #ifndef __gen_nsIDOMHTMLElement_h__
 #include "nsIDOMHTMLElement.h"
 #endif
-
-#include "jspubtd.h"
 
 /* For IDL files that don't want to include root IDL files. */
 #ifndef NS_NO_VTABLE
@@ -24,11 +22,11 @@ class nsIDOMValidityState; /* forward declaration */
 
 
 /* starting interface:    nsIDOMHTMLInputElement */
-#define NS_IDOMHTMLINPUTELEMENT_IID_STR "83984fd0-b0b2-11e1-afa6-0800200c9a66"
+#define NS_IDOMHTMLINPUTELEMENT_IID_STR "d57537ed-39d0-46ea-8516-0ce0a5bfb805"
 
 #define NS_IDOMHTMLINPUTELEMENT_IID \
-  {0x83984fd0, 0xb0b2, 0x11e1, \
-    { 0xaf, 0xa6, 0x08, 0x00, 0x20, 0x0c, 0x9a, 0x66 }}
+  {0xd57537ed, 0x39d0, 0x46ea, \
+    { 0x85, 0x16, 0x0c, 0xe0, 0xa5, 0xbf, 0xb8, 0x05 }}
 
 class NS_NO_VTABLE nsIDOMHTMLInputElement : public nsIDOMHTMLElement {
  public: 
@@ -97,9 +95,9 @@ class NS_NO_VTABLE nsIDOMHTMLInputElement : public nsIDOMHTMLElement {
   NS_IMETHOD GetIndeterminate(bool *aIndeterminate) = 0;
   NS_IMETHOD SetIndeterminate(bool aIndeterminate) = 0;
 
-  /* attribute DOMString inputmode; */
-  NS_IMETHOD GetInputmode(nsAString & aInputmode) = 0;
-  NS_IMETHOD SetInputmode(const nsAString & aInputmode) = 0;
+  /* attribute DOMString inputMode; */
+  NS_IMETHOD GetInputMode(nsAString & aInputMode) = 0;
+  NS_IMETHOD SetInputMode(const nsAString & aInputMode) = 0;
 
   /* readonly attribute nsIDOMHTMLElement list; */
   NS_IMETHOD GetList(nsIDOMHTMLElement * *aList) = 0;
@@ -175,10 +173,6 @@ class NS_NO_VTABLE nsIDOMHTMLInputElement : public nsIDOMHTMLElement {
   /* attribute double valueAsNumber; */
   NS_IMETHOD GetValueAsNumber(double *aValueAsNumber) = 0;
   NS_IMETHOD SetValueAsNumber(double aValueAsNumber) = 0;
-
-  /* [implicit_jscontext] attribute jsval valueAsDate; */
-  NS_IMETHOD GetValueAsDate(JSContext* cx, JS::Value *aValueAsDate) = 0;
-  NS_IMETHOD SetValueAsDate(JSContext* cx, const JS::Value & aValueAsDate) = 0;
 
   /* [optional_argc] void stepDown ([optional] in long n); */
   NS_IMETHOD StepDown(int32_t n, uint8_t _argc) = 0;
@@ -274,8 +268,8 @@ class NS_NO_VTABLE nsIDOMHTMLInputElement : public nsIDOMHTMLElement {
   NS_IMETHOD SetHeight(uint32_t aHeight); \
   NS_IMETHOD GetIndeterminate(bool *aIndeterminate); \
   NS_IMETHOD SetIndeterminate(bool aIndeterminate); \
-  NS_IMETHOD GetInputmode(nsAString & aInputmode); \
-  NS_IMETHOD SetInputmode(const nsAString & aInputmode); \
+  NS_IMETHOD GetInputMode(nsAString & aInputMode); \
+  NS_IMETHOD SetInputMode(const nsAString & aInputMode); \
   NS_IMETHOD GetList(nsIDOMHTMLElement * *aList); \
   NS_IMETHOD GetMax(nsAString & aMax); \
   NS_IMETHOD SetMax(const nsAString & aMax); \
@@ -313,8 +307,6 @@ class NS_NO_VTABLE nsIDOMHTMLInputElement : public nsIDOMHTMLElement {
   NS_IMETHOD SetValue(const nsAString & aValue); \
   NS_IMETHOD GetValueAsNumber(double *aValueAsNumber); \
   NS_IMETHOD SetValueAsNumber(double aValueAsNumber); \
-  NS_IMETHOD GetValueAsDate(JSContext* cx, JS::Value *aValueAsDate); \
-  NS_IMETHOD SetValueAsDate(JSContext* cx, const JS::Value & aValueAsDate); \
   NS_IMETHOD StepDown(int32_t n, uint8_t _argc); \
   NS_IMETHOD StepUp(int32_t n, uint8_t _argc); \
   NS_IMETHOD GetWillValidate(bool *aWillValidate); \
@@ -370,8 +362,8 @@ class NS_NO_VTABLE nsIDOMHTMLInputElement : public nsIDOMHTMLElement {
   NS_IMETHOD SetHeight(uint32_t aHeight) { return _to SetHeight(aHeight); } \
   NS_IMETHOD GetIndeterminate(bool *aIndeterminate) { return _to GetIndeterminate(aIndeterminate); } \
   NS_IMETHOD SetIndeterminate(bool aIndeterminate) { return _to SetIndeterminate(aIndeterminate); } \
-  NS_IMETHOD GetInputmode(nsAString & aInputmode) { return _to GetInputmode(aInputmode); } \
-  NS_IMETHOD SetInputmode(const nsAString & aInputmode) { return _to SetInputmode(aInputmode); } \
+  NS_IMETHOD GetInputMode(nsAString & aInputMode) { return _to GetInputMode(aInputMode); } \
+  NS_IMETHOD SetInputMode(const nsAString & aInputMode) { return _to SetInputMode(aInputMode); } \
   NS_IMETHOD GetList(nsIDOMHTMLElement * *aList) { return _to GetList(aList); } \
   NS_IMETHOD GetMax(nsAString & aMax) { return _to GetMax(aMax); } \
   NS_IMETHOD SetMax(const nsAString & aMax) { return _to SetMax(aMax); } \
@@ -409,8 +401,6 @@ class NS_NO_VTABLE nsIDOMHTMLInputElement : public nsIDOMHTMLElement {
   NS_IMETHOD SetValue(const nsAString & aValue) { return _to SetValue(aValue); } \
   NS_IMETHOD GetValueAsNumber(double *aValueAsNumber) { return _to GetValueAsNumber(aValueAsNumber); } \
   NS_IMETHOD SetValueAsNumber(double aValueAsNumber) { return _to SetValueAsNumber(aValueAsNumber); } \
-  NS_IMETHOD GetValueAsDate(JSContext* cx, JS::Value *aValueAsDate) { return _to GetValueAsDate(cx, aValueAsDate); } \
-  NS_IMETHOD SetValueAsDate(JSContext* cx, const JS::Value & aValueAsDate) { return _to SetValueAsDate(cx, aValueAsDate); } \
   NS_IMETHOD StepDown(int32_t n, uint8_t _argc) { return _to StepDown(n, _argc); } \
   NS_IMETHOD StepUp(int32_t n, uint8_t _argc) { return _to StepUp(n, _argc); } \
   NS_IMETHOD GetWillValidate(bool *aWillValidate) { return _to GetWillValidate(aWillValidate); } \
@@ -466,8 +456,8 @@ class NS_NO_VTABLE nsIDOMHTMLInputElement : public nsIDOMHTMLElement {
   NS_IMETHOD SetHeight(uint32_t aHeight) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetHeight(aHeight); } \
   NS_IMETHOD GetIndeterminate(bool *aIndeterminate) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetIndeterminate(aIndeterminate); } \
   NS_IMETHOD SetIndeterminate(bool aIndeterminate) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetIndeterminate(aIndeterminate); } \
-  NS_IMETHOD GetInputmode(nsAString & aInputmode) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetInputmode(aInputmode); } \
-  NS_IMETHOD SetInputmode(const nsAString & aInputmode) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetInputmode(aInputmode); } \
+  NS_IMETHOD GetInputMode(nsAString & aInputMode) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetInputMode(aInputMode); } \
+  NS_IMETHOD SetInputMode(const nsAString & aInputMode) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetInputMode(aInputMode); } \
   NS_IMETHOD GetList(nsIDOMHTMLElement * *aList) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetList(aList); } \
   NS_IMETHOD GetMax(nsAString & aMax) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetMax(aMax); } \
   NS_IMETHOD SetMax(const nsAString & aMax) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetMax(aMax); } \
@@ -505,8 +495,6 @@ class NS_NO_VTABLE nsIDOMHTMLInputElement : public nsIDOMHTMLElement {
   NS_IMETHOD SetValue(const nsAString & aValue) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetValue(aValue); } \
   NS_IMETHOD GetValueAsNumber(double *aValueAsNumber) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetValueAsNumber(aValueAsNumber); } \
   NS_IMETHOD SetValueAsNumber(double aValueAsNumber) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetValueAsNumber(aValueAsNumber); } \
-  NS_IMETHOD GetValueAsDate(JSContext* cx, JS::Value *aValueAsDate) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetValueAsDate(cx, aValueAsDate); } \
-  NS_IMETHOD SetValueAsDate(JSContext* cx, const JS::Value & aValueAsDate) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetValueAsDate(cx, aValueAsDate); } \
   NS_IMETHOD StepDown(int32_t n, uint8_t _argc) { return !_to ? NS_ERROR_NULL_POINTER : _to->StepDown(n, _argc); } \
   NS_IMETHOD StepUp(int32_t n, uint8_t _argc) { return !_to ? NS_ERROR_NULL_POINTER : _to->StepUp(n, _argc); } \
   NS_IMETHOD GetWillValidate(bool *aWillValidate) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetWillValidate(aWillValidate); } \
@@ -714,12 +702,12 @@ NS_IMETHODIMP nsDOMHTMLInputElement::SetIndeterminate(bool aIndeterminate)
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* attribute DOMString inputmode; */
-NS_IMETHODIMP nsDOMHTMLInputElement::GetInputmode(nsAString & aInputmode)
+/* attribute DOMString inputMode; */
+NS_IMETHODIMP nsDOMHTMLInputElement::GetInputMode(nsAString & aInputMode)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
-NS_IMETHODIMP nsDOMHTMLInputElement::SetInputmode(const nsAString & aInputmode)
+NS_IMETHODIMP nsDOMHTMLInputElement::SetInputMode(const nsAString & aInputMode)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
@@ -906,16 +894,6 @@ NS_IMETHODIMP nsDOMHTMLInputElement::GetValueAsNumber(double *aValueAsNumber)
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 NS_IMETHODIMP nsDOMHTMLInputElement::SetValueAsNumber(double aValueAsNumber)
-{
-    return NS_ERROR_NOT_IMPLEMENTED;
-}
-
-/* [implicit_jscontext] attribute jsval valueAsDate; */
-NS_IMETHODIMP nsDOMHTMLInputElement::GetValueAsDate(JSContext* cx, JS::Value *aValueAsDate)
-{
-    return NS_ERROR_NOT_IMPLEMENTED;
-}
-NS_IMETHODIMP nsDOMHTMLInputElement::SetValueAsDate(JSContext* cx, const JS::Value & aValueAsDate)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

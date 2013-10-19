@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/html/nsIDOMHTMLButtonElement.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/html/nsIDOMHTMLButtonElement.idl
  */
 
 #ifndef __gen_nsIDOMHTMLButtonElement_h__
@@ -18,11 +18,11 @@ class nsIDOMValidityState; /* forward declaration */
 
 
 /* starting interface:    nsIDOMHTMLButtonElement */
-#define NS_IDOMHTMLBUTTONELEMENT_IID_STR "8e40d4d7-c204-4192-802a-0b5602e9c669"
+#define NS_IDOMHTMLBUTTONELEMENT_IID_STR "5564816e-2ab5-46ee-95a4-8f4688bdb449"
 
 #define NS_IDOMHTMLBUTTONELEMENT_IID \
-  {0x8e40d4d7, 0xc204, 0x4192, \
-    { 0x80, 0x2a, 0x0b, 0x56, 0x02, 0xe9, 0xc6, 0x69 }}
+  {0x5564816e, 0x2ab5, 0x46ee, \
+    { 0x95, 0xa4, 0x8f, 0x46, 0x88, 0xbd, 0xb4, 0x49 }}
 
 class NS_NO_VTABLE nsIDOMHTMLButtonElement : public nsIDOMHTMLElement {
  public: 

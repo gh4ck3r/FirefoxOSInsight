@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/netwerk/protocol/websocket/nsIWebSocketChannel.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/netwerk/protocol/websocket/nsIWebSocketChannel.idl
  */
 
 #ifndef __gen_nsIWebSocketChannel_h__
@@ -26,11 +26,11 @@ class nsIInputStream; /* forward declaration */
 
 
 /* starting interface:    nsIWebSocketChannel */
-#define NS_IWEBSOCKETCHANNEL_IID_STR "0683e9a4-994d-11e1-9478-1e356188709b"
+#define NS_IWEBSOCKETCHANNEL_IID_STR "9ee5874c-ec39-4bc2-b2d7-194a4c98c9d2"
 
 #define NS_IWEBSOCKETCHANNEL_IID \
-  {0x0683e9a4, 0x994d, 0x11e1, \
-    { 0x94, 0x78, 0x1e, 0x35, 0x61, 0x88, 0x70, 0x9b }}
+  {0x9ee5874c, 0xec39, 0x4bc2, \
+    { 0xb2, 0xd7, 0x19, 0x4a, 0x4c, 0x98, 0xc9, 0xd2 }}
 
 class NS_NO_VTABLE nsIWebSocketChannel : public nsISupports {
  public: 
@@ -91,6 +91,14 @@ class NS_NO_VTABLE nsIWebSocketChannel : public nsISupports {
   /* void sendBinaryStream (in nsIInputStream aStream, in unsigned long length); */
   NS_IMETHOD SendBinaryStream(nsIInputStream *aStream, uint32_t length) = 0;
 
+  /* attribute unsigned long pingInterval; */
+  NS_IMETHOD GetPingInterval(uint32_t *aPingInterval) = 0;
+  NS_IMETHOD SetPingInterval(uint32_t aPingInterval) = 0;
+
+  /* attribute unsigned long pingTimeout; */
+  NS_IMETHOD GetPingTimeout(uint32_t *aPingTimeout) = 0;
+  NS_IMETHOD SetPingTimeout(uint32_t aPingTimeout) = 0;
+
 };
 
   NS_DEFINE_STATIC_IID_ACCESSOR(nsIWebSocketChannel, NS_IWEBSOCKETCHANNEL_IID)
@@ -111,7 +119,11 @@ class NS_NO_VTABLE nsIWebSocketChannel : public nsISupports {
   NS_IMETHOD Close(uint16_t aCode, const nsACString & aReason); \
   NS_IMETHOD SendMsg(const nsACString & aMsg); \
   NS_IMETHOD SendBinaryMsg(const nsACString & aMsg); \
-  NS_IMETHOD SendBinaryStream(nsIInputStream *aStream, uint32_t length); 
+  NS_IMETHOD SendBinaryStream(nsIInputStream *aStream, uint32_t length); \
+  NS_IMETHOD GetPingInterval(uint32_t *aPingInterval); \
+  NS_IMETHOD SetPingInterval(uint32_t aPingInterval); \
+  NS_IMETHOD GetPingTimeout(uint32_t *aPingTimeout); \
+  NS_IMETHOD SetPingTimeout(uint32_t aPingTimeout); 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object. */
 #define NS_FORWARD_NSIWEBSOCKETCHANNEL(_to) \
@@ -129,7 +141,11 @@ class NS_NO_VTABLE nsIWebSocketChannel : public nsISupports {
   NS_IMETHOD Close(uint16_t aCode, const nsACString & aReason) { return _to Close(aCode, aReason); } \
   NS_IMETHOD SendMsg(const nsACString & aMsg) { return _to SendMsg(aMsg); } \
   NS_IMETHOD SendBinaryMsg(const nsACString & aMsg) { return _to SendBinaryMsg(aMsg); } \
-  NS_IMETHOD SendBinaryStream(nsIInputStream *aStream, uint32_t length) { return _to SendBinaryStream(aStream, length); } 
+  NS_IMETHOD SendBinaryStream(nsIInputStream *aStream, uint32_t length) { return _to SendBinaryStream(aStream, length); } \
+  NS_IMETHOD GetPingInterval(uint32_t *aPingInterval) { return _to GetPingInterval(aPingInterval); } \
+  NS_IMETHOD SetPingInterval(uint32_t aPingInterval) { return _to SetPingInterval(aPingInterval); } \
+  NS_IMETHOD GetPingTimeout(uint32_t *aPingTimeout) { return _to GetPingTimeout(aPingTimeout); } \
+  NS_IMETHOD SetPingTimeout(uint32_t aPingTimeout) { return _to SetPingTimeout(aPingTimeout); } 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object in a safe way. */
 #define NS_FORWARD_SAFE_NSIWEBSOCKETCHANNEL(_to) \
@@ -147,7 +163,11 @@ class NS_NO_VTABLE nsIWebSocketChannel : public nsISupports {
   NS_IMETHOD Close(uint16_t aCode, const nsACString & aReason) { return !_to ? NS_ERROR_NULL_POINTER : _to->Close(aCode, aReason); } \
   NS_IMETHOD SendMsg(const nsACString & aMsg) { return !_to ? NS_ERROR_NULL_POINTER : _to->SendMsg(aMsg); } \
   NS_IMETHOD SendBinaryMsg(const nsACString & aMsg) { return !_to ? NS_ERROR_NULL_POINTER : _to->SendBinaryMsg(aMsg); } \
-  NS_IMETHOD SendBinaryStream(nsIInputStream *aStream, uint32_t length) { return !_to ? NS_ERROR_NULL_POINTER : _to->SendBinaryStream(aStream, length); } 
+  NS_IMETHOD SendBinaryStream(nsIInputStream *aStream, uint32_t length) { return !_to ? NS_ERROR_NULL_POINTER : _to->SendBinaryStream(aStream, length); } \
+  NS_IMETHOD GetPingInterval(uint32_t *aPingInterval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetPingInterval(aPingInterval); } \
+  NS_IMETHOD SetPingInterval(uint32_t aPingInterval) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetPingInterval(aPingInterval); } \
+  NS_IMETHOD GetPingTimeout(uint32_t *aPingTimeout) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetPingTimeout(aPingTimeout); } \
+  NS_IMETHOD SetPingTimeout(uint32_t aPingTimeout) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetPingTimeout(aPingTimeout); } 
 
 #if 0
 /* Use the code below as a template for the implementation class for this interface. */
@@ -261,6 +281,26 @@ NS_IMETHODIMP nsWebSocketChannel::SendBinaryMsg(const nsACString & aMsg)
 
 /* void sendBinaryStream (in nsIInputStream aStream, in unsigned long length); */
 NS_IMETHODIMP nsWebSocketChannel::SendBinaryStream(nsIInputStream *aStream, uint32_t length)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* attribute unsigned long pingInterval; */
+NS_IMETHODIMP nsWebSocketChannel::GetPingInterval(uint32_t *aPingInterval)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+NS_IMETHODIMP nsWebSocketChannel::SetPingInterval(uint32_t aPingInterval)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* attribute unsigned long pingTimeout; */
+NS_IMETHODIMP nsWebSocketChannel::GetPingTimeout(uint32_t *aPingTimeout)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+NS_IMETHODIMP nsWebSocketChannel::SetPingTimeout(uint32_t aPingTimeout)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

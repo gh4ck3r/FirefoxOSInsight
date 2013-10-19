@@ -8,7 +8,6 @@
 #include "mozilla/dom/DOMJSClass.h"
 #include "mozilla/dom/DOMJSProxyHandler.h"
 
-class XPCWrappedNativeScope;
 namespace mozilla {
 namespace dom {
 
@@ -16,7 +15,6 @@ class MediaStreamList;
 
 } // namespace dom
 } // namespace mozilla
-
 
 namespace mozilla {
 namespace dom {
@@ -50,9 +48,9 @@ namespace MediaStreamListBinding {
   extern const NativePropertyHooks sNativePropertyHooks;
 
   void
-  CreateInterfaceObjects(JSContext* aCx, JSObject* aGlobal, JSObject** protoAndIfaceArray);
+  CreateInterfaceObjects(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JSObject** protoAndIfaceArray);
 
-  inline JSObject* GetProtoObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetProtoObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface prototype object for this class.  This will create the
@@ -60,25 +58,23 @@ namespace MediaStreamListBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[prototypes::id::MediaStreamList];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[prototypes::id::MediaStreamList]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[prototypes::id::MediaStreamList];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[prototypes::id::MediaStreamList]);
   }
 
   bool
-  ResolveOwnProperty(JSContext* cx, JSObject* wrapper, JSObject* obj, jsid id, JSPropertyDescriptor* desc, unsigned flags);
+  ResolveOwnProperty(JSContext* cx, JS::Handle<JSObject*> wrapper, JS::Handle<JSObject*> obj, JS::Handle<jsid> id, JSPropertyDescriptor* desc, unsigned flags);
 
   bool
-  EnumerateOwnProperties(JSContext* cx, JSObject* wrapper, JSObject* obj, JS::AutoIdVector& props);
+  EnumerateOwnProperties(JSContext* cx, JS::Handle<JSObject*> wrapper, JS::Handle<JSObject*> obj, JS::AutoIdVector& props);
 
   extern const DOMClass Class;
 
@@ -88,38 +84,47 @@ namespace MediaStreamListBinding {
 
   public:
     bool
-    getOwnPropertyDescriptor(JSContext* cx, JSObject* proxy, jsid id, JSPropertyDescriptor* desc, unsigned flags);
+    getOwnPropertyDescriptor(JSContext* cx, JS::Handle<JSObject*> proxy, JS::Handle<jsid> id, JSPropertyDescriptor* desc, unsigned flags);
 
     bool
-    getOwnPropertyNames(JSContext* cx, JSObject* proxy, JS::AutoIdVector& props);
+    getOwnPropertyNames(JSContext* cx, JS::Handle<JSObject*> proxy, JS::AutoIdVector& props);
 
     bool
-    hasOwn(JSContext* cx, JSObject* proxy, jsid id, bool* bp);
+    hasOwn(JSContext* cx, JS::Handle<JSObject*> proxy, JS::Handle<jsid> id, bool* bp);
 
     bool
-    get(JSContext* cx, JSObject* proxy, JSObject* receiver, jsid id, JS::Value* vp);
+    get(JSContext* cx, JS::Handle<JSObject*> proxy, JS::Handle<JSObject*> receiver, JS::Handle<jsid> id, JS::MutableHandle<JS::Value> vp);
 
-    JSString*
-    obj_toString(JSContext* cx, JSObject* proxy);
+    virtual const char*
+    className(JSContext* cx, JS::Handle<JSObject*> proxy) MOZ_OVERRIDE;
+
+    bool
+    finalizeInBackground(JS::Value priv);
 
     void
     finalize(JSFreeOp* fop, JSObject* proxy);
 
     bool
-    getElementIfPresent(JSContext* cx, JSObject* proxy, JSObject* receiver, uint32_t index, JS::Value* vp, bool* present);
+    getElementIfPresent(JSContext* cx, JS::Handle<JSObject*> proxy, JS::Handle<JSObject*> receiver, uint32_t index, JS::MutableHandle<JS::Value> vp, bool* present);
 
     static DOMProxyHandler*
     getInstance();
 
     bool
-    delete_(JSContext* cx, JSObject* proxy, jsid id, bool* bp);
+    delete_(JSContext* cx, JS::Handle<JSObject*> proxy, JS::Handle<jsid> id, bool* bp);
   };
 
   bool
   Is(JSObject* obj);
 
   JSObject*
-  Wrap(JSContext* aCx, JSObject* aScope, mozilla::dom::MediaStreamList* aObject);
+  Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, mozilla::dom::MediaStreamList* aObject, nsWrapperCache* aCache);
+
+  template <class T>
+  inline JSObject* Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, T* aObject)
+  {
+    return Wrap(aCx, aScope, aObject, aObject);
+  }
 
 } // namespace MediaStreamListBinding
 

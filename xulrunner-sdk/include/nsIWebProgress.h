@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/uriloader/base/nsIWebProgress.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/uriloader/base/nsIWebProgress.idl
  */
 
 #ifndef __gen_nsIWebProgress_h__
@@ -20,11 +20,11 @@ class nsIWebProgressListener; /* forward declaration */
 
 
 /* starting interface:    nsIWebProgress */
-#define NS_IWEBPROGRESS_IID_STR "570f39d0-efd0-11d3-b093-00a024ffc08c"
+#define NS_IWEBPROGRESS_IID_STR "1c3437b0-9e2c-11e2-9e96-0800200c9a66"
 
 #define NS_IWEBPROGRESS_IID \
-  {0x570f39d0, 0xefd0, 0x11d3, \
-    { 0xb0, 0x93, 0x00, 0xa0, 0x24, 0xff, 0xc0, 0x8c }}
+  {0x1c3437b0, 0x9e2c, 0x11e2, \
+    { 0x9e, 0x96, 0x08, 0x00, 0x20, 0x0c, 0x9a, 0x66 }}
 
 class NS_NO_VTABLE nsIWebProgress : public nsISupports {
  public: 
@@ -54,6 +54,12 @@ class NS_NO_VTABLE nsIWebProgress : public nsISupports {
   /* readonly attribute nsIDOMWindow DOMWindow; */
   NS_IMETHOD GetDOMWindow(nsIDOMWindow * *aDOMWindow) = 0;
 
+  /* readonly attribute uint64_t DOMWindowID; */
+  NS_IMETHOD GetDOMWindowID(uint64_t *aDOMWindowID) = 0;
+
+  /* readonly attribute boolean isTopLevel; */
+  NS_IMETHOD GetIsTopLevel(bool *aIsTopLevel) = 0;
+
   /* readonly attribute boolean isLoadingDocument; */
   NS_IMETHOD GetIsLoadingDocument(bool *aIsLoadingDocument) = 0;
 
@@ -66,6 +72,8 @@ class NS_NO_VTABLE nsIWebProgress : public nsISupports {
   NS_IMETHOD AddProgressListener(nsIWebProgressListener *aListener, uint32_t aNotifyMask); \
   NS_IMETHOD RemoveProgressListener(nsIWebProgressListener *aListener); \
   NS_IMETHOD GetDOMWindow(nsIDOMWindow * *aDOMWindow); \
+  NS_IMETHOD GetDOMWindowID(uint64_t *aDOMWindowID); \
+  NS_IMETHOD GetIsTopLevel(bool *aIsTopLevel); \
   NS_IMETHOD GetIsLoadingDocument(bool *aIsLoadingDocument); 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object. */
@@ -73,6 +81,8 @@ class NS_NO_VTABLE nsIWebProgress : public nsISupports {
   NS_IMETHOD AddProgressListener(nsIWebProgressListener *aListener, uint32_t aNotifyMask) { return _to AddProgressListener(aListener, aNotifyMask); } \
   NS_IMETHOD RemoveProgressListener(nsIWebProgressListener *aListener) { return _to RemoveProgressListener(aListener); } \
   NS_IMETHOD GetDOMWindow(nsIDOMWindow * *aDOMWindow) { return _to GetDOMWindow(aDOMWindow); } \
+  NS_IMETHOD GetDOMWindowID(uint64_t *aDOMWindowID) { return _to GetDOMWindowID(aDOMWindowID); } \
+  NS_IMETHOD GetIsTopLevel(bool *aIsTopLevel) { return _to GetIsTopLevel(aIsTopLevel); } \
   NS_IMETHOD GetIsLoadingDocument(bool *aIsLoadingDocument) { return _to GetIsLoadingDocument(aIsLoadingDocument); } 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object in a safe way. */
@@ -80,6 +90,8 @@ class NS_NO_VTABLE nsIWebProgress : public nsISupports {
   NS_IMETHOD AddProgressListener(nsIWebProgressListener *aListener, uint32_t aNotifyMask) { return !_to ? NS_ERROR_NULL_POINTER : _to->AddProgressListener(aListener, aNotifyMask); } \
   NS_IMETHOD RemoveProgressListener(nsIWebProgressListener *aListener) { return !_to ? NS_ERROR_NULL_POINTER : _to->RemoveProgressListener(aListener); } \
   NS_IMETHOD GetDOMWindow(nsIDOMWindow * *aDOMWindow) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetDOMWindow(aDOMWindow); } \
+  NS_IMETHOD GetDOMWindowID(uint64_t *aDOMWindowID) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetDOMWindowID(aDOMWindowID); } \
+  NS_IMETHOD GetIsTopLevel(bool *aIsTopLevel) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetIsTopLevel(aIsTopLevel); } \
   NS_IMETHOD GetIsLoadingDocument(bool *aIsLoadingDocument) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetIsLoadingDocument(aIsLoadingDocument); } 
 
 #if 0
@@ -128,6 +140,18 @@ NS_IMETHODIMP nsWebProgress::RemoveProgressListener(nsIWebProgressListener *aLis
 
 /* readonly attribute nsIDOMWindow DOMWindow; */
 NS_IMETHODIMP nsWebProgress::GetDOMWindow(nsIDOMWindow * *aDOMWindow)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* readonly attribute uint64_t DOMWindowID; */
+NS_IMETHODIMP nsWebProgress::GetDOMWindowID(uint64_t *aDOMWindowID)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* readonly attribute boolean isTopLevel; */
+NS_IMETHODIMP nsWebProgress::GetIsTopLevel(bool *aIsTopLevel)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

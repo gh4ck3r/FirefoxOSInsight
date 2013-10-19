@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/html/nsIDOMHTMLBodyElement.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/html/nsIDOMHTMLBodyElement.idl
  */
 
 #ifndef __gen_nsIDOMHTMLBodyElement_h__
@@ -19,11 +19,11 @@
 #include "jspubtd.h"
 
 /* starting interface:    nsIDOMHTMLBodyElement */
-#define NS_IDOMHTMLBODYELEMENT_IID_STR "d8f00c8b-d317-4df2-a9bf-4a1e6f19f945"
+#define NS_IDOMHTMLBODYELEMENT_IID_STR "8b29a62f-b448-49f3-9242-241d5cf94ea9"
 
 #define NS_IDOMHTMLBODYELEMENT_IID \
-  {0xd8f00c8b, 0xd317, 0x4df2, \
-    { 0xa9, 0xbf, 0x4a, 0x1e, 0x6f, 0x19, 0xf9, 0x45 }}
+  {0x8b29a62f, 0xb448, 0x49f3, \
+    { 0x92, 0x42, 0x24, 0x1d, 0x5c, 0xf9, 0x4e, 0xa9 }}
 
 class NS_NO_VTABLE nsIDOMHTMLBodyElement : public nsIDOMHTMLElement {
  public: 

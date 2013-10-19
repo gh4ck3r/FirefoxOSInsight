@@ -9,25 +9,15 @@
 #include "mozilla/dom/DOMJSClass.h"
 #include "mozilla/dom/DOMJSProxyHandler.h"
 
-class XPCWrappedNativeScope;
-
 namespace mozilla {
 namespace dom {
 
 struct FilePropertyBag : public BlobPropertyBag {
   FilePropertyBag() {}
-  bool Init(JSContext* cx, JSObject* scopeObj, const JS::Value& val);
-  bool ToObject(JSContext* cx, JSObject* parentObject, JS::Value *vp);
-
-  bool Init(const nsAString& aJSON)
-  {
-    mozilla::Maybe<JSAutoRequest> ar;
-    mozilla::Maybe<JSAutoCompartment> ac;
-    jsval json = JSVAL_VOID;
-    JSContext* cx = ParseJSON(aJSON, ar, ac, json);
-    NS_ENSURE_TRUE(cx, false);
-    return Init(cx, nullptr, json);
-  }
+  bool Init(JSContext* cx, JS::Handle<JS::Value> val);
+  bool Init(const nsAString& aJSON);
+  bool ToObject(JSContext* cx, JS::Handle<JSObject*> parentObject, JS::Value *vp) const;
+  void TraceDictionary(JSTracer* trc);
 
   nsString mName;
 private:
@@ -40,7 +30,7 @@ private:
 struct FilePropertyBagInitializer : public FilePropertyBag {
   FilePropertyBagInitializer() {
     // Safe to pass a null context if we pass a null value
-    Init(nullptr, nullptr, JS::NullValue());
+    Init(nullptr, JS::NullHandleValue);
   }
 };
 

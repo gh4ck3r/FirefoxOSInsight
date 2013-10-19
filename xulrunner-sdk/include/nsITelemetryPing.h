@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/toolkit/components/telemetry/nsITelemetryPing.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/toolkit/components/telemetry/nsITelemetryPing.idl
  */
 
 #ifndef __gen_nsITelemetryPing_h__
@@ -20,11 +20,11 @@ class nsIFile; /* forward declaration */
 
 
 /* starting interface:    nsITelemetryPing */
-#define NS_ITELEMETRYPING_IID_STR "077ee790-3a9d-11e2-81c1-0800200c9a66"
+#define NS_ITELEMETRYPING_IID_STR "37fb32f5-d5ed-45e3-8feb-fa085935e732"
 
 #define NS_ITELEMETRYPING_IID \
-  {0x077ee790, 0x3a9d, 0x11e2, \
-    { 0x81, 0xc1, 0x08, 0x00, 0x20, 0x0c, 0x9a, 0x66 }}
+  {0x37fb32f5, 0xd5ed, 0x45e3, \
+    { 0x8f, 0xeb, 0xfa, 0x08, 0x59, 0x35, 0xe7, 0x32 }}
 
 class NS_NO_VTABLE nsITelemetryPing : public nsIObserver {
  public: 
@@ -42,6 +42,9 @@ class NS_NO_VTABLE nsITelemetryPing : public nsIObserver {
 
   /* void enableLoadSaveNotifications (); */
   NS_IMETHOD EnableLoadSaveNotifications(void) = 0;
+
+  /* void cacheProfileDirectory (); */
+  NS_IMETHOD CacheProfileDirectory(void) = 0;
 
   /* void setAddOns (in AString aAddOns); */
   NS_IMETHOD SetAddOns(const nsAString & aAddOns) = 0;
@@ -62,6 +65,7 @@ class NS_NO_VTABLE nsITelemetryPing : public nsIObserver {
   NS_IMETHOD SaveHistograms(nsIFile *aFile, bool aSync); \
   NS_IMETHOD GatherStartup(void); \
   NS_IMETHOD EnableLoadSaveNotifications(void); \
+  NS_IMETHOD CacheProfileDirectory(void); \
   NS_IMETHOD SetAddOns(const nsAString & aAddOns); \
   NS_IMETHOD TestPing(const nsAString & aServer); \
   NS_IMETHOD TestLoadHistograms(nsIFile *aFile, bool aSync); 
@@ -72,6 +76,7 @@ class NS_NO_VTABLE nsITelemetryPing : public nsIObserver {
   NS_IMETHOD SaveHistograms(nsIFile *aFile, bool aSync) { return _to SaveHistograms(aFile, aSync); } \
   NS_IMETHOD GatherStartup(void) { return _to GatherStartup(); } \
   NS_IMETHOD EnableLoadSaveNotifications(void) { return _to EnableLoadSaveNotifications(); } \
+  NS_IMETHOD CacheProfileDirectory(void) { return _to CacheProfileDirectory(); } \
   NS_IMETHOD SetAddOns(const nsAString & aAddOns) { return _to SetAddOns(aAddOns); } \
   NS_IMETHOD TestPing(const nsAString & aServer) { return _to TestPing(aServer); } \
   NS_IMETHOD TestLoadHistograms(nsIFile *aFile, bool aSync) { return _to TestLoadHistograms(aFile, aSync); } 
@@ -82,6 +87,7 @@ class NS_NO_VTABLE nsITelemetryPing : public nsIObserver {
   NS_IMETHOD SaveHistograms(nsIFile *aFile, bool aSync) { return !_to ? NS_ERROR_NULL_POINTER : _to->SaveHistograms(aFile, aSync); } \
   NS_IMETHOD GatherStartup(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->GatherStartup(); } \
   NS_IMETHOD EnableLoadSaveNotifications(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->EnableLoadSaveNotifications(); } \
+  NS_IMETHOD CacheProfileDirectory(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->CacheProfileDirectory(); } \
   NS_IMETHOD SetAddOns(const nsAString & aAddOns) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetAddOns(aAddOns); } \
   NS_IMETHOD TestPing(const nsAString & aServer) { return !_to ? NS_ERROR_NULL_POINTER : _to->TestPing(aServer); } \
   NS_IMETHOD TestLoadHistograms(nsIFile *aFile, bool aSync) { return !_to ? NS_ERROR_NULL_POINTER : _to->TestLoadHistograms(aFile, aSync); } 
@@ -138,6 +144,12 @@ NS_IMETHODIMP nsTelemetryPing::GatherStartup()
 
 /* void enableLoadSaveNotifications (); */
 NS_IMETHODIMP nsTelemetryPing::EnableLoadSaveNotifications()
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* void cacheProfileDirectory (); */
+NS_IMETHODIMP nsTelemetryPing::CacheProfileDirectory()
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/html/nsIDOMHTMLFieldSetElement.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/html/nsIDOMHTMLFieldSetElement.idl
  */
 
 #ifndef __gen_nsIDOMHTMLFieldSetElement_h__
@@ -18,11 +18,11 @@ class nsIDOMValidityState; /* forward declaration */
 
 
 /* starting interface:    nsIDOMHTMLFieldSetElement */
-#define NS_IDOMHTMLFIELDSETELEMENT_IID_STR "ab2f9e30-1217-4172-9a95-262480fec534"
+#define NS_IDOMHTMLFIELDSETELEMENT_IID_STR "eb09f2e9-f0fc-4000-ab15-e68b0ac09bbd"
 
 #define NS_IDOMHTMLFIELDSETELEMENT_IID \
-  {0xab2f9e30, 0x1217, 0x4172, \
-    { 0x9a, 0x95, 0x26, 0x24, 0x80, 0xfe, 0xc5, 0x34 }}
+  {0xeb09f2e9, 0xf0fc, 0x4000, \
+    { 0xab, 0x15, 0xe6, 0x8b, 0x0a, 0xc0, 0x9b, 0xbd }}
 
 class NS_NO_VTABLE nsIDOMHTMLFieldSetElement : public nsIDOMHTMLElement {
  public: 

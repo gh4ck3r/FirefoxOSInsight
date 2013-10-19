@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/xpcom/ds/nsISupportsArray.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/xpcom/ds/nsISupportsArray.idl
  */
 
 #ifndef __gen_nsISupportsArray_h__
@@ -30,7 +30,6 @@ class nsISupportsArray;
     {0x93, 0x31, 0x00, 0x10, 0x4b, 0xa0, 0xfd, 0x40} \
 }
 #define NS_SUPPORTSARRAY_CONTRACTID "@mozilla.org/supports-array;1"
-#define NS_SUPPORTSARRAY_CLASSNAME "Supports Array"
  
 
 /* starting interface:    nsISupportsArray */

@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/netwerk/base/public/nsIStrictTransportSecurityService.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/netwerk/base/public/nsIStrictTransportSecurityService.idl
  */
 
 #ifndef __gen_nsIStrictTransportSecurityService_h__
@@ -142,7 +142,6 @@ NS_IMETHODIMP nsStrictTransportSecurityService::IsStsURI(nsIURI *aURI, uint32_t 
 #endif
 
 #define NS_STSSERVICE_CONTRACTID "@mozilla.org/stsservice;1"
-#define NS_STSSERVICE_CLASSNAME "stsservice"
 #define STS_PERMISSION "sts/use"
 #define STS_SUBDOMAIN_PERMISSION "sts/subd"
 

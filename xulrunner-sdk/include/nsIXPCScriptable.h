@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/js/xpconnect/idl/nsIXPCScriptable.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/js/xpconnect/idl/nsIXPCScriptable.idl
  */
 
 #ifndef __gen_nsIXPCScriptable_h__
@@ -25,11 +25,11 @@
 #endif
 
 /* starting interface:    nsIXPCScriptable */
-#define NS_IXPCSCRIPTABLE_IID_STR "1236e34a-21e0-423c-a8c8-9b3f1e6d7060"
+#define NS_IXPCSCRIPTABLE_IID_STR "155d1863-2b0b-4f5e-b800-05184944156b"
 
 #define NS_IXPCSCRIPTABLE_IID \
-  {0x1236e34a, 0x21e0, 0x423c, \
-    { 0xa8, 0xc8, 0x9b, 0x3f, 0x1e, 0x6d, 0x70, 0x60 }}
+  {0x155d1863, 0x2b0b, 0x4f5e, \
+    { 0xb8, 0x00, 0x05, 0x18, 0x49, 0x44, 0x15, 0x6b }}
 
 class NS_NO_VTABLE nsIXPCScriptable : public nsISupports {
  public: 
@@ -89,8 +89,8 @@ class NS_NO_VTABLE nsIXPCScriptable : public nsISupports {
   /* boolean addProperty (in nsIXPConnectWrappedNative wrapper, in JSContextPtr cx, in JSObjectPtr obj, in jsid id, in JSValPtr vp); */
   NS_IMETHOD AddProperty(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj, jsid id, jsval *vp, bool *_retval) = 0;
 
-  /* boolean delProperty (in nsIXPConnectWrappedNative wrapper, in JSContextPtr cx, in JSObjectPtr obj, in jsid id, in JSValPtr vp); */
-  NS_IMETHOD DelProperty(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj, jsid id, jsval *vp, bool *_retval) = 0;
+  /* boolean delProperty (in nsIXPConnectWrappedNative wrapper, in JSContextPtr cx, in JSObjectPtr obj, in jsid id); */
+  NS_IMETHOD DelProperty(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj, jsid id, bool *_retval) = 0;
 
   /* boolean getProperty (in nsIXPConnectWrappedNative wrapper, in JSContextPtr cx, in JSObjectPtr obj, in jsid id, in JSValPtr vp); */
   NS_IMETHOD GetProperty(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj, jsid id, jsval *vp, bool *_retval) = 0;
@@ -116,11 +116,11 @@ class NS_NO_VTABLE nsIXPCScriptable : public nsISupports {
   /* boolean checkAccess (in nsIXPConnectWrappedNative wrapper, in JSContextPtr cx, in JSObjectPtr obj, in jsid id, in uint32_t mode, in JSValPtr vp); */
   NS_IMETHOD CheckAccess(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj, jsid id, uint32_t mode, jsval *vp, bool *_retval) = 0;
 
-  /* boolean call (in nsIXPConnectWrappedNative wrapper, in JSContextPtr cx, in JSObjectPtr obj, in uint32_t argc, in JSValPtr argv, in JSValPtr vp); */
-  NS_IMETHOD Call(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj, uint32_t argc, jsval *argv, jsval *vp, bool *_retval) = 0;
+  /* boolean call (in nsIXPConnectWrappedNative wrapper, in JSContextPtr cx, in JSObjectPtr obj, in JSCallArgsRef args); */
+  NS_IMETHOD Call(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj, const JS::CallArgs & args, bool *_retval) = 0;
 
-  /* boolean construct (in nsIXPConnectWrappedNative wrapper, in JSContextPtr cx, in JSObjectPtr obj, in uint32_t argc, in JSValPtr argv, in JSValPtr vp); */
-  NS_IMETHOD Construct(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj, uint32_t argc, jsval *argv, jsval *vp, bool *_retval) = 0;
+  /* boolean construct (in nsIXPConnectWrappedNative wrapper, in JSContextPtr cx, in JSObjectPtr obj, in JSCallArgsRef args); */
+  NS_IMETHOD Construct(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj, const JS::CallArgs & args, bool *_retval) = 0;
 
   /* boolean hasInstance (in nsIXPConnectWrappedNative wrapper, in JSContextPtr cx, in JSObjectPtr obj, in jsval val, out boolean bp); */
   NS_IMETHOD HasInstance(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj, const JS::Value & val, bool *bp, bool *_retval) = 0;
@@ -144,7 +144,7 @@ class NS_NO_VTABLE nsIXPCScriptable : public nsISupports {
   NS_IMETHOD PostCreate(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj); \
   NS_IMETHOD PostTransplant(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj); \
   NS_IMETHOD AddProperty(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj, jsid id, jsval *vp, bool *_retval); \
-  NS_IMETHOD DelProperty(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj, jsid id, jsval *vp, bool *_retval); \
+  NS_IMETHOD DelProperty(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj, jsid id, bool *_retval); \
   NS_IMETHOD GetProperty(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj, jsid id, jsval *vp, bool *_retval); \
   NS_IMETHOD SetProperty(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj, jsid id, jsval *vp, bool *_retval); \
   NS_IMETHOD Enumerate(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj, bool *_retval); \
@@ -153,8 +153,8 @@ class NS_NO_VTABLE nsIXPCScriptable : public nsISupports {
   NS_IMETHOD Convert(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj, uint32_t type, jsval *vp, bool *_retval); \
   NS_IMETHOD Finalize(nsIXPConnectWrappedNative *wrapper, JSFreeOp *fop, JSObject *obj); \
   NS_IMETHOD CheckAccess(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj, jsid id, uint32_t mode, jsval *vp, bool *_retval); \
-  NS_IMETHOD Call(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj, uint32_t argc, jsval *argv, jsval *vp, bool *_retval); \
-  NS_IMETHOD Construct(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj, uint32_t argc, jsval *argv, jsval *vp, bool *_retval); \
+  NS_IMETHOD Call(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj, const JS::CallArgs & args, bool *_retval); \
+  NS_IMETHOD Construct(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj, const JS::CallArgs & args, bool *_retval); \
   NS_IMETHOD HasInstance(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj, const JS::Value & val, bool *bp, bool *_retval); \
   NS_IMETHOD OuterObject(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj, JSObject **_retval); \
   NS_IMETHOD PostCreatePrototype(JSContext *cx, JSObject *proto); 
@@ -168,7 +168,7 @@ class NS_NO_VTABLE nsIXPCScriptable : public nsISupports {
   NS_IMETHOD PostCreate(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj) { return _to PostCreate(wrapper, cx, obj); } \
   NS_IMETHOD PostTransplant(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj) { return _to PostTransplant(wrapper, cx, obj); } \
   NS_IMETHOD AddProperty(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj, jsid id, jsval *vp, bool *_retval) { return _to AddProperty(wrapper, cx, obj, id, vp, _retval); } \
-  NS_IMETHOD DelProperty(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj, jsid id, jsval *vp, bool *_retval) { return _to DelProperty(wrapper, cx, obj, id, vp, _retval); } \
+  NS_IMETHOD DelProperty(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj, jsid id, bool *_retval) { return _to DelProperty(wrapper, cx, obj, id, _retval); } \
   NS_IMETHOD GetProperty(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj, jsid id, jsval *vp, bool *_retval) { return _to GetProperty(wrapper, cx, obj, id, vp, _retval); } \
   NS_IMETHOD SetProperty(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj, jsid id, jsval *vp, bool *_retval) { return _to SetProperty(wrapper, cx, obj, id, vp, _retval); } \
   NS_IMETHOD Enumerate(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj, bool *_retval) { return _to Enumerate(wrapper, cx, obj, _retval); } \
@@ -177,8 +177,8 @@ class NS_NO_VTABLE nsIXPCScriptable : public nsISupports {
   NS_IMETHOD Convert(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj, uint32_t type, jsval *vp, bool *_retval) { return _to Convert(wrapper, cx, obj, type, vp, _retval); } \
   NS_IMETHOD Finalize(nsIXPConnectWrappedNative *wrapper, JSFreeOp *fop, JSObject *obj) { return _to Finalize(wrapper, fop, obj); } \
   NS_IMETHOD CheckAccess(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj, jsid id, uint32_t mode, jsval *vp, bool *_retval) { return _to CheckAccess(wrapper, cx, obj, id, mode, vp, _retval); } \
-  NS_IMETHOD Call(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj, uint32_t argc, jsval *argv, jsval *vp, bool *_retval) { return _to Call(wrapper, cx, obj, argc, argv, vp, _retval); } \
-  NS_IMETHOD Construct(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj, uint32_t argc, jsval *argv, jsval *vp, bool *_retval) { return _to Construct(wrapper, cx, obj, argc, argv, vp, _retval); } \
+  NS_IMETHOD Call(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj, const JS::CallArgs & args, bool *_retval) { return _to Call(wrapper, cx, obj, args, _retval); } \
+  NS_IMETHOD Construct(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj, const JS::CallArgs & args, bool *_retval) { return _to Construct(wrapper, cx, obj, args, _retval); } \
   NS_IMETHOD HasInstance(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj, const JS::Value & val, bool *bp, bool *_retval) { return _to HasInstance(wrapper, cx, obj, val, bp, _retval); } \
   NS_IMETHOD OuterObject(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj, JSObject **_retval) { return _to OuterObject(wrapper, cx, obj, _retval); } \
   NS_IMETHOD PostCreatePrototype(JSContext *cx, JSObject *proto) { return _to PostCreatePrototype(cx, proto); } 
@@ -192,7 +192,7 @@ class NS_NO_VTABLE nsIXPCScriptable : public nsISupports {
   NS_IMETHOD PostCreate(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj) { return !_to ? NS_ERROR_NULL_POINTER : _to->PostCreate(wrapper, cx, obj); } \
   NS_IMETHOD PostTransplant(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj) { return !_to ? NS_ERROR_NULL_POINTER : _to->PostTransplant(wrapper, cx, obj); } \
   NS_IMETHOD AddProperty(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj, jsid id, jsval *vp, bool *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->AddProperty(wrapper, cx, obj, id, vp, _retval); } \
-  NS_IMETHOD DelProperty(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj, jsid id, jsval *vp, bool *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->DelProperty(wrapper, cx, obj, id, vp, _retval); } \
+  NS_IMETHOD DelProperty(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj, jsid id, bool *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->DelProperty(wrapper, cx, obj, id, _retval); } \
   NS_IMETHOD GetProperty(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj, jsid id, jsval *vp, bool *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetProperty(wrapper, cx, obj, id, vp, _retval); } \
   NS_IMETHOD SetProperty(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj, jsid id, jsval *vp, bool *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetProperty(wrapper, cx, obj, id, vp, _retval); } \
   NS_IMETHOD Enumerate(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj, bool *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->Enumerate(wrapper, cx, obj, _retval); } \
@@ -201,8 +201,8 @@ class NS_NO_VTABLE nsIXPCScriptable : public nsISupports {
   NS_IMETHOD Convert(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj, uint32_t type, jsval *vp, bool *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->Convert(wrapper, cx, obj, type, vp, _retval); } \
   NS_IMETHOD Finalize(nsIXPConnectWrappedNative *wrapper, JSFreeOp *fop, JSObject *obj) { return !_to ? NS_ERROR_NULL_POINTER : _to->Finalize(wrapper, fop, obj); } \
   NS_IMETHOD CheckAccess(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj, jsid id, uint32_t mode, jsval *vp, bool *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->CheckAccess(wrapper, cx, obj, id, mode, vp, _retval); } \
-  NS_IMETHOD Call(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj, uint32_t argc, jsval *argv, jsval *vp, bool *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->Call(wrapper, cx, obj, argc, argv, vp, _retval); } \
-  NS_IMETHOD Construct(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj, uint32_t argc, jsval *argv, jsval *vp, bool *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->Construct(wrapper, cx, obj, argc, argv, vp, _retval); } \
+  NS_IMETHOD Call(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj, const JS::CallArgs & args, bool *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->Call(wrapper, cx, obj, args, _retval); } \
+  NS_IMETHOD Construct(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj, const JS::CallArgs & args, bool *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->Construct(wrapper, cx, obj, args, _retval); } \
   NS_IMETHOD HasInstance(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj, const JS::Value & val, bool *bp, bool *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->HasInstance(wrapper, cx, obj, val, bp, _retval); } \
   NS_IMETHOD OuterObject(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj, JSObject **_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->OuterObject(wrapper, cx, obj, _retval); } \
   NS_IMETHOD PostCreatePrototype(JSContext *cx, JSObject *proto) { return !_to ? NS_ERROR_NULL_POINTER : _to->PostCreatePrototype(cx, proto); } 
@@ -281,8 +281,8 @@ NS_IMETHODIMP nsXPCScriptable::AddProperty(nsIXPConnectWrappedNative *wrapper, J
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* boolean delProperty (in nsIXPConnectWrappedNative wrapper, in JSContextPtr cx, in JSObjectPtr obj, in jsid id, in JSValPtr vp); */
-NS_IMETHODIMP nsXPCScriptable::DelProperty(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj, jsid id, jsval *vp, bool *_retval)
+/* boolean delProperty (in nsIXPConnectWrappedNative wrapper, in JSContextPtr cx, in JSObjectPtr obj, in jsid id); */
+NS_IMETHODIMP nsXPCScriptable::DelProperty(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj, jsid id, bool *_retval)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
@@ -335,14 +335,14 @@ NS_IMETHODIMP nsXPCScriptable::CheckAccess(nsIXPConnectWrappedNative *wrapper, J
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* boolean call (in nsIXPConnectWrappedNative wrapper, in JSContextPtr cx, in JSObjectPtr obj, in uint32_t argc, in JSValPtr argv, in JSValPtr vp); */
-NS_IMETHODIMP nsXPCScriptable::Call(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj, uint32_t argc, jsval *argv, jsval *vp, bool *_retval)
+/* boolean call (in nsIXPConnectWrappedNative wrapper, in JSContextPtr cx, in JSObjectPtr obj, in JSCallArgsRef args); */
+NS_IMETHODIMP nsXPCScriptable::Call(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj, const JS::CallArgs & args, bool *_retval)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* boolean construct (in nsIXPConnectWrappedNative wrapper, in JSContextPtr cx, in JSObjectPtr obj, in uint32_t argc, in JSValPtr argv, in JSValPtr vp); */
-NS_IMETHODIMP nsXPCScriptable::Construct(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj, uint32_t argc, jsval *argv, jsval *vp, bool *_retval)
+/* boolean construct (in nsIXPConnectWrappedNative wrapper, in JSContextPtr cx, in JSObjectPtr obj, in JSCallArgsRef args); */
+NS_IMETHODIMP nsXPCScriptable::Construct(nsIXPConnectWrappedNative *wrapper, JSContext *cx, JSObject *obj, const JS::CallArgs & args, bool *_retval)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/content/base/public/nsIObjectLoadingContent.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/content/base/public/nsIObjectLoadingContent.idl
  */
 
 #ifndef __gen_nsIObjectLoadingContent_h__
@@ -31,11 +31,11 @@ class nsIURI; /* forward declaration */
 #include "nsNPAPIPluginInstance.h"
 
 /* starting interface:    nsIObjectLoadingContent */
-#define NS_IOBJECTLOADINGCONTENT_IID_STR "5804ab94-4fa1-4720-8f3e-655b769ea2df"
+#define NS_IOBJECTLOADINGCONTENT_IID_STR "24a35de3-40e4-498e-9c1b-2fd0a2d4cae5"
 
 #define NS_IOBJECTLOADINGCONTENT_IID \
-  {0x5804ab94, 0x4fa1, 0x4720, \
-    { 0x8f, 0x3e, 0x65, 0x5b, 0x76, 0x9e, 0xa2, 0xdf }}
+  {0x24a35de3, 0x40e4, 0x498e, \
+    { 0x9c, 0x1b, 0x2f, 0xd0, 0xa2, 0xd4, 0xca, 0xe5 }}
 
 class NS_NO_VTABLE nsIObjectLoadingContent : public nsISupports {
  public: 
@@ -77,9 +77,6 @@ class NS_NO_VTABLE nsIObjectLoadingContent : public nsISupports {
   /* [noscript] void hasNewFrame (in nsIObjectFrame aFrame); */
   NS_IMETHOD HasNewFrame(nsIObjectFrame *aFrame) = 0;
 
-  /* [noscript] void disconnectFrame (); */
-  NS_IMETHOD DisconnectFrame(void) = 0;
-
   /* [noscript] nsIFrame getPrintFrame (); */
   NS_IMETHOD GetPrintFrame(nsIFrame * *_retval) = 0;
 
@@ -107,14 +104,14 @@ class NS_NO_VTABLE nsIObjectLoadingContent : public nsISupports {
   /* [noscript] void initializeFromChannel (in nsIRequest request); */
   NS_IMETHOD InitializeFromChannel(nsIRequest *request) = 0;
 
-  /* [noscript] nsNPAPIPluginInstancePtr scriptRequestPluginInstance (in bool callerIsContentJS); */
-  NS_IMETHOD ScriptRequestPluginInstance(bool callerIsContentJS, nsNPAPIPluginInstance **_retval) = 0;
-
   /* readonly attribute nsIURI srcURI; */
   NS_IMETHOD GetSrcURI(nsIURI * *aSrcURI) = 0;
 
   /* readonly attribute unsigned long pluginFallbackType; */
   NS_IMETHOD GetPluginFallbackType(uint32_t *aPluginFallbackType) = 0;
+
+  /* readonly attribute bool hasRunningPlugin; */
+  NS_IMETHOD GetHasRunningPlugin(bool *aHasRunningPlugin) = 0;
 
   /* void cancelPlayPreview (); */
   NS_IMETHOD CancelPlayPreview(void) = 0;
@@ -130,7 +127,6 @@ class NS_NO_VTABLE nsIObjectLoadingContent : public nsISupports {
   NS_IMETHOD GetContentTypeForMIMEType(const nsACString & aMimeType, uint32_t *_retval); \
   NS_IMETHOD GetPluginInstance(nsNPAPIPluginInstance **aPluginInstance); \
   NS_IMETHOD HasNewFrame(nsIObjectFrame *aFrame); \
-  NS_IMETHOD DisconnectFrame(void); \
   NS_IMETHOD GetPrintFrame(nsIFrame * *_retval); \
   NS_IMETHOD PluginDestroyed(void); \
   NS_IMETHOD PluginCrashed(nsIPluginTag *pluginTag, const nsAString & pluginDumpID, const nsAString & browserDumpID, bool submittedCrashReport); \
@@ -140,9 +136,9 @@ class NS_NO_VTABLE nsIObjectLoadingContent : public nsISupports {
   NS_IMETHOD SyncStartPluginInstance(void); \
   NS_IMETHOD AsyncStartPluginInstance(void); \
   NS_IMETHOD InitializeFromChannel(nsIRequest *request); \
-  NS_IMETHOD ScriptRequestPluginInstance(bool callerIsContentJS, nsNPAPIPluginInstance **_retval); \
   NS_IMETHOD GetSrcURI(nsIURI * *aSrcURI); \
   NS_IMETHOD GetPluginFallbackType(uint32_t *aPluginFallbackType); \
+  NS_IMETHOD GetHasRunningPlugin(bool *aHasRunningPlugin); \
   NS_IMETHOD CancelPlayPreview(void); 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object. */
@@ -152,7 +148,6 @@ class NS_NO_VTABLE nsIObjectLoadingContent : public nsISupports {
   NS_IMETHOD GetContentTypeForMIMEType(const nsACString & aMimeType, uint32_t *_retval) { return _to GetContentTypeForMIMEType(aMimeType, _retval); } \
   NS_IMETHOD GetPluginInstance(nsNPAPIPluginInstance **aPluginInstance) { return _to GetPluginInstance(aPluginInstance); } \
   NS_IMETHOD HasNewFrame(nsIObjectFrame *aFrame) { return _to HasNewFrame(aFrame); } \
-  NS_IMETHOD DisconnectFrame(void) { return _to DisconnectFrame(); } \
   NS_IMETHOD GetPrintFrame(nsIFrame * *_retval) { return _to GetPrintFrame(_retval); } \
   NS_IMETHOD PluginDestroyed(void) { return _to PluginDestroyed(); } \
   NS_IMETHOD PluginCrashed(nsIPluginTag *pluginTag, const nsAString & pluginDumpID, const nsAString & browserDumpID, bool submittedCrashReport) { return _to PluginCrashed(pluginTag, pluginDumpID, browserDumpID, submittedCrashReport); } \
@@ -162,9 +157,9 @@ class NS_NO_VTABLE nsIObjectLoadingContent : public nsISupports {
   NS_IMETHOD SyncStartPluginInstance(void) { return _to SyncStartPluginInstance(); } \
   NS_IMETHOD AsyncStartPluginInstance(void) { return _to AsyncStartPluginInstance(); } \
   NS_IMETHOD InitializeFromChannel(nsIRequest *request) { return _to InitializeFromChannel(request); } \
-  NS_IMETHOD ScriptRequestPluginInstance(bool callerIsContentJS, nsNPAPIPluginInstance **_retval) { return _to ScriptRequestPluginInstance(callerIsContentJS, _retval); } \
   NS_IMETHOD GetSrcURI(nsIURI * *aSrcURI) { return _to GetSrcURI(aSrcURI); } \
   NS_IMETHOD GetPluginFallbackType(uint32_t *aPluginFallbackType) { return _to GetPluginFallbackType(aPluginFallbackType); } \
+  NS_IMETHOD GetHasRunningPlugin(bool *aHasRunningPlugin) { return _to GetHasRunningPlugin(aHasRunningPlugin); } \
   NS_IMETHOD CancelPlayPreview(void) { return _to CancelPlayPreview(); } 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object in a safe way. */
@@ -174,7 +169,6 @@ class NS_NO_VTABLE nsIObjectLoadingContent : public nsISupports {
   NS_IMETHOD GetContentTypeForMIMEType(const nsACString & aMimeType, uint32_t *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetContentTypeForMIMEType(aMimeType, _retval); } \
   NS_IMETHOD GetPluginInstance(nsNPAPIPluginInstance **aPluginInstance) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetPluginInstance(aPluginInstance); } \
   NS_IMETHOD HasNewFrame(nsIObjectFrame *aFrame) { return !_to ? NS_ERROR_NULL_POINTER : _to->HasNewFrame(aFrame); } \
-  NS_IMETHOD DisconnectFrame(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->DisconnectFrame(); } \
   NS_IMETHOD GetPrintFrame(nsIFrame * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetPrintFrame(_retval); } \
   NS_IMETHOD PluginDestroyed(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->PluginDestroyed(); } \
   NS_IMETHOD PluginCrashed(nsIPluginTag *pluginTag, const nsAString & pluginDumpID, const nsAString & browserDumpID, bool submittedCrashReport) { return !_to ? NS_ERROR_NULL_POINTER : _to->PluginCrashed(pluginTag, pluginDumpID, browserDumpID, submittedCrashReport); } \
@@ -184,9 +178,9 @@ class NS_NO_VTABLE nsIObjectLoadingContent : public nsISupports {
   NS_IMETHOD SyncStartPluginInstance(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->SyncStartPluginInstance(); } \
   NS_IMETHOD AsyncStartPluginInstance(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->AsyncStartPluginInstance(); } \
   NS_IMETHOD InitializeFromChannel(nsIRequest *request) { return !_to ? NS_ERROR_NULL_POINTER : _to->InitializeFromChannel(request); } \
-  NS_IMETHOD ScriptRequestPluginInstance(bool callerIsContentJS, nsNPAPIPluginInstance **_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->ScriptRequestPluginInstance(callerIsContentJS, _retval); } \
   NS_IMETHOD GetSrcURI(nsIURI * *aSrcURI) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetSrcURI(aSrcURI); } \
   NS_IMETHOD GetPluginFallbackType(uint32_t *aPluginFallbackType) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetPluginFallbackType(aPluginFallbackType); } \
+  NS_IMETHOD GetHasRunningPlugin(bool *aHasRunningPlugin) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetHasRunningPlugin(aHasRunningPlugin); } \
   NS_IMETHOD CancelPlayPreview(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->CancelPlayPreview(); } 
 
 #if 0
@@ -251,12 +245,6 @@ NS_IMETHODIMP nsObjectLoadingContent::HasNewFrame(nsIObjectFrame *aFrame)
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* [noscript] void disconnectFrame (); */
-NS_IMETHODIMP nsObjectLoadingContent::DisconnectFrame()
-{
-    return NS_ERROR_NOT_IMPLEMENTED;
-}
-
 /* [noscript] nsIFrame getPrintFrame (); */
 NS_IMETHODIMP nsObjectLoadingContent::GetPrintFrame(nsIFrame * *_retval)
 {
@@ -311,12 +299,6 @@ NS_IMETHODIMP nsObjectLoadingContent::InitializeFromChannel(nsIRequest *request)
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* [noscript] nsNPAPIPluginInstancePtr scriptRequestPluginInstance (in bool callerIsContentJS); */
-NS_IMETHODIMP nsObjectLoadingContent::ScriptRequestPluginInstance(bool callerIsContentJS, nsNPAPIPluginInstance **_retval)
-{
-    return NS_ERROR_NOT_IMPLEMENTED;
-}
-
 /* readonly attribute nsIURI srcURI; */
 NS_IMETHODIMP nsObjectLoadingContent::GetSrcURI(nsIURI * *aSrcURI)
 {
@@ -325,6 +307,12 @@ NS_IMETHODIMP nsObjectLoadingContent::GetSrcURI(nsIURI * *aSrcURI)
 
 /* readonly attribute unsigned long pluginFallbackType; */
 NS_IMETHODIMP nsObjectLoadingContent::GetPluginFallbackType(uint32_t *aPluginFallbackType)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* readonly attribute bool hasRunningPlugin; */
+NS_IMETHODIMP nsObjectLoadingContent::GetHasRunningPlugin(bool *aHasRunningPlugin)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

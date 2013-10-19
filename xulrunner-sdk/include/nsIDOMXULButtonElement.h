@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/xul/nsIDOMXULButtonElement.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/xul/nsIDOMXULButtonElement.idl
  */
 
 #ifndef __gen_nsIDOMXULButtonElement_h__
@@ -16,11 +16,11 @@
 #endif
 
 /* starting interface:    nsIDOMXULButtonElement */
-#define NS_IDOMXULBUTTONELEMENT_IID_STR "a0308bd1-a6d7-4352-86f9-2bd4aee2eafc"
+#define NS_IDOMXULBUTTONELEMENT_IID_STR "d56f1f8f-fc4e-4650-9a85-25108bbd1980"
 
 #define NS_IDOMXULBUTTONELEMENT_IID \
-  {0xa0308bd1, 0xa6d7, 0x4352, \
-    { 0x86, 0xf9, 0x2b, 0xd4, 0xae, 0xe2, 0xea, 0xfc }}
+  {0xd56f1f8f, 0xfc4e, 0x4650, \
+    { 0x9a, 0x85, 0x25, 0x10, 0x8b, 0xbd, 0x19, 0x80 }}
 
 class NS_NO_VTABLE nsIDOMXULButtonElement : public nsIDOMXULLabeledControlElement {
  public: 

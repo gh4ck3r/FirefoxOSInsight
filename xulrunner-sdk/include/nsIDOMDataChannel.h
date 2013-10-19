@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/content/base/public/nsIDOMDataChannel.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/content/base/public/nsIDOMDataChannel.idl
  */
 
 #ifndef __gen_nsIDOMDataChannel_h__
@@ -24,11 +24,11 @@ class nsIVariant; /* forward declaration */
 
 
 /* starting interface:    nsIDOMDataChannel */
-#define NS_IDOMDATACHANNEL_IID_STR "7363aa5c-f4b2-4b86-8d15-e0f714c9216b"
+#define NS_IDOMDATACHANNEL_IID_STR "ee669438-60ff-425c-91b8-2e29bfa6d4ae"
 
 #define NS_IDOMDATACHANNEL_IID \
-  {0x7363aa5c, 0xf4b2, 0x4b86, \
-    { 0x8d, 0x15, 0xe0, 0xf7, 0x14, 0xc9, 0x21, 0x6b }}
+  {0xee669438, 0x60ff, 0x425c, \
+    { 0x91, 0xb8, 0x2e, 0x29, 0xbf, 0xa6, 0xd4, 0xae }}
 
 class NS_NO_VTABLE nsIDOMDataChannel : public nsIDOMEventTarget {
  public: 
@@ -37,6 +37,9 @@ class NS_NO_VTABLE nsIDOMDataChannel : public nsIDOMEventTarget {
 
   /* readonly attribute DOMString label; */
   NS_IMETHOD GetLabel(nsAString & aLabel) = 0;
+
+  /* readonly attribute DOMString protocol; */
+  NS_IMETHOD GetProtocol(nsAString & aProtocol) = 0;
 
   /* readonly attribute boolean reliable; */
   NS_IMETHOD GetReliable(bool *aReliable) = 0;
@@ -49,6 +52,12 @@ class NS_NO_VTABLE nsIDOMDataChannel : public nsIDOMEventTarget {
 
   /* readonly attribute unsigned long bufferedAmount; */
   NS_IMETHOD GetBufferedAmount(uint32_t *aBufferedAmount) = 0;
+
+  /* readonly attribute unsigned short id; */
+  NS_IMETHOD GetId(uint16_t *aId) = 0;
+
+  /* readonly attribute unsigned short stream; */
+  NS_IMETHOD GetStream(uint16_t *aStream) = 0;
 
   /* [implicit_jscontext] attribute jsval onopen; */
   NS_IMETHOD GetOnopen(JSContext* cx, JS::Value *aOnopen) = 0;
@@ -83,10 +92,13 @@ class NS_NO_VTABLE nsIDOMDataChannel : public nsIDOMEventTarget {
 /* Use this macro when declaring classes that implement this interface. */
 #define NS_DECL_NSIDOMDATACHANNEL \
   NS_IMETHOD GetLabel(nsAString & aLabel); \
+  NS_IMETHOD GetProtocol(nsAString & aProtocol); \
   NS_IMETHOD GetReliable(bool *aReliable); \
   NS_IMETHOD GetOrdered(bool *aOrdered); \
   NS_IMETHOD GetReadyState(nsAString & aReadyState); \
   NS_IMETHOD GetBufferedAmount(uint32_t *aBufferedAmount); \
+  NS_IMETHOD GetId(uint16_t *aId); \
+  NS_IMETHOD GetStream(uint16_t *aStream); \
   NS_IMETHOD GetOnopen(JSContext* cx, JS::Value *aOnopen); \
   NS_IMETHOD SetOnopen(JSContext* cx, const JS::Value & aOnopen); \
   NS_IMETHOD GetOnerror(JSContext* cx, JS::Value *aOnerror); \
@@ -103,10 +115,13 @@ class NS_NO_VTABLE nsIDOMDataChannel : public nsIDOMEventTarget {
 /* Use this macro to declare functions that forward the behavior of this interface to another object. */
 #define NS_FORWARD_NSIDOMDATACHANNEL(_to) \
   NS_IMETHOD GetLabel(nsAString & aLabel) { return _to GetLabel(aLabel); } \
+  NS_IMETHOD GetProtocol(nsAString & aProtocol) { return _to GetProtocol(aProtocol); } \
   NS_IMETHOD GetReliable(bool *aReliable) { return _to GetReliable(aReliable); } \
   NS_IMETHOD GetOrdered(bool *aOrdered) { return _to GetOrdered(aOrdered); } \
   NS_IMETHOD GetReadyState(nsAString & aReadyState) { return _to GetReadyState(aReadyState); } \
   NS_IMETHOD GetBufferedAmount(uint32_t *aBufferedAmount) { return _to GetBufferedAmount(aBufferedAmount); } \
+  NS_IMETHOD GetId(uint16_t *aId) { return _to GetId(aId); } \
+  NS_IMETHOD GetStream(uint16_t *aStream) { return _to GetStream(aStream); } \
   NS_IMETHOD GetOnopen(JSContext* cx, JS::Value *aOnopen) { return _to GetOnopen(cx, aOnopen); } \
   NS_IMETHOD SetOnopen(JSContext* cx, const JS::Value & aOnopen) { return _to SetOnopen(cx, aOnopen); } \
   NS_IMETHOD GetOnerror(JSContext* cx, JS::Value *aOnerror) { return _to GetOnerror(cx, aOnerror); } \
@@ -123,10 +138,13 @@ class NS_NO_VTABLE nsIDOMDataChannel : public nsIDOMEventTarget {
 /* Use this macro to declare functions that forward the behavior of this interface to another object in a safe way. */
 #define NS_FORWARD_SAFE_NSIDOMDATACHANNEL(_to) \
   NS_IMETHOD GetLabel(nsAString & aLabel) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetLabel(aLabel); } \
+  NS_IMETHOD GetProtocol(nsAString & aProtocol) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetProtocol(aProtocol); } \
   NS_IMETHOD GetReliable(bool *aReliable) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetReliable(aReliable); } \
   NS_IMETHOD GetOrdered(bool *aOrdered) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetOrdered(aOrdered); } \
   NS_IMETHOD GetReadyState(nsAString & aReadyState) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetReadyState(aReadyState); } \
   NS_IMETHOD GetBufferedAmount(uint32_t *aBufferedAmount) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetBufferedAmount(aBufferedAmount); } \
+  NS_IMETHOD GetId(uint16_t *aId) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetId(aId); } \
+  NS_IMETHOD GetStream(uint16_t *aStream) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetStream(aStream); } \
   NS_IMETHOD GetOnopen(JSContext* cx, JS::Value *aOnopen) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetOnopen(cx, aOnopen); } \
   NS_IMETHOD SetOnopen(JSContext* cx, const JS::Value & aOnopen) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetOnopen(cx, aOnopen); } \
   NS_IMETHOD GetOnerror(JSContext* cx, JS::Value *aOnerror) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetOnerror(cx, aOnerror); } \
@@ -178,6 +196,12 @@ NS_IMETHODIMP nsDOMDataChannel::GetLabel(nsAString & aLabel)
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
+/* readonly attribute DOMString protocol; */
+NS_IMETHODIMP nsDOMDataChannel::GetProtocol(nsAString & aProtocol)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
 /* readonly attribute boolean reliable; */
 NS_IMETHODIMP nsDOMDataChannel::GetReliable(bool *aReliable)
 {
@@ -198,6 +222,18 @@ NS_IMETHODIMP nsDOMDataChannel::GetReadyState(nsAString & aReadyState)
 
 /* readonly attribute unsigned long bufferedAmount; */
 NS_IMETHODIMP nsDOMDataChannel::GetBufferedAmount(uint32_t *aBufferedAmount)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* readonly attribute unsigned short id; */
+NS_IMETHODIMP nsDOMDataChannel::GetId(uint16_t *aId)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* readonly attribute unsigned short stream; */
+NS_IMETHODIMP nsDOMDataChannel::GetStream(uint16_t *aStream)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

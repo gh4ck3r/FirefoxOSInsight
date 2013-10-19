@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/content/base/public/nsIContentSecurityPolicy.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/content/base/public/nsIContentSecurityPolicy.idl
  */
 
 #ifndef __gen_nsIContentSecurityPolicy_h__
@@ -22,11 +22,11 @@ class nsIDocShell; /* forward declaration */
 
 
 /* starting interface:    nsIContentSecurityPolicy */
-#define NS_ICONTENTSECURITYPOLICY_IID_STR "d1680bb4-1ac0-4772-9437-1188375e44f2"
+#define NS_ICONTENTSECURITYPOLICY_IID_STR "230b126d-afc3-4588-9794-3e135594d626"
 
 #define NS_ICONTENTSECURITYPOLICY_IID \
-  {0xd1680bb4, 0x1ac0, 0x4772, \
-    { 0x94, 0x37, 0x11, 0x88, 0x37, 0x5e, 0x44, 0xf2 }}
+  {0x230b126d, 0xafc3, 0x4588, \
+    { 0x97, 0x94, 0x3e, 0x13, 0x55, 0x94, 0xd6, 0x26 }}
 
 class NS_NO_VTABLE nsIContentSecurityPolicy : public nsISupports {
  public: 
@@ -44,18 +44,22 @@ class NS_NO_VTABLE nsIContentSecurityPolicy : public nsISupports {
   /* readonly attribute AString policy; */
   NS_IMETHOD GetPolicy(nsAString & aPolicy) = 0;
 
-  /* readonly attribute boolean allowsInlineScript; */
-  NS_IMETHOD GetAllowsInlineScript(bool *aAllowsInlineScript) = 0;
+  /* boolean getAllowsInlineScript (out boolean shouldReportViolation); */
+  NS_IMETHOD GetAllowsInlineScript(bool *shouldReportViolation, bool *_retval) = 0;
 
-  /* readonly attribute boolean allowsEval; */
-  NS_IMETHOD GetAllowsEval(bool *aAllowsEval) = 0;
+  /* boolean getAllowsEval (out boolean shouldReportViolation); */
+  NS_IMETHOD GetAllowsEval(bool *shouldReportViolation, bool *_retval) = 0;
+
+  /* boolean getAllowsInlineStyle (out boolean shouldReportViolation); */
+  NS_IMETHOD GetAllowsInlineStyle(bool *shouldReportViolation, bool *_retval) = 0;
 
   /* void logViolationDetails (in unsigned short violationType, in AString sourceFile, in AString scriptSample, in int32_t lineNum); */
   NS_IMETHOD LogViolationDetails(uint16_t violationType, const nsAString & sourceFile, const nsAString & scriptSample, int32_t lineNum) = 0;
 
   enum {
     VIOLATION_TYPE_INLINE_SCRIPT = 1U,
-    VIOLATION_TYPE_EVAL = 2U
+    VIOLATION_TYPE_EVAL = 2U,
+    VIOLATION_TYPE_INLINE_STYLE = 3U
   };
 
   /* void sendReports (in AString blockedURI, in AString violatedDirective, in AString scriptSample, in int32_t lineNum); */
@@ -87,8 +91,9 @@ class NS_NO_VTABLE nsIContentSecurityPolicy : public nsISupports {
   NS_IMETHOD GetReportOnlyMode(bool *aReportOnlyMode); \
   NS_IMETHOD SetReportOnlyMode(bool aReportOnlyMode); \
   NS_IMETHOD GetPolicy(nsAString & aPolicy); \
-  NS_IMETHOD GetAllowsInlineScript(bool *aAllowsInlineScript); \
-  NS_IMETHOD GetAllowsEval(bool *aAllowsEval); \
+  NS_IMETHOD GetAllowsInlineScript(bool *shouldReportViolation, bool *_retval); \
+  NS_IMETHOD GetAllowsEval(bool *shouldReportViolation, bool *_retval); \
+  NS_IMETHOD GetAllowsInlineStyle(bool *shouldReportViolation, bool *_retval); \
   NS_IMETHOD LogViolationDetails(uint16_t violationType, const nsAString & sourceFile, const nsAString & scriptSample, int32_t lineNum); \
   NS_IMETHOD SendReports(const nsAString & blockedURI, const nsAString & violatedDirective, const nsAString & scriptSample, int32_t lineNum); \
   NS_IMETHOD ScanRequestData(nsIHttpChannel *aChannel); \
@@ -104,8 +109,9 @@ class NS_NO_VTABLE nsIContentSecurityPolicy : public nsISupports {
   NS_IMETHOD GetReportOnlyMode(bool *aReportOnlyMode) { return _to GetReportOnlyMode(aReportOnlyMode); } \
   NS_IMETHOD SetReportOnlyMode(bool aReportOnlyMode) { return _to SetReportOnlyMode(aReportOnlyMode); } \
   NS_IMETHOD GetPolicy(nsAString & aPolicy) { return _to GetPolicy(aPolicy); } \
-  NS_IMETHOD GetAllowsInlineScript(bool *aAllowsInlineScript) { return _to GetAllowsInlineScript(aAllowsInlineScript); } \
-  NS_IMETHOD GetAllowsEval(bool *aAllowsEval) { return _to GetAllowsEval(aAllowsEval); } \
+  NS_IMETHOD GetAllowsInlineScript(bool *shouldReportViolation, bool *_retval) { return _to GetAllowsInlineScript(shouldReportViolation, _retval); } \
+  NS_IMETHOD GetAllowsEval(bool *shouldReportViolation, bool *_retval) { return _to GetAllowsEval(shouldReportViolation, _retval); } \
+  NS_IMETHOD GetAllowsInlineStyle(bool *shouldReportViolation, bool *_retval) { return _to GetAllowsInlineStyle(shouldReportViolation, _retval); } \
   NS_IMETHOD LogViolationDetails(uint16_t violationType, const nsAString & sourceFile, const nsAString & scriptSample, int32_t lineNum) { return _to LogViolationDetails(violationType, sourceFile, scriptSample, lineNum); } \
   NS_IMETHOD SendReports(const nsAString & blockedURI, const nsAString & violatedDirective, const nsAString & scriptSample, int32_t lineNum) { return _to SendReports(blockedURI, violatedDirective, scriptSample, lineNum); } \
   NS_IMETHOD ScanRequestData(nsIHttpChannel *aChannel) { return _to ScanRequestData(aChannel); } \
@@ -121,8 +127,9 @@ class NS_NO_VTABLE nsIContentSecurityPolicy : public nsISupports {
   NS_IMETHOD GetReportOnlyMode(bool *aReportOnlyMode) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetReportOnlyMode(aReportOnlyMode); } \
   NS_IMETHOD SetReportOnlyMode(bool aReportOnlyMode) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetReportOnlyMode(aReportOnlyMode); } \
   NS_IMETHOD GetPolicy(nsAString & aPolicy) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetPolicy(aPolicy); } \
-  NS_IMETHOD GetAllowsInlineScript(bool *aAllowsInlineScript) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetAllowsInlineScript(aAllowsInlineScript); } \
-  NS_IMETHOD GetAllowsEval(bool *aAllowsEval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetAllowsEval(aAllowsEval); } \
+  NS_IMETHOD GetAllowsInlineScript(bool *shouldReportViolation, bool *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetAllowsInlineScript(shouldReportViolation, _retval); } \
+  NS_IMETHOD GetAllowsEval(bool *shouldReportViolation, bool *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetAllowsEval(shouldReportViolation, _retval); } \
+  NS_IMETHOD GetAllowsInlineStyle(bool *shouldReportViolation, bool *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetAllowsInlineStyle(shouldReportViolation, _retval); } \
   NS_IMETHOD LogViolationDetails(uint16_t violationType, const nsAString & sourceFile, const nsAString & scriptSample, int32_t lineNum) { return !_to ? NS_ERROR_NULL_POINTER : _to->LogViolationDetails(violationType, sourceFile, scriptSample, lineNum); } \
   NS_IMETHOD SendReports(const nsAString & blockedURI, const nsAString & violatedDirective, const nsAString & scriptSample, int32_t lineNum) { return !_to ? NS_ERROR_NULL_POINTER : _to->SendReports(blockedURI, violatedDirective, scriptSample, lineNum); } \
   NS_IMETHOD ScanRequestData(nsIHttpChannel *aChannel) { return !_to ? NS_ERROR_NULL_POINTER : _to->ScanRequestData(aChannel); } \
@@ -189,14 +196,20 @@ NS_IMETHODIMP nsContentSecurityPolicy::GetPolicy(nsAString & aPolicy)
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* readonly attribute boolean allowsInlineScript; */
-NS_IMETHODIMP nsContentSecurityPolicy::GetAllowsInlineScript(bool *aAllowsInlineScript)
+/* boolean getAllowsInlineScript (out boolean shouldReportViolation); */
+NS_IMETHODIMP nsContentSecurityPolicy::GetAllowsInlineScript(bool *shouldReportViolation, bool *_retval)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* readonly attribute boolean allowsEval; */
-NS_IMETHODIMP nsContentSecurityPolicy::GetAllowsEval(bool *aAllowsEval)
+/* boolean getAllowsEval (out boolean shouldReportViolation); */
+NS_IMETHODIMP nsContentSecurityPolicy::GetAllowsEval(bool *shouldReportViolation, bool *_retval)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* boolean getAllowsInlineStyle (out boolean shouldReportViolation); */
+NS_IMETHODIMP nsContentSecurityPolicy::GetAllowsInlineStyle(bool *shouldReportViolation, bool *_retval)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

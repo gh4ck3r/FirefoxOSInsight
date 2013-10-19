@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/storage/nsIDOMStorageIndexedDB.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/storage/nsIDOMStorageIndexedDB.idl
  */
 
 #ifndef __gen_nsIDOMStorageIndexedDB_h__
@@ -14,26 +14,24 @@
 #ifndef NS_NO_VTABLE
 #define NS_NO_VTABLE
 #endif
-class nsIIDBFactory; /* forward declaration */
-
 
 /* starting interface:    nsIDOMStorageIndexedDB */
-#define NS_IDOMSTORAGEINDEXEDDB_IID_STR "94ca74e8-9cff-456e-a7a4-a4071a32ff58"
+#define NS_IDOMSTORAGEINDEXEDDB_IID_STR "f4deeef5-32d3-4048-bb56-883330fd8f35"
 
 #define NS_IDOMSTORAGEINDEXEDDB_IID \
-  {0x94ca74e8, 0x9cff, 0x456e, \
-    { 0xa7, 0xa4, 0xa4, 0x07, 0x1a, 0x32, 0xff, 0x58 }}
+  {0xf4deeef5, 0x32d3, 0x4048, \
+    { 0xbb, 0x56, 0x88, 0x33, 0x30, 0xfd, 0x8f, 0x35 }}
 
 class NS_NO_VTABLE nsIDOMStorageIndexedDB : public nsISupports {
  public: 
 
   NS_DECLARE_STATIC_IID_ACCESSOR(NS_IDOMSTORAGEINDEXEDDB_IID)
 
-  /* readonly attribute nsIIDBFactory indexedDB; */
-  NS_IMETHOD GetIndexedDB(nsIIDBFactory * *aIndexedDB) = 0;
+  /* readonly attribute nsISupports indexedDB; */
+  NS_IMETHOD GetIndexedDB(nsISupports * *aIndexedDB) = 0;
 
-  /* readonly attribute nsIIDBFactory mozIndexedDB; */
-  NS_IMETHOD GetMozIndexedDB(nsIIDBFactory * *aMozIndexedDB) = 0;
+  /* readonly attribute nsISupports mozIndexedDB; */
+  NS_IMETHOD GetMozIndexedDB(nsISupports * *aMozIndexedDB) = 0;
 
 };
 
@@ -41,18 +39,18 @@ class NS_NO_VTABLE nsIDOMStorageIndexedDB : public nsISupports {
 
 /* Use this macro when declaring classes that implement this interface. */
 #define NS_DECL_NSIDOMSTORAGEINDEXEDDB \
-  NS_IMETHOD GetIndexedDB(nsIIDBFactory * *aIndexedDB); \
-  NS_IMETHOD GetMozIndexedDB(nsIIDBFactory * *aMozIndexedDB); 
+  NS_IMETHOD GetIndexedDB(nsISupports * *aIndexedDB); \
+  NS_IMETHOD GetMozIndexedDB(nsISupports * *aMozIndexedDB); 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object. */
 #define NS_FORWARD_NSIDOMSTORAGEINDEXEDDB(_to) \
-  NS_IMETHOD GetIndexedDB(nsIIDBFactory * *aIndexedDB) { return _to GetIndexedDB(aIndexedDB); } \
-  NS_IMETHOD GetMozIndexedDB(nsIIDBFactory * *aMozIndexedDB) { return _to GetMozIndexedDB(aMozIndexedDB); } 
+  NS_IMETHOD GetIndexedDB(nsISupports * *aIndexedDB) { return _to GetIndexedDB(aIndexedDB); } \
+  NS_IMETHOD GetMozIndexedDB(nsISupports * *aMozIndexedDB) { return _to GetMozIndexedDB(aMozIndexedDB); } 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object in a safe way. */
 #define NS_FORWARD_SAFE_NSIDOMSTORAGEINDEXEDDB(_to) \
-  NS_IMETHOD GetIndexedDB(nsIIDBFactory * *aIndexedDB) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetIndexedDB(aIndexedDB); } \
-  NS_IMETHOD GetMozIndexedDB(nsIIDBFactory * *aMozIndexedDB) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetMozIndexedDB(aMozIndexedDB); } 
+  NS_IMETHOD GetIndexedDB(nsISupports * *aIndexedDB) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetIndexedDB(aIndexedDB); } \
+  NS_IMETHOD GetMozIndexedDB(nsISupports * *aMozIndexedDB) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetMozIndexedDB(aMozIndexedDB); } 
 
 #if 0
 /* Use the code below as a template for the implementation class for this interface. */
@@ -86,14 +84,14 @@ nsDOMStorageIndexedDB::~nsDOMStorageIndexedDB()
   /* destructor code */
 }
 
-/* readonly attribute nsIIDBFactory indexedDB; */
-NS_IMETHODIMP nsDOMStorageIndexedDB::GetIndexedDB(nsIIDBFactory * *aIndexedDB)
+/* readonly attribute nsISupports indexedDB; */
+NS_IMETHODIMP nsDOMStorageIndexedDB::GetIndexedDB(nsISupports * *aIndexedDB)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* readonly attribute nsIIDBFactory mozIndexedDB; */
-NS_IMETHODIMP nsDOMStorageIndexedDB::GetMozIndexedDB(nsIIDBFactory * *aMozIndexedDB)
+/* readonly attribute nsISupports mozIndexedDB; */
+NS_IMETHODIMP nsDOMStorageIndexedDB::GetMozIndexedDB(nsISupports * *aMozIndexedDB)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

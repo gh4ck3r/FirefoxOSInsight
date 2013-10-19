@@ -38,6 +38,7 @@
 #include "nsInterfaceHashtable.h"
 #include "nsEventStates.h"
 #include "nsPresArena.h"
+#include "nsIImageLoadingContent.h"
 
 class nsIContent;
 class nsIDocument;
@@ -120,10 +121,10 @@ typedef struct CapturingContentInfo {
   nsIContent* mContent;
 } CapturingContentInfo;
 
-// da75e297-2c23-43c4-8d7f-96a668e96ba9
+// fac033dd-938d-45bc-aaa5-dc2fa7ef5a40
 #define NS_IPRESSHELL_IID \
-{ 0xda75e297, 0x2c23, 0x43c4, \
-  { 0x8d, 0x7f, 0x96, 0xa6, 0x68, 0xe9, 0x6b, 0xa9 } }
+{ 0xfac033dd, 0x938d, 0x45bc, \
+  { 0xaa, 0xa5, 0xdc, 0x2f, 0xa7, 0xef, 0x5a, 0x40 } }
 
 // debug VerifyReflow flags
 #define VERIFY_REFLOW_ON                    0x01
@@ -176,12 +177,6 @@ protected:
   typedef uint8_t RenderFlags; // for storing the above flags
 
 public:
-  virtual NS_HIDDEN_(nsresult) Init(nsIDocument* aDocument,
-                                   nsPresContext* aPresContext,
-                                   nsViewManager* aViewManager,
-                                   nsStyleSet* aStyleSet,
-                                   nsCompatibility aCompatMode) = 0;
-
   /**
    * All callers are responsible for calling |Destroy| after calling
    * |EndObservingDocument|.  It needs to be separate only because form
@@ -227,7 +222,7 @@ public:
 #ifdef DEBUG
     mPresArenaAllocCount--;
 #endif
-    if (PRESARENA_MUST_FREE_DURING_DESTROY || !mIsDestroying)
+    if (!mIsDestroying)
       mFrameArena.FreeByFrameID(aID, aPtr);
   }
 
@@ -252,7 +247,7 @@ public:
 #ifdef DEBUG
     mPresArenaAllocCount--;
 #endif
-    if (PRESARENA_MUST_FREE_DURING_DESTROY || !mIsDestroying)
+    if (!mIsDestroying)
       mFrameArena.FreeByObjectID(aID, aPtr);
   }
 
@@ -278,7 +273,7 @@ public:
 #ifdef DEBUG
     mPresArenaAllocCount--;
 #endif
-    if (PRESARENA_MUST_FREE_DURING_DESTROY || !mIsDestroying)
+    if (!mIsDestroying)
       mFrameArena.FreeBySize(aSize, aPtr);
   }
 
@@ -417,11 +412,6 @@ public:
   virtual bool IsLayoutFlushObserver() = 0;
 
   /**
-   * Reflow the frame model with a reflow reason of eReflowReason_StyleChange
-   */
-  virtual NS_HIDDEN_(void) StyleChangeReflow() = 0;
-
-  /**
    * This calls through to the frame manager to get the root frame.
    */
   virtual NS_HIDDEN_(nsIFrame*) GetRootFrameExternal() const;
@@ -496,6 +486,11 @@ public:
   virtual NS_HIDDEN_(void) FrameNeedsReflow(nsIFrame *aFrame,
                                             IntrinsicDirty aIntrinsicDirty,
                                             nsFrameState aBitToAdd) = 0;
+
+  /**
+   * Calls FrameNeedsReflow on all fixed position children of the root frame.
+   */
+  virtual void MarkFixedFramesForReflow(IntrinsicDirty aIntrinsicDirty);
 
   /**
    * Tell the presshell that the given frame's reflow was interrupted.  This
@@ -1320,6 +1315,16 @@ public:
 
   void InvalidatePresShellIfHidden();
 
+  // Schedule an update of the list of visible images.
+  virtual void ScheduleImageVisibilityUpdate() = 0;
+
+  // Clears the current list of visible images on this presshell and replaces it
+  // with images that are in the display list aList.
+  virtual void RebuildImageVisibility(const nsDisplayList& aList) = 0;
+
+  // Ensures the image is in the list of visible images.
+  virtual void EnsureImageInVisibleList(nsIImageLoadingContent* aImage) = 0;
+
   /**
    * Refresh observer management.
    */
@@ -1370,6 +1375,11 @@ public:
     return mScrollPositionClampingScrollPortSize;
   }
 
+  void SetContentDocumentFixedPositionMargins(const nsMargin& aMargins);
+  const nsMargin& GetContentDocumentFixedPositionMargins() {
+    return mContentDocumentFixedPositionMargins;
+  }
+
   virtual void WindowSizeMoveDone() = 0;
   virtual void SysColorChanged() = 0;
   virtual void ThemeChanged() = 0;
@@ -1416,6 +1426,12 @@ protected:
   uint64_t                  mPaintCount;
 
   nsSize                    mScrollPositionClampingScrollPortSize;
+
+  // This margin is intended to be used when laying out fixed position children
+  // on this PresShell's viewport frame. See the documentation of
+  // nsIDOMWindowUtils.setContentDocumentFixedPositionMargins for details of
+  // their use.
+  nsMargin                  mContentDocumentFixedPositionMargins;
 
   // A list of weak frames. This is a pointer to the last item in the list.
   nsWeakFrame*              mWeakFrames;
@@ -1487,12 +1503,5 @@ protected:
   // width will be wrapped. A value of 0 indicates that no limit is enforced.
   nscoord mMaxLineBoxWidth;
 };
-
-/**
- * Create a new empty presentation shell. Upon success, call Init
- * before attempting to use the shell.
- */
-nsresult
-NS_NewPresShell(nsIPresShell** aInstancePtrResult);
 
 #endif /* nsIPresShell_h___ */

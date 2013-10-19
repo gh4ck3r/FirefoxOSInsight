@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/core/nsIDOMNode.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/core/nsIDOMNode.idl
  */
 
 #ifndef __gen_nsIDOMNode_h__
@@ -20,11 +20,11 @@ class nsIDOMUserDataHandler; /* forward declaration */
 
 
 /* starting interface:    nsIDOMNode */
-#define NS_IDOMNODE_IID_STR "5e9bcec9-5928-4f77-8a9c-424ef01c20e1"
+#define NS_IDOMNODE_IID_STR "56545150-a001-484e-9ed4-cb319eebd7b3"
 
 #define NS_IDOMNODE_IID \
-  {0x5e9bcec9, 0x5928, 0x4f77, \
-    { 0x8a, 0x9c, 0x42, 0x4e, 0xf0, 0x1c, 0x20, 0xe1 }}
+  {0x56545150, 0xa001, 0x484e, \
+    { 0x9e, 0xd4, 0xcb, 0x31, 0x9e, 0xeb, 0xd7, 0xb3 }}
 
 class NS_NO_VTABLE nsIDOMNode : public nsISupports {
  public: 
@@ -77,9 +77,6 @@ class NS_NO_VTABLE nsIDOMNode : public nsISupports {
   /* readonly attribute nsIDOMNode nextSibling; */
   NS_IMETHOD GetNextSibling(nsIDOMNode * *aNextSibling) = 0;
 
-  /* readonly attribute nsIDOMNamedNodeMap attributes; */
-  NS_IMETHOD GetAttributes(nsIDOMNamedNodeMap * *aAttributes) = 0;
-
   /* readonly attribute nsIDOMDocument ownerDocument; */
   NS_IMETHOD GetOwnerDocument(nsIDOMDocument * *aOwnerDocument) = 0;
 
@@ -103,9 +100,6 @@ class NS_NO_VTABLE nsIDOMNode : public nsISupports {
 
   /* void normalize (); */
   NS_IMETHOD Normalize(void) = 0;
-
-  /* boolean isSupported (in DOMString feature, in DOMString version); */
-  NS_IMETHOD IsSupported(const nsAString & feature, const nsAString & version, bool *_retval) = 0;
 
   /* readonly attribute DOMString namespaceURI; */
   NS_IMETHOD GetNamespaceURI(nsAString & aNamespaceURI) = 0;
@@ -176,7 +170,6 @@ class NS_NO_VTABLE nsIDOMNode : public nsISupports {
   NS_IMETHOD GetLastChild(nsIDOMNode * *aLastChild); \
   NS_IMETHOD GetPreviousSibling(nsIDOMNode * *aPreviousSibling); \
   NS_IMETHOD GetNextSibling(nsIDOMNode * *aNextSibling); \
-  NS_IMETHOD GetAttributes(nsIDOMNamedNodeMap * *aAttributes); \
   NS_IMETHOD GetOwnerDocument(nsIDOMDocument * *aOwnerDocument); \
   NS_IMETHOD InsertBefore(nsIDOMNode *newChild, nsIDOMNode *refChild, nsIDOMNode * *_retval); \
   NS_IMETHOD ReplaceChild(nsIDOMNode *newChild, nsIDOMNode *oldChild, nsIDOMNode * *_retval); \
@@ -185,7 +178,6 @@ class NS_NO_VTABLE nsIDOMNode : public nsISupports {
   NS_IMETHOD HasChildNodes(bool *_retval); \
   NS_IMETHOD CloneNode(bool deep, uint8_t _argc, nsIDOMNode * *_retval); \
   NS_IMETHOD Normalize(void); \
-  NS_IMETHOD IsSupported(const nsAString & feature, const nsAString & version, bool *_retval); \
   NS_IMETHOD GetNamespaceURI(nsAString & aNamespaceURI); \
   NS_IMETHOD GetPrefix(nsAString & aPrefix); \
   NS_IMETHOD GetLocalName(nsAString & aLocalName); \
@@ -215,7 +207,6 @@ class NS_NO_VTABLE nsIDOMNode : public nsISupports {
   NS_IMETHOD GetLastChild(nsIDOMNode * *aLastChild) { return _to GetLastChild(aLastChild); } \
   NS_IMETHOD GetPreviousSibling(nsIDOMNode * *aPreviousSibling) { return _to GetPreviousSibling(aPreviousSibling); } \
   NS_IMETHOD GetNextSibling(nsIDOMNode * *aNextSibling) { return _to GetNextSibling(aNextSibling); } \
-  NS_IMETHOD GetAttributes(nsIDOMNamedNodeMap * *aAttributes) { return _to GetAttributes(aAttributes); } \
   NS_IMETHOD GetOwnerDocument(nsIDOMDocument * *aOwnerDocument) { return _to GetOwnerDocument(aOwnerDocument); } \
   NS_IMETHOD InsertBefore(nsIDOMNode *newChild, nsIDOMNode *refChild, nsIDOMNode * *_retval) { return _to InsertBefore(newChild, refChild, _retval); } \
   NS_IMETHOD ReplaceChild(nsIDOMNode *newChild, nsIDOMNode *oldChild, nsIDOMNode * *_retval) { return _to ReplaceChild(newChild, oldChild, _retval); } \
@@ -224,7 +215,6 @@ class NS_NO_VTABLE nsIDOMNode : public nsISupports {
   NS_IMETHOD HasChildNodes(bool *_retval) { return _to HasChildNodes(_retval); } \
   NS_IMETHOD CloneNode(bool deep, uint8_t _argc, nsIDOMNode * *_retval) { return _to CloneNode(deep, _argc, _retval); } \
   NS_IMETHOD Normalize(void) { return _to Normalize(); } \
-  NS_IMETHOD IsSupported(const nsAString & feature, const nsAString & version, bool *_retval) { return _to IsSupported(feature, version, _retval); } \
   NS_IMETHOD GetNamespaceURI(nsAString & aNamespaceURI) { return _to GetNamespaceURI(aNamespaceURI); } \
   NS_IMETHOD GetPrefix(nsAString & aPrefix) { return _to GetPrefix(aPrefix); } \
   NS_IMETHOD GetLocalName(nsAString & aLocalName) { return _to GetLocalName(aLocalName); } \
@@ -254,7 +244,6 @@ class NS_NO_VTABLE nsIDOMNode : public nsISupports {
   NS_IMETHOD GetLastChild(nsIDOMNode * *aLastChild) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetLastChild(aLastChild); } \
   NS_IMETHOD GetPreviousSibling(nsIDOMNode * *aPreviousSibling) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetPreviousSibling(aPreviousSibling); } \
   NS_IMETHOD GetNextSibling(nsIDOMNode * *aNextSibling) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetNextSibling(aNextSibling); } \
-  NS_IMETHOD GetAttributes(nsIDOMNamedNodeMap * *aAttributes) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetAttributes(aAttributes); } \
   NS_IMETHOD GetOwnerDocument(nsIDOMDocument * *aOwnerDocument) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetOwnerDocument(aOwnerDocument); } \
   NS_IMETHOD InsertBefore(nsIDOMNode *newChild, nsIDOMNode *refChild, nsIDOMNode * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->InsertBefore(newChild, refChild, _retval); } \
   NS_IMETHOD ReplaceChild(nsIDOMNode *newChild, nsIDOMNode *oldChild, nsIDOMNode * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->ReplaceChild(newChild, oldChild, _retval); } \
@@ -263,7 +252,6 @@ class NS_NO_VTABLE nsIDOMNode : public nsISupports {
   NS_IMETHOD HasChildNodes(bool *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->HasChildNodes(_retval); } \
   NS_IMETHOD CloneNode(bool deep, uint8_t _argc, nsIDOMNode * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->CloneNode(deep, _argc, _retval); } \
   NS_IMETHOD Normalize(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->Normalize(); } \
-  NS_IMETHOD IsSupported(const nsAString & feature, const nsAString & version, bool *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->IsSupported(feature, version, _retval); } \
   NS_IMETHOD GetNamespaceURI(nsAString & aNamespaceURI) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetNamespaceURI(aNamespaceURI); } \
   NS_IMETHOD GetPrefix(nsAString & aPrefix) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetPrefix(aPrefix); } \
   NS_IMETHOD GetLocalName(nsAString & aLocalName) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetLocalName(aLocalName); } \
@@ -376,12 +364,6 @@ NS_IMETHODIMP nsDOMNode::GetNextSibling(nsIDOMNode * *aNextSibling)
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* readonly attribute nsIDOMNamedNodeMap attributes; */
-NS_IMETHODIMP nsDOMNode::GetAttributes(nsIDOMNamedNodeMap * *aAttributes)
-{
-    return NS_ERROR_NOT_IMPLEMENTED;
-}
-
 /* readonly attribute nsIDOMDocument ownerDocument; */
 NS_IMETHODIMP nsDOMNode::GetOwnerDocument(nsIDOMDocument * *aOwnerDocument)
 {
@@ -426,12 +408,6 @@ NS_IMETHODIMP nsDOMNode::CloneNode(bool deep, uint8_t _argc, nsIDOMNode * *_retv
 
 /* void normalize (); */
 NS_IMETHODIMP nsDOMNode::Normalize()
-{
-    return NS_ERROR_NOT_IMPLEMENTED;
-}
-
-/* boolean isSupported (in DOMString feature, in DOMString version); */
-NS_IMETHODIMP nsDOMNode::IsSupported(const nsAString & feature, const nsAString & version, bool *_retval)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

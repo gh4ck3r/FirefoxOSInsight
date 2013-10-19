@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/html/nsIDOMHTMLStyleElement.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/html/nsIDOMHTMLStyleElement.idl
  */
 
 #ifndef __gen_nsIDOMHTMLStyleElement_h__
@@ -16,20 +16,20 @@
 #endif
 
 /* starting interface:    nsIDOMHTMLStyleElement */
-#define NS_IDOMHTMLSTYLEELEMENT_IID_STR "f9db1001-faae-46e1-b85f-0a0afb80c5b2"
+#define NS_IDOMHTMLSTYLEELEMENT_IID_STR "e81273e1-d440-4dd3-9073-8199f7a9525e"
 
 #define NS_IDOMHTMLSTYLEELEMENT_IID \
-  {0xf9db1001, 0xfaae, 0x46e1, \
-    { 0xb8, 0x5f, 0x0a, 0x0a, 0xfb, 0x80, 0xc5, 0xb2 }}
+  {0xe81273e1, 0xd440, 0x4dd3, \
+    { 0x90, 0x73, 0x81, 0x99, 0xf7, 0xa9, 0x52, 0x5e }}
 
 class NS_NO_VTABLE nsIDOMHTMLStyleElement : public nsIDOMHTMLElement {
  public: 
 
   NS_DECLARE_STATIC_IID_ACCESSOR(NS_IDOMHTMLSTYLEELEMENT_IID)
 
-  /* attribute boolean disabled; */
-  NS_IMETHOD GetDisabled(bool *aDisabled) = 0;
-  NS_IMETHOD SetDisabled(bool aDisabled) = 0;
+  /* [binaryname(MozDisabled)] attribute boolean disabled; */
+  NS_IMETHOD GetMozDisabled(bool *aDisabled) = 0;
+  NS_IMETHOD SetMozDisabled(bool aDisabled) = 0;
 
   /* attribute DOMString media; */
   NS_IMETHOD GetMedia(nsAString & aMedia) = 0;
@@ -49,8 +49,8 @@ class NS_NO_VTABLE nsIDOMHTMLStyleElement : public nsIDOMHTMLElement {
 
 /* Use this macro when declaring classes that implement this interface. */
 #define NS_DECL_NSIDOMHTMLSTYLEELEMENT \
-  NS_IMETHOD GetDisabled(bool *aDisabled); \
-  NS_IMETHOD SetDisabled(bool aDisabled); \
+  NS_IMETHOD GetMozDisabled(bool *aDisabled); \
+  NS_IMETHOD SetMozDisabled(bool aDisabled); \
   NS_IMETHOD GetMedia(nsAString & aMedia); \
   NS_IMETHOD SetMedia(const nsAString & aMedia); \
   NS_IMETHOD GetType(nsAString & aType); \
@@ -60,8 +60,8 @@ class NS_NO_VTABLE nsIDOMHTMLStyleElement : public nsIDOMHTMLElement {
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object. */
 #define NS_FORWARD_NSIDOMHTMLSTYLEELEMENT(_to) \
-  NS_IMETHOD GetDisabled(bool *aDisabled) { return _to GetDisabled(aDisabled); } \
-  NS_IMETHOD SetDisabled(bool aDisabled) { return _to SetDisabled(aDisabled); } \
+  NS_IMETHOD GetMozDisabled(bool *aDisabled) { return _to GetMozDisabled(aDisabled); } \
+  NS_IMETHOD SetMozDisabled(bool aDisabled) { return _to SetMozDisabled(aDisabled); } \
   NS_IMETHOD GetMedia(nsAString & aMedia) { return _to GetMedia(aMedia); } \
   NS_IMETHOD SetMedia(const nsAString & aMedia) { return _to SetMedia(aMedia); } \
   NS_IMETHOD GetType(nsAString & aType) { return _to GetType(aType); } \
@@ -71,8 +71,8 @@ class NS_NO_VTABLE nsIDOMHTMLStyleElement : public nsIDOMHTMLElement {
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object in a safe way. */
 #define NS_FORWARD_SAFE_NSIDOMHTMLSTYLEELEMENT(_to) \
-  NS_IMETHOD GetDisabled(bool *aDisabled) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetDisabled(aDisabled); } \
-  NS_IMETHOD SetDisabled(bool aDisabled) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetDisabled(aDisabled); } \
+  NS_IMETHOD GetMozDisabled(bool *aDisabled) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetMozDisabled(aDisabled); } \
+  NS_IMETHOD SetMozDisabled(bool aDisabled) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetMozDisabled(aDisabled); } \
   NS_IMETHOD GetMedia(nsAString & aMedia) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetMedia(aMedia); } \
   NS_IMETHOD SetMedia(const nsAString & aMedia) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetMedia(aMedia); } \
   NS_IMETHOD GetType(nsAString & aType) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetType(aType); } \
@@ -112,12 +112,12 @@ nsDOMHTMLStyleElement::~nsDOMHTMLStyleElement()
   /* destructor code */
 }
 
-/* attribute boolean disabled; */
-NS_IMETHODIMP nsDOMHTMLStyleElement::GetDisabled(bool *aDisabled)
+/* [binaryname(MozDisabled)] attribute boolean disabled; */
+NS_IMETHODIMP nsDOMHTMLStyleElement::GetMozDisabled(bool *aDisabled)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
-NS_IMETHODIMP nsDOMHTMLStyleElement::SetDisabled(bool aDisabled)
+NS_IMETHODIMP nsDOMHTMLStyleElement::SetMozDisabled(bool aDisabled)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

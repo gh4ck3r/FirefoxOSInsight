@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/netwerk/mime/nsIMIMEHeaderParam.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/netwerk/mime/nsIMIMEHeaderParam.idl
  */
 
 #ifndef __gen_nsIMIMEHeaderParam_h__
@@ -16,11 +16,11 @@
 #endif
 
 /* starting interface:    nsIMIMEHeaderParam */
-#define NS_IMIMEHEADERPARAM_IID_STR "ddbbdfb8-a1c0-4dd5-a31b-5d2a7a3bb6ec"
+#define NS_IMIMEHEADERPARAM_IID_STR "9c9252a1-fdaf-40a2-9c2b-a3dc45e28dde"
 
 #define NS_IMIMEHEADERPARAM_IID \
-  {0xddbbdfb8, 0xa1c0, 0x4dd5, \
-    { 0xa3, 0x1b, 0x5d, 0x2a, 0x7a, 0x3b, 0xb6, 0xec }}
+  {0x9c9252a1, 0xfdaf, 0x40a2, \
+    { 0x9c, 0x2b, 0xa3, 0xdc, 0x45, 0xe2, 0x8d, 0xde }}
 
 class NS_NO_VTABLE nsIMIMEHeaderParam : public nsISupports {
  public: 
@@ -30,8 +30,8 @@ class NS_NO_VTABLE nsIMIMEHeaderParam : public nsISupports {
   /* AString getParameter (in ACString aHeaderVal, in string aParamName, in ACString aFallbackCharset, in boolean aTryLocaleCharset, out string aLang); */
   NS_IMETHOD GetParameter(const nsACString & aHeaderVal, const char * aParamName, const nsACString & aFallbackCharset, bool aTryLocaleCharset, char * *aLang, nsAString & _retval) = 0;
 
-  /* AString getParameter5987 (in ACString aHeaderVal, in string aParamName, in ACString aFallbackCharset, in boolean aTryLocaleCharset, out string aLang); */
-  NS_IMETHOD GetParameter5987(const nsACString & aHeaderVal, const char * aParamName, const nsACString & aFallbackCharset, bool aTryLocaleCharset, char * *aLang, nsAString & _retval) = 0;
+  /* AString getParameterHTTP (in ACString aHeaderVal, in string aParamName, in ACString aFallbackCharset, in boolean aTryLocaleCharset, out string aLang); */
+  NS_IMETHOD GetParameterHTTP(const nsACString & aHeaderVal, const char * aParamName, const nsACString & aFallbackCharset, bool aTryLocaleCharset, char * *aLang, nsAString & _retval) = 0;
 
   /* AString decodeRFC5987Param (in ACString aParamVal, out ACString aLang); */
   NS_IMETHOD DecodeRFC5987Param(const nsACString & aParamVal, nsACString & aLang, nsAString & _retval) = 0;
@@ -52,7 +52,7 @@ class NS_NO_VTABLE nsIMIMEHeaderParam : public nsISupports {
 /* Use this macro when declaring classes that implement this interface. */
 #define NS_DECL_NSIMIMEHEADERPARAM \
   NS_IMETHOD GetParameter(const nsACString & aHeaderVal, const char * aParamName, const nsACString & aFallbackCharset, bool aTryLocaleCharset, char * *aLang, nsAString & _retval); \
-  NS_IMETHOD GetParameter5987(const nsACString & aHeaderVal, const char * aParamName, const nsACString & aFallbackCharset, bool aTryLocaleCharset, char * *aLang, nsAString & _retval); \
+  NS_IMETHOD GetParameterHTTP(const nsACString & aHeaderVal, const char * aParamName, const nsACString & aFallbackCharset, bool aTryLocaleCharset, char * *aLang, nsAString & _retval); \
   NS_IMETHOD DecodeRFC5987Param(const nsACString & aParamVal, nsACString & aLang, nsAString & _retval); \
   NS_IMETHOD GetParameterInternal(const char * aHeaderVal, const char * aParamName, char * *aCharset, char * *aLang, char * *_retval); \
   NS_IMETHOD DecodeRFC2047Header(const char * aHeaderVal, const char * aDefaultCharset, bool aOverrideCharset, bool aEatContinuation, nsACString & _retval); \
@@ -61,7 +61,7 @@ class NS_NO_VTABLE nsIMIMEHeaderParam : public nsISupports {
 /* Use this macro to declare functions that forward the behavior of this interface to another object. */
 #define NS_FORWARD_NSIMIMEHEADERPARAM(_to) \
   NS_IMETHOD GetParameter(const nsACString & aHeaderVal, const char * aParamName, const nsACString & aFallbackCharset, bool aTryLocaleCharset, char * *aLang, nsAString & _retval) { return _to GetParameter(aHeaderVal, aParamName, aFallbackCharset, aTryLocaleCharset, aLang, _retval); } \
-  NS_IMETHOD GetParameter5987(const nsACString & aHeaderVal, const char * aParamName, const nsACString & aFallbackCharset, bool aTryLocaleCharset, char * *aLang, nsAString & _retval) { return _to GetParameter5987(aHeaderVal, aParamName, aFallbackCharset, aTryLocaleCharset, aLang, _retval); } \
+  NS_IMETHOD GetParameterHTTP(const nsACString & aHeaderVal, const char * aParamName, const nsACString & aFallbackCharset, bool aTryLocaleCharset, char * *aLang, nsAString & _retval) { return _to GetParameterHTTP(aHeaderVal, aParamName, aFallbackCharset, aTryLocaleCharset, aLang, _retval); } \
   NS_IMETHOD DecodeRFC5987Param(const nsACString & aParamVal, nsACString & aLang, nsAString & _retval) { return _to DecodeRFC5987Param(aParamVal, aLang, _retval); } \
   NS_IMETHOD GetParameterInternal(const char * aHeaderVal, const char * aParamName, char * *aCharset, char * *aLang, char * *_retval) { return _to GetParameterInternal(aHeaderVal, aParamName, aCharset, aLang, _retval); } \
   NS_IMETHOD DecodeRFC2047Header(const char * aHeaderVal, const char * aDefaultCharset, bool aOverrideCharset, bool aEatContinuation, nsACString & _retval) { return _to DecodeRFC2047Header(aHeaderVal, aDefaultCharset, aOverrideCharset, aEatContinuation, _retval); } \
@@ -70,7 +70,7 @@ class NS_NO_VTABLE nsIMIMEHeaderParam : public nsISupports {
 /* Use this macro to declare functions that forward the behavior of this interface to another object in a safe way. */
 #define NS_FORWARD_SAFE_NSIMIMEHEADERPARAM(_to) \
   NS_IMETHOD GetParameter(const nsACString & aHeaderVal, const char * aParamName, const nsACString & aFallbackCharset, bool aTryLocaleCharset, char * *aLang, nsAString & _retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetParameter(aHeaderVal, aParamName, aFallbackCharset, aTryLocaleCharset, aLang, _retval); } \
-  NS_IMETHOD GetParameter5987(const nsACString & aHeaderVal, const char * aParamName, const nsACString & aFallbackCharset, bool aTryLocaleCharset, char * *aLang, nsAString & _retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetParameter5987(aHeaderVal, aParamName, aFallbackCharset, aTryLocaleCharset, aLang, _retval); } \
+  NS_IMETHOD GetParameterHTTP(const nsACString & aHeaderVal, const char * aParamName, const nsACString & aFallbackCharset, bool aTryLocaleCharset, char * *aLang, nsAString & _retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetParameterHTTP(aHeaderVal, aParamName, aFallbackCharset, aTryLocaleCharset, aLang, _retval); } \
   NS_IMETHOD DecodeRFC5987Param(const nsACString & aParamVal, nsACString & aLang, nsAString & _retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->DecodeRFC5987Param(aParamVal, aLang, _retval); } \
   NS_IMETHOD GetParameterInternal(const char * aHeaderVal, const char * aParamName, char * *aCharset, char * *aLang, char * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetParameterInternal(aHeaderVal, aParamName, aCharset, aLang, _retval); } \
   NS_IMETHOD DecodeRFC2047Header(const char * aHeaderVal, const char * aDefaultCharset, bool aOverrideCharset, bool aEatContinuation, nsACString & _retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->DecodeRFC2047Header(aHeaderVal, aDefaultCharset, aOverrideCharset, aEatContinuation, _retval); } \
@@ -114,8 +114,8 @@ NS_IMETHODIMP nsMIMEHeaderParam::GetParameter(const nsACString & aHeaderVal, con
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* AString getParameter5987 (in ACString aHeaderVal, in string aParamName, in ACString aFallbackCharset, in boolean aTryLocaleCharset, out string aLang); */
-NS_IMETHODIMP nsMIMEHeaderParam::GetParameter5987(const nsACString & aHeaderVal, const char * aParamName, const nsACString & aFallbackCharset, bool aTryLocaleCharset, char * *aLang, nsAString & _retval)
+/* AString getParameterHTTP (in ACString aHeaderVal, in string aParamName, in ACString aFallbackCharset, in boolean aTryLocaleCharset, out string aLang); */
+NS_IMETHODIMP nsMIMEHeaderParam::GetParameterHTTP(const nsACString & aHeaderVal, const char * aParamName, const nsACString & aFallbackCharset, bool aTryLocaleCharset, char * *aLang, nsAString & _retval)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

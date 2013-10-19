@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/xul/nsIDOMXULElement.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/xul/nsIDOMXULElement.idl
  */
 
 #ifndef __gen_nsIDOMXULElement_h__
@@ -26,11 +26,11 @@ class nsIBoxObject; /* forward declaration */
 
 
 /* starting interface:    nsIDOMXULElement */
-#define NS_IDOMXULELEMENT_IID_STR "bece5b0b-6e59-4de5-98d0-088adfd1cadc"
+#define NS_IDOMXULELEMENT_IID_STR "e89578c8-64ec-4047-984a-cce1b1735543"
 
 #define NS_IDOMXULELEMENT_IID \
-  {0xbece5b0b, 0x6e59, 0x4de5, \
-    { 0x98, 0xd0, 0x08, 0x8a, 0xdf, 0xd1, 0xca, 0xdc }}
+  {0xe89578c8, 0x64ec, 0x4047, \
+    { 0x98, 0x4a, 0xcc, 0xe1, 0xb1, 0x73, 0x55, 0x43 }}
 
 class NS_NO_VTABLE nsIDOMXULElement : public nsIDOMElement {
  public: 

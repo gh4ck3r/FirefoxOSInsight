@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/core/nsIDOMComment.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/core/nsIDOMComment.idl
  */
 
 #ifndef __gen_nsIDOMComment_h__
@@ -16,11 +16,11 @@
 #endif
 
 /* starting interface:    nsIDOMComment */
-#define NS_IDOMCOMMENT_IID_STR "cea49a35-dac9-4c4d-9830-4660abb3b6bc"
+#define NS_IDOMCOMMENT_IID_STR "e702a5d2-3aa8-4788-b048-2d3b3e6d16f2"
 
 #define NS_IDOMCOMMENT_IID \
-  {0xcea49a35, 0xdac9, 0x4c4d, \
-    { 0x98, 0x30, 0x46, 0x60, 0xab, 0xb3, 0xb6, 0xbc }}
+  {0xe702a5d2, 0x3aa8, 0x4788, \
+    { 0xb0, 0x48, 0x2d, 0x3b, 0x3e, 0x6d, 0x16, 0xf2 }}
 
 class NS_NO_VTABLE nsIDOMComment : public nsIDOMCharacterData {
  public: 

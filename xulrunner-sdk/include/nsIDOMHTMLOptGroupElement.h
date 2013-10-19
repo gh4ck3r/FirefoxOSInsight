@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/html/nsIDOMHTMLOptGroupElement.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/html/nsIDOMHTMLOptGroupElement.idl
  */
 
 #ifndef __gen_nsIDOMHTMLOptGroupElement_h__
@@ -16,11 +16,11 @@
 #endif
 
 /* starting interface:    nsIDOMHTMLOptGroupElement */
-#define NS_IDOMHTMLOPTGROUPELEMENT_IID_STR "bedb0d8d-030e-409a-b3b5-28dc0e0d9c34"
+#define NS_IDOMHTMLOPTGROUPELEMENT_IID_STR "a288495a-27f1-4954-bb6b-3bb6afb63ab2"
 
 #define NS_IDOMHTMLOPTGROUPELEMENT_IID \
-  {0xbedb0d8d, 0x030e, 0x409a, \
-    { 0xb3, 0xb5, 0x28, 0xdc, 0x0e, 0x0d, 0x9c, 0x34 }}
+  {0xa288495a, 0x27f1, 0x4954, \
+    { 0xbb, 0x6b, 0x3b, 0xb6, 0xaf, 0xb6, 0x3a, 0xb2 }}
 
 class NS_NO_VTABLE nsIDOMHTMLOptGroupElement : public nsIDOMHTMLElement {
  public: 

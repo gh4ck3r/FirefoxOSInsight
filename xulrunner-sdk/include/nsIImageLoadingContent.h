@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/content/base/public/nsIImageLoadingContent.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/content/base/public/nsIImageLoadingContent.idl
  */
 
 #ifndef __gen_nsIImageLoadingContent_h__
@@ -28,11 +28,11 @@ class nsIFrame; /* forward declaration */
 
 
 /* starting interface:    nsIImageLoadingContent */
-#define NS_IIMAGELOADINGCONTENT_IID_STR "497bfb9b-d996-4d1e-a647-8137b0cfc876"
+#define NS_IIMAGELOADINGCONTENT_IID_STR "e3968acd-b796-4ca3-aec0-e7f0880f2219"
 
 #define NS_IIMAGELOADINGCONTENT_IID \
-  {0x497bfb9b, 0xd996, 0x4d1e, \
-    { 0xa6, 0x47, 0x81, 0x37, 0xb0, 0xcf, 0xc8, 0x76 }}
+  {0xe3968acd, 0xb796, 0x4ca3, \
+    { 0xae, 0xc0, 0xe7, 0xf0, 0x88, 0x0f, 0x22, 0x19 }}
 
 class NS_NO_VTABLE nsIImageLoadingContent : public imgINotificationObserver {
  public: 
@@ -82,6 +82,15 @@ class NS_NO_VTABLE nsIImageLoadingContent : public imgINotificationObserver {
   /* void forceImageState (in boolean aForce, in unsigned long long aState); */
   NS_IMETHOD ForceImageState(bool aForce, uint64_t aState) = 0;
 
+  /* [noscript,notxpcom] void IncrementVisibleCount (); */
+  NS_IMETHOD_(void) IncrementVisibleCount(void) = 0;
+
+  /* [noscript,notxpcom] void DecrementVisibleCount (); */
+  NS_IMETHOD_(void) DecrementVisibleCount(void) = 0;
+
+  /* [noscript,notxpcom] uint32_t GetVisibleCount (); */
+  NS_IMETHOD_(uint32_t) GetVisibleCount(void) = 0;
+
 };
 
   NS_DEFINE_STATIC_IID_ACCESSOR(nsIImageLoadingContent, NS_IIMAGELOADINGCONTENT_IID)
@@ -100,7 +109,10 @@ class NS_NO_VTABLE nsIImageLoadingContent : public imgINotificationObserver {
   NS_IMETHOD GetCurrentURI(nsIURI * *aCurrentURI); \
   NS_IMETHOD LoadImageWithChannel(nsIChannel *aChannel, nsIStreamListener * *_retval); \
   NS_IMETHOD ForceReload(void); \
-  NS_IMETHOD ForceImageState(bool aForce, uint64_t aState); 
+  NS_IMETHOD ForceImageState(bool aForce, uint64_t aState); \
+  NS_IMETHOD_(void) IncrementVisibleCount(void); \
+  NS_IMETHOD_(void) DecrementVisibleCount(void); \
+  NS_IMETHOD_(uint32_t) GetVisibleCount(void); 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object. */
 #define NS_FORWARD_NSIIMAGELOADINGCONTENT(_to) \
@@ -116,7 +128,10 @@ class NS_NO_VTABLE nsIImageLoadingContent : public imgINotificationObserver {
   NS_IMETHOD GetCurrentURI(nsIURI * *aCurrentURI) { return _to GetCurrentURI(aCurrentURI); } \
   NS_IMETHOD LoadImageWithChannel(nsIChannel *aChannel, nsIStreamListener * *_retval) { return _to LoadImageWithChannel(aChannel, _retval); } \
   NS_IMETHOD ForceReload(void) { return _to ForceReload(); } \
-  NS_IMETHOD ForceImageState(bool aForce, uint64_t aState) { return _to ForceImageState(aForce, aState); } 
+  NS_IMETHOD ForceImageState(bool aForce, uint64_t aState) { return _to ForceImageState(aForce, aState); } \
+  NS_IMETHOD_(void) IncrementVisibleCount(void) { return _to IncrementVisibleCount(); } \
+  NS_IMETHOD_(void) DecrementVisibleCount(void) { return _to DecrementVisibleCount(); } \
+  NS_IMETHOD_(uint32_t) GetVisibleCount(void) { return _to GetVisibleCount(); } 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object in a safe way. */
 #define NS_FORWARD_SAFE_NSIIMAGELOADINGCONTENT(_to) \
@@ -132,7 +147,10 @@ class NS_NO_VTABLE nsIImageLoadingContent : public imgINotificationObserver {
   NS_IMETHOD GetCurrentURI(nsIURI * *aCurrentURI) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetCurrentURI(aCurrentURI); } \
   NS_IMETHOD LoadImageWithChannel(nsIChannel *aChannel, nsIStreamListener * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->LoadImageWithChannel(aChannel, _retval); } \
   NS_IMETHOD ForceReload(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->ForceReload(); } \
-  NS_IMETHOD ForceImageState(bool aForce, uint64_t aState) { return !_to ? NS_ERROR_NULL_POINTER : _to->ForceImageState(aForce, aState); } 
+  NS_IMETHOD ForceImageState(bool aForce, uint64_t aState) { return !_to ? NS_ERROR_NULL_POINTER : _to->ForceImageState(aForce, aState); } \
+  NS_IMETHOD_(void) IncrementVisibleCount(void); \
+  NS_IMETHOD_(void) DecrementVisibleCount(void); \
+  NS_IMETHOD_(uint32_t) GetVisibleCount(void); 
 
 #if 0
 /* Use the code below as a template for the implementation class for this interface. */
@@ -238,6 +256,24 @@ NS_IMETHODIMP nsImageLoadingContent::ForceReload()
 
 /* void forceImageState (in boolean aForce, in unsigned long long aState); */
 NS_IMETHODIMP nsImageLoadingContent::ForceImageState(bool aForce, uint64_t aState)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* [noscript,notxpcom] void IncrementVisibleCount (); */
+NS_IMETHODIMP_(void) nsImageLoadingContent::IncrementVisibleCount()
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* [noscript,notxpcom] void DecrementVisibleCount (); */
+NS_IMETHODIMP_(void) nsImageLoadingContent::DecrementVisibleCount()
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* [noscript,notxpcom] uint32_t GetVisibleCount (); */
+NS_IMETHODIMP_(uint32_t) nsImageLoadingContent::GetVisibleCount()
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

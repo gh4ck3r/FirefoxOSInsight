@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/plugins/base/nsIPluginHost.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/plugins/base/nsIPluginHost.idl
  */
 
 #ifndef __gen_nsIPluginHost_h__
@@ -123,19 +123,19 @@ NS_IMETHODIMP nsPluginPlayPreviewInfo::GetRedirectURL(nsACString & aRedirectURL)
 
 
 /* starting interface:    nsIPluginHost */
-#define NS_IPLUGINHOST_IID_STR "67ebff01-0dce-48f7-b6a5-6235fc78382b"
+#define NS_IPLUGINHOST_IID_STR "15f97490-7bdf-4947-885c-9258072af878"
 
 #define NS_IPLUGINHOST_IID \
-  {0x67ebff01, 0x0dce, 0x48f7, \
-    { 0xb6, 0xa5, 0x62, 0x35, 0xfc, 0x78, 0x38, 0x2b }}
+  {0x15f97490, 0x7bdf, 0x4947, \
+    { 0x88, 0x5c, 0x92, 0x58, 0x07, 0x2a, 0xf8, 0x78 }}
 
 class NS_NO_VTABLE nsIPluginHost : public nsISupports {
  public: 
 
   NS_DECLARE_STATIC_IID_ACCESSOR(NS_IPLUGINHOST_IID)
 
-  /* void reloadPlugins (in boolean reloadPages); */
-  NS_IMETHOD ReloadPlugins(bool reloadPages) = 0;
+  /* void reloadPlugins (); */
+  NS_IMETHOD ReloadPlugins(void) = 0;
 
   /* void getPluginTags ([optional] out unsigned long aPluginCount, [array, size_is (aPluginCount), retval] out nsIPluginTag aResults); */
   NS_IMETHOD GetPluginTags(uint32_t *aPluginCount, nsIPluginTag * **aResults) = 0;
@@ -172,7 +172,7 @@ class NS_NO_VTABLE nsIPluginHost : public nsISupports {
 
 /* Use this macro when declaring classes that implement this interface. */
 #define NS_DECL_NSIPLUGINHOST \
-  NS_IMETHOD ReloadPlugins(bool reloadPages); \
+  NS_IMETHOD ReloadPlugins(void); \
   NS_IMETHOD GetPluginTags(uint32_t *aPluginCount, nsIPluginTag * **aResults); \
   NS_IMETHOD ClearSiteData(nsIPluginTag *plugin, const nsACString & domain, uint64_t flags, int64_t maxAge); \
   NS_IMETHOD SiteHasData(nsIPluginTag *plugin, const nsACString & domain, bool *_retval); \
@@ -184,7 +184,7 @@ class NS_NO_VTABLE nsIPluginHost : public nsISupports {
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object. */
 #define NS_FORWARD_NSIPLUGINHOST(_to) \
-  NS_IMETHOD ReloadPlugins(bool reloadPages) { return _to ReloadPlugins(reloadPages); } \
+  NS_IMETHOD ReloadPlugins(void) { return _to ReloadPlugins(); } \
   NS_IMETHOD GetPluginTags(uint32_t *aPluginCount, nsIPluginTag * **aResults) { return _to GetPluginTags(aPluginCount, aResults); } \
   NS_IMETHOD ClearSiteData(nsIPluginTag *plugin, const nsACString & domain, uint64_t flags, int64_t maxAge) { return _to ClearSiteData(plugin, domain, flags, maxAge); } \
   NS_IMETHOD SiteHasData(nsIPluginTag *plugin, const nsACString & domain, bool *_retval) { return _to SiteHasData(plugin, domain, _retval); } \
@@ -196,7 +196,7 @@ class NS_NO_VTABLE nsIPluginHost : public nsISupports {
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object in a safe way. */
 #define NS_FORWARD_SAFE_NSIPLUGINHOST(_to) \
-  NS_IMETHOD ReloadPlugins(bool reloadPages) { return !_to ? NS_ERROR_NULL_POINTER : _to->ReloadPlugins(reloadPages); } \
+  NS_IMETHOD ReloadPlugins(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->ReloadPlugins(); } \
   NS_IMETHOD GetPluginTags(uint32_t *aPluginCount, nsIPluginTag * **aResults) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetPluginTags(aPluginCount, aResults); } \
   NS_IMETHOD ClearSiteData(nsIPluginTag *plugin, const nsACString & domain, uint64_t flags, int64_t maxAge) { return !_to ? NS_ERROR_NULL_POINTER : _to->ClearSiteData(plugin, domain, flags, maxAge); } \
   NS_IMETHOD SiteHasData(nsIPluginTag *plugin, const nsACString & domain, bool *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->SiteHasData(plugin, domain, _retval); } \
@@ -238,8 +238,8 @@ nsPluginHost::~nsPluginHost()
   /* destructor code */
 }
 
-/* void reloadPlugins (in boolean reloadPages); */
-NS_IMETHODIMP nsPluginHost::ReloadPlugins(bool reloadPages)
+/* void reloadPlugins (); */
+NS_IMETHODIMP nsPluginHost::ReloadPlugins()
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

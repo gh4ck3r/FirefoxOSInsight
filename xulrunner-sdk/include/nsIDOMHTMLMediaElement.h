@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/html/nsIDOMHTMLMediaElement.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/html/nsIDOMHTMLMediaElement.idl
  */
 
 #ifndef __gen_nsIDOMHTMLMediaElement_h__
@@ -31,11 +31,11 @@ class nsIDOMMediaStream; /* forward declaration */
 #endif
 
 /* starting interface:    nsIDOMHTMLMediaElement */
-#define NS_IDOMHTMLMEDIAELEMENT_IID_STR "d9331886-3928-11e2-b0e1-10bf48d64bd4"
+#define NS_IDOMHTMLMEDIAELEMENT_IID_STR "adbb2541-5ab6-41a3-9e16-fca46620b532"
 
 #define NS_IDOMHTMLMEDIAELEMENT_IID \
-  {0xd9331886, 0x3928, 0x11e2, \
-    { 0xb0, 0xe1, 0x10, 0xbf, 0x48, 0xd6, 0x4b, 0xd4 }}
+  {0xadbb2541, 0x5ab6, 0x41a3, \
+    { 0x9e, 0x16, 0xfc, 0xa4, 0x66, 0x20, 0xb5, 0x32 }}
 
 class NS_NO_VTABLE nsIDOMHTMLMediaElement : public nsIDOMHTMLElement {
  public: 
@@ -49,16 +49,16 @@ class NS_NO_VTABLE nsIDOMHTMLMediaElement : public nsIDOMHTMLElement {
   NS_IMETHOD GetSrc(nsAString & aSrc) = 0;
   NS_IMETHOD SetSrc(const nsAString & aSrc) = 0;
 
-  /* [implicit_jscontext] attribute jsval mozSrcObject; */
-  NS_IMETHOD GetMozSrcObject(JSContext* cx, JS::Value *aMozSrcObject) = 0;
-  NS_IMETHOD SetMozSrcObject(JSContext* cx, const JS::Value & aMozSrcObject) = 0;
+  /* attribute nsIDOMMediaStream mozSrcObject; */
+  NS_IMETHOD GetMozSrcObject(nsIDOMMediaStream * *aMozSrcObject) = 0;
+  NS_IMETHOD SetMozSrcObject(nsIDOMMediaStream *aMozSrcObject) = 0;
 
   /* readonly attribute DOMString currentSrc; */
   NS_IMETHOD GetCurrentSrc(nsAString & aCurrentSrc) = 0;
 
-  /* attribute DOMString crossorigin; */
-  NS_IMETHOD GetCrossorigin(nsAString & aCrossorigin) = 0;
-  NS_IMETHOD SetCrossorigin(const nsAString & aCrossorigin) = 0;
+  /* attribute DOMString crossOrigin; */
+  NS_IMETHOD GetCrossOrigin(nsAString & aCrossOrigin) = 0;
+  NS_IMETHOD SetCrossOrigin(const nsAString & aCrossOrigin) = 0;
 
   enum {
     NETWORK_EMPTY = 0U,
@@ -100,9 +100,6 @@ class NS_NO_VTABLE nsIDOMHTMLMediaElement : public nsIDOMHTMLElement {
   /* attribute double currentTime; */
   NS_IMETHOD GetCurrentTime(double *aCurrentTime) = 0;
   NS_IMETHOD SetCurrentTime(double aCurrentTime) = 0;
-
-  /* readonly attribute double initialTime; */
-  NS_IMETHOD GetInitialTime(double *aInitialTime) = 0;
 
   /* readonly attribute double duration; */
   NS_IMETHOD GetDuration(double *aDuration) = 0;
@@ -205,11 +202,11 @@ class NS_NO_VTABLE nsIDOMHTMLMediaElement : public nsIDOMHTMLElement {
   NS_IMETHOD GetError(nsIDOMMediaError * *aError); \
   NS_IMETHOD GetSrc(nsAString & aSrc); \
   NS_IMETHOD SetSrc(const nsAString & aSrc); \
-  NS_IMETHOD GetMozSrcObject(JSContext* cx, JS::Value *aMozSrcObject); \
-  NS_IMETHOD SetMozSrcObject(JSContext* cx, const JS::Value & aMozSrcObject); \
+  NS_IMETHOD GetMozSrcObject(nsIDOMMediaStream * *aMozSrcObject); \
+  NS_IMETHOD SetMozSrcObject(nsIDOMMediaStream *aMozSrcObject); \
   NS_IMETHOD GetCurrentSrc(nsAString & aCurrentSrc); \
-  NS_IMETHOD GetCrossorigin(nsAString & aCrossorigin); \
-  NS_IMETHOD SetCrossorigin(const nsAString & aCrossorigin); \
+  NS_IMETHOD GetCrossOrigin(nsAString & aCrossOrigin); \
+  NS_IMETHOD SetCrossOrigin(const nsAString & aCrossOrigin); \
   NS_IMETHOD GetNetworkState(uint16_t *aNetworkState); \
   NS_IMETHOD GetPreload(nsAString & aPreload); \
   NS_IMETHOD SetPreload(const nsAString & aPreload); \
@@ -220,7 +217,6 @@ class NS_NO_VTABLE nsIDOMHTMLMediaElement : public nsIDOMHTMLElement {
   NS_IMETHOD GetSeeking(bool *aSeeking); \
   NS_IMETHOD GetCurrentTime(double *aCurrentTime); \
   NS_IMETHOD SetCurrentTime(double aCurrentTime); \
-  NS_IMETHOD GetInitialTime(double *aInitialTime); \
   NS_IMETHOD GetDuration(double *aDuration); \
   NS_IMETHOD GetPaused(bool *aPaused); \
   NS_IMETHOD GetDefaultPlaybackRate(double *aDefaultPlaybackRate); \
@@ -265,11 +261,11 @@ class NS_NO_VTABLE nsIDOMHTMLMediaElement : public nsIDOMHTMLElement {
   NS_IMETHOD GetError(nsIDOMMediaError * *aError) { return _to GetError(aError); } \
   NS_IMETHOD GetSrc(nsAString & aSrc) { return _to GetSrc(aSrc); } \
   NS_IMETHOD SetSrc(const nsAString & aSrc) { return _to SetSrc(aSrc); } \
-  NS_IMETHOD GetMozSrcObject(JSContext* cx, JS::Value *aMozSrcObject) { return _to GetMozSrcObject(cx, aMozSrcObject); } \
-  NS_IMETHOD SetMozSrcObject(JSContext* cx, const JS::Value & aMozSrcObject) { return _to SetMozSrcObject(cx, aMozSrcObject); } \
+  NS_IMETHOD GetMozSrcObject(nsIDOMMediaStream * *aMozSrcObject) { return _to GetMozSrcObject(aMozSrcObject); } \
+  NS_IMETHOD SetMozSrcObject(nsIDOMMediaStream *aMozSrcObject) { return _to SetMozSrcObject(aMozSrcObject); } \
   NS_IMETHOD GetCurrentSrc(nsAString & aCurrentSrc) { return _to GetCurrentSrc(aCurrentSrc); } \
-  NS_IMETHOD GetCrossorigin(nsAString & aCrossorigin) { return _to GetCrossorigin(aCrossorigin); } \
-  NS_IMETHOD SetCrossorigin(const nsAString & aCrossorigin) { return _to SetCrossorigin(aCrossorigin); } \
+  NS_IMETHOD GetCrossOrigin(nsAString & aCrossOrigin) { return _to GetCrossOrigin(aCrossOrigin); } \
+  NS_IMETHOD SetCrossOrigin(const nsAString & aCrossOrigin) { return _to SetCrossOrigin(aCrossOrigin); } \
   NS_IMETHOD GetNetworkState(uint16_t *aNetworkState) { return _to GetNetworkState(aNetworkState); } \
   NS_IMETHOD GetPreload(nsAString & aPreload) { return _to GetPreload(aPreload); } \
   NS_IMETHOD SetPreload(const nsAString & aPreload) { return _to SetPreload(aPreload); } \
@@ -280,7 +276,6 @@ class NS_NO_VTABLE nsIDOMHTMLMediaElement : public nsIDOMHTMLElement {
   NS_IMETHOD GetSeeking(bool *aSeeking) { return _to GetSeeking(aSeeking); } \
   NS_IMETHOD GetCurrentTime(double *aCurrentTime) { return _to GetCurrentTime(aCurrentTime); } \
   NS_IMETHOD SetCurrentTime(double aCurrentTime) { return _to SetCurrentTime(aCurrentTime); } \
-  NS_IMETHOD GetInitialTime(double *aInitialTime) { return _to GetInitialTime(aInitialTime); } \
   NS_IMETHOD GetDuration(double *aDuration) { return _to GetDuration(aDuration); } \
   NS_IMETHOD GetPaused(bool *aPaused) { return _to GetPaused(aPaused); } \
   NS_IMETHOD GetDefaultPlaybackRate(double *aDefaultPlaybackRate) { return _to GetDefaultPlaybackRate(aDefaultPlaybackRate); } \
@@ -325,11 +320,11 @@ class NS_NO_VTABLE nsIDOMHTMLMediaElement : public nsIDOMHTMLElement {
   NS_IMETHOD GetError(nsIDOMMediaError * *aError) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetError(aError); } \
   NS_IMETHOD GetSrc(nsAString & aSrc) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetSrc(aSrc); } \
   NS_IMETHOD SetSrc(const nsAString & aSrc) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetSrc(aSrc); } \
-  NS_IMETHOD GetMozSrcObject(JSContext* cx, JS::Value *aMozSrcObject) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetMozSrcObject(cx, aMozSrcObject); } \
-  NS_IMETHOD SetMozSrcObject(JSContext* cx, const JS::Value & aMozSrcObject) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetMozSrcObject(cx, aMozSrcObject); } \
+  NS_IMETHOD GetMozSrcObject(nsIDOMMediaStream * *aMozSrcObject) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetMozSrcObject(aMozSrcObject); } \
+  NS_IMETHOD SetMozSrcObject(nsIDOMMediaStream *aMozSrcObject) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetMozSrcObject(aMozSrcObject); } \
   NS_IMETHOD GetCurrentSrc(nsAString & aCurrentSrc) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetCurrentSrc(aCurrentSrc); } \
-  NS_IMETHOD GetCrossorigin(nsAString & aCrossorigin) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetCrossorigin(aCrossorigin); } \
-  NS_IMETHOD SetCrossorigin(const nsAString & aCrossorigin) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetCrossorigin(aCrossorigin); } \
+  NS_IMETHOD GetCrossOrigin(nsAString & aCrossOrigin) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetCrossOrigin(aCrossOrigin); } \
+  NS_IMETHOD SetCrossOrigin(const nsAString & aCrossOrigin) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetCrossOrigin(aCrossOrigin); } \
   NS_IMETHOD GetNetworkState(uint16_t *aNetworkState) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetNetworkState(aNetworkState); } \
   NS_IMETHOD GetPreload(nsAString & aPreload) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetPreload(aPreload); } \
   NS_IMETHOD SetPreload(const nsAString & aPreload) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetPreload(aPreload); } \
@@ -340,7 +335,6 @@ class NS_NO_VTABLE nsIDOMHTMLMediaElement : public nsIDOMHTMLElement {
   NS_IMETHOD GetSeeking(bool *aSeeking) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetSeeking(aSeeking); } \
   NS_IMETHOD GetCurrentTime(double *aCurrentTime) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetCurrentTime(aCurrentTime); } \
   NS_IMETHOD SetCurrentTime(double aCurrentTime) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetCurrentTime(aCurrentTime); } \
-  NS_IMETHOD GetInitialTime(double *aInitialTime) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetInitialTime(aInitialTime); } \
   NS_IMETHOD GetDuration(double *aDuration) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetDuration(aDuration); } \
   NS_IMETHOD GetPaused(bool *aPaused) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetPaused(aPaused); } \
   NS_IMETHOD GetDefaultPlaybackRate(double *aDefaultPlaybackRate) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetDefaultPlaybackRate(aDefaultPlaybackRate); } \
@@ -428,12 +422,12 @@ NS_IMETHODIMP nsDOMHTMLMediaElement::SetSrc(const nsAString & aSrc)
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* [implicit_jscontext] attribute jsval mozSrcObject; */
-NS_IMETHODIMP nsDOMHTMLMediaElement::GetMozSrcObject(JSContext* cx, JS::Value *aMozSrcObject)
+/* attribute nsIDOMMediaStream mozSrcObject; */
+NS_IMETHODIMP nsDOMHTMLMediaElement::GetMozSrcObject(nsIDOMMediaStream * *aMozSrcObject)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
-NS_IMETHODIMP nsDOMHTMLMediaElement::SetMozSrcObject(JSContext* cx, const JS::Value & aMozSrcObject)
+NS_IMETHODIMP nsDOMHTMLMediaElement::SetMozSrcObject(nsIDOMMediaStream *aMozSrcObject)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
@@ -444,12 +438,12 @@ NS_IMETHODIMP nsDOMHTMLMediaElement::GetCurrentSrc(nsAString & aCurrentSrc)
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* attribute DOMString crossorigin; */
-NS_IMETHODIMP nsDOMHTMLMediaElement::GetCrossorigin(nsAString & aCrossorigin)
+/* attribute DOMString crossOrigin; */
+NS_IMETHODIMP nsDOMHTMLMediaElement::GetCrossOrigin(nsAString & aCrossOrigin)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
-NS_IMETHODIMP nsDOMHTMLMediaElement::SetCrossorigin(const nsAString & aCrossorigin)
+NS_IMETHODIMP nsDOMHTMLMediaElement::SetCrossOrigin(const nsAString & aCrossOrigin)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
@@ -506,12 +500,6 @@ NS_IMETHODIMP nsDOMHTMLMediaElement::GetCurrentTime(double *aCurrentTime)
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 NS_IMETHODIMP nsDOMHTMLMediaElement::SetCurrentTime(double aCurrentTime)
-{
-    return NS_ERROR_NOT_IMPLEMENTED;
-}
-
-/* readonly attribute double initialTime; */
-NS_IMETHODIMP nsDOMHTMLMediaElement::GetInitialTime(double *aInitialTime)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

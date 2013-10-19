@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/netwerk/base/public/nsIBackgroundFileSaver.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/netwerk/base/public/nsIBackgroundFileSaver.idl
  */
 
 #ifndef __gen_nsIBackgroundFileSaver_h__
@@ -20,11 +20,11 @@ class nsIFile; /* forward declaration */
 
 
 /* starting interface:    nsIBackgroundFileSaver */
-#define NS_IBACKGROUNDFILESAVER_IID_STR "f2fb4daf-0aba-4b30-9ec0-b7a83ce3b7ab"
+#define NS_IBACKGROUNDFILESAVER_IID_STR "17a2ff32-918f-11e2-8fc9-f9626188709b"
 
 #define NS_IBACKGROUNDFILESAVER_IID \
-  {0xf2fb4daf, 0x0aba, 0x4b30, \
-    { 0x9e, 0xc0, 0xb7, 0xa8, 0x3c, 0xe3, 0xb7, 0xab }}
+  {0x17a2ff32, 0x918f, 0x11e2, \
+    { 0x8f, 0xc9, 0xf9, 0x62, 0x61, 0x88, 0x70, 0x9b }}
 
 class NS_NO_VTABLE nsIBackgroundFileSaver : public nsISupports {
  public: 
@@ -34,6 +34,12 @@ class NS_NO_VTABLE nsIBackgroundFileSaver : public nsISupports {
   /* attribute nsIBackgroundFileSaverObserver observer; */
   NS_IMETHOD GetObserver(nsIBackgroundFileSaverObserver * *aObserver) = 0;
   NS_IMETHOD SetObserver(nsIBackgroundFileSaverObserver *aObserver) = 0;
+
+  /* readonly attribute ACString sha256Hash; */
+  NS_IMETHOD GetSha256Hash(nsACString & aSha256Hash) = 0;
+
+  /* void enableSha256 (); */
+  NS_IMETHOD EnableSha256(void) = 0;
 
   /* void setTarget (in nsIFile aTarget, in bool aKeepPartial); */
   NS_IMETHOD SetTarget(nsIFile *aTarget, bool aKeepPartial) = 0;
@@ -49,6 +55,8 @@ class NS_NO_VTABLE nsIBackgroundFileSaver : public nsISupports {
 #define NS_DECL_NSIBACKGROUNDFILESAVER \
   NS_IMETHOD GetObserver(nsIBackgroundFileSaverObserver * *aObserver); \
   NS_IMETHOD SetObserver(nsIBackgroundFileSaverObserver *aObserver); \
+  NS_IMETHOD GetSha256Hash(nsACString & aSha256Hash); \
+  NS_IMETHOD EnableSha256(void); \
   NS_IMETHOD SetTarget(nsIFile *aTarget, bool aKeepPartial); \
   NS_IMETHOD Finish(nsresult aStatus); 
 
@@ -56,6 +64,8 @@ class NS_NO_VTABLE nsIBackgroundFileSaver : public nsISupports {
 #define NS_FORWARD_NSIBACKGROUNDFILESAVER(_to) \
   NS_IMETHOD GetObserver(nsIBackgroundFileSaverObserver * *aObserver) { return _to GetObserver(aObserver); } \
   NS_IMETHOD SetObserver(nsIBackgroundFileSaverObserver *aObserver) { return _to SetObserver(aObserver); } \
+  NS_IMETHOD GetSha256Hash(nsACString & aSha256Hash) { return _to GetSha256Hash(aSha256Hash); } \
+  NS_IMETHOD EnableSha256(void) { return _to EnableSha256(); } \
   NS_IMETHOD SetTarget(nsIFile *aTarget, bool aKeepPartial) { return _to SetTarget(aTarget, aKeepPartial); } \
   NS_IMETHOD Finish(nsresult aStatus) { return _to Finish(aStatus); } 
 
@@ -63,6 +73,8 @@ class NS_NO_VTABLE nsIBackgroundFileSaver : public nsISupports {
 #define NS_FORWARD_SAFE_NSIBACKGROUNDFILESAVER(_to) \
   NS_IMETHOD GetObserver(nsIBackgroundFileSaverObserver * *aObserver) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetObserver(aObserver); } \
   NS_IMETHOD SetObserver(nsIBackgroundFileSaverObserver *aObserver) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetObserver(aObserver); } \
+  NS_IMETHOD GetSha256Hash(nsACString & aSha256Hash) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetSha256Hash(aSha256Hash); } \
+  NS_IMETHOD EnableSha256(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->EnableSha256(); } \
   NS_IMETHOD SetTarget(nsIFile *aTarget, bool aKeepPartial) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetTarget(aTarget, aKeepPartial); } \
   NS_IMETHOD Finish(nsresult aStatus) { return !_to ? NS_ERROR_NULL_POINTER : _to->Finish(aStatus); } 
 
@@ -104,6 +116,18 @@ NS_IMETHODIMP nsBackgroundFileSaver::GetObserver(nsIBackgroundFileSaverObserver 
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 NS_IMETHODIMP nsBackgroundFileSaver::SetObserver(nsIBackgroundFileSaverObserver *aObserver)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* readonly attribute ACString sha256Hash; */
+NS_IMETHODIMP nsBackgroundFileSaver::GetSha256Hash(nsACString & aSha256Hash)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* void enableSha256 (); */
+NS_IMETHODIMP nsBackgroundFileSaver::EnableSha256()
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

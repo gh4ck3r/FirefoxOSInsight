@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/docshell/shistory/public/nsISHContainer.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/docshell/shistory/public/nsISHContainer.idl
  */
 
 #ifndef __gen_nsISHContainer_h__
@@ -8,10 +8,6 @@
 
 #ifndef __gen_nsISupports_h__
 #include "nsISupports.h"
-#endif
-
-#ifndef __gen_nsIEnumerator_h__
-#include "nsIEnumerator.h"
 #endif
 
 #ifndef __gen_nsISHEntry_h__

@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/network/interfaces/nsIDOMTCPSocket.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/network/interfaces/nsIDOMTCPSocket.idl
  */
 
 #ifndef __gen_nsIDOMTCPSocket_h__
@@ -22,11 +22,11 @@
 #endif
 
 /* starting interface:    nsIDOMTCPSocket */
-#define NS_IDOMTCPSOCKET_IID_STR "b82e17da-6476-11e1-8813-57a2ffe9e42c"
+#define NS_IDOMTCPSOCKET_IID_STR "1f99bc6f-73d3-44db-9dbf-5fc441704a7c"
 
 #define NS_IDOMTCPSOCKET_IID \
-  {0xb82e17da, 0x6476, 0x11e1, \
-    { 0x88, 0x13, 0x57, 0xa2, 0xff, 0xe9, 0xe4, 0x2c }}
+  {0x1f99bc6f, 0x73d3, 0x44db, \
+    { 0x9d, 0xbf, 0x5f, 0xc4, 0x41, 0x70, 0x4a, 0x7c }}
 
 class NS_NO_VTABLE nsIDOMTCPSocket : public nsISupports {
  public: 
@@ -57,8 +57,8 @@ class NS_NO_VTABLE nsIDOMTCPSocket : public nsISupports {
   /* void close (); */
   NS_IMETHOD Close(void) = 0;
 
-  /* boolean send (in jsval data); */
-  NS_IMETHOD Send(const JS::Value & data, bool *_retval) = 0;
+  /* boolean send (in jsval data, [optional] in unsigned long byteOffset, [optional] in unsigned long byteLength); */
+  NS_IMETHOD Send(const JS::Value & data, uint32_t byteOffset, uint32_t byteLength, bool *_retval) = 0;
 
   /* readonly attribute DOMString readyState; */
   NS_IMETHOD GetReadyState(nsAString & aReadyState) = 0;
@@ -100,7 +100,7 @@ class NS_NO_VTABLE nsIDOMTCPSocket : public nsISupports {
   NS_IMETHOD Suspend(void); \
   NS_IMETHOD Resume(void); \
   NS_IMETHOD Close(void); \
-  NS_IMETHOD Send(const JS::Value & data, bool *_retval); \
+  NS_IMETHOD Send(const JS::Value & data, uint32_t byteOffset, uint32_t byteLength, bool *_retval); \
   NS_IMETHOD GetReadyState(nsAString & aReadyState); \
   NS_IMETHOD GetBinaryType(nsAString & aBinaryType); \
   NS_IMETHOD GetOnopen(JS::Value *aOnopen); \
@@ -124,7 +124,7 @@ class NS_NO_VTABLE nsIDOMTCPSocket : public nsISupports {
   NS_IMETHOD Suspend(void) { return _to Suspend(); } \
   NS_IMETHOD Resume(void) { return _to Resume(); } \
   NS_IMETHOD Close(void) { return _to Close(); } \
-  NS_IMETHOD Send(const JS::Value & data, bool *_retval) { return _to Send(data, _retval); } \
+  NS_IMETHOD Send(const JS::Value & data, uint32_t byteOffset, uint32_t byteLength, bool *_retval) { return _to Send(data, byteOffset, byteLength, _retval); } \
   NS_IMETHOD GetReadyState(nsAString & aReadyState) { return _to GetReadyState(aReadyState); } \
   NS_IMETHOD GetBinaryType(nsAString & aBinaryType) { return _to GetBinaryType(aBinaryType); } \
   NS_IMETHOD GetOnopen(JS::Value *aOnopen) { return _to GetOnopen(aOnopen); } \
@@ -148,7 +148,7 @@ class NS_NO_VTABLE nsIDOMTCPSocket : public nsISupports {
   NS_IMETHOD Suspend(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->Suspend(); } \
   NS_IMETHOD Resume(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->Resume(); } \
   NS_IMETHOD Close(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->Close(); } \
-  NS_IMETHOD Send(const JS::Value & data, bool *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->Send(data, _retval); } \
+  NS_IMETHOD Send(const JS::Value & data, uint32_t byteOffset, uint32_t byteLength, bool *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->Send(data, byteOffset, byteLength, _retval); } \
   NS_IMETHOD GetReadyState(nsAString & aReadyState) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetReadyState(aReadyState); } \
   NS_IMETHOD GetBinaryType(nsAString & aBinaryType) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetBinaryType(aBinaryType); } \
   NS_IMETHOD GetOnopen(JS::Value *aOnopen) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetOnopen(aOnopen); } \
@@ -242,8 +242,8 @@ NS_IMETHODIMP nsDOMTCPSocket::Close()
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* boolean send (in jsval data); */
-NS_IMETHODIMP nsDOMTCPSocket::Send(const JS::Value & data, bool *_retval)
+/* boolean send (in jsval data, [optional] in unsigned long byteOffset, [optional] in unsigned long byteLength); */
+NS_IMETHODIMP nsDOMTCPSocket::Send(const JS::Value & data, uint32_t byteOffset, uint32_t byteLength, bool *_retval)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
@@ -315,19 +315,19 @@ NS_IMETHODIMP nsDOMTCPSocket::SetOnclose(const JS::Value & aOnclose)
 
 
 /* starting interface:    nsITCPSocketInternal */
-#define NS_ITCPSOCKETINTERNAL_IID_STR "fff9ed4a-5e94-4fc0-84e4-7f4d35d0a26c"
+#define NS_ITCPSOCKETINTERNAL_IID_STR "322193a3-da17-4ca5-ad26-3539c519ea4b"
 
 #define NS_ITCPSOCKETINTERNAL_IID \
-  {0xfff9ed4a, 0x5e94, 0x4fc0, \
-    { 0x84, 0xe4, 0x7f, 0x4d, 0x35, 0xd0, 0xa2, 0x6c }}
+  {0x322193a3, 0xda17, 0x4ca5, \
+    { 0xad, 0x26, 0x35, 0x39, 0xc5, 0x19, 0xea, 0x4b }}
 
 class NS_NO_VTABLE nsITCPSocketInternal : public nsISupports {
  public: 
 
   NS_DECLARE_STATIC_IID_ACCESSOR(NS_ITCPSOCKETINTERNAL_IID)
 
-  /* void callListenerError (in DOMString type, in DOMString message, in DOMString filename, in uint32_t lineNumber, in uint32_t columnNumber); */
-  NS_IMETHOD CallListenerError(const nsAString & type, const nsAString & message, const nsAString & filename, uint32_t lineNumber, uint32_t columnNumber) = 0;
+  /* void callListenerError (in DOMString type, in DOMString name); */
+  NS_IMETHOD CallListenerError(const nsAString & type, const nsAString & name) = 0;
 
   /* void callListenerData (in DOMString type, in DOMString data); */
   NS_IMETHOD CallListenerData(const nsAString & type, const nsAString & data) = 0;
@@ -347,7 +347,7 @@ class NS_NO_VTABLE nsITCPSocketInternal : public nsISupports {
 
 /* Use this macro when declaring classes that implement this interface. */
 #define NS_DECL_NSITCPSOCKETINTERNAL \
-  NS_IMETHOD CallListenerError(const nsAString & type, const nsAString & message, const nsAString & filename, uint32_t lineNumber, uint32_t columnNumber); \
+  NS_IMETHOD CallListenerError(const nsAString & type, const nsAString & name); \
   NS_IMETHOD CallListenerData(const nsAString & type, const nsAString & data); \
   NS_IMETHOD CallListenerArrayBuffer(const nsAString & type, const JS::Value & data); \
   NS_IMETHOD CallListenerVoid(const nsAString & type); \
@@ -355,7 +355,7 @@ class NS_NO_VTABLE nsITCPSocketInternal : public nsISupports {
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object. */
 #define NS_FORWARD_NSITCPSOCKETINTERNAL(_to) \
-  NS_IMETHOD CallListenerError(const nsAString & type, const nsAString & message, const nsAString & filename, uint32_t lineNumber, uint32_t columnNumber) { return _to CallListenerError(type, message, filename, lineNumber, columnNumber); } \
+  NS_IMETHOD CallListenerError(const nsAString & type, const nsAString & name) { return _to CallListenerError(type, name); } \
   NS_IMETHOD CallListenerData(const nsAString & type, const nsAString & data) { return _to CallListenerData(type, data); } \
   NS_IMETHOD CallListenerArrayBuffer(const nsAString & type, const JS::Value & data) { return _to CallListenerArrayBuffer(type, data); } \
   NS_IMETHOD CallListenerVoid(const nsAString & type) { return _to CallListenerVoid(type); } \
@@ -363,7 +363,7 @@ class NS_NO_VTABLE nsITCPSocketInternal : public nsISupports {
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object in a safe way. */
 #define NS_FORWARD_SAFE_NSITCPSOCKETINTERNAL(_to) \
-  NS_IMETHOD CallListenerError(const nsAString & type, const nsAString & message, const nsAString & filename, uint32_t lineNumber, uint32_t columnNumber) { return !_to ? NS_ERROR_NULL_POINTER : _to->CallListenerError(type, message, filename, lineNumber, columnNumber); } \
+  NS_IMETHOD CallListenerError(const nsAString & type, const nsAString & name) { return !_to ? NS_ERROR_NULL_POINTER : _to->CallListenerError(type, name); } \
   NS_IMETHOD CallListenerData(const nsAString & type, const nsAString & data) { return !_to ? NS_ERROR_NULL_POINTER : _to->CallListenerData(type, data); } \
   NS_IMETHOD CallListenerArrayBuffer(const nsAString & type, const JS::Value & data) { return !_to ? NS_ERROR_NULL_POINTER : _to->CallListenerArrayBuffer(type, data); } \
   NS_IMETHOD CallListenerVoid(const nsAString & type) { return !_to ? NS_ERROR_NULL_POINTER : _to->CallListenerVoid(type); } \
@@ -401,8 +401,8 @@ nsTCPSocketInternal::~nsTCPSocketInternal()
   /* destructor code */
 }
 
-/* void callListenerError (in DOMString type, in DOMString message, in DOMString filename, in uint32_t lineNumber, in uint32_t columnNumber); */
-NS_IMETHODIMP nsTCPSocketInternal::CallListenerError(const nsAString & type, const nsAString & message, const nsAString & filename, uint32_t lineNumber, uint32_t columnNumber)
+/* void callListenerError (in DOMString type, in DOMString name); */
+NS_IMETHODIMP nsTCPSocketInternal::CallListenerError(const nsAString & type, const nsAString & name)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/caps/idl/nsIScriptSecurityManager.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/caps/idl/nsIScriptSecurityManager.idl
  */
 
 #ifndef __gen_nsIScriptSecurityManager_h__
@@ -357,6 +357,5 @@ NS_IMETHODIMP nsScriptSecurityManager::GetExtendedOrigin(nsIURI *uri, uint32_t a
 #endif
 
 #define NS_SCRIPTSECURITYMANAGER_CONTRACTID "@mozilla.org/scriptsecuritymanager;1"
-#define NS_SCRIPTSECURITYMANAGER_CLASSNAME "scriptsecuritymanager"
 
 #endif /* __gen_nsIScriptSecurityManager_h__ */

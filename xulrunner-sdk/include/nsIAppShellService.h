@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/xpfe/appshell/public/nsIAppShellService.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/xpfe/appshell/public/nsIAppShellService.idl
  */
 
 #ifndef __gen_nsIAppShellService_h__
@@ -15,6 +15,8 @@
 #define NS_NO_VTABLE
 #endif
 class nsIXULWindow; /* forward declaration */
+
+class nsIWebNavigation; /* forward declaration */
 
 class nsIURI; /* forward declaration */
 
@@ -42,6 +44,9 @@ class NS_NO_VTABLE nsIAppShellService : public nsISupports {
 
   /* nsIXULWindow createTopLevelWindow (in nsIXULWindow aParent, in nsIURI aUrl, in uint32_t aChromeMask, in long aInitialWidth, in long aInitialHeight); */
   NS_IMETHOD CreateTopLevelWindow(nsIXULWindow *aParent, nsIURI *aUrl, uint32_t aChromeMask, int32_t aInitialWidth, int32_t aInitialHeight, nsIXULWindow * *_retval) = 0;
+
+  /* nsIWebNavigation createWindowlessBrowser (); */
+  NS_IMETHOD CreateWindowlessBrowser(nsIWebNavigation * *_retval) = 0;
 
   /* [noscript] void createHiddenWindow (); */
   NS_IMETHOD CreateHiddenWindow(void) = 0;
@@ -83,6 +88,7 @@ class NS_NO_VTABLE nsIAppShellService : public nsISupports {
 /* Use this macro when declaring classes that implement this interface. */
 #define NS_DECL_NSIAPPSHELLSERVICE \
   NS_IMETHOD CreateTopLevelWindow(nsIXULWindow *aParent, nsIURI *aUrl, uint32_t aChromeMask, int32_t aInitialWidth, int32_t aInitialHeight, nsIXULWindow * *_retval); \
+  NS_IMETHOD CreateWindowlessBrowser(nsIWebNavigation * *_retval); \
   NS_IMETHOD CreateHiddenWindow(void); \
   NS_IMETHOD DestroyHiddenWindow(void); \
   NS_IMETHOD GetHiddenWindow(nsIXULWindow * *aHiddenWindow); \
@@ -98,6 +104,7 @@ class NS_NO_VTABLE nsIAppShellService : public nsISupports {
 /* Use this macro to declare functions that forward the behavior of this interface to another object. */
 #define NS_FORWARD_NSIAPPSHELLSERVICE(_to) \
   NS_IMETHOD CreateTopLevelWindow(nsIXULWindow *aParent, nsIURI *aUrl, uint32_t aChromeMask, int32_t aInitialWidth, int32_t aInitialHeight, nsIXULWindow * *_retval) { return _to CreateTopLevelWindow(aParent, aUrl, aChromeMask, aInitialWidth, aInitialHeight, _retval); } \
+  NS_IMETHOD CreateWindowlessBrowser(nsIWebNavigation * *_retval) { return _to CreateWindowlessBrowser(_retval); } \
   NS_IMETHOD CreateHiddenWindow(void) { return _to CreateHiddenWindow(); } \
   NS_IMETHOD DestroyHiddenWindow(void) { return _to DestroyHiddenWindow(); } \
   NS_IMETHOD GetHiddenWindow(nsIXULWindow * *aHiddenWindow) { return _to GetHiddenWindow(aHiddenWindow); } \
@@ -113,6 +120,7 @@ class NS_NO_VTABLE nsIAppShellService : public nsISupports {
 /* Use this macro to declare functions that forward the behavior of this interface to another object in a safe way. */
 #define NS_FORWARD_SAFE_NSIAPPSHELLSERVICE(_to) \
   NS_IMETHOD CreateTopLevelWindow(nsIXULWindow *aParent, nsIURI *aUrl, uint32_t aChromeMask, int32_t aInitialWidth, int32_t aInitialHeight, nsIXULWindow * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->CreateTopLevelWindow(aParent, aUrl, aChromeMask, aInitialWidth, aInitialHeight, _retval); } \
+  NS_IMETHOD CreateWindowlessBrowser(nsIWebNavigation * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->CreateWindowlessBrowser(_retval); } \
   NS_IMETHOD CreateHiddenWindow(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->CreateHiddenWindow(); } \
   NS_IMETHOD DestroyHiddenWindow(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->DestroyHiddenWindow(); } \
   NS_IMETHOD GetHiddenWindow(nsIXULWindow * *aHiddenWindow) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetHiddenWindow(aHiddenWindow); } \
@@ -159,6 +167,12 @@ nsAppShellService::~nsAppShellService()
 
 /* nsIXULWindow createTopLevelWindow (in nsIXULWindow aParent, in nsIURI aUrl, in uint32_t aChromeMask, in long aInitialWidth, in long aInitialHeight); */
 NS_IMETHODIMP nsAppShellService::CreateTopLevelWindow(nsIXULWindow *aParent, nsIURI *aUrl, uint32_t aChromeMask, int32_t aInitialWidth, int32_t aInitialHeight, nsIXULWindow * *_retval)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* nsIWebNavigation createWindowlessBrowser (); */
+NS_IMETHODIMP nsAppShellService::CreateWindowlessBrowser(nsIWebNavigation * *_retval)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

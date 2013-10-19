@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/xul/nsIDOMXULMultSelectCntrlEl.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/xul/nsIDOMXULMultSelectCntrlEl.idl
  */
 
 #ifndef __gen_nsIDOMXULMultSelectCntrlEl_h__
@@ -16,11 +16,11 @@
 #endif
 
 /* starting interface:    nsIDOMXULMultiSelectControlElement */
-#define NS_IDOMXULMULTISELECTCONTROLELEMENT_IID_STR "e3cd8269-9502-4e70-910c-0d6d71b22253"
+#define NS_IDOMXULMULTISELECTCONTROLELEMENT_IID_STR "40654a10-8204-4f06-9f21-7baa31c7b1dd"
 
 #define NS_IDOMXULMULTISELECTCONTROLELEMENT_IID \
-  {0xe3cd8269, 0x9502, 0x4e70, \
-    { 0x91, 0x0c, 0x0d, 0x6d, 0x71, 0xb2, 0x22, 0x53 }}
+  {0x40654a10, 0x8204, 0x4f06, \
+    { 0x9f, 0x21, 0x7b, 0xaa, 0x31, 0xc7, 0xb1, 0xdd }}
 
 class NS_NO_VTABLE nsIDOMXULMultiSelectControlElement : public nsIDOMXULSelectControlElement {
  public: 

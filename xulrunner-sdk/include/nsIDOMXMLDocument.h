@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/core/nsIDOMXMLDocument.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/core/nsIDOMXMLDocument.idl
  */
 
 #ifndef __gen_nsIDOMXMLDocument_h__
@@ -16,11 +16,11 @@
 #endif
 
 /* starting interface:    nsIDOMXMLDocument */
-#define NS_IDOMXMLDOCUMENT_IID_STR "18c55efc-560b-4bdd-9776-a8d239ef7052"
+#define NS_IDOMXMLDOCUMENT_IID_STR "79547ba5-291e-4775-b71e-2440a4621b54"
 
 #define NS_IDOMXMLDOCUMENT_IID \
-  {0x18c55efc, 0x560b, 0x4bdd, \
-    { 0x97, 0x76, 0xa8, 0xd2, 0x39, 0xef, 0x70, 0x52 }}
+  {0x79547ba5, 0x291e, 0x4775, \
+    { 0xb7, 0x1e, 0x24, 0x40, 0xa4, 0x62, 0x1b, 0x54 }}
 
 class NS_NO_VTABLE nsIDOMXMLDocument : public nsIDOMDocument {
  public: 

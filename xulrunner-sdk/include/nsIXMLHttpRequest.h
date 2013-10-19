@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/content/base/public/nsIXMLHttpRequest.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/content/base/public/nsIXMLHttpRequest.idl
  */
 
 #ifndef __gen_nsIXMLHttpRequest_h__
@@ -30,7 +30,7 @@ class nsIURI; /* forward declaration */
 
 class nsIVariant; /* forward declaration */
 
-class nsPIDOMWindow; /* forward declaration */
+class nsIGlobalObject; /* forward declaration */
 
 class nsIInputStream; /* forward declaration */
 
@@ -40,11 +40,11 @@ class nsIDOMBlob; /* forward declaration */
 #include "jsapi.h"
 
 /* starting interface:    nsIXMLHttpRequestEventTarget */
-#define NS_IXMLHTTPREQUESTEVENTTARGET_IID_STR "a137d5e6-81e2-4fa3-a791-26459df723ff"
+#define NS_IXMLHTTPREQUESTEVENTTARGET_IID_STR "5bc978f2-41e5-4349-a12d-b018092271f7"
 
 #define NS_IXMLHTTPREQUESTEVENTTARGET_IID \
-  {0xa137d5e6, 0x81e2, 0x4fa3, \
-    { 0xa7, 0x91, 0x26, 0x45, 0x9d, 0xf7, 0x23, 0xff }}
+  {0x5bc978f2, 0x41e5, 0x4349, \
+    { 0xa1, 0x2d, 0xb0, 0x18, 0x09, 0x22, 0x71, 0xf7 }}
 
 class NS_NO_VTABLE nsIXMLHttpRequestEventTarget : public nsIDOMEventTarget {
  public: 
@@ -241,11 +241,11 @@ NS_IMETHODIMP nsXMLHttpRequestEventTarget::SetOnloadend(JSContext* cx, const JS:
 
 
 /* starting interface:    nsIXMLHttpRequestUpload */
-#define NS_IXMLHTTPREQUESTUPLOAD_IID_STR "8dbd2448-740a-412c-b314-434f24a1c510"
+#define NS_IXMLHTTPREQUESTUPLOAD_IID_STR "df3796fa-d98a-4185-9dda-d2f2b56a5d38"
 
 #define NS_IXMLHTTPREQUESTUPLOAD_IID \
-  {0x8dbd2448, 0x740a, 0x412c, \
-    { 0xb3, 0x14, 0x43, 0x4f, 0x24, 0xa1, 0xc5, 0x10 }}
+  {0xdf3796fa, 0xd98a, 0x4185, \
+    { 0x9d, 0xda, 0xd2, 0xf2, 0xb5, 0x6a, 0x5d, 0x38 }}
 
 class NS_NO_VTABLE nsIXMLHttpRequestUpload : public nsIXMLHttpRequestEventTarget {
  public: 
@@ -305,11 +305,11 @@ nsXMLHttpRequestUpload::~nsXMLHttpRequestUpload()
 
 
 /* starting interface:    nsIXMLHttpRequest */
-#define NS_IXMLHTTPREQUEST_IID_STR "8e9768b4-339c-413c-a210-0c74934eb9e1"
+#define NS_IXMLHTTPREQUEST_IID_STR "977f1406-416a-40ac-ab89-ccd7ca0622ea"
 
 #define NS_IXMLHTTPREQUEST_IID \
-  {0x8e9768b4, 0x339c, 0x413c, \
-    { 0xa2, 0x10, 0x0c, 0x74, 0x93, 0x4e, 0xb9, 0xe1 }}
+  {0x977f1406, 0x416a, 0x40ac, \
+    { 0xab, 0x89, 0xcc, 0xd7, 0xca, 0x06, 0x22, 0xea }}
 
 class nsIXMLHttpRequest : public nsISupports {
  public: 
@@ -383,10 +383,6 @@ class nsIXMLHttpRequest : public nsISupports {
   /* [binaryname(SlowOverrideMimeType)] void overrideMimeType (in DOMString mimetype); */
   NS_IMETHOD SlowOverrideMimeType(const nsAString & mimetype) = 0;
 
-  /* attribute boolean multipart; */
-  NS_IMETHOD GetMultipart(bool *aMultipart) = 0;
-  NS_IMETHOD SetMultipart(bool aMultipart) = 0;
-
   /* attribute boolean mozBackgroundRequest; */
   NS_IMETHOD GetMozBackgroundRequest(bool *aMozBackgroundRequest) = 0;
   NS_IMETHOD SetMozBackgroundRequest(bool aMozBackgroundRequest) = 0;
@@ -395,8 +391,8 @@ class nsIXMLHttpRequest : public nsISupports {
   NS_IMETHOD GetWithCredentials(bool *aWithCredentials) = 0;
   NS_IMETHOD SetWithCredentials(bool aWithCredentials) = 0;
 
-  /* [noscript] void init (in nsIPrincipal principal, in nsIScriptContext scriptContext, in nsPIDOMWindow ownerWindow, in nsIURI baseURI); */
-  NS_IMETHOD Init(nsIPrincipal *principal, nsIScriptContext *scriptContext, nsPIDOMWindow *ownerWindow, nsIURI *baseURI) = 0;
+  /* [noscript] void init (in nsIPrincipal principal, in nsIScriptContext scriptContext, in nsIGlobalObject globalObject, in nsIURI baseURI); */
+  NS_IMETHOD Init(nsIPrincipal *principal, nsIScriptContext *scriptContext, nsIGlobalObject *globalObject, nsIURI *baseURI) = 0;
 
   /* readonly attribute nsIXMLHttpRequestUpload upload; */
   NS_IMETHOD GetUpload(nsIXMLHttpRequestUpload * *aUpload) = 0;
@@ -436,13 +432,11 @@ class nsIXMLHttpRequest : public nsISupports {
   NS_IMETHOD SetTimeout(uint32_t aTimeout); \
   NS_IMETHOD GetReadyState(uint16_t *aReadyState); \
   NS_IMETHOD SlowOverrideMimeType(const nsAString & mimetype); \
-  NS_IMETHOD GetMultipart(bool *aMultipart); \
-  NS_IMETHOD SetMultipart(bool aMultipart); \
   NS_IMETHOD GetMozBackgroundRequest(bool *aMozBackgroundRequest); \
   NS_IMETHOD SetMozBackgroundRequest(bool aMozBackgroundRequest); \
   NS_IMETHOD GetWithCredentials(bool *aWithCredentials); \
   NS_IMETHOD SetWithCredentials(bool aWithCredentials); \
-  NS_IMETHOD Init(nsIPrincipal *principal, nsIScriptContext *scriptContext, nsPIDOMWindow *ownerWindow, nsIURI *baseURI); \
+  NS_IMETHOD Init(nsIPrincipal *principal, nsIScriptContext *scriptContext, nsIGlobalObject *globalObject, nsIURI *baseURI); \
   NS_IMETHOD GetUpload(nsIXMLHttpRequestUpload * *aUpload); \
   NS_IMETHOD GetOnreadystatechange(JSContext* cx, JS::Value *aOnreadystatechange); \
   NS_IMETHOD SetOnreadystatechange(JSContext* cx, const JS::Value & aOnreadystatechange); \
@@ -470,13 +464,11 @@ class nsIXMLHttpRequest : public nsISupports {
   NS_IMETHOD SetTimeout(uint32_t aTimeout) { return _to SetTimeout(aTimeout); } \
   NS_IMETHOD GetReadyState(uint16_t *aReadyState) { return _to GetReadyState(aReadyState); } \
   NS_IMETHOD SlowOverrideMimeType(const nsAString & mimetype) { return _to SlowOverrideMimeType(mimetype); } \
-  NS_IMETHOD GetMultipart(bool *aMultipart) { return _to GetMultipart(aMultipart); } \
-  NS_IMETHOD SetMultipart(bool aMultipart) { return _to SetMultipart(aMultipart); } \
   NS_IMETHOD GetMozBackgroundRequest(bool *aMozBackgroundRequest) { return _to GetMozBackgroundRequest(aMozBackgroundRequest); } \
   NS_IMETHOD SetMozBackgroundRequest(bool aMozBackgroundRequest) { return _to SetMozBackgroundRequest(aMozBackgroundRequest); } \
   NS_IMETHOD GetWithCredentials(bool *aWithCredentials) { return _to GetWithCredentials(aWithCredentials); } \
   NS_IMETHOD SetWithCredentials(bool aWithCredentials) { return _to SetWithCredentials(aWithCredentials); } \
-  NS_IMETHOD Init(nsIPrincipal *principal, nsIScriptContext *scriptContext, nsPIDOMWindow *ownerWindow, nsIURI *baseURI) { return _to Init(principal, scriptContext, ownerWindow, baseURI); } \
+  NS_IMETHOD Init(nsIPrincipal *principal, nsIScriptContext *scriptContext, nsIGlobalObject *globalObject, nsIURI *baseURI) { return _to Init(principal, scriptContext, globalObject, baseURI); } \
   NS_IMETHOD GetUpload(nsIXMLHttpRequestUpload * *aUpload) { return _to GetUpload(aUpload); } \
   NS_IMETHOD GetOnreadystatechange(JSContext* cx, JS::Value *aOnreadystatechange) { return _to GetOnreadystatechange(cx, aOnreadystatechange); } \
   NS_IMETHOD SetOnreadystatechange(JSContext* cx, const JS::Value & aOnreadystatechange) { return _to SetOnreadystatechange(cx, aOnreadystatechange); } \
@@ -504,13 +496,11 @@ class nsIXMLHttpRequest : public nsISupports {
   NS_IMETHOD SetTimeout(uint32_t aTimeout) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetTimeout(aTimeout); } \
   NS_IMETHOD GetReadyState(uint16_t *aReadyState) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetReadyState(aReadyState); } \
   NS_IMETHOD SlowOverrideMimeType(const nsAString & mimetype) { return !_to ? NS_ERROR_NULL_POINTER : _to->SlowOverrideMimeType(mimetype); } \
-  NS_IMETHOD GetMultipart(bool *aMultipart) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetMultipart(aMultipart); } \
-  NS_IMETHOD SetMultipart(bool aMultipart) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetMultipart(aMultipart); } \
   NS_IMETHOD GetMozBackgroundRequest(bool *aMozBackgroundRequest) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetMozBackgroundRequest(aMozBackgroundRequest); } \
   NS_IMETHOD SetMozBackgroundRequest(bool aMozBackgroundRequest) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetMozBackgroundRequest(aMozBackgroundRequest); } \
   NS_IMETHOD GetWithCredentials(bool *aWithCredentials) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetWithCredentials(aWithCredentials); } \
   NS_IMETHOD SetWithCredentials(bool aWithCredentials) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetWithCredentials(aWithCredentials); } \
-  NS_IMETHOD Init(nsIPrincipal *principal, nsIScriptContext *scriptContext, nsPIDOMWindow *ownerWindow, nsIURI *baseURI) { return !_to ? NS_ERROR_NULL_POINTER : _to->Init(principal, scriptContext, ownerWindow, baseURI); } \
+  NS_IMETHOD Init(nsIPrincipal *principal, nsIScriptContext *scriptContext, nsIGlobalObject *globalObject, nsIURI *baseURI) { return !_to ? NS_ERROR_NULL_POINTER : _to->Init(principal, scriptContext, globalObject, baseURI); } \
   NS_IMETHOD GetUpload(nsIXMLHttpRequestUpload * *aUpload) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetUpload(aUpload); } \
   NS_IMETHOD GetOnreadystatechange(JSContext* cx, JS::Value *aOnreadystatechange) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetOnreadystatechange(cx, aOnreadystatechange); } \
   NS_IMETHOD SetOnreadystatechange(JSContext* cx, const JS::Value & aOnreadystatechange) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetOnreadystatechange(cx, aOnreadystatechange); } \
@@ -659,16 +649,6 @@ NS_IMETHODIMP nsXMLHttpRequest::SlowOverrideMimeType(const nsAString & mimetype)
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* attribute boolean multipart; */
-NS_IMETHODIMP nsXMLHttpRequest::GetMultipart(bool *aMultipart)
-{
-    return NS_ERROR_NOT_IMPLEMENTED;
-}
-NS_IMETHODIMP nsXMLHttpRequest::SetMultipart(bool aMultipart)
-{
-    return NS_ERROR_NOT_IMPLEMENTED;
-}
-
 /* attribute boolean mozBackgroundRequest; */
 NS_IMETHODIMP nsXMLHttpRequest::GetMozBackgroundRequest(bool *aMozBackgroundRequest)
 {
@@ -689,8 +669,8 @@ NS_IMETHODIMP nsXMLHttpRequest::SetWithCredentials(bool aWithCredentials)
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* [noscript] void init (in nsIPrincipal principal, in nsIScriptContext scriptContext, in nsPIDOMWindow ownerWindow, in nsIURI baseURI); */
-NS_IMETHODIMP nsXMLHttpRequest::Init(nsIPrincipal *principal, nsIScriptContext *scriptContext, nsPIDOMWindow *ownerWindow, nsIURI *baseURI)
+/* [noscript] void init (in nsIPrincipal principal, in nsIScriptContext scriptContext, in nsIGlobalObject globalObject, in nsIURI baseURI); */
+NS_IMETHODIMP nsXMLHttpRequest::Init(nsIPrincipal *principal, nsIScriptContext *scriptContext, nsIGlobalObject *globalObject, nsIURI *baseURI)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

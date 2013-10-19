@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/html/nsIDOMHTMLTableCaptionElem.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/html/nsIDOMHTMLTableCaptionElem.idl
  */
 
 #ifndef __gen_nsIDOMHTMLTableCaptionElem_h__
@@ -16,11 +16,11 @@
 #endif
 
 /* starting interface:    nsIDOMHTMLTableCaptionElement */
-#define NS_IDOMHTMLTABLECAPTIONELEMENT_IID_STR "526c4dc4-25cd-46de-a9b2-1501d624f7df"
+#define NS_IDOMHTMLTABLECAPTIONELEMENT_IID_STR "cde2ef8a-4953-425d-9bd5-977035156f01"
 
 #define NS_IDOMHTMLTABLECAPTIONELEMENT_IID \
-  {0x526c4dc4, 0x25cd, 0x46de, \
-    { 0xa9, 0xb2, 0x15, 0x01, 0xd6, 0x24, 0xf7, 0xdf }}
+  {0xcde2ef8a, 0x4953, 0x425d, \
+    { 0x9b, 0xd5, 0x97, 0x70, 0x35, 0x15, 0x6f, 0x01 }}
 
 class NS_NO_VTABLE nsIDOMHTMLTableCaptionElement : public nsIDOMHTMLElement {
  public: 

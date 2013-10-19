@@ -15,14 +15,27 @@ namespace dom {
 class Comment : public nsGenericDOMDataNode,
                 public nsIDOMComment
 {
-public:
-  Comment(already_AddRefed<nsINodeInfo> aNodeInfo)
-    : nsGenericDOMDataNode(aNodeInfo)
+private:
+  void Init()
   {
     NS_ABORT_IF_FALSE(mNodeInfo->NodeType() == nsIDOMNode::COMMENT_NODE,
                       "Bad NodeType in aNodeInfo");
     SetIsDOMBinding();
   }
+
+public:
+  Comment(already_AddRefed<nsINodeInfo> aNodeInfo)
+    : nsGenericDOMDataNode(aNodeInfo)
+  {
+    Init();
+  }
+
+  Comment(nsNodeInfoManager* aNodeInfoManager)
+    : nsGenericDOMDataNode(aNodeInfoManager->GetCommentNodeInfo())
+  {
+    Init();
+  }
+
   virtual ~Comment();
 
   // nsISupports
@@ -43,8 +56,6 @@ public:
   virtual nsGenericDOMDataNode* CloneDataNode(nsINodeInfo *aNodeInfo,
                                               bool aCloneText) const;
 
-  virtual nsXPCClassInfo* GetClassInfo();
-
   virtual nsIDOMNode* AsDOMNode() { return this; }
 #ifdef DEBUG
   virtual void List(FILE* out, int32_t aIndent) const;
@@ -56,8 +67,8 @@ public:
 #endif
 
 protected:
-  virtual JSObject* WrapNode(JSContext *aCx, JSObject *aScope,
-                             bool *aTriedToWrap) MOZ_OVERRIDE;
+  virtual JSObject* WrapNode(JSContext *aCx,
+                             JS::Handle<JSObject*> aScope) MOZ_OVERRIDE;
 };
 
 } // namespace dom

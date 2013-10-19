@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/content/html/document/public/nsIImageDocument.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/content/html/document/public/nsIImageDocument.idl
  */
 
 #ifndef __gen_nsIImageDocument_h__
@@ -18,11 +18,11 @@ class imgIRequest; /* forward declaration */
 
 
 /* starting interface:    nsIImageDocument */
-#define NS_IIMAGEDOCUMENT_IID_STR "7b80eebc-c98e-4461-8bdb-6e3b6e828890"
+#define NS_IIMAGEDOCUMENT_IID_STR "87c27f98-37dc-4b64-a8cd-92003624bcee"
 
 #define NS_IIMAGEDOCUMENT_IID \
-  {0x7b80eebc, 0xc98e, 0x4461, \
-    { 0x8b, 0xdb, 0x6e, 0x3b, 0x6e, 0x82, 0x88, 0x90 }}
+  {0x87c27f98, 0x37dc, 0x4b64, \
+    { 0xa8, 0xcd, 0x92, 0x00, 0x36, 0x24, 0xbc, 0xee }}
 
 class NS_NO_VTABLE nsIImageDocument : public nsISupports {
  public: 
@@ -41,17 +41,17 @@ class NS_NO_VTABLE nsIImageDocument : public nsISupports {
   /* readonly attribute imgIRequest imageRequest; */
   NS_IMETHOD GetImageRequest(imgIRequest * *aImageRequest) = 0;
 
-  /* void shrinkToFit (); */
-  NS_IMETHOD ShrinkToFit(void) = 0;
+  /* [binaryname(DOMShrinkToFit)] void shrinkToFit (); */
+  NS_IMETHOD DOMShrinkToFit(void) = 0;
 
-  /* void restoreImage (); */
-  NS_IMETHOD RestoreImage(void) = 0;
+  /* [binaryname(DOMRestoreImage)] void restoreImage (); */
+  NS_IMETHOD DOMRestoreImage(void) = 0;
 
-  /* void restoreImageTo (in long x, in long y); */
-  NS_IMETHOD RestoreImageTo(int32_t x, int32_t y) = 0;
+  /* [binaryname(DOMRestoreImageTo)] void restoreImageTo (in long x, in long y); */
+  NS_IMETHOD DOMRestoreImageTo(int32_t x, int32_t y) = 0;
 
-  /* void toggleImageSize (); */
-  NS_IMETHOD ToggleImageSize(void) = 0;
+  /* [binaryname(DOMToggleImageSize)] void toggleImageSize (); */
+  NS_IMETHOD DOMToggleImageSize(void) = 0;
 
 };
 
@@ -63,10 +63,10 @@ class NS_NO_VTABLE nsIImageDocument : public nsISupports {
   NS_IMETHOD GetImageIsOverflowing(bool *aImageIsOverflowing); \
   NS_IMETHOD GetImageIsResized(bool *aImageIsResized); \
   NS_IMETHOD GetImageRequest(imgIRequest * *aImageRequest); \
-  NS_IMETHOD ShrinkToFit(void); \
-  NS_IMETHOD RestoreImage(void); \
-  NS_IMETHOD RestoreImageTo(int32_t x, int32_t y); \
-  NS_IMETHOD ToggleImageSize(void); 
+  NS_IMETHOD DOMShrinkToFit(void); \
+  NS_IMETHOD DOMRestoreImage(void); \
+  NS_IMETHOD DOMRestoreImageTo(int32_t x, int32_t y); \
+  NS_IMETHOD DOMToggleImageSize(void); 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object. */
 #define NS_FORWARD_NSIIMAGEDOCUMENT(_to) \
@@ -74,10 +74,10 @@ class NS_NO_VTABLE nsIImageDocument : public nsISupports {
   NS_IMETHOD GetImageIsOverflowing(bool *aImageIsOverflowing) { return _to GetImageIsOverflowing(aImageIsOverflowing); } \
   NS_IMETHOD GetImageIsResized(bool *aImageIsResized) { return _to GetImageIsResized(aImageIsResized); } \
   NS_IMETHOD GetImageRequest(imgIRequest * *aImageRequest) { return _to GetImageRequest(aImageRequest); } \
-  NS_IMETHOD ShrinkToFit(void) { return _to ShrinkToFit(); } \
-  NS_IMETHOD RestoreImage(void) { return _to RestoreImage(); } \
-  NS_IMETHOD RestoreImageTo(int32_t x, int32_t y) { return _to RestoreImageTo(x, y); } \
-  NS_IMETHOD ToggleImageSize(void) { return _to ToggleImageSize(); } 
+  NS_IMETHOD DOMShrinkToFit(void) { return _to DOMShrinkToFit(); } \
+  NS_IMETHOD DOMRestoreImage(void) { return _to DOMRestoreImage(); } \
+  NS_IMETHOD DOMRestoreImageTo(int32_t x, int32_t y) { return _to DOMRestoreImageTo(x, y); } \
+  NS_IMETHOD DOMToggleImageSize(void) { return _to DOMToggleImageSize(); } 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object in a safe way. */
 #define NS_FORWARD_SAFE_NSIIMAGEDOCUMENT(_to) \
@@ -85,10 +85,10 @@ class NS_NO_VTABLE nsIImageDocument : public nsISupports {
   NS_IMETHOD GetImageIsOverflowing(bool *aImageIsOverflowing) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetImageIsOverflowing(aImageIsOverflowing); } \
   NS_IMETHOD GetImageIsResized(bool *aImageIsResized) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetImageIsResized(aImageIsResized); } \
   NS_IMETHOD GetImageRequest(imgIRequest * *aImageRequest) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetImageRequest(aImageRequest); } \
-  NS_IMETHOD ShrinkToFit(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->ShrinkToFit(); } \
-  NS_IMETHOD RestoreImage(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->RestoreImage(); } \
-  NS_IMETHOD RestoreImageTo(int32_t x, int32_t y) { return !_to ? NS_ERROR_NULL_POINTER : _to->RestoreImageTo(x, y); } \
-  NS_IMETHOD ToggleImageSize(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->ToggleImageSize(); } 
+  NS_IMETHOD DOMShrinkToFit(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->DOMShrinkToFit(); } \
+  NS_IMETHOD DOMRestoreImage(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->DOMRestoreImage(); } \
+  NS_IMETHOD DOMRestoreImageTo(int32_t x, int32_t y) { return !_to ? NS_ERROR_NULL_POINTER : _to->DOMRestoreImageTo(x, y); } \
+  NS_IMETHOD DOMToggleImageSize(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->DOMToggleImageSize(); } 
 
 #if 0
 /* Use the code below as a template for the implementation class for this interface. */
@@ -146,26 +146,26 @@ NS_IMETHODIMP nsImageDocument::GetImageRequest(imgIRequest * *aImageRequest)
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* void shrinkToFit (); */
-NS_IMETHODIMP nsImageDocument::ShrinkToFit()
+/* [binaryname(DOMShrinkToFit)] void shrinkToFit (); */
+NS_IMETHODIMP nsImageDocument::DOMShrinkToFit()
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* void restoreImage (); */
-NS_IMETHODIMP nsImageDocument::RestoreImage()
+/* [binaryname(DOMRestoreImage)] void restoreImage (); */
+NS_IMETHODIMP nsImageDocument::DOMRestoreImage()
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* void restoreImageTo (in long x, in long y); */
-NS_IMETHODIMP nsImageDocument::RestoreImageTo(int32_t x, int32_t y)
+/* [binaryname(DOMRestoreImageTo)] void restoreImageTo (in long x, in long y); */
+NS_IMETHODIMP nsImageDocument::DOMRestoreImageTo(int32_t x, int32_t y)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* void toggleImageSize (); */
-NS_IMETHODIMP nsImageDocument::ToggleImageSize()
+/* [binaryname(DOMToggleImageSize)] void toggleImageSize (); */
+NS_IMETHODIMP nsImageDocument::DOMToggleImageSize()
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

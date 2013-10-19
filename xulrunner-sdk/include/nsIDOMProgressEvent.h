@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/events/nsIDOMProgressEvent.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/events/nsIDOMProgressEvent.idl
  */
 
 #ifndef __gen_nsIDOMProgressEvent_h__
@@ -36,7 +36,7 @@ class NS_NO_VTABLE nsIDOMProgressEvent : public nsIDOMEvent {
   /* readonly attribute unsigned long long total; */
   NS_IMETHOD GetTotal(uint64_t *aTotal) = 0;
 
-  /* void initProgressEvent (in DOMString typeArg, in boolean canBubbleArg, in boolean cancelableArg, in boolean lengthComputableArg, in unsigned long long loadedArg, in unsigned long long totalArg); */
+  /* [noscript] void initProgressEvent (in DOMString typeArg, in boolean canBubbleArg, in boolean cancelableArg, in boolean lengthComputableArg, in unsigned long long loadedArg, in unsigned long long totalArg); */
   NS_IMETHOD InitProgressEvent(const nsAString & typeArg, bool canBubbleArg, bool cancelableArg, bool lengthComputableArg, uint64_t loadedArg, uint64_t totalArg) = 0;
 
 };
@@ -114,7 +114,7 @@ NS_IMETHODIMP nsDOMProgressEvent::GetTotal(uint64_t *aTotal)
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* void initProgressEvent (in DOMString typeArg, in boolean canBubbleArg, in boolean cancelableArg, in boolean lengthComputableArg, in unsigned long long loadedArg, in unsigned long long totalArg); */
+/* [noscript] void initProgressEvent (in DOMString typeArg, in boolean canBubbleArg, in boolean cancelableArg, in boolean lengthComputableArg, in unsigned long long loadedArg, in unsigned long long totalArg); */
 NS_IMETHODIMP nsDOMProgressEvent::InitProgressEvent(const nsAString & typeArg, bool canBubbleArg, bool cancelableArg, bool lengthComputableArg, uint64_t loadedArg, uint64_t totalArg)
 {
     return NS_ERROR_NOT_IMPLEMENTED;

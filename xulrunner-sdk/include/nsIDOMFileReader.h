@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/content/base/public/nsIDOMFileReader.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/content/base/public/nsIDOMFileReader.idl
  */
 
 #ifndef __gen_nsIDOMFileReader_h__
@@ -24,11 +24,11 @@ class nsIDOMDOMError; /* forward declaration */
 
 
 /* starting interface:    nsIDOMFileReader */
-#define NS_IDOMFILEREADER_IID_STR "62a1628e-c856-4aee-8273-d0c62488e2ca"
+#define NS_IDOMFILEREADER_IID_STR "81a8d00b-2982-44f6-aecf-faac0d0819d6"
 
 #define NS_IDOMFILEREADER_IID \
-  {0x62a1628e, 0xc856, 0x4aee, \
-    { 0x82, 0x73, 0xd0, 0xc6, 0x24, 0x88, 0xe2, 0xca }}
+  {0x81a8d00b, 0x2982, 0x44f6, \
+    { 0xae, 0xcf, 0xfa, 0xac, 0x0d, 0x08, 0x19, 0xd6 }}
 
 class NS_NO_VTABLE nsIDOMFileReader : public nsIDOMEventTarget {
  public: 

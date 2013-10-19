@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/xpcom/ds/nsIAtomService.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/xpcom/ds/nsIAtomService.idl
  */
 
 #ifndef __gen_nsIAtomService_h__
@@ -21,7 +21,6 @@
     0x4cab,                                  \
     {0x88, 0x18, 0x98, 0xf5, 0x47, 0x5a, 0x49, 0x0c} }
 #define NS_ATOMSERVICE_CONTRACTID "@mozilla.org/atom-service;1"
-#define NS_ATOMSERVICE_CLASSNAME "Atom Service"
 
 /* starting interface:    nsIAtomService */
 #define NS_IATOMSERVICE_IID_STR "9c1f50b9-f9eb-42d4-a8cb-2c7600aeb241"

@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/modules/libpref/public/nsIPrefService.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/modules/libpref/public/nsIPrefService.idl
  */
 
 #ifndef __gen_nsIPrefService_h__
@@ -164,7 +164,6 @@ NS_IMETHODIMP nsPrefService::GetDefaultBranch(const char * aPrefRoot, nsIPrefBra
     { 0x9d, 0xf8, 0x75, 0xb4, 0x0e, 0xa4, 0x01, 0x56 } \
   }
 #define NS_PREFSERVICE_CONTRACTID "@mozilla.org/preferences-service;1"
-#define NS_PREFSERVICE_CLASSNAME "Preferences Server"
 /**
  * Notification sent before reading the default user preferences files.
  */

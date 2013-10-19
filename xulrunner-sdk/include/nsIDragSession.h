@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/widget/nsIDragSession.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/widget/nsIDragSession.idl
  */
 
 #ifndef __gen_nsIDragSession_h__
@@ -8,10 +8,6 @@
 
 #ifndef __gen_nsISupports_h__
 #include "nsISupports.h"
-#endif
-
-#ifndef __gen_nsISupportsArray_h__
-#include "nsISupportsArray.h"
 #endif
 
 #ifndef __gen_nsITransferable_h__

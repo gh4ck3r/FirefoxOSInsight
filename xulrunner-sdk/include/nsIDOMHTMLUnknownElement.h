@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/html/nsIDOMHTMLUnknownElement.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/html/nsIDOMHTMLUnknownElement.idl
  */
 
 #ifndef __gen_nsIDOMHTMLUnknownElement_h__
@@ -16,11 +16,11 @@
 #endif
 
 /* starting interface:    nsIDOMHTMLUnknownElement */
-#define NS_IDOMHTMLUNKNOWNELEMENT_IID_STR "74acc5c9-a18d-4aec-aefc-a719ef69499c"
+#define NS_IDOMHTMLUNKNOWNELEMENT_IID_STR "aa044a2d-4e9b-4fc5-8ad2-666da9062b36"
 
 #define NS_IDOMHTMLUNKNOWNELEMENT_IID \
-  {0x74acc5c9, 0xa18d, 0x4aec, \
-    { 0xae, 0xfc, 0xa7, 0x19, 0xef, 0x69, 0x49, 0x9c }}
+  {0xaa044a2d, 0x4e9b, 0x4fc5, \
+    { 0x8a, 0xd2, 0x66, 0x6d, 0xa9, 0x06, 0x2b, 0x36 }}
 
 class NS_NO_VTABLE nsIDOMHTMLUnknownElement : public nsIDOMHTMLElement {
  public: 

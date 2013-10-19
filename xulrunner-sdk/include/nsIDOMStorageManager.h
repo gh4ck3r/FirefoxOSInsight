@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/storage/nsIDOMStorageManager.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/storage/nsIDOMStorageManager.idl
  */
 
 #ifndef __gen_nsIDOMStorageManager_h__
@@ -20,19 +20,31 @@ class nsIPrincipal; /* forward declaration */
 
 
 /* starting interface:    nsIDOMStorageManager */
-#define NS_IDOMSTORAGEMANAGER_IID_STR "b16b207c-d883-43f5-a27e-548e7f2f5c20"
+#define NS_IDOMSTORAGEMANAGER_IID_STR "8096f9ea-fa61-4960-b5d7-fb30ac42c8d8"
 
 #define NS_IDOMSTORAGEMANAGER_IID \
-  {0xb16b207c, 0xd883, 0x43f5, \
-    { 0xa2, 0x7e, 0x54, 0x8e, 0x7f, 0x2f, 0x5c, 0x20 }}
+  {0x8096f9ea, 0xfa61, 0x4960, \
+    { 0xb5, 0xd7, 0xfb, 0x30, 0xac, 0x42, 0xc8, 0xd8 }}
 
 class NS_NO_VTABLE nsIDOMStorageManager : public nsISupports {
  public: 
 
   NS_DECLARE_STATIC_IID_ACCESSOR(NS_IDOMSTORAGEMANAGER_IID)
 
-  /* long getUsage (in AString aOwnerDomain); */
-  NS_IMETHOD GetUsage(const nsAString & aOwnerDomain, int32_t *_retval) = 0;
+  /* void precacheStorage (in nsIPrincipal aPrincipal); */
+  NS_IMETHOD PrecacheStorage(nsIPrincipal *aPrincipal) = 0;
+
+  /* nsIDOMStorage createStorage (in nsIPrincipal aPrincipal, in DOMString aDocumentURI, [optional] in bool aPrivate); */
+  NS_IMETHOD CreateStorage(nsIPrincipal *aPrincipal, const nsAString & aDocumentURI, bool aPrivate, nsIDOMStorage * *_retval) = 0;
+
+  /* nsIDOMStorage getStorage (in nsIPrincipal aPrincipal, [optional] in bool aPrivate); */
+  NS_IMETHOD GetStorage(nsIPrincipal *aPrincipal, bool aPrivate, nsIDOMStorage * *_retval) = 0;
+
+  /* void cloneStorage (in nsIDOMStorage aStorageToCloneFrom); */
+  NS_IMETHOD CloneStorage(nsIDOMStorage *aStorageToCloneFrom) = 0;
+
+  /* bool checkStorage (in nsIPrincipal aPrincipal, in nsIDOMStorage aStorage); */
+  NS_IMETHOD CheckStorage(nsIPrincipal *aPrincipal, nsIDOMStorage *aStorage, bool *_retval) = 0;
 
   /* nsIDOMStorage getLocalStorageForPrincipal (in nsIPrincipal aPrincipal, in DOMString aDocumentURI, [optional] in bool aPrivate); */
   NS_IMETHOD GetLocalStorageForPrincipal(nsIPrincipal *aPrincipal, const nsAString & aDocumentURI, bool aPrivate, nsIDOMStorage * *_retval) = 0;
@@ -43,17 +55,29 @@ class NS_NO_VTABLE nsIDOMStorageManager : public nsISupports {
 
 /* Use this macro when declaring classes that implement this interface. */
 #define NS_DECL_NSIDOMSTORAGEMANAGER \
-  NS_IMETHOD GetUsage(const nsAString & aOwnerDomain, int32_t *_retval); \
+  NS_IMETHOD PrecacheStorage(nsIPrincipal *aPrincipal); \
+  NS_IMETHOD CreateStorage(nsIPrincipal *aPrincipal, const nsAString & aDocumentURI, bool aPrivate, nsIDOMStorage * *_retval); \
+  NS_IMETHOD GetStorage(nsIPrincipal *aPrincipal, bool aPrivate, nsIDOMStorage * *_retval); \
+  NS_IMETHOD CloneStorage(nsIDOMStorage *aStorageToCloneFrom); \
+  NS_IMETHOD CheckStorage(nsIPrincipal *aPrincipal, nsIDOMStorage *aStorage, bool *_retval); \
   NS_IMETHOD GetLocalStorageForPrincipal(nsIPrincipal *aPrincipal, const nsAString & aDocumentURI, bool aPrivate, nsIDOMStorage * *_retval); 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object. */
 #define NS_FORWARD_NSIDOMSTORAGEMANAGER(_to) \
-  NS_IMETHOD GetUsage(const nsAString & aOwnerDomain, int32_t *_retval) { return _to GetUsage(aOwnerDomain, _retval); } \
+  NS_IMETHOD PrecacheStorage(nsIPrincipal *aPrincipal) { return _to PrecacheStorage(aPrincipal); } \
+  NS_IMETHOD CreateStorage(nsIPrincipal *aPrincipal, const nsAString & aDocumentURI, bool aPrivate, nsIDOMStorage * *_retval) { return _to CreateStorage(aPrincipal, aDocumentURI, aPrivate, _retval); } \
+  NS_IMETHOD GetStorage(nsIPrincipal *aPrincipal, bool aPrivate, nsIDOMStorage * *_retval) { return _to GetStorage(aPrincipal, aPrivate, _retval); } \
+  NS_IMETHOD CloneStorage(nsIDOMStorage *aStorageToCloneFrom) { return _to CloneStorage(aStorageToCloneFrom); } \
+  NS_IMETHOD CheckStorage(nsIPrincipal *aPrincipal, nsIDOMStorage *aStorage, bool *_retval) { return _to CheckStorage(aPrincipal, aStorage, _retval); } \
   NS_IMETHOD GetLocalStorageForPrincipal(nsIPrincipal *aPrincipal, const nsAString & aDocumentURI, bool aPrivate, nsIDOMStorage * *_retval) { return _to GetLocalStorageForPrincipal(aPrincipal, aDocumentURI, aPrivate, _retval); } 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object in a safe way. */
 #define NS_FORWARD_SAFE_NSIDOMSTORAGEMANAGER(_to) \
-  NS_IMETHOD GetUsage(const nsAString & aOwnerDomain, int32_t *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetUsage(aOwnerDomain, _retval); } \
+  NS_IMETHOD PrecacheStorage(nsIPrincipal *aPrincipal) { return !_to ? NS_ERROR_NULL_POINTER : _to->PrecacheStorage(aPrincipal); } \
+  NS_IMETHOD CreateStorage(nsIPrincipal *aPrincipal, const nsAString & aDocumentURI, bool aPrivate, nsIDOMStorage * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->CreateStorage(aPrincipal, aDocumentURI, aPrivate, _retval); } \
+  NS_IMETHOD GetStorage(nsIPrincipal *aPrincipal, bool aPrivate, nsIDOMStorage * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetStorage(aPrincipal, aPrivate, _retval); } \
+  NS_IMETHOD CloneStorage(nsIDOMStorage *aStorageToCloneFrom) { return !_to ? NS_ERROR_NULL_POINTER : _to->CloneStorage(aStorageToCloneFrom); } \
+  NS_IMETHOD CheckStorage(nsIPrincipal *aPrincipal, nsIDOMStorage *aStorage, bool *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->CheckStorage(aPrincipal, aStorage, _retval); } \
   NS_IMETHOD GetLocalStorageForPrincipal(nsIPrincipal *aPrincipal, const nsAString & aDocumentURI, bool aPrivate, nsIDOMStorage * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetLocalStorageForPrincipal(aPrincipal, aDocumentURI, aPrivate, _retval); } 
 
 #if 0
@@ -88,8 +112,32 @@ nsDOMStorageManager::~nsDOMStorageManager()
   /* destructor code */
 }
 
-/* long getUsage (in AString aOwnerDomain); */
-NS_IMETHODIMP nsDOMStorageManager::GetUsage(const nsAString & aOwnerDomain, int32_t *_retval)
+/* void precacheStorage (in nsIPrincipal aPrincipal); */
+NS_IMETHODIMP nsDOMStorageManager::PrecacheStorage(nsIPrincipal *aPrincipal)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* nsIDOMStorage createStorage (in nsIPrincipal aPrincipal, in DOMString aDocumentURI, [optional] in bool aPrivate); */
+NS_IMETHODIMP nsDOMStorageManager::CreateStorage(nsIPrincipal *aPrincipal, const nsAString & aDocumentURI, bool aPrivate, nsIDOMStorage * *_retval)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* nsIDOMStorage getStorage (in nsIPrincipal aPrincipal, [optional] in bool aPrivate); */
+NS_IMETHODIMP nsDOMStorageManager::GetStorage(nsIPrincipal *aPrincipal, bool aPrivate, nsIDOMStorage * *_retval)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* void cloneStorage (in nsIDOMStorage aStorageToCloneFrom); */
+NS_IMETHODIMP nsDOMStorageManager::CloneStorage(nsIDOMStorage *aStorageToCloneFrom)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* bool checkStorage (in nsIPrincipal aPrincipal, in nsIDOMStorage aStorage); */
+NS_IMETHODIMP nsDOMStorageManager::CheckStorage(nsIPrincipal *aPrincipal, nsIDOMStorage *aStorage, bool *_retval)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

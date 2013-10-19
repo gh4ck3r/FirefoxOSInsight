@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/uriloader/base/nsIWebProgressListener2.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/uriloader/base/nsIWebProgressListener2.idl
  */
 
 #ifndef __gen_nsIWebProgressListener2_h__

@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/docshell/base/nsIURIFixup.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/docshell/base/nsIURIFixup.idl
  */
 
 #ifndef __gen_nsIURIFixup_h__
@@ -16,13 +16,15 @@
 #endif
 class nsIURI; /* forward declaration */
 
+class nsIInputStream; /* forward declaration */
+
 
 /* starting interface:    nsIURIFixup */
-#define NS_IURIFIXUP_IID_STR "773081ac-9f81-4bdb-9e7a-5e87b4361f09"
+#define NS_IURIFIXUP_IID_STR "552a23bb-c1b2-426e-a801-d346c6a98f1d"
 
 #define NS_IURIFIXUP_IID \
-  {0x773081ac, 0x9f81, 0x4bdb, \
-    { 0x9e, 0x7a, 0x5e, 0x87, 0xb4, 0x36, 0x1f, 0x09 }}
+  {0x552a23bb, 0xc1b2, 0x426e, \
+    { 0xa8, 0x01, 0xd3, 0x46, 0xc6, 0xa9, 0x8f, 0x1d }}
 
 class NS_NO_VTABLE nsIURIFixup : public nsISupports {
  public: 
@@ -39,11 +41,11 @@ class NS_NO_VTABLE nsIURIFixup : public nsISupports {
   /* nsIURI createExposableURI (in nsIURI aURI); */
   NS_IMETHOD CreateExposableURI(nsIURI *aURI, nsIURI * *_retval) = 0;
 
-  /* nsIURI createFixupURI (in AUTF8String aURIText, in unsigned long aFixupFlags); */
-  NS_IMETHOD CreateFixupURI(const nsACString & aURIText, uint32_t aFixupFlags, nsIURI * *_retval) = 0;
+  /* nsIURI createFixupURI (in AUTF8String aURIText, in unsigned long aFixupFlags, [optional] out nsIInputStream aPostData); */
+  NS_IMETHOD CreateFixupURI(const nsACString & aURIText, uint32_t aFixupFlags, nsIInputStream * *aPostData, nsIURI * *_retval) = 0;
 
-  /* nsIURI keywordToURI (in AUTF8String aKeyword); */
-  NS_IMETHOD KeywordToURI(const nsACString & aKeyword, nsIURI * *_retval) = 0;
+  /* nsIURI keywordToURI (in AUTF8String aKeyword, [optional] out nsIInputStream aPostData); */
+  NS_IMETHOD KeywordToURI(const nsACString & aKeyword, nsIInputStream * *aPostData, nsIURI * *_retval) = 0;
 
 };
 
@@ -52,20 +54,20 @@ class NS_NO_VTABLE nsIURIFixup : public nsISupports {
 /* Use this macro when declaring classes that implement this interface. */
 #define NS_DECL_NSIURIFIXUP \
   NS_IMETHOD CreateExposableURI(nsIURI *aURI, nsIURI * *_retval); \
-  NS_IMETHOD CreateFixupURI(const nsACString & aURIText, uint32_t aFixupFlags, nsIURI * *_retval); \
-  NS_IMETHOD KeywordToURI(const nsACString & aKeyword, nsIURI * *_retval); 
+  NS_IMETHOD CreateFixupURI(const nsACString & aURIText, uint32_t aFixupFlags, nsIInputStream * *aPostData, nsIURI * *_retval); \
+  NS_IMETHOD KeywordToURI(const nsACString & aKeyword, nsIInputStream * *aPostData, nsIURI * *_retval); 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object. */
 #define NS_FORWARD_NSIURIFIXUP(_to) \
   NS_IMETHOD CreateExposableURI(nsIURI *aURI, nsIURI * *_retval) { return _to CreateExposableURI(aURI, _retval); } \
-  NS_IMETHOD CreateFixupURI(const nsACString & aURIText, uint32_t aFixupFlags, nsIURI * *_retval) { return _to CreateFixupURI(aURIText, aFixupFlags, _retval); } \
-  NS_IMETHOD KeywordToURI(const nsACString & aKeyword, nsIURI * *_retval) { return _to KeywordToURI(aKeyword, _retval); } 
+  NS_IMETHOD CreateFixupURI(const nsACString & aURIText, uint32_t aFixupFlags, nsIInputStream * *aPostData, nsIURI * *_retval) { return _to CreateFixupURI(aURIText, aFixupFlags, aPostData, _retval); } \
+  NS_IMETHOD KeywordToURI(const nsACString & aKeyword, nsIInputStream * *aPostData, nsIURI * *_retval) { return _to KeywordToURI(aKeyword, aPostData, _retval); } 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object in a safe way. */
 #define NS_FORWARD_SAFE_NSIURIFIXUP(_to) \
   NS_IMETHOD CreateExposableURI(nsIURI *aURI, nsIURI * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->CreateExposableURI(aURI, _retval); } \
-  NS_IMETHOD CreateFixupURI(const nsACString & aURIText, uint32_t aFixupFlags, nsIURI * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->CreateFixupURI(aURIText, aFixupFlags, _retval); } \
-  NS_IMETHOD KeywordToURI(const nsACString & aKeyword, nsIURI * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->KeywordToURI(aKeyword, _retval); } 
+  NS_IMETHOD CreateFixupURI(const nsACString & aURIText, uint32_t aFixupFlags, nsIInputStream * *aPostData, nsIURI * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->CreateFixupURI(aURIText, aFixupFlags, aPostData, _retval); } \
+  NS_IMETHOD KeywordToURI(const nsACString & aKeyword, nsIInputStream * *aPostData, nsIURI * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->KeywordToURI(aKeyword, aPostData, _retval); } 
 
 #if 0
 /* Use the code below as a template for the implementation class for this interface. */
@@ -105,14 +107,14 @@ NS_IMETHODIMP nsURIFixup::CreateExposableURI(nsIURI *aURI, nsIURI * *_retval)
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* nsIURI createFixupURI (in AUTF8String aURIText, in unsigned long aFixupFlags); */
-NS_IMETHODIMP nsURIFixup::CreateFixupURI(const nsACString & aURIText, uint32_t aFixupFlags, nsIURI * *_retval)
+/* nsIURI createFixupURI (in AUTF8String aURIText, in unsigned long aFixupFlags, [optional] out nsIInputStream aPostData); */
+NS_IMETHODIMP nsURIFixup::CreateFixupURI(const nsACString & aURIText, uint32_t aFixupFlags, nsIInputStream * *aPostData, nsIURI * *_retval)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* nsIURI keywordToURI (in AUTF8String aKeyword); */
-NS_IMETHODIMP nsURIFixup::KeywordToURI(const nsACString & aKeyword, nsIURI * *_retval)
+/* nsIURI keywordToURI (in AUTF8String aKeyword, [optional] out nsIInputStream aPostData); */
+NS_IMETHODIMP nsURIFixup::KeywordToURI(const nsACString & aKeyword, nsIInputStream * *aPostData, nsIURI * *_retval)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

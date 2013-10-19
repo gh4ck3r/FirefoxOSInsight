@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/toolkit/components/places/nsINavHistoryService.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/toolkit/components/places/nsINavHistoryService.idl
  */
 
 #ifndef __gen_nsINavHistoryService_h__
@@ -58,7 +58,6 @@ class NS_NO_VTABLE nsINavHistoryResultNode : public nsISupports {
 
   enum {
     RESULT_TYPE_URI = 0U,
-    RESULT_TYPE_VISIT = 1U,
     RESULT_TYPE_QUERY = 5U,
     RESULT_TYPE_FOLDER = 6U,
     RESULT_TYPE_SEPARATOR = 7U,
@@ -265,79 +264,6 @@ NS_IMETHODIMP nsNavHistoryResultNode::GetLastModified(PRTime *aLastModified)
 
 /* readonly attribute AString tags; */
 NS_IMETHODIMP nsNavHistoryResultNode::GetTags(nsAString & aTags)
-{
-    return NS_ERROR_NOT_IMPLEMENTED;
-}
-
-/* End of implementation class template. */
-#endif
-
-
-/* starting interface:    nsINavHistoryVisitResultNode */
-#define NS_INAVHISTORYVISITRESULTNODE_IID_STR "8e2c5a86-b33d-4fa6-944b-559af7e95fcd"
-
-#define NS_INAVHISTORYVISITRESULTNODE_IID \
-  {0x8e2c5a86, 0xb33d, 0x4fa6, \
-    { 0x94, 0x4b, 0x55, 0x9a, 0xf7, 0xe9, 0x5f, 0xcd }}
-
-class NS_NO_VTABLE nsINavHistoryVisitResultNode : public nsINavHistoryResultNode {
- public: 
-
-  NS_DECLARE_STATIC_IID_ACCESSOR(NS_INAVHISTORYVISITRESULTNODE_IID)
-
-  /* readonly attribute long long sessionId; */
-  NS_IMETHOD GetSessionId(int64_t *aSessionId) = 0;
-
-};
-
-  NS_DEFINE_STATIC_IID_ACCESSOR(nsINavHistoryVisitResultNode, NS_INAVHISTORYVISITRESULTNODE_IID)
-
-/* Use this macro when declaring classes that implement this interface. */
-#define NS_DECL_NSINAVHISTORYVISITRESULTNODE \
-  NS_IMETHOD GetSessionId(int64_t *aSessionId); 
-
-/* Use this macro to declare functions that forward the behavior of this interface to another object. */
-#define NS_FORWARD_NSINAVHISTORYVISITRESULTNODE(_to) \
-  NS_IMETHOD GetSessionId(int64_t *aSessionId) { return _to GetSessionId(aSessionId); } 
-
-/* Use this macro to declare functions that forward the behavior of this interface to another object in a safe way. */
-#define NS_FORWARD_SAFE_NSINAVHISTORYVISITRESULTNODE(_to) \
-  NS_IMETHOD GetSessionId(int64_t *aSessionId) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetSessionId(aSessionId); } 
-
-#if 0
-/* Use the code below as a template for the implementation class for this interface. */
-
-/* Header file */
-class nsNavHistoryVisitResultNode : public nsINavHistoryVisitResultNode
-{
-public:
-  NS_DECL_ISUPPORTS
-  NS_DECL_NSINAVHISTORYVISITRESULTNODE
-
-  nsNavHistoryVisitResultNode();
-
-private:
-  ~nsNavHistoryVisitResultNode();
-
-protected:
-  /* additional members */
-};
-
-/* Implementation file */
-NS_IMPL_ISUPPORTS1(nsNavHistoryVisitResultNode, nsINavHistoryVisitResultNode)
-
-nsNavHistoryVisitResultNode::nsNavHistoryVisitResultNode()
-{
-  /* member initializers and constructor code */
-}
-
-nsNavHistoryVisitResultNode::~nsNavHistoryVisitResultNode()
-{
-  /* destructor code */
-}
-
-/* readonly attribute long long sessionId; */
-NS_IMETHODIMP nsNavHistoryVisitResultNode::GetSessionId(int64_t *aSessionId)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
@@ -2198,11 +2124,11 @@ NS_IMETHODIMP nsNavHistoryQueryOptions::Clone(nsINavHistoryQueryOptions * *_retv
 
 
 /* starting interface:    nsINavHistoryService */
-#define NS_INAVHISTORYSERVICE_IID_STR "562e698d-04f0-4df1-bd5d-1f1e5b84d7ef"
+#define NS_INAVHISTORYSERVICE_IID_STR "baebc597-9daf-4103-a325-e41ef9e7608a"
 
 #define NS_INAVHISTORYSERVICE_IID \
-  {0x562e698d, 0x04f0, 0x4df1, \
-    { 0xbd, 0x5d, 0x1f, 0x1e, 0x5b, 0x84, 0xd7, 0xef }}
+  {0xbaebc597, 0x9daf, 0x4103, \
+    { 0xa3, 0x25, 0xe4, 0x1e, 0xf9, 0xe7, 0x60, 0x8a }}
 
 class NS_NO_VTABLE nsINavHistoryService : public nsISupports {
  public: 
@@ -2236,6 +2162,12 @@ class NS_NO_VTABLE nsINavHistoryService : public nsISupports {
   /* void markPageAsFollowedBookmark (in nsIURI aURI); */
   NS_IMETHOD MarkPageAsFollowedBookmark(nsIURI *aURI) = 0;
 
+  /* void markPageAsTyped (in nsIURI aURI); */
+  NS_IMETHOD MarkPageAsTyped(nsIURI *aURI) = 0;
+
+  /* void markPageAsFollowedLink (in nsIURI aURI); */
+  NS_IMETHOD MarkPageAsFollowedLink(nsIURI *aURI) = 0;
+
   /* AString getCharsetForURI (in nsIURI aURI); */
   NS_IMETHOD GetCharsetForURI(nsIURI *aURI, nsAString & _retval) = 0;
 
@@ -2244,9 +2176,6 @@ class NS_NO_VTABLE nsINavHistoryService : public nsISupports {
 
   /* boolean canAddURI (in nsIURI aURI); */
   NS_IMETHOD CanAddURI(nsIURI *aURI, bool *_retval) = 0;
-
-  /* long long addVisit (in nsIURI aURI, in PRTime aTime, in nsIURI aReferringURI, in long aTransitionType, in boolean aIsRedirect, in long long aSessionID); */
-  NS_IMETHOD AddVisit(nsIURI *aURI, PRTime aTime, nsIURI *aReferringURI, int32_t aTransitionType, bool aIsRedirect, int64_t aSessionID, int64_t *_retval) = 0;
 
   /* nsINavHistoryQuery getNewQuery (); */
   NS_IMETHOD GetNewQuery(nsINavHistoryQuery * *_retval) = 0;
@@ -2288,10 +2217,11 @@ class NS_NO_VTABLE nsINavHistoryService : public nsISupports {
   NS_IMETHOD GetHasHistoryEntries(bool *aHasHistoryEntries); \
   NS_IMETHOD GetPageTitle(nsIURI *aURI, nsAString & _retval); \
   NS_IMETHOD MarkPageAsFollowedBookmark(nsIURI *aURI); \
+  NS_IMETHOD MarkPageAsTyped(nsIURI *aURI); \
+  NS_IMETHOD MarkPageAsFollowedLink(nsIURI *aURI); \
   NS_IMETHOD GetCharsetForURI(nsIURI *aURI, nsAString & _retval); \
   NS_IMETHOD SetCharsetForURI(nsIURI *aURI, const nsAString & aCharset); \
   NS_IMETHOD CanAddURI(nsIURI *aURI, bool *_retval); \
-  NS_IMETHOD AddVisit(nsIURI *aURI, PRTime aTime, nsIURI *aReferringURI, int32_t aTransitionType, bool aIsRedirect, int64_t aSessionID, int64_t *_retval); \
   NS_IMETHOD GetNewQuery(nsINavHistoryQuery * *_retval); \
   NS_IMETHOD GetNewQueryOptions(nsINavHistoryQueryOptions * *_retval); \
   NS_IMETHOD ExecuteQuery(nsINavHistoryQuery *aQuery, nsINavHistoryQueryOptions *options, nsINavHistoryResult * *_retval); \
@@ -2309,10 +2239,11 @@ class NS_NO_VTABLE nsINavHistoryService : public nsISupports {
   NS_IMETHOD GetHasHistoryEntries(bool *aHasHistoryEntries) { return _to GetHasHistoryEntries(aHasHistoryEntries); } \
   NS_IMETHOD GetPageTitle(nsIURI *aURI, nsAString & _retval) { return _to GetPageTitle(aURI, _retval); } \
   NS_IMETHOD MarkPageAsFollowedBookmark(nsIURI *aURI) { return _to MarkPageAsFollowedBookmark(aURI); } \
+  NS_IMETHOD MarkPageAsTyped(nsIURI *aURI) { return _to MarkPageAsTyped(aURI); } \
+  NS_IMETHOD MarkPageAsFollowedLink(nsIURI *aURI) { return _to MarkPageAsFollowedLink(aURI); } \
   NS_IMETHOD GetCharsetForURI(nsIURI *aURI, nsAString & _retval) { return _to GetCharsetForURI(aURI, _retval); } \
   NS_IMETHOD SetCharsetForURI(nsIURI *aURI, const nsAString & aCharset) { return _to SetCharsetForURI(aURI, aCharset); } \
   NS_IMETHOD CanAddURI(nsIURI *aURI, bool *_retval) { return _to CanAddURI(aURI, _retval); } \
-  NS_IMETHOD AddVisit(nsIURI *aURI, PRTime aTime, nsIURI *aReferringURI, int32_t aTransitionType, bool aIsRedirect, int64_t aSessionID, int64_t *_retval) { return _to AddVisit(aURI, aTime, aReferringURI, aTransitionType, aIsRedirect, aSessionID, _retval); } \
   NS_IMETHOD GetNewQuery(nsINavHistoryQuery * *_retval) { return _to GetNewQuery(_retval); } \
   NS_IMETHOD GetNewQueryOptions(nsINavHistoryQueryOptions * *_retval) { return _to GetNewQueryOptions(_retval); } \
   NS_IMETHOD ExecuteQuery(nsINavHistoryQuery *aQuery, nsINavHistoryQueryOptions *options, nsINavHistoryResult * *_retval) { return _to ExecuteQuery(aQuery, options, _retval); } \
@@ -2330,10 +2261,11 @@ class NS_NO_VTABLE nsINavHistoryService : public nsISupports {
   NS_IMETHOD GetHasHistoryEntries(bool *aHasHistoryEntries) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetHasHistoryEntries(aHasHistoryEntries); } \
   NS_IMETHOD GetPageTitle(nsIURI *aURI, nsAString & _retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetPageTitle(aURI, _retval); } \
   NS_IMETHOD MarkPageAsFollowedBookmark(nsIURI *aURI) { return !_to ? NS_ERROR_NULL_POINTER : _to->MarkPageAsFollowedBookmark(aURI); } \
+  NS_IMETHOD MarkPageAsTyped(nsIURI *aURI) { return !_to ? NS_ERROR_NULL_POINTER : _to->MarkPageAsTyped(aURI); } \
+  NS_IMETHOD MarkPageAsFollowedLink(nsIURI *aURI) { return !_to ? NS_ERROR_NULL_POINTER : _to->MarkPageAsFollowedLink(aURI); } \
   NS_IMETHOD GetCharsetForURI(nsIURI *aURI, nsAString & _retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetCharsetForURI(aURI, _retval); } \
   NS_IMETHOD SetCharsetForURI(nsIURI *aURI, const nsAString & aCharset) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetCharsetForURI(aURI, aCharset); } \
   NS_IMETHOD CanAddURI(nsIURI *aURI, bool *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->CanAddURI(aURI, _retval); } \
-  NS_IMETHOD AddVisit(nsIURI *aURI, PRTime aTime, nsIURI *aReferringURI, int32_t aTransitionType, bool aIsRedirect, int64_t aSessionID, int64_t *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->AddVisit(aURI, aTime, aReferringURI, aTransitionType, aIsRedirect, aSessionID, _retval); } \
   NS_IMETHOD GetNewQuery(nsINavHistoryQuery * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetNewQuery(_retval); } \
   NS_IMETHOD GetNewQueryOptions(nsINavHistoryQueryOptions * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetNewQueryOptions(_retval); } \
   NS_IMETHOD ExecuteQuery(nsINavHistoryQuery *aQuery, nsINavHistoryQueryOptions *options, nsINavHistoryResult * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->ExecuteQuery(aQuery, options, _retval); } \
@@ -2401,6 +2333,18 @@ NS_IMETHODIMP nsNavHistoryService::MarkPageAsFollowedBookmark(nsIURI *aURI)
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
+/* void markPageAsTyped (in nsIURI aURI); */
+NS_IMETHODIMP nsNavHistoryService::MarkPageAsTyped(nsIURI *aURI)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* void markPageAsFollowedLink (in nsIURI aURI); */
+NS_IMETHODIMP nsNavHistoryService::MarkPageAsFollowedLink(nsIURI *aURI)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
 /* AString getCharsetForURI (in nsIURI aURI); */
 NS_IMETHODIMP nsNavHistoryService::GetCharsetForURI(nsIURI *aURI, nsAString & _retval)
 {
@@ -2415,12 +2359,6 @@ NS_IMETHODIMP nsNavHistoryService::SetCharsetForURI(nsIURI *aURI, const nsAStrin
 
 /* boolean canAddURI (in nsIURI aURI); */
 NS_IMETHODIMP nsNavHistoryService::CanAddURI(nsIURI *aURI, bool *_retval)
-{
-    return NS_ERROR_NOT_IMPLEMENTED;
-}
-
-/* long long addVisit (in nsIURI aURI, in PRTime aTime, in nsIURI aReferringURI, in long aTransitionType, in boolean aIsRedirect, in long long aSessionID); */
-NS_IMETHODIMP nsNavHistoryService::AddVisit(nsIURI *aURI, PRTime aTime, nsIURI *aReferringURI, int32_t aTransitionType, bool aIsRedirect, int64_t aSessionID, int64_t *_retval)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

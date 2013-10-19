@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/audiochannel/nsIAudioChannelAgent.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/audiochannel/nsIAudioChannelAgent.idl
  */
 
 #ifndef __gen_nsIAudioChannelAgent_h__
@@ -89,11 +89,11 @@ NS_IMETHODIMP nsAudioChannelAgentCallback::CanPlayChanged(bool canPlay)
 
 
 /* starting interface:    nsIAudioChannelAgent */
-#define NS_IAUDIOCHANNELAGENT_IID_STR "4d01d4f0-3d16-11e2-a0db-10bf48d64bd4"
+#define NS_IAUDIOCHANNELAGENT_IID_STR "f012a9b7-6431-4915-a4ac-4ba7d833e28e"
 
 #define NS_IAUDIOCHANNELAGENT_IID \
-  {0x4d01d4f0, 0x3d16, 0x11e2, \
-    { 0xa0, 0xdb, 0x10, 0xbf, 0x48, 0xd6, 0x4b, 0xd4 }}
+  {0xf012a9b7, 0x6431, 0x4915, \
+    { 0xa4, 0xac, 0x4b, 0xa7, 0xd8, 0x33, 0xe2, 0x8e }}
 
 class NS_NO_VTABLE nsIAudioChannelAgent : public nsISupports {
  public: 
@@ -117,6 +117,9 @@ class NS_NO_VTABLE nsIAudioChannelAgent : public nsISupports {
   /* void init (in long channelType, in nsIAudioChannelAgentCallback callback); */
   NS_IMETHOD Init(int32_t channelType, nsIAudioChannelAgentCallback *callback) = 0;
 
+  /* void initWithWeakCallback (in long channelType, in nsIAudioChannelAgentCallback callback); */
+  NS_IMETHOD InitWithWeakCallback(int32_t channelType, nsIAudioChannelAgentCallback *callback) = 0;
+
   /* boolean startPlaying (); */
   NS_IMETHOD StartPlaying(bool *_retval) = 0;
 
@@ -134,6 +137,7 @@ class NS_NO_VTABLE nsIAudioChannelAgent : public nsISupports {
 #define NS_DECL_NSIAUDIOCHANNELAGENT \
   NS_IMETHOD GetAudioChannelType(int32_t *aAudioChannelType); \
   NS_IMETHOD Init(int32_t channelType, nsIAudioChannelAgentCallback *callback); \
+  NS_IMETHOD InitWithWeakCallback(int32_t channelType, nsIAudioChannelAgentCallback *callback); \
   NS_IMETHOD StartPlaying(bool *_retval); \
   NS_IMETHOD StopPlaying(void); \
   NS_IMETHOD SetVisibilityState(bool visible); 
@@ -142,6 +146,7 @@ class NS_NO_VTABLE nsIAudioChannelAgent : public nsISupports {
 #define NS_FORWARD_NSIAUDIOCHANNELAGENT(_to) \
   NS_IMETHOD GetAudioChannelType(int32_t *aAudioChannelType) { return _to GetAudioChannelType(aAudioChannelType); } \
   NS_IMETHOD Init(int32_t channelType, nsIAudioChannelAgentCallback *callback) { return _to Init(channelType, callback); } \
+  NS_IMETHOD InitWithWeakCallback(int32_t channelType, nsIAudioChannelAgentCallback *callback) { return _to InitWithWeakCallback(channelType, callback); } \
   NS_IMETHOD StartPlaying(bool *_retval) { return _to StartPlaying(_retval); } \
   NS_IMETHOD StopPlaying(void) { return _to StopPlaying(); } \
   NS_IMETHOD SetVisibilityState(bool visible) { return _to SetVisibilityState(visible); } 
@@ -150,6 +155,7 @@ class NS_NO_VTABLE nsIAudioChannelAgent : public nsISupports {
 #define NS_FORWARD_SAFE_NSIAUDIOCHANNELAGENT(_to) \
   NS_IMETHOD GetAudioChannelType(int32_t *aAudioChannelType) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetAudioChannelType(aAudioChannelType); } \
   NS_IMETHOD Init(int32_t channelType, nsIAudioChannelAgentCallback *callback) { return !_to ? NS_ERROR_NULL_POINTER : _to->Init(channelType, callback); } \
+  NS_IMETHOD InitWithWeakCallback(int32_t channelType, nsIAudioChannelAgentCallback *callback) { return !_to ? NS_ERROR_NULL_POINTER : _to->InitWithWeakCallback(channelType, callback); } \
   NS_IMETHOD StartPlaying(bool *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->StartPlaying(_retval); } \
   NS_IMETHOD StopPlaying(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->StopPlaying(); } \
   NS_IMETHOD SetVisibilityState(bool visible) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetVisibilityState(visible); } 
@@ -194,6 +200,12 @@ NS_IMETHODIMP nsAudioChannelAgent::GetAudioChannelType(int32_t *aAudioChannelTyp
 
 /* void init (in long channelType, in nsIAudioChannelAgentCallback callback); */
 NS_IMETHODIMP nsAudioChannelAgent::Init(int32_t channelType, nsIAudioChannelAgentCallback *callback)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* void initWithWeakCallback (in long channelType, in nsIAudioChannelAgentCallback callback); */
+NS_IMETHODIMP nsAudioChannelAgent::InitWithWeakCallback(int32_t channelType, nsIAudioChannelAgentCallback *callback)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

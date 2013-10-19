@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/base/nsISiteSpecificUserAgent.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/base/nsISiteSpecificUserAgent.idl
  */
 
 #ifndef __gen_nsISiteSpecificUserAgent_h__
@@ -16,21 +16,23 @@
 #endif
 class nsIURI; /* forward declaration */
 
+class nsIDOMWindow; /* forward declaration */
+
 
 /* starting interface:    nsISiteSpecificUserAgent */
-#define NS_ISITESPECIFICUSERAGENT_IID_STR "604a64af-9809-4c2f-a91d-f6ebfa21f6cb"
+#define NS_ISITESPECIFICUSERAGENT_IID_STR "a509469a-ef3d-4ad1-8dba-c92a96b0bc64"
 
 #define NS_ISITESPECIFICUSERAGENT_IID \
-  {0x604a64af, 0x9809, 0x4c2f, \
-    { 0xa9, 0x1d, 0xf6, 0xeb, 0xfa, 0x21, 0xf6, 0xcb }}
+  {0xa509469a, 0xef3d, 0x4ad1, \
+    { 0x8d, 0xba, 0xc9, 0x2a, 0x96, 0xb0, 0xbc, 0x64 }}
 
 class NS_NO_VTABLE nsISiteSpecificUserAgent : public nsISupports {
  public: 
 
   NS_DECLARE_STATIC_IID_ACCESSOR(NS_ISITESPECIFICUSERAGENT_IID)
 
-  /* AString getUserAgentForURI (in nsIURI aURI); */
-  NS_IMETHOD GetUserAgentForURI(nsIURI *aURI, nsAString & _retval) = 0;
+  /* AString getUserAgentForURIAndWindow (in nsIURI aURI, in nsIDOMWindow aWindow); */
+  NS_IMETHOD GetUserAgentForURIAndWindow(nsIURI *aURI, nsIDOMWindow *aWindow, nsAString & _retval) = 0;
 
 };
 
@@ -38,15 +40,15 @@ class NS_NO_VTABLE nsISiteSpecificUserAgent : public nsISupports {
 
 /* Use this macro when declaring classes that implement this interface. */
 #define NS_DECL_NSISITESPECIFICUSERAGENT \
-  NS_IMETHOD GetUserAgentForURI(nsIURI *aURI, nsAString & _retval); 
+  NS_IMETHOD GetUserAgentForURIAndWindow(nsIURI *aURI, nsIDOMWindow *aWindow, nsAString & _retval); 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object. */
 #define NS_FORWARD_NSISITESPECIFICUSERAGENT(_to) \
-  NS_IMETHOD GetUserAgentForURI(nsIURI *aURI, nsAString & _retval) { return _to GetUserAgentForURI(aURI, _retval); } 
+  NS_IMETHOD GetUserAgentForURIAndWindow(nsIURI *aURI, nsIDOMWindow *aWindow, nsAString & _retval) { return _to GetUserAgentForURIAndWindow(aURI, aWindow, _retval); } 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object in a safe way. */
 #define NS_FORWARD_SAFE_NSISITESPECIFICUSERAGENT(_to) \
-  NS_IMETHOD GetUserAgentForURI(nsIURI *aURI, nsAString & _retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetUserAgentForURI(aURI, _retval); } 
+  NS_IMETHOD GetUserAgentForURIAndWindow(nsIURI *aURI, nsIDOMWindow *aWindow, nsAString & _retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetUserAgentForURIAndWindow(aURI, aWindow, _retval); } 
 
 #if 0
 /* Use the code below as a template for the implementation class for this interface. */
@@ -80,8 +82,8 @@ nsSiteSpecificUserAgent::~nsSiteSpecificUserAgent()
   /* destructor code */
 }
 
-/* AString getUserAgentForURI (in nsIURI aURI); */
-NS_IMETHODIMP nsSiteSpecificUserAgent::GetUserAgentForURI(nsIURI *aURI, nsAString & _retval)
+/* AString getUserAgentForURIAndWindow (in nsIURI aURI, in nsIDOMWindow aWindow); */
+NS_IMETHODIMP nsSiteSpecificUserAgent::GetUserAgentForURIAndWindow(nsIURI *aURI, nsIDOMWindow *aWindow, nsAString & _retval)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

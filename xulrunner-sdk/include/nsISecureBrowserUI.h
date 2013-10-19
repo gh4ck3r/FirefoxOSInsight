@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/netwerk/base/public/nsISecureBrowserUI.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/netwerk/base/public/nsISecureBrowserUI.idl
  */
 
 #ifndef __gen_nsISecureBrowserUI_h__
@@ -130,6 +130,5 @@ NS_IMETHODIMP nsSecureBrowserUI::GetTooltipText(nsAString & aTooltipText)
 #endif
 
 #define NS_SECURE_BROWSER_UI_CONTRACTID "@mozilla.org/secure_browser_ui;1"
-#define NS_SECURE_BROWSER_UI_CLASSNAME "Mozilla Secure Browser UI Handler"
 
 #endif /* __gen_nsISecureBrowserUI_h__ */

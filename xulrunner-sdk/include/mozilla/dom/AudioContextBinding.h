@@ -10,23 +10,16 @@
 #include "mozilla/dom/DOMJSClass.h"
 #include "mozilla/dom/DOMJSProxyHandler.h"
 
-class XPCWrappedNativeScope;
-namespace mozilla {
-namespace dom {
-
-class AudioContext;
-
-} // namespace dom
-} // namespace mozilla
-
 namespace mozilla {
 namespace dom {
 
 class AudioBuffer;
+class AudioContext;
+class DecodeErrorCallback;
+class DecodeSuccessCallback;
 
 } // namespace dom
 } // namespace mozilla
-
 
 namespace mozilla {
 namespace dom {
@@ -36,7 +29,7 @@ struct PrototypeTraits<prototypes::id::AudioContext>
 {
   enum
   {
-    Depth = 0
+    Depth = 1
   };
   typedef mozilla::dom::AudioContext NativeType;
 };
@@ -58,8 +51,8 @@ namespace dom {
 class DecodeSuccessCallback : public CallbackFunction
 {
 public:
-  inline DecodeSuccessCallback(JSContext* cx, JSObject* aOwner, JSObject* aCallback, bool* aInited)
-    : CallbackFunction(cx, aOwner, aCallback, aInited)
+  explicit inline DecodeSuccessCallback(JSObject* aCallback)
+    : CallbackFunction(aCallback)
   {
   }
 
@@ -70,14 +63,15 @@ public:
 
   template <typename T>
   inline void
-  Call(const T& thisObj, mozilla::dom::AudioBuffer& decodedData, ErrorResult& aRv)
+  Call(const T& thisObj, mozilla::dom::AudioBuffer& decodedData, ErrorResult& aRv, ExceptionHandling aExceptionHandling = eReportExceptions)
   {
-    CallSetup s(mCallback);
+    CallSetup s(CallbackPreserveColor(), aRv, aExceptionHandling);
     if (!s.GetContext()) {
       aRv.Throw(NS_ERROR_UNEXPECTED);
       return;
     }
-    JSObject* thisObjJS = WrapCallThisObject(s.GetContext(), mCallback, thisObj);
+    JS::Rooted<JSObject*> thisObjJS(s.GetContext(),
+      WrapCallThisObject(s.GetContext(), CallbackPreserveColor(), thisObj));
     if (!thisObjJS) {
       aRv.Throw(NS_ERROR_FAILURE);
       return;
@@ -86,26 +80,26 @@ public:
   }
 
   inline void
-  Call(mozilla::dom::AudioBuffer& decodedData, ErrorResult& aRv)
+  Call(mozilla::dom::AudioBuffer& decodedData, ErrorResult& aRv, ExceptionHandling aExceptionHandling = eReportExceptions)
   {
-    CallSetup s(mCallback);
+    CallSetup s(CallbackPreserveColor(), aRv, aExceptionHandling);
     if (!s.GetContext()) {
       aRv.Throw(NS_ERROR_UNEXPECTED);
       return;
     }
-    return Call(s.GetContext(), nullptr, decodedData, aRv);
+    return Call(s.GetContext(), JS::NullPtr(), decodedData, aRv);
   }
 
 private:
-  void Call(JSContext* cx, JSObject* aThisObj, mozilla::dom::AudioBuffer& decodedData, ErrorResult& aRv);
+  void Call(JSContext* cx, JS::Handle<JSObject*> aThisObj, mozilla::dom::AudioBuffer& decodedData, ErrorResult& aRv);
 };
 
 
 class DecodeErrorCallback : public CallbackFunction
 {
 public:
-  inline DecodeErrorCallback(JSContext* cx, JSObject* aOwner, JSObject* aCallback, bool* aInited)
-    : CallbackFunction(cx, aOwner, aCallback, aInited)
+  explicit inline DecodeErrorCallback(JSObject* aCallback)
+    : CallbackFunction(aCallback)
   {
   }
 
@@ -116,14 +110,15 @@ public:
 
   template <typename T>
   inline void
-  Call(const T& thisObj, ErrorResult& aRv)
+  Call(const T& thisObj, ErrorResult& aRv, ExceptionHandling aExceptionHandling = eReportExceptions)
   {
-    CallSetup s(mCallback);
+    CallSetup s(CallbackPreserveColor(), aRv, aExceptionHandling);
     if (!s.GetContext()) {
       aRv.Throw(NS_ERROR_UNEXPECTED);
       return;
     }
-    JSObject* thisObjJS = WrapCallThisObject(s.GetContext(), mCallback, thisObj);
+    JS::Rooted<JSObject*> thisObjJS(s.GetContext(),
+      WrapCallThisObject(s.GetContext(), CallbackPreserveColor(), thisObj));
     if (!thisObjJS) {
       aRv.Throw(NS_ERROR_FAILURE);
       return;
@@ -132,18 +127,18 @@ public:
   }
 
   inline void
-  Call(ErrorResult& aRv)
+  Call(ErrorResult& aRv, ExceptionHandling aExceptionHandling = eReportExceptions)
   {
-    CallSetup s(mCallback);
+    CallSetup s(CallbackPreserveColor(), aRv, aExceptionHandling);
     if (!s.GetContext()) {
       aRv.Throw(NS_ERROR_UNEXPECTED);
       return;
     }
-    return Call(s.GetContext(), nullptr, aRv);
+    return Call(s.GetContext(), JS::NullPtr(), aRv);
   }
 
 private:
-  void Call(JSContext* cx, JSObject* aThisObj, ErrorResult& aRv);
+  void Call(JSContext* cx, JS::Handle<JSObject*> aThisObj, ErrorResult& aRv);
 };
 
 
@@ -152,9 +147,9 @@ namespace AudioContextBinding {
   extern const NativePropertyHooks sNativePropertyHooks;
 
   void
-  CreateInterfaceObjects(JSContext* aCx, JSObject* aGlobal, JSObject** protoAndIfaceArray);
+  CreateInterfaceObjects(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JSObject** protoAndIfaceArray);
 
-  inline JSObject* GetProtoObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetProtoObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface prototype object for this class.  This will create the
@@ -162,21 +157,19 @@ namespace AudioContextBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[prototypes::id::AudioContext];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[prototypes::id::AudioContext]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[prototypes::id::AudioContext];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[prototypes::id::AudioContext]);
   }
 
-  inline JSObject* GetConstructorObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetConstructorObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface object for this class.  This will create the object as
@@ -184,22 +177,20 @@ namespace AudioContextBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[constructors::id::AudioContext];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[constructors::id::AudioContext]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[constructors::id::AudioContext];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[constructors::id::AudioContext]);
   }
 
   JSObject*
-  DefineDOMInterface(JSContext* aCx, JSObject* aGlobal, bool* aEnabled);
+  DefineDOMInterface(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JS::Handle<jsid> id, bool* aEnabled);
 
   bool
   PrefEnabled();
@@ -207,12 +198,12 @@ namespace AudioContextBinding {
   extern DOMJSClass Class;
 
   JSObject*
-  Wrap(JSContext* aCx, JSObject* aScope, mozilla::dom::AudioContext* aObject, nsWrapperCache* aCache, bool* aTriedToWrap);
+  Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, mozilla::dom::AudioContext* aObject, nsWrapperCache* aCache);
 
   template <class T>
-  inline JSObject* Wrap(JSContext* aCx, JSObject* aScope, T* aObject, bool* aTriedToWrap)
+  inline JSObject* Wrap(JSContext* aCx, JS::Handle<JSObject*> aScope, T* aObject)
   {
-    return Wrap(aCx, aScope, aObject, aObject, aTriedToWrap);
+    return Wrap(aCx, aScope, aObject, aObject);
   }
 
 } // namespace AudioContextBinding

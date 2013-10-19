@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/xul/nsIDOMXULSelectCntrlEl.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/xul/nsIDOMXULSelectCntrlEl.idl
  */
 
 #ifndef __gen_nsIDOMXULSelectCntrlEl_h__
@@ -18,11 +18,11 @@ class nsIDOMXULSelectControlItemElement; /* forward declaration */
 
 
 /* starting interface:    nsIDOMXULSelectControlElement */
-#define NS_IDOMXULSELECTCONTROLELEMENT_IID_STR "5775f3e3-b6c1-4047-b59a-5775937d87f2"
+#define NS_IDOMXULSELECTCONTROLELEMENT_IID_STR "9bf188a7-d6f9-431b-b5c7-118013998e8b"
 
 #define NS_IDOMXULSELECTCONTROLELEMENT_IID \
-  {0x5775f3e3, 0xb6c1, 0x4047, \
-    { 0xb5, 0x9a, 0x57, 0x75, 0x93, 0x7d, 0x87, 0xf2 }}
+  {0x9bf188a7, 0xd6f9, 0x431b, \
+    { 0xb5, 0xc7, 0x11, 0x80, 0x13, 0x99, 0x8e, 0x8b }}
 
 class NS_NO_VTABLE nsIDOMXULSelectControlElement : public nsIDOMXULControlElement {
  public: 

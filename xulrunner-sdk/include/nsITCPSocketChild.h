@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/network/interfaces/nsITCPSocketChild.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/network/interfaces/nsITCPSocketChild.idl
  */
 
 #ifndef __gen_nsITCPSocketChild_h__
@@ -22,11 +22,11 @@ class nsIDOMWindow; /* forward declaration */
 
 
 /* starting interface:    nsITCPSocketChild */
-#define NS_ITCPSOCKETCHILD_IID_STR "a589d96f-7e09-4edf-a01a-eb4951f42f37"
+#define NS_ITCPSOCKETCHILD_IID_STR "bdc91763-e9a1-4122-9c2f-8f17505c8c7a"
 
 #define NS_ITCPSOCKETCHILD_IID \
-  {0xa589d96f, 0x7e09, 0x4edf, \
-    { 0xa0, 0x1a, 0xeb, 0x49, 0x51, 0xf4, 0x2f, 0x37 }}
+  {0xbdc91763, 0xe9a1, 0x4122, \
+    { 0x9c, 0x2f, 0x8f, 0x17, 0x50, 0x5c, 0x8c, 0x7a }}
 
 class NS_NO_VTABLE nsITCPSocketChild : public nsISupports {
  public: 
@@ -36,8 +36,8 @@ class NS_NO_VTABLE nsITCPSocketChild : public nsISupports {
   /* [implicit_jscontext] void open (in nsITCPSocketInternal socket, in DOMString host, in unsigned short port, in boolean ssl, in DOMString binaryType, in nsIDOMWindow window, in jsval socketVal); */
   NS_IMETHOD Open(nsITCPSocketInternal *socket, const nsAString & host, uint16_t port, bool ssl, const nsAString & binaryType, nsIDOMWindow *window, const JS::Value & socketVal, JSContext* cx) = 0;
 
-  /* [implicit_jscontext] void send (in jsval data); */
-  NS_IMETHOD Send(const JS::Value & data, JSContext* cx) = 0;
+  /* [implicit_jscontext] void send (in jsval data, in unsigned long byteOffset, in unsigned long byteLength); */
+  NS_IMETHOD Send(const JS::Value & data, uint32_t byteOffset, uint32_t byteLength, JSContext* cx) = 0;
 
   /* void resume (); */
   NS_IMETHOD Resume(void) = 0;
@@ -55,7 +55,7 @@ class NS_NO_VTABLE nsITCPSocketChild : public nsISupports {
 /* Use this macro when declaring classes that implement this interface. */
 #define NS_DECL_NSITCPSOCKETCHILD \
   NS_IMETHOD Open(nsITCPSocketInternal *socket, const nsAString & host, uint16_t port, bool ssl, const nsAString & binaryType, nsIDOMWindow *window, const JS::Value & socketVal, JSContext* cx); \
-  NS_IMETHOD Send(const JS::Value & data, JSContext* cx); \
+  NS_IMETHOD Send(const JS::Value & data, uint32_t byteOffset, uint32_t byteLength, JSContext* cx); \
   NS_IMETHOD Resume(void); \
   NS_IMETHOD Suspend(void); \
   NS_IMETHOD Close(void); 
@@ -63,7 +63,7 @@ class NS_NO_VTABLE nsITCPSocketChild : public nsISupports {
 /* Use this macro to declare functions that forward the behavior of this interface to another object. */
 #define NS_FORWARD_NSITCPSOCKETCHILD(_to) \
   NS_IMETHOD Open(nsITCPSocketInternal *socket, const nsAString & host, uint16_t port, bool ssl, const nsAString & binaryType, nsIDOMWindow *window, const JS::Value & socketVal, JSContext* cx) { return _to Open(socket, host, port, ssl, binaryType, window, socketVal, cx); } \
-  NS_IMETHOD Send(const JS::Value & data, JSContext* cx) { return _to Send(data, cx); } \
+  NS_IMETHOD Send(const JS::Value & data, uint32_t byteOffset, uint32_t byteLength, JSContext* cx) { return _to Send(data, byteOffset, byteLength, cx); } \
   NS_IMETHOD Resume(void) { return _to Resume(); } \
   NS_IMETHOD Suspend(void) { return _to Suspend(); } \
   NS_IMETHOD Close(void) { return _to Close(); } 
@@ -71,7 +71,7 @@ class NS_NO_VTABLE nsITCPSocketChild : public nsISupports {
 /* Use this macro to declare functions that forward the behavior of this interface to another object in a safe way. */
 #define NS_FORWARD_SAFE_NSITCPSOCKETCHILD(_to) \
   NS_IMETHOD Open(nsITCPSocketInternal *socket, const nsAString & host, uint16_t port, bool ssl, const nsAString & binaryType, nsIDOMWindow *window, const JS::Value & socketVal, JSContext* cx) { return !_to ? NS_ERROR_NULL_POINTER : _to->Open(socket, host, port, ssl, binaryType, window, socketVal, cx); } \
-  NS_IMETHOD Send(const JS::Value & data, JSContext* cx) { return !_to ? NS_ERROR_NULL_POINTER : _to->Send(data, cx); } \
+  NS_IMETHOD Send(const JS::Value & data, uint32_t byteOffset, uint32_t byteLength, JSContext* cx) { return !_to ? NS_ERROR_NULL_POINTER : _to->Send(data, byteOffset, byteLength, cx); } \
   NS_IMETHOD Resume(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->Resume(); } \
   NS_IMETHOD Suspend(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->Suspend(); } \
   NS_IMETHOD Close(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->Close(); } 
@@ -114,8 +114,8 @@ NS_IMETHODIMP nsTCPSocketChild::Open(nsITCPSocketInternal *socket, const nsAStri
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* [implicit_jscontext] void send (in jsval data); */
-NS_IMETHODIMP nsTCPSocketChild::Send(const JS::Value & data, JSContext* cx)
+/* [implicit_jscontext] void send (in jsval data, in unsigned long byteOffset, in unsigned long byteLength); */
+NS_IMETHODIMP nsTCPSocketChild::Send(const JS::Value & data, uint32_t byteOffset, uint32_t byteLength, JSContext* cx)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

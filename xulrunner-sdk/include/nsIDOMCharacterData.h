@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/core/nsIDOMCharacterData.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/core/nsIDOMCharacterData.idl
  */
 
 #ifndef __gen_nsIDOMCharacterData_h__
@@ -16,11 +16,11 @@
 #endif
 
 /* starting interface:    nsIDOMCharacterData */
-#define NS_IDOMCHARACTERDATA_IID_STR "cb75c251-afc7-444f-b2d6-b9635555f3ed"
+#define NS_IDOMCHARACTERDATA_IID_STR "84f72a38-1873-46f8-937c-1df22d7e7cae"
 
 #define NS_IDOMCHARACTERDATA_IID \
-  {0xcb75c251, 0xafc7, 0x444f, \
-    { 0xb2, 0xd6, 0xb9, 0x63, 0x55, 0x55, 0xf3, 0xed }}
+  {0x84f72a38, 0x1873, 0x46f8, \
+    { 0x93, 0x7c, 0x1d, 0xf2, 0x2d, 0x7e, 0x7c, 0xae }}
 
 class NS_NO_VTABLE nsIDOMCharacterData : public nsIDOMNode {
  public: 
@@ -49,6 +49,9 @@ class NS_NO_VTABLE nsIDOMCharacterData : public nsIDOMNode {
   /* void replaceData (in unsigned long offset, in unsigned long count, in DOMString arg) raises (DOMException); */
   NS_IMETHOD ReplaceData(uint32_t offset, uint32_t count, const nsAString & arg) = 0;
 
+  /* [binaryname(MozRemove)] void remove (); */
+  NS_IMETHOD MozRemove(void) = 0;
+
 };
 
   NS_DEFINE_STATIC_IID_ACCESSOR(nsIDOMCharacterData, NS_IDOMCHARACTERDATA_IID)
@@ -62,7 +65,8 @@ class NS_NO_VTABLE nsIDOMCharacterData : public nsIDOMNode {
   NS_IMETHOD AppendData(const nsAString & arg); \
   NS_IMETHOD InsertData(uint32_t offset, const nsAString & arg); \
   NS_IMETHOD DeleteData(uint32_t offset, uint32_t count); \
-  NS_IMETHOD ReplaceData(uint32_t offset, uint32_t count, const nsAString & arg); 
+  NS_IMETHOD ReplaceData(uint32_t offset, uint32_t count, const nsAString & arg); \
+  NS_IMETHOD MozRemove(void); 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object. */
 #define NS_FORWARD_NSIDOMCHARACTERDATA(_to) \
@@ -73,7 +77,8 @@ class NS_NO_VTABLE nsIDOMCharacterData : public nsIDOMNode {
   NS_IMETHOD AppendData(const nsAString & arg) { return _to AppendData(arg); } \
   NS_IMETHOD InsertData(uint32_t offset, const nsAString & arg) { return _to InsertData(offset, arg); } \
   NS_IMETHOD DeleteData(uint32_t offset, uint32_t count) { return _to DeleteData(offset, count); } \
-  NS_IMETHOD ReplaceData(uint32_t offset, uint32_t count, const nsAString & arg) { return _to ReplaceData(offset, count, arg); } 
+  NS_IMETHOD ReplaceData(uint32_t offset, uint32_t count, const nsAString & arg) { return _to ReplaceData(offset, count, arg); } \
+  NS_IMETHOD MozRemove(void) { return _to MozRemove(); } 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object in a safe way. */
 #define NS_FORWARD_SAFE_NSIDOMCHARACTERDATA(_to) \
@@ -84,7 +89,8 @@ class NS_NO_VTABLE nsIDOMCharacterData : public nsIDOMNode {
   NS_IMETHOD AppendData(const nsAString & arg) { return !_to ? NS_ERROR_NULL_POINTER : _to->AppendData(arg); } \
   NS_IMETHOD InsertData(uint32_t offset, const nsAString & arg) { return !_to ? NS_ERROR_NULL_POINTER : _to->InsertData(offset, arg); } \
   NS_IMETHOD DeleteData(uint32_t offset, uint32_t count) { return !_to ? NS_ERROR_NULL_POINTER : _to->DeleteData(offset, count); } \
-  NS_IMETHOD ReplaceData(uint32_t offset, uint32_t count, const nsAString & arg) { return !_to ? NS_ERROR_NULL_POINTER : _to->ReplaceData(offset, count, arg); } 
+  NS_IMETHOD ReplaceData(uint32_t offset, uint32_t count, const nsAString & arg) { return !_to ? NS_ERROR_NULL_POINTER : _to->ReplaceData(offset, count, arg); } \
+  NS_IMETHOD MozRemove(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->MozRemove(); } 
 
 #if 0
 /* Use the code below as a template for the implementation class for this interface. */
@@ -160,6 +166,12 @@ NS_IMETHODIMP nsDOMCharacterData::DeleteData(uint32_t offset, uint32_t count)
 
 /* void replaceData (in unsigned long offset, in unsigned long count, in DOMString arg) raises (DOMException); */
 NS_IMETHODIMP nsDOMCharacterData::ReplaceData(uint32_t offset, uint32_t count, const nsAString & arg)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* [binaryname(MozRemove)] void remove (); */
+NS_IMETHODIMP nsDOMCharacterData::MozRemove()
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

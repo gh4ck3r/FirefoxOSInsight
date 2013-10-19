@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/xul/nsIDOMXULLabeledControlEl.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/xul/nsIDOMXULLabeledControlEl.idl
  */
 
 #ifndef __gen_nsIDOMXULLabeledControlEl_h__
@@ -20,11 +20,11 @@
 #endif
 
 /* starting interface:    nsIDOMXULLabeledControlElement */
-#define NS_IDOMXULLABELEDCONTROLELEMENT_IID_STR "dd80e029-5535-4418-b3a0-13cf6bd2aa6b"
+#define NS_IDOMXULLABELEDCONTROLELEMENT_IID_STR "c58a159f-e27d-40c8-865a-d4dcfd928f62"
 
 #define NS_IDOMXULLABELEDCONTROLELEMENT_IID \
-  {0xdd80e029, 0x5535, 0x4418, \
-    { 0xb3, 0xa0, 0x13, 0xcf, 0x6b, 0xd2, 0xaa, 0x6b }}
+  {0xc58a159f, 0xe27d, 0x40c8, \
+    { 0x86, 0x5a, 0xd4, 0xdc, 0xfd, 0x92, 0x8f, 0x62 }}
 
 class NS_NO_VTABLE nsIDOMXULLabeledControlElement : public nsIDOMXULControlElement {
  public: 

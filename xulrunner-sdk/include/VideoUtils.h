@@ -35,7 +35,7 @@ namespace mozilla {
  *
  * MUCH PREFERRED to bare calls to ReentrantMonitor.Exit and Enter.
  */ 
-class NS_STACK_CLASS ReentrantMonitorAutoExit
+class MOZ_STACK_CLASS ReentrantMonitorAutoExit
 {
 public:
     /**
@@ -77,7 +77,7 @@ private:
  * E.g. Used to allow unmonitored read access on the decode thread,
  * and monitored access on all other threads.
  */
-class NS_STACK_CLASS ReentrantMonitorConditionallyEnter
+class MOZ_STACK_CLASS ReentrantMonitorConditionallyEnter
 {
 public:
   ReentrantMonitorConditionallyEnter(bool aEnter,
@@ -127,7 +127,11 @@ private:
 class MediaResource;
 } // namespace mozilla
 
-class nsTimeRanges;
+namespace mozilla {
+namespace dom {
+class TimeRanges;
+}
+}
 
 // Estimates the buffered ranges of a MediaResource using a simple
 // (byteOffset/length)*duration method. Probably inaccurate, but won't
@@ -137,7 +141,7 @@ class nsTimeRanges;
 // aOutBuffered. Ranges are 0-normalized, i.e. in the range of (0,duration].
 void GetEstimatedBufferedTimeRanges(mozilla::MediaResource* aStream,
                                     int64_t aDurationUsecs,
-                                    nsTimeRanges* aOutBuffered);
+                                    mozilla::dom::TimeRanges* aOutBuffered);
 
 // Converts from number of audio frames (aFrames) to microseconds, given
 // the specified audio rate (aRate). Stores result in aOutUsecs. Returns true

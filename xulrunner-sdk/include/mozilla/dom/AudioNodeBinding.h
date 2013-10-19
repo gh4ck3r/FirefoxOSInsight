@@ -8,7 +8,6 @@
 #include "mozilla/dom/DOMJSClass.h"
 #include "mozilla/dom/DOMJSProxyHandler.h"
 
-class XPCWrappedNativeScope;
 namespace mozilla {
 namespace dom {
 
@@ -16,7 +15,6 @@ class AudioNode;
 
 } // namespace dom
 } // namespace mozilla
-
 
 namespace mozilla {
 namespace dom {
@@ -26,7 +24,7 @@ struct PrototypeTraits<prototypes::id::AudioNode>
 {
   enum
   {
-    Depth = 0
+    Depth = 1
   };
   typedef mozilla::dom::AudioNode NativeType;
 };
@@ -45,14 +43,37 @@ struct PrototypeIDMap<mozilla::dom::AudioNode>
 namespace mozilla {
 namespace dom {
 
+
+MOZ_BEGIN_ENUM_CLASS(ChannelCountMode, uint32_t)
+  Max,
+  Clamped_max,
+  Explicit
+MOZ_END_ENUM_CLASS(ChannelCountMode)
+
+namespace ChannelCountModeValues {
+extern const EnumEntry strings[4];
+} // namespace ChannelCountModeValues
+
+
+
+MOZ_BEGIN_ENUM_CLASS(ChannelInterpretation, uint32_t)
+  Speakers,
+  Discrete
+MOZ_END_ENUM_CLASS(ChannelInterpretation)
+
+namespace ChannelInterpretationValues {
+extern const EnumEntry strings[3];
+} // namespace ChannelInterpretationValues
+
+
 namespace AudioNodeBinding {
 
   extern const NativePropertyHooks sNativePropertyHooks;
 
   void
-  CreateInterfaceObjects(JSContext* aCx, JSObject* aGlobal, JSObject** protoAndIfaceArray);
+  CreateInterfaceObjects(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JSObject** protoAndIfaceArray);
 
-  inline JSObject* GetProtoObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetProtoObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface prototype object for this class.  This will create the
@@ -60,21 +81,19 @@ namespace AudioNodeBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[prototypes::id::AudioNode];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[prototypes::id::AudioNode]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[prototypes::id::AudioNode];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[prototypes::id::AudioNode]);
   }
 
-  inline JSObject* GetConstructorObject(JSContext* aCx, JSObject* aGlobal)
+  inline JS::Handle<JSObject*> GetConstructorObject(JSContext* aCx, JS::Handle<JSObject*> aGlobal)
   {
 
     /* Get the interface object for this class.  This will create the object as
@@ -82,22 +101,20 @@ namespace AudioNodeBinding {
 
     /* Make sure our global is sane.  Hopefully we can remove this sometime */
     if (!(js::GetObjectClass(aGlobal)->flags & JSCLASS_DOM_GLOBAL)) {
-      return NULL;
+      return JS::NullPtr();
     }
     /* Check to see whether the interface objects are already installed */
     JSObject** protoAndIfaceArray = GetProtoAndIfaceArray(aGlobal);
-    JSObject* cachedObject = protoAndIfaceArray[constructors::id::AudioNode];
-    if (!cachedObject) {
+    if (!protoAndIfaceArray[constructors::id::AudioNode]) {
       CreateInterfaceObjects(aCx, aGlobal, protoAndIfaceArray);
-      cachedObject = protoAndIfaceArray[constructors::id::AudioNode];
     }
 
-    /* cachedObject might _still_ be null, but that's OK */
-    return cachedObject;
+    /* The object might _still_ be null, but that's OK */
+    return JS::Handle<JSObject*>::fromMarkedLocation(&protoAndIfaceArray[constructors::id::AudioNode]);
   }
 
   JSObject*
-  DefineDOMInterface(JSContext* aCx, JSObject* aGlobal, bool* aEnabled);
+  DefineDOMInterface(JSContext* aCx, JS::Handle<JSObject*> aGlobal, JS::Handle<jsid> id, bool* aEnabled);
 
   bool
   PrefEnabled();

@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/image/public/imgINotificationObserver.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/image/public/imgINotificationObserver.idl
  */
 
 #ifndef __gen_imgINotificationObserver_h__
@@ -19,11 +19,11 @@ class imgIRequest; /* forward declaration */
 #include "nsRect.h"
 
 /* starting interface:    imgINotificationObserver */
-#define IMGINOTIFICATIONOBSERVER_IID_STR "90b3d21c-317d-4d96-93c0-12add64a26bf"
+#define IMGINOTIFICATIONOBSERVER_IID_STR "ac65c702-7771-4f6d-b18b-1c7d806ce3c1"
 
 #define IMGINOTIFICATIONOBSERVER_IID \
-  {0x90b3d21c, 0x317d, 0x4d96, \
-    { 0x93, 0xc0, 0x12, 0xad, 0xd6, 0x4a, 0x26, 0xbf }}
+  {0xac65c702, 0x7771, 0x4f6d, \
+    { 0xb1, 0x8b, 0x1c, 0x7d, 0x80, 0x6c, 0xe3, 0xc1 }}
 
 class NS_NO_VTABLE imgINotificationObserver : public nsISupports {
  public: 
@@ -37,7 +37,8 @@ class NS_NO_VTABLE imgINotificationObserver : public nsISupports {
     LOAD_COMPLETE = 4,
     DECODE_COMPLETE = 5,
     DISCARD = 6,
-    IS_ANIMATED = 7
+    UNLOCKED_DRAW = 7,
+    IS_ANIMATED = 8
   };
 
   /* [noscript] void notify (in imgIRequest aProxy, in long aType, [const] in nsIntRect aRect); */

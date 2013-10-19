@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/docshell/shistory/public/nsISHTransaction.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/docshell/shistory/public/nsISHTransaction.idl
  */
 
 #ifndef __gen_nsISHTransaction_h__
@@ -12,10 +12,6 @@
 
 #ifndef __gen_nsISHEntry_h__
 #include "nsISHEntry.h"
-#endif
-
-#ifndef __gen_nsIEnumerator_h__
-#include "nsIEnumerator.h"
 #endif
 
 /* For IDL files that don't want to include root IDL files. */

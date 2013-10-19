@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/plugins/base/nsIPluginTag.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/plugins/base/nsIPluginTag.idl
  */
 
 #ifndef __gen_nsIPluginTag_h__
@@ -18,16 +18,22 @@ class nsIDOMMimeType; /* forward declaration */
 
 
 /* starting interface:    nsIPluginTag */
-#define NS_IPLUGINTAG_IID_STR "b8bf0a06-e395-4f44-af39-a51d3e7ef4b9"
+#define NS_IPLUGINTAG_IID_STR "87b4fcfc-417b-47f6-9c79-dfeb5e5a4840"
 
 #define NS_IPLUGINTAG_IID \
-  {0xb8bf0a06, 0xe395, 0x4f44, \
-    { 0xaf, 0x39, 0xa5, 0x1d, 0x3e, 0x7e, 0xf4, 0xb9 }}
+  {0x87b4fcfc, 0x417b, 0x47f6, \
+    { 0x9c, 0x79, 0xdf, 0xeb, 0x5e, 0x5a, 0x48, 0x40 }}
 
 class NS_NO_VTABLE nsIPluginTag : public nsISupports {
  public: 
 
   NS_DECLARE_STATIC_IID_ACCESSOR(NS_IPLUGINTAG_IID)
+
+  enum {
+    STATE_DISABLED = 0U,
+    STATE_CLICKTOPLAY = 1U,
+    STATE_ENABLED = 2U
+  };
 
   /* readonly attribute AUTF8String description; */
   NS_IMETHOD GetDescription(nsACString & aDescription) = 0;
@@ -44,17 +50,19 @@ class NS_NO_VTABLE nsIPluginTag : public nsISupports {
   /* readonly attribute AUTF8String name; */
   NS_IMETHOD GetName(nsACString & aName) = 0;
 
-  /* attribute boolean disabled; */
-  NS_IMETHOD GetDisabled(bool *aDisabled) = 0;
-  NS_IMETHOD SetDisabled(bool aDisabled) = 0;
-
   /* attribute boolean blocklisted; */
   NS_IMETHOD GetBlocklisted(bool *aBlocklisted) = 0;
   NS_IMETHOD SetBlocklisted(bool aBlocklisted) = 0;
 
-  /* attribute boolean clicktoplay; */
+  /* readonly attribute boolean disabled; */
+  NS_IMETHOD GetDisabled(bool *aDisabled) = 0;
+
+  /* readonly attribute boolean clicktoplay; */
   NS_IMETHOD GetClicktoplay(bool *aClicktoplay) = 0;
-  NS_IMETHOD SetClicktoplay(bool aClicktoplay) = 0;
+
+  /* attribute unsigned long enabledState; */
+  NS_IMETHOD GetEnabledState(uint32_t *aEnabledState) = 0;
+  NS_IMETHOD SetEnabledState(uint32_t aEnabledState) = 0;
 
   /* void getMimeTypes ([optional] out unsigned long aCount, [array, size_is (aCount), retval] out nsIDOMMimeType aResults); */
   NS_IMETHOD GetMimeTypes(uint32_t *aCount, nsIDOMMimeType * **aResults) = 0;
@@ -70,12 +78,12 @@ class NS_NO_VTABLE nsIPluginTag : public nsISupports {
   NS_IMETHOD GetFullpath(nsACString & aFullpath); \
   NS_IMETHOD GetVersion(nsACString & aVersion); \
   NS_IMETHOD GetName(nsACString & aName); \
-  NS_IMETHOD GetDisabled(bool *aDisabled); \
-  NS_IMETHOD SetDisabled(bool aDisabled); \
   NS_IMETHOD GetBlocklisted(bool *aBlocklisted); \
   NS_IMETHOD SetBlocklisted(bool aBlocklisted); \
+  NS_IMETHOD GetDisabled(bool *aDisabled); \
   NS_IMETHOD GetClicktoplay(bool *aClicktoplay); \
-  NS_IMETHOD SetClicktoplay(bool aClicktoplay); \
+  NS_IMETHOD GetEnabledState(uint32_t *aEnabledState); \
+  NS_IMETHOD SetEnabledState(uint32_t aEnabledState); \
   NS_IMETHOD GetMimeTypes(uint32_t *aCount, nsIDOMMimeType * **aResults); 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object. */
@@ -85,12 +93,12 @@ class NS_NO_VTABLE nsIPluginTag : public nsISupports {
   NS_IMETHOD GetFullpath(nsACString & aFullpath) { return _to GetFullpath(aFullpath); } \
   NS_IMETHOD GetVersion(nsACString & aVersion) { return _to GetVersion(aVersion); } \
   NS_IMETHOD GetName(nsACString & aName) { return _to GetName(aName); } \
-  NS_IMETHOD GetDisabled(bool *aDisabled) { return _to GetDisabled(aDisabled); } \
-  NS_IMETHOD SetDisabled(bool aDisabled) { return _to SetDisabled(aDisabled); } \
   NS_IMETHOD GetBlocklisted(bool *aBlocklisted) { return _to GetBlocklisted(aBlocklisted); } \
   NS_IMETHOD SetBlocklisted(bool aBlocklisted) { return _to SetBlocklisted(aBlocklisted); } \
+  NS_IMETHOD GetDisabled(bool *aDisabled) { return _to GetDisabled(aDisabled); } \
   NS_IMETHOD GetClicktoplay(bool *aClicktoplay) { return _to GetClicktoplay(aClicktoplay); } \
-  NS_IMETHOD SetClicktoplay(bool aClicktoplay) { return _to SetClicktoplay(aClicktoplay); } \
+  NS_IMETHOD GetEnabledState(uint32_t *aEnabledState) { return _to GetEnabledState(aEnabledState); } \
+  NS_IMETHOD SetEnabledState(uint32_t aEnabledState) { return _to SetEnabledState(aEnabledState); } \
   NS_IMETHOD GetMimeTypes(uint32_t *aCount, nsIDOMMimeType * **aResults) { return _to GetMimeTypes(aCount, aResults); } 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object in a safe way. */
@@ -100,12 +108,12 @@ class NS_NO_VTABLE nsIPluginTag : public nsISupports {
   NS_IMETHOD GetFullpath(nsACString & aFullpath) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetFullpath(aFullpath); } \
   NS_IMETHOD GetVersion(nsACString & aVersion) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetVersion(aVersion); } \
   NS_IMETHOD GetName(nsACString & aName) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetName(aName); } \
-  NS_IMETHOD GetDisabled(bool *aDisabled) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetDisabled(aDisabled); } \
-  NS_IMETHOD SetDisabled(bool aDisabled) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetDisabled(aDisabled); } \
   NS_IMETHOD GetBlocklisted(bool *aBlocklisted) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetBlocklisted(aBlocklisted); } \
   NS_IMETHOD SetBlocklisted(bool aBlocklisted) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetBlocklisted(aBlocklisted); } \
+  NS_IMETHOD GetDisabled(bool *aDisabled) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetDisabled(aDisabled); } \
   NS_IMETHOD GetClicktoplay(bool *aClicktoplay) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetClicktoplay(aClicktoplay); } \
-  NS_IMETHOD SetClicktoplay(bool aClicktoplay) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetClicktoplay(aClicktoplay); } \
+  NS_IMETHOD GetEnabledState(uint32_t *aEnabledState) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetEnabledState(aEnabledState); } \
+  NS_IMETHOD SetEnabledState(uint32_t aEnabledState) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetEnabledState(aEnabledState); } \
   NS_IMETHOD GetMimeTypes(uint32_t *aCount, nsIDOMMimeType * **aResults) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetMimeTypes(aCount, aResults); } 
 
 #if 0
@@ -170,16 +178,6 @@ NS_IMETHODIMP nsPluginTag::GetName(nsACString & aName)
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* attribute boolean disabled; */
-NS_IMETHODIMP nsPluginTag::GetDisabled(bool *aDisabled)
-{
-    return NS_ERROR_NOT_IMPLEMENTED;
-}
-NS_IMETHODIMP nsPluginTag::SetDisabled(bool aDisabled)
-{
-    return NS_ERROR_NOT_IMPLEMENTED;
-}
-
 /* attribute boolean blocklisted; */
 NS_IMETHODIMP nsPluginTag::GetBlocklisted(bool *aBlocklisted)
 {
@@ -190,12 +188,24 @@ NS_IMETHODIMP nsPluginTag::SetBlocklisted(bool aBlocklisted)
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* attribute boolean clicktoplay; */
+/* readonly attribute boolean disabled; */
+NS_IMETHODIMP nsPluginTag::GetDisabled(bool *aDisabled)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* readonly attribute boolean clicktoplay; */
 NS_IMETHODIMP nsPluginTag::GetClicktoplay(bool *aClicktoplay)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
-NS_IMETHODIMP nsPluginTag::SetClicktoplay(bool aClicktoplay)
+
+/* attribute unsigned long enabledState; */
+NS_IMETHODIMP nsPluginTag::GetEnabledState(uint32_t *aEnabledState)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+NS_IMETHODIMP nsPluginTag::SetEnabledState(uint32_t aEnabledState)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

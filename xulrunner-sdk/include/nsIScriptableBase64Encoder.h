@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/xpcom/io/nsIScriptableBase64Encoder.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/xpcom/io/nsIScriptableBase64Encoder.idl
  */
 
 #ifndef __gen_nsIScriptableBase64Encoder_h__

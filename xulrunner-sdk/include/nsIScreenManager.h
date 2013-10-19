@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/widget/nsIScreenManager.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/widget/nsIScreenManager.idl
  */
 
 #ifndef __gen_nsIScreenManager_h__
@@ -20,11 +20,11 @@
 #endif
 
 /* starting interface:    nsIScreenManager */
-#define NS_ISCREENMANAGER_IID_STR "b92319e6-9a84-4ca7-a2cc-eec22ea9854e"
+#define NS_ISCREENMANAGER_IID_STR "1c195990-ff9e-412b-afe7-67d1c660bb27"
 
 #define NS_ISCREENMANAGER_IID \
-  {0xb92319e6, 0x9a84, 0x4ca7, \
-    { 0xa2, 0xcc, 0xee, 0xc2, 0x2e, 0xa9, 0x85, 0x4e }}
+  {0x1c195990, 0xff9e, 0x412b, \
+    { 0xaf, 0xe7, 0x67, 0xd1, 0xc6, 0x60, 0xbb, 0x27 }}
 
 class NS_NO_VTABLE nsIScreenManager : public nsISupports {
  public: 
@@ -40,6 +40,9 @@ class NS_NO_VTABLE nsIScreenManager : public nsISupports {
   /* readonly attribute unsigned long numberOfScreens; */
   NS_IMETHOD GetNumberOfScreens(uint32_t *aNumberOfScreens) = 0;
 
+  /* readonly attribute float systemDefaultScale; */
+  NS_IMETHOD GetSystemDefaultScale(float *aSystemDefaultScale) = 0;
+
   /* [noscript] nsIScreen screenForNativeWidget (in voidPtr nativeWidget); */
   NS_IMETHOD ScreenForNativeWidget(void *nativeWidget, nsIScreen * *_retval) = 0;
 
@@ -52,6 +55,7 @@ class NS_NO_VTABLE nsIScreenManager : public nsISupports {
   NS_IMETHOD ScreenForRect(int32_t left, int32_t top, int32_t width, int32_t height, nsIScreen * *_retval); \
   NS_IMETHOD GetPrimaryScreen(nsIScreen * *aPrimaryScreen); \
   NS_IMETHOD GetNumberOfScreens(uint32_t *aNumberOfScreens); \
+  NS_IMETHOD GetSystemDefaultScale(float *aSystemDefaultScale); \
   NS_IMETHOD ScreenForNativeWidget(void *nativeWidget, nsIScreen * *_retval); 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object. */
@@ -59,6 +63,7 @@ class NS_NO_VTABLE nsIScreenManager : public nsISupports {
   NS_IMETHOD ScreenForRect(int32_t left, int32_t top, int32_t width, int32_t height, nsIScreen * *_retval) { return _to ScreenForRect(left, top, width, height, _retval); } \
   NS_IMETHOD GetPrimaryScreen(nsIScreen * *aPrimaryScreen) { return _to GetPrimaryScreen(aPrimaryScreen); } \
   NS_IMETHOD GetNumberOfScreens(uint32_t *aNumberOfScreens) { return _to GetNumberOfScreens(aNumberOfScreens); } \
+  NS_IMETHOD GetSystemDefaultScale(float *aSystemDefaultScale) { return _to GetSystemDefaultScale(aSystemDefaultScale); } \
   NS_IMETHOD ScreenForNativeWidget(void *nativeWidget, nsIScreen * *_retval) { return _to ScreenForNativeWidget(nativeWidget, _retval); } 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object in a safe way. */
@@ -66,6 +71,7 @@ class NS_NO_VTABLE nsIScreenManager : public nsISupports {
   NS_IMETHOD ScreenForRect(int32_t left, int32_t top, int32_t width, int32_t height, nsIScreen * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->ScreenForRect(left, top, width, height, _retval); } \
   NS_IMETHOD GetPrimaryScreen(nsIScreen * *aPrimaryScreen) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetPrimaryScreen(aPrimaryScreen); } \
   NS_IMETHOD GetNumberOfScreens(uint32_t *aNumberOfScreens) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetNumberOfScreens(aNumberOfScreens); } \
+  NS_IMETHOD GetSystemDefaultScale(float *aSystemDefaultScale) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetSystemDefaultScale(aSystemDefaultScale); } \
   NS_IMETHOD ScreenForNativeWidget(void *nativeWidget, nsIScreen * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->ScreenForNativeWidget(nativeWidget, _retval); } 
 
 #if 0
@@ -114,6 +120,12 @@ NS_IMETHODIMP nsScreenManager::GetPrimaryScreen(nsIScreen * *aPrimaryScreen)
 
 /* readonly attribute unsigned long numberOfScreens; */
 NS_IMETHODIMP nsScreenManager::GetNumberOfScreens(uint32_t *aNumberOfScreens)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* readonly attribute float systemDefaultScale; */
+NS_IMETHODIMP nsScreenManager::GetSystemDefaultScale(float *aSystemDefaultScale)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/devicestorage/nsIDOMNavigatorDeviceStorage.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/devicestorage/nsIDOMNavigatorDeviceStorage.idl
  */
 
 #ifndef __gen_nsIDOMNavigatorDeviceStorage_h__
@@ -16,13 +16,15 @@
 #endif
 class nsIDOMDeviceStorage; /* forward declaration */
 
+class nsIVariant; /* forward declaration */
+
 
 /* starting interface:    nsIDOMNavigatorDeviceStorage */
-#define NS_IDOMNAVIGATORDEVICESTORAGE_IID_STR "da1fbf6e-259c-40bc-ba8c-4ae81748dca3"
+#define NS_IDOMNAVIGATORDEVICESTORAGE_IID_STR "1caeaf6d-6529-4e1f-b080-da17ab6aa266"
 
 #define NS_IDOMNAVIGATORDEVICESTORAGE_IID \
-  {0xda1fbf6e, 0x259c, 0x40bc, \
-    { 0xba, 0x8c, 0x4a, 0xe8, 0x17, 0x48, 0xdc, 0xa3 }}
+  {0x1caeaf6d, 0x6529, 0x4e1f, \
+    { 0xb0, 0x80, 0xda, 0x17, 0xab, 0x6a, 0xa2, 0x66 }}
 
 class NS_NO_VTABLE nsIDOMNavigatorDeviceStorage : public nsISupports {
  public: 
@@ -32,21 +34,27 @@ class NS_NO_VTABLE nsIDOMNavigatorDeviceStorage : public nsISupports {
   /* nsIDOMDeviceStorage getDeviceStorage (in DOMString type); */
   NS_IMETHOD GetDeviceStorage(const nsAString & type, nsIDOMDeviceStorage * *_retval) = 0;
 
+  /* nsIVariant getDeviceStorages (in DOMString type); */
+  NS_IMETHOD GetDeviceStorages(const nsAString & type, nsIVariant * *_retval) = 0;
+
 };
 
   NS_DEFINE_STATIC_IID_ACCESSOR(nsIDOMNavigatorDeviceStorage, NS_IDOMNAVIGATORDEVICESTORAGE_IID)
 
 /* Use this macro when declaring classes that implement this interface. */
 #define NS_DECL_NSIDOMNAVIGATORDEVICESTORAGE \
-  NS_IMETHOD GetDeviceStorage(const nsAString & type, nsIDOMDeviceStorage * *_retval); 
+  NS_IMETHOD GetDeviceStorage(const nsAString & type, nsIDOMDeviceStorage * *_retval); \
+  NS_IMETHOD GetDeviceStorages(const nsAString & type, nsIVariant * *_retval); 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object. */
 #define NS_FORWARD_NSIDOMNAVIGATORDEVICESTORAGE(_to) \
-  NS_IMETHOD GetDeviceStorage(const nsAString & type, nsIDOMDeviceStorage * *_retval) { return _to GetDeviceStorage(type, _retval); } 
+  NS_IMETHOD GetDeviceStorage(const nsAString & type, nsIDOMDeviceStorage * *_retval) { return _to GetDeviceStorage(type, _retval); } \
+  NS_IMETHOD GetDeviceStorages(const nsAString & type, nsIVariant * *_retval) { return _to GetDeviceStorages(type, _retval); } 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object in a safe way. */
 #define NS_FORWARD_SAFE_NSIDOMNAVIGATORDEVICESTORAGE(_to) \
-  NS_IMETHOD GetDeviceStorage(const nsAString & type, nsIDOMDeviceStorage * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetDeviceStorage(type, _retval); } 
+  NS_IMETHOD GetDeviceStorage(const nsAString & type, nsIDOMDeviceStorage * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetDeviceStorage(type, _retval); } \
+  NS_IMETHOD GetDeviceStorages(const nsAString & type, nsIVariant * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetDeviceStorages(type, _retval); } 
 
 #if 0
 /* Use the code below as a template for the implementation class for this interface. */
@@ -82,6 +90,12 @@ nsDOMNavigatorDeviceStorage::~nsDOMNavigatorDeviceStorage()
 
 /* nsIDOMDeviceStorage getDeviceStorage (in DOMString type); */
 NS_IMETHODIMP nsDOMNavigatorDeviceStorage::GetDeviceStorage(const nsAString & type, nsIDOMDeviceStorage * *_retval)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* nsIVariant getDeviceStorages (in DOMString type); */
+NS_IMETHODIMP nsDOMNavigatorDeviceStorage::GetDeviceStorages(const nsAString & type, nsIVariant * *_retval)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

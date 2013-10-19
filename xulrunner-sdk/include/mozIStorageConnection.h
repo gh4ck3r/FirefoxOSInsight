@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/storage/public/mozIStorageConnection.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/storage/public/mozIStorageConnection.idl
  */
 
 #ifndef __gen_mozIStorageConnection_h__
@@ -36,20 +36,16 @@ class nsIFile; /* forward declaration */
 
 
 /* starting interface:    mozIStorageConnection */
-#define MOZISTORAGECONNECTION_IID_STR "b2a4b534-f92e-4387-9bd9-d10408173925"
+#define MOZISTORAGECONNECTION_IID_STR "c8646e4b-3e2d-4df3-98a9-e2bbf74f279c"
 
 #define MOZISTORAGECONNECTION_IID \
-  {0xb2a4b534, 0xf92e, 0x4387, \
-    { 0x9b, 0xd9, 0xd1, 0x04, 0x08, 0x17, 0x39, 0x25 }}
+  {0xc8646e4b, 0x3e2d, 0x4df3, \
+    { 0x98, 0xa9, 0xe2, 0xbb, 0xf7, 0x4f, 0x27, 0x9c }}
 
 class NS_NO_VTABLE mozIStorageConnection : public nsISupports {
  public: 
 
   NS_DECLARE_STATIC_IID_ACCESSOR(MOZISTORAGECONNECTION_IID)
-
-  enum {
-    DEFAULT_PAGE_SIZE = 32768
-  };
 
   /* void close (); */
   NS_IMETHOD Close(void) = 0;
@@ -59,6 +55,9 @@ class NS_NO_VTABLE mozIStorageConnection : public nsISupports {
 
   /* mozIStorageConnection clone ([optional] in boolean aReadOnly); */
   NS_IMETHOD Clone(bool aReadOnly, mozIStorageConnection * *_retval) = 0;
+
+  /* readonly attribute long defaultPageSize; */
+  NS_IMETHOD GetDefaultPageSize(int32_t *aDefaultPageSize) = 0;
 
   /* readonly attribute boolean connectionReady; */
   NS_IMETHOD GetConnectionReady(bool *aConnectionReady) = 0;
@@ -154,6 +153,7 @@ class NS_NO_VTABLE mozIStorageConnection : public nsISupports {
   NS_IMETHOD Close(void); \
   NS_IMETHOD AsyncClose(mozIStorageCompletionCallback *aCallback); \
   NS_IMETHOD Clone(bool aReadOnly, mozIStorageConnection * *_retval); \
+  NS_IMETHOD GetDefaultPageSize(int32_t *aDefaultPageSize); \
   NS_IMETHOD GetConnectionReady(bool *aConnectionReady); \
   NS_IMETHOD GetDatabaseFile(nsIFile * *aDatabaseFile); \
   NS_IMETHOD GetLastInsertRowID(int64_t *aLastInsertRowID); \
@@ -187,6 +187,7 @@ class NS_NO_VTABLE mozIStorageConnection : public nsISupports {
   NS_IMETHOD Close(void) { return _to Close(); } \
   NS_IMETHOD AsyncClose(mozIStorageCompletionCallback *aCallback) { return _to AsyncClose(aCallback); } \
   NS_IMETHOD Clone(bool aReadOnly, mozIStorageConnection * *_retval) { return _to Clone(aReadOnly, _retval); } \
+  NS_IMETHOD GetDefaultPageSize(int32_t *aDefaultPageSize) { return _to GetDefaultPageSize(aDefaultPageSize); } \
   NS_IMETHOD GetConnectionReady(bool *aConnectionReady) { return _to GetConnectionReady(aConnectionReady); } \
   NS_IMETHOD GetDatabaseFile(nsIFile * *aDatabaseFile) { return _to GetDatabaseFile(aDatabaseFile); } \
   NS_IMETHOD GetLastInsertRowID(int64_t *aLastInsertRowID) { return _to GetLastInsertRowID(aLastInsertRowID); } \
@@ -220,6 +221,7 @@ class NS_NO_VTABLE mozIStorageConnection : public nsISupports {
   NS_IMETHOD Close(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->Close(); } \
   NS_IMETHOD AsyncClose(mozIStorageCompletionCallback *aCallback) { return !_to ? NS_ERROR_NULL_POINTER : _to->AsyncClose(aCallback); } \
   NS_IMETHOD Clone(bool aReadOnly, mozIStorageConnection * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->Clone(aReadOnly, _retval); } \
+  NS_IMETHOD GetDefaultPageSize(int32_t *aDefaultPageSize) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetDefaultPageSize(aDefaultPageSize); } \
   NS_IMETHOD GetConnectionReady(bool *aConnectionReady) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetConnectionReady(aConnectionReady); } \
   NS_IMETHOD GetDatabaseFile(nsIFile * *aDatabaseFile) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetDatabaseFile(aDatabaseFile); } \
   NS_IMETHOD GetLastInsertRowID(int64_t *aLastInsertRowID) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetLastInsertRowID(aLastInsertRowID); } \
@@ -294,6 +296,12 @@ NS_IMETHODIMP _MYCLASS_::AsyncClose(mozIStorageCompletionCallback *aCallback)
 
 /* mozIStorageConnection clone ([optional] in boolean aReadOnly); */
 NS_IMETHODIMP _MYCLASS_::Clone(bool aReadOnly, mozIStorageConnection * *_retval)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* readonly attribute long defaultPageSize; */
+NS_IMETHODIMP _MYCLASS_::GetDefaultPageSize(int32_t *aDefaultPageSize)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

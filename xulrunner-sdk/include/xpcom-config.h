@@ -24,9 +24,6 @@
 /* Define if a dyanmic_cast to void* gives the most derived object */
 #define HAVE_CPP_DYNAMIC_CAST_TO_VOID_PTR 1
 
-/* Define if the c++ compiler supports partial template specialization */
-#define HAVE_CPP_PARTIAL_SPECIALIZATION 1
-
 /* Define if the c++ compiler has trouble comparing a constant
  * reference to a templatized class to zero
  */

@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/xpath/nsIDOMXPathNamespace.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/xpath/nsIDOMXPathNamespace.idl
  */
 
 #ifndef __gen_nsIDOMXPathNamespace_h__
@@ -16,11 +16,11 @@
 #endif
 
 /* starting interface:    nsIDOMXPathNamespace */
-#define NS_IDOMXPATHNAMESPACE_IID_STR "47836446-3c3d-440f-99f6-984d8a2f2e04"
+#define NS_IDOMXPATHNAMESPACE_IID_STR "558c2ab9-513e-43c2-afea-4930024b15b3"
 
 #define NS_IDOMXPATHNAMESPACE_IID \
-  {0x47836446, 0x3c3d, 0x440f, \
-    { 0x99, 0xf6, 0x98, 0x4d, 0x8a, 0x2f, 0x2e, 0x04 }}
+  {0x558c2ab9, 0x513e, 0x43c2, \
+    { 0xaf, 0xea, 0x49, 0x30, 0x02, 0x4b, 0x15, 0xb3 }}
 
 class NS_NO_VTABLE nsIDOMXPathNamespace : public nsIDOMNode {
  public: 

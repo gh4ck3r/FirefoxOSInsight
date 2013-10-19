@@ -8,7 +8,9 @@
 
 #include "nsCycleCollectionParticipant.h"
 #include "mozilla/Assertions.h"
+#include "js/RootingAPI.h"
 
+struct JSTracer;
 class JSObject;
 struct JSContext;
 class XPCWrappedNativeScope;
@@ -125,12 +127,6 @@ public:
                "This flag should be set before creating any wrappers.");
     mWrapperPtrBits = WRAPPER_IS_DOM_BINDING;
   }
-  void ClearIsDOMBinding()
-  {
-    MOZ_ASSERT(!mWrapperPtrBits || mWrapperPtrBits == WRAPPER_IS_DOM_BINDING,
-               "This flag should be cleared before creating any wrappers.");
-    mWrapperPtrBits = 0;
-  }
 
   bool IsDOMBinding() const
   {
@@ -153,17 +149,11 @@ public:
 
   /**
    * Wrap the object corresponding to this wrapper cache. If non-null is
-   * returned, the object has already been stored in the wrapper cache and the
-   * value set in triedToWrap is meaningless. If null is returned then
-   * triedToWrap indicates whether an error occurred, if it's false then the
-   * object doesn't actually support creating a wrapper through its WrapObject
-   * hook.
+   * returned, the object has already been stored in the wrapper cache.
    */
-  virtual JSObject* WrapObject(JSContext *cx, JSObject *scope,
-                               bool *triedToWrap)
+  virtual JSObject* WrapObject(JSContext *cx, JS::Handle<JSObject*> scope)
   {
     MOZ_ASSERT(!IsDOMBinding(), "Someone forgot to override WrapObject");
-    *triedToWrap = false;
     return nullptr;
   }
 
@@ -199,6 +189,8 @@ private:
     mWrapperPtrBits = reinterpret_cast<uintptr_t>(aWrapper) |
                       (mWrapperPtrBits & WRAPPER_IS_DOM_BINDING);
   }
+
+  void TraceJSObjectFromBits(JSTracer *aTrc, const char *aName);
 
   /**
    * If this bit is set then we're preserving the wrapper, which in effect ties

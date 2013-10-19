@@ -312,10 +312,7 @@ static inline mozilla::css::Side operator++(mozilla::css::Side& side, int) {
 #define NS_STYLE_CLEAR_RIGHT                    2
 #define NS_STYLE_CLEAR_LEFT_AND_RIGHT           3
 #define NS_STYLE_CLEAR_LINE                     4
-#define NS_STYLE_CLEAR_BLOCK                    5
-#define NS_STYLE_CLEAR_COLUMN                   6
-#define NS_STYLE_CLEAR_PAGE                     7
-#define NS_STYLE_CLEAR_LAST_VALUE NS_STYLE_CLEAR_PAGE
+#define NS_STYLE_CLEAR_LAST_VALUE NS_STYLE_CLEAR_LINE
 
 // See nsStyleContent
 #define NS_STYLE_CONTENT_OPEN_QUOTE             0
@@ -809,6 +806,9 @@ static inline mozilla::css::Side operator++(mozilla::css::Side& side, int) {
 // See nsStyleColumn
 #define NS_STYLE_COLUMN_COUNT_AUTO              0
 #define NS_STYLE_COLUMN_COUNT_UNLIMITED         (-1)
+
+#define NS_STYLE_COLUMN_FILL_AUTO               0
+#define NS_STYLE_COLUMN_FILL_BALANCE            1
 
 // See nsStyleUIReset
 #define NS_STYLE_IME_MODE_AUTO                  0

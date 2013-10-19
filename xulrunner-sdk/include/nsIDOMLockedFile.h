@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/file/nsIDOMLockedFile.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/file/nsIDOMLockedFile.idl
  */
 
 #ifndef __gen_nsIDOMLockedFile_h__
@@ -20,15 +20,13 @@ class nsIDOMEventListener; /* forward declaration */
 
 class nsIDOMFileHandle; /* forward declaration */
 
-class nsIDOMFileRequest; /* forward declaration */
-
 
 /* starting interface:    nsIDOMLockedFile */
-#define NS_IDOMLOCKEDFILE_IID_STR "589e0d26-20b5-4355-ac1e-9c6fd0dd83f2"
+#define NS_IDOMLOCKEDFILE_IID_STR "a09cdc35-6b1e-42ce-95bb-f8f10a354202"
 
 #define NS_IDOMLOCKEDFILE_IID \
-  {0x589e0d26, 0x20b5, 0x4355, \
-    { 0xac, 0x1e, 0x9c, 0x6f, 0xd0, 0xdd, 0x83, 0xf2 }}
+  {0xa09cdc35, 0x6b1e, 0x42ce, \
+    { 0x95, 0xbb, 0xf8, 0xf1, 0x0a, 0x35, 0x42, 0x02 }}
 
 class NS_NO_VTABLE nsIDOMLockedFile : public nsISupports {
  public: 
@@ -48,26 +46,26 @@ class NS_NO_VTABLE nsIDOMLockedFile : public nsISupports {
   NS_IMETHOD GetLocation(JSContext* cx, JS::Value *aLocation) = 0;
   NS_IMETHOD SetLocation(JSContext* cx, const JS::Value & aLocation) = 0;
 
-  /* [implicit_jscontext] nsIDOMFileRequest getMetadata ([optional] in jsval parameters); */
-  NS_IMETHOD GetMetadata(const JS::Value & parameters, JSContext* cx, nsIDOMFileRequest * *_retval) = 0;
+  /* [implicit_jscontext] nsISupports getMetadata ([optional] in jsval parameters); */
+  NS_IMETHOD GetMetadata(const JS::Value & parameters, JSContext* cx, nsISupports * *_retval) = 0;
 
-  /* [implicit_jscontext] nsIDOMFileRequest readAsArrayBuffer (in unsigned long long size); */
-  NS_IMETHOD ReadAsArrayBuffer(uint64_t size, JSContext* cx, nsIDOMFileRequest * *_retval) = 0;
+  /* [implicit_jscontext] nsISupports readAsArrayBuffer (in unsigned long long size); */
+  NS_IMETHOD ReadAsArrayBuffer(uint64_t size, JSContext* cx, nsISupports * *_retval) = 0;
 
-  /* nsIDOMFileRequest readAsText (in unsigned long long size, [optional] in DOMString encoding); */
-  NS_IMETHOD ReadAsText(uint64_t size, const nsAString & encoding, nsIDOMFileRequest * *_retval) = 0;
+  /* nsISupports readAsText (in unsigned long long size, [optional] in DOMString encoding); */
+  NS_IMETHOD ReadAsText(uint64_t size, const nsAString & encoding, nsISupports * *_retval) = 0;
 
-  /* [implicit_jscontext] nsIDOMFileRequest write (in jsval value); */
-  NS_IMETHOD Write(const JS::Value & value, JSContext* cx, nsIDOMFileRequest * *_retval) = 0;
+  /* [implicit_jscontext] nsISupports write (in jsval value); */
+  NS_IMETHOD Write(const JS::Value & value, JSContext* cx, nsISupports * *_retval) = 0;
 
-  /* [implicit_jscontext] nsIDOMFileRequest append (in jsval value); */
-  NS_IMETHOD Append(const JS::Value & value, JSContext* cx, nsIDOMFileRequest * *_retval) = 0;
+  /* [implicit_jscontext] nsISupports append (in jsval value); */
+  NS_IMETHOD Append(const JS::Value & value, JSContext* cx, nsISupports * *_retval) = 0;
 
-  /* [optional_argc] nsIDOMFileRequest truncate ([optional] in unsigned long long size); */
-  NS_IMETHOD Truncate(uint64_t size, uint8_t _argc, nsIDOMFileRequest * *_retval) = 0;
+  /* [optional_argc] nsISupports truncate ([optional] in unsigned long long size); */
+  NS_IMETHOD Truncate(uint64_t size, uint8_t _argc, nsISupports * *_retval) = 0;
 
-  /* nsIDOMFileRequest flush (); */
-  NS_IMETHOD Flush(nsIDOMFileRequest * *_retval) = 0;
+  /* nsISupports flush (); */
+  NS_IMETHOD Flush(nsISupports * *_retval) = 0;
 
   /* void abort (); */
   NS_IMETHOD Abort(void) = 0;
@@ -95,13 +93,13 @@ class NS_NO_VTABLE nsIDOMLockedFile : public nsISupports {
   NS_IMETHOD GetActive(bool *aActive); \
   NS_IMETHOD GetLocation(JSContext* cx, JS::Value *aLocation); \
   NS_IMETHOD SetLocation(JSContext* cx, const JS::Value & aLocation); \
-  NS_IMETHOD GetMetadata(const JS::Value & parameters, JSContext* cx, nsIDOMFileRequest * *_retval); \
-  NS_IMETHOD ReadAsArrayBuffer(uint64_t size, JSContext* cx, nsIDOMFileRequest * *_retval); \
-  NS_IMETHOD ReadAsText(uint64_t size, const nsAString & encoding, nsIDOMFileRequest * *_retval); \
-  NS_IMETHOD Write(const JS::Value & value, JSContext* cx, nsIDOMFileRequest * *_retval); \
-  NS_IMETHOD Append(const JS::Value & value, JSContext* cx, nsIDOMFileRequest * *_retval); \
-  NS_IMETHOD Truncate(uint64_t size, uint8_t _argc, nsIDOMFileRequest * *_retval); \
-  NS_IMETHOD Flush(nsIDOMFileRequest * *_retval); \
+  NS_IMETHOD GetMetadata(const JS::Value & parameters, JSContext* cx, nsISupports * *_retval); \
+  NS_IMETHOD ReadAsArrayBuffer(uint64_t size, JSContext* cx, nsISupports * *_retval); \
+  NS_IMETHOD ReadAsText(uint64_t size, const nsAString & encoding, nsISupports * *_retval); \
+  NS_IMETHOD Write(const JS::Value & value, JSContext* cx, nsISupports * *_retval); \
+  NS_IMETHOD Append(const JS::Value & value, JSContext* cx, nsISupports * *_retval); \
+  NS_IMETHOD Truncate(uint64_t size, uint8_t _argc, nsISupports * *_retval); \
+  NS_IMETHOD Flush(nsISupports * *_retval); \
   NS_IMETHOD Abort(void); \
   NS_IMETHOD GetOncomplete(JSContext* cx, JS::Value *aOncomplete); \
   NS_IMETHOD SetOncomplete(JSContext* cx, const JS::Value & aOncomplete); \
@@ -117,13 +115,13 @@ class NS_NO_VTABLE nsIDOMLockedFile : public nsISupports {
   NS_IMETHOD GetActive(bool *aActive) { return _to GetActive(aActive); } \
   NS_IMETHOD GetLocation(JSContext* cx, JS::Value *aLocation) { return _to GetLocation(cx, aLocation); } \
   NS_IMETHOD SetLocation(JSContext* cx, const JS::Value & aLocation) { return _to SetLocation(cx, aLocation); } \
-  NS_IMETHOD GetMetadata(const JS::Value & parameters, JSContext* cx, nsIDOMFileRequest * *_retval) { return _to GetMetadata(parameters, cx, _retval); } \
-  NS_IMETHOD ReadAsArrayBuffer(uint64_t size, JSContext* cx, nsIDOMFileRequest * *_retval) { return _to ReadAsArrayBuffer(size, cx, _retval); } \
-  NS_IMETHOD ReadAsText(uint64_t size, const nsAString & encoding, nsIDOMFileRequest * *_retval) { return _to ReadAsText(size, encoding, _retval); } \
-  NS_IMETHOD Write(const JS::Value & value, JSContext* cx, nsIDOMFileRequest * *_retval) { return _to Write(value, cx, _retval); } \
-  NS_IMETHOD Append(const JS::Value & value, JSContext* cx, nsIDOMFileRequest * *_retval) { return _to Append(value, cx, _retval); } \
-  NS_IMETHOD Truncate(uint64_t size, uint8_t _argc, nsIDOMFileRequest * *_retval) { return _to Truncate(size, _argc, _retval); } \
-  NS_IMETHOD Flush(nsIDOMFileRequest * *_retval) { return _to Flush(_retval); } \
+  NS_IMETHOD GetMetadata(const JS::Value & parameters, JSContext* cx, nsISupports * *_retval) { return _to GetMetadata(parameters, cx, _retval); } \
+  NS_IMETHOD ReadAsArrayBuffer(uint64_t size, JSContext* cx, nsISupports * *_retval) { return _to ReadAsArrayBuffer(size, cx, _retval); } \
+  NS_IMETHOD ReadAsText(uint64_t size, const nsAString & encoding, nsISupports * *_retval) { return _to ReadAsText(size, encoding, _retval); } \
+  NS_IMETHOD Write(const JS::Value & value, JSContext* cx, nsISupports * *_retval) { return _to Write(value, cx, _retval); } \
+  NS_IMETHOD Append(const JS::Value & value, JSContext* cx, nsISupports * *_retval) { return _to Append(value, cx, _retval); } \
+  NS_IMETHOD Truncate(uint64_t size, uint8_t _argc, nsISupports * *_retval) { return _to Truncate(size, _argc, _retval); } \
+  NS_IMETHOD Flush(nsISupports * *_retval) { return _to Flush(_retval); } \
   NS_IMETHOD Abort(void) { return _to Abort(); } \
   NS_IMETHOD GetOncomplete(JSContext* cx, JS::Value *aOncomplete) { return _to GetOncomplete(cx, aOncomplete); } \
   NS_IMETHOD SetOncomplete(JSContext* cx, const JS::Value & aOncomplete) { return _to SetOncomplete(cx, aOncomplete); } \
@@ -139,13 +137,13 @@ class NS_NO_VTABLE nsIDOMLockedFile : public nsISupports {
   NS_IMETHOD GetActive(bool *aActive) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetActive(aActive); } \
   NS_IMETHOD GetLocation(JSContext* cx, JS::Value *aLocation) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetLocation(cx, aLocation); } \
   NS_IMETHOD SetLocation(JSContext* cx, const JS::Value & aLocation) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetLocation(cx, aLocation); } \
-  NS_IMETHOD GetMetadata(const JS::Value & parameters, JSContext* cx, nsIDOMFileRequest * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetMetadata(parameters, cx, _retval); } \
-  NS_IMETHOD ReadAsArrayBuffer(uint64_t size, JSContext* cx, nsIDOMFileRequest * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->ReadAsArrayBuffer(size, cx, _retval); } \
-  NS_IMETHOD ReadAsText(uint64_t size, const nsAString & encoding, nsIDOMFileRequest * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->ReadAsText(size, encoding, _retval); } \
-  NS_IMETHOD Write(const JS::Value & value, JSContext* cx, nsIDOMFileRequest * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->Write(value, cx, _retval); } \
-  NS_IMETHOD Append(const JS::Value & value, JSContext* cx, nsIDOMFileRequest * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->Append(value, cx, _retval); } \
-  NS_IMETHOD Truncate(uint64_t size, uint8_t _argc, nsIDOMFileRequest * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->Truncate(size, _argc, _retval); } \
-  NS_IMETHOD Flush(nsIDOMFileRequest * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->Flush(_retval); } \
+  NS_IMETHOD GetMetadata(const JS::Value & parameters, JSContext* cx, nsISupports * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetMetadata(parameters, cx, _retval); } \
+  NS_IMETHOD ReadAsArrayBuffer(uint64_t size, JSContext* cx, nsISupports * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->ReadAsArrayBuffer(size, cx, _retval); } \
+  NS_IMETHOD ReadAsText(uint64_t size, const nsAString & encoding, nsISupports * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->ReadAsText(size, encoding, _retval); } \
+  NS_IMETHOD Write(const JS::Value & value, JSContext* cx, nsISupports * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->Write(value, cx, _retval); } \
+  NS_IMETHOD Append(const JS::Value & value, JSContext* cx, nsISupports * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->Append(value, cx, _retval); } \
+  NS_IMETHOD Truncate(uint64_t size, uint8_t _argc, nsISupports * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->Truncate(size, _argc, _retval); } \
+  NS_IMETHOD Flush(nsISupports * *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->Flush(_retval); } \
   NS_IMETHOD Abort(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->Abort(); } \
   NS_IMETHOD GetOncomplete(JSContext* cx, JS::Value *aOncomplete) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetOncomplete(cx, aOncomplete); } \
   NS_IMETHOD SetOncomplete(JSContext* cx, const JS::Value & aOncomplete) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetOncomplete(cx, aOncomplete); } \
@@ -214,44 +212,44 @@ NS_IMETHODIMP nsDOMLockedFile::SetLocation(JSContext* cx, const JS::Value & aLoc
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* [implicit_jscontext] nsIDOMFileRequest getMetadata ([optional] in jsval parameters); */
-NS_IMETHODIMP nsDOMLockedFile::GetMetadata(const JS::Value & parameters, JSContext* cx, nsIDOMFileRequest * *_retval)
+/* [implicit_jscontext] nsISupports getMetadata ([optional] in jsval parameters); */
+NS_IMETHODIMP nsDOMLockedFile::GetMetadata(const JS::Value & parameters, JSContext* cx, nsISupports * *_retval)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* [implicit_jscontext] nsIDOMFileRequest readAsArrayBuffer (in unsigned long long size); */
-NS_IMETHODIMP nsDOMLockedFile::ReadAsArrayBuffer(uint64_t size, JSContext* cx, nsIDOMFileRequest * *_retval)
+/* [implicit_jscontext] nsISupports readAsArrayBuffer (in unsigned long long size); */
+NS_IMETHODIMP nsDOMLockedFile::ReadAsArrayBuffer(uint64_t size, JSContext* cx, nsISupports * *_retval)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* nsIDOMFileRequest readAsText (in unsigned long long size, [optional] in DOMString encoding); */
-NS_IMETHODIMP nsDOMLockedFile::ReadAsText(uint64_t size, const nsAString & encoding, nsIDOMFileRequest * *_retval)
+/* nsISupports readAsText (in unsigned long long size, [optional] in DOMString encoding); */
+NS_IMETHODIMP nsDOMLockedFile::ReadAsText(uint64_t size, const nsAString & encoding, nsISupports * *_retval)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* [implicit_jscontext] nsIDOMFileRequest write (in jsval value); */
-NS_IMETHODIMP nsDOMLockedFile::Write(const JS::Value & value, JSContext* cx, nsIDOMFileRequest * *_retval)
+/* [implicit_jscontext] nsISupports write (in jsval value); */
+NS_IMETHODIMP nsDOMLockedFile::Write(const JS::Value & value, JSContext* cx, nsISupports * *_retval)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* [implicit_jscontext] nsIDOMFileRequest append (in jsval value); */
-NS_IMETHODIMP nsDOMLockedFile::Append(const JS::Value & value, JSContext* cx, nsIDOMFileRequest * *_retval)
+/* [implicit_jscontext] nsISupports append (in jsval value); */
+NS_IMETHODIMP nsDOMLockedFile::Append(const JS::Value & value, JSContext* cx, nsISupports * *_retval)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* [optional_argc] nsIDOMFileRequest truncate ([optional] in unsigned long long size); */
-NS_IMETHODIMP nsDOMLockedFile::Truncate(uint64_t size, uint8_t _argc, nsIDOMFileRequest * *_retval)
+/* [optional_argc] nsISupports truncate ([optional] in unsigned long long size); */
+NS_IMETHODIMP nsDOMLockedFile::Truncate(uint64_t size, uint8_t _argc, nsISupports * *_retval)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* nsIDOMFileRequest flush (); */
-NS_IMETHODIMP nsDOMLockedFile::Flush(nsIDOMFileRequest * *_retval)
+/* nsISupports flush (); */
+NS_IMETHODIMP nsDOMLockedFile::Flush(nsISupports * *_retval)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

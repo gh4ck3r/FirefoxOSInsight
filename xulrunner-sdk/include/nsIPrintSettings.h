@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/widget/nsIPrintSettings.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/widget/nsIPrintSettings.idl
  */
 
 #ifndef __gen_nsIPrintSettings_h__
@@ -20,11 +20,11 @@ class nsIPrintSession; /* forward declaration */
 
 
 /* starting interface:    nsIPrintSettings */
-#define NS_IPRINTSETTINGS_IID_STR "a65cfa37-b381-4fe9-81b7-db08853f54ad"
+#define NS_IPRINTSETTINGS_IID_STR "1bcfc611-8941-4c39-9e06-7116e564a1ce"
 
 #define NS_IPRINTSETTINGS_IID \
-  {0xa65cfa37, 0xb381, 0x4fe9, \
-    { 0x81, 0xb7, 0xdb, 0x08, 0x85, 0x3f, 0x54, 0xad }}
+  {0x1bcfc611, 0x8941, 0x4c39, \
+    { 0x9e, 0x06, 0x71, 0x16, 0xe5, 0x64, 0xa1, 0xce }}
 
 class NS_NO_VTABLE nsIPrintSettings : public nsISupports {
  public: 
@@ -42,6 +42,8 @@ class NS_NO_VTABLE nsIPrintSettings : public nsISupports {
     kInitSaveBGColors = 128U,
     kInitSaveBGImages = 256U,
     kInitSavePaperSize = 512U,
+    kInitSaveResolution = 1024U,
+    kInitSaveDuplex = 2048U,
     kInitSavePaperData = 8192U,
     kInitSaveUnwriteableMargins = 16384U,
     kInitSaveEdges = 32768U,
@@ -326,6 +328,14 @@ class NS_NO_VTABLE nsIPrintSettings : public nsISupports {
   NS_IMETHOD GetPrintPageDelay(int32_t *aPrintPageDelay) = 0;
   NS_IMETHOD SetPrintPageDelay(int32_t aPrintPageDelay) = 0;
 
+  /* attribute long resolution; */
+  NS_IMETHOD GetResolution(int32_t *aResolution) = 0;
+  NS_IMETHOD SetResolution(int32_t aResolution) = 0;
+
+  /* attribute long duplex; */
+  NS_IMETHOD GetDuplex(int32_t *aDuplex) = 0;
+  NS_IMETHOD SetDuplex(int32_t aDuplex) = 0;
+
   /* attribute boolean isInitializedFromPrinter; */
   NS_IMETHOD GetIsInitializedFromPrinter(bool *aIsInitializedFromPrinter) = 0;
   NS_IMETHOD SetIsInitializedFromPrinter(bool aIsInitializedFromPrinter) = 0;
@@ -482,6 +492,10 @@ class NS_NO_VTABLE nsIPrintSettings : public nsISupports {
   NS_IMETHOD SetOutputFormat(int16_t aOutputFormat); \
   NS_IMETHOD GetPrintPageDelay(int32_t *aPrintPageDelay); \
   NS_IMETHOD SetPrintPageDelay(int32_t aPrintPageDelay); \
+  NS_IMETHOD GetResolution(int32_t *aResolution); \
+  NS_IMETHOD SetResolution(int32_t aResolution); \
+  NS_IMETHOD GetDuplex(int32_t *aDuplex); \
+  NS_IMETHOD SetDuplex(int32_t aDuplex); \
   NS_IMETHOD GetIsInitializedFromPrinter(bool *aIsInitializedFromPrinter); \
   NS_IMETHOD SetIsInitializedFromPrinter(bool aIsInitializedFromPrinter); \
   NS_IMETHOD GetIsInitializedFromPrefs(bool *aIsInitializedFromPrefs); \
@@ -613,6 +627,10 @@ class NS_NO_VTABLE nsIPrintSettings : public nsISupports {
   NS_IMETHOD SetOutputFormat(int16_t aOutputFormat) { return _to SetOutputFormat(aOutputFormat); } \
   NS_IMETHOD GetPrintPageDelay(int32_t *aPrintPageDelay) { return _to GetPrintPageDelay(aPrintPageDelay); } \
   NS_IMETHOD SetPrintPageDelay(int32_t aPrintPageDelay) { return _to SetPrintPageDelay(aPrintPageDelay); } \
+  NS_IMETHOD GetResolution(int32_t *aResolution) { return _to GetResolution(aResolution); } \
+  NS_IMETHOD SetResolution(int32_t aResolution) { return _to SetResolution(aResolution); } \
+  NS_IMETHOD GetDuplex(int32_t *aDuplex) { return _to GetDuplex(aDuplex); } \
+  NS_IMETHOD SetDuplex(int32_t aDuplex) { return _to SetDuplex(aDuplex); } \
   NS_IMETHOD GetIsInitializedFromPrinter(bool *aIsInitializedFromPrinter) { return _to GetIsInitializedFromPrinter(aIsInitializedFromPrinter); } \
   NS_IMETHOD SetIsInitializedFromPrinter(bool aIsInitializedFromPrinter) { return _to SetIsInitializedFromPrinter(aIsInitializedFromPrinter); } \
   NS_IMETHOD GetIsInitializedFromPrefs(bool *aIsInitializedFromPrefs) { return _to GetIsInitializedFromPrefs(aIsInitializedFromPrefs); } \
@@ -744,6 +762,10 @@ class NS_NO_VTABLE nsIPrintSettings : public nsISupports {
   NS_IMETHOD SetOutputFormat(int16_t aOutputFormat) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetOutputFormat(aOutputFormat); } \
   NS_IMETHOD GetPrintPageDelay(int32_t *aPrintPageDelay) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetPrintPageDelay(aPrintPageDelay); } \
   NS_IMETHOD SetPrintPageDelay(int32_t aPrintPageDelay) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetPrintPageDelay(aPrintPageDelay); } \
+  NS_IMETHOD GetResolution(int32_t *aResolution) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetResolution(aResolution); } \
+  NS_IMETHOD SetResolution(int32_t aResolution) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetResolution(aResolution); } \
+  NS_IMETHOD GetDuplex(int32_t *aDuplex) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetDuplex(aDuplex); } \
+  NS_IMETHOD SetDuplex(int32_t aDuplex) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetDuplex(aDuplex); } \
   NS_IMETHOD GetIsInitializedFromPrinter(bool *aIsInitializedFromPrinter) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetIsInitializedFromPrinter(aIsInitializedFromPrinter); } \
   NS_IMETHOD SetIsInitializedFromPrinter(bool aIsInitializedFromPrinter) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetIsInitializedFromPrinter(aIsInitializedFromPrinter); } \
   NS_IMETHOD GetIsInitializedFromPrefs(bool *aIsInitializedFromPrefs) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetIsInitializedFromPrefs(aIsInitializedFromPrefs); } \
@@ -1363,6 +1385,26 @@ NS_IMETHODIMP nsPrintSettings::GetPrintPageDelay(int32_t *aPrintPageDelay)
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 NS_IMETHODIMP nsPrintSettings::SetPrintPageDelay(int32_t aPrintPageDelay)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* attribute long resolution; */
+NS_IMETHODIMP nsPrintSettings::GetResolution(int32_t *aResolution)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+NS_IMETHODIMP nsPrintSettings::SetResolution(int32_t aResolution)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* attribute long duplex; */
+NS_IMETHODIMP nsPrintSettings::GetDuplex(int32_t *aDuplex)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+NS_IMETHODIMP nsPrintSettings::SetDuplex(int32_t aDuplex)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

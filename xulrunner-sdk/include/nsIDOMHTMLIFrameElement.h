@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/html/nsIDOMHTMLIFrameElement.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/html/nsIDOMHTMLIFrameElement.idl
  */
 
 #ifndef __gen_nsIDOMHTMLIFrameElement_h__
@@ -16,11 +16,11 @@
 #endif
 
 /* starting interface:    nsIDOMHTMLIFrameElement */
-#define NS_IDOMHTMLIFRAMEELEMENT_IID_STR "a7bd1e34-3969-47ae-8c1d-2970132ba925"
+#define NS_IDOMHTMLIFRAMEELEMENT_IID_STR "21ffbe98-51f5-499e-8d6f-612ae798c1e1"
 
 #define NS_IDOMHTMLIFRAMEELEMENT_IID \
-  {0xa7bd1e34, 0x3969, 0x47ae, \
-    { 0x8c, 0x1d, 0x29, 0x70, 0x13, 0x2b, 0xa9, 0x25 }}
+  {0x21ffbe98, 0x51f5, 0x499e, \
+    { 0x8d, 0x6f, 0x61, 0x2a, 0xe7, 0x98, 0xc1, 0xe1 }}
 
 class NS_NO_VTABLE nsIDOMHTMLIFrameElement : public nsIDOMHTMLElement {
  public: 
@@ -77,9 +77,9 @@ class NS_NO_VTABLE nsIDOMHTMLIFrameElement : public nsIDOMHTMLElement {
   NS_IMETHOD GetSandbox(nsAString & aSandbox) = 0;
   NS_IMETHOD SetSandbox(const nsAString & aSandbox) = 0;
 
-  /* attribute boolean allowfullscreen; */
-  NS_IMETHOD GetAllowfullscreen(bool *aAllowfullscreen) = 0;
-  NS_IMETHOD SetAllowfullscreen(bool aAllowfullscreen) = 0;
+  /* attribute boolean allowFullscreen; */
+  NS_IMETHOD GetAllowFullscreen(bool *aAllowFullscreen) = 0;
+  NS_IMETHOD SetAllowFullscreen(bool aAllowFullscreen) = 0;
 
 };
 
@@ -111,8 +111,8 @@ class NS_NO_VTABLE nsIDOMHTMLIFrameElement : public nsIDOMHTMLElement {
   NS_IMETHOD GetContentWindow(nsIDOMWindow * *aContentWindow); \
   NS_IMETHOD GetSandbox(nsAString & aSandbox); \
   NS_IMETHOD SetSandbox(const nsAString & aSandbox); \
-  NS_IMETHOD GetAllowfullscreen(bool *aAllowfullscreen); \
-  NS_IMETHOD SetAllowfullscreen(bool aAllowfullscreen); 
+  NS_IMETHOD GetAllowFullscreen(bool *aAllowFullscreen); \
+  NS_IMETHOD SetAllowFullscreen(bool aAllowFullscreen); 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object. */
 #define NS_FORWARD_NSIDOMHTMLIFRAMEELEMENT(_to) \
@@ -140,8 +140,8 @@ class NS_NO_VTABLE nsIDOMHTMLIFrameElement : public nsIDOMHTMLElement {
   NS_IMETHOD GetContentWindow(nsIDOMWindow * *aContentWindow) { return _to GetContentWindow(aContentWindow); } \
   NS_IMETHOD GetSandbox(nsAString & aSandbox) { return _to GetSandbox(aSandbox); } \
   NS_IMETHOD SetSandbox(const nsAString & aSandbox) { return _to SetSandbox(aSandbox); } \
-  NS_IMETHOD GetAllowfullscreen(bool *aAllowfullscreen) { return _to GetAllowfullscreen(aAllowfullscreen); } \
-  NS_IMETHOD SetAllowfullscreen(bool aAllowfullscreen) { return _to SetAllowfullscreen(aAllowfullscreen); } 
+  NS_IMETHOD GetAllowFullscreen(bool *aAllowFullscreen) { return _to GetAllowFullscreen(aAllowFullscreen); } \
+  NS_IMETHOD SetAllowFullscreen(bool aAllowFullscreen) { return _to SetAllowFullscreen(aAllowFullscreen); } 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object in a safe way. */
 #define NS_FORWARD_SAFE_NSIDOMHTMLIFRAMEELEMENT(_to) \
@@ -169,8 +169,8 @@ class NS_NO_VTABLE nsIDOMHTMLIFrameElement : public nsIDOMHTMLElement {
   NS_IMETHOD GetContentWindow(nsIDOMWindow * *aContentWindow) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetContentWindow(aContentWindow); } \
   NS_IMETHOD GetSandbox(nsAString & aSandbox) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetSandbox(aSandbox); } \
   NS_IMETHOD SetSandbox(const nsAString & aSandbox) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetSandbox(aSandbox); } \
-  NS_IMETHOD GetAllowfullscreen(bool *aAllowfullscreen) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetAllowfullscreen(aAllowfullscreen); } \
-  NS_IMETHOD SetAllowfullscreen(bool aAllowfullscreen) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetAllowfullscreen(aAllowfullscreen); } 
+  NS_IMETHOD GetAllowFullscreen(bool *aAllowFullscreen) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetAllowFullscreen(aAllowFullscreen); } \
+  NS_IMETHOD SetAllowFullscreen(bool aAllowFullscreen) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetAllowFullscreen(aAllowFullscreen); } 
 
 #if 0
 /* Use the code below as a template for the implementation class for this interface. */
@@ -326,12 +326,12 @@ NS_IMETHODIMP nsDOMHTMLIFrameElement::SetSandbox(const nsAString & aSandbox)
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* attribute boolean allowfullscreen; */
-NS_IMETHODIMP nsDOMHTMLIFrameElement::GetAllowfullscreen(bool *aAllowfullscreen)
+/* attribute boolean allowFullscreen; */
+NS_IMETHODIMP nsDOMHTMLIFrameElement::GetAllowFullscreen(bool *aAllowFullscreen)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
-NS_IMETHODIMP nsDOMHTMLIFrameElement::SetAllowfullscreen(bool aAllowfullscreen)
+NS_IMETHODIMP nsDOMHTMLIFrameElement::SetAllowFullscreen(bool aAllowFullscreen)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

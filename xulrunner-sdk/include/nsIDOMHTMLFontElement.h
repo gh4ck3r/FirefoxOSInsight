@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/html/nsIDOMHTMLFontElement.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/html/nsIDOMHTMLFontElement.idl
  */
 
 #ifndef __gen_nsIDOMHTMLFontElement_h__
@@ -16,11 +16,11 @@
 #endif
 
 /* starting interface:    nsIDOMHTMLFontElement */
-#define NS_IDOMHTMLFONTELEMENT_IID_STR "eff9ceac-be69-4a94-9dd4-0c023def00b3"
+#define NS_IDOMHTMLFONTELEMENT_IID_STR "e4d86aad-f245-4901-877e-0ae233c5fd37"
 
 #define NS_IDOMHTMLFONTELEMENT_IID \
-  {0xeff9ceac, 0xbe69, 0x4a94, \
-    { 0x9d, 0xd4, 0x0c, 0x02, 0x3d, 0xef, 0x00, 0xb3 }}
+  {0xe4d86aad, 0xf245, 0x4901, \
+    { 0x87, 0x7e, 0x0a, 0xe2, 0x33, 0xc5, 0xfd, 0x37 }}
 
 class NS_NO_VTABLE nsIDOMHTMLFontElement : public nsIDOMHTMLElement {
  public: 

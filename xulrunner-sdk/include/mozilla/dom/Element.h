@@ -17,8 +17,6 @@
 #include "nsChangeHint.h"                  // for enum
 #include "nsEventStates.h"                 // for member
 #include "mozilla/dom/DirectionalityUtils.h"
-#include "nsCOMPtr.h"
-#include "nsAutoPtr.h"
 #include "nsIDOMElement.h"
 #include "nsIDOMDocumentFragment.h"
 #include "nsILinkHandler.h"
@@ -26,22 +24,15 @@
 #include "nsAttrAndChildArray.h"
 #include "mozFlushType.h"
 #include "nsDOMAttributeMap.h"
-#include "nsIWeakReference.h"
-#include "nsCycleCollectionParticipant.h"
-#include "nsIDocument.h"
-#include "nsIDOMNodeSelector.h"
 #include "nsIDOMXPathNSResolver.h"
 #include "nsPresContext.h"
 #include "nsDOMClassInfoID.h" // DOMCI_DATA
-#include "nsIDOMTouchEvent.h"
 #include "nsIInlineEventHandlers.h"
 #include "mozilla/CORSMode.h"
 #include "mozilla/Attributes.h"
 #include "nsContentUtils.h"
-#include "nsINodeList.h"
-#include "mozilla/ErrorResult.h"
 #include "nsIScrollableFrame.h"
-#include "nsIDOMAttr.h"
+#include "mozilla/dom/Attr.h"
 #include "nsISMILAttr.h"
 #include "nsClientRect.h"
 #include "nsEvent.h"
@@ -51,7 +42,7 @@
 
 class nsIDOMEventListener;
 class nsIFrame;
-class nsIDOMNamedNodeMap;
+class nsIDOMMozNamedAttrMap;
 class nsIDOMCSSStyleDeclaration;
 class nsIURI;
 class nsINodeInfo;
@@ -419,8 +410,6 @@ public:
     return SetAttr(aNameSpaceID, aName, nullptr, aValue, aNotify);
   }
 
-  NS_IMETHOD GetAttributes(nsIDOMNamedNodeMap** aAttributes);
-
   /**
    * Helper for SetAttr/SetParsedAttr. This method will return true if aNotify
    * is true or there are mutation listeners that must be triggered, the
@@ -514,7 +503,7 @@ private:
 
 protected:
   inline bool GetAttr(int32_t aNameSpaceID, nsIAtom* aName,
-                      mozilla::dom::DOMString& aResult) const
+                      DOMString& aResult) const
   {
     NS_ASSERTION(nullptr != aName, "must have attribute name");
     NS_ASSERTION(aNameSpaceID != kNameSpaceID_Unknown,
@@ -524,12 +513,26 @@ protected:
     const nsAttrValue* val = mAttrsAndChildren.GetAttr(aName, aNameSpaceID);
     if (val) {
       val->ToString(aResult);
+      return true;
     }
     // else DOMString comes pre-emptied.
-    return val != nullptr;
+    return false;
   }
 
 public:
+  inline bool GetAttr(const nsAString& aName, DOMString& aResult) const
+  {
+    MOZ_ASSERT(aResult.HasStringBuffer() && aResult.StringBufferLength() == 0,
+               "Should have empty string coming in");
+    const nsAttrValue* val = mAttrsAndChildren.GetAttr(aName);
+    if (val) {
+      val->ToString(aResult);
+      return true;
+    }
+    // else DOMString comes pre-emptied.
+    return false;
+  }
+
   void GetTagName(nsAString& aTagName) const
   {
     aTagName = NodeName();
@@ -538,7 +541,7 @@ public:
   {
     GetAttr(kNameSpaceID_None, nsGkAtoms::id, aId);
   }
-  void GetId(mozilla::dom::DOMString& aId) const
+  void GetId(DOMString& aId) const
   {
     GetAttr(kNameSpaceID_None, nsGkAtoms::id, aId);
   }
@@ -548,9 +551,9 @@ public:
   }
 
   nsDOMTokenList* GetClassList();
-  nsDOMAttributeMap* GetAttributes()
+  nsDOMAttributeMap* Attributes()
   {
-    nsDOMSlots *slots = DOMSlots();
+    nsDOMSlots* slots = DOMSlots();
     if (!slots->mAttributeMap) {
       slots->mAttributeMap = new nsDOMAttributeMap(this);
     }
@@ -559,12 +562,12 @@ public:
   }
   void GetAttribute(const nsAString& aName, nsString& aReturn)
   {
-    mozilla::dom::DOMString str;
+    DOMString str;
     GetAttribute(aName, str);
     str.ToString(aReturn);
   }
 
-  void GetAttribute(const nsAString& aName, mozilla::dom::DOMString& aReturn);
+  void GetAttribute(const nsAString& aName, DOMString& aReturn);
   void GetAttributeNS(const nsAString& aNamespaceURI,
                       const nsAString& aLocalName,
                       nsAString& aReturn);
@@ -646,18 +649,17 @@ public:
   {
     OwnerDoc()->RequestPointerLock(this);
   }
-  nsIDOMAttr* GetAttributeNode(const nsAString& aName);
-  already_AddRefed<nsIDOMAttr> SetAttributeNode(nsIDOMAttr* aNewAttr,
-                                                ErrorResult& aError);
-  already_AddRefed<nsIDOMAttr> RemoveAttributeNode(nsIDOMAttr* aOldAttr,
-                                                   ErrorResult& aError);
-  nsIDOMAttr* GetAttributeNodeNS(const nsAString& aNamespaceURI,
-                                 const nsAString& aLocalName,
-                                 ErrorResult& aError);
-  already_AddRefed<nsIDOMAttr> SetAttributeNodeNS(nsIDOMAttr* aNewAttr,
-                                                  ErrorResult& aError);
+  Attr* GetAttributeNode(const nsAString& aName);
+  already_AddRefed<Attr> SetAttributeNode(Attr& aNewAttr,
+                                          ErrorResult& aError);
+  already_AddRefed<Attr> RemoveAttributeNode(Attr& aOldAttr,
+                                             ErrorResult& aError);
+  Attr* GetAttributeNodeNS(const nsAString& aNamespaceURI,
+                           const nsAString& aLocalName);
+  already_AddRefed<Attr> SetAttributeNodeNS(Attr& aNewAttr,
+                                            ErrorResult& aError);
 
-  already_AddRefed<nsClientRectList> GetClientRects(ErrorResult& aError);
+  already_AddRefed<nsClientRectList> GetClientRects();
   already_AddRefed<nsClientRect> GetBoundingClientRect();
   void ScrollIntoView(bool aTop);
   int32_t ScrollTop()
@@ -719,7 +721,7 @@ public:
            0;
   }
 
-  virtual already_AddRefed<mozilla::dom::UndoManager> GetUndoManager()
+  virtual already_AddRefed<UndoManager> GetUndoManager()
   {
     return nullptr;
   }
@@ -729,18 +731,16 @@ public:
     return false;
   }
 
-  virtual void SetUndoScope(bool aUndoScope, mozilla::ErrorResult& aError)
+  virtual void SetUndoScope(bool aUndoScope, ErrorResult& aError)
   {
   }
 
-  virtual void GetInnerHTML(nsAString& aInnerHTML,
-                            mozilla::ErrorResult& aError);
-  virtual void SetInnerHTML(const nsAString& aInnerHTML,
-                            mozilla::ErrorResult& aError);
-  void GetOuterHTML(nsAString& aOuterHTML, mozilla::ErrorResult& aError);
-  void SetOuterHTML(const nsAString& aOuterHTML, mozilla::ErrorResult& aError);
+  virtual void GetInnerHTML(nsAString& aInnerHTML, ErrorResult& aError);
+  virtual void SetInnerHTML(const nsAString& aInnerHTML, ErrorResult& aError);
+  void GetOuterHTML(nsAString& aOuterHTML, ErrorResult& aError);
+  void SetOuterHTML(const nsAString& aOuterHTML, ErrorResult& aError);
   void InsertAdjacentHTML(const nsAString& aPosition, const nsAString& aText,
-                          mozilla::ErrorResult& aError);
+                          ErrorResult& aError);
 
   //----------------------------------------
 
@@ -776,7 +776,7 @@ public:
                                      nsInputEvent* aSourceEvent,
                                      nsIContent* aTarget,
                                      bool aFullDispatch,
-                                     const mozilla::widget::EventFlags* aFlags,
+                                     const widget::EventFlags* aFlags,
                                      nsEventStatus* aStatus);
 
   /**
@@ -887,8 +887,8 @@ public:
                            nsIDOMHTMLCollection** aResult);
   void GetClassList(nsISupports** aClassList);
 
-  virtual JSObject* WrapObject(JSContext *aCx, JSObject *aScope,
-                               bool *aTriedToWrap) MOZ_FINAL;
+  virtual JSObject* WrapObject(JSContext *aCx,
+                               JS::Handle<JSObject*> aScope) MOZ_FINAL MOZ_OVERRIDE;
 
   /**
    * Locate an nsIEditor rooted at this content node, if there is one.
@@ -1066,9 +1066,8 @@ protected:
     return this;
   }
 
-  nsIDOMAttr* GetAttributeNodeNSInternal(const nsAString& aNamespaceURI,
-                                         const nsAString& aLocalName,
-                                         ErrorResult& aError);
+  Attr* GetAttributeNodeNSInternal(const nsAString& aNamespaceURI,
+                                   const nsAString& aLocalName);
 
   void RegisterFreezableElement() {
     OwnerDoc()->RegisterFreezableElement(this);
@@ -1320,6 +1319,11 @@ NS_IMETHOD GetClassList(nsISupports** aClassList) MOZ_FINAL                   \
   Element::GetClassList(aClassList);                                          \
   return NS_OK;                                                               \
 }                                                                             \
+NS_IMETHOD GetAttributes(nsIDOMMozNamedAttrMap** aAttributes) MOZ_FINAL       \
+{                                                                             \
+  NS_ADDREF(*aAttributes = Attributes());                                     \
+  return NS_OK;                                                               \
+}                                                                             \
 using Element::GetAttribute;                                                  \
 NS_IMETHOD GetAttribute(const nsAString& name, nsAString& _retval) MOZ_FINAL  \
 {                                                                             \
@@ -1391,7 +1395,8 @@ NS_IMETHOD SetAttributeNode(nsIDOMAttr* newAttr,                              \
     return NS_ERROR_INVALID_POINTER;                                          \
   }                                                                           \
   mozilla::ErrorResult rv;                                                    \
-  *_retval = Element::SetAttributeNode(newAttr, rv).get();                    \
+  mozilla::dom::Attr* attr = static_cast<mozilla::dom::Attr*>(newAttr);       \
+  *_retval = Element::SetAttributeNode(*attr, rv).get();                      \
   return rv.ErrorCode();                                                      \
 }                                                                             \
 NS_IMETHOD RemoveAttributeNode(nsIDOMAttr* oldAttr,                           \
@@ -1401,24 +1406,24 @@ NS_IMETHOD RemoveAttributeNode(nsIDOMAttr* oldAttr,                           \
     return NS_ERROR_INVALID_POINTER;                                          \
   }                                                                           \
   mozilla::ErrorResult rv;                                                    \
-  *_retval = Element::RemoveAttributeNode(oldAttr, rv).get();                 \
+  mozilla::dom::Attr* attr = static_cast<mozilla::dom::Attr*>(oldAttr);       \
+  *_retval = Element::RemoveAttributeNode(*attr, rv).get();                   \
   return rv.ErrorCode();                                                      \
 }                                                                             \
 NS_IMETHOD GetAttributeNodeNS(const nsAString& namespaceURI,                  \
                               const nsAString& localName,                     \
                               nsIDOMAttr** _retval) MOZ_FINAL                 \
 {                                                                             \
-  mozilla::ErrorResult rv;                                                    \
   NS_IF_ADDREF(*_retval = Element::GetAttributeNodeNS(namespaceURI,           \
-                                                      localName,              \
-                                                      rv));                   \
-  return rv.ErrorCode();                                                      \
+                                                      localName));            \
+  return NS_OK;                                                               \
 }                                                                             \
 NS_IMETHOD SetAttributeNodeNS(nsIDOMAttr* newAttr,                            \
                               nsIDOMAttr** _retval) MOZ_FINAL                 \
 {                                                                             \
   mozilla::ErrorResult rv;                                                    \
-  *_retval = Element::SetAttributeNodeNS(newAttr, rv).get();                  \
+  mozilla::dom::Attr* attr = static_cast<mozilla::dom::Attr*>(newAttr);       \
+  *_retval = Element::SetAttributeNodeNS(*attr, rv).get();                    \
   return rv.ErrorCode();                                                      \
 }                                                                             \
 NS_IMETHOD GetElementsByTagName(const nsAString& name,                        \
@@ -1487,6 +1492,11 @@ NS_IMETHOD GetChildElementCount(uint32_t* aChildElementCount) MOZ_FINAL       \
   *aChildElementCount = Element::ChildElementCount();                         \
   return NS_OK;                                                               \
 }                                                                             \
+NS_IMETHOD MozRemove() MOZ_FINAL                                              \
+{                                                                             \
+  nsINode::Remove();                                                          \
+  return NS_OK;                                                               \
+}                                                                             \
 NS_IMETHOD GetOnmouseenter(JSContext* cx, JS::Value* aOnmouseenter) MOZ_FINAL \
 {                                                                             \
   return Element::GetOnmouseenter(cx, aOnmouseenter);                         \
@@ -1507,9 +1517,8 @@ NS_IMETHOD SetOnmouseleave(JSContext* cx,                                     \
 }                                                                             \
 NS_IMETHOD GetClientRects(nsIDOMClientRectList** _retval) MOZ_FINAL           \
 {                                                                             \
-  mozilla::ErrorResult rv;                                                    \
-  *_retval = Element::GetClientRects(rv).get();                               \
-  return rv.ErrorCode();                                                      \
+  *_retval = Element::GetClientRects().get();                                 \
+  return NS_OK;                                                               \
 }                                                                             \
 NS_IMETHOD GetBoundingClientRect(nsIDOMClientRect** _retval) MOZ_FINAL        \
 {                                                                             \

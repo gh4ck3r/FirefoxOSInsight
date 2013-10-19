@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/uriloader/exthandler/nsIExternalHelperAppService.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/uriloader/exthandler/nsIExternalHelperAppService.idl
  */
 
 #ifndef __gen_nsIExternalHelperAppService_h__
@@ -200,11 +200,11 @@ NS_IMETHODIMP _MYCLASS_::DeleteTemporaryPrivateFileWhenPossible(nsIFile *aTempor
 
 
 /* starting interface:    nsIHelperAppLauncher */
-#define NS_IHELPERAPPLAUNCHER_IID_STR "d9a19faf-497b-408c-b995-777d956b72c0"
+#define NS_IHELPERAPPLAUNCHER_IID_STR "acf2a516-7d7f-4771-8b22-6c4a559c088e"
 
 #define NS_IHELPERAPPLAUNCHER_IID \
-  {0xd9a19faf, 0x497b, 0x408c, \
-    { 0xb9, 0x95, 0x77, 0x7d, 0x95, 0x6b, 0x72, 0xc0 }}
+  {0xacf2a516, 0x7d7f, 0x4771, \
+    { 0x8b, 0x22, 0x6c, 0x4a, 0x55, 0x9c, 0x08, 0x8e }}
 
 class NS_NO_VTABLE nsIHelperAppLauncher : public nsICancelable {
  public: 
@@ -225,6 +225,9 @@ class NS_NO_VTABLE nsIHelperAppLauncher : public nsICancelable {
 
   /* void launchWithApplication (in nsIFile aApplication, in boolean aRememberThisPreference); */
   NS_IMETHOD LaunchWithApplication(nsIFile *aApplication, bool aRememberThisPreference) = 0;
+
+  /* void saveDestinationAvailable (in nsIFile aFile); */
+  NS_IMETHOD SaveDestinationAvailable(nsIFile *aFile) = 0;
 
   /* void setWebProgressListener (in nsIWebProgressListener2 aWebProgressListener); */
   NS_IMETHOD SetWebProgressListener(nsIWebProgressListener2 *aWebProgressListener) = 0;
@@ -255,6 +258,7 @@ class NS_NO_VTABLE nsIHelperAppLauncher : public nsICancelable {
   NS_IMETHOD GetSuggestedFileName(nsAString & aSuggestedFileName); \
   NS_IMETHOD SaveToDisk(nsIFile *aNewFileLocation, bool aRememberThisPreference); \
   NS_IMETHOD LaunchWithApplication(nsIFile *aApplication, bool aRememberThisPreference); \
+  NS_IMETHOD SaveDestinationAvailable(nsIFile *aFile); \
   NS_IMETHOD SetWebProgressListener(nsIWebProgressListener2 *aWebProgressListener); \
   NS_IMETHOD CloseProgressWindow(void); \
   NS_IMETHOD GetTargetFile(nsIFile * *aTargetFile); \
@@ -269,6 +273,7 @@ class NS_NO_VTABLE nsIHelperAppLauncher : public nsICancelable {
   NS_IMETHOD GetSuggestedFileName(nsAString & aSuggestedFileName) { return _to GetSuggestedFileName(aSuggestedFileName); } \
   NS_IMETHOD SaveToDisk(nsIFile *aNewFileLocation, bool aRememberThisPreference) { return _to SaveToDisk(aNewFileLocation, aRememberThisPreference); } \
   NS_IMETHOD LaunchWithApplication(nsIFile *aApplication, bool aRememberThisPreference) { return _to LaunchWithApplication(aApplication, aRememberThisPreference); } \
+  NS_IMETHOD SaveDestinationAvailable(nsIFile *aFile) { return _to SaveDestinationAvailable(aFile); } \
   NS_IMETHOD SetWebProgressListener(nsIWebProgressListener2 *aWebProgressListener) { return _to SetWebProgressListener(aWebProgressListener); } \
   NS_IMETHOD CloseProgressWindow(void) { return _to CloseProgressWindow(); } \
   NS_IMETHOD GetTargetFile(nsIFile * *aTargetFile) { return _to GetTargetFile(aTargetFile); } \
@@ -283,6 +288,7 @@ class NS_NO_VTABLE nsIHelperAppLauncher : public nsICancelable {
   NS_IMETHOD GetSuggestedFileName(nsAString & aSuggestedFileName) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetSuggestedFileName(aSuggestedFileName); } \
   NS_IMETHOD SaveToDisk(nsIFile *aNewFileLocation, bool aRememberThisPreference) { return !_to ? NS_ERROR_NULL_POINTER : _to->SaveToDisk(aNewFileLocation, aRememberThisPreference); } \
   NS_IMETHOD LaunchWithApplication(nsIFile *aApplication, bool aRememberThisPreference) { return !_to ? NS_ERROR_NULL_POINTER : _to->LaunchWithApplication(aApplication, aRememberThisPreference); } \
+  NS_IMETHOD SaveDestinationAvailable(nsIFile *aFile) { return !_to ? NS_ERROR_NULL_POINTER : _to->SaveDestinationAvailable(aFile); } \
   NS_IMETHOD SetWebProgressListener(nsIWebProgressListener2 *aWebProgressListener) { return !_to ? NS_ERROR_NULL_POINTER : _to->SetWebProgressListener(aWebProgressListener); } \
   NS_IMETHOD CloseProgressWindow(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->CloseProgressWindow(); } \
   NS_IMETHOD GetTargetFile(nsIFile * *aTargetFile) { return !_to ? NS_ERROR_NULL_POINTER : _to->GetTargetFile(aTargetFile); } \
@@ -348,6 +354,12 @@ NS_IMETHODIMP nsHelperAppLauncher::SaveToDisk(nsIFile *aNewFileLocation, bool aR
 
 /* void launchWithApplication (in nsIFile aApplication, in boolean aRememberThisPreference); */
 NS_IMETHODIMP nsHelperAppLauncher::LaunchWithApplication(nsIFile *aApplication, bool aRememberThisPreference)
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+
+/* void saveDestinationAvailable (in nsIFile aFile); */
+NS_IMETHODIMP nsHelperAppLauncher::SaveDestinationAvailable(nsIFile *aFile)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

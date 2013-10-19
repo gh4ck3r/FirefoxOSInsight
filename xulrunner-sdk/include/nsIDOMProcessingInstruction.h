@@ -1,5 +1,5 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_l64_bld-000000000/build/dom/interfaces/core/nsIDOMProcessingInstruction.idl
+ * DO NOT EDIT.  THIS FILE IS GENERATED FROM /builds/slave/rel-m-rel-xr_lx_bld-0000000000/build/dom/interfaces/core/nsIDOMProcessingInstruction.idl
  */
 
 #ifndef __gen_nsIDOMProcessingInstruction_h__
@@ -16,11 +16,11 @@
 #endif
 
 /* starting interface:    nsIDOMProcessingInstruction */
-#define NS_IDOMPROCESSINGINSTRUCTION_IID_STR "d754433f-4637-4a5f-9034-0388173ea254"
+#define NS_IDOMPROCESSINGINSTRUCTION_IID_STR "91f2e856-5596-44d6-b396-0a02d8ec28c6"
 
 #define NS_IDOMPROCESSINGINSTRUCTION_IID \
-  {0xd754433f, 0x4637, 0x4a5f, \
-    { 0x90, 0x34, 0x03, 0x88, 0x17, 0x3e, 0xa2, 0x54 }}
+  {0x91f2e856, 0x5596, 0x44d6, \
+    { 0xb3, 0x96, 0x0a, 0x02, 0xd8, 0xec, 0x28, 0xc6 }}
 
 class NS_NO_VTABLE nsIDOMProcessingInstruction : public nsIDOMCharacterData {
  public: 

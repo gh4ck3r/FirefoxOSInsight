@@ -28,6 +28,7 @@
 #include "mozilla/gfx/Types.h"
 #include "mozilla/Attributes.h"
 #include <algorithm>
+#include "nsUnicodeProperties.h"
 
 typedef struct _cairo_scaled_font cairo_scaled_font_t;
 
@@ -215,16 +216,21 @@ public:
         mIgnoreGDEF(false),
         mIgnoreGSUB(false),
         mSVGInitialized(false),
+        mHasSpaceFeaturesInitialized(false),
+        mHasSpaceFeatures(false),
+        mHasSpaceFeaturesKerning(false),
+        mHasSpaceFeaturesNonKerning(false),
+        mHasSpaceFeaturesSubDefault(false),
         mWeight(500), mStretch(NS_FONT_STRETCH_NORMAL),
-#ifdef MOZ_GRAPHITE
         mCheckedForGraphiteTables(false),
-#endif
         mHasCmapTable(false),
         mUVSOffset(0), mUVSData(nullptr),
         mUserFontData(nullptr),
         mSVGGlyphs(nullptr),
         mLanguageOverride(NO_FONT_LANGUAGE_OVERRIDE)
-    { }
+    {
+        memset(&mHasSpaceFeaturesSub, 0, sizeof(mHasSpaceFeaturesSub));
+    }
 
     virtual ~gfxFontEntry();
 
@@ -257,7 +263,6 @@ public:
 
     virtual bool IsSymbolFont();
 
-#ifdef MOZ_GRAPHITE
     inline bool HasGraphiteTables() {
         if (!mCheckedForGraphiteTables) {
             CheckForGraphiteTables();
@@ -265,7 +270,6 @@ public:
         }
         return mHasGraphiteTables;
     }
-#endif
 
     inline bool HasCmapTable() {
         if (!mCharacterMap) {
@@ -348,14 +352,20 @@ public:
     bool             mIgnoreGDEF  : 1;
     bool             mIgnoreGSUB  : 1;
     bool             mSVGInitialized : 1;
+    bool             mHasSpaceFeaturesInitialized : 1;
+    bool             mHasSpaceFeatures : 1;
+    bool             mHasSpaceFeaturesKerning : 1;
+    bool             mHasSpaceFeaturesNonKerning : 1;
+    bool             mHasSpaceFeaturesSubDefault : 1;
+
+    // bitvector of substitution space features per script
+    uint32_t         mHasSpaceFeaturesSub[(MOZ_NUM_SCRIPT_CODES + 31) / 32];
 
     uint16_t         mWeight;
     int16_t          mStretch;
 
-#ifdef MOZ_GRAPHITE
     bool             mHasGraphiteTables;
     bool             mCheckedForGraphiteTables;
-#endif
     bool             mHasCmapTable;
     nsRefPtr<gfxCharacterMap> mCharacterMap;
     uint32_t         mUVSOffset;
@@ -384,10 +394,13 @@ protected:
         mIgnoreGDEF(false),
         mIgnoreGSUB(false),
         mSVGInitialized(false),
+        mHasSpaceFeaturesInitialized(false),
+        mHasSpaceFeatures(false),
+        mHasSpaceFeaturesKerning(false),
+        mHasSpaceFeaturesNonKerning(false),
+        mHasSpaceFeaturesSubDefault(false),
         mWeight(500), mStretch(NS_FONT_STRETCH_NORMAL),
-#ifdef MOZ_GRAPHITE
         mCheckedForGraphiteTables(false),
-#endif
         mHasCmapTable(false),
         mUVSOffset(0), mUVSData(nullptr),
         mUserFontData(nullptr),
@@ -400,9 +413,7 @@ protected:
         return nullptr;
     }
 
-#ifdef MOZ_GRAPHITE
     virtual void CheckForGraphiteTables();
-#endif
 
 private:
 
@@ -433,18 +444,14 @@ private:
     class FontTableBlobData;
 
     /**
-     * FontTableHashEntry manages the entries of hb_blob_ts for two
-     * different situations:
+     * FontTableHashEntry manages the entries of hb_blob_t's containing font
+     * table data.
      *
-     * The common situation is to share font table across fonts with the same
+     * This is used to share font tables across fonts with the same
      * font entry (but different sizes) for use by HarfBuzz.  The hashtable
      * does not own a strong reference to the blob, but keeps a weak pointer,
      * managed by FontTableBlobData.  Similarly FontTableBlobData keeps only a
      * weak pointer to the hashtable, managed by FontTableHashEntry.
-     *
-     * Some font tables are saved here before they would get stripped by OTS
-     * sanitizing.  These are retained for harfbuzz, which does its own
-     * sanitizing.  The hashtable owns a reference, so ownership is simple.
      */
 
     class FontTableHashEntry : public nsUint32HashKey
@@ -476,10 +483,6 @@ private:
         hb_blob_t *
         ShareTableAndGetBlob(FallibleTArray<uint8_t>& aTable,
                              nsTHashtable<FontTableHashEntry> *aHashtable);
-
-        // Transfer (not copy) elements of aTable to a new hb_blob_t that is
-        // owned by the hashtable entry.
-        void SaveTable(FallibleTArray<uint8_t>& aTable);
 
         // Return a strong reference to the blob.
         // Callers must hb_blob_destroy the returned blob.
@@ -1282,12 +1285,10 @@ public:
         return mFontEntry->HasCmapTable();
     }
 
-#ifdef MOZ_GRAPHITE
     // check whether this is an sfnt we can potentially use with Graphite
     bool FontCanSupportGraphite() {
         return mFontEntry->HasGraphiteTables();
     }
-#endif
 
     // Access to raw font table data (needed for Harfbuzz):
     // returns a pointer to data owned by the fontEntry or the OS,
@@ -1382,7 +1383,6 @@ public:
     struct THEBES_API RunMetrics {
         RunMetrics() {
             mAdvanceWidth = mAscent = mDescent = 0.0;
-            mBoundingBox = gfxRect(0,0,0,0);
         }
 
         void CombineWith(const RunMetrics& aOther, bool aOtherIsOnLeft);
@@ -1491,9 +1491,15 @@ public:
 
     bool IsSyntheticBold() { return mApplySyntheticBold; }
 
-    // Amount by which synthetic bold "fattens" the glyphs: 1/16 of the em-size
+    // Amount by which synthetic bold "fattens" the glyphs:
+    // For size S up to a threshold size T, we use (0.25 + 3S / 4T),
+    // so that the result ranges from 0.25 to 1.0; thereafter,
+    // simply use (S / T).
     gfxFloat GetSyntheticBoldOffset() {
-        return GetAdjustedSize() * (1.0 / 16.0);
+        gfxFloat size = GetAdjustedSize();
+        const gfxFloat threshold = 48.0;
+        return size < threshold ? (0.25 + 0.75 * size / threshold) :
+                                  (size / threshold);
     }
 
     gfxFontEntry *GetFontEntry() { return mFontEntry.get(); }
@@ -1575,6 +1581,51 @@ public:
     { return gfxPlatform::GetPlatform()->GetScaledFontForFont(aTarget, this); }
 
 protected:
+
+    bool HasSubstitutionRulesWithSpaceLookups(int32_t aRunScript) {
+        NS_ASSERTION(GetFontEntry()->mHasSpaceFeaturesInitialized,
+                     "need to initialize space lookup flags");
+        NS_ASSERTION(aRunScript < MOZ_NUM_SCRIPT_CODES, "weird script code");
+        if (aRunScript == MOZ_SCRIPT_INVALID ||
+            aRunScript >= MOZ_NUM_SCRIPT_CODES) {
+            return false;
+        }
+        uint32_t index = aRunScript >> 5;
+        uint32_t bit = aRunScript & 0x1f;
+        return (mFontEntry->mHasSpaceFeaturesSub[index] & (1 << bit)) != 0;
+    }
+
+    bool BypassShapedWordCache(int32_t aRunScript) {
+        // We record the presence of space-dependent features in the font entry
+        // so that subsequent instantiations for the same font face won't
+        // require us to re-check the tables; however, the actual check is done
+        // by gfxFont because not all font entry subclasses know how to create
+        // a harfbuzz face for introspection.
+        if (!mFontEntry->mHasSpaceFeaturesInitialized) {
+            CheckForFeaturesInvolvingSpace();
+        }
+
+        if (!mFontEntry->mHasSpaceFeatures) {
+            return false;
+        }
+
+        // if font has substitution rules or non-kerning positioning rules
+        // that involve spaces, bypass
+        if (HasSubstitutionRulesWithSpaceLookups(aRunScript) ||
+            mFontEntry->mHasSpaceFeaturesNonKerning ||
+            mFontEntry->mHasSpaceFeaturesSubDefault) {
+            return true;
+        }
+
+        // if kerning explicitly enabled/disabled via font-feature-settings or
+        // font-kerning and kerning rules use spaces, only bypass when enabled
+        if (mKerningSet && mFontEntry->mHasSpaceFeaturesKerning) {
+            return mKerningEnabled;
+        }
+
+        return false;
+    }
+
     // For 8-bit text, expand to 16-bit and then call the following method.
     bool ShapeText(gfxContext    *aContext,
                    const uint8_t *aText,
@@ -1630,6 +1681,14 @@ protected:
                                        uint32_t    aLength,
                                        int32_t     aScript,
                                        gfxTextRun *aTextRun);
+
+    void CheckForFeaturesInvolvingSpace();
+
+    // whether a given feature is included in feature settings from both the
+    // font and the style. aFeatureOn set if resolved feature value is non-zero
+    bool HasFeatureSet(uint32_t aFeature, bool& aFeatureOn);
+
+    static nsDataHashtable<nsUint32HashKey, int32_t> sScriptTagToCode;
 
     nsRefPtr<gfxFontEntry> mFontEntry;
 
@@ -1722,6 +1781,9 @@ protected:
     // by the platform
     bool                       mApplySyntheticBold;
 
+    bool                       mKerningSet;     // kerning explicitly set?
+    bool                       mKerningEnabled; // if set, on or off?
+
     nsExpirationState          mExpirationState;
     gfxFontStyle               mStyle;
     nsAutoTArray<gfxGlyphExtents*,1> mGlyphExtentsArray;
@@ -1741,9 +1803,8 @@ protected:
     // of the text run being shaped
     nsAutoPtr<gfxFontShaper>   mPlatformShaper;
     nsAutoPtr<gfxFontShaper>   mHarfBuzzShaper;
-#ifdef MOZ_GRAPHITE
     nsAutoPtr<gfxFontShaper>   mGraphiteShaper;
-#endif
+
     mozilla::RefPtr<mozilla::gfx::ScaledFont> mAzureScaledFont;
 
     // Create a default platform text shaper for this font.
@@ -2931,6 +2992,14 @@ public:
 
     nsExpirationState *GetExpirationState() { return &mExpirationState; }
 
+    // Tell the textrun to release its reference to its creating gfxFontGroup
+    // immediately, rather than on destruction. This is used for textruns
+    // that are actually owned by a gfxFontGroup, so that they don't keep it
+    // permanently alive due to a circular reference. (The caller of this is
+    // taking responsibility for ensuring the textrun will not outlive its
+    // mFontGroup.)
+    void ReleaseFontGroup();
+
     struct LigatureData {
         // textrun offsets of the start and end of the containing ligature
         uint32_t mLigatureStart;
@@ -2949,10 +3018,10 @@ public:
     
     // return storage used by this run, for memory reporter;
     // nsTransformedTextRun needs to override this as it holds additional data
-    virtual NS_MUST_OVERRIDE size_t
-        SizeOfExcludingThis(nsMallocSizeOfFun aMallocSizeOf);
-    virtual NS_MUST_OVERRIDE size_t
-        SizeOfIncludingThis(nsMallocSizeOfFun aMallocSizeOf);
+    virtual size_t SizeOfExcludingThis(nsMallocSizeOfFun aMallocSizeOf)
+      MOZ_MUST_OVERRIDE;
+    virtual size_t SizeOfIncludingThis(nsMallocSizeOfFun aMallocSizeOf)
+      MOZ_MUST_OVERRIDE;
 
     // Get the size, if it hasn't already been gotten, marking as it goes.
     size_t MaybeSizeOfIncludingThis(nsMallocSizeOfFun aMallocSizeOf)  {
@@ -3055,13 +3124,16 @@ private:
     nsAutoTArray<GlyphRun,1>        mGlyphRuns;
 
     void             *mUserData;
-    gfxFontGroup     *mFontGroup; // addrefed
+    gfxFontGroup     *mFontGroup; // addrefed on creation, but our reference
+                                  // may be released by ReleaseFontGroup()
     gfxSkipChars      mSkipChars;
     nsExpirationState mExpirationState;
 
     bool              mSkipDrawing; // true if the font group we used had a user font
                                     // download that's in progress, so we should hide text
                                     // until the download completes (or timeout fires)
+    bool              mReleasedFontGroup; // we already called NS_RELEASE on
+                                          // mFontGroup, so don't do it again
 };
 
 class THEBES_API gfxFontGroup : public gfxTextRunFactory {
@@ -3225,6 +3297,18 @@ public:
         return mSkipDrawing;
     }
 
+    class LazyReferenceContextGetter {
+    public:
+      virtual already_AddRefed<gfxContext> GetRefContext() = 0;
+    };
+    // The gfxFontGroup keeps ownership of this textrun.
+    // It is only guaranteed to exist until the next call to GetEllipsisTextRun
+    // (which might use a different appUnitsPerDev value) for the font group,
+    // or until UpdateFontList is called, or the fontgroup is destroyed.
+    // Get it/use it/forget it :) - don't keep a reference that might go stale.
+    gfxTextRun* GetEllipsisTextRun(int32_t aAppUnitsPerDevPixel,
+                                   LazyReferenceContextGetter& aRefContextGetter);
+
 protected:
     nsString mFamilies;
     gfxFontStyle mStyle;
@@ -3233,6 +3317,10 @@ protected:
 
     gfxUserFontSet* mUserFontSet;
     uint64_t mCurrGeneration;  // track the current user font set generation, rebuild font list if needed
+
+    // Cache a textrun representing an ellipsis (useful for CSS text-overflow)
+    // at a specific appUnitsPerDevPixel size
+    nsAutoPtr<gfxTextRun>   mCachedEllipsisTextRun;
 
     // cache the most recent pref font to avoid general pref font lookup
     nsRefPtr<gfxFontFamily> mLastPrefFamily;
