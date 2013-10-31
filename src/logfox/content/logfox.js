@@ -1,14 +1,15 @@
-Components.utils.import("resource://debug/debug.jsm");
+const { classes: Cc, interfaces: Ci, utils: Cu } = Components;
+Cu.import("resource://debug/debug.jsm");
 
 /*
-	const nsILocalFile = Components.classes["@mozilla.org/file/local;1"].  
-			createInstance(Components.interfaces.nsILocalFile);  
+	const nsILocalFile = Cc["@mozilla.org/file/local;1"].  
+			createInstance(Ci.nsILocalFile);  
 
 	nsILocalFile.initWithFile(aFile);
 
 	if(nsILocalFile.exists() && nsILocalFile.isFile() && nsILocalFile.isExecutable()){
-		const process = Components.classes["@mozilla.org/process/util;1"]
-				.createInstance(Components.interfaces.nsIProcess);
+		const process = Cc["@mozilla.org/process/util;1"]
+				.createInstance(Ci.nsIProcess);
 		process.init(nsILocalFile);
 
 		var args = ["version"];
@@ -18,9 +19,9 @@ Components.utils.import("resource://debug/debug.jsm");
 	}
 */
 
-//Components.utils.import("chrome://logfox/content/adb.js");
-//var loader = Components.classes["@mozilla.org/moz/jssubscript-loader;1"]
-//                       .getService(Components.interfaces.mozIJSSubScriptLoader); 
+//Cu.import("chrome://logfox/content/adb.js");
+//var loader = Cc["@mozilla.org/moz/jssubscript-loader;1"]
+//                       .getService(Ci.mozIJSSubScriptLoader); 
 //loader.loadSubScript("chrome://logfox/content/adb.js");
 
 var gMsgList = document.getElementsByTagName("logfox-msg-list")[0];
@@ -51,7 +52,7 @@ function test()
 }
 
 /*
-Components.utils.import("resource://gre/modules/AddonManager.jsm");
+Cu.import("resource://gre/modules/AddonManager.jsm");
 var addonListener = {
 	onEnabling: function(addon, needsRestart){},
 	onEnabled: function(addon){},
