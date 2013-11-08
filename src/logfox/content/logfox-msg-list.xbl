@@ -545,23 +545,4 @@
 			</method>
 		</implementation>
 	</binding>
-
-	<binding id="msg">
-		<content>
-			<xul:treerow>
-				<xul:treecell properties="E" label="??-?? ??:??:??.???"/>
-				<xul:treecell properties="E" label="I"/>
-				<xul:treecell properties="E" label="pid"/>
-				<xul:treecell properties="E" label="tid"/>
-				<xul:treecell properties="E" label="tag"/>
-				<xul:treecell properties="E" label="class"/>
-				<xul:treecell properties="E" label="line"/>
-				<xul:treecell properties="E" label="bind message.. ^^"/>
-			</xul:treerow>
-		</content>
-		<implementation>
-			<constructor>
-			</constructor>
-		</implementation>
-	</binding>
 </bindings>
