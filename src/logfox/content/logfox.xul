@@ -7,7 +7,9 @@
 		title="Andoid Debug Message Monitor"
 	>
 	<html:link rel="icon" href="chrome://logfox/skin/images/logo-24x24.png" style="display:none"/>
-	<logfox flex="1"/>
+	<logfox flex="1">
+		<toolbar/>
+	</logfox>
 	<box orient="vertical" align="center" hidden="true">
 		<box>
 			<button label="from plugin" oncommand="mytest_obj.post_handler()"/>

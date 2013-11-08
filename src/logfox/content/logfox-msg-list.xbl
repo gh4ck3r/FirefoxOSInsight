@@ -11,7 +11,7 @@
 		</resources>
 		<content>
 			<xul:box flex="1" orient="vertical">
-				<xul:toolbar style="-moz-binding: url('#toolbar');" minheight="&toolbarHeight;" maxheight="&toolbarHeight;"/>
+				<children include="toolbar" minheight="&toolbarHeight;" maxheight="&toolbarHeight;"/>
 				<xul:splitter collapse="before" resizeafter="farthest" fixed="true">
 					<xul:grippy/>
 				</xul:splitter>
