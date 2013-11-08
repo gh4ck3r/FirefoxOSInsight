@@ -1,1 +1,3 @@
-
+logfox {
+	-moz-binding: url('chrome://logfox/content/logfox-msg-list.xbl#msg-list');
+}
