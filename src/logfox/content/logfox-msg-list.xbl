@@ -435,7 +435,7 @@
 			<xul:toolbarbutton tooltiptext="&LogcatSaveTxt;" image="&LogcatSaveImg;" oncommand="saveToFile()"/>
 			<xul:toolbarbutton tooltiptext="&restartFirefoxTxt;" image="&restartFirefoxImg;" oncommand="restartFirefox()"/>
 			<xul:toolbarseparator/>
-			<xul:textbox counter="true" readonly="true" width="70" value="0"/>
+			<xul:textbox id="counter" counter="true" readonly="true" width="70" value="0"/>
 			<xul:toolbarbutton id="id-follow-msg" type="checkbox" tooltiptext="&LogcatFollowTxt;" image="&LogcatFollowImg;" checked="true"/>
 			<xul:toolbarseparator/>
 			<xul:toolbarbutton tooltiptext="&LogcatStopTxt;" image="&LogcatStopImg;" oncommand="logcatDisconnect()"/>
@@ -445,6 +445,19 @@
 			<xul:toolbarbutton tooltiptext="&ConfigurationTxt;" image="&ConfigurationImg;" oncommand="openConfigurationDialog()"/>
 		</content>
 		<implementation>
+			<constructor>
+				<![CDATA[
+					ASSERT(this.cntElem, "Failed to find counter element");
+				]]>
+			</constructor>
+			<destructor>
+				<![CDATA[
+					for(var i in this.windows){
+						var win = this.windows[i];
+						if(win) win.close();
+					}
+				]]>
+			</destructor>
 			<field name="elemSupressMsg">
 				<![CDATA[
 					({
@@ -457,7 +470,7 @@
 				]]>
 			</field>
 			<field name="cntElem" readonly="true">
-				<![CDATA[ document.getAnonymousElementByAttribute(this, "counter", "true") ]]>
+				<![CDATA[ this.querySelector("#counter") ]]>
 			</field>
 			<field name="_tree"/>
 			<field name="treechildren"/>
@@ -479,17 +492,6 @@
 					]]>
 				</setter>
 			</property>
-			<constructor>
-				<![CDATA[ ]]>
-			</constructor>
-			<destructor>
-				<![CDATA[
-					for(var i in this.windows){
-						var win = this.windows[i];
-						if(win) win.close();
-					}
-				]]>
-			</destructor>
 			<method name="isHiddenMsg">
 				<parameter name="type"/>
 				<body>
