@@ -11,7 +11,7 @@
 		</resources>
 		<content>
 			<xul:box flex="1" orient="vertical">
-				<children include="toolbar" minheight="&toolbarHeight;" maxheight="&toolbarHeight;"/>
+				<children id="toolbar" include="toolbar" minheight="&toolbarHeight;" maxheight="&toolbarHeight;"/>
 				<xul:splitter collapse="before" resizeafter="farthest" fixed="true">
 					<xul:grippy/>
 				</xul:splitter>
@@ -90,7 +90,9 @@
 				<![CDATA[ this.querySelector("treechildren#logfox-content") ]]>
 			</field>
 			<field name="capacity">10000</field>
-			<field name="toolbar"> <![CDATA[ document.getAnonymousNodes(this)[0].firstChild ]]> </field>
+			<field name="toolbar">
+				<![CDATA[ this.querySelector("toolbar") ]]>
+			</field>
 			<field name="logcatCallback">
 				<![CDATA[
 					({
@@ -424,11 +426,11 @@
 		<content>
 			<xul:toolbarbutton tooltiptext="&editFilterTxt;" image="&editFilterImg;" oncommand="openFilter()"/>
 			<xul:toolbarseparator/>
-			<xul:toolbarbutton type="checkbox" oncommand="toggleMsg(this);" msgType="V" tooltiptext="&supressMsgVTxt;" image="&supressMsgVImg;"/>
-			<xul:toolbarbutton type="checkbox" oncommand="toggleMsg(this);" msgType="D" tooltiptext="&supressMsgDTxt;" image="&supressMsgDImg;"/>
-			<xul:toolbarbutton type="checkbox" oncommand="toggleMsg(this);" msgType="I" tooltiptext="&supressMsgITxt;" image="&supressMsgIImg;"/>
-			<xul:toolbarbutton type="checkbox" oncommand="toggleMsg(this);" msgType="W" tooltiptext="&supressMsgWTxt;" image="&supressMsgWImg;"/>
-			<xul:toolbarbutton type="checkbox" oncommand="toggleMsg(this);" msgType="E" tooltiptext="&supressMsgETxt;" image="&supressMsgEImg;"/>
+			<xul:toolbarbutton id="btn-v" type="checkbox" oncommand="toggleMsg(this);" msgType="V" tooltiptext="&supressMsgVTxt;" image="&supressMsgVImg;"/>
+			<xul:toolbarbutton id="btn-d" type="checkbox" oncommand="toggleMsg(this);" msgType="D" tooltiptext="&supressMsgDTxt;" image="&supressMsgDImg;"/>
+			<xul:toolbarbutton id="btn-i" type="checkbox" oncommand="toggleMsg(this);" msgType="I" tooltiptext="&supressMsgITxt;" image="&supressMsgIImg;"/>
+			<xul:toolbarbutton id="btn-w" type="checkbox" oncommand="toggleMsg(this);" msgType="W" tooltiptext="&supressMsgWTxt;" image="&supressMsgWImg;"/>
+			<xul:toolbarbutton id="btn-e" type="checkbox" oncommand="toggleMsg(this);" msgType="E" tooltiptext="&supressMsgETxt;" image="&supressMsgEImg;"/>
 			<xul:toolbarseparator/>
 			<xul:toolbarbutton tooltiptext="&LogcatClearTxt;" image="&LogcatClearImg;" oncommand="clearMsg();"/>
 			<xul:toolbarseparator/>
@@ -448,6 +450,11 @@
 			<constructor>
 				<![CDATA[
 					ASSERT(this.cntElem, "Failed to find counter element");
+					ASSERT(this.elemSupressMsg.V, "Failed to find btn-v button");
+					ASSERT(this.elemSupressMsg.D, "Failed to find btn-d button");
+					ASSERT(this.elemSupressMsg.I, "Failed to find btn-i button");
+					ASSERT(this.elemSupressMsg.W, "Failed to find btn-w button");
+					ASSERT(this.elemSupressMsg.E, "Failed to find btn-e button");
 				]]>
 			</constructor>
 			<destructor>
@@ -461,11 +468,11 @@
 			<field name="elemSupressMsg">
 				<![CDATA[
 					({
-						V:document.getAnonymousElementByAttribute(this, "msgType", "V"),
-						D:document.getAnonymousElementByAttribute(this, "msgType", "D"),
-						I:document.getAnonymousElementByAttribute(this, "msgType", "I"),
-						W:document.getAnonymousElementByAttribute(this, "msgType", "W"),
-						E:document.getAnonymousElementByAttribute(this, "msgType", "E"),
+						V:this.querySelector("#btn-v"),
+						D:this.querySelector("#btn-d"),
+						I:this.querySelector("#btn-i"),
+						W:this.querySelector("#btn-w"),
+						E:this.querySelector("#btn-e"),
 					})
 				]]>
 			</field>
