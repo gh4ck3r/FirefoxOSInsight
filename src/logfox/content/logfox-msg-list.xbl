@@ -63,8 +63,8 @@
 		<implementation>
 			<constructor>
 				<![CDATA[
-					ASSERT(this._tree == document.getElementById("logfox-tree"), "Getting 'logfox-tree' is failed");
-					ASSERT(this.treechildren == document.getElementById("logfox-content"), "Getting 'logfox-content' is failed");
+					ASSERT(this._tree, "Getting 'logfox-tree' is failed");
+					ASSERT(this.treechildren, "Getting 'logfox-content' is failed");
 					this.toolbar._tree = this._tree;
 					this.toolbar.treechildren = this.treechildren;
 					this.toolbar.msgFilter = this.msgFilter;
@@ -84,10 +84,10 @@
 				]]>
 			</field>
 			<field name="_tree" readonly="true">
-				<![CDATA[ document.getAnonymousNodes(this)[0].children[2].children[0] ]]>
+				<![CDATA[ this.querySelector("tree#logfox-tree") ]]>
 			</field>
 			<field name="treechildren" readonly="true">
-				<![CDATA[ this._tree.children[1] ]]>
+				<![CDATA[ this.querySelector("treechildren#logfox-content") ]]>
 			</field>
 			<field name="capacity">10000</field>
 			<field name="toolbar"> <![CDATA[ document.getAnonymousNodes(this)[0].firstChild ]]> </field>
