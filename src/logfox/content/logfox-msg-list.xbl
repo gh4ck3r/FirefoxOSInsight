@@ -65,9 +65,6 @@
 				<![CDATA[
 					ASSERT(this._tree, "Getting 'logfox-tree' is failed");
 					ASSERT(this.treechildren, "Getting 'logfox-content' is failed");
-					this.toolbar._tree = this._tree;
-					this.toolbar.treechildren = this.treechildren;
-					this.toolbar.msgFilter = this.msgFilter;
 				]]>
 			</constructor>
 			<destructor/>
@@ -449,6 +446,7 @@
 		<implementation>
 			<constructor>
 				<![CDATA[
+					ASSERT(this.parentNode.tagName === "logfox", "Toolbar failed to find logfox element");
 					ASSERT(this.cntElem, "Failed to find counter element");
 					ASSERT(this.elemSupressMsg.V, "Failed to find btn-v button");
 					ASSERT(this.elemSupressMsg.D, "Failed to find btn-d button");
@@ -479,8 +477,15 @@
 			<field name="cntElem" readonly="true">
 				<![CDATA[ this.querySelector("#counter") ]]>
 			</field>
-			<field name="_tree"/>
-			<field name="treechildren"/>
+			<field name="_tree">
+				<![CDATA[ this.parentNode.querySelector("tree#logfox-tree") ]]>
+			</field>
+			<field name="treechildren">
+				<![CDATA[ this.parentNode.querySelector("treechildren#logfox-content") ]]>
+			</field>
+			<field name="msgFilter">
+				<![CDATA[ this.parentNode.msgFilter ]]>
+			</field>
 			<field name="windows">
 				<![CDATA[({
 					conf:null,
