@@ -68,13 +68,13 @@
 				]]>
 			</constructor>
 			<destructor/>
-			<field name="adb">
+			<field name="adb" readonly="true">
 				<![CDATA[
 					Components.classes["@gh4ck3r.com/adb;1"]
 						.getService(Components.interfaces.adbI)
 				]]>
 			</field>
-			<field name="logcat">
+			<field name="logcat" readonly="true">
 				<![CDATA[
 					Components.classes["@gh4ck3r.com/adb/logcat;1"]
 						.createInstance(Components.interfaces.adbIlogcat);
@@ -87,10 +87,10 @@
 				<![CDATA[ this.querySelector("treechildren#logfox-content") ]]>
 			</field>
 			<field name="capacity">10000</field>
-			<field name="toolbar">
+			<field name="toolbar" readonly="true">
 				<![CDATA[ this.querySelector("toolbar") ]]>
 			</field>
-			<field name="logcatCallback">
+			<field name="logcatCallback" readonly="true">
 				<![CDATA[
 					({
 						adb : this.adb,
@@ -186,7 +186,7 @@
 					})
 				]]>
 			</field>
-			<field name="msgFilter">
+			<field name="msgFilter" readonly="true">
 				<![CDATA[
 				({
 				 	filter : [],
@@ -258,6 +258,8 @@
 				})
 				]]>
 			</field>
+
+			<property name="length" onget="return this._tree.view && this._tree.view.rowCount;" readonly="true"/>
 
 			<method name="logcatConnect">
 				<body>
@@ -446,7 +448,7 @@
 		<implementation>
 			<constructor>
 				<![CDATA[
-					ASSERT(this.parentNode.tagName === "logfox", "Toolbar failed to find logfox element");
+					ASSERT(this.logfox && this.logfox.tagName === "logfox", "Toolbar failed to find logfox element");
 					ASSERT(this.cntElem, "Failed to find counter element");
 					ASSERT(this.elemSupressMsg.V, "Failed to find btn-v button");
 					ASSERT(this.elemSupressMsg.D, "Failed to find btn-d button");
@@ -477,14 +479,17 @@
 			<field name="cntElem" readonly="true">
 				<![CDATA[ this.querySelector("#counter") ]]>
 			</field>
-			<field name="_tree">
-				<![CDATA[ this.parentNode.querySelector("tree#logfox-tree") ]]>
+			<field name="logfox" readonly="true">
+				<![CDATA[ this.parentNode ]]>
 			</field>
-			<field name="treechildren">
-				<![CDATA[ this.parentNode.querySelector("treechildren#logfox-content") ]]>
+			<field name="_tree" readonly="true">
+				<![CDATA[ this.logfox.querySelector("tree#logfox-tree") ]]>
 			</field>
-			<field name="msgFilter">
-				<![CDATA[ this.parentNode.msgFilter ]]>
+			<field name="treechildren" readonly="true">
+				<![CDATA[ this.logfox.querySelector("treechildren#logfox-content") ]]>
+			</field>
+			<field name="msgFilter" readonly="true">
+				<![CDATA[ this.logfox.msgFilter ]]>
 			</field>
 			<field name="windows">
 				<![CDATA[({
