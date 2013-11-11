@@ -259,7 +259,11 @@
 				]]>
 			</field>
 
-			<property name="length" onget="return this._tree.view && this._tree.view.rowCount;" readonly="true"/>
+			<property name="length" readonly="true">
+				<getter>
+					<![CDATA[ return (this._tree.view && this._tree.view.rowCount); ]]>
+				</getter>
+			</property>
 
 			<method name="logcatConnect">
 				<body>
