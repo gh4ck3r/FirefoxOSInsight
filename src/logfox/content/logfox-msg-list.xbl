@@ -65,6 +65,7 @@
 				<![CDATA[
 					ASSERT(this._tree, "Getting 'logfox-tree' is failed");
 					ASSERT(this._view, "Getting view of 'logfox-tree' is failed");
+					ASSERT(this.selection, "Failed to set selection object");
 					ASSERT(this._renderer, "Getting boxObject of 'logfox-tree' is failed");
 					ASSERT(this.treechildren, "Getting 'logfox-content' is failed");
 				]]>
@@ -90,6 +91,10 @@
 				<!-- nsITreeView, nsITreeContentView -->
 				<![CDATA[ this._tree.view ]]>
 			</field>
+			<field name="selection" readonly="true">
+				<!-- nsITreeSelection -->
+				<![CDATA[ this._view.selection ]]>
+			</field>
 			<field name="_renderer" readonly="true">
 				<!-- nsITreeBoxObject -->
 				<![CDATA[ this._tree.boxObject ]]>
@@ -101,11 +106,6 @@
 			<field name="toolbar" readonly="true">
 				<![CDATA[ this.querySelector("toolbar") ]]>
 			</field>
-			<property name="currentIndex"
-				onget="return this._view.selection.currentIndex"
-				onset="this._view.selection.currentIndex=val"
-				/>
-
 			<field name="logcatCallback" readonly="true">
 				<![CDATA[
 					({
@@ -281,6 +281,10 @@
 				</getter>
 			</property>
 
+			<property name="currentIndex"
+				onget="return this.selection.currentIndex"
+				onset="this.selection.currentIndex=val"/>
+
 			<method name="logcatConnect">
 				<body>
 					<![CDATA[
@@ -393,13 +397,13 @@
 			<method name="copySelected">
 				<body>
 					<![CDATA[
-						var rangeCount = this._view.selection.getRangeCount();
+						var rangeCount = this.selection.getRangeCount();
 						var str="";
 						for (var i = 0; i < rangeCount; i++)
 						{
 							var begin = {};
 							var end = {};
-							this._view.selection.getRangeAt(i, begin, end);
+							this.selection.getRangeAt(i, begin, end);
 							for(var c=begin.value;end.value>=c;++c)
 								str += "\n" + this.getStr(c);
 						}
@@ -413,13 +417,13 @@
 			<method name="delSelected">
 				<body>
 					<![CDATA[
-						var rangeCount = this._view.selection.getRangeCount();
+						var rangeCount = this.selection.getRangeCount();
 						var removeTarget = [];
 						for (var i = 0; i < rangeCount; i++)
 						{
 							var begin = {};
 							var end = {};
-							this._view.selection.getRangeAt(i, begin, end);
+							this.selection.getRangeAt(i, begin, end);
 							for(var c=begin.value;end.value>=c;++c){
 								removeTarget.push(this._view.getItemAtIndex(c));
 							}
