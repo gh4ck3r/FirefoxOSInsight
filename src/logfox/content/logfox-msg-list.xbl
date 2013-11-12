@@ -64,6 +64,8 @@
 			<constructor>
 				<![CDATA[
 					ASSERT(this._tree, "Getting 'logfox-tree' is failed");
+					ASSERT(this._view, "Getting view of 'logfox-tree' is failed");
+					ASSERT(this._renderer, "Getting boxObject of 'logfox-tree' is failed");
 					ASSERT(this.treechildren, "Getting 'logfox-content' is failed");
 				]]>
 			</constructor>
@@ -81,7 +83,16 @@
 				]]>
 			</field>
 			<field name="_tree" readonly="true">
+				<!-- https://developer.mozilla.org/en-US/docs/XUL/tree -->
 				<![CDATA[ this.querySelector("tree#logfox-tree") ]]>
+			</field>
+			<field name="_view" readonly="true">
+				<!-- nsITreeView, nsITreeContentView -->
+				<![CDATA[ this._tree.view ]]>
+			</field>
+			<field name="_renderer" readonly="true">
+				<!-- nsITreeBoxObject -->
+				<![CDATA[ this._tree.boxObject ]]>
 			</field>
 			<field name="treechildren" readonly="true">
 				<![CDATA[ this.querySelector("treechildren#logfox-content") ]]>
@@ -90,6 +101,11 @@
 			<field name="toolbar" readonly="true">
 				<![CDATA[ this.querySelector("toolbar") ]]>
 			</field>
+			<property name="currentIndex"
+				onget="return this._view.selection.currentIndex"
+				onset="this._view.selection.currentIndex=val"
+				/>
+
 			<field name="logcatCallback" readonly="true">
 				<![CDATA[
 					({
@@ -261,7 +277,7 @@
 
 			<property name="length" readonly="true">
 				<getter>
-					<![CDATA[ return (this._tree.view && this._tree.view.rowCount); ]]>
+					<![CDATA[ return this._view.rowCount; ]]>
 				</getter>
 			</property>
 
@@ -313,6 +329,25 @@
 					]]>
 				</body>
 			</method>
+
+			<!-- scroll by lines  -->
+			<method name="scroll">
+				<!-- positive for scroll down negative for scroll up -->
+				<parameter name="lines"/>
+				<body>
+					<![CDATA[ this._renderer.scrollByLines(lines); ]]>
+				</body>
+			</method>
+			<method name="ensureRowIsVisible">
+				<parameter name="rowIdx"/>
+				<body>
+					<![CDATA[
+						this._renderer.ensureRowIsVisible(
+							rowIdx===undefined?this.currentIndex:rowIdx
+						);
+					]]>
+				</body>
+			</method>
 			<method name="appendMsg">
 				<parameter name="newMsg"/>
 				<body>
@@ -325,9 +360,9 @@
 							this.treechildren.appendChild(newMsg);
 
 							if(document.getElementById("id-follow-msg").checkState)
-								this._tree.boxObject.scrollByLines(this.treechildren.children.length);
+								this.scroll(this.treechildren.children.length);
 							else if(this.toolbar.msgCnt>=this.capacity)
-								this._tree.boxObject.scrollByLines(-1);
+								this.scroll(-1);
 							this.toolbar.syncMsgCount();
 						}
 					]]>
@@ -346,7 +381,7 @@
 				<parameter name="idx"/>
 				<body>
 					<![CDATA[
-						var children = this._tree.view.getItemAtIndex(idx).firstChild.children;
+						var children = this._view.getItemAtIndex(idx).firstChild.children;
 						var retStr="";
 						for(var i=0;i< children.length;++i) {
 							retStr += " " + children.item(i).getAttribute("label");
@@ -358,13 +393,13 @@
 			<method name="copySelected">
 				<body>
 					<![CDATA[
-						var rangeCount = this._tree.view.selection.getRangeCount();
+						var rangeCount = this._view.selection.getRangeCount();
 						var str="";
 						for (var i = 0; i < rangeCount; i++)
 						{
 							var begin = {};
 							var end = {};
-							this._tree.view.selection.getRangeAt(i, begin, end);
+							this._view.selection.getRangeAt(i, begin, end);
 							for(var c=begin.value;end.value>=c;++c)
 								str += "\n" + this.getStr(c);
 						}
@@ -378,15 +413,15 @@
 			<method name="delSelected">
 				<body>
 					<![CDATA[
-						var rangeCount = this._tree.view.selection.getRangeCount();
+						var rangeCount = this._view.selection.getRangeCount();
 						var removeTarget = [];
 						for (var i = 0; i < rangeCount; i++)
 						{
 							var begin = {};
 							var end = {};
-							this._tree.view.selection.getRangeAt(i, begin, end);
+							this._view.selection.getRangeAt(i, begin, end);
 							for(var c=begin.value;end.value>=c;++c){
-								removeTarget.push(this._tree.view.getItemAtIndex(c));
+								removeTarget.push(this._view.getItemAtIndex(c));
 							}
 						}
 
@@ -486,9 +521,6 @@
 			<field name="logfox" readonly="true">
 				<![CDATA[ this.parentNode ]]>
 			</field>
-			<field name="_tree" readonly="true">
-				<![CDATA[ this.logfox.querySelector("tree#logfox-tree") ]]>
-			</field>
 			<field name="treechildren" readonly="true">
 				<![CDATA[ this.logfox.querySelector("treechildren#logfox-content") ]]>
 			</field>
@@ -501,18 +533,6 @@
 					filter:null,
 				})]]>
 			</field>
-			<property name="msgCnt">
-				<getter>
-					<![CDATA[
-						return this._tree.view?this._tree.view.rowCount:0;
-					]]>
-				</getter>
-				<setter>
-					<![CDATA[
-						this.cntElem.value = val;
-					]]>
-				</setter>
-			</property>
 			<method name="isHiddenMsg">
 				<parameter name="type"/>
 				<body>
@@ -526,6 +546,7 @@
 				<parameter name="button"/>
 				<body>
 					<![CDATA[
+						const logfox=this.logfox;
 						var children=this.treechildren.children;
 						var msgType=button.getAttribute("msgType");
 						for(var i=0;i < children.length;++i)
@@ -535,14 +556,14 @@
 								childNode.hidden = button.checkState?true:false;
 							}
 						}
-						if(this._tree.currentIndex != -1)
-							this._tree.boxObject.ensureRowIsVisible(this._tree.currentIndex);
+						if(logfox.currentIndex != -1)
+							logfox.ensureRowIsVisible(logfox.currentIndex);
 						this.syncMsgCount();
 					]]>
 				</body>
 			</method>
 			<method name="syncMsgCount">
-				<body> <![CDATA[ this.msgCnt=this.msgCnt ]]> </body>
+				<body> <![CDATA[ this.cntElem.value=this.logfox.length ]]> </body>
 			</method>
 			<method name="openConfigurationDialog">
 				<body>
