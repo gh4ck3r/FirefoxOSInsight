@@ -63,11 +63,24 @@
 		<implementation>
 			<constructor>
 				<![CDATA[
-					ASSERT(this._tree, "Getting 'logfox-tree' is failed");
-					ASSERT(this._view, "Getting view of 'logfox-tree' is failed");
-					ASSERT(this.selection, "Failed to set selection object");
-					ASSERT(this._renderer, "Getting boxObject of 'logfox-tree' is failed");
-					ASSERT(this.treechildren, "Getting 'logfox-content' is failed");
+					ASSERT(this._tree);
+					ASSERT(this._view);
+					ASSERT(this.selection);
+					ASSERT(this._renderer);
+
+					const treechildren=this._treechildren;
+					ASSERT(treechildren);
+
+					// spec : http://www.w3.org/TR/DOM-Level-3-Events/
+					let msgCntChangingEvents = [
+						"DOMNodeInserted", // #event-type-DOMNodeInserted
+						"DOMNodeRemoved",  // #event-type-DOMNodeRemoved
+						"DOMAttrModified"  // #event-type-DOMAttrModified
+					];
+					let triggerMsgEvt=this.triggerMsgEvt.bind(this);
+					for(let i in msgCntChangingEvents)
+						treechildren.addEventListener(
+							msgCntChangingEvents[i], triggerMsgEvt, false);
 				]]>
 			</constructor>
 			<destructor/>
@@ -99,7 +112,7 @@
 				<!-- nsITreeBoxObject -->
 				<![CDATA[ this._tree.boxObject ]]>
 			</field>
-			<field name="treechildren" readonly="true">
+			<field name="_treechildren" readonly="true">
 				<![CDATA[ this.querySelector("treechildren#logfox-content") ]]>
 			</field>
 			<field name="capacity">10000</field>
@@ -275,16 +288,81 @@
 				]]>
 			</field>
 
-			<property name="length" readonly="true">
+			<property name="viewLength" readonly="true">
 				<getter>
-					<![CDATA[ return this._view.rowCount; ]]>
+					<![CDATA[ const view=this._view;return view.rowCount; ]]>
 				</getter>
 			</property>
-
+			<property name="msgLength" readonly="true">
+				<getter>
+					<![CDATA[
+						const children=this._treechildren.children;
+						return children.length;
+					]]>
+				</getter>
+			</property>
+			<property name="firstMsg" readonly="true">
+				<getter>
+					<![CDATA[
+						const treechildren=this._treechildren;
+						return treechildren.firstChild;
+					]]>
+				</getter>
+			</property>
 			<property name="currentIndex"
 				onget="return this.selection.currentIndex"
 				onset="this.selection.currentIndex=val"/>
 
+			<method name="appendMsg">
+				<parameter name="newMsg"/>
+				<body>
+					<![CDATA[
+						const renderer=this._renderer;
+						newMsg = this.newMsg(newMsg);
+						if(newMsg) {
+							renderer.beginUpdateBatch();
+							while(this.toolbar.msgCnt>=this.capacity)
+								this.removeMsg(this.firstMsg);
+
+							this._treechildren.appendChild(newMsg);
+
+							if(document.getElementById("id-follow-msg").checkState)
+								this.scroll(this.msgLength);
+							else if(this.toolbar.msgCnt>=this.capacity)
+								this.scroll(-1);
+							renderer.endUpdateBatch();
+						}
+					]]>
+				</body>
+			</method>
+			<method name="removeMsg">
+				<parameter name="msg"/>
+				<body>
+					<![CDATA[ const treechildren=this._treechildren;
+						treechildren.removeChild(msg);
+					]]>
+				</body>
+			</method>
+			<method name="isEmpty">
+				<body>
+					<![CDATA[ const treechildren=this._treechildren;
+						return !treechildren.hasChildNodes();
+					]]>
+				</body>
+			</method>
+			<method name="triggerMsgEvt">
+				<body>
+					<![CDATA[
+						let viewLength = this.viewLength;
+						if(viewLength == this.__lastMsgCnt) return;
+						this.__lastMsgCnt = viewLength;
+						this.dispatchEvent(
+							new CustomEvent('msg-cnt-changed',
+								{ 'detail': viewLength })
+						);
+					]]>
+				</body>
+			</method>
 			<method name="logcatConnect">
 				<body>
 					<![CDATA[
@@ -346,38 +424,21 @@
 				<parameter name="rowIdx"/>
 				<body>
 					<![CDATA[
-						this._renderer.ensureRowIsVisible(
+						const renderer=this._renderer;
+						renderer.ensureRowIsVisible(
 							rowIdx===undefined?this.currentIndex:rowIdx
 						);
-					]]>
-				</body>
-			</method>
-			<method name="appendMsg">
-				<parameter name="newMsg"/>
-				<body>
-					<![CDATA[
-						newMsg = this.newMsg(newMsg);
-						if(newMsg) {
-							while(this.toolbar.msgCnt>=this.capacity)
-								this.treechildren.removeChild(this.treechildren.firstChild);
-
-							this.treechildren.appendChild(newMsg);
-
-							if(document.getElementById("id-follow-msg").checkState)
-								this.scroll(this.treechildren.children.length);
-							else if(this.toolbar.msgCnt>=this.capacity)
-								this.scroll(-1);
-							this.toolbar.syncMsgCount();
-						}
 					]]>
 				</body>
 			</method>
 			<method name="clearMsg">
 				<body>
 					<![CDATA[
-						while(this.treechildren.hasChildNodes())
-							this.treechildren.removeChild(this.treechildren.firstChild);
-						this.toolbar.syncMsgCount();
+						const renderer=this._renderer;
+						renderer.beginUpdateBatch();
+						while(!this.isEmpty())
+							this.removeMsg(this.firstMsg);
+						renderer.endUpdateBatch();
 					]]>
 				</body>
 			</method>
@@ -431,8 +492,6 @@
 
 						for(var i in removeTarget)
 							removeTarget[i].parentNode.removeChild(removeTarget[i]);
-
-						this.toolbar.syncMsgCount();
 					]]>
 				</body>
 			</method>
@@ -450,7 +509,7 @@
 /*
 						var treeitem = document.createElement("xul:treeitem");
 						treeitem.setAttribute("style", "-moz-binding: url('#msg');");
-						this.treechildren.appendChild(treeitem);
+						this._treechildren.appendChild(treeitem);
 						alert("TODO : Implement");
 */
 					]]>
@@ -498,6 +557,10 @@
 					ASSERT(this.elemSupressMsg.I, "Failed to find btn-i button");
 					ASSERT(this.elemSupressMsg.W, "Failed to find btn-w button");
 					ASSERT(this.elemSupressMsg.E, "Failed to find btn-e button");
+
+					this.logfox.addEventListener("msg-cnt-changed", (function(e){
+						this.msgCounter=e.detail;
+					}).bind(this), false);
 				]]>
 			</constructor>
 			<destructor>
@@ -525,9 +588,6 @@
 			<field name="logfox" readonly="true">
 				<![CDATA[ this.parentNode ]]>
 			</field>
-			<field name="treechildren" readonly="true">
-				<![CDATA[ this.logfox.querySelector("treechildren#logfox-content") ]]>
-			</field>
 			<field name="msgFilter" readonly="true">
 				<![CDATA[ this.logfox.msgFilter ]]>
 			</field>
@@ -551,9 +611,9 @@
 				<body>
 					<![CDATA[
 						const logfox=this.logfox;
-						var children=this.treechildren.children;
+						var children=logfox._treechildren.children;
 						var msgType=button.getAttribute("msgType");
-						for(var i=0;i < children.length;++i)
+						for(var i=0;i < logfox.msgLength;++i)
 						{
 							var childNode = children[i];
 							if(childNode.firstChild.children[1].getAttribute("label")==msgType){
@@ -562,13 +622,12 @@
 						}
 						if(logfox.currentIndex != -1)
 							logfox.ensureRowIsVisible(logfox.currentIndex);
-						this.syncMsgCount();
 					]]>
 				</body>
 			</method>
-			<method name="syncMsgCount">
-				<body> <![CDATA[ this.cntElem.value=this.logfox.length ]]> </body>
-			</method>
+			<property name="msgCounter"
+					onget="return this.cntElem.value"
+					onset="this.cntElem.value=val"/>
 			<method name="openConfigurationDialog">
 				<body>
 					<![CDATA[
