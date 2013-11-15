@@ -67,10 +67,12 @@
 					ASSERT(this._view);
 					ASSERT(this.selection);
 					ASSERT(this._renderer);
+					ASSERT(this.converter);
 
 					const treechildren=this._treechildren;
 					ASSERT(treechildren);
 
+					// Register DOM change event handlers to count messages
 					// spec : http://www.w3.org/TR/DOM-Level-3-Events/
 					let msgCntChangingEvents = [
 						"DOMNodeInserted", // #event-type-DOMNodeInserted
@@ -81,6 +83,19 @@
 					for(let i in msgCntChangingEvents)
 						treechildren.addEventListener(
 							msgCntChangingEvents[i], triggerMsgEvt, false);
+
+                    this.converter.charset = "UTF-8";
+
+                    this.logcatMsg.prototype = {
+                      timestamp : "??-?? ??:??:??.???",
+                      type      : "I",
+                      pid       : "<unknown>",
+                      tid       : "<unknown>",
+                      tag       :  "<unknown>",
+                      class     : "",
+                      line      : "",
+                      msg       : ""
+                    }
 				]]>
 			</constructor>
 			<destructor/>
@@ -116,104 +131,20 @@
 				<![CDATA[ this.querySelector("treechildren#logfox-content") ]]>
 			</field>
 			<field name="capacity">10000</field>
+			<field name="converter">
+				<![CDATA[
+					Components.classes["@mozilla.org/intl/scriptableunicodeconverter"]
+						.createInstance(Components.interfaces.nsIScriptableUnicodeConverter);
+				]]>
+			</field>
+			<field name="msgList">
+				<![CDATA[ new Array() ]]>
+			</field>
+			<field name="logcatMsg">
+				<![CDATA[ (function(){ this.msg=[]; }) ]]>
+			</field>
 			<field name="toolbar" readonly="true">
 				<![CDATA[ this.querySelector("toolbar") ]]>
-			</field>
-			<field name="logcatCallback" readonly="true">
-				<![CDATA[
-					({
-						adb : this.adb,
-						appendMsg : this.appendMsg.bind(this),
-						logcatConnect : this.logcatConnect.bind(this),
-
-						msgList : [],
-						converter : Components.classes["@mozilla.org/intl/scriptableunicodeconverter"]
-										.createInstance(Components.interfaces.nsIScriptableUnicodeConverter),
-						logcatMsg : function() {this.msg = [];},
-						init : function() {
-							this.converter.charset = "UTF-8";
-							this.logcatMsg.prototype = {
-								timestamp	: "??-?? ??:??:??.???",
-								type		: "I",
-								pid			: "<unknown>",
-								tid			: "<unknown>",
-								tag			:  "<unknown>",
-								class		: "",
-								line		: "",
-								msg			: ""
-							}
-						},
-						parseStream : function(bulk_msg) {
-							var regExLogcatMsgHdr = /\[\s+(\d\d-\d\d\s+\d\d:\d\d:\d\d\.\d\d\d)\s+(\d+):0x([\da-f]+)\s+(.)\/(.*)\s+\]/;
-							var regExLogcatMsgLoc = /<!>([\S\.]+)\s(\d+)<!>\s/;
-							var msg_array = bulk_msg.split("\r\n");
-
-							var logcatMsgEntry = null;
-							for(var i in msg_array)
-							{
-								var msg = msg_array[i];
-
-								var parsedMsg = regExLogcatMsgHdr.exec(msg);
-								if(parsedMsg){
-									if(logcatMsgEntry) this.msgList.push(logcatMsgEntry);
-									logcatMsgEntry = new this.logcatMsg();
-									logcatMsgEntry.timestamp	= parsedMsg[1];
-									logcatMsgEntry.pid			= parsedMsg[2];
-									logcatMsgEntry.tid			= parseInt(parsedMsg[3], 16);
-									logcatMsgEntry.type			= parsedMsg[4];
-									logcatMsgEntry.tag			= parsedMsg[5].replace(/(^\s*)|(\s*$)/g, "");
-									continue;
-								}
-
-								if(msg){
-									if(!logcatMsgEntry) logcatMsgEntry = new this.logcatMsg();
-									if(!logcatMsgEntry.msg.length && !logcatMsgEntry.class && !logcatMsgEntry.line){
-										var locInfo = regExLogcatMsgLoc.exec(msg);
-										if(locInfo){
-											logcatMsgEntry.class	= locInfo[1];
-											logcatMsgEntry.line		= locInfo[2];
-											msg = msg.slice(locInfo[0].length);
-										}
-									}
-									logcatMsgEntry.msg.push(msg);
-								} else{
-									this.msgList.push(logcatMsgEntry);
-									logcatMsgEntry = null;
-								}
-							}
-						},
-						onMsg : function(inputStream, len){
-							this.parseStream(
-								this.converter.ConvertToUnicode(
-									inputStream.readBytes(len)
-								)
-							);
-
-							for(var msg=this.msgList.shift();msg;msg=this.msgList.shift()){
-								if(!msg.msg.length) msg.msg.push("");
-								this.appendMsg(msg);
-							}
-							this.msgList = [];
-						},
-						onError : function(err) {
-							switch(err){
-								case Components.results.NS_OK:
-									break;
-								case Components.results.NS_ERROR_CONNECTION_REFUSED:
-									trace("ADB is not ready.");
-									if(!this.adb.isAlive()) {
-										trace("Starting ADB server.");
-										this.adb.startServer();
-										this.logcatConnect();
-									}
-									break;
-								default:
-									printd("aStatusCode : " + result2str(err));
-									break;
-							}
-						}
-					})
-				]]>
 			</field>
 			<field name="msgFilter" readonly="true">
 				<![CDATA[
@@ -313,6 +244,91 @@
 				onget="return this.selection.currentIndex"
 				onset="this.selection.currentIndex=val"/>
 
+            <method name="parseStream">
+				<parameter name="bulk_msg"/>
+                <body>
+                  <![CDATA[
+                      var regExLogcatMsgHdr = /\[\s+(\d\d-\d\d\s+\d\d:\d\d:\d\d\.\d\d\d)\s+(\d+):0x([\da-f]+)\s+(.)\/(.*)\s+\]/;
+                      var regExLogcatMsgLoc = /<!>([\S\.]+)\s(\d+)<!>\s/;
+                      var msg_array = bulk_msg.split("\r\n");
+
+                      var logcatMsgEntry = null;
+                      for(var i in msg_array)
+                      {
+                          var msg = msg_array[i];
+
+                          var parsedMsg = regExLogcatMsgHdr.exec(msg);
+                          if(parsedMsg){
+                              if(logcatMsgEntry) this.msgList.push(logcatMsgEntry);
+                              logcatMsgEntry = new this.logcatMsg();
+                              logcatMsgEntry.timestamp	= parsedMsg[1];
+                              logcatMsgEntry.pid			= parsedMsg[2];
+                              logcatMsgEntry.tid			= parseInt(parsedMsg[3], 16);
+                              logcatMsgEntry.type			= parsedMsg[4];
+                              logcatMsgEntry.tag			= parsedMsg[5].replace(/(^\s*)|(\s*$)/g, "");
+                              continue;
+                          }
+
+                          if(msg){
+                              if(!logcatMsgEntry) logcatMsgEntry = new this.logcatMsg();
+                              if(!logcatMsgEntry.msg.length && !logcatMsgEntry.class && !logcatMsgEntry.line){
+                                  var locInfo = regExLogcatMsgLoc.exec(msg);
+                                  if(locInfo){
+                                      logcatMsgEntry.class	= locInfo[1];
+                                      logcatMsgEntry.line		= locInfo[2];
+                                      msg = msg.slice(locInfo[0].length);
+                                  }
+                              }
+                              logcatMsgEntry.msg.push(msg);
+                          } else{
+                              this.msgList.push(logcatMsgEntry);
+                              logcatMsgEntry = null;
+                          }
+                      }
+                  ]]>
+                </body>
+            </method>
+            <method name="onAdbMsg">
+				<parameter name="inputStream"/>
+				<parameter name="len"/>
+				<body>
+					<![CDATA[
+                        this.parseStream(
+                            this.converter.ConvertToUnicode(
+                                inputStream.readBytes(len)
+                            )
+                        );
+
+                        for(var msg=this.msgList.shift();msg;msg=this.msgList.shift()){
+                            if(!msg.msg.length) msg.msg.push("");
+                            this.appendMsg(msg);
+                        }
+                        this.msgList = [];
+					]]>
+				</body>
+            </method>
+            <method name="onAdbError">
+				<parameter name="err"/>
+                <body>
+					<![CDATA[
+                        switch(err){
+                            case Components.results.NS_OK:
+                                break;
+                            case Components.results.NS_ERROR_CONNECTION_REFUSED:
+                                trace("ADB is not ready.");
+                                if(!this.adb.isAlive()) {
+                                    trace("Starting ADB server.");
+                                    this.adb.startServer();
+                                    this.logcatConnect();
+                                }
+                                break;
+                            default:
+                                printd("aStatusCode : " + result2str(err));
+                                break;
+                        }
+					]]>
+                </body>
+            </method>
 			<method name="appendMsg">
 				<parameter name="newMsg"/>
 				<body>
@@ -366,8 +382,10 @@
 			<method name="logcatConnect">
 				<body>
 					<![CDATA[
-						this.logcatCallback.init();
-						this.logcat.start(this.logcatCallback);
+						this.logcat.start({
+                            onMsg : this.onAdbMsg.bind(this),
+                            onError : this.onAdbError.bind(this)
+                        });
 					]]>
 				</body>
 			</method>
