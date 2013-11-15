@@ -4,25 +4,25 @@
 
 [scriptable, uuid(d820039c-fd05-4b70-ae98-f542d8160bbe)]
 interface adbBridgeSyncI : nsISupports {
-	boolean isConnected();
-	adbBridgeSyncI setTarget(in string androidSerial);
-	wstring exec(in wstring cmd);
-	void	close();
+  boolean        isConnected();
+  adbBridgeSyncI setTarget(in string androidSerial);
+  wstring        exec(in wstring cmd);
+  void           close();
 };
 
 
 [scriptable, uuid(8f584336-4e25-4483-8d75-b00843e2efaf)]
 interface adbBridgeAsyncI : nsISupports {
-	boolean isConnected();
-	adbBridgeAsyncI exec(in wstring cmd);
-	wstring getResult(in wstring cmd);
-	wstring getData(in wstring cmd);
-	void	close();
+  boolean         isConnected();
+  adbBridgeAsyncI exec(in wstring cmd);
+  wstring         getResult(in wstring cmd);
+  wstring         getData(in wstring cmd);
+  void            close();
 };
 
 [scriptable, uuid(7191b9cb-ebf7-4b2e-8af5-133f5a1778aa)]
 interface adbBridgeI : nsISupports {
-	adbBridgeSyncI	openSync();
-	adbBridgeAsyncI openAsync(in nsIStreamListener callback);
+  adbBridgeSyncI  openSync();
+  adbBridgeAsyncI openAsync(in nsIStreamListener callback);
 };
 

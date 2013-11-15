@@ -1,3 +1,5 @@
+const { classes: Cc, interfaces: Ci, utils: Cu } = Components;
+
 var EXPORTED_SYMBOLS = [
 	"ASSERT",
 	"_invoke_trace_window",
@@ -8,19 +10,18 @@ var EXPORTED_SYMBOLS = [
 	"restartFirefox"
 ];
 
-
 var gTraceOnAssert = true;
 var _trace_window = null;
-const consoleService = Components.classes["@mozilla.org/consoleservice;1"]
-							.getService(Components.interfaces.nsIConsoleService);
+const consoleService = Cc["@mozilla.org/consoleservice;1"]
+							.getService(Ci.nsIConsoleService);
 
 function _invoke_trace_window()
 {
 	if(_trace_window && !_trace_window.closed)
 		_trace_window.focus();
 	else {
-		var wm = Components.classes["@mozilla.org/appshell/window-mediator;1"]
-					.getService(Components.interfaces.nsIWindowMediator);
+		var wm = Cc["@mozilla.org/appshell/window-mediator;1"]
+					.getService(Ci.nsIWindowMediator);
 		_trace_window = wm.getMostRecentWindow("global:console");
 		if(!_trace_window) {
 			var parent_window = wm.getMostRecentWindow(null);
@@ -53,8 +54,8 @@ function ASSERT(condition, message) {
 	if (condition) return;
 	if(!_trace_window) _invoke_trace_window();
 	var releaseBuild = true;
-	var defB = Components.classes["@mozilla.org/preferences-service;1"]
-		.getService(Components.interfaces.nsIPrefService)
+	var defB = Cc["@mozilla.org/preferences-service;1"]
+		.getService(Ci.nsIPrefService)
 		.getDefaultBranch(null);
 	try {
 		switch (defB.getCharPref("app.update.channel")) {
@@ -70,7 +71,7 @@ function ASSERT(condition, message) {
 
 	if (releaseBuild) {
 		// Just report the error to the console
-		//Components.utils.reportError(assertionText);
+		//Cu.reportError(assertionText);
 		var caller			= Components.stack.caller;
 
 		var aSourceName		= caller.filename;
@@ -80,8 +81,8 @@ function ASSERT(condition, message) {
 		var aFlags			= 0;	// error
 		var aCategory		= null;
 
-		var scriptError		= Components.classes["@mozilla.org/scripterror;1"]
-								.createInstance(Components.interfaces.nsIScriptError);
+		var scriptError		= Cc["@mozilla.org/scripterror;1"]
+								.createInstance(Ci.nsIScriptError);
 		scriptError.init(
 				(caller.name?caller.name + "() : ":"") + assertionText,
 				aSourceName,
@@ -114,8 +115,8 @@ function ASSERT(condition, message) {
 		}
 	}
 
-	var environment = Components.classes["@mozilla.org/process/environment;1"].
-		getService(Components.interfaces.nsIEnvironment);
+	var environment = Cc["@mozilla.org/process/environment;1"].
+		getService(Ci.nsIEnvironment);
 	if (environment.exists("XUL_ASSERT_PROMPT") &&
 			!parseInt(environment.get("XUL_ASSERT_PROMPT")))
 		return;
@@ -123,8 +124,8 @@ function ASSERT(condition, message) {
 	var source = null;
 	if (this.window)
 		source = this.window;
-	var ps = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].
-		getService(Components.interfaces.nsIPromptService);
+	var ps = Cc["@mozilla.org/embedcomp/prompt-service;1"].
+		getService(Ci.nsIPromptService);
 	ps.alert(source, "Assertion Failed", assertionText + stackText);
 }
 
@@ -142,8 +143,8 @@ function printd(msg)
 	var aFlags			= 1;	// warning
 	var aCategory		= null;
 
-	var scriptError		= Components.classes["@mozilla.org/scripterror;1"]
-							.createInstance(Components.interfaces.nsIScriptError);
+	var scriptError		= Cc["@mozilla.org/scripterror;1"]
+							.createInstance(Ci.nsIScriptError);
 		scriptError.init(
 				(caller.name?caller.name + "() : ":"") + msg,
 				aSourceName,
@@ -209,8 +210,8 @@ function printObj(obj)
 	var aFlags			= 1;	// warning
 	var aCategory		= null;
 
-	var scriptError		= Components.classes["@mozilla.org/scripterror;1"]
-							.createInstance(Components.interfaces.nsIScriptError);
+	var scriptError		= Cc["@mozilla.org/scripterror;1"]
+							.createInstance(Ci.nsIScriptError);
 		scriptError.init(
 				(caller.name?caller.name + "() : ":"") + message,
 				aSourceName,
@@ -234,13 +235,13 @@ function trace(msg)
 function result2str(result)
 {
 	// TODO : use nsIErrorService
-	for(var i in Components.results)
-		if(Components.results[i] == result) return i;
+	for(var i in Cr)
+		if(Cr[i] == result) return i;
 	return "Unknown"
 }
 
 function restartFirefox()
 {
-	var boot = Components.classes["@mozilla.org/toolkit/app-startup;1"].getService(Components.interfaces.nsIAppStartup);  
-	boot.quit(Components.interfaces.nsIAppStartup.eForceQuit|Components.interfaces.nsIAppStartup.eRestart);  
+	var boot = Cc["@mozilla.org/toolkit/app-startup;1"].getService(Ci.nsIAppStartup);  
+	boot.quit(Ci.nsIAppStartup.eForceQuit|Ci.nsIAppStartup.eRestart);  
 }

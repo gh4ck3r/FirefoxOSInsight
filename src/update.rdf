@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <RDF:RDF xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-         xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+    xmlns:em="http://www.mozilla.org/2004/em-rdf#">
 
   <!-- This Description resource includes all the update and compatibility information for
        a single add-on with the id foobar@developer.mozilla.org. You can list multiple
@@ -14,7 +14,7 @@
         <RDF:li resource="urn:mozilla:extension:firefox-os-insight@gh4ck3r.com:0.0.0.1"/>
       </RDF:Seq>
     </em:updates>
-	<em:updateLink>https://lemonbalm.lge.net/FirefoxOSInsight.xpi</em:updateLink>
+  <em:updateLink>https://lemonbalm.lge.net/FirefoxOSInsight.xpi</em:updateLink>
   </RDF:Description>
 
   <!-- This represents the same Description within the li from the previous example -->

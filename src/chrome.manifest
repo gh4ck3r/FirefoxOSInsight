@@ -1,8 +1,8 @@
-content		logfox				file:logfox/content/
-skin		logfox				default logfox/skin/default/
-locale		logfox				en-US	logfox/locale/en-US/
-locale		logfox				ko		logfox/locale/ko/
-resource	logfox				logfox/resource/
+content     logfox        file:logfox/content/
+skin        logfox        default logfox/skin/default/
+locale      logfox        en-US   logfox/locale/en-US/
+locale      logfox        ko      logfox/locale/ko/
+resource    logfox        logfox/resource/
 
 # used for ADB component
 interfaces components/adbBridge.xpt
@@ -12,29 +12,29 @@ interfaces components/logcat.xpt
 # used to define component on XPCOM
 
 # interface adbBridgeI
-component	{7191b9cb-ebf7-4b2e-8af5-133f5a1778aa} components/adbBridge.js
-contract	@gh4ck3r.com/adbBridge;1 {7191b9cb-ebf7-4b2e-8af5-133f5a1778aa}
+component   {7191b9cb-ebf7-4b2e-8af5-133f5a1778aa} components/adbBridge.js
+contract    @gh4ck3r.com/adbBridge;1 {7191b9cb-ebf7-4b2e-8af5-133f5a1778aa}
 
 # interface adbI
-component	{75b3607d-142e-4e34-883a-9cb91a7bcfb7} components/adb.js
-contract	@gh4ck3r.com/adb;1 {75b3607d-142e-4e34-883a-9cb91a7bcfb7}
+component   {75b3607d-142e-4e34-883a-9cb91a7bcfb7} components/adb.js
+contract    @gh4ck3r.com/adb;1 {75b3607d-142e-4e34-883a-9cb91a7bcfb7}
 
 # interface adbIlogcat
-component	{0616a42f-9dcc-4efb-9a3e-6bc431a0d5d5} components/logcat.js
-contract	@gh4ck3r.com/adb/logcat;1 {0616a42f-9dcc-4efb-9a3e-6bc431a0d5d5}
+component   {0616a42f-9dcc-4efb-9a3e-6bc431a0d5d5} components/logcat.js
+contract    @gh4ck3r.com/adb/logcat;1 {0616a42f-9dcc-4efb-9a3e-6bc431a0d5d5}
 
 # interface adbIlogcatCallback
-#component	{b7f2fb83-acec-44f3-8103-6738888b31ae} components/logcat.js
-#contract	@gh4ck3r.com/adb/logcat/callback;1 {b7f2fb83-acec-44f3-8103-6738888b31ae}
+#component  {b7f2fb83-acec-44f3-8103-6738888b31ae} components/logcat.js
+#contract   @gh4ck3r.com/adb/logcat/callback;1 {b7f2fb83-acec-44f3-8103-6738888b31ae}
 
 # used to define service on XPCOM component
 
 category profile-after-change adb @gh4ck3r.com/adb;1
 
-resource	debug				file:debug/
-resource	fileutils			file:fileutils/
+resource  debug        file:debug/
+resource  fileutils      file:fileutils/
 
 #Firefox
-overlay	chrome://browser/content/browser.xul		 chrome://logfox/content/overlays/toolbarButtonOverlay.xul
-style	chrome://global/content/customizeToolbar.xul chrome://logfox/skin/toolbarButtonOverlay.css
+overlay  chrome://browser/content/browser.xul         chrome://logfox/content/overlays/toolbarButtonOverlay.xul
+style    chrome://global/content/customizeToolbar.xul chrome://logfox/skin/toolbarButtonOverlay.css
 

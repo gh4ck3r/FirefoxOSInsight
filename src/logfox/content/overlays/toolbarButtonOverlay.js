@@ -1,5 +1,5 @@
 const wm = Components.classes["@mozilla.org/appshell/window-mediator;1"]
-				.getService(Components.interfaces.nsIWindowMediator);
+              .getService(Components.interfaces.nsIWindowMediator);
 const chromeURI = "chrome://logfox/content/logfox.xul";
 
 function toolBarClicked(event) {

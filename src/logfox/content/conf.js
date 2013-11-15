@@ -1,12 +1,14 @@
-Components.utils.import("resource://debug/debug.jsm");
-Components.utils.import("resource://fileutils/picker.jsm");
-Components.utils.import("resource://fileutils/process.jsm");
+const { classes: Cc, interfaces: Ci, utils: Cu } = Components;
 
-const prefs = Components.classes["@mozilla.org/preferences-service;1"]
-		.getService(Components.interfaces.nsIPrefService)
-		.getBranch("extensions.DiagMsgMon.pref.adb.");
+Cu.import("resource://debug/debug.jsm");
+Cu.import("resource://fileutils/picker.jsm");
+Cu.import("resource://fileutils/process.jsm");
 
-const nsILocalFile = Components.interfaces.nsILocalFile;
+const prefs = Cc["@mozilla.org/preferences-service;1"]
+    .getService(Ci.nsIPrefService)
+    .getBranch("extensions.DiagMsgMon.pref.adb.");
+
+const nsILocalFile = Ci.nsILocalFile;
 
 function isADB(aFile)
 {

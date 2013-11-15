@@ -4,18 +4,18 @@
 
 [scriptable, uuid(75b3607d-142e-4e34-883a-9cb91a7bcfb7)]
 interface adbI : nsISupports {
-	readonly attribute wstring OB_TOPIC;
-	readonly attribute wstring OB_STATE_CONNECTED;
-	readonly attribute wstring OB_STATE_DISCONNECTED;
+  readonly attribute wstring OB_TOPIC;
+  readonly attribute wstring OB_STATE_CONNECTED;
+  readonly attribute wstring OB_STATE_DISCONNECTED;
 
-	boolean isAlive();
-	void exec(in boolean blocked,
-			[array, size_is(length)] in wstring params,
-			in unsigned long length
-	);
-	void startServer();
-	void killServer();
-	unsigned long getDeviceCnt();
-	wstring getDeviceId(in unsigned long idx);
+  boolean isAlive();
+  void    exec(in boolean blocked,
+      [array, size_is(length)] in wstring params,
+      in unsigned long length
+  );
+  void          startServer();
+  void          killServer();
+  unsigned long getDeviceCnt();
+  wstring       getDeviceId(in unsigned long idx);
 };
 

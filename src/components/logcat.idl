@@ -3,16 +3,16 @@
 
 [scriptable, uuid(b7f2fb83-acec-44f3-8103-6738888b31ae)]
 interface adbIlogcatCallback : nsISupports {
-	void onMsg(in nsIScriptableInputStream istream, in unsigned long len);
-	void onError(in unsigned long err);
+  void onMsg(in nsIScriptableInputStream istream, in unsigned long len);
+  void onError(in unsigned long err);
 };
 
 [scriptable, uuid(0616a42f-9dcc-4efb-9a3e-6bc431a0d5d5)]
 interface adbIlogcat : nsISupports {
-	void	start(in adbIlogcatCallback callback);
-	void	stop();
-	void	pause();
-	void	resume();
-	boolean isConnected();
+  void    start(in adbIlogcatCallback callback);
+  void    stop();
+  void    pause();
+  void    resume();
+  boolean isConnected();
 };
 

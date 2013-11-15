@@ -10,24 +10,24 @@ const tagElem = document.getElementById("tag-filter");
 
 function addFilter()
 {
-	var pidVal = pidElem.value;
-	var tidVal = tidElem.value;
-	var tagVal = tagElem.value;
+  var pidVal = pidElem.value;
+  var tidVal = tidElem.value;
+  var tagVal = tagElem.value;
 
-	if(pidVal==0&&tidVal==0&&!tagVal) return;
-	var filter = {};
-	if(pidVal!=0)	filter.pid = parseInt(pidVal);
-	if(tidVal!=0)	filter.tid = parseInt(tidVal);
-	if(tagVal)		filter.tag = tagVal;
+  if(pidVal==0&&tidVal==0&&!tagVal) return;
+  var filter = {};
+  if(pidVal!=0) filter.pid = parseInt(pidVal);
+  if(tidVal!=0) filter.tid = parseInt(tidVal);
+  if(tagVal)    filter.tag = tagVal;
 
-	msgFilter.addFilter(filter);
+  msgFilter.addFilter(filter);
 
-	pidElem.reset();
-	tidElem.reset();
-	tagElem.reset();
+  pidElem.reset();
+  tidElem.reset();
+  tagElem.reset();
 }
 
 function delSelectedFilter()
 {
-	msgFilter.delSelectedFilter();
+  msgFilter.delSelectedFilter();
 }

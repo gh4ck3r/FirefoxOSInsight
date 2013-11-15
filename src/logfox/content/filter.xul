@@ -2,45 +2,45 @@
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
 
 <window xmlns:html="http://www.w3.org/1999/xhtml"
-		xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-		title="Log Filter"
-	>
-	<keyset>
-		<key id="escape-key" keycode="VK_ESCAPE" oncommand="window.close()"/>
-		<key id="enter-key" keycode="VK_RETURN" oncommand="addFilter()"/>
-		<key id="delete-key" keycode="VK_DELETE" oncommand="delSelectedFilter();"/>
-	</keyset>
-	<vbox flex="1">
-		<groupbox align="left">
-			<caption label="Filter"/>
-			<box>
-				<label value="PID"/>
-				<textbox id="pid-filter" width="130px" type="number" hidespinbuttons="true"/>
-				<label value="TID"/>
-				<textbox id="tid-filter" width="130px" type="number" hidespinbuttons="true"/>
-			</box>
-			<box>
-				<label value="Tag"/>
-				<textbox id="tag-filter" width="300px" type="autocomplete"/>
-			</box>
-			<box>
-				<button label="ADD" oncommand="addFilter()"/>
-			</box>
-		</groupbox>
-		<tree id="filter-tree" flex="1" minheight="200px" editable="true" style="width: 100%;">
-			<treecols style="width: 100%">
-				<treecol id="pid" label="pid" fixed="false" hidden="false" width="140"/>
-				<splitter class="tree-splitter"/>
-				<treecol id="tid" label="tid" fixed="false" hidden="false" width="140"/>
-				<splitter class="tree-splitter"/>
-				<treecol id="tag" label="tag" fixed="false" hidden="false" width="300" flex="1"/>
-			</treecols>
-			<treechildren alternatingbackground="false"/>
-		</tree>
-		<box style="width: 100%" align="right">
-			<button label="Close" oncommand="window.close()"/>
-		</box>
-	</vbox>
-	<script type="application/javascript" src="./filter.js"/>
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+    title="Log Filter"
+  >
+  <keyset>
+    <key id="escape-key" keycode="VK_ESCAPE" oncommand="window.close()"/>
+    <key id="enter-key" keycode="VK_RETURN" oncommand="addFilter()"/>
+    <key id="delete-key" keycode="VK_DELETE" oncommand="delSelectedFilter();"/>
+  </keyset>
+  <vbox flex="1">
+    <groupbox align="left">
+      <caption label="Filter"/>
+      <box>
+        <label value="PID"/>
+        <textbox id="pid-filter" width="130px" type="number" hidespinbuttons="true"/>
+        <label value="TID"/>
+        <textbox id="tid-filter" width="130px" type="number" hidespinbuttons="true"/>
+      </box>
+      <box>
+        <label value="Tag"/>
+        <textbox id="tag-filter" width="300px" type="autocomplete"/>
+      </box>
+      <box>
+        <button label="ADD" oncommand="addFilter()"/>
+      </box>
+    </groupbox>
+    <tree id="filter-tree" flex="1" minheight="200px" editable="true" style="width: 100%;">
+      <treecols style="width: 100%">
+        <treecol id="pid" label="pid" fixed="false" hidden="false" width="140"/>
+        <splitter class="tree-splitter"/>
+        <treecol id="tid" label="tid" fixed="false" hidden="false" width="140"/>
+        <splitter class="tree-splitter"/>
+        <treecol id="tag" label="tag" fixed="false" hidden="false" width="300" flex="1"/>
+      </treecols>
+      <treechildren alternatingbackground="false"/>
+    </tree>
+    <box style="width: 100%" align="right">
+      <button label="Close" oncommand="window.close()"/>
+    </box>
+  </vbox>
+  <script type="application/javascript" src="./filter.js"/>
 </window>
 

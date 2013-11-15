@@ -2,12 +2,11 @@
 <?xml-stylesheet href="chrome://logfox/skin/toolbarButtonOverlay.css" type="text/css"?>
 
 <overlay id="overlay"
-         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
-	<script type="application/javascript" src="chrome://logfox/content/overlays/toolbarButtonOverlay.js"/>
-	<toolbarpalette id="BrowserToolbarPalette">
-	  <toolbarbutton id="id-logfox-launcher" class="toolbarbutton-1"
-		label="Logfox" tooltiptext="Firefox OS Log Message Viewer"
-		oncommand="toolBarClicked(event);"/>
-	</toolbarpalette>
-
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <script type="application/javascript" src="chrome://logfox/content/overlays/toolbarButtonOverlay.js"/>
+  <toolbarpalette id="BrowserToolbarPalette">
+    <toolbarbutton id="id-logfox-launcher" class="toolbarbutton-1"
+        label="Logfox" tooltiptext="Firefox OS Log Message Viewer"
+        oncommand="toolBarClicked(event);"/>
+  </toolbarpalette>
 </overlay>

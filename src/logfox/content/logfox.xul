@@ -3,26 +3,25 @@
 <?xml-stylesheet href="logfox.css" type="text/css"?>
 
 <window xmlns:html="http://www.w3.org/1999/xhtml"
-		xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-		title="Andoid Debug Message Monitor"
-	>
-	<html:link rel="icon" href="chrome://logfox/skin/images/logo-24x24.png" style="display:none"/>
-	<toolbarbutton hidden="true" tooltiptext="Restart Firefox" image="chrome://logfox/skin/images/restartFirefox.png" oncommand="restartFirefox()"/>
-	<logfox flex="1">
-		<toolbar/>
-	</logfox>
-	<box orient="vertical" align="center" hidden="true">
-		<box>
-			<button label="from plugin" oncommand="mytest_obj.post_handler()"/>
-			<button label="begin thread" oncommand="thread_begin()"/>
-			<button label="stop thread" oncommand="thread_stop()"/>
-			<button label="Clear Message" oncommand="gMsgList.clearMsg()"/>
-			<button label="adb start" oncommand="gMsgList.adb.startServer()"/>
-			<button label="adb kill" oncommand="gMsgList.adb.killServer()"/>
-			<button label="Connect" oncommand="adb_connect()"/>
-			<button label="Disconnect" oncommand="adb_disconnect()"/>
-			<button label="test" oncommand="test()"/>
-		</box>
-	</box>
-	<script type="application/javascript" src="./logfox.js"/>
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+    title="Andoid Diagnostic Message Monitor">
+  <html:link rel="icon" href="chrome://logfox/skin/images/logo-24x24.png" style="display:none"/>
+  <toolbarbutton hidden="true" tooltiptext="Restart Firefox" image="chrome://logfox/skin/images/restartFirefox.png" oncommand="restartFirefox()"/>
+  <logfox flex="1">
+    <toolbar/>
+  </logfox>
+  <box orient="vertical" align="center" hidden="true">
+    <box>
+      <button label="from plugin" oncommand="mytest_obj.post_handler()"/>
+      <button label="begin thread" oncommand="thread_begin()"/>
+      <button label="stop thread" oncommand="thread_stop()"/>
+      <button label="Clear Message" oncommand="gMsgList.clearMsg()"/>
+      <button label="adb start" oncommand="gMsgList.adb.startServer()"/>
+      <button label="adb kill" oncommand="gMsgList.adb.killServer()"/>
+      <button label="Connect" oncommand="adb_connect()"/>
+      <button label="Disconnect" oncommand="adb_disconnect()"/>
+      <button label="test" oncommand="test()"/>
+    </box>
+  </box>
+  <script type="application/javascript" src="./logfox.js"/>
 </window>
